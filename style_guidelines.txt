@@ -1,0 +1,41 @@
+//=================================================================\\
+// Aardvark Topsites PHP 5.0                                       \\
+//-----------------------------------------------------------------\\
+// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
+//-----------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or   \\
+// modify it under the terms of the GNU General Public License     \\
+// as published by the Free Software Foundation; either version 2  \\
+// of the License, or (at your option) any later version.          \\
+//                                                                 \\
+// This program is distributed in the hope that it will be useful, \\
+// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
+// GNU General Public License for more details.                    \\
+//=================================================================\\
+
+GENERAL
+- The header at the top of this file should appear at the top of all PHP files.
+- Indentations are two spaces.  No tabs.
+- Single quotes should be used in favor of double quotes wherever possible.
+- Array keys should always be quoted: $array['key'];
+- Arguments are separated by a space: function($a, $b, $c);
+- Comments should use single-line style: // Comment
+
+NAMING CONVENTIONS
+- Variable names should be in all lowercase, with words separated by an
+  underscore, example:
+  $current_user is right, but $currentuser and $currentUser are not.
+- Function and class names have the same rules as variable names.
+- Global variables are short and all caps: $LNG, $CONF, etc.
+
+CODE LAYOUT
+- Always include braces in loops.  Always skip a line and indent.  Loops should
+  look like this:
+  if ($condition) {
+    echo "hi";
+  }
+- Spaces should be between operators, like this:
+  if (($i < 7) && ($j > 8)) {
+- SQL should be one line if it is short enough.  If not, put line breaks
+  wherever it looks good.  Don't try to align columns with spaces.

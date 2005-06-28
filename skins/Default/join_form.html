@@ -1,0 +1,35 @@
+<form action="index.php" method="post">
+<input name="a" type="hidden" value="join" />
+<table><tr><td align="right">
+<#lng{'g_url'}>
+</td><td>
+<input name="url" type="text" size="50" maxlength="70" value="http://" />
+</td></tr><tr><td align="right">
+<#lng{'g_title'}>
+</td><td>
+<input name="title" type="text" size="50" maxlength="32" />
+</td></tr><tr><td align="right">
+<#lng{'g_description'}>
+</td><td>
+<input name="description" type="text" size="50" maxlength="255" />
+</td></tr><tr><td align="right">
+<#lng{'g_category'}>
+</td><td>
+<#catselect>
+</td></tr><tr><td align="right">
+<#lng{'g_email'}>
+</td><td>
+<input name="email" type="text" size="50" maxlength="70" />
+</td></tr><tr><td align="right">
+<#lng{'g_bannerurl'}>
+</td><td>
+<input name="urlbanner" type="text" size="50" maxlength="90" value="http://" />
+</td></tr><tr><td align="right">
+<#lng{'g_password'}>
+</td><td>
+<input name="password" type="password" size="50" maxlength="32" />
+</td></tr><tr><td colspan="2" align="center">
+<input type="submit" value="<#lng{'g_form_submit_long'}>" />
+<input type="reset" value="<#lng{'g_form_submit_reset'}>" />
+</td></tr></table>
+</form>

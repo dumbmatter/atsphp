@@ -1,0 +1,64 @@
+<h1><#title></h1><br />
+<b><#lng{'g_id'}>:</b> <#id><br />
+<b><#lng{'g_description'}>:</b> <#description><br />
+<b><#lng{'g_url'}>:</b> <a href="<#url>" target="_blank"><#real_url></a><br />
+<b><#lng{'g_category'}>:</b> <a href="<#list_url>/index.php?cat=<#cat>"><#cat></a><br /><br />
+<b><#lng{'stats_rating_avg'}>:</b> <#avg_rate> / 5<br />
+<b><#lng{'stats_rating_num'}>:</b> <#ratenum><br />
+<a href="index.php?a=rate&amp;id=<#id>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<img src="<#urlbanner>" /><br /><br />
+<table class="darkbg" cellspacing="1" cellpadding="2"><tr class="mediumbg">
+<td></td>
+<td align="center"><b><#lng{'g_average'}></b></td>
+<td align="center"><b><#lng{'g_today'}></b></td>
+<td align="center"><b><#lng{'g_yesterday'}></b></td>
+<td align="center"><b><#lng{'g_2days'}></b></td>
+<td align="center"><b><#lng{'g_3days'}></b></td>
+</tr><tr class="lightbg">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_pv"><#lng{'g_unq_pv'}></a></b></td>
+<td align="center"><b><#unq_pv_avg></b></td>
+<td align="center"><#unq_pv_tod></td>
+<td align="center"><#unq_pv_1></td>
+<td align="center"><#unq_pv_2></td>
+<td align="center"><#unq_pv_3></td>
+</tr><tr class="lightbgalt">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_pv"><#lng{'g_tot_pv'}></a></b></td>
+<td align="center"><b><#tot_pv_avg></b></td>
+<td align="center"><#tot_pv_tod></td>
+<td align="center"><#tot_pv_1></td>
+<td align="center"><#tot_pv_2></td>
+<td align="center"><#tot_pv_3></td>
+</tr><tr class="lightbg">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_in"><#lng{'g_unq_in'}></a></b></td>
+<td align="center"><b><#unq_in_avg></b></td>
+<td align="center"><#unq_in_tod></td>
+<td align="center"><#unq_in_1></td>
+<td align="center"><#unq_in_2></td>
+<td align="center"><#unq_in_3></td>
+</tr><tr class="lightbgalt">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_in"><#lng{'g_tot_in'}></a></b></td>
+<td align="center"><b><#tot_in_avg></b></td>
+<td align="center"><#tot_in_tod></td>
+<td align="center"><#tot_in_1></td>
+<td align="center"><#tot_in_2></td>
+<td align="center"><#tot_in_3></td>
+</tr><tr class="lightbg">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_out"><#lng{'g_unq_out'}></a></b></td>
+<td align="center"><b><#unq_out_avg></b></td>
+<td align="center"><#unq_out_tod></td>
+<td align="center"><#unq_out_1></td>
+<td align="center"><#unq_out_2></td>
+<td align="center"><#unq_out_3></td>
+</tr><tr class="lightbgalt">
+<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_out"><#lng{'g_tot_out'}></a></b></td>
+<td align="center"><b><#tot_out_avg></b></td>
+<td align="center"><#tot_out_tod></td>
+<td align="center"><#tot_out_1></td>
+<td align="center"><#tot_out_2></td>
+<td align="center"><#tot_out_3></td>
+</tr></table>
+<br />
+<b><#lng{'stats_reviews'}></b><br />
+<a href="index.php?a=rate&amp;id=<#id>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<#reviews>
+<a href="index.php?a=stats&id=<#id>&allreviews=1"><#lng{'stats_allreviews'}></a>

@@ -1,0 +1,14 @@
+<form action="index.php" method="post">
+<input type="hidden" value="rate" name="a" />
+<input type="hidden" value="submit" name="do" />
+<input type="hidden" value="<#id>" name="id" />
+<b><#lng{'rate_rating'}></b><br />
+<input type="radio" name="rating" value="5"><img src="<#skins_url>/<#skin_name>/rate5.png" width="100" height="20" alt="5/5" /><br />
+<input type="radio" name="rating" value="4"><img src="<#skins_url>/<#skin_name>/rate4.png" width="100" height="20" alt="4/5" /><br />
+<input type="radio" name="rating" value="3"><img src="<#skins_url>/<#skin_name>/rate3.png" width="100" height="20" alt="3/5" /><br />
+<input type="radio" name="rating" value="2"><img src="<#skins_url>/<#skin_name>/rate2.png" width="100" height="20" alt="2/5" /><br />
+<input type="radio" name="rating" value="1"><img src="<#skins_url>/<#skin_name>/rate1.png" width="100" height="20" alt="1/5" /><br /><br />
+<b><#lng{'rate_review'}></b><br />
+<textarea name="review" cols="40" rows="6"></textarea><br /><br />
+<input type="submit" value="<#lng{'g_form_submit_long'}>" />
+</form>

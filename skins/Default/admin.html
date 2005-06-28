@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Aardvark Topsites PHP Admin - <#list_name></title>
+<link rel="stylesheet" type="text/css" media="screen" title="Default" href="<#skins_url>/<#skin_name>/default.css" />
+<link rel="stylesheet" type="text/css" media="screen" title="Default" href="<#skins_url>/<#skin_name>/admin.css" />
+</head>
+<body>
+<center>
+<a href="<#list_url>/index.php"><img src="<#skins_url>/<#skin_name>/logo.png" width="728" height="66" alt="Aardvark Topsites PHP" border="0" /></a>
+</center>
+
+<table align="center" cellspacing="0" cellpadding="0" width="728">
+<tr><td width="150" valign="top">
+<b><#lng{'a_menu'}></b>
+<ul>
+<li><a href="<#list_url>/admin.php?sid=<#sid>"><#lng{'a_menu_main'}></a></li>
+<li><a href="<#list_url>/admin.php?page=approve&sid=<#sid>"><#lng{'a_menu_approve'}></a></li>
+<li><a href="<#list_url>/admin.php?page=manage&sid=<#sid>"><#lng{'a_menu_manage'}></a></li>
+<li><a href="<#list_url>/admin.php?page=delete_review&sid=<#sid>"><#lng{'a_menu_delete_review'}></a></li>
+<li><a href="<#list_url>/admin.php?page=email&sid=<#sid>"><#lng{'a_menu_email'}></a></li>
+<li><a href="<#list_url>/admin.php?page=logout&sid=<#sid>"><#lng{'a_menu_logout'}></a></li>
+<li><a href="<#list_url>/admin.php?page=reset&sid=<#sid>"><#lng{'a_menu_reset'}></a></li>
+<li><b><#lng{'a_menu_settings'}></b>
+  <ul>
+  <li><a href="<#list_url>/admin.php?page=settings&sid=<#sid>"><#lng{'a_menu_settings_general'}></a></li>
+  <li><a href="<#list_url>/admin.php?page=settings_skins&sid=<#sid>"><#lng{'a_menu_settings_skins'}></a></li>
+  </ul>
+</li>
+</ul>
+</td><td valign="top">
+<#content>
+</td></tr>
+<tr><td colspan="2" class="bottom">
+<br />
+<#list_name> - <#lng{'main_powered'}> <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> <#version>
+</td></tr>
+</table>
+
+</body>
+</html>
