@@ -31,7 +31,7 @@ $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 0);
 
 // Settings
-$result = $DB->execute('SELECT list_name, list_url, default_language, default_skin, skins_url, email_address, num_list, day_week_month, day_week_month_num, ranking_method, featured_member, top_skin_num, ad_breaks, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, search_results, gzip, time_offset, gateway FROM '.$CONF['sql_prefix'].'_settings');
+$result = $DB->execute('SELECT list_name, list_url, default_language, default_skin, skins_url, email_address, num_list, daily_weekly_monthly, daily_weekly_monthly_num, ranking_method, featured_member, top_skin_num, ad_breaks, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, search_results, gzip, time_offset, gateway FROM '.$CONF['sql_prefix'].'_settings');
 $CONF = $DB->fetch_array($result);
 $ad_breaks = explode('|', $CONF['ad_breaks']);
 $CONF['ad_breaks'] = array();

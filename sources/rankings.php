@@ -19,38 +19,48 @@ class rankings extends base {
   function __construct() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
+    // Get the category, default to no category
     if ($FORM['cat']) {
       $TMPL['category'] = $FORM['cat'];
       $category_sql = "AND category = '${TMPL['category']}'";
     }
     else { $TMPL['category'] = $LNG['main_all']; }
 
-    $TMPL['header'] = $LNG['main_header'].' - '.$TMPL['category'];
+    $TMPL['header'] = $LNG['main_open'].' - '.$TMPL['category'];
 
-    $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
-    $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
-
-    if (($ranking_method != 'unq_pv') && ($ranking_method != 'tot_pv') && ($ranking_method != 'unq_in') && ($ranking_method != 'tot_in') && ($ranking_method != 'unq_out') && ($ranking_method != 'tot_out')) {
-      $ranking_method = 'unq_pv';
+    // Get the ranking method, default to pageviews
+    $ranking_method = isset($FORM['ranking_method']) ? $FORM['ranking_method'] : $CONF['ranking_method'];
+    if (($ranking_method != 'pv') && ($ranking_method != 'in') && ($ranking_method != 'out')) {
+      $ranking_method = 'pv';
     }
 
-    if ($CONF['top_skin_num'] > 0 && $FORM['start'] < 2) { $TMPL['content'] = do_skin('table_header_top'); }
-    else { $TMPL['content'] = do_skin('table_header'); }
+    // Make ORDER BY clause
+    $order_by = '(';
+    for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
+      $order_by .= 'unq_'.$ranking_method.'_'.$i.'.stats_'.$CONF['daily_weekly_monthly'];
+    }
+    $order_by .= ') / '.$CONF['daily_weekly_monthly_num'].' DESC';
 
-    $result = $DB->select_limit('SELECT id, url, title, description, category, banner_url, total_ratings, num_ratings, unq_pv_today, (unq_pv_today + unq_pv_1 + unq_pv_2 + unq_pv_3) / 4, tot_pv_today, (tot_pv_today + tot_pv_1 + tot_pv_2 + tot_pv_3) / 4, unq_in_today, (unq_in_today + unq_in_1 + unq_in_2 + unq_in_3) / 4, tot_in_today, (tot_in_today + tot_in_1 + tot_in_2 + tot_in_3) / 4, unq_out_today, (unq_out_today + unq_out_1 + unq_out_2 + unq_out_3) / 4, tot_out_today, (tot_out_today + tot_out_1 + tot_out_2 + tot_out_3) / 4, old_rank
-                                 FROM '.$CONF['sql_prefix'].'_members m, '.$CONF['sql_prefix'].'_stats s
-                                 WHERE m.id = s.id $category_sql AND active = 1
-                                 ORDER BY ('.$ranking_method.'_today + '.$ranking_method.'_1 + '.$ranking_method.'_2 + '.$ranking_method.'_3) / 4 DESC
+    // Start the output with table_top_open if we're on the first page
+    if ($CONF['top_skin_num'] > 0 && $FORM['start'] <= 1) { $TMPL['content'] = do_skin('table_top_open'); }
+    else { $TMPL['content'] = do_skin('table_open'); }
+
+    // Figure out what rows we want, and SELECT them
+    $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
+    $result = $DB->select_limit('SELECT *
+                                 FROM '.$CONF['sql_prefix'].'_sites sites, '.$CONF['sql_prefix'].'_stats_general stats_general, '.$CONF['sql_prefix'].'_stats_daily stats_daily, '.$CONF['sql_prefix'].'_stats_weekly stats_weekly, '.$CONF['sql_prefix'].'_stats_monthly stats_monthly
+                                 WHERE sites.id = stats.id $category_sql AND active = 1
+                                 ORDER BY '.$order_by.'
                                  ', $CONF['num_list'], $start);
 
     $TMPL['rank'] = ++$start;
     $page_rank = 1;
     $TMPL['alt'] = 'alt';
-    while (list($TMPL['id'], $TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['cat'], $TMPL['banner_url'], $total_ratings, $TMPL['num_ratings'], $TMPL['unq_pv_tod'], $TMPL['unq_pv_avg'], $TMPL['tot_pv_tod'], $TMPL['tot_pv_avg'], $TMPL['unq_in_tod'], $TMPL['unq_in_avg'], $TMPL['tot_in_tod'], $TMPL['tot_in_avg'], $TMPL['unq_out_tod'], $TMPL['unq_out_avg'], $TMPL['tot_out_tod'], $TMPL['tot_out_avg'], $TMPL['old_rank']) = $DB->fetch_array($result)) {
+    while ($TMPL = $DB->fetch_array($result)) {
       if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->execute('UPDATE '.$CONF['sql_prefix'].'_stats SET old_rank = '.$TMPL['old_rank'].' WHERE id2 = '.$TMPL['id']);
+          $DB->execute('UPDATE '.$CONF['sql_prefix'].'_stats_general SET old_rank = '.$TMPL['old_rank'].' WHERE id = '.$TMPL['id']);
         }
         if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; }
         elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; }
@@ -61,43 +71,43 @@ class rankings extends base {
       if ($TMPL['alt']) { $TMPL['alt'] = ''; }
       else { $TMPL['alt'] = 'alt'; }
 
-      $TMPL['url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
+      $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
       $TMPL['avg_rating'] = $TMPL['num_ratings'] > 0 ? round($total_ratings / $TMPL['num_ratings'], 0) : 0;
       $TMPL['tod'] = $TMPL[$ranking_method.'_tod'];
       $TMPL['avg'] = $TMPL[$ranking_method.'_avg'];
 
       // Only use _top skin on the first page
       if ($page_rank <= $CONF['top_skin_num'] && $FORM['start'] <= 1) {
-        $TMPL['content'] .= $this->do_skin('table_top');
+        $TMPL['content'] .= $this->do_skin('table_top_body');
         $is_top = 1;
       }
       else {
-        // This sees if $do_table_header had been set during the last loop.  If so,
-        // a new table_header is printed.  This keeps a table_header form being the
+        // This sees if $do_table_open had been set during the last loop.  If so,
+        // a new table_open is printed.  This keeps a table_open form being the
         // last thing on the page when there is an ad break at the end.
-        if ($do_table_header) {
-          $TMPL['content'] .= $this->do_skin('table_header');
-          $do_table_header = 0;
+        if ($do_table_open) {
+          $TMPL['content'] .= $this->do_skin('table_open');
+          $do_table_open = 0;
         }
 
-        $TMPL['content'] .= $this->do_skin('table');
+        $TMPL['content'] .= $this->do_skin('table_body');
         $top_done = 1;
       }
       if ($page_rank == $CONF['top_skin_num'] && $FORM['start'] <= 1) {
-        $TMPL['content'] .= $this->do_skin('table_closer_top');
-        $do_table_header = 1;
+        $TMPL['content'] .= $this->do_skin('table_top_closer');
+        $do_table_open = 1;
       }
 
       if ($CONF['adbreaks'][$page_rank]) {
         if ($is_top) {
-          $TMPL['content'] .= $this->do_skin('table_closer_top');
+          $TMPL['content'] .= $this->do_skin('table_top_closer');
           $TMPL['content'] .= $this->do_skin('ad_break_top');
-          $TMPL['content'] .= $this->do_skin('table_header_top');
+          $TMPL['content'] .= $this->do_skin('table_top_open');
         }
         else {
           $TMPL['content'] .= $this->do_skin('table_closer');
           $TMPL['content'] .= $this->do_skin('ad_break');
-          $do_table_header = 1;
+          $do_table_open = 1;
         }
       }
 
@@ -109,8 +119,8 @@ class rankings extends base {
     if ($top_done) {
       $TMPL['content'] .= $this->do_skin('table_closer');
     }
-    elseif (!$do_table_header) {
-      $TMPL['content'] .= $this->do_skin('table_closer_top');
+    elseif (!$do_table_open) {
+      $TMPL['content'] .= $this->do_skin('table_top_closer');
     }
   }
 }
