@@ -50,7 +50,7 @@ CREATE TABLE `ats_sessions` (
   `data` varchar(255) default ''
 );
 
-CRATE TABLE `ats_stats_general` (
+CREATE TABLE `ats_stats_general` (
   `id` bigint(20) unsigned default '0',
   `old_rank` bigint(20) unsigned default '0',
   `days_inactive` int(10) unsigned default '0',
