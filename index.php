@@ -31,8 +31,7 @@ $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
 // Settings
-$result = $DB->execute('SELECT * FROM '.$CONF['sql_prefix'].'_settings');
-$settings = $DB->fetch_array($result);
+$settings = $DB->fetch('SELECT * FROM '.$CONF['sql_prefix'].'_settings', __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
 $ad_breaks = explode('|', $CONF['ad_breaks']);
@@ -42,7 +41,7 @@ foreach ($ad_breaks as $key => $value) {
 }
 
 $CONF['categories'] = array();
-$result = $DB->execute('SELECT category, skin FROM '.$CONF['sql_prefix'].'_categories');
+$result = $DB->query('SELECT category, skin FROM '.$CONF['sql_prefix'].'_categories', __FILE__, __LINE__);
 while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
@@ -101,7 +100,6 @@ if ($CONF['gzip']) { ob_start('ob_gzhandler'); }
 // Array containing the valid .php files from the sources directory
 $action = array(
             'edit' => 1,
-            'email' => 1,
             'graph' => 1,
             'join' => 1,
             'lost_code' => 1,
@@ -113,7 +111,12 @@ $action = array(
           );
 
 // Require the appripriate file
-$page_name = isset($FORM['a']) && isset($action[$FORM['a']]) ? $FORM['a'] : 'rankings';
+if (isset($FORM['a']) && isset($action[$FORM['a']])) {
+  $page_name = $FORM['a'];
+}
+else {
+  $page_name = 'rankings';
+}
 require_once $CONF['path'].'/sources/'.$page_name.'.php';
 $page = new $page_name;
 

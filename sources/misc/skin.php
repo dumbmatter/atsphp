@@ -66,12 +66,8 @@ class main_skin extends skin {
 
     $this->filename = $filename;
 
-    $TMPL['num_queries'] = $DB->num_queries;
-    $TMPL['execution_time'] = $TIMER->get_time();
-
     // Number of members
-    $result = $DB->execute('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1');
-    list($TMPL['num_members']) = $DB->fetch_array($result);
+    list($TMPL['num_members']) = $DB->fetch('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', __FILE__, __LINE__);
 
     // Build the multiple pages menu
     if ($TMPL['num_members'] > $CONF['num_list']) {
@@ -135,8 +131,8 @@ class main_skin extends skin {
           $limit = rand(0, ($TMPL['num_members'] - 1));
         }
         else { $limit = 0; }
-        $result = $DB->SelectLimit('SELECT id, url, title, description, banner_url FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', 1, $limit);
-        $row = $DB->FetchArray($result);
+        $result = $DB->select_limit('SELECT id, url, title, description, banner_url FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', 1, $limit, __FILE__, __LINE__);
+        $row = $DB->fetch_array($result);
         $TMPL = array_merge($TMPL, $row);
       }
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
@@ -147,6 +143,9 @@ class main_skin extends skin {
     // This is a free script, all I ask for is a link back.
     $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> '.$TMPL['version'];
     $TMPL['powered_by'] .= '<br /><a href="http://www.itopsites.com/">iTopsites.com - Get a Free Hosted Topsites List</a>';
+
+    $TMPL['num_queries'] = $DB->num_queries;
+    $TMPL['execution_time'] = $TIMER->get_time();
   }
 }
 ?>

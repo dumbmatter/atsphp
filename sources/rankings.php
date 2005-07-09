@@ -58,7 +58,7 @@ class rankings extends base {
                                  FROM ".$CONF['sql_prefix']."_sites sites, ".$CONF['sql_prefix']."_stats_general stats_general, ".$CONF['sql_prefix']."_stats_daily stats_daily, ".$CONF['sql_prefix']."_stats_weekly stats_weekly, ".$CONF['sql_prefix']."_stats_monthly stats_monthly
                                  WHERE sites.id = stats_general.id AND sites.id = stats_daily.id AND sites.id = stats_weekly.id AND sites.id = stats_monthly.id AND active = 1 ".$category_sql."
                                  ORDER BY ".$order_by."
-                                 ", $CONF['num_list'], $start);
+                                 ", $CONF['num_list'], $start, __FILE__, __LINE__);
 
     $TMPL['rank'] = ++$start;
     $page_rank = 1;
@@ -70,7 +70,7 @@ class rankings extends base {
       if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->execute('UPDATE '.$CONF['sql_prefix'].'_stats_general SET old_rank = '.$TMPL['old_rank'].' WHERE id = '.$TMPL['id']);
+          $DB->query('UPDATE '.$CONF['sql_prefix'].'_stats_general SET old_rank = '.$TMPL['old_rank'].' WHERE id = '.$TMPL['id']);
         }
         if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; }
         elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; }

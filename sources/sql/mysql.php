@@ -16,10 +16,10 @@
 //=================================================================\\
 
 class sql {
-  private var $dbl;
-  public var $debug;
-  public var $num_queries;
-  public var $queries;
+  private $dbl;
+  public $debug;
+  public $num_queries;
+  public $queries;
 
   function connect ($host, $user, $password, $database, $debug) {
     $this->dbl = mysql_connect($host, $user, $password) or $this->error(__FILE__, __LINE__);
@@ -43,22 +43,21 @@ class sql {
     return $result;
   }
 
+  // Executes a normal query and fetches the array in one line
   function fetch($query, $file, $line) {
     $result = $this->query($query, $file, $line);
     return $this->fetch_array($result);
   }
 
   function select_limit($query, $num, $offset, $file, $line) {
-    global $queries;
-
-    if ($offset) { $limit = " LIMIT $offset,$num"; }
-    else { $limit = " LIMIT $num"; }
+    if ($offset) { $limit = ' LIMIT '.$offset.','.$num; }
+    else { $limit = ' LIMIT '.$num; }
 
     return $this->query($query.$limit, $file, $line);
   }
 
   function fetch_array($result) {
-    return mysql_fetch_assoc($result);
+    return mysql_fetch_array($result);
   }
 
   function num_rows($result) {
@@ -66,14 +65,16 @@ class sql {
   }
 
   function escape($value) {
-    if (get_magic_quotes_gpc()) { $value = stripslashes($value); }
+    if (get_magic_quotes_gpc()) {
+      $value = stripslashes($value);
+    }
     $value = mysql_real_escape_string($value, $this->dbl);
 
     return $value;
   }
 
   function error($file, $line) {
-    trigger_error("Database Error<br /><br />\nIn file &quot;{$file}&quot; on line {$line}\n".mysql_error($this->dbl), E_USER_ERROR);
+    trigger_error('Database error in "'.$file.'" on line '.$line.'<br /><br />'."\n".@mysql_error($this->dbl), E_USER_ERROR);
   }
 
   function close() {
