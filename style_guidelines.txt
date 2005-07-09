@@ -17,7 +17,7 @@
 GENERAL
 - The header at the top of this file should appear at the top of all PHP files.
 - Indentations are two spaces.  No tabs.
-- Single quotes should be used in favor of double quotes wherever possible.
+- Single quotes should be used in favor of double quotes wherever possible (everything except SQL basically).
 - Array keys should always be quoted: $array['key'];
 - Arguments are separated by a space: function($a, $b, $c);
 - Comments should use single-line style: // Comment

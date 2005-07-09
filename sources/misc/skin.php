@@ -16,15 +16,21 @@
 //=================================================================\\
 
 class skin {
-  function make($filename) {
+  public $filename;
+
+  function __construct($filename) {
+    $this->filename = $filename;
+  }
+
+  function make() {
     global $CONF, $TMPL;
 
-    $file = $CONF['skins_path'].'/'.$TMPL['skin_name'].'/'.$filename.'.html';
+    $file = $CONF['skins_path'].'/'.$TMPL['skin_name'].'/'.$this->filename.'.html';
     $fh_skin = fopen($file, 'r');
     $skin = @fread($fh_skin, filesize($file)); 
     fclose($fh_skin);
   
-    if ($filename == 'wrapper') {
+    if ($this->filename == 'wrapper') {
       if (preg_match('/<#poweredby>/', $skin)) {
         $copythere = 1;
       }
@@ -36,7 +42,7 @@ class skin {
         $return = 'You cannot delete the &lt;#poweredby&gt; tag from wrapper.html.';
       }
     }
-    elseif ($filename == 'admin' || $filename == 'ssi_top' || $filename == 'ssi_members') {
+    elseif ($this->filename == 'admin' || $this->filename == 'ssi_top' || $this->filename == 'ssi_members') {
       $return = $skin;
     }
     else {
@@ -49,16 +55,18 @@ class skin {
   function parse($skin) {
     global $LNG, $TMPL;
 
-    $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', '\$LNG['\\1']', $skin);
-    $skin = preg_replace('/<#include=\"(.+?)\">/ei', 'file_get_contents('\\1')', $skin);
-    $skin = preg_replace('/<#(.+?)>/ei', '\$TMPL['\\1']', $skin);
+//    $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', '\$LNG['\\1']', $skin);
+//    $skin = preg_replace('/<#include=\"(.+?)\">/ei', 'file_get_contents('\\1')', $skin);
+//    $skin = preg_replace('/<#(.+?)>/ei', '\$TMPL['\\1']', $skin);
     return $skin;
   }
 }
 
 class main_skin extends skin {
-  function __construct() {
+  function __construct($filename) {
     global $CONF, $DB, $FORM, $LNG, $TMPL, $starttime;
+
+    $this->filename = $filename;
 
     // Number of members
     $result = $DB->execute('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_members WHERE active = 1');

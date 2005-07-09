@@ -5,7 +5,37 @@
 -- 4) Keep backlog of stats for the past 10 days, weeks, and months
 -- 5) Sanity
 
-ats_settings containing list_name, list_url, default_language, default_skin, skins_url, email_address, num_list, day_week_month, day_week_month_num, ranking_method, featured_member, top_skin_num, ad_breaks, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, search_results, gzip, time_offset, gateway
+CREATE TABLE `ats_settings` (
+  `list_name` varchar(255) default 'My Topsites List',
+  `list_url` varchar(255) default '',
+  `default_language` varchar(255) default 'english',
+  `default_skin` varchar(255) default 'Default',
+  `skins_url` varchar(255) default '',
+  `email_address` varchar(255) default 'webmaster@example.com',
+  `num_list` int(5) default 10,
+  `daily_weekly_monthly` varchar(7) default 'daily',
+  `daily_weekly_monthly_num` tinyint(2) default 7,
+  `ranking_method` varchar(255) default 'pv',
+  `featured_member` tinyint(1) default 0,
+  `top_skin_num` int(5) default 2,
+  `ad_breaks` varchar(255) default '',
+  `active_default` tinyint(1) default 1,
+  `delete_after` int(3) default 14,
+  `email_admin_on_join` tinyint(1) default 0,
+  `max_banner_width` int(4) default 0,
+  `max_banner_height` int(4) default 0,
+  `default_banner` varchar(255) default '',
+  `ranks_on_buttons` tinyint(1) default 1,
+  `button_url` varchar(255) default '',
+  `button_dir` varchar(255) default '',
+  `button_ext` varchar(255) default '',
+  `button_num` int(3) default 5,
+  `search` tinyint(1) default 1,
+  `search_results` int(2) default 10,
+  `gzip` tinyint(1) default 0,
+  `time_offset` int(2) default 0,
+  `gateway` tinyint(1) default 1
+);
 
 CREATE TABLE `ats_etc` (
   `admin_password` varchar(32) default '',
@@ -31,12 +61,12 @@ CREATE TABLE `ats_ip_log` (
 CREATE TABLE `ats_sites` (
   `id` bigint(20) unsigned default '0',
   `password` varchar(32) default '',
-  `url` varchar(70) default '',
-  `title` varchar(32) default '',
+  `url` varchar(255) default '',
+  `title` varchar(255) default '',
   `description` varchar(255) default '',
   `category` varchar(255) default '',
-  `banner_url` varchar(90) default '',
-  `email` varchar(70) default '',
+  `banner_url` varchar(255) default '',
+  `email` varchar(255) default '',
   `join_time` datetime default '0000-00-00 00:00:00',
   `active` tinyint(1) default '1',
   PRIMARY KEY  (`id`)

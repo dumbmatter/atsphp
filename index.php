@@ -15,6 +15,8 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
+error_reporting(E_ALL);
+
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
 $TMPL['version'] = '5.0 Alpha (2005-07-08)';
@@ -26,13 +28,14 @@ $timer = new timer;
 // Connect to the database
 // Set the last argument of $DB->connect to 1 to enable debug mode
 require_once $CONF['path'].'/settings_sql.php';
-require_once $CONF['path'].'/sources/drivers/'.$CONF['sql'].'.php';
+require_once $CONF['path'].'/sources/sql/'.$CONF['sql'].'.php';
 $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 0);
 
 // Settings
-$result = $DB->execute('SELECT list_name, list_url, default_language, default_skin, skins_url, email_address, num_list, daily_weekly_monthly, daily_weekly_monthly_num, ranking_method, featured_member, top_skin_num, ad_breaks, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, search_results, gzip, time_offset, gateway FROM '.$CONF['sql_prefix'].'_settings');
-$CONF = $DB->fetch_array($result);
+$result = $DB->execute('SELECT * FROM '.$CONF['sql_prefix'].'_settings');
+$settings = $DB->fetch_array($result);
+$CONF = array_merge($CONF, $settings);
 $ad_breaks = explode('|', $CONF['ad_breaks']);
 $CONF['ad_breaks'] = array();
 foreach ($ad_breaks as $key => $value) {
@@ -42,6 +45,7 @@ $result = $DB->execute('SELECT category, skin FROM '.$CONF['sql_prefix'].'_categ
 while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
+$CONF['skins_path'] = $CONF['path'].'/skins';
 
 // Combine the GET and POST input
 $FORM = array_merge($_GET, $_POST);
@@ -50,7 +54,7 @@ $FORM = array_merge($_GET, $_POST);
 require_once $CONF['path'].'/languages/'.$CONF['default_language'].'.php';
 
 // Determine the category
-if (isset($CONF['categories'][$FORM['cat']])) {
+if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
   $TMPL['skin_name'] = $CONF['categories'][$FORM['cat']];
 }
 else {
@@ -76,7 +80,7 @@ else {
 }
 if ($last_new_day != $current_day) {
     require_once $CONF['path'].'/sources/misc/new_day.php';
-}*/
+}
 
 // Adjust the output text based on days, weeks, or months
 if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
@@ -84,7 +88,7 @@ if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
   $LNG['g_yesterday'] = $LNG['g_last'.$CONF['day_week_month']];
   $LNG['g_2days'] = $LNG['g_2'.$CONF['day_week_month'].'s'];
   $LNG['g_3days'] = $LNG['g_3'.$CONF['day_week_month'].'s'];
-}
+}*/
 
 // gzip
 if ($CONF['gzip']) { ob_start('ob_gzhandler'); }
@@ -104,13 +108,13 @@ $action = array(
           );
 
 // Require the appripriate file
-$page_name = isset($action[$FORM['a']]) ? $FORM['a'] : 'rankings';
+$page_name = isset($FORM['a']) && isset($action[$FORM['a']]) ? $FORM['a'] : 'rankings';
 require_once $CONF['path'].'/sources/'.$page_name.'.php';
 $page = new $page_name;
 
 // Get some data to display in the skin
-$TMPL['queries'] = $DB->get_num_queries();
-$TMPL['executiontime'] = $timer->get_time();
+$TMPL['sql_queries'] = $DB->get_num_queries();
+$TMPL['execution_time'] = $timer->get_time();
 
 // Display the page
 $skin = new main_skin('wrapper');
@@ -122,7 +126,7 @@ $DB->close;
 if ($DB->get_debug()) {
   $queries = $DB->get_queries();
 
-  echo '<div style="margin: 2px;">';
+  echo '<div style="clear: both;">';
   foreach ($queries as $value) {
     echo '<hr />$value';
   }

@@ -20,13 +20,16 @@ class rankings extends base {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     // Get the category, default to no category
-    if ($FORM['cat']) {
+    if (isset($FORM['cat']) && $FORM['cat']) {
       $TMPL['category'] = $FORM['cat'];
-      $category_sql = "AND category = '${TMPL['category']}'";
+      $category_sql = "AND category = '".$TMPL['category']."'";
     }
-    else { $TMPL['category'] = $LNG['main_all']; }
+    else {
+      $TMPL['category'] = $LNG['main_all'];
+      $category_sql = '';
+    }
 
-    $TMPL['header'] = $LNG['main_open'].' - '.$TMPL['category'];
+    $TMPL['header'] = $LNG['main_header'].' - '.$TMPL['category'];
 
     // Get the ranking method, default to pageviews
     $ranking_method = isset($FORM['ranking_method']) ? $FORM['ranking_method'] : $CONF['ranking_method'];
@@ -42,16 +45,20 @@ class rankings extends base {
     $order_by .= ') / '.$CONF['daily_weekly_monthly_num'].' DESC';
 
     // Start the output with table_top_open if we're on the first page
-    if ($CONF['top_skin_num'] > 0 && $FORM['start'] <= 1) { $TMPL['content'] = do_skin('table_top_open'); }
-    else { $TMPL['content'] = do_skin('table_open'); }
+    if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
+      $TMPL['content'] = $this->do_skin('table_top_open');
+    }
+    else {
+      $TMPL['content'] = $this->do_skin('table_open');
+    }
 
     // Figure out what rows we want, and SELECT them
     $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
-    $result = $DB->select_limit('SELECT *
-                                 FROM '.$CONF['sql_prefix'].'_sites sites, '.$CONF['sql_prefix'].'_stats_general stats_general, '.$CONF['sql_prefix'].'_stats_daily stats_daily, '.$CONF['sql_prefix'].'_stats_weekly stats_weekly, '.$CONF['sql_prefix'].'_stats_monthly stats_monthly
-                                 WHERE sites.id = stats.id $category_sql AND active = 1
-                                 ORDER BY '.$order_by.'
-                                 ', $CONF['num_list'], $start);
+    $result = $DB->select_limit("SELECT *
+                                 FROM ".$CONF['sql_prefix']."_sites sites, ".$CONF['sql_prefix']."_stats_general stats_general, ".$CONF['sql_prefix']."_stats_daily stats_daily, ".$CONF['sql_prefix']."_stats_weekly stats_weekly, ".$CONF['sql_prefix']."_stats_monthly stats_monthly
+                                 WHERE sites.id = stats.id ".$category_sql." AND active = 1
+                                 ORDER BY ".$order_by."
+                                 ", $CONF['num_list'], $start);
 
     $TMPL['rank'] = ++$start;
     $page_rank = 1;
