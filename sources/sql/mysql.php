@@ -16,10 +16,10 @@
 //=================================================================\\
 
 class sql {
-  protected $dbl;
-  protected $debug;
-  protected $num_queries;
-  protected $queries;
+  private $dbl;
+  public $debug;
+  public $num_queries;
+  public $queries;
 
   function connect ($host, $user, $password, $database, $debug) {
     $this->dbl = mysql_connect($host, $user, $password) or die(mysql_error());
@@ -58,7 +58,7 @@ class sql {
   }
 
   function fetch_array($result) {
-    return mysql_fetch_array($result, MYSQL_ASSOC);
+    return mysql_fetch_array($result, MYSQL_BOTH);
   }
 
   function num_rows($result) {
@@ -76,18 +76,6 @@ class sql {
 
   function close() {
     mysql_close($this->dbl);
-  }
-
-  function get_num_queries() {
-    return $this->num_queries;
-  }
-
-  function get_queries() {
-    return $this->queries;
-  }
-
-  function get_debug() {
-    return $this->debug;
   }
 }
 ?>

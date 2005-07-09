@@ -14,22 +14,22 @@
 <a href="<#list_url>/index.php?a=display" class="menu"><#lng{'main_menu_main'}></a>
 <a href="<#list_url>/index.php?a=join" class="menu"><#lng{'main_menu_join'}></a>
 <a href="<#list_url>/index.php?a=edit" class="menu"><#lng{'main_menu_edit'}></a>
-<a href="<#list_url>/index.php?a=lostcode" class="menu"><#lng{'main_menu_lostcode'}></a>
-<a href="<#list_url>/index.php?a=lostpw" class="menu"><#lng{'main_menu_lostpw'}></a>
+<a href="<#list_url>/index.php?a=lost_code" class="menu"><#lng{'main_menu_lostcode'}></a>
+<a href="<#list_url>/index.php?a=lost_password" class="menu"><#lng{'main_menu_lostpw'}></a>
 <a href="<#list_url>/out.php?id=random" class="menu"><#lng{'main_menu_random'}></a>
 <a href="<#list_url>/index.php?a=search" class="menu"><#lng{'main_menu_search'}></a>
 </td></tr></table>
 
 <table align="center" cellspacing="0" cellpadding="0" style="margin-top: 16px; margin-bottom: 16px;"><tr><td>
 <form action="index.php" method="get" style="float: left;">
-<#methform>
-<#catform>
-<#rankingsform>
+<#ranking_methods_menu>
+<#categories_menu>
+<#multiple_pages_menu>
 <input type="submit" value="<#lng{'g_form_submit_short'}>" />
 </form>
 <form action="index.php" method="get" style="float: left; margin-left: 48px;">
 <input type="hidden" name="a" value="search" />
-<input type="text" name="kw" size="20" value="<#kw>" />
+<input type="text" name="kw" size="20" />
 <input type="submit" value="<#lng{'search_search'}>" />
 </form>
 </td></tr></table>
@@ -43,9 +43,8 @@
 <p style="margin: 0px; height: 16px;"></p>
 
 <div class="bottom">
-<#lng{'main_executiontime'}>: <#executiontime> | <#lng{'main_queries'}>: <#queries> | <#lng{'main_members'}>: <#nummem><br />
-<#list_name> - <#poweredby><br />
-<a href="http://www.itopsites.com/" target="_blank">iTopsites.com - Get a Free Hosted Topsites List</a>
+<#lng{'main_executiontime'}>: <#execution_time> | <#lng{'main_queries'}>: <#num_queries> | <#lng{'main_members'}>: <#num_members><br />
+<#list_name> - <#powered_by>
 </div>
 
 </body>

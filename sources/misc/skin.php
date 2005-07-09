@@ -31,22 +31,20 @@ class skin {
     fclose($fh_skin);
   
     if ($this->filename == 'wrapper') {
-      if (preg_match('/<#poweredby>/', $skin)) {
-        $copythere = 1;
-      }
+      $powered_by_check = preg_match('/<#powered_by>/', $skin) ? 1 : 0;
   
-      if ($copythere) {
+      if ($powered_by_check) {
         $return = $skin;
       }
       else {
-        $return = 'You cannot delete the &lt;#poweredby&gt; tag from wrapper.html.';
+        $return = 'You cannot delete the &lt;#powered_by&gt; tag from wrapper.html.';
       }
     }
     elseif ($this->filename == 'admin' || $this->filename == 'ssi_top' || $this->filename == 'ssi_members') {
       $return = $skin;
     }
     else {
-      $return = '<!-- Begin $filename.html -->\n' . $skin . '\n<!-- End $filename.html -->\n\n';
+      $return = '<!-- Begin '.$this->filename.'.html -->'."\n".$skin."\n".'<!-- End '.$this->filename.'.html -->'."\n\n";
     }
 
     return $this->parse($return);
@@ -55,74 +53,79 @@ class skin {
   function parse($skin) {
     global $LNG, $TMPL;
 
-//    $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', '\$LNG['\\1']', $skin);
-//    $skin = preg_replace('/<#include=\"(.+?)\">/ei', 'file_get_contents('\\1')', $skin);
-//    $skin = preg_replace('/<#(.+?)>/ei', '\$TMPL['\\1']', $skin);
+    $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', "\$LNG['\\1']", $skin);
+    $skin = preg_replace('/<#include=\"(.+?)\">/ei', "file_get_contents('\\1')", $skin);
+    $skin = preg_replace('/<#(.+?)>/ei', "\$TMPL['\\1']", $skin);
     return $skin;
   }
 }
 
 class main_skin extends skin {
   function __construct($filename) {
-    global $CONF, $DB, $FORM, $LNG, $TMPL, $starttime;
+    global $CONF, $DB, $FORM, $LNG, $TIMER, $TMPL;
 
     $this->filename = $filename;
 
+    $TMPL['num_queries'] = $DB->num_queries;
+    $TMPL['execution_time'] = $TIMER->get_time();
+
     // Number of members
-    $result = $DB->execute('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_members WHERE active = 1');
+    $result = $DB->execute('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1');
     list($TMPL['num_members']) = $DB->fetch_array($result);
-  
+
     // Build the multiple pages menu
     if ($TMPL['num_members'] > $CONF['num_list']) {
       $num = $TMPL['num_members'];
       $done = 0;
-      $TMPL['multiple_pages_form'] = "<select name=\"start\">\n";
+      $TMPL['multiple_pages_menu'] = "<select name=\"start\">\n";
       while ($num > 0) {
         $start = $done * $CONF['num_list'] + 1;
         $end = ($done + 1) * $CONF['num_list'];
         $FORM['start'] = isset($FORM['start']) ? $FORM['start'] : 1;
   
         if ($FORM['start'] == $start) {
-          $TMPL['multiple_pages_form'] .= "<option value=\"{$start}\" selected=\"selected\">{$start} - {$end}\n";
+          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\" selected=\"selected\">{$start} - {$end}\n";
         }
         else {
-          $TMPL['multiple_pages_form'] .= "<option value=\"{$start}\">{$start} - {$end}\n";
+          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\">{$start} - {$end}\n";
         }
   
         $num = $num - $CONF['num_list'];
         $done++;
       }
-      $TMPL['multiple_pages_form'] .= '</select>';
+      $TMPL['multiple_pages_menu'] .= '</select>';
     }
+    else { $TMPL['multiple_pages_menu'] = ''; }
   
     // Build the ranking method menu
     $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
-    $TMPL['ranking_method'] = $LNG['g_'.$ranking_method];
-    $TMPL['ranking_method_form'] = "<select name=\"method\">\n";
-    if ($ranking_method == 'unq_pv') { $TMPL['ranking_method_form'] .= "<option value=\"unq_pv\" selected=\"selected\">{$LNG['g_unq_pv']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"unq_pv\">{$LNG['g_unq_pv']}\n"; }
-    if ($ranking_method == 'tot_pv') { $TMPL['ranking_method_form'] .= "<option value=\"tot_pv\" selected=\"selected\">{$LNG['g_tot_pv']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"tot_pv\">{$LNG['g_tot_pv']}\n"; }
-    if ($ranking_method == 'unq_in') { $TMPL['ranking_method_form'] .= "<option value=\"unq_in\" selected=\"selected\">{$LNG['g_unq_in']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"unq_in\">{$LNG['g_unq_in']}\n"; }
-    if ($ranking_method == 'tot_in') { $TMPL['ranking_method_form'] .= "<option value=\"tot_in\" selected=\"selected\">{$LNG['g_tot_in']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"tot_in\">{$LNG['g_tot_in']}\n"; }
-    if ($ranking_method == 'unq_out') { $TMPL['ranking_method_form'] .= "<option value=\"unq_out\" selected=\"selected\">{$LNG['g_unq_out']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"unq_out\">{$LNG['g_unq_out']}\n"; }
-    if ($ranking_method == 'tot_out') { $TMPL['ranking_method_form'] .= "<option value=\"tot_out\" selected=\"selected\">{$LNG['g_tot_out']}\n"; }
-    else { $TMPL['ranking_method_form'] .= "<option value=\"tot_out\">{$LNG['g_tot_out']}\n"; }
-    $TMPL['ranking_method_form'] .= '</select>';
+    $TMPL['ranking_methods_menu'] = '<select name="method">'."\n";
+    if ($ranking_method == 'pv') { $TMPL['ranking_methods_menu'] .= '<option value="pv" selected="selected">'.$LNG['g_pv']."\n"; }
+    else { $TMPL['ranking_methods_menu'] .= '<option value="pv">'.$LNG['g_pv']."\n"; }
+    if ($ranking_method == 'in') { $TMPL['ranking_methods_menu'] .= '<option value="in" selected="selected">'.$LNG['g_in']."\n"; }
+    else { $TMPL['ranking_methods_menu'] .= '<option value="in">'.$LNG['g_in']."\n"; }
+    if ($ranking_method == 'out') { $TMPL['ranking_methods_menu'] .= '<option value="out" selected="selected">'.$LNG['g_out']."\n"; }
+    else { $TMPL['ranking_methods_menu'] .= '<option value="out">'.$LNG['g_out']."\n"; }
+    $TMPL['ranking_methods_menu'] .= '</select>';
   
     // Build the categories menu
     $current_cat = isset($FORM['cat']) ? $FORM['cat'] : $LNG['main_all'];
-    $TMPL['cat_form'] = "<select name=\"cat\">\n";
-    if ($current_cat == $LNG['main_all']) { $TMPL['cat_form'] .= "<option value=\"\" selected=\"selected\">${LNG['main_all']}\n"; }
-    else { $TMPL['cat_form'] .= "<option value=\"\">${LNG['main_all']}\n"; }
-    foreach ($CONF['categories'] as $cat => $skin) {
-      if ($current_cat == $cat) { $TMPL['cat_form'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n"; }
-      else { $TMPL['cat_form'] .= "<option value=\"{$cat}\">{$cat}\n"; }
+    $TMPL['categories_menu'] = '<select name="cat">'."\n";
+    if ($current_cat == $LNG['main_all']) {
+      $TMPL['categories_menu'] .= '<option value="" selected="selected">'.$LNG['main_all']."\n";
     }
-    $TMPL['catform'] .= '</select>';
+    else {
+      $TMPL['categories_menu'] .= '<option value="">'.$LNG['main_all']."\n";
+    }
+    foreach ($CONF['categories'] as $cat) {
+      if ($current_cat == $cat) {
+        $TMPL['categories_menu'] .= '<option value="'.$cat.'" selected="selected">'.$cat."\n";
+      }
+      else {
+        $TMPL['categories_menu'] .= '<option value="'.$cat.'">'.$cat."\n";
+      }
+    }
+    $TMPL['categories_menu'] .= '</select>';
   
     // Featured member
     if ($CONF['featured_member'] && $TMPL['num_members']) {
@@ -132,17 +135,18 @@ class main_skin extends skin {
           $limit = rand(0, ($TMPL['num_members'] - 1));
         }
         else { $limit = 0; }
-        $result = $DB->SelectLimit('SELECT id, url, title, description, banner_url FROM '.$CONF['sql_prefix'].'_members WHERE active = 1', 1, $limit);
-        list($TMPL['id'], $TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['banner_url']) = $DB->FetchArray($result);
+        $result = $DB->SelectLimit('SELECT id, url, title, description, banner_url FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', 1, $limit);
+        $row = $DB->FetchArray($result);
+        $TMPL = array_merge($TMPL, $row);
       }
-      $TMPL['url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
+      $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
       $TMPL['featured_member'] = do_template('featured_member');
     }
   
     // Please do not remove the link to http://www.aardvarkind.com/.
     // This is a free script, all I ask for is a link back.
-    // If you need to remove the link, see my website for details.
-    $TMPL['poweredby'] = $LNG['main_powered'].' <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> '.$TMPL['version'];
+    $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> '.$TMPL['version'];
+    $TMPL['powered_by'] .= '<br /><a href="http://www.itopsites.com/">iTopsites.com - Get a Free Hosted Topsites List</a>';
   }
 }
 ?>

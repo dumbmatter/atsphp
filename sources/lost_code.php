@@ -21,12 +21,11 @@ class lost_code extends base {
 
     $TMPL['header'] = $LNG['lostcode_header'];
 
-    $TMPL['id'] = $this->check_id($FORM['id']);
-
-    if (!$TMPL['id']) {
+    if (!isset($FORM['id'])) {
       $TMPL['content'] = $this->do_skin('lostcode_form');
     }
     else {
+      $TMPL['id'] = $this->check_id($FORM['id']);
       $TMPL['content'] = $this->do_skin('lostcode_finish');
     }
   }

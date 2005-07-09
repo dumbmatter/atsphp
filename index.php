@@ -15,37 +15,42 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-error_reporting(E_ALL);
-
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
 $TMPL['version'] = '5.0 Alpha (2005-07-08)';
 
 // Require some classes and start the timer
 require_once $CONF['path'].'/sources/misc/classes.php';
-$timer = new timer;
+$TIMER = new timer;
 
 // Connect to the database
 // Set the last argument of $DB->connect to 1 to enable debug mode
 require_once $CONF['path'].'/settings_sql.php';
 require_once $CONF['path'].'/sources/sql/'.$CONF['sql'].'.php';
 $DB = new sql;
-$DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 0);
+$DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
 // Settings
 $result = $DB->execute('SELECT * FROM '.$CONF['sql_prefix'].'_settings');
 $settings = $DB->fetch_array($result);
 $CONF = array_merge($CONF, $settings);
+
 $ad_breaks = explode('|', $CONF['ad_breaks']);
 $CONF['ad_breaks'] = array();
 foreach ($ad_breaks as $key => $value) {
   $CONF['ad_breaks'][$value] = 1;
 }
+
+$CONF['categories'] = array();
 $result = $DB->execute('SELECT category, skin FROM '.$CONF['sql_prefix'].'_categories');
 while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
+
 $CONF['skins_path'] = $CONF['path'].'/skins';
+$TMPL['list_name'] = $CONF['list_name'];
+$TMPL['list_url'] = $CONF['list_url'];
+$TMPL['skins_url'] = $CONF['skins_url'];
 
 // Combine the GET and POST input
 $FORM = array_merge($_GET, $_POST);
@@ -53,7 +58,7 @@ $FORM = array_merge($_GET, $_POST);
 // The language file
 require_once $CONF['path'].'/languages/'.$CONF['default_language'].'.php';
 
-// Determine the category
+// Determine the category and skin
 if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
   $TMPL['skin_name'] = $CONF['categories'][$FORM['cat']];
 }
@@ -112,23 +117,17 @@ $page_name = isset($FORM['a']) && isset($action[$FORM['a']]) ? $FORM['a'] : 'ran
 require_once $CONF['path'].'/sources/'.$page_name.'.php';
 $page = new $page_name;
 
-// Get some data to display in the skin
-$TMPL['sql_queries'] = $DB->get_num_queries();
-$TMPL['execution_time'] = $timer->get_time();
-
 // Display the page
 $skin = new main_skin('wrapper');
 echo $skin->make();
 
-$DB->close;
+$DB->close();
 
 // Print out debugging info, if necessary
-if ($DB->get_debug()) {
-  $queries = $DB->get_queries();
-
+if ($DB->debug) {
   echo '<div style="clear: both;">';
-  foreach ($queries as $value) {
-    echo '<hr />$value';
+  foreach ($DB->queries as $value) {
+    echo '<hr />'.$value;
   }
   echo '</div>';
 }

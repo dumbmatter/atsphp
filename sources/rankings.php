@@ -32,7 +32,7 @@ class rankings extends base {
     $TMPL['header'] = $LNG['main_header'].' - '.$TMPL['category'];
 
     // Get the ranking method, default to pageviews
-    $ranking_method = isset($FORM['ranking_method']) ? $FORM['ranking_method'] : $CONF['ranking_method'];
+    $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
     if (($ranking_method != 'pv') && ($ranking_method != 'in') && ($ranking_method != 'out')) {
       $ranking_method = 'pv';
     }
@@ -40,9 +40,9 @@ class rankings extends base {
     // Make ORDER BY clause
     $order_by = '(';
     for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-      $order_by .= 'unq_'.$ranking_method.'_'.$i.'.stats_'.$CONF['daily_weekly_monthly'];
+      $order_by .= 'stats_'.$CONF['daily_weekly_monthly'].'.unq_'.$ranking_method.'_'.$i.' + ';
     }
-    $order_by .= ') / '.$CONF['daily_weekly_monthly_num'].' DESC';
+    $order_by .= '0) / '.$CONF['daily_weekly_monthly_num'].' DESC';
 
     // Start the output with table_top_open if we're on the first page
     if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
@@ -56,14 +56,17 @@ class rankings extends base {
     $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
     $result = $DB->select_limit("SELECT *
                                  FROM ".$CONF['sql_prefix']."_sites sites, ".$CONF['sql_prefix']."_stats_general stats_general, ".$CONF['sql_prefix']."_stats_daily stats_daily, ".$CONF['sql_prefix']."_stats_weekly stats_weekly, ".$CONF['sql_prefix']."_stats_monthly stats_monthly
-                                 WHERE sites.id = stats.id ".$category_sql." AND active = 1
+                                 WHERE sites.id = stats_general.id AND sites.id = stats_daily.id AND sites.id = stats_weekly.id AND sites.id = stats_monthly.id AND active = 1 ".$category_sql."
                                  ORDER BY ".$order_by."
                                  ", $CONF['num_list'], $start);
 
     $TMPL['rank'] = ++$start;
     $page_rank = 1;
+    $top_done = 0;
+    $do_table_open = 0;
     $TMPL['alt'] = 'alt';
-    while ($TMPL = $DB->fetch_array($result)) {
+    while ($row = $DB->fetch_array($result)) {
+      $TMPL = array_merge($TMPL, $row);
       if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
@@ -101,18 +104,18 @@ class rankings extends base {
         $top_done = 1;
       }
       if ($page_rank == $CONF['top_skin_num'] && $FORM['start'] <= 1) {
-        $TMPL['content'] .= $this->do_skin('table_top_closer');
+        $TMPL['content'] .= $this->do_skin('table_top_close');
         $do_table_open = 1;
       }
 
       if ($CONF['adbreaks'][$page_rank]) {
         if ($is_top) {
-          $TMPL['content'] .= $this->do_skin('table_top_closer');
+          $TMPL['content'] .= $this->do_skin('table_top_close');
           $TMPL['content'] .= $this->do_skin('ad_break_top');
           $TMPL['content'] .= $this->do_skin('table_top_open');
         }
         else {
-          $TMPL['content'] .= $this->do_skin('table_closer');
+          $TMPL['content'] .= $this->do_skin('table_close');
           $TMPL['content'] .= $this->do_skin('ad_break');
           $do_table_open = 1;
         }
@@ -124,10 +127,10 @@ class rankings extends base {
     }
 
     if ($top_done) {
-      $TMPL['content'] .= $this->do_skin('table_closer');
+      $TMPL['content'] .= $this->do_skin('table_close');
     }
     elseif (!$do_table_open) {
-      $TMPL['content'] .= $this->do_skin('table_top_closer');
+      $TMPL['content'] .= $this->do_skin('table_top_close');
     }
   }
 }
