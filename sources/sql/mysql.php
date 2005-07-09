@@ -22,8 +22,8 @@ class sql {
 	public var $queries;
 
 	function connect ($host, $user, $password, $database, $debug) {
-		$this->dbl = mysql_connect($host, $user, $password) or die(mysql_error());
-		$db = mysql_select_db($database, $this->dbl) or die(mysql_error());
+		$this->dbl = mysql_connect($host, $user, $password) or $this->error(__FILE__, __LINE__);
+		$db = mysql_select_db($database, $this->dbl) or $this->error(__FILE__, __LINE__);
 
 		$this->num_queries = 0;
 		$this->debug = $debug ? 1 : 0;
