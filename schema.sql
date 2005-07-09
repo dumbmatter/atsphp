@@ -5,11 +5,18 @@
 -- 4) Keep backlog of stats for the past 10 days, weeks, and months
 -- 5) Sanity
 
+ats_settings containing list_name, list_url, default_language, default_skin, skins_url, email_address, num_list, day_week_month, day_week_month_num, ranking_method, featured_member, top_skin_num, ad_breaks, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, search_results, gzip, time_offset, gateway
+
 CREATE TABLE `ats_etc` (
   `admin_password` varchar(32) default '',
   `last_new_day` tinyint(4) default '0',
   `last_new_week` tinyint(4) default '0',
   `last_new_month` tinyint(4) default '0'
+);
+
+CREATE TABLE `ats_categories` (
+  `category` varchar(255) default '',
+  `skin` varchar(255) default ''
 );
 
 CREATE TABLE `ats_ip_log` (
@@ -21,7 +28,7 @@ CREATE TABLE `ats_ip_log` (
   `review` tinyint(1) default ''
 );
 
-CREATE TABLE `ats_members` (
+CREATE TABLE `ats_sites` (
   `id` bigint(20) unsigned default '0',
   `password` varchar(32) default '',
   `url` varchar(70) default '',
