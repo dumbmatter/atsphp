@@ -17,7 +17,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2004-08-04)';
+$TMPL['version'] = '5.0 Alpha (2005-07-08)';
 
 // Require some classes and start the timer
 require_once $CONF['path'].'/sources/misc/classes.php';

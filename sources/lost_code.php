@@ -21,7 +21,7 @@ class lost_code extends base {
 
     $TMPL['header'] = $LNG['lostcode_header'];
 
-    $TMPL['id'] = check_id($FORM['id']);
+    $TMPL['id'] = $this->check_id($FORM['id']);
 
     if (!$TMPL['id']) {
       $TMPL['content'] = $this->do_skin('lostcode_form');
