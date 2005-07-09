@@ -11,71 +11,73 @@
 //                                                                 \\
 // This program is distributed in the hope that it will be useful, \\
 // but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the    \\
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
 class sql {
-  private $dbl;
-  public $debug;
-  public $num_queries;
-  public $queries;
+	private var $dbl;
+	public var $debug;
+	public var $num_queries;
+	public var $queries;
 
-  function connect ($host, $user, $password, $database, $debug) {
-    $this->dbl = mysql_connect($host, $user, $password) or die(mysql_error());
-    $db = mysql_select_db($database, $this->dbl) or die(mysql_error());
+	function connect ($host, $user, $password, $database, $debug) {
+		$this->dbl = mysql_connect($host, $user, $password) or die(mysql_error());
+		$db = mysql_select_db($database, $this->dbl) or die(mysql_error());
 
-    $this->num_queries = 0;
-    $this->debug = $debug ? 1 : 0;
-    $this->queries = array();
+		$this->num_queries = 0;
+		$this->debug = $debug ? 1 : 0;
+		$this->queries = array();
 
-    return $db;
-  }
+		return $db;
+	}
 
-  function execute($query) {
-    global $queries;
+	function query($query, $file, $line) {
+		global $queries;
 
-    if ($this->debug) { array_push($this->queries, $query); }
+		if ($this->debug) { array_push($this->queries, $query); }
 
-    $result = mysql_query($query) or die(mysql_error());
-    $this->num_queries++;
+		$result = mysql_query($query) or $this->error($file, $line);
+		$this->num_queries++;
 
-    return $result;
-  }
+		return $result;
+	}
 
-  function select_limit($query, $num, $offset) {
-    global $queries;
+	function fetch($query, $file, $line) {
+		$result = $this->query($query, $file, $line);
+		return $this->fetch_array($result);
+	}
 
-    if ($offset) { $limit = " LIMIT $offset,$num"; }
-    else { $limit = " LIMIT $num"; }
+	function select_limit($query, $num, $offset, $file, $line) {
+		global $queries;
 
-    if ($this->debug) { array_push($this->queries, $query.$limit); }
+		if ($offset) { $limit = " LIMIT $offset,$num"; }
+		else { $limit = " LIMIT $num"; }
 
-    $result = mysql_query($query.$limit) or die(mysql_error());
-    $this->num_queries++;
+		return $this->query($query.$limit, $file, $line);
+	}
 
-    return $result;
-  }
+	function fetch_array($result) {
+		return mysql_fetch_assoc($result);
+	}
 
-  function fetch_array($result) {
-    return mysql_fetch_array($result, MYSQL_BOTH);
-  }
+	function num_rows($result) {
+		return mysql_num_rows($result);
+	}
 
-  function num_rows($result) {
-    return mysql_num_rows($result);
-  }
+	function escape($value) {
+		if (get_magic_quotes_gpc()) { $value = stripslashes($value); }
+		$value = mysql_real_escape_string($value, $this->dbl);
 
-  function escape($value) {
-    if (get_magic_quotes_gpc()) {
-      $value = stripslashes($value);
-    }
-    $value =  mysql_real_escape_string($value);
+		return $value;
+	}
 
-    return $value;
-  }
+	function error($file, $line) {
+		trigger_error("Database Error<br /><br />\nIn file &quot;{$file}&quot; on line {$line}\n".mysql_error($this->dbl), E_USER_ERROR);
+	}
 
-  function close() {
-    mysql_close($this->dbl);
-  }
+	function close() {
+		mysql_close($this->dbl);
+	}
 }
 ?>
