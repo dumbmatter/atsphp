@@ -16,7 +16,7 @@
 //=================================================================\\
 
 abstract class base {
-  function error($message, $kill_script) {
+  function error($message, $kill_script = true) {
     global $TMPL;
 
     $TMPL['error'] = $message;
