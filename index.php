@@ -15,8 +15,6 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-set_magic_quotes_runtime(0);
-
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
 $TMPL['version'] = '5.0 Alpha (2004-08-04)';
@@ -45,20 +43,8 @@ while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
 
-// Sanitize the GET and POST input
-$FORM = array_map('strip', array_merge($_GET, $_POST));
-function strip($value) {
-  $value = str_replace('&#032;', ' ', $value);
-  $value = preg_replace('/&(?!#[0-9]+;)/s', '&amp;', $value);
-  $value = str_replace('<', '&lt;', $value);
-  $value = str_replace('>', '&gt;', $value);
-  $value = str_replace('"', '&quot;', $value);
-  $value = str_replace('\'', '&#039;', $value);
-  $value = str_replace("\n", '<br />', $value);
-  $value = str_replace("\r", '', $value);
-  $value = stripslashes($value);
-  return $value;
-}
+// Combine the GET and POST input
+$FORM = array_merge($_GET, $_POST);
 
 // The language file
 require_once $CONF['path'].'/languages/'.$CONF['default_language'].'.php';

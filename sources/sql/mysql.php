@@ -65,6 +65,15 @@ class sql {
     return mysql_num_rows($result);
   }
 
+  function escape($value) {
+    if (get_magic_quotes_gpc()) {
+      $value = stripslashes($value);
+    }
+    $value =  mysql_real_escape_string($value);
+
+    return $value;
+  }
+
   function close() {
     mysql_close($this->dbl);
   }
