@@ -35,8 +35,8 @@ if ($CONFIG['delete_after'] > 0) {
   }
   if($count != 0) {
     $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_members WHERE id IN({$delete_ids})");
-    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_stats WHERE id2 IN({$delete_ids})");
-    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_reviews WHERE id3 IN({$delete_ids})");
+    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_stats WHERE id IN({$delete_ids})");
+    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_reviews WHERE id IN({$delete_ids})");
     $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_etc SET num_members = num_members - {$count}");
   }
 }
