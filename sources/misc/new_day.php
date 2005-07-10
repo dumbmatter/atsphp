@@ -15,7 +15,7 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-$db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_iplog");
+$db->Execute("TRUNCATE TABLE ".$CONFIG['sql_prefix']."_iplog");
 
 $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_etc SET last_newday = ".$current_day);
 
@@ -25,11 +25,19 @@ $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_stats SET days_inactive = 0 WHERE
 
 if ($CONFIG['delete_after'] > 0) {
   $result = $db->Execute("SELECT id2 FROM ".$CONFIG['sql_prefix']."_stats WHERE days_inactive >= ".$CONFIG['delete_after']);
-  while (list($id) = $db->FetchArray($result)) {
-    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_members WHERE id = ".$id);
-    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_stats WHERE id2 = ".$id);
-    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_reviews WHERE id3 = ".$id);
-    $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_etc SET num_members = num_members - 1");
+  for($count = 0; list($id) = $db->FetchArray($result); $count++) {
+    if($count == 0) {
+	  $delete_ids = $id;
+	}
+	else {
+	  $delete_ids .= ", {$id}";
+	}
+  }
+  if($count != 0) {
+    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_members WHERE id IN({$delete_ids})");
+    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_stats WHERE id2 IN({$delete_ids})");
+    $db->Execute("DELETE FROM ".$CONFIG['sql_prefix']."_reviews WHERE id3 IN({$delete_ids})");
+    $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_etc SET num_members = num_members - {$count}");
   }
 }
 
