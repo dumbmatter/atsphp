@@ -44,7 +44,7 @@ class skin {
       $return = $skin;
     }
     else {
-      $return = '<!-- Begin '.$this->filename.'.html -->'."\n".$skin."\n".'<!-- End '.$this->filename.'.html -->'."\n\n";
+      $return = "<!-- Begin {$this->filename}.html -->\n{$skin}\n<!-- End {$this->filename}.html -->\n\n";
     }
 
     return $this->parse($return);
@@ -142,7 +142,7 @@ class main_skin extends skin {
       }
     }
     $TMPL['categories_menu'] .= '</select>';
-  
+
     // Featured member
     if ($CONF['featured_member'] && $TMPL['num_members']) {
       unset($TMPL['id']);

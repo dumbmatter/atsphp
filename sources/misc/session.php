@@ -15,53 +15,50 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-class Session {
+class session {
   var $sid;
   var $type;
   var $data;
   var $time;
 
-  function Session () {
+  function session() {
     $this->time = time();
     $this->data = 0;
   }
 
-  function GetID ($size) {
-    mt_srand((double) microtime() * 1000000);
+  function get_id($size) {
     for ($i=1; $i<=$size; $i++) {
       $random = mt_rand(1,30);
       if ($random <= 10) {
-        $sid .= chr(mt_rand(65,90));
+        $this->sid .= chr(mt_rand(65,90));
       }
       elseif ($random <= 20) {
-        $sid .= mt_rand(0,9);
+        $this->sid .= mt_rand(0,9);
       }
       else {
-        $sid .= chr(mt_rand(97,122));
+        $this->sid .= chr(mt_rand(97,122));
       }
     }
-
-    $this->sid = $sid;
 
     return $this->sid;
   }
 
-  function SetType ($settype) {
-    $this->type = $settype;
+  function set_type($type) {
+    $this->type = $type;
 
-    return $this->type;
+    return 1;
   }
 
-  function SetData ($setdata) {
-    $this->data = $setdata;
+  function set_data($data) {
+    $this->data = $data;
 
-    return $this->data;
+    1;
   }
 
-  function Create ($create) {
-    global $CONFIG, $db;
+  function create() {
+    global $CONFIG, $DB;
 
-    $db->Execute("INSERT INTO ".$CONFIG['sql_prefix']."_sessions (id, type, created, data) VALUES ('".$this->sid."', '".$this->type."', ".$this->time.", ".$this->data.")");
+    $DB->query("INSERT INTO {$CONFIG['sql_prefix']}_sessions (id, type, created, data) VALUES ('{$this->sid}', '{$this->type}', {$this->time}, '{$this->data}')", ___FILE___, ___LINE___);
   }
 }
 

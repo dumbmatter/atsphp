@@ -50,11 +50,11 @@ class join_edit extends base {
   function check_input() {
     global $CONF, $FORM
 
-    if (!preg_match("/http/", $FORM['url'])) { $error_url = 1; }
-    if (!preg_match("/.+\@.+\.\w+/", $FORM['email'])) { $error_email = 1; }
+    if (!preg_match('/http/', $FORM['url'])) { $error_url = 1; }
+    if (!preg_match('/.+\@.+\.\w+/', $FORM['email'])) { $error_email = 1; }
     if (!$FORM['title']) { $error_title = 1; }
     if (!$FORM['password']) { $error_password = 1; }
-    if ($FORM['banner_url'] == '' || $FORM['banner_url'] == "http://") {
+    if ($FORM['banner_url'] == '' || $FORM['banner_url'] == 'http://') {
       $FORM['banner_url'] = $CONF['default_banner'];
     }
     elseif ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
