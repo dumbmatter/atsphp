@@ -15,7 +15,7 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-$DB->query("TRUNCATE FROM {$CONFIG['sql_prefix']}_iplog");
+$DB->query("TRUNCATE TABLE {$CONFIG['sql_prefix']}_iplog");
 
 $DB->query("UPDATE {$CONFIG['sql_prefix']}_etc SET last_newday = {$current_day}");
 
