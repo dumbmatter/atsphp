@@ -16,7 +16,7 @@
 //=================================================================\\
 
 class rankings extends base {
-  function __construct() {
+  function rankings() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     // Get the category, default to no category

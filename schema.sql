@@ -10,8 +10,7 @@ CREATE TABLE `ats_settings` (
   `list_url` varchar(255) default '',
   `default_language` varchar(255) default 'english',
   `default_skin` varchar(255) default 'Default',
-  `skins_url` varchar(255) default '',
-  `email_address` varchar(255) default 'webmaster@example.com',
+  `your_email` varchar(255) default 'info@example.com',
   `num_list` int(5) default 10,
   `daily_weekly_monthly` varchar(7) default 'daily',
   `daily_weekly_monthly_num` tinyint(2) default 7,
@@ -67,7 +66,7 @@ CREATE TABLE `ats_sites` (
   `category` varchar(255) default '',
   `banner_url` varchar(255) default '',
   `email` varchar(255) default '',
-  `join_time` datetime default '0000-00-00 00:00:00',
+  `join_date` date default '0000-00-00',
   `active` tinyint(1) default '1',
   PRIMARY KEY  (`id`)
 );
@@ -92,7 +91,13 @@ CREATE TABLE `ats_stats_general` (
   `old_rank` bigint(20) unsigned default '0',
   `days_inactive` int(10) unsigned default '0',
   `total_rating` bigint(20) unsigned default '0',
-  `num_ratings` bigint(20) unsigned default '0'
+  `num_ratings` bigint(20) unsigned default '0',
+  `unq_pv_overall` bigint(20) unsigned default '0',
+  `tot_pv_overall` bigint(20) unsigned default '0',
+  `unq_in_overall` bigint(20) unsigned default '0',
+  `tot_in_overall` bigint(20) unsigned default '0',
+  `unq_out_overall` bigint(20) unsigned default '0',
+  `tot_out_overall` bigint(20) unsigned default '0'
 );
 
 CREATE TABLE `ats_stats_daily` (

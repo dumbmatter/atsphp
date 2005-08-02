@@ -16,7 +16,7 @@
 //=================================================================\\
 
 class lost_code extends base {
-  function __construct() {
+  function lost_code() {
     global $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['lostcode_header'];

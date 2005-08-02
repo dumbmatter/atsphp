@@ -18,16 +18,16 @@
 class skin {
   public $filename;
 
-  function __construct($filename) {
+  function skin($filename) {
     $this->filename = $filename;
   }
 
   function make() {
     global $CONF, $TMPL;
 
-    $file = $CONF['skins_path'].'/'.$TMPL['skin_name'].'/'.$this->filename.'.html';
+    $file = "{$CONF['skins_path']}/{$TMPL['skin_name']}/{$this->filename}.html";
     $fh_skin = fopen($file, 'r');
-    $skin = @fread($fh_skin, filesize($file)); 
+    $skin = @fread($fh_skin, filesize($file));
     fclose($fh_skin);
   
     if ($this->filename == 'wrapper') {
@@ -49,6 +49,26 @@ class skin {
 
     return $this->parse($return);
   }
+
+  function send_email($email) {
+    global $CONF, $TMPL;
+
+    $file = "{$CONF['skins_path']}/{$TMPL['skin_name']}/{$this->filename}.html";
+    $fh_skin = fopen($file, "r");
+    $skin = @fread($fh_skin, filesize($file));
+    fclose($fh_skin);
+
+    $skin_array = explode("\n", $skin);
+
+    $subject = array_shift($skin_array);
+    $subject = str_replace('Subject: ', '', $subject);
+    $body = implode("\n", $skin_array);
+
+    $subject = $this->parse($subject);
+    $body = $this->parse($body);
+
+    mail($email, $subject, $body, "From: ".$CONF['youremail']."\r\n");
+  }
   
   function parse($skin) {
     global $LNG, $TMPL;
@@ -61,7 +81,7 @@ class skin {
 }
 
 class main_skin extends skin {
-  function __construct($filename) {
+  function main_skin($filename) {
     global $CONF, $DB, $FORM, $LNG, $TIMER, $TMPL;
 
     $this->filename = $filename;

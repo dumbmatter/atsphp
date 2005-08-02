@@ -16,10 +16,10 @@
 //=================================================================\\
 
 class sql {
-  private $dbl;
-  public $debug;
-  public $num_queries;
-  public $queries;
+  var $dbl;
+  var $debug;
+  var $num_queries;
+  var $queries;
 
   function connect ($host, $user, $password, $database, $debug) {
     $this->dbl = mysql_connect($host, $user, $password) or $this->error(__FILE__, __LINE__);

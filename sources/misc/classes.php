@@ -15,7 +15,7 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
-abstract class base {
+class base {
   function error($message, $kill_script = true) {
     global $TMPL;
 
@@ -46,8 +46,46 @@ abstract class base {
   }
 }
 
+class join_edit extends base {
+  function check_input() {
+    global $CONF, $FORM
+
+    if (!preg_match("/http/", $FORM['url'])) { $error_url = 1; }
+    if (!preg_match("/.+\@.+\.\w+/", $FORM['email'])) { $error_email = 1; }
+    if (!$FORM['title']) { $error_title = 1; }
+    if (!$FORM['password']) { $error_password = 1; }
+    if ($FORM['banner_url'] == '' || $FORM['banner_url'] == "http://") {
+      $FORM['banner_url'] = $CONF['default_banner'];
+    }
+    elseif ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
+      $size = @getimagesize($FORM['banner_url']);
+      if ($size[0] > $CONF['max_banner_width'] || $size[1] > $CONF['max_banner_height']) {
+        $error_banner_url = 1;
+      }
+      if (!isset($size[0]) && !isset($size[1])) { $error_banner_url = 1; }
+    }
+
+    if ($error_url || $error_email || $error_title || $error_password || $error_banner_url) {
+      $error = "{$LNG['join_error_forgot']}<br />\n";
+      if ($error_url) { $error .= "{$LNG['join_error_url']}<br />"; }
+      if ($error_email) { $error .= "{$LNG['join_error_email']}<br />"; }
+      if ($error_title) { $error .= "{$LNG['join_error_title']}<br />"; }
+      if ($error_password) { $error .= "{$LNG['join_error_password']}<br />"; }
+      if ($error_urlbanner) { $error .= "{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.<br />"; }
+      $error .= "<br />{$LNG['join_error_back']}";
+
+      $this->error($error);
+
+      return 0;
+    }
+    else {
+      return 1;
+    }
+  }
+}
+
 class timer {
-  protected $start_time;
+  var $start_time;
 
   function __construct () {
     $this->start_time = array_sum(explode(' ', microtime()));

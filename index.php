@@ -17,7 +17,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-07-08)';
+$TMPL['version'] = '5.0 Alpha';
 
 // Require some classes and start the timer
 require_once $CONF['path'].'/sources/misc/classes.php';
@@ -46,16 +46,17 @@ while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
 
-$CONF['skins_path'] = $CONF['path'].'/skins';
+$CONF['skins_path'] = "{$CONF['path']}/skins";
+$CONF['skins_url'] = "{$CONF['list_url']}/skins";
+$TMPL['skins_url'] = $CONF['skins_url'];
 $TMPL['list_name'] = $CONF['list_name'];
 $TMPL['list_url'] = $CONF['list_url'];
-$TMPL['skins_url'] = $CONF['skins_url'];
 
 // Combine the GET and POST input
 $FORM = array_merge($_GET, $_POST);
 
 // The language file
-require_once $CONF['path'].'/languages/'.$CONF['default_language'].'.php';
+require_once "{$CONF['path']}/languages/{$CONF['default_language']}.php";
 
 // Determine the category and skin
 if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
@@ -64,10 +65,10 @@ if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
 else {
   $TMPL['skin_name'] = $CONF['default_skin'];
 }
-if (!is_dir($CONF['path'].'/skins/'.$TMPL['skin_name'])) {
+if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}")) {
   $TMPL['skin_name'] = $CONF['default_skin'];
 }
-require_once $CONF['path'].'/sources/misc/skin.php';
+require_once "{$CONF['path']}/sources/misc/skin.php";
 
 // Is it a new day/week/month?
 /*$result = $DB->execute('SELECT last_new_day FROM '.$CONF['sql_prefix'].'_etc');
@@ -95,7 +96,9 @@ if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
 }*/
 
 // gzip
-if ($CONF['gzip']) { ob_start('ob_gzhandler'); }
+if ($CONF['gzip']) {
+  ob_start('ob_gzhandler');
+}
 
 // Array containing the valid .php files from the sources directory
 $action = array(
@@ -117,7 +120,7 @@ if (isset($FORM['a']) && isset($action[$FORM['a']])) {
 else {
   $page_name = 'rankings';
 }
-require_once $CONF['path'].'/sources/'.$page_name.'.php';
+require_once "{$CONF['path']}/sources/{$page_name}.php";
 $page = new $page_name;
 
 // Display the page
@@ -130,7 +133,7 @@ $DB->close();
 if ($DB->debug) {
   echo '<div style="clear: both;">';
   foreach ($DB->queries as $value) {
-    echo '<hr />'.$value;
+    echo "<hr />{$value}";
   }
   echo '</div>';
 }
