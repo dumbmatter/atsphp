@@ -40,7 +40,7 @@ class rankings extends base {
     // Make ORDER BY clause
     $order_by = '(';
     for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-      $order_by .= 'stats_'.$CONF['daily_weekly_monthly'].'.unq_'.$ranking_method.'_'.$i.' + ';
+      $order_by .= "stats_{$CONF['daily_weekly_monthly']}.unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']} + ";
     }
     $order_by .= '0) / '.$CONF['daily_weekly_monthly_num'].' DESC';
 
@@ -70,7 +70,7 @@ class rankings extends base {
       if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->query('UPDATE '.$CONF['sql_prefix'].'_stats_general SET old_rank = '.$TMPL['old_rank'].' WHERE id = '.$TMPL['id']);
+          $DB->query("UPDATE {$CONF['sql_prefix']}_stats_general SET old_rank = {$TMPL['old_rank']} WHERE id = {$TMPL['id']}");
         }
         if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; }
         elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; }
@@ -82,12 +82,17 @@ class rankings extends base {
       else { $TMPL['alt'] = 'alt'; }
 
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
-      $TMPL['avg_rating'] = $TMPL['num_ratings'] > 0 ? round($total_ratings / $TMPL['num_ratings'], 0) : 0;
-      $TMPL['tod'] = $TMPL[$ranking_method.'_tod'];
-      $TMPL['avg'] = $TMPL[$ranking_method.'_avg'];
+      $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
+
+      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$CONF['daily_weekly_monthly']}"];
+      $TMPL['average'] = 0;
+      for ($i = 0; $i <= 9; $i++) {
+        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']}"];
+      }
+      $TMPL['average'] = $TMPL['average'] / 10;
 
       // Only use _top skin on the first page
-      if ($page_rank <= $CONF['top_skin_num'] && $FORM['start'] <= 1) {
+      if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
         $TMPL['content'] .= $this->do_skin('table_top_body');
         $is_top = 1;
       }
@@ -108,7 +113,7 @@ class rankings extends base {
         $do_table_open = 1;
       }
 
-      if ($CONF['adbreaks'][$page_rank]) {
+      if (isset($CONF['ad_breaks'][$page_rank])) {
         if ($is_top) {
           $TMPL['content'] .= $this->do_skin('table_top_close');
           $TMPL['content'] .= $this->do_skin('ad_break_top');

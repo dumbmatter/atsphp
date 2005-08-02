@@ -48,7 +48,13 @@ class base {
 
 class join_edit extends base {
   function check_input() {
-    global $CONF, $FORM
+    global $CONF, $FORM, $LNG;
+
+    $error_url = 0;
+    $error_email = 0;
+    $error_title = 0;
+    $error_password = 0;
+    $error_banner_url = 0;
 
     if (!preg_match('/http/', $FORM['url'])) { $error_url = 1; }
     if (!preg_match('/.+\@.+\.\w+/', $FORM['email'])) { $error_email = 1; }

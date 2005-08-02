@@ -30,22 +30,23 @@ class join extends join_edit {
   }
 
   function form() {
-    global $FORM, $LNG, $TMPL;
+    global $CONF, $FORM, $LNG, $TMPL;
 
-    $TMPL['category_select'] = "<select name=\"category\">\n";
+    $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $category) {
-      $TMPL['category_select'] .= "<option value=\"{$category}\">{$category}\n";
+      $TMPL['categories_menu'] .= "<option value=\"{$category}\">{$category}\n";
     }
-    $TMPL['category_select'] .= "</select>";
+    $TMPL['categories_menu'] .= "</select>";
 
     $TMPL['content'] = $this->do_skin('join_form');
   }
 
   function process() {
-    global $FORM, $LNG, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     if ($this->check_input()) {
-      list($TMPL['id']) = $DB->fetch("SELECT MAX(id) + 1 FROM {$CONF['sql_prefix']}_members", __FILE__, __LINE__);
+      list($TMPL['id']) = $DB->fetch("SELECT MAX(id) + 1 FROM {$CONF['sql_prefix']}_sites", __FILE__, __LINE__);
+      $TMPL['id'] = $TMPL['id'] ? $TMPL['id'] : 1;
 
       $TMPL['url'] = $DB->escape($FORM['url']);
       $TMPL['title'] = $DB->escape($FORM['title']);
@@ -56,7 +57,7 @@ class join extends join_edit {
       $password = md5($FORM['password']);
 
       $join_date = date('Y-m-d');
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_members (id, password, url, title, description, category, banner_url, email, join_date, active)
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (id, password, url, title, description, category, banner_url, email, join_date, active)
                   VALUES ({$TMPL['id']}, '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_general (id, old_rank) VALUES ({$TMPL['id']}, {$TMPL['id']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_daily (id) VALUES ({$TMPL['id']})", __FILE__, __LINE__);

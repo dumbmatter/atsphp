@@ -20,18 +20,18 @@ $CONF['path'] = '.';
 $TMPL['version'] = '5.0 Alpha';
 
 // Require some classes and start the timer
-require_once $CONF['path'].'/sources/misc/classes.php';
+require_once "{$CONF['path']}/sources/misc/classes.php";
 $TIMER = new timer;
 
 // Connect to the database
 // Set the last argument of $DB->connect to 1 to enable debug mode
-require_once $CONF['path'].'/settings_sql.php';
-require_once $CONF['path'].'/sources/sql/'.$CONF['sql'].'.php';
+require_once "{$CONF['path']}/settings_sql.php";
+require_once "{$CONF['path']}/sources/sql/{$CONF['sql']}.php";
 $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
 // Settings
-$settings = $DB->fetch('SELECT * FROM '.$CONF['sql_prefix'].'_settings', __FILE__, __LINE__);
+$settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
 $ad_breaks = explode('|', $CONF['ad_breaks']);
@@ -41,7 +41,7 @@ foreach ($ad_breaks as $key => $value) {
 }
 
 $CONF['categories'] = array();
-$result = $DB->query('SELECT category, skin FROM '.$CONF['sql_prefix'].'_categories', __FILE__, __LINE__);
+$result = $DB->query("SELECT category, skin FROM {$CONF['sql_prefix']}_categories", __FILE__, __LINE__);
 while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
@@ -135,6 +135,9 @@ if ($DB->debug) {
   foreach ($DB->queries as $value) {
     echo "<hr />{$value}";
   }
+  echo '<hr /><pre>';
+  print_r($TMPL);
+  echo '</pre>';
   echo '</div>';
 }
 ?>
