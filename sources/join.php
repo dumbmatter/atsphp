@@ -59,11 +59,8 @@ class join extends join_edit {
       $join_date = date('Y-m-d');
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (id, password, url, title, description, category, banner_url, email, join_date, active)
                   VALUES ({$TMPL['id']}, '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_general (id, old_rank) VALUES ({$TMPL['id']}, {$TMPL['id']})", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_daily (id) VALUES ({$TMPL['id']})", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_weekly (id) VALUES ({$TMPL['id']})", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats_monthly (id) VALUES ({$TMPL['id']})", __FILE__, __LINE__);
-
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (id, old_rank) VALUES ({$TMPL['id']}, {$TMPL['id']})", __FILE__, __LINE__);
+ 
       $join_email = new skin('join_email');
       $join_email->send_email($TMPL['email']);
 

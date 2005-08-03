@@ -82,12 +82,14 @@ CREATE TABLE `ats_reviews` (
 CREATE TABLE `ats_sessions` (
   `type` varchar(7) default '',
   `session_id` varchar(24) default '',
-  `created` int(10) default '',
+  `created` int(10) unsigned default '',
   `data` varchar(255) default ''
 );
 
-CREATE TABLE `ats_stats_general` (
+CREATE TABLE `ats_stats` (
   `id` bigint(20) unsigned default '0',
+  `rank_cache` bigint(20) unsigned default '0',
+  `rank_cache_time` int(10) unsigned default '0',
   `old_rank` bigint(20) unsigned default '0',
   `days_inactive` int(10) unsigned default '0',
   `total_rating` bigint(20) unsigned default '0',
@@ -97,11 +99,7 @@ CREATE TABLE `ats_stats_general` (
   `unq_in_overall` bigint(20) unsigned default '0',
   `tot_in_overall` bigint(20) unsigned default '0',
   `unq_out_overall` bigint(20) unsigned default '0',
-  `tot_out_overall` bigint(20) unsigned default '0'
-);
-
-CREATE TABLE `ats_stats_daily` (
-  `id` bigint(20) unsigned default '0',
+  `tot_out_overall` bigint(20) unsigned default '0',
   `unq_pv_0_daily` bigint(20) unsigned default '0',
   `unq_pv_1_daily` bigint(20) unsigned default '0',
   `unq_pv_2_daily` bigint(20) unsigned default '0',
@@ -168,11 +166,6 @@ CREATE TABLE `ats_stats_daily` (
   `tot_out_8_daily` bigint(20) unsigned default '0',
   `tot_out_9_daily` bigint(20) unsigned default '0',
   `tot_out_max_daily` bigint(20) unsigned default '0',
-  PRIMARY KEY  (`id`)
-);
-
-CREATE TABLE `ats_stats_weekly` (
-  `id` bigint(20) unsigned default '0',
   `unq_pv_0_weekly` bigint(20) unsigned default '0',
   `unq_pv_1_weekly` bigint(20) unsigned default '0',
   `unq_pv_2_weekly` bigint(20) unsigned default '0',
@@ -239,11 +232,6 @@ CREATE TABLE `ats_stats_weekly` (
   `tot_out_8_weekly` bigint(20) unsigned default '0',
   `tot_out_9_weekly` bigint(20) unsigned default '0',
   `tot_out_max_weekly` bigint(20) unsigned default '0',
-  PRIMARY KEY  (`id`)
-);
-
-CREATE TABLE `ats_stats_monthly` (
-  `id` bigint(20) unsigned default '0',
   `unq_pv_0_monthly` bigint(20) unsigned default '0',
   `unq_pv_1_monthly` bigint(20) unsigned default '0',
   `unq_pv_2_monthly` bigint(20) unsigned default '0',

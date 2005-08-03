@@ -1,77 +1,106 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-set_magic_quotes_runtime(0);
+// Change the path to your full path if necessary
+$CONF['path'] = '.';
 
-require_once 'config.php';
+// Connect to the database
+require_once "{$CONF['path']}/settings_sql.php";
+require_once "{$CONF['path']}/sources/sql/{$CONF['sql']}.php";
+$DB = new sql;
+$DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database']);
 
-require_once $CONFIG['path'].'/sources/functions.php';
-$FORM = parse_form();
+// Settings
+$settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
+$CONF = array_merge($CONF, $settings);
 
-if (!is_numeric($FORM['id'])) {
-  require $CONFIG['path'].'/index.php';
-  exit;
-}
-else { $FORM['id'] = intval($FORM['id']); }
+$id = intval($_GET['id']);
 
-require_once $CONFIG['path'].'/sources/drivers/'.$CONFIG['sql'].'.php';
-$db = new SQL;
-$db->Connect($CONFIG['sql_host'], $CONFIG['sql_user'], $CONFIG['sql_pass'], $CONFIG['sql_database']);
-
+// Is this a unique pageviwew?
 $ip = getenv("REMOTE_ADDR");
-$result = $db->Execute("SELECT ip_address, unq_pv FROM ".$CONFIG['sql_prefix']."_iplog WHERE ip_address = '$ip' AND id4 = ".$FORM['id']);
-list($ip2, $unq_pv) = $db->FetchArray($result);
+list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND id = {$id}", __FILE__, __LINE__);
 
-if ($ip2 == $ip && $unq_pv == 1) {
-
+$unique_sql = ', unq_pv_overall = unq_pv_overall + 1, unq_pv_0_daily = unq_pv_0_daily + 1, unq_pv_0_weekly = unq_pv_0_weekly + 1, unq_pv_0_monthly = unq_pv_0_monthly + 1';
+if ($ip == $ip_sql && $unq_pv == 0) {
+  $DB->query("UPDATE {$CONF['sql_prefix']}_ip_log SET unq_pv = 1 WHERE ip_address = '{$ip}' AND id = {$id}", __FILE__, __LINE__);
 }
-elseif ($ip2 == $ip) {
-  $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_iplog SET unq_pv = 1 WHERE ip_address = '$ip' AND id4 = ".$FORM['id']);
-  $unique = ", unq_pv_today = unq_pv_today + 1";
+elseif ($ip != $ip_sql) {
+  $DB->query("INSERT INTO {$CONF['sql_prefix']}_ip_log (ip_address, id, unq_pv) VALUES ('{$ip}', {$id} ,1)", __FILE__, __LINE__);
 }
 else {
-  $db->Execute("INSERT INTO ".$CONFIG['sql_prefix']."_iplog (ip_address, id4, unq_pv) VALUES ('".$ip."', ".$FORM['id'].",1)");
-  $unique = ", unq_pv_today = unq_pv_today + 1";
+  $unique_sql = '';
 }
 
-$db->Execute("UPDATE ".$CONFIG['sql_prefix']."_stats SET tot_pv_today = tot_pv_today + 1".$unique." WHERE id2 = ".$FORM['id']);
+// Update stats
+$DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_overall = tot_pv_overall + 1, tot_pv_0_daily = tot_pv_0_daily + 1, tot_pv_0_weekly = tot_pv_0_weekly + 1, tot_pv_0_monthly = tot_pv_0_monthly + 1{$unique_sql} WHERE id = {$id}", __FILE__, __LINE__);
 
-if ($CONFIG['ranks_on_buttons'] == 1) {
-  $result = $db->Execute("SELECT (".$CONFIG['rankingmethod']."_today + ".$CONFIG['rankingmethod']."_1 + ".$CONFIG['rankingmethod']."_2 + ".$CONFIG['rankingmethod']."_3) / 4 FROM ".$CONFIG['sql_prefix']."_stats WHERE id2 = ".$FORM['id']);
-  list($hits) = $db->FetchArray($result);
-  if ($hits) {
-    $result = $db->SelectLimit("SELECT count(*) FROM ".$CONFIG['sql_prefix']."_stats, ".$CONFIG['sql_prefix']."_members WHERE ((".$CONFIG['rankingmethod']."_today + ".$CONFIG['rankingmethod']."_1 + ".$CONFIG['rankingmethod']."_2 + ".$CONFIG['rankingmethod']."_3) / 4) >= $hits AND active = 1 AND id = id2", $CONFIG['button_num'], 0);
-    list($rank) = $db->FetchArray($result);
-    if ($rank <= $CONFIG['button_num']) {
-      $location = $CONFIG['button_dir']."/".$rank.".".$CONFIG['button_ext'];
-      $rankonbutton = 1;
+// What button to display?
+if ($CONF['ranks_on_buttons']) {
+  // See if rank is freshly cached.  If so, use cached value.  If not, calculate rank.
+  list($rank_cache, $rank_cache_time) = $DB->fetch("SELECT rank_cache, rank_cache_time FROM {$CONF['sql_prefix']}_stats WHERE id = {$id}", __FILE__, __LINE__);
+
+  $current_time = time();
+  if ($current_time - (12*3600) < $rank_cache_time) {
+    if ($rank_cache > 0 && $rank_cache <= $CONF['button_num']) {
+      $rank = $rank_cache;
+      $location = "{$CONF['button_dir']}/{$rank}.{$CONF['button_ext']}";
+      $rank_on_button = 1;
     }
   }
-}
-elseif ($CONFIG['ranks_on_buttons'] == 2) {
-  require_once $CONFIG['path'].'/config_buttons.php';
-  exit;
-}
-if (!$rankonbutton) {
-  $location = $CONFIG['button_url'];
+  else {
+    $order_by = '(';
+    for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
+      $order_by .= "unq_{$CONF['ranking_method']}_{$i}_{$CONF['daily_weekly_monthly']} + ";
+    }
+    $order_by .= "0) / {$CONF['daily_weekly_monthly_num']}";
+
+    list($hits) = $DB->fetch("SELECT {$order_by}
+                            FROM {$CONF['sql_prefix']}_stats
+                            WHERE id = {$id}", __FILE__, __LINE__);
+    if ($hits) {
+      $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$order_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
+      list($rank) = $DB->fetch_array($result);
+
+      if ($rank <= $CONF['button_num']) {
+        $location = "{$CONF['button_dir']}/{$rank}.{$CONF['button_ext']}";
+        $rank_on_button = 1;
+
+        $new_rank_cache = $rank;
+      }
+      else {
+        $new_rank_cache = 0;
+      }
+    }
+    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE id = {$id}", __FILE__, __LINE__);
+  }
+
+  // Stat Buttons
+  if ($CONF['ranks_on_buttons'] == 2) {
+    require_once "{$CONFIG['path']}/config_buttons.php";
+    exit;
+  }
 }
 
-$db->Close;
+$DB->close();
 
-header("Location: ".$location);
+if (!$rank_on_button) {
+  $location = $CONF['button_url'];
+}
+
+header("Location: {$location}");
 ?>

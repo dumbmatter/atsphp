@@ -22,14 +22,14 @@ class rankings extends base {
     // Get the category, default to no category
     if (isset($FORM['cat']) && $FORM['cat']) {
       $TMPL['category'] = $FORM['cat'];
-      $category_sql = "AND category = '".$TMPL['category']."'";
+      $category_sql = "AND category = '{$TMPL['category']}'";
     }
     else {
       $TMPL['category'] = $LNG['main_all'];
       $category_sql = '';
     }
 
-    $TMPL['header'] = $LNG['main_header'].' - '.$TMPL['category'];
+    $TMPL['header'] = "{$LNG['main_header']} - {$TMPL['category']}";
 
     // Get the ranking method, default to pageviews
     $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
@@ -40,9 +40,9 @@ class rankings extends base {
     // Make ORDER BY clause
     $order_by = '(';
     for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-      $order_by .= "stats_{$CONF['daily_weekly_monthly']}.unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']} + ";
+      $order_by .= "unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']} + ";
     }
-    $order_by .= '0) / '.$CONF['daily_weekly_monthly_num'].' DESC';
+    $order_by .= "0) / {$CONF['daily_weekly_monthly_num']} DESC";
 
     // Start the output with table_top_open if we're on the first page
     if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
@@ -55,9 +55,9 @@ class rankings extends base {
     // Figure out what rows we want, and SELECT them
     $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
     $result = $DB->select_limit("SELECT *
-                                 FROM ".$CONF['sql_prefix']."_sites sites, ".$CONF['sql_prefix']."_stats_general stats_general, ".$CONF['sql_prefix']."_stats_daily stats_daily, ".$CONF['sql_prefix']."_stats_weekly stats_weekly, ".$CONF['sql_prefix']."_stats_monthly stats_monthly
-                                 WHERE sites.id = stats_general.id AND sites.id = stats_daily.id AND sites.id = stats_weekly.id AND sites.id = stats_monthly.id AND active = 1 ".$category_sql."
-                                 ORDER BY ".$order_by."
+                                 FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
+                                 WHERE sites.id = stats.id AND active = 1 {$category_sql}
+                                 ORDER BY {$order_by}
                                  ", $CONF['num_list'], $start, __FILE__, __LINE__);
 
     $TMPL['rank'] = ++$start;
