@@ -1,64 +1,117 @@
 <h1><#title></h1><br />
-<b><#lng{'g_id'}>:</b> <#id><br />
+<b><#lng{'g_username'}>:</b> <#username><br />
 <b><#lng{'g_description'}>:</b> <#description><br />
-<b><#lng{'g_url'}>:</b> <a href="<#url>" target="_blank"><#real_url></a><br />
-<b><#lng{'g_category'}>:</b> <a href="<#list_url>/index.php?cat=<#cat>"><#cat></a><br /><br />
-<b><#lng{'stats_rating_avg'}>:</b> <#avg_rate> / 5<br />
-<b><#lng{'stats_rating_num'}>:</b> <#ratenum><br />
-<a href="index.php?a=rate&amp;id=<#id>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
-<img src="<#urlbanner>" /><br /><br />
-<table class="darkbg" cellspacing="1" cellpadding="2"><tr class="mediumbg">
-<td></td>
-<td align="center"><b><#lng{'g_average'}></b></td>
-<td align="center"><b><#lng{'g_today'}></b></td>
-<td align="center"><b><#lng{'g_yesterday'}></b></td>
-<td align="center"><b><#lng{'g_2days'}></b></td>
-<td align="center"><b><#lng{'g_3days'}></b></td>
-</tr><tr class="lightbg">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_pv"><#lng{'g_unq_pv'}></a></b></td>
-<td align="center"><b><#unq_pv_avg></b></td>
-<td align="center"><#unq_pv_tod></td>
-<td align="center"><#unq_pv_1></td>
-<td align="center"><#unq_pv_2></td>
-<td align="center"><#unq_pv_3></td>
+<b><#lng{'g_url'}>:</b> <a href="<#url>" target="_blank"><#url></a><br />
+<b><#lng{'g_category'}>:</b> <a href="<#list_url>/index.php?cat=<#category>"><#category></a><br />
+<b><#lng{'stats_member_since'}>:</b> <#join_date><br /><br />
+
+<b><#lng{'stats_rating_avg'}>:</b> <#average_rating> / 5<br />
+<b><#lng{'stats_rating_num'}>:</b> <#num_ratings><br />
+<a href="<#list_url>/index.php?a=rate&amp;u=<#username>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<img src="<#banner_url>" /><br /><br />
+
+<table class="darkbg" cellspacing="1" cellpadding="2">
+<tr class="mediumbg">
+<th><#lng{'g_daily'}></th>
+<th><#lng{'g_unq_pv'}></th>
+<th><#lng{'g_tot_pv'}></th>
+<th><#lng{'g_unq_in'}></th>
+<th><#lng{'g_tot_in'}></th>
+<th><#lng{'g_unq_out'}></th>
+<th><#lng{'g_tot_out'}></th>
+</tr><tr class="lightbg" style="font-weight: bold;">
+<td><#lng{'g_average'}></td>
+<td align="center"><#unq_pv_avg_daily></td>
+<td align="center"><#tot_pv_avg_daily></td>
+<td align="center"><#unq_in_avg_daily></td>
+<td align="center"><#tot_in_avg_daily></td>
+<td align="center"><#unq_out_avg_daily></td>
+<td align="center"><#tot_out_avg_daily></td>
 </tr><tr class="lightbgalt">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_pv"><#lng{'g_tot_pv'}></a></b></td>
-<td align="center"><b><#tot_pv_avg></b></td>
-<td align="center"><#tot_pv_tod></td>
-<td align="center"><#tot_pv_1></td>
-<td align="center"><#tot_pv_2></td>
-<td align="center"><#tot_pv_3></td>
+<td><#lng{'g_today'}></td>
+<td align="center"><#unq_pv_0_daily></td>
+<td align="center"><#tot_pv_0_daily></td>
+<td align="center"><#unq_in_0_daily></td>
+<td align="center"><#tot_in_0_daily></td>
+<td align="center"><#unq_out_0_daily></td>
+<td align="center"><#tot_out_0_daily></td>
 </tr><tr class="lightbg">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_in"><#lng{'g_unq_in'}></a></b></td>
-<td align="center"><b><#unq_in_avg></b></td>
-<td align="center"><#unq_in_tod></td>
-<td align="center"><#unq_in_1></td>
-<td align="center"><#unq_in_2></td>
-<td align="center"><#unq_in_3></td>
+<td><#lng{'g_yesterday'}></td>
+<td align="center"><#unq_pv_1_daily></td>
+<td align="center"><#tot_pv_1_daily></td>
+<td align="center"><#unq_in_1_daily></td>
+<td align="center"><#tot_in_1_daily></td>
+<td align="center"><#unq_out_1_daily></td>
+<td align="center"><#tot_out_1_daily></td>
 </tr><tr class="lightbgalt">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_in"><#lng{'g_tot_in'}></a></b></td>
-<td align="center"><b><#tot_in_avg></b></td>
-<td align="center"><#tot_in_tod></td>
-<td align="center"><#tot_in_1></td>
-<td align="center"><#tot_in_2></td>
-<td align="center"><#tot_in_3></td>
+<td><#2_daily></td>
+<td align="center"><#unq_pv_2_daily></td>
+<td align="center"><#tot_pv_2_daily></td>
+<td align="center"><#unq_in_2_daily></td>
+<td align="center"><#tot_in_2_daily></td>
+<td align="center"><#unq_out_2_daily></td>
+<td align="center"><#tot_out_2_daily></td>
 </tr><tr class="lightbg">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=unq_out"><#lng{'g_unq_out'}></a></b></td>
-<td align="center"><b><#unq_out_avg></b></td>
-<td align="center"><#unq_out_tod></td>
-<td align="center"><#unq_out_1></td>
-<td align="center"><#unq_out_2></td>
-<td align="center"><#unq_out_3></td>
+<td><#3_daily></td>
+<td align="center"><#unq_pv_3_daily></td>
+<td align="center"><#tot_pv_3_daily></td>
+<td align="center"><#unq_in_3_daily></td>
+<td align="center"><#tot_in_3_daily></td>
+<td align="center"><#unq_out_3_daily></td>
+<td align="center"><#tot_out_3_daily></td>
 </tr><tr class="lightbgalt">
-<td><b><a href="<#list_url>/index.php?a=graph&id=<#id>&type=tot_out"><#lng{'g_tot_out'}></a></b></td>
-<td align="center"><b><#tot_out_avg></b></td>
-<td align="center"><#tot_out_tod></td>
-<td align="center"><#tot_out_1></td>
-<td align="center"><#tot_out_2></td>
-<td align="center"><#tot_out_3></td>
-</tr></table>
+<td><#4_daily></td>
+<td align="center"><#unq_pv_4_daily></td>
+<td align="center"><#tot_pv_4_daily></td>
+<td align="center"><#unq_in_4_daily></td>
+<td align="center"><#tot_in_4_daily></td>
+<td align="center"><#unq_out_4_daily></td>
+<td align="center"><#tot_out_4_daily></td>
+</tr><tr class="lightbg">
+<td><#5_daily></td>
+<td align="center"><#unq_pv_5_daily></td>
+<td align="center"><#tot_pv_5_daily></td>
+<td align="center"><#unq_in_5_daily></td>
+<td align="center"><#tot_in_5_daily></td>
+<td align="center"><#unq_out_5_daily></td>
+<td align="center"><#tot_out_5_daily></td>
+</tr><tr class="lightbgalt">
+<td><#6_daily></td>
+<td align="center"><#unq_pv_6_daily></td>
+<td align="center"><#tot_pv_6_daily></td>
+<td align="center"><#unq_in_6_daily></td>
+<td align="center"><#tot_in_6_daily></td>
+<td align="center"><#unq_out_6_daily></td>
+<td align="center"><#tot_out_6_daily></td>
+</tr><tr class="lightbg">
+<td><#7_daily></td>
+<td align="center"><#unq_pv_7_daily></td>
+<td align="center"><#tot_pv_7_daily></td>
+<td align="center"><#unq_in_7_daily></td>
+<td align="center"><#tot_in_7_daily></td>
+<td align="center"><#unq_out_7_daily></td>
+<td align="center"><#tot_out_7_daily></td>
+</tr><tr class="lightbgalt">
+<td><#8_daily></td>
+<td align="center"><#unq_pv_8_daily></td>
+<td align="center"><#tot_pv_8_daily></td>
+<td align="center"><#unq_in_8_daily></td>
+<td align="center"><#tot_in_8_daily></td>
+<td align="center"><#unq_out_8_daily></td>
+<td align="center"><#tot_out_8_daily></td>
+</tr><tr class="lightbg">
+<td><#9_daily></td>
+<td align="center"><#unq_pv_9_daily></td>
+<td align="center"><#tot_pv_9_daily></td>
+<td align="center"><#unq_in_9_daily></td>
+<td align="center"><#tot_in_9_daily></td>
+<td align="center"><#unq_out_9_daily></td>
+<td align="center"><#tot_out_9_daily></td>
+</tr>
+</table>
 <br />
+
 <b><#lng{'stats_reviews'}></b><br />
-<a href="index.php?a=rate&amp;id=<#id>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<a href="<#list_url>/index.php?a=rate&amp;u=<#username>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
 <#reviews>
-<a href="index.php?a=stats&id=<#id>&allreviews=1"><#lng{'stats_allreviews'}></a>
+<a href="<#list_url>/index.php?a=stats&amp;u=<#username>&amp;allreviews=1"><#lng{'stats_allreviews'}></a>
