@@ -1,19 +1,20 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 5.0                                       \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
 class skin {
   public $filename;
@@ -29,15 +30,18 @@ class skin {
     $fh_skin = fopen($file, 'r');
     $skin = @fread($fh_skin, filesize($file));
     fclose($fh_skin);
-  
+
+    $parse = 1;
+
     if ($this->filename == 'wrapper') {
-      $powered_by_check = preg_match('/<#powered_by>/', $skin) ? 1 : 0;
+      $powered_by_check = strpos($skin, '{$powered_by}') ? 1 : 0;
   
       if ($powered_by_check) {
         $return = $skin;
       }
       else {
-        $return = 'You cannot delete the &lt;#powered_by&gt; tag from wrapper.html.';
+        $return = 'You cannot delete {$powered_by} from wrapper.html.';
+        $parse = 0;
       }
     }
     elseif ($this->filename == 'admin' || $this->filename == 'ssi_top' || $this->filename == 'ssi_members') {
@@ -47,7 +51,12 @@ class skin {
       $return = "<!-- Begin {$this->filename}.html -->\n{$skin}\n<!-- End {$this->filename}.html -->\n\n";
     }
 
-    return $this->parse($return);
+    if ($parse) {
+      return $this->parse($return);
+    }
+    else {
+      return $return;
+    }
   }
 
   function send_email($email) {
@@ -74,8 +83,8 @@ class skin {
     global $LNG, $TMPL;
 
     $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', "\$LNG['\\1']", $skin);
-    $skin = preg_replace('/<#include=\"(.+?)\">/ei', "file_get_contents('\\1')", $skin);
-    $skin = preg_replace('/<#(.+?)>/ei', "\$TMPL['\\1']", $skin);
+    $skin = preg_replace('/{include \"(.+?)\"}/ei', "file_get_contents('\\1')", $skin);
+    $skin = preg_replace('/{\$(.+?)}/ei', "\$TMPL['\\1']", $skin);
     return $skin;
   }
 }

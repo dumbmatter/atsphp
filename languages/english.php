@@ -93,15 +93,15 @@ $LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
 $LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
 
 // Lost Code
-$LNG['lostcode_header'] = "Lost Code";
+$LNG['lost_code_header'] = "Lost Code";
 
 // Lost Password
-$LNG['lostpw_header'] = "Lost Password";
-$LNG['lostpw_email'] = "To pick a new password for your site, just go to the url below."; // 4.0.1
-$LNG['lostpw_emailed'] = "Instructions on how to reset your password have been emailed to you.";
-$LNG['lostpw_newpassword'] = "Enter a New Password"; // 4.0.1
-$LNG['lostpw_finish'] = "Your password has been reset to the new password you have just chosen."; // 4.0.1
-$LNG['lostpw_error'] = "Please make sure you have the right ID number and try again.";
+$LNG['lost_password_header'] = "Lost Password";
+$LNG['lost_password_email'] = "To pick a new password for your site, just go to the url below."; // 4.0.1
+$LNG['lost_password_emailed'] = "Instructions on how to reset your password have been emailed to you.";
+$LNG['lost_password_newpassword'] = "Enter a New Password"; // 4.0.1
+$LNG['lost_password_finish'] = "Your password has been reset to the new password you have just chosen."; // 4.0.1
+$LNG['lost_password_error'] = "Please make sure you have the right ID number and try again.";
 
 // Main Page
 $LNG['main_header'] = "Main Page"; // 4.0
@@ -112,8 +112,8 @@ $LNG['main_menu_main'] = "Main Page";
 $LNG['main_menu_join'] = "Join";
 $LNG['main_menu_random'] = "Random Member";
 $LNG['main_menu_search'] = "Search";
-$LNG['main_menu_lostcode'] = "Lost Code";
-$LNG['main_menu_lostpw'] = "Lost Password";
+$LNG['main_menu_lost_code'] = "Lost Code";
+$LNG['main_menu_lost_password'] = "Lost Password";
 $LNG['main_menu_edit'] = "Edit Member Info";
 $LNG['main_featured'] = "Featured Member"; // 4.0.2
 $LNG['main_executiontime'] = "Script Execution Time"; // 4.0

@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -20,14 +20,14 @@ class lost_code extends base {
   function lost_code() {
     global $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['lostcode_header'];
+    $TMPL['header'] = $LNG['lost_code_header'];
 
     if (!isset($FORM['u'])) {
-      $TMPL['content'] = $this->do_skin('lostcode_form');
+      $TMPL['content'] = $this->do_skin('lost_code_form');
     }
     else {
       $TMPL['username'] = $FORM['u'];
-      $TMPL['content'] = $this->do_skin('lostcode_finish');
+      $TMPL['content'] = $this->do_skin('lost_code_finish');
     }
   }
 }

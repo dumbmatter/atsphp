@@ -1,14 +1,14 @@
-<h1><#title></h1><br />
-<b><#lng{'g_username'}>:</b> <#username><br />
-<b><#lng{'g_description'}>:</b> <#description><br />
-<b><#lng{'g_url'}>:</b> <a href="<#url>" target="_blank"><#url></a><br />
-<b><#lng{'g_category'}>:</b> <a href="<#list_url>/index.php?cat=<#category>"><#category></a><br />
-<b><#lng{'stats_member_since'}>:</b> <#join_date><br /><br />
+<h1>{$title}</h1><br />
+<b><#lng{'g_username'}>:</b> {$username}<br />
+<b><#lng{'g_description'}>:</b> {$description}<br />
+<b><#lng{'g_url'}>:</b> <a href="{$url}" target="_blank">{$url}</a><br />
+<b><#lng{'g_category'}>:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
+<b><#lng{'stats_member_since'}>:</b> {$join_date}<br /><br />
 
-<b><#lng{'stats_rating_avg'}>:</b> <#average_rating> / 5<br />
-<b><#lng{'stats_rating_num'}>:</b> <#num_ratings><br />
-<a href="<#list_url>/index.php?a=rate&amp;u=<#username>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
-<img src="<#banner_url>" /><br /><br />
+<b><#lng{'stats_rating_avg'}>:</b> {$average_rating} / 5<br />
+<b><#lng{'stats_rating_num'}>:</b> {$num_ratings}<br />
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<img src="{$banner_url}" alt="{$title}" /><br /><br />
 
 <table class="darkbg" cellspacing="1" cellpadding="2">
 <tr class="mediumbg">
@@ -21,97 +21,97 @@
 <th><#lng{'g_tot_out'}></th>
 </tr><tr class="lightbg" style="font-weight: bold;">
 <td><#lng{'g_average'}></td>
-<td align="center"><#unq_pv_avg_daily></td>
-<td align="center"><#tot_pv_avg_daily></td>
-<td align="center"><#unq_in_avg_daily></td>
-<td align="center"><#tot_in_avg_daily></td>
-<td align="center"><#unq_out_avg_daily></td>
-<td align="center"><#tot_out_avg_daily></td>
+<td align="center">{$unq_pv_avg_daily}</td>
+<td align="center">{$tot_pv_avg_daily}</td>
+<td align="center">{$unq_in_avg_daily}</td>
+<td align="center">{$tot_in_avg_daily}</td>
+<td align="center">{$unq_out_avg_daily}</td>
+<td align="center">{$tot_out_avg_daily}</td>
 </tr><tr class="lightbgalt">
 <td><#lng{'g_today'}></td>
-<td align="center"><#unq_pv_0_daily></td>
-<td align="center"><#tot_pv_0_daily></td>
-<td align="center"><#unq_in_0_daily></td>
-<td align="center"><#tot_in_0_daily></td>
-<td align="center"><#unq_out_0_daily></td>
-<td align="center"><#tot_out_0_daily></td>
+<td align="center">{$unq_pv_0_daily}</td>
+<td align="center">{$tot_pv_0_daily}</td>
+<td align="center">{$unq_in_0_daily}</td>
+<td align="center">{$tot_in_0_daily}</td>
+<td align="center">{$unq_out_0_daily}</td>
+<td align="center">{$tot_out_0_daily}</td>
 </tr><tr class="lightbg">
 <td><#lng{'g_yesterday'}></td>
-<td align="center"><#unq_pv_1_daily></td>
-<td align="center"><#tot_pv_1_daily></td>
-<td align="center"><#unq_in_1_daily></td>
-<td align="center"><#tot_in_1_daily></td>
-<td align="center"><#unq_out_1_daily></td>
-<td align="center"><#tot_out_1_daily></td>
+<td align="center">{$unq_pv_1_daily}</td>
+<td align="center">{$tot_pv_1_daily}</td>
+<td align="center">{$unq_in_1_daily}</td>
+<td align="center">{$tot_in_1_daily}</td>
+<td align="center">{$unq_out_1_daily}</td>
+<td align="center">{$tot_out_1_daily}</td>
 </tr><tr class="lightbgalt">
-<td><#2_daily></td>
-<td align="center"><#unq_pv_2_daily></td>
-<td align="center"><#tot_pv_2_daily></td>
-<td align="center"><#unq_in_2_daily></td>
-<td align="center"><#tot_in_2_daily></td>
-<td align="center"><#unq_out_2_daily></td>
-<td align="center"><#tot_out_2_daily></td>
+<td>{$2_daily}</td>
+<td align="center">{$unq_pv_2_daily}</td>
+<td align="center">{$tot_pv_2_daily}</td>
+<td align="center">{$unq_in_2_daily}</td>
+<td align="center">{$tot_in_2_daily}</td>
+<td align="center">{$unq_out_2_daily}</td>
+<td align="center">{$tot_out_2_daily}</td>
 </tr><tr class="lightbg">
-<td><#3_daily></td>
-<td align="center"><#unq_pv_3_daily></td>
-<td align="center"><#tot_pv_3_daily></td>
-<td align="center"><#unq_in_3_daily></td>
-<td align="center"><#tot_in_3_daily></td>
-<td align="center"><#unq_out_3_daily></td>
-<td align="center"><#tot_out_3_daily></td>
+<td>{$3_daily}</td>
+<td align="center">{$unq_pv_3_daily}</td>
+<td align="center">{$tot_pv_3_daily}</td>
+<td align="center">{$unq_in_3_daily}</td>
+<td align="center">{$tot_in_3_daily}</td>
+<td align="center">{$unq_out_3_daily}</td>
+<td align="center">{$tot_out_3_daily}</td>
 </tr><tr class="lightbgalt">
-<td><#4_daily></td>
-<td align="center"><#unq_pv_4_daily></td>
-<td align="center"><#tot_pv_4_daily></td>
-<td align="center"><#unq_in_4_daily></td>
-<td align="center"><#tot_in_4_daily></td>
-<td align="center"><#unq_out_4_daily></td>
-<td align="center"><#tot_out_4_daily></td>
+<td>{$4_daily}</td>
+<td align="center">{$unq_pv_4_daily}</td>
+<td align="center">{$tot_pv_4_daily}</td>
+<td align="center">{$unq_in_4_daily}</td>
+<td align="center">{$tot_in_4_daily}</td>
+<td align="center">{$unq_out_4_daily}</td>
+<td align="center">{$tot_out_4_daily}</td>
 </tr><tr class="lightbg">
-<td><#5_daily></td>
-<td align="center"><#unq_pv_5_daily></td>
-<td align="center"><#tot_pv_5_daily></td>
-<td align="center"><#unq_in_5_daily></td>
-<td align="center"><#tot_in_5_daily></td>
-<td align="center"><#unq_out_5_daily></td>
-<td align="center"><#tot_out_5_daily></td>
+<td>{$5_daily}</td>
+<td align="center">{$unq_pv_5_daily}</td>
+<td align="center">{$tot_pv_5_daily}</td>
+<td align="center">{$unq_in_5_daily}</td>
+<td align="center">{$tot_in_5_daily}</td>
+<td align="center">{$unq_out_5_daily}</td>
+<td align="center">{$tot_out_5_daily}</td>
 </tr><tr class="lightbgalt">
-<td><#6_daily></td>
-<td align="center"><#unq_pv_6_daily></td>
-<td align="center"><#tot_pv_6_daily></td>
-<td align="center"><#unq_in_6_daily></td>
-<td align="center"><#tot_in_6_daily></td>
-<td align="center"><#unq_out_6_daily></td>
-<td align="center"><#tot_out_6_daily></td>
+<td>{$6_daily}</td>
+<td align="center">{$unq_pv_6_daily}</td>
+<td align="center">{$tot_pv_6_daily}</td>
+<td align="center">{$unq_in_6_daily}</td>
+<td align="center">{$tot_in_6_daily}</td>
+<td align="center">{$unq_out_6_daily}</td>
+<td align="center">{$tot_out_6_daily}</td>
 </tr><tr class="lightbg">
-<td><#7_daily></td>
-<td align="center"><#unq_pv_7_daily></td>
-<td align="center"><#tot_pv_7_daily></td>
-<td align="center"><#unq_in_7_daily></td>
-<td align="center"><#tot_in_7_daily></td>
-<td align="center"><#unq_out_7_daily></td>
-<td align="center"><#tot_out_7_daily></td>
+<td>{$7_daily}</td>
+<td align="center">{$unq_pv_7_daily}</td>
+<td align="center">{$tot_pv_7_daily}</td>
+<td align="center">{$unq_in_7_daily}</td>
+<td align="center">{$tot_in_7_daily}</td>
+<td align="center">{$unq_out_7_daily}</td>
+<td align="center">{$tot_out_7_daily}</td>
 </tr><tr class="lightbgalt">
-<td><#8_daily></td>
-<td align="center"><#unq_pv_8_daily></td>
-<td align="center"><#tot_pv_8_daily></td>
-<td align="center"><#unq_in_8_daily></td>
-<td align="center"><#tot_in_8_daily></td>
-<td align="center"><#unq_out_8_daily></td>
-<td align="center"><#tot_out_8_daily></td>
+<td>{$8_daily}</td>
+<td align="center">{$unq_pv_8_daily}</td>
+<td align="center">{$tot_pv_8_daily}</td>
+<td align="center">{$unq_in_8_daily}</td>
+<td align="center">{$tot_in_8_daily}</td>
+<td align="center">{$unq_out_8_daily}</td>
+<td align="center">{$tot_out_8_daily}</td>
 </tr><tr class="lightbg">
-<td><#9_daily></td>
-<td align="center"><#unq_pv_9_daily></td>
-<td align="center"><#tot_pv_9_daily></td>
-<td align="center"><#unq_in_9_daily></td>
-<td align="center"><#tot_in_9_daily></td>
-<td align="center"><#unq_out_9_daily></td>
-<td align="center"><#tot_out_9_daily></td>
+<td>{$9_daily}</td>
+<td align="center">{$unq_pv_9_daily}</td>
+<td align="center">{$tot_pv_9_daily}</td>
+<td align="center">{$unq_in_9_daily}</td>
+<td align="center">{$tot_in_9_daily}</td>
+<td align="center">{$unq_out_9_daily}</td>
+<td align="center">{$tot_out_9_daily}</td>
 </tr>
 </table>
 <br />
 
 <b><#lng{'stats_reviews'}></b><br />
-<a href="<#list_url>/index.php?a=rate&amp;u=<#username>&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
-<#reviews>
-<a href="<#list_url>/index.php?a=stats&amp;u=<#username>&amp;allreviews=1"><#lng{'stats_allreviews'}></a>
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+{$reviews}
+<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1"><#lng{'stats_allreviews'}></a>

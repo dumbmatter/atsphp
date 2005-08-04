@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -20,8 +20,8 @@
 $CONF['path'] = '.';
 
 // Connect to the database
-require_once "{$CONF['path']}/settings_sql.php";
-require_once "{$CONF['path']}/sources/sql/{$CONF['sql']}.php";
+require_once("{$CONF['path']}/settings_sql.php");
+require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database']);
 
@@ -31,7 +31,7 @@ $CONF = array_merge($CONF, $settings);
 
 $username = $DB->escape($_GET['u']);
 
-// Is this a unique pageviwew?
+// Is this a unique hit?
 $ip = getenv("REMOTE_ADDR");
 list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
 
@@ -83,7 +83,9 @@ if ($CONF['ranks_on_buttons']) {
         $new_rank_cache = 0;
       }
     }
-    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE username = '{$username}'", __FILE__, __LINE__);
+    if (isset($new_rank_cache)) {
+      $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE username = '{$username}'", __FILE__, __LINE__);
+    }
   }
 
   // Stat Buttons

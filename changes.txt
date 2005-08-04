@@ -1,6 +1,6 @@
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\

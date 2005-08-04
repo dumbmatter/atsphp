@@ -81,9 +81,10 @@ CREATE TABLE `ats_reviews` (
 
 CREATE TABLE `ats_sessions` (
   `type` varchar(7) default '',
-  `session_id` varchar(24) default '',
-  `created` int(10) unsigned default '',
-  `data` varchar(255) default ''
+  `sid` varchar(32) default '',
+  `time` int(10) unsigned default '',
+  `data` varchar(255) default '',
+  PRIMARY KEY  (`sid`)
 );
 
 CREATE TABLE `ats_stats` (

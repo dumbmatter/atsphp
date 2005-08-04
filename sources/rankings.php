@@ -16,6 +16,10 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+///////
+// Refactor this code?
+///////
+
 class rankings extends base {
   function rankings() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;

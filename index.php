@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -16,19 +16,18 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha';
+$TMPL['version'] = '5.0 Alpha (2005-08-04)';
 
 // Require some classes and start the timer
-require_once "{$CONF['path']}/sources/misc/classes.php";
+require_once("{$CONF['path']}/sources/misc/classes.php");
 $TIMER = new timer;
 
 // Connect to the database
 // Set the last argument of $DB->connect to 1 to enable debug mode
-require_once "{$CONF['path']}/settings_sql.php";
-require_once "{$CONF['path']}/sources/sql/{$CONF['sql']}.php";
+require_once("{$CONF['path']}/settings_sql.php");
+require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
@@ -58,7 +57,7 @@ $TMPL['list_url'] = $CONF['list_url'];
 $FORM = array_merge($_GET, $_POST);
 
 // The language file
-require_once "{$CONF['path']}/languages/{$CONF['default_language']}.php";
+require_once("{$CONF['path']}/languages/{$CONF['default_language']}.php");
 
 // Determine the category and skin
 if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
@@ -70,7 +69,7 @@ else {
 if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}")) {
   $TMPL['skin_name'] = $CONF['default_skin'];
 }
-require_once "{$CONF['path']}/sources/misc/skin.php";
+require_once("{$CONF['path']}/sources/misc/skin.php");
 
 // Is it a new day/week/month?
 list($last_new_day, $last_new_week, $last_new_month) = $DB->fetch("SELECT last_new_day, last_new_week, last_new_month FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
@@ -79,15 +78,15 @@ $current_day = date('d', $time);
 $current_week = date('W', $time);
 $current_month = date('m', $time);
 if ($last_new_day != $current_day) {
-  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  require_once("{$CONF['path']}/sources/misc/new_day.php");
   new_day($current_day);
 }
 if ($last_new_week != $current_week) {
-  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  require_once("{$CONF['path']}/sources/misc/new_day.php");
   new_week($current_week);
 }
 if ($last_new_month != $current_month) {
-  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  require_once("{$CONF['path']}/sources/misc/new_day.php");
   new_month($current_month);
 }
 
@@ -108,9 +107,11 @@ if ($CONF['gzip']) {
 $action = array(
             'edit' => 1,
             'graph' => 1,
+            'in' => 1,
             'join' => 1,
             'lost_code' => 1,
             'lost_password' => 1,
+            'out' => 1,
             'rankings' => 1,
             'rate' => 1,
             'search' => 1,
