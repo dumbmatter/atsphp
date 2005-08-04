@@ -29,30 +29,30 @@ $DB->connect($CONF['sql_host'], $CONF['sql_user'], $CONF['sql_password'], $CONF[
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
-$id = intval($_GET['id']);
+$username = $DB->escape($_GET['u']);
 
 // Is this a unique pageviwew?
 $ip = getenv("REMOTE_ADDR");
-list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND id = {$id}", __FILE__, __LINE__);
+list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
 
 $unique_sql = ', unq_pv_overall = unq_pv_overall + 1, unq_pv_0_daily = unq_pv_0_daily + 1, unq_pv_0_weekly = unq_pv_0_weekly + 1, unq_pv_0_monthly = unq_pv_0_monthly + 1';
 if ($ip == $ip_sql && $unq_pv == 0) {
-  $DB->query("UPDATE {$CONF['sql_prefix']}_ip_log SET unq_pv = 1 WHERE ip_address = '{$ip}' AND id = {$id}", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_ip_log SET unq_pv = 1 WHERE ip_address = '{$ip}' AND username = '{$username}'", __FILE__, __LINE__);
 }
 elseif ($ip != $ip_sql) {
-  $DB->query("INSERT INTO {$CONF['sql_prefix']}_ip_log (ip_address, id, unq_pv) VALUES ('{$ip}', {$id} ,1)", __FILE__, __LINE__);
+  $DB->query("INSERT INTO {$CONF['sql_prefix']}_ip_log (ip_address, username, unq_pv) VALUES ('{$ip}', '{$username}' ,1)", __FILE__, __LINE__);
 }
 else {
   $unique_sql = '';
 }
 
 // Update stats
-$DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_overall = tot_pv_overall + 1, tot_pv_0_daily = tot_pv_0_daily + 1, tot_pv_0_weekly = tot_pv_0_weekly + 1, tot_pv_0_monthly = tot_pv_0_monthly + 1{$unique_sql} WHERE id = {$id}", __FILE__, __LINE__);
+$DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_overall = tot_pv_overall + 1, tot_pv_0_daily = tot_pv_0_daily + 1, tot_pv_0_weekly = tot_pv_0_weekly + 1, tot_pv_0_monthly = tot_pv_0_monthly + 1{$unique_sql} WHERE username = '{$username}'", __FILE__, __LINE__);
 
 // What button to display?
 if ($CONF['ranks_on_buttons']) {
   // See if rank is freshly cached.  If so, use cached value.  If not, calculate rank.
-  list($rank_cache, $rank_cache_time) = $DB->fetch("SELECT rank_cache, rank_cache_time FROM {$CONF['sql_prefix']}_stats WHERE id = {$id}", __FILE__, __LINE__);
+  list($rank_cache, $rank_cache_time) = $DB->fetch("SELECT rank_cache, rank_cache_time FROM {$CONF['sql_prefix']}_stats WHERE username = '{$username}'", __FILE__, __LINE__);
 
   $current_time = time();
   if ($current_time - (12*3600) < $rank_cache_time) {
@@ -63,17 +63,14 @@ if ($CONF['ranks_on_buttons']) {
     }
   }
   else {
-    $order_by = '(';
-    for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-      $order_by .= "unq_{$CONF['ranking_method']}_{$i}_{$CONF['daily_weekly_monthly']} + ";
-    }
-    $order_by .= "0) / {$CONF['daily_weekly_monthly_num']}";
+    require_once "{$CONF['path']}/sources/misc/classes.php";
+    $rank_by = base::rank_by();
 
-    list($hits) = $DB->fetch("SELECT {$order_by}
+    list($hits) = $DB->fetch("SELECT {$rank_by}
                             FROM {$CONF['sql_prefix']}_stats
-                            WHERE id = {$id}", __FILE__, __LINE__);
+                            WHERE username = '{$username}'", __FILE__, __LINE__);
     if ($hits) {
-      $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$order_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
+      $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$rank_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
       list($rank) = $DB->fetch_array($result);
 
       if ($rank <= $CONF['button_num']) {
@@ -86,7 +83,7 @@ if ($CONF['ranks_on_buttons']) {
         $new_rank_cache = 0;
       }
     }
-    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE id = {$id}", __FILE__, __LINE__);
+    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE username = '{$username}'", __FILE__, __LINE__);
   }
 
   // Stat Buttons

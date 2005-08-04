@@ -1,19 +1,20 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
 class join extends join_edit {
   function join() {
@@ -44,10 +45,9 @@ class join extends join_edit {
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    if ($this->check_input()) {
-      list($TMPL['id']) = $DB->fetch("SELECT MAX(id) + 1 FROM {$CONF['sql_prefix']}_sites", __FILE__, __LINE__);
-      $TMPL['id'] = $TMPL['id'] ? $TMPL['id'] : 1;
+    $TMPL['username'] = $DB->escape($FORM['u']);
 
+    if ($this->check_input()) {
       $TMPL['url'] = $DB->escape($FORM['url']);
       $TMPL['title'] = $DB->escape($FORM['title']);
       $TMPL['description'] = $DB->escape($FORM['description']);
@@ -57,9 +57,9 @@ class join extends join_edit {
       $password = md5($FORM['password']);
 
       $join_date = date('Y-m-d');
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (id, password, url, title, description, category, banner_url, email, join_date, active)
-                  VALUES ({$TMPL['id']}, '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (id, old_rank) VALUES ({$TMPL['id']}, {$TMPL['id']})", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, title, description, category, banner_url, email, join_date, active)
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
  
       $join_email = new skin('join_email');
       $join_email->send_email($TMPL['email']);

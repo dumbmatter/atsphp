@@ -1,19 +1,20 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 5.0                                       \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
 class rankings extends base {
   function rankings() {
@@ -38,11 +39,7 @@ class rankings extends base {
     }
 
     // Make ORDER BY clause
-    $order_by = '(';
-    for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-      $order_by .= "unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']} + ";
-    }
-    $order_by .= "0) / {$CONF['daily_weekly_monthly_num']} DESC";
+    $order_by = $this->rank_by($ranking_method)." DESC";
 
     // Start the output with table_top_open if we're on the first page
     if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
@@ -56,7 +53,7 @@ class rankings extends base {
     $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
     $result = $DB->select_limit("SELECT *
                                  FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
-                                 WHERE sites.id = stats.id AND active = 1 {$category_sql}
+                                 WHERE sites.username = stats.username AND active = 1 {$category_sql}
                                  ORDER BY {$order_by}
                                  ", $CONF['num_list'], $start, __FILE__, __LINE__);
 
@@ -70,7 +67,7 @@ class rankings extends base {
       if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->query("UPDATE {$CONF['sql_prefix']}_stats_general SET old_rank = {$TMPL['old_rank']} WHERE id = {$TMPL['id']}");
+          $DB->query("UPDATE {$CONF['sql_prefix']}_stats_general SET old_rank = {$TMPL['old_rank']} WHERE username = {$TMPL['username']}");
         }
         if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; }
         elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; }
@@ -81,15 +78,15 @@ class rankings extends base {
       if ($TMPL['alt']) { $TMPL['alt'] = ''; }
       else { $TMPL['alt'] = 'alt'; }
 
-      $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
+      $TMPL['out_url'] = $CONF['list_url'].'/out.php?u='.$TMPL['username'];
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
       $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$CONF['daily_weekly_monthly']}"];
       $TMPL['average'] = 0;
-      for ($i = 0; $i <= 9; $i++) {
+      for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
         $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']}"];
       }
-      $TMPL['average'] = $TMPL['average'] / 10;
+      $TMPL['average'] = $TMPL['average'] / $CONF['daily_weekly_monthly_num'];
 
       // Only use _top skin on the first page
       if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {

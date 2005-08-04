@@ -1,41 +1,59 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 5.0                                       \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
 class stats extends base {
   function __construct() {
-    global $CONFIG, $DB, $FORM, $LNG, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['stats_header'];
 
-    $TMPL['id'] = $this->check_id($FORM['id']);
+    $TMPL['username'] = $DB->escape($FORM['u']);
 
-    $result = $DB->execute('SELECT url, title, description, category, banner_url, total_ratings, num_ratings, unq_pv_today, unq_pv_1, unq_pv_2, unq_pv_3, (unq_pv_today + unq_pv_1 + unq_pv_2 + unq_pv_3) / 4, tot_pv_today, tot_pv_1, tot_pv_2, tot_pv_3, (tot_pv_today + tot_pv_1 + tot_pv_2 + tot_pv_3) / 4, unq_in_today, unq_in_1, unq_in_2, unq_in_3, (unq_in_today + unq_in_1 + unq_in_2 + unq_in_3) / 4, tot_in_today, tot_in_1, tot_in_2, tot_in_3, (tot_in_today + tot_in_1 + tot_in_2 + tot_in_3) / 4, unq_out_today, unq_out_1, unq_out_2, unq_out_3, (unq_out_today + unq_out_1 + unq_out_2 + unq_out_3) / 4, tot_out_today, tot_out_1, tot_out_2, tot_out_3, (tot_out_today + tot_out_1 + tot_out_2 + tot_out_3) / 4
-                            FROM '.$CONFIG['sql_prefix'].'_members m, '.$CONFIG['sql_prefix'].'_stats s
-                            WHERE m.id = s.id AND m.id = '.$TMPL['id']);
+    $row = $DB->fetch("SELECT *
+                       FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
+                       WHERE sites.username = stats.username AND sites.username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    $TMPL = array_merge($TMPL, $row);
 
-    list($TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['cat'], $TMPL['banner_url'], $total_ratings, $TMPL['num_ratings'], $TMPL['unq_pv_tod'], $TMPL['unq_pv_1'], $TMPL['unq_pv_2'], $TMPL['unq_pv_3'], $TMPL['unq_pv_avg'], $TMPL['tot_pv_tod'], $TMPL['tot_pv_1'], $TMPL['tot_pv_2'], $TMPL['tot_pv_3'], $TMPL['tot_pv_avg'], $TMPL['unq_in_tod'], $TMPL['unq_in_1'], $TMPL['unq_in_2'], $TMPL['unq_in_3'], $TMPL['unq_in_avg'], $TMPL['tot_in_tod'], $TMPL['tot_in_1'], $TMPL['tot_in_2'], $TMPL['tot_in_3'], $TMPL['tot_in_avg'], $TMPL['unq_out_tod'], $TMPL['unq_out_1'], $TMPL['unq_out_2'], $TMPL['unq_out_3'], $TMPL['unq_out_avg'], $TMPL['tot_out_tod'], $TMPL['tot_out_1'], $TMPL['tot_out_2'], $TMPL['tot_out_3'], $TMPL['tot_out_avg']) = $DB->fetch_array($result);
-    $TMPL['url'] = $CONFIG['list_url'].'/out.php?id='.$TMPL['id'];
-    $TMPL['avg_rating'] = $TMPL['num_ratings'] > 0 ? round($total_ratings / $TMPL['num_ratings'], 0) : 0;
+    $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
-    $query = 'SELECT review_id, review_date, review FROM '.$CONFIG['sql_prefix'].'_reviews WHERE id = '.$TMPL['id'];
-    if (isset($FORM['allreviews'])) { $result = $DB->execute($query); }
-    else { $result = $DB->select_limit($query, 5, 0); }
-    while (list($review_id, $review_date, $review) = $DB->fetch_array($result)) {
-      $TMPL['reviews'] .= "<b>{$review_id} - {$review_date}</b><br />\n{$review}<br /><br />\n";
+    $ranking_methods = array('unq_pv', 'tot_pv', 'unq_in', 'tot_in', 'unq_out', 'tot_out');
+    foreach ($ranking_methods as $ranking_method) {
+      $TMPL["{$ranking_method}_avg_daily"] = 0;
+      for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
+        $TMPL["{$ranking_method}_avg_daily"] = $TMPL["{$ranking_method}_avg_daily"] + $TMPL["{$ranking_method}_{$i}_daily"];
+      }
+      $TMPL["{$ranking_method}_avg_daily"] = $TMPL["{$ranking_method}_avg_daily"] / $CONF['daily_weekly_monthly_num'];
+    }
+
+    for ($i = 2; $i < 10; $i++) {
+      $TMPL["{$i}_daily"] = date('F j', time()-3600*24*$i);
+    }
+
+    $query = "SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE username = '{$TMPL['username']}' ORDER BY date DESC";
+    if (isset($FORM['all_reviews']) && $FORM['all_reviews']) {
+      $result = $DB->execute($query, __FILE__, __LINE__);
+    }
+    else {
+      $result = $DB->select_limit($query, 5, 0, __FILE__, __LINE__);
+    }
+    $TMPL['reviews'] = '';
+    while (list($id, $date, $review) = $DB->fetch_array($result)) {
+      $TMPL['reviews'] .= "<b>{$id} - {$date}</b><br />\n{$review}<br /><br />\n";
     }
 
     $TMPL['content'] = $this->do_skin('stats');

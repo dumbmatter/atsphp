@@ -19,7 +19,7 @@ CREATE TABLE `ats_settings` (
   `top_skin_num` int(5) default 2,
   `ad_breaks` varchar(255) default '',
   `active_default` tinyint(1) default 1,
-  `delete_after` int(3) default 14,
+  `delete_after` int(5) default 14,
   `email_admin_on_join` tinyint(1) default 0,
   `max_banner_width` int(4) default 0,
   `max_banner_height` int(4) default 0,
@@ -50,7 +50,7 @@ CREATE TABLE `ats_categories` (
 
 CREATE TABLE `ats_ip_log` (
   `ip_address` varchar(32) default '',
-  `id` bigint(20) unsigned default '0',
+  `username` varchar(255) default '',
   `unq_pv` tinyint(1) default '',
   `unq_in` tinyint(1) default '',
   `unq_out` tinyint(1) default '',
@@ -58,7 +58,7 @@ CREATE TABLE `ats_ip_log` (
 );
 
 CREATE TABLE `ats_sites` (
-  `id` bigint(20) unsigned default '0',
+  `username` varchar(255) default '',
   `password` varchar(32) default '',
   `url` varchar(255) default '',
   `title` varchar(255) default '',
@@ -68,15 +68,15 @@ CREATE TABLE `ats_sites` (
   `email` varchar(255) default '',
   `join_date` date default '0000-00-00',
   `active` tinyint(1) default '1',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`username`)
 );
 
 CREATE TABLE `ats_reviews` (
+  `username` varchar(255) default '',
   `id` bigint(20) unsigned default '0',
-  `review_id` bigint(20) unsigned default '0',
-  `review_date` datetime default '0000-00-00 00:00:00',
+  `date` datetime default '0000-00-00 00:00:00',
   `review` text,
-  PRIMARY KEY  (`review_id`)
+  PRIMARY KEY  (`id`)
 );
 
 CREATE TABLE `ats_sessions` (
@@ -87,7 +87,7 @@ CREATE TABLE `ats_sessions` (
 );
 
 CREATE TABLE `ats_stats` (
-  `id` bigint(20) unsigned default '0',
+  `username` varchar(255) default '',
   `rank_cache` bigint(20) unsigned default '0',
   `rank_cache_time` int(10) unsigned default '0',
   `old_rank` bigint(20) unsigned default '0',
@@ -298,5 +298,5 @@ CREATE TABLE `ats_stats` (
   `tot_out_8_monthly` bigint(20) unsigned default '0',
   `tot_out_9_monthly` bigint(20) unsigned default '0',
   `tot_out_max_monthly` bigint(20) unsigned default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`username`)
 );

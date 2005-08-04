@@ -1,28 +1,26 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//-----------------------------------------------------------------\\
-// This translation is by Jeremy Scheff                            \\
-// http://www.aardvarkind.com/                                     \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
 // Global
 $LNG['g_form_submit_short'] = "Go";
 $LNG['g_form_submit_long'] = "Submit";
 $LNG['g_form_submit_reset'] = "Reset";
-$LNG['g_id'] = "ID";
+$LNG['g_username'] = "Username";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Title";
 $LNG['g_description'] = "Description";
@@ -33,25 +31,22 @@ $LNG['g_password'] = "Password";
 $LNG['g_average'] = "Average";
 $LNG['g_today'] = "Today";
 $LNG['g_yesterday'] = "Yesterday";
-$LNG['g_2days'] = "2 Days Ago";
-$LNG['g_3days'] = "3 Days Ago";
-$LNG['g_thismonth'] = "This&nbsp;Month"; // 3.2.1
-$LNG['g_lastmonth'] = "Last Month"; // 3.2.1
-$LNG['g_2months'] = "2 Months Ago"; // 3.2.1
-$LNG['g_3months'] = "3 Months Ago"; // 3.2.1
-$LNG['g_thisweek'] = "This&nbsp;Week"; // 4.2.0
-$LNG['g_lastweek'] = "Last Weeks"; // 4.2.0
-$LNG['g_2weeks'] = "2 Weeks Ago"; // 4.2.0
-$LNG['g_3weeks'] = "3 Weeks Ago"; // 4.2.0
+$LNG['g_daily'] = "Daily";
+$LNG['g_this_month'] = "This Month"; // 3.2.1
+$LNG['g_last_month'] = "Last Month"; // 3.2.1
+$LNG['g_monthly'] = "Monthly";
+$LNG['g_this_week'] = "This Week"; // 4.2.0
+$LNG['g_last_week'] = "Last Week"; // 4.2.0
+$LNG['g_weekly'] = "Weekly";
 $LNG['g_pv'] = 'Pageviews';
-$LNG['g_in'] = 'Hits In';
-$LNG['g_out'] = 'Hits Out';
-$LNG['g_unq_pv'] = "Unique Pageviews";
-$LNG['g_tot_pv'] = "Total Pageviews";
-$LNG['g_unq_in'] = "Unique Hits In";
-$LNG['g_tot_in'] = "Total Hits In";
-$LNG['g_unq_out'] = "Unique Hits Out";
-$LNG['g_tot_out'] = "Total Hits Out";
+$LNG['g_in'] = 'In';
+$LNG['g_out'] = 'Out';
+$LNG['g_unq_pv'] = "Unique PVs";
+$LNG['g_tot_pv'] = "Total PVs";
+$LNG['g_unq_in'] = "Unique In";
+$LNG['g_tot_in'] = "Total In";
+$LNG['g_unq_out'] = "Unique Out";
+$LNG['g_tot_out'] = "Total Out";
 
 // Edit Member Info
 $LNG['edit_header'] = "Edit Member Info";
@@ -81,6 +76,8 @@ $LNG['graph_header'] = "Graph";
 $LNG['join_header'] = "Join";
 $LNG['join_error'] = "Error";
 $LNG['join_error_forgot'] = "You forgot to:";
+$LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes.";
+$LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use.";
 $LNG['join_error_url'] = "Enter a valid url.";
 $LNG['join_error_email'] = "Enter a valid email address.";
 $LNG['join_error_title'] = "Enter a title for your web site.";
@@ -154,6 +151,7 @@ $LNG['search_next'] = "Next"; // 3.2.1
 
 // Stats
 $LNG['stats_header'] = "Stats";
+$LNG['stats_member_since'] = "Member Since";
 $LNG['stats_rating_avg'] = "Average Rating";
 $LNG['stats_rating_num'] = "Number of Ratings";
 $LNG['stats_rate'] = "Rate And Review This Site";

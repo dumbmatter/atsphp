@@ -73,24 +73,26 @@ if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}")) {
 require_once "{$CONF['path']}/sources/misc/skin.php";
 
 // Is it a new day/week/month?
-/*$result = $DB->execute('SELECT last_new_day FROM '.$CONF['sql_prefix'].'_etc');
-list($last_new_day) = $DB->fetch_array($result);
+list($last_new_day, $last_new_week, $last_new_month) = $DB->fetch("SELECT last_new_day, last_new_week, last_new_month FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
 $time = time() + (3600 * $CONF['time_offset']);
-if ($CONF['day_week_month'] == 'week') {
-  $current_day = date('W', $time);
-}
-elseif ($CONF['day_week_month'] == 'month') {
-  $current_day = date('m', $time);
-}
-else {
-  $current_day = date('d', $time);
-}
+$current_day = date('d', $time);
+$current_week = date('W', $time);
+$current_month = date('m', $time);
 if ($last_new_day != $current_day) {
-    require_once $CONF['path'].'/sources/misc/new_day.php';
+  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  new_day($current_day);
+}
+if ($last_new_week != $current_week) {
+  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  new_week($current_week);
+}
+if ($last_new_month != $current_month) {
+  require_once "{$CONF['path']}/sources/misc/new_day.php";
+  new_month($current_month);
 }
 
 // Adjust the output text based on days, weeks, or months
-if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
+/*if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
   $LNG['g_today'] = $LNG['g_this'.$CONF['day_week_month']];
   $LNG['g_yesterday'] = $LNG['g_last'.$CONF['day_week_month']];
   $LNG['g_2days'] = $LNG['g_2'.$CONF['day_week_month'].'s'];
@@ -142,4 +144,14 @@ if ($DB->debug) {
 //  echo '</pre>';
   echo '</div>';
 }
+
+/*$methods = array('unq_pv', 'tot_pv', 'unq_in', 'tot_in', 'unq_out', 'tot_out');
+foreach ($methods as $method) {
+  for ($i = 9; $i >= 0; $i--) {
+    $j = $i - 1;
+    if ($j == -1) { echo "{$method}_{$i}_monthly = 0, "; }
+    else { echo "{$method}_{$i}_monthly = {$method}_{$j}_monthly, "; }
+  }
+  echo "<br>";
+}*/
 ?>
