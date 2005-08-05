@@ -54,14 +54,23 @@ class rankings extends base {
     }
 
     // Figure out what rows we want, and SELECT them
-    $start = isset($FORM['start']) ? $FORM['start'] - 1 : 0;
+    if (isset($FORM['start'])) {
+      $start = intval($FORM['start']);
+      if ($start > 0) {
+        $start--;
+      }
+    }
+    else {
+      $start = 0;
+    }
+
     $result = $DB->select_limit("SELECT *
                                  FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                                  WHERE sites.username = stats.username AND active = 1 {$category_sql}
                                  ORDER BY {$order_by}
                                  ", $CONF['num_list'], $start, __FILE__, __LINE__);
 
-    $TMPL['rank'] = ++$start;
+    $TMPL['rank'] = $start + 1;
     $page_rank = 1;
     $top_done = 0;
     $do_table_open = 0;

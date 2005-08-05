@@ -1,28 +1,16 @@
-<form action="index.php" method="get">
-<input type="hidden" value="search" name="a" />
-<input name="kw" type="text" size="20" value="<#kw>" />
-<input type="submit" value="<#lng{'search_search'}>" />
-</form>
-<br />
 <table cellspacing="0" cellpadding="2" width="100%"><tr class="lightbgalt"><td>
-<#lng{'search_for'}> <b><#kw></b>.
+{$lng->search_for} <b>{$query}</b>.
 </td><td align="right">
-<a href="<#list_url>/index.php?a=search&amp;kw=<#kw>&start=<#prev>"><#lng{'search_prev'}></a>
+<a href="{$list_url}/index.php?a=search&amp;q={$query}&start={$prev}">{$lng->search_prev}</a>
  | 
-<a href="<#list_url>/index.php?a=search&amp;kw=<#kw>&start=<#next>"><#lng{'search_next'}></a>
+<a href="{$list_url}/index.php?a=search&amp;q={$query}&start={$next}">{$lng->search_next}</a>
 </td></tr></table>
 <br />
-<#results>
+{$results}
 <table cellspacing="0" cellpadding="2" width="100%"><tr class="lightbgalt"><td>
-<#lng{'search_for'}> <b><#kw></b>.
+{$lng->search_for} <b>{$query}</b>.
 </td><td align="right">
-<a href="<#list_url>/index.php?a=search&amp;kw=<#kw>&start=<#prev>"><#lng{'search_prev'}></a>
+<a href="{$list_url}/index.php?a=search&amp;q={$query}&start={$prev}">{$lng->search_prev}</a>
  | 
-<a href="<#list_url>/index.php?a=search&amp;kw=<#kw>&start=<#next>"><#lng{'search_next'}></a>
+<a href="{$list_url}/index.php?a=search&amp;q={$query}&start={$next}">{$lng->search_next}</a>
 </td></tr></table>
-<br />
-<form action="index.php" method="get">
-<input type="hidden" value="search" name="a" />
-<input name="kw" type="text" size="20" value="<#kw>" />
-<input type="submit" value="<#lng{'search_search'}>" />
-</form>

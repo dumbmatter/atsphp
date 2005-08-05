@@ -11,12 +11,12 @@
 </td></tr></table>
 
 <table align="center" cellspacing="0" cellpadding="0"><tr><td>
-<a href="{$list_url}/" class="menu"><#lng{'main_menu_main'}></a>
-<a href="{$list_url}/index.php?a=join" class="menu"><#lng{'main_menu_join'}></a>
-<a href="{$list_url}/index.php?a=edit" class="menu"><#lng{'main_menu_edit'}></a>
-<a href="{$list_url}/index.php?a=lost_code" class="menu"><#lng{'main_menu_lost_code'}></a>
-<a href="{$list_url}/index.php?a=lost_password" class="menu"><#lng{'main_menu_lost_password'}></a>
-<a href="{$list_url}/index.php?a=search" class="menu"><#lng{'main_menu_search'}></a>
+<a href="{$list_url}/" class="menu">{$lng->main_menu_main}</a>
+<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
+<a href="{$list_url}/index.php?a=edit" class="menu">{$lng->main_menu_edit}</a>
+<a href="{$list_url}/index.php?a=lost_code" class="menu">{$lng->main_menu_lost_code}</a>
+<a href="{$list_url}/index.php?a=lost_password" class="menu">{$lng->main_menu_lost_password}</a>
+<a href="{$list_url}/index.php?a=search" class="menu">{$lng->main_menu_search}</a>
 </td></tr></table>
 
 <table align="center" cellspacing="0" cellpadding="0" style="margin-top: 16px; margin-bottom: 16px;"><tr><td>
@@ -24,12 +24,12 @@
 {$ranking_methods_menu}
 {$categories_menu}
 {$multiple_pages_menu}
-<input type="submit" value="<#lng{'g_form_submit_short'}>" />
+<input type="submit" value="{$lng->g_form_submit_short}" />
 </form>
 <form action="index.php" method="get" style="float: left; margin-left: 48px;">
 <input type="hidden" name="a" value="search" />
-<input type="text" name="kw" size="20" />
-<input type="submit" value="<#lng{'search_search'}>" />
+<input type="text" name="q" size="20" value="{$query}" />
+<input type="submit" value="{$lng->search_search}" />
 </form>
 </td></tr></table>
 
@@ -42,7 +42,7 @@
 <p style="margin: 0px; height: 16px;"></p>
 
 <div class="bottom">
-<#lng{'main_executiontime'}>: {$execution_time} | <#lng{'main_queries'}>: {$num_queries} | <#lng{'main_members'}>: {$num_members}<br />
+{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
 {$list_name} - {$powered_by}
 </div>
 

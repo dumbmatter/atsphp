@@ -2,15 +2,15 @@
 <td class="mediumbg" colspan="3">
 <h3>{$rank} <img src="{$skins_url}/{$skin_name}/{$up_down}.png" alt="{$up_down}" />
 <a href="<#url>" target="_blank" class="table_top">{$title}</a> - 
-<a href="{$list_url}/index.php?a=stats&amp;u={$username}" class="table_top"><#lng{'table_stats'}></a></h3>
+<a href="{$list_url}/index.php?a=stats&amp;u={$username}" class="table_top">{$lng->table_stats}</a></h3>
 </td></tr><tr class="lightbg"><td rowspan="5" valign="top">
 {$description}<br /><br />
-<em><#lng{'g_category'}>: <a href="{$list_url}/index.php?cat={$category}">{$category}</a></em>
+<em>{$lng->g_category}: <a href="{$list_url}/index.php?cat={$category}">{$category}</a></em>
 </td>
-<td width="15%"><b><#lng{'g_today'}></b></td>
+<td width="15%"><b>{$lng->g_today}</b></td>
 <td width="15%">{$today}</td>
 </tr><tr class="lightbg">
-<td width="15%"><b><#lng{'g_average'}></b></td>
+<td width="15%"><b>{$lng->g_average}</b></td>
 <td width="15%">{$average}</td>
 </tr><tr class="lightbg">
 <td valign="top" width="40%" align="center" colspan="2"><img src="{$skins_url}/{$skin_name}/rate{$average_rating}.png" width="100" height="20" alt="{$average_rating}/5" /></td>

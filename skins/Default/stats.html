@@ -1,26 +1,26 @@
 <h1>{$title}</h1><br />
-<b><#lng{'g_username'}>:</b> {$username}<br />
-<b><#lng{'g_description'}>:</b> {$description}<br />
-<b><#lng{'g_url'}>:</b> <a href="{$url}" target="_blank">{$url}</a><br />
-<b><#lng{'g_category'}>:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
-<b><#lng{'stats_member_since'}>:</b> {$join_date}<br /><br />
+<b>{$lng->g_username}:</b> {$username}<br />
+<b>{$lng->g_description}:</b> {$description}<br />
+<b>{$lng->g_url}:</b> <a href="{$url}" target="_blank">{$url}</a><br />
+<b>{$lng->g_category}:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
+<b>{$lng->stats_member_since}:</b> {$join_date}<br /><br />
 
-<b><#lng{'stats_rating_avg'}>:</b> {$average_rating} / 5<br />
-<b><#lng{'stats_rating_num'}>:</b> {$num_ratings}<br />
-<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<b>{$lng->stats_rating_avg}:</b> {$average_rating} / 5<br />
+<b>{$lng->stats_rating_num}:</b> {$num_ratings}<br />
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form">{$lng->stats_rate}</a><br /><br />
 <img src="{$banner_url}" alt="{$title}" /><br /><br />
 
 <table class="darkbg" cellspacing="1" cellpadding="2">
 <tr class="mediumbg">
-<th><#lng{'g_daily'}></th>
-<th><#lng{'g_unq_pv'}></th>
-<th><#lng{'g_tot_pv'}></th>
-<th><#lng{'g_unq_in'}></th>
-<th><#lng{'g_tot_in'}></th>
-<th><#lng{'g_unq_out'}></th>
-<th><#lng{'g_tot_out'}></th>
+<th>{$lng->g_daily}</th>
+<th>{$lng->g_unq_pv}</th>
+<th>{$lng->g_tot_pv}</th>
+<th>{$lng->g_unq_in}</th>
+<th>{$lng->g_tot_in}</th>
+<th>{$lng->g_unq_out}</th>
+<th>{$lng->g_tot_out}</th>
 </tr><tr class="lightbg" style="font-weight: bold;">
-<td><#lng{'g_average'}></td>
+<td>{$lng->g_average}</td>
 <td align="center">{$unq_pv_avg_daily}</td>
 <td align="center">{$tot_pv_avg_daily}</td>
 <td align="center">{$unq_in_avg_daily}</td>
@@ -28,7 +28,7 @@
 <td align="center">{$unq_out_avg_daily}</td>
 <td align="center">{$tot_out_avg_daily}</td>
 </tr><tr class="lightbgalt">
-<td><#lng{'g_today'}></td>
+<td>{$lng->g_today}</td>
 <td align="center">{$unq_pv_0_daily}</td>
 <td align="center">{$tot_pv_0_daily}</td>
 <td align="center">{$unq_in_0_daily}</td>
@@ -36,7 +36,7 @@
 <td align="center">{$unq_out_0_daily}</td>
 <td align="center">{$tot_out_0_daily}</td>
 </tr><tr class="lightbg">
-<td><#lng{'g_yesterday'}></td>
+<td>{$lng->g_yesterday}</td>
 <td align="center">{$unq_pv_1_daily}</td>
 <td align="center">{$tot_pv_1_daily}</td>
 <td align="center">{$unq_in_1_daily}</td>
@@ -111,7 +111,7 @@
 </table>
 <br />
 
-<b><#lng{'stats_reviews'}></b><br />
-<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form"><#lng{'stats_rate'}></a><br /><br />
+<b>{$lng->stats_reviews}</b><br />
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form">{$lng->stats_rate}</a><br /><br />
 {$reviews}
-<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1"><#lng{'stats_allreviews'}></a>
+<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a>

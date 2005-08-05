@@ -18,17 +18,15 @@
 
 
 class base {
-  function error($message, $kill_script = true) {
+  function error($message) {
     global $TMPL;
 
     $TMPL['error'] = $message;
     $TMPL['content'] = $this->do_skin('error');
 
-    if ($kill_script) {
-      $skin = new main_skin('wrapper');
-      echo $skin->make();
-      exit;
-    }
+    $skin = new main_skin('wrapper');
+    echo $skin->make();
+    exit;
   }
 
   function do_skin($filename) {

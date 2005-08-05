@@ -12,19 +12,19 @@
 
 <table align="center" cellspacing="0" cellpadding="0" width="728">
 <tr><td width="150" valign="top">
-<b><#lng{'a_menu'}></b>
+<b>{$lng->a_menu}</b>
 <ul>
-<li><a href="<#list_url>/admin.php?sid=<#sid>"><#lng{'a_menu_main'}></a></li>
-<li><a href="<#list_url>/admin.php?page=approve&sid=<#sid>"><#lng{'a_menu_approve'}></a></li>
-<li><a href="<#list_url>/admin.php?page=manage&sid=<#sid>"><#lng{'a_menu_manage'}></a></li>
-<li><a href="<#list_url>/admin.php?page=delete_review&sid=<#sid>"><#lng{'a_menu_delete_review'}></a></li>
-<li><a href="<#list_url>/admin.php?page=email&sid=<#sid>"><#lng{'a_menu_email'}></a></li>
-<li><a href="<#list_url>/admin.php?page=logout&sid=<#sid>"><#lng{'a_menu_logout'}></a></li>
-<li><a href="<#list_url>/admin.php?page=reset&sid=<#sid>"><#lng{'a_menu_reset'}></a></li>
-<li><b><#lng{'a_menu_settings'}></b>
+<li><a href="<#list_url>/admin.php?sid=<#sid>">{$lng->a_menu_main}</a></li>
+<li><a href="<#list_url>/admin.php?page=approve&sid=<#sid>">{$lng->a_menu_approve}</a></li>
+<li><a href="<#list_url>/admin.php?page=manage&sid=<#sid>">{$lng->a_menu_manage}</a></li>
+<li><a href="<#list_url>/admin.php?page=delete_review&sid=<#sid>">{$lng->a_menu_delete_review}</a></li>
+<li><a href="<#list_url>/admin.php?page=email&sid=<#sid>">{$lng->a_menu_email}</a></li>
+<li><a href="<#list_url>/admin.php?page=logout&sid=<#sid>">{$lng->a_menu_logout}</a></li>
+<li><a href="<#list_url>/admin.php?page=reset&sid=<#sid>">{$lng->a_menu_reset}</a></li>
+<li><b>{$lng->a_menu_settings}</b>
   <ul>
-  <li><a href="<#list_url>/admin.php?page=settings&sid=<#sid>"><#lng{'a_menu_settings_general'}></a></li>
-  <li><a href="<#list_url>/admin.php?page=settings_skins&sid=<#sid>"><#lng{'a_menu_settings_skins'}></a></li>
+  <li><a href="<#list_url>/admin.php?page=settings&sid=<#sid>">{$lng->a_menu_settings_general}</a></li>
+  <li><a href="<#list_url>/admin.php?page=settings_skins&sid=<#sid>">{$lng->a_menu_settings_skins}</a></li>
   </ul>
 </li>
 </ul>
@@ -33,7 +33,7 @@
 </td></tr>
 <tr><td colspan="2" class="bottom">
 <br />
-<#list_name> - <#lng{'main_powered'}> <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> <#version>
+<#list_name> - {$lng->main_powered} <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> <#version>
 </td></tr>
 </table>
 

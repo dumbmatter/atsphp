@@ -31,7 +31,7 @@ class join extends join_edit {
   }
 
   function form() {
-    global $CONF, $FORM, $LNG, $TMPL;
+    global $CONF, $FORM, $TMPL;
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $category) {
@@ -43,7 +43,7 @@ class join extends join_edit {
   }
 
   function process() {
-    global $CONF, $DB, $FORM, $LNG, $TMPL;
+    global $CONF, $DB, $FORM, $TMPL;
 
     $TMPL['username'] = $DB->escape($FORM['u']);
 

@@ -2,16 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title><#lng{'gateway_header'}></title>
+<title>{$lng->gateway_header}</title>
 <link rel="stylesheet" type="text/css" media="screen" title="Default" href="{$skins_url}/{$skin_name}/default.css" />
 </head>
 <body style="margin: 2px;">
-<center><h1><#lng{'gateway_header'}></h1></center><br />
-<#lng{'gateway_text'}><br /><br />
-<b><a href="{$list_url}/index.php?a=in&amp;u={$username}&sid={$sid}"><#lng{'gateway_vote'}></a></b><br /><br />
-<b><a href="{$list_url}/"><#lng{'gateway_novote'}></a></b><br /><br />
+<center><h1>{$lng->gateway_header}</h1></center><br />
+{$lng->gateway_text}<br /><br />
+<b><a href="{$list_url}/index.php?a=in&amp;u={$username}&sid={$sid}">{$lng->gateway_vote}</a></b><br /><br />
+<b><a href="{$list_url}/">{$lng->gateway_novote}</a></b><br /><br />
 <div class="bottom">
-{$list_name} - <#lng{'main_powered'}> <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> {$version}
+{$list_name} - {$lng->main_powered} <a href="http://www.aardvarkind.com/" target="_blank">Aardvark Topsites PHP</a> {$version}
 </div>
 </body>
 </html>

@@ -82,7 +82,7 @@ class skin {
   function parse($skin) {
     global $LNG, $TMPL;
 
-    $skin = preg_replace('/<#lng\{\'(.+?)\'\}>/ei', "\$LNG['\\1']", $skin);
+    $skin = preg_replace('/{\$lng->(.+?)}/ei', "\$LNG['\\1']", $skin);
     $skin = preg_replace('/{include \"(.+?)\"}/ei', "file_get_contents('\\1')", $skin);
     $skin = preg_replace('/{\$(.+?)}/ei', "\$TMPL['\\1']", $skin);
     return $skin;
@@ -167,6 +167,8 @@ class main_skin extends skin {
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
       $TMPL['featured_member'] = do_template('featured_member');
     }
+
+    $TMPL['query'] = isset($TMPL['query']) ? $TMPL['query'] : '';
   
     // Please do not remove the link to http://www.aardvarkind.com/.
     // This is a free script, all I ask for is a link back.

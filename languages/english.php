@@ -138,14 +138,11 @@ $LNG['rate_back'] = "Back To Stats";
 
 // Search
 $LNG['search_header'] = "Search";
-$LNG['search_internet'] = "The Internet"; // 4.0
-$LNG['search_topsites'] = "This Topsites"; // 4.0
 $LNG['search_off'] = "The search feature has been turned off for this topsites list.";
 $LNG['search_rank'] = "Rank";
 $LNG['search_search'] = "Search";
 $LNG['search_for'] = "You searched for";
-$LNG['search_string'] = "Search as a string?";
-$LNG['search_nosites'] = "Sorry, no sites matching your criteria were found.";
+$LNG['search_no_sites'] = "Sorry, no sites matching your criteria were found.";
 $LNG['search_prev'] = "Previous"; // 3.2.1
 $LNG['search_next'] = "Next"; // 3.2.1
 
