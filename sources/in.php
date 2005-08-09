@@ -16,17 +16,17 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-class in extends base {
+class in extends in_out {
   function in() {
     global $CONF, $DB, $FORM;
 
     if ($FORM['a'] == 'in') {
       $go_to_rankings = 1;
-      $username = $DB->escape($_GET['u']);
+      $username = $DB->escape($FORM['u']);
     }
     else {
       $go_to_rankings = 0;
-      require_once "{$CONF['path']}/sources/misc/get_username.php";
+      require_once("{$CONF['path']}/sources/misc/get_username.php");
       $username = $this->get_username($_SERVER['HTTP_REFERER']);
     }
 
@@ -44,13 +44,14 @@ class in extends base {
         }
 
         if ($valid) {
-          $this->record($username);
+          $this->record($username, 'in');
         }
       }
     }
 
     if ($go_to_rankings) {
       header("Location: {$CONF['list_url']}/");
+      exit;
     }
   }
 
@@ -82,29 +83,6 @@ class in extends base {
 
     echo $this->do_skin('gateway');
     exit;
-  }
-
-
-  function record($username) {
-    global $CONF, $DB, $TMPL;
-
-    // Is this a unique hit?
-    $ip = getenv("REMOTE_ADDR");
-    list($ip_sql, $unq_in) = $DB->fetch("SELECT ip_address, unq_in FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
-
-    $unique_sql = ', unq_in_overall = unq_in_overall + 1, unq_in_0_daily = unq_in_0_daily + 1, unq_in_0_weekly = unq_in_0_weekly + 1, unq_in_0_monthly = unq_in_0_monthly + 1';
-    if ($ip == $ip_sql && $unq_in == 0) {
-      $DB->query("UPDATE {$CONF['sql_prefix']}_ip_log SET unq_in = 1 WHERE ip_address = '{$ip}' AND username = '{$username}'", __FILE__, __LINE__);
-    }
-    elseif ($ip != $ip_sql) {
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_ip_log (ip_address, username, unq_in) VALUES ('{$ip}', '{$username}' ,1)", __FILE__, __LINE__);
-    }
-    else {
-      $unique_sql = '';
-    }
-
-    // Update stats
-    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_in_overall = tot_in_overall + 1, tot_in_0_daily = tot_in_0_daily + 1, tot_in_0_weekly = tot_in_0_weekly + 1, tot_in_0_monthly = tot_in_0_monthly + 1{$unique_sql} WHERE username = '{$username}'", __FILE__, __LINE__);
   }
 
   function get_username($url) {

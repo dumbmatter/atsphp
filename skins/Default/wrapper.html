@@ -10,28 +10,25 @@
 <a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/logo.png" width="728" height="66" alt="{$list_name}" border="0" /></a>
 </td></tr></table>
 
-<table align="center" cellspacing="0" cellpadding="0"><tr><td>
-<a href="{$list_url}/" class="menu">{$lng->main_menu_main}</a>
-<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
-<a href="{$list_url}/index.php?a=edit" class="menu">{$lng->main_menu_edit}</a>
-<a href="{$list_url}/index.php?a=lost_code" class="menu">{$lng->main_menu_lost_code}</a>
-<a href="{$list_url}/index.php?a=lost_password" class="menu">{$lng->main_menu_lost_password}</a>
-<a href="{$list_url}/index.php?a=search" class="menu">{$lng->main_menu_search}</a>
-</td></tr></table>
-
-<table align="center" cellspacing="0" cellpadding="0" style="margin-top: 16px; margin-bottom: 16px;"><tr><td>
-<form action="index.php" method="get" style="float: left;">
+<table align="center" cellspacing="0" cellpadding="0" width="728" style="margin-top: 16px; margin-bottom: 16px;">
+<tr><td>
+<form action="index.php" method="get">
 {$ranking_methods_menu}
 {$categories_menu}
 {$multiple_pages_menu}
 <input type="submit" value="{$lng->g_form_submit_short}" />
 </form>
-<form action="index.php" method="get" style="float: left; margin-left: 48px;">
+</td><td align="center">
+<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
+<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
+</td><td align="right">
+<form action="index.php" method="get">
 <input type="hidden" name="a" value="search" />
-<input type="text" name="q" size="20" value="{$query}" />
+<input type="text" name="q" size="18" value="{$query}" />
 <input type="submit" value="{$lng->search_search}" />
 </form>
-</td></tr></table>
+</td></tr>
+</table>
 
 <table align="center" cellspacing="0" cellpadding="0" width="728" style="clear: both;"><tr><td>
 

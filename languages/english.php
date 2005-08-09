@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -16,37 +16,46 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+// When you make a new translation, fill out the following four variables to
+// get credit for you work.
+$translation = 'English';
+$translator_name = 'Jeremy Scheff';
+$translator_email = 'webmaster@aardvarkind.com';
+$translator_url = 'http://www.aardvarkind.com/';
+
 // Global
 $LNG['g_form_submit_short'] = "Go";
 $LNG['g_form_submit_long'] = "Submit";
-$LNG['g_form_submit_reset'] = "Reset";
+$LNG['g_form_submit_login'] = "Login"; // 5.0
 $LNG['g_username'] = "Username";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Title";
 $LNG['g_description'] = "Description";
 $LNG['g_category'] = "Category"; // 4.1.0
 $LNG['g_email'] = "Email";
-$LNG['g_bannerurl'] = "Banner URL";
+$LNG['g_banner_url'] = "Banner&nbsp;URL";
 $LNG['g_password'] = "Password";
 $LNG['g_average'] = "Average";
 $LNG['g_today'] = "Today";
 $LNG['g_yesterday'] = "Yesterday";
-$LNG['g_daily'] = "Daily";
-$LNG['g_this_month'] = "This Month"; // 3.2.1
-$LNG['g_last_month'] = "Last Month"; // 3.2.1
-$LNG['g_monthly'] = "Monthly";
-$LNG['g_this_week'] = "This Week"; // 4.2.0
-$LNG['g_last_week'] = "Last Week"; // 4.2.0
-$LNG['g_weekly'] = "Weekly";
-$LNG['g_pv'] = 'Pageviews';
-$LNG['g_in'] = 'In';
-$LNG['g_out'] = 'Out';
-$LNG['g_unq_pv'] = "Unique PVs";
-$LNG['g_tot_pv'] = "Total PVs";
-$LNG['g_unq_in'] = "Unique In";
-$LNG['g_tot_in'] = "Total In";
-$LNG['g_unq_out'] = "Unique Out";
-$LNG['g_tot_out'] = "Total Out";
+$LNG['g_daily'] = "Daily"; // 5.0
+$LNG['g_this_month'] = "This Month"; // 5.0
+$LNG['g_last_month'] = "Last Month"; // 5.0
+$LNG['g_monthly'] = "Monthly"; // 5.0
+$LNG['g_this_week'] = "This Week"; // 5.0
+$LNG['g_last_week'] = "Last Week"; // 5.0
+$LNG['g_weekly'] = "Weekly"; // 5.0
+$LNG['g_pv'] = 'Pageviews'; // 5.0
+$LNG['g_in'] = 'In'; // 5.0
+$LNG['g_out'] = 'Out'; // 5.0
+$LNG['g_unq_pv'] = "Unique PVs"; // 5.0
+$LNG['g_tot_pv'] = "Total PVs"; // 5.0
+$LNG['g_unq_in'] = "Unique In"; // 5.0
+$LNG['g_tot_in'] = "Total In"; // 5.0
+$LNG['g_unq_out'] = "Unique Out"; // 5.0
+$LNG['g_tot_out'] = "Total Out"; // 5.0
+$LNG['g_invalid_u_or_p'] = "Invalid username or password.  Please try again."; // 5.0
+$LNG['g_session_expired'] = "Your session has expired.  Please login again."; // 5.0
 
 // Edit Member Info
 $LNG['edit_header'] = "Edit Member Info";
@@ -74,10 +83,12 @@ $LNG['graph_header'] = "Graph";
 
 // Join
 $LNG['join_header'] = "Join";
+$LNG['join_user'] = "User";
+$LNG['join_website'] = "Website";
 $LNG['join_error'] = "Error";
 $LNG['join_error_forgot'] = "You forgot to:";
-$LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes.";
-$LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use.";
+$LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes."; // 5.0
+$LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
 $LNG['join_error_url'] = "Enter a valid url.";
 $LNG['join_error_email'] = "Enter a valid email address.";
 $LNG['join_error_title'] = "Enter a title for your web site.";
@@ -93,28 +104,28 @@ $LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
 $LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
 
 // Lost Code
-$LNG['lost_code_header'] = "Lost Code";
+$LNG['lost_code_header'] = "Lost Code"; // 5.0
 
 // Lost Password
-$LNG['lost_password_header'] = "Lost Password";
-$LNG['lost_password_email'] = "To pick a new password for your site, just go to the url below."; // 4.0.1
-$LNG['lost_password_emailed'] = "Instructions on how to reset your password have been emailed to you.";
-$LNG['lost_password_newpassword'] = "Enter a New Password"; // 4.0.1
-$LNG['lost_password_finish'] = "Your password has been reset to the new password you have just chosen."; // 4.0.1
-$LNG['lost_password_error'] = "Please make sure you have the right ID number and try again.";
+$LNG['lost_password_header'] = "Lost Password"; // 5.0
+$LNG['lost_password_email'] = "To pick a new password for your site, just go to the url below."; // 5.0
+$LNG['lost_password_emailed'] = "Instructions on how to reset your password have been emailed to you."; // 5.0
+$LNG['lost_password_newpassword'] = "Enter a New Password"; // 5.0
+$LNG['lost_password_finish'] = "Your password has been reset to the new password you have just chosen."; // 5.0
+$LNG['lost_password_error'] = "Please make sure you have the right ID number and try again."; // 5.0
 
 // Main Page
 $LNG['main_header'] = "Main Page"; // 4.0
 $LNG['main_all'] = "All Sites"; // 4.2.0
 $LNG['main_method'] = "Ranking method";
 $LNG['main_members'] = "Members";
-$LNG['main_menu_main'] = "Main Page";
 $LNG['main_menu_join'] = "Join";
 $LNG['main_menu_random'] = "Random Member";
 $LNG['main_menu_search'] = "Search";
-$LNG['main_menu_lost_code'] = "Lost Code";
-$LNG['main_menu_lost_password'] = "Lost Password";
+$LNG['main_menu_lost_code'] = "Lost Code"; // 5.0
+$LNG['main_menu_lost_password'] = "Lost Password"; // 5.0
 $LNG['main_menu_edit'] = "Edit Member Info";
+$LNG['main_menu_user_cp'] = "User Control Panel"; // 5.0
 $LNG['main_featured'] = "Featured Member"; // 4.0.2
 $LNG['main_executiontime'] = "Script Execution Time"; // 4.0
 $LNG['main_queries'] = "SQL Queries"; // 4.0
@@ -142,25 +153,29 @@ $LNG['search_off'] = "The search feature has been turned off for this topsites l
 $LNG['search_rank'] = "Rank";
 $LNG['search_search'] = "Search";
 $LNG['search_for'] = "You searched for";
-$LNG['search_no_sites'] = "Sorry, no sites matching your criteria were found.";
+$LNG['search_no_sites'] = "Sorry, no sites matching your criteria were found."; // 5.0
 $LNG['search_prev'] = "Previous"; // 3.2.1
 $LNG['search_next'] = "Next"; // 3.2.1
 
 // Stats
 $LNG['stats_header'] = "Stats";
-$LNG['stats_member_since'] = "Member Since";
+$LNG['stats_member_since'] = "Member Since"; // 5.0
 $LNG['stats_rating_avg'] = "Average Rating";
 $LNG['stats_rating_num'] = "Number of Ratings";
 $LNG['stats_rate'] = "Rate And Review This Site";
 $LNG['stats_reviews'] = "Reviews";
 $LNG['stats_error_id'] = "Invalid ID."; // 4.0
 $LNG['stats_allreviews'] = "Show All Reviews"; // 4.0
+$LNG['stats_week'] = "Week"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; //4.0
 $LNG['ssi_newmembers'] = "%s Newest Members"; //4.0
 $LNG['ssi_join'] = "Join"; //4.0
 $LNG['ssi_all'] = "All Sites"; //4.0
+
+// User Control Panel
+$LNG['user_cp_header'] = "User Control Panel";
 
 // Admin > Approve New Memers // 4.0
 $LNG['a_approve'] = "Approve"; // 4.0

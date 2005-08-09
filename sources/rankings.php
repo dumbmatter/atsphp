@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarkind.com/                        http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -94,12 +94,12 @@ class rankings extends base {
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?u='.$TMPL['username'];
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
-      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$CONF['daily_weekly_monthly']}"];
+      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$CONF['ranking_period']}"];
       $TMPL['average'] = 0;
-      for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$CONF['daily_weekly_monthly']}"];
+      for ($i = 0; $i < 10; $i++) {
+        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$CONF['ranking_period']}"];
       }
-      $TMPL['average'] = $TMPL['average'] / $CONF['daily_weekly_monthly_num'];
+      $TMPL['average'] = $TMPL['average'] / 10;
 
       // Only use _top skin on the first page
       if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {

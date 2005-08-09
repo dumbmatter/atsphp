@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-04)';
+$TMPL['version'] = '5.0 Alpha (2005-08-08)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -115,7 +115,8 @@ $action = array(
             'rankings' => 1,
             'rate' => 1,
             'search' => 1,
-            'stats' => 1
+            'stats' => 1,
+            'user_cp' => 1
           );
 
 // Require the appripriate file
@@ -125,7 +126,7 @@ if (isset($FORM['a']) && isset($action[$FORM['a']])) {
 else {
   $page_name = 'rankings';
 }
-require_once "{$CONF['path']}/sources/{$page_name}.php";
+require_once("{$CONF['path']}/sources/{$page_name}.php");
 $page = new $page_name;
 
 // Display the page

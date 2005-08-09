@@ -1,5 +1,10 @@
 <form action="index.php" method="get">
 <input type="hidden" value="lost_code" name="a" />
-{$lng->g_username}: <input name="u" type="text" size="8" /><br />
+<fieldset>
+<legend>{$lng->lost_code_header}</legend>
+<label>{$lng->g_username}<br />
+<input type="text" name="u" /><br /><br />
+</label>
 <input type="submit" value="{$lng->g_form_submit_long}" />
+</fieldset>
 </form>

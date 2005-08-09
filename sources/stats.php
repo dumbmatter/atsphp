@@ -31,17 +31,26 @@ class stats extends base {
 
     $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
+    $ranking_periods = array('daily', 'weekly', 'monthly');
     $ranking_methods = array('unq_pv', 'tot_pv', 'unq_in', 'tot_in', 'unq_out', 'tot_out');
-    foreach ($ranking_methods as $ranking_method) {
-      $TMPL["{$ranking_method}_avg_daily"] = 0;
-      for ($i = 0; $i < $CONF['daily_weekly_monthly_num']; $i++) {
-        $TMPL["{$ranking_method}_avg_daily"] = $TMPL["{$ranking_method}_avg_daily"] + $TMPL["{$ranking_method}_{$i}_daily"];
+    foreach ($ranking_periods as $ranking_period) {
+      foreach ($ranking_methods as $ranking_method) {
+        $TMPL["{$ranking_method}_avg_{$ranking_period}"] = 0;
+        for ($i = 0; $i < 10; $i++) {
+          $TMPL["{$ranking_method}_avg_{$ranking_period}"] = $TMPL["{$ranking_method}_avg_{$ranking_period}"] + $TMPL["{$ranking_method}_{$i}_{$ranking_period}"];
+        }
+        $TMPL["{$ranking_method}_avg_{$ranking_period}"] = $TMPL["{$ranking_method}_avg_{$ranking_period}"] / 10;
       }
-      $TMPL["{$ranking_method}_avg_daily"] = $TMPL["{$ranking_method}_avg_daily"] / $CONF['daily_weekly_monthly_num'];
     }
 
     for ($i = 2; $i < 10; $i++) {
-      $TMPL["{$i}_daily"] = date('F j', time()-3600*24*$i);
+      $TMPL["{$i}_daily"] = date('M j', time()-3600*24*$i);
+    }
+    for ($i = 2; $i < 10; $i++) {
+      $TMPL["{$i}_weekly"] = "{$LNG['stats_week']} ".date('W', time()-3600*24*7*$i);
+    }
+    for ($i = 2; $i < 10; $i++) {
+      $TMPL["{$i}_monthly"] = date('M y', mktime(0, 0, 0, date('m')-$i, 1));
     }
 
     $query = "SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE username = '{$TMPL['username']}' ORDER BY date DESC";

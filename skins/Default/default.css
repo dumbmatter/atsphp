@@ -1,38 +1,21 @@
 body {
   background-color: #fff;
   color: #000;
-  font-size: 13px;
-  font-family: verdana, sans-serif;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
+  font-size: small;
+  font-family: sans-serif;
+}
+
+fieldset {
+  width: 0px;
 }
 form {
   margin: 0px;
-  padding: 0px;
 }
-input, select {
-
-  font-size: 10px;
-}
-h1 {
-  font-size: 24px;
-  font-weight: bold;
+h1, h2, h3 {
   margin: 0px;
   padding: 0px;
 }
 
-h2 {
-  font-size: 15px;
-  margin: 0px;
-  padding: 0px;
-}
-h3 {
-  font-size: 14px;
-  margin: 0px;
-  padding: 0px;
-}
 a:link {
   color: #33c;
   font-weight: bold;
@@ -43,42 +26,27 @@ a:visited {
   font-weight: bold;
   text-decoration: underline;
 }
-a:active {
+a:active, a:hover {
   color: #000;
-  font-weight: bold;
-  text-decoration: underline;
-}
-a:hover {
-  color: #000;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
-.bottom {
+div.bottom {
   color: #737373;
-  font-size: 10px;
+  font-size: x-small;
   text-align: center;
 }
 
-.graph {
-  background-color: #069;
-  padding: 0px;
-  width: 75px;
-}
-
-/* For the ranking tables. */
+/* Define some colors */
 
 .darkbg {
   background-color: #737373;
   color: #fff;
 }
-
 .mediumbg {
   background-color: #09c;
   background-image: url(grad_bg.png);
   color: #fff;
 }
-
 .lightbg {
   background-color: #fff;
   color: #000;
@@ -88,25 +56,21 @@ a:hover {
   color: #000;
 }
 
-/* For the menu. */
+/* Top menu */
 
-a.menu, a.menu:visited {
+a.menu {
   background-color: #fff;
   border: 1px solid #737373;
   color: #000;
-  float: left;
   margin-left: 8px;
   margin-right: 8px;
-  margin-top: 2px;
   padding: 3px;
-  text-align: center;
   text-decoration: none;
 }
 a.menu:hover, a.menu:active {
   color: #fff;
   background-color: #09c;
   background-image: url(grad_bg.png);
-  text-decoration: none;
 }
 
 a.table_top {
@@ -115,5 +79,4 @@ a.table_top {
 }
 a.table_top:hover, a.table_top:active {
   color: #c0c0c0;
-  text-decoration: none;
 }

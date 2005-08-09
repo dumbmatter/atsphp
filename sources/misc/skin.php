@@ -48,7 +48,7 @@ class skin {
       $return = $skin;
     }
     else {
-      $return = "<!-- Begin {$this->filename}.html -->\n{$skin}\n<!-- End {$this->filename}.html -->\n\n";
+      $return = "<!-- Begin {$this->filename}.html -->\n{$skin}<!-- End {$this->filename}.html -->\n\n";
     }
 
     if ($parse) {
