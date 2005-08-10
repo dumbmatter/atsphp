@@ -64,7 +64,7 @@ class in extends in_out {
     list($type, $data) = $session->get($FORM['sid']);
     $session->delete($FORM['sid']);
 
-    if ($type == 'gateway') {
+    if ($type == 'gateway' && $data == $username) {
       return 1;
     }
     else {
@@ -77,7 +77,7 @@ class in extends in_out {
 
     require_once("{$CONF['path']}/sources/misc/session.php");
     $session = new session;
-    $TMPL['sid'] = $session->create('gateway', 1);
+    $TMPL['sid'] = $session->create('gateway', $username);
 
     $TMPL['username'] = $username;
 

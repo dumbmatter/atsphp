@@ -1,5 +1,4 @@
-<form action="index.php" method="post">
-<input type="hidden" name="a" value="user_cp" />
+<form action="index.php?a=user_cp" method="post">
 <fieldset>
 <legend>{$lng->user_cp_header}</legend>
 <label>{$lng->g_username}<br />
@@ -8,6 +7,6 @@
 <label>{$lng->g_password}<br />
 <input type="password" name="password" size="20" /><br /><br />
 </label>
-<input type="submit" value="{$lng->g_form_submit_login}" />
+<input type="submit" value="{$lng->user_cp_login}" />
 </fieldset>
 </form>

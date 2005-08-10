@@ -1,16 +1,28 @@
 <h1><a href="{$url}" onclick="window.location='index.php?a=out&u={$username}';">{$title}</a></h1><br />
+
+<table cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="50%" valign="top">
+<h3>{$lng->stats_info}</h3><br />
+<a href="{$url}" onclick="window.location='index.php?a=out&u={$username}';"><img src="{$banner_url}" alt="{$title}" border="0" /></a><br /><br />
 <b>{$lng->g_username}:</b> {$username}<br />
 <b>{$lng->g_description}:</b> {$description}<br />
 <b>{$lng->g_url}:</b> <a href="{$url}" onclick="window.location='index.php?a=out&u={$username}';">{$url}</a><br />
 <b>{$lng->g_category}:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
 <b>{$lng->stats_member_since}:</b> {$join_date}<br /><br />
-
 <b>{$lng->stats_rating_avg}:</b> {$average_rating} / 5<br />
 <b>{$lng->stats_rating_num}:</b> {$num_ratings}<br />
-<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form">{$lng->stats_rate}</a><br /><br />
-<img src="{$banner_url}" alt="{$title}" /><br /><br />
+<img src="{$skins_url}/{$skin_name}/rate_{$average_rating}.png" width="100" height="20" alt="{$average_rating}/5" />
+</td><td width="50%" valign="top">
+<h3>{$lng->stats_reviews}</h3><br />
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}">{$lng->stats_rate}</a><br /><br />
+{$reviews}
+<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a>
+</td></tr>
+</table>
+<br /><br />
 
-<table class="darkbg" cellspacing="1" cellpadding="2">
+<h3>{$lng->stats_header}</h3><br />
+<table class="darkbg" cellspacing="1" cellpadding="1">
 <tr class="mediumbg">
 <th>{$lng->g_daily}</th>
 <th>{$lng->g_unq_pv}</th>
@@ -111,7 +123,7 @@
 </table>
 <br />
 
-<table class="darkbg" cellspacing="1" cellpadding="2">
+<table class="darkbg" cellspacing="1" cellpadding="1">
 <tr class="mediumbg">
 <th>{$lng->g_weekly}</th>
 <th>{$lng->g_unq_pv}</th>
@@ -212,7 +224,7 @@
 </table>
 <br />
 
-<table class="darkbg" cellspacing="1" cellpadding="2">
+<table class="darkbg" cellspacing="1" cellpadding="1">
 <tr class="mediumbg">
 <th>{$lng->g_monthly}</th>
 <th>{$lng->g_unq_pv}</th>
@@ -311,9 +323,3 @@
 <td align="center">{$tot_out_9_monthly}</td>
 </tr>
 </table>
-<br />
-
-<b>{$lng->stats_reviews}</b><br />
-<a href="{$list_url}/index.php?a=rate&amp;u={$username}&amp;do=form">{$lng->stats_rate}</a><br /><br />
-{$reviews}
-<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a>

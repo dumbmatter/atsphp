@@ -1,74 +1,100 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
-$TMPL['header'] = $LNG['rate_header'];
+class rate extends base {
+  function rate() {
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-// See if it's a valid ID number
-if (!is_numeric($FORM['id'])) {
-  error($LNG['stats_error_id'], 1, 0);
-}
-else { $FORM['id'] = intval($FORM['id']); }
+    $TMPL['header'] = $LNG['rate_header'];
 
-// Make sure a user from this IP address hasn't already voted today
-$ip = getenv("REMOTE_ADDR");
-$result = $db->Execute("SELECT ip_address, rate FROM ".$CONFIG['sql_prefix']."_iplog WHERE ip_address = '$ip' AND id4 = ".$FORM['id']);
-list($ip2, $rate) = $db->FetchArray($result);
+    if (isset($FORM['u']) && $FORM['u']) {
+      $TMPL['username'] = $DB->escape($FORM['u']);
 
-if ($ip2 == $ip && $rate == 1) {
-  error($LNG['rate_error'], 1, 0);
-}
+      $ip = getenv('REMOTE_ADDR');
+      list($ip_sql, $rate) = $DB->fetch("SELECT ip_address, rate FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$TMPL['username']}'", __FILE__, __LINE__);
 
-if (!$FORM['id']) {
-  $TMPL['content'] = do_template("rate_form");
-}
-elseif ($FORM['do'] == "form") {
-  $result = $db->Execute("SELECT id, url, title, description, urlbanner FROM ".$CONFIG['sql_prefix']."_members WHERE id = ".$FORM['id']);
-  list($TMPL['id'], $TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['urlbanner']) = $db->FetchArray($result);
+      if ($ip == $ip_sql && $rate == 1) {
+        $this->error($LNG['rate_error']);
+      }
 
-  $TMPL['url'] = $CONFIG['list_url']."/out.php?id=".$TMPL['id'];
-
-  $TMPL['content'] = do_template("rate_form2");
-}
-elseif ($FORM['do'] == "submit") {
-  $TMPL['id'] = $FORM['id'];
-
-  if ($FORM['review']) {
-    $result = $db->SelectLimit("SELECT review_id FROM ".$CONFIG['sql_prefix']."_reviews ORDER BY review_id desc", 1, 0);
-    list($review_id) = $db->FetchArray($result);
-    $review_id++;
-
-    $review_date = date("Y-m-d H:i:s", time() + (3600 * $CONFIG['timeoffset']));
-    $db->Execute("INSERT INTO ".$CONFIG['sql_prefix']."_reviews (id3, review_id, review_date, review) VALUES (".$FORM['id'].", ".$review_id.", '".$review_date."', '".$FORM['review']."')");
+      if (!isset($FORM['rating'])) {
+        $this->form();
+      }
+      else {
+        list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+        if ($TMPL['username'] == $username) {
+          $this->process($ip, $ip_sql);
+        }
+        else {
+          $this->error($LNG['g_invalid_u']);
+        }
+      }
+    }
   }
 
-  if ($FORM['rating'] > 5) { $FORM['rating'] = 5; }
-  elseif ($FORM['rating'] < 1) { $FORM['rating'] = 1; }
+  function form() {
+    global $CONF, $DB, $FORM, $TMPL;
 
-  $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_members SET total_ratings = total_ratings + ".$FORM['rating'].", num_ratings = num_ratings + 1 WHERE id = ".$FORM['id']);
+    $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    $TMPL = array_merge($TMPL, $row);
 
-  // Update the IP log
-  // $ip2 comes from an earlier part of rate.php
-  if ($ip2) {
-    $db->Execute("UPDATE ".$CONFIG['sql_prefix']."_iplog SET rate = 1 WHERE ip_address = '$ip' AND id4 = ".$FORM['id']);
-  }
-  else {
-    $db->Execute("INSERT INTO ".$CONFIG['sql_prefix']."_iplog (ip_address, id4, rate) VALUES ('".$ip."', ".$FORM['id'].",1)");
+    $TMPL['content'] = $this->do_skin('rate_form');
   }
 
-  $TMPL['content'] = do_template("rate_finish");
+  function process($ip, $ip_sql) {
+    global $CONF, $DB, $FORM, $TMPL;
+
+    // Review
+    if (isset($FORM['review']) && $FORM['review']) {
+      $date = date("Y-m-d H:i:s", time() + (3600*$CONF['time_offset']));
+      list($id) = $DB->fetch("SELECT MAX(id) + 1 FROM {$CONF['sql_prefix']}_reviews", __FILE__, __LINE__);
+      if (!$id) {
+        $id = 1;
+      }
+
+      $review = str_replace('<', '&lt;', $FORM['review']);
+      $review = str_replace('>', '&gt;', $review);
+      $review = nl2br($review);
+      $review = $DB->escape($review);
+
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_reviews (username, id, date, review) VALUES ('{$TMPL['username']}', {$id}, '{$date}', '{$review}')", __FILE__, __LINE__);
+    }
+
+    // Rating
+    $rating = intval($FORM['rating']);
+    if ($rating > 5) {
+      $rating = 5;
+    }
+    elseif ($rating < 1) {
+      $rating = 1;
+    }
+
+    $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET total_rating = total_rating + {$rating}, num_ratings = num_ratings + 1 WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+
+    // Update the IP log
+    if ($ip == $ip_sql) {
+      $DB->query("UPDATE {$CONF['sql_prefix']}_ip_log SET rate = 1 WHERE ip_address = '$ip' AND username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    }
+    else {
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_ip_log (ip_address, username, rate) VALUES ('{$ip}', '{$TMPL['username']}', 1)", __FILE__, __LINE__);
+    }
+
+    $TMPL['content'] = $this->do_skin('rate_finish');
+  }
 }
 ?>

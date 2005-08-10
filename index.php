@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-08)';
+$TMPL['version'] = '5.0 Alpha (2005-08-09)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -73,7 +73,7 @@ require_once("{$CONF['path']}/sources/misc/skin.php");
 
 // Is it a new day/week/month?
 list($last_new_day, $last_new_week, $last_new_month) = $DB->fetch("SELECT last_new_day, last_new_week, last_new_month FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
-$time = time() + (3600 * $CONF['time_offset']);
+$time = time() + (3600*$CONF['time_offset']);
 $current_day = date('d', $time);
 $current_week = date('W', $time);
 $current_month = date('m', $time);
@@ -105,11 +105,8 @@ if ($CONF['gzip']) {
 
 // Array containing the valid .php files from the sources directory
 $action = array(
-            'edit' => 1,
-            'graph' => 1,
             'in' => 1,
             'join' => 1,
-            'lost_code' => 1,
             'lost_password' => 1,
             'out' => 1,
             'rankings' => 1,
@@ -141,9 +138,9 @@ if ($DB->debug) {
   foreach ($DB->queries as $value) {
     echo "<hr />{$value}";
   }
-//  echo '<hr /><pre>';
-//  print_r($TMPL);
-//  echo '</pre>';
+  echo '<hr /><pre>';
+  print_r($_COOKIE);
+  echo '</pre>';
   echo '</div>';
 }
 

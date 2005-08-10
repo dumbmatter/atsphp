@@ -25,15 +25,13 @@ $translator_url = 'http://www.aardvarkind.com/';
 
 // Global
 $LNG['g_form_submit_short'] = "Go";
-$LNG['g_form_submit_long'] = "Submit";
-$LNG['g_form_submit_login'] = "Login"; // 5.0
 $LNG['g_username'] = "Username";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Title";
 $LNG['g_description'] = "Description";
 $LNG['g_category'] = "Category"; // 4.1.0
 $LNG['g_email'] = "Email";
-$LNG['g_banner_url'] = "Banner&nbsp;URL";
+$LNG['g_banner_url'] = "Banner URL";
 $LNG['g_password'] = "Password";
 $LNG['g_average'] = "Average";
 $LNG['g_today'] = "Today";
@@ -55,19 +53,11 @@ $LNG['g_tot_in'] = "Total In"; // 5.0
 $LNG['g_unq_out'] = "Unique Out"; // 5.0
 $LNG['g_tot_out'] = "Total Out"; // 5.0
 $LNG['g_invalid_u_or_p'] = "Invalid username or password.  Please try again."; // 5.0
+$LNG['g_invalid_u'] = "Invalid username."; // 4.0
 $LNG['g_session_expired'] = "Your session has expired.  Please login again."; // 5.0
 
-// Edit Member Info
-$LNG['edit_header'] = "Edit Member Info";
-$LNG['edit_error_id_password'] = "Please check your ID number and password, then try again!";
-$LNG['edit_error'] = "Error";
-$LNG['edit_error_forgot'] = "You forgot to:";
-$LNG['edit_error_url'] = "Enter a valid url.";
-$LNG['edit_error_email'] = "Enter a valid email address.";
-$LNG['edit_error_title'] = "Enter a title for your web site.";
-$LNG['edit_error_password'] = "Enter a password.";
-$LNG['edit_error_back'] = "Please go back and fix those errors.";
-$LNG['edit_success'] = "Success!";
+// Edit Account
+$LNG['edit_header'] = "Edit Account";
 $LNG['edit_info_edited'] = "Your information has been successfully edited.";
 
 // Gateway Page
@@ -103,8 +93,8 @@ $LNG['join_welcome'] = "Welcome to the topsites list!";
 $LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
 $LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
 
-// Lost Code
-$LNG['lost_code_header'] = "Lost Code"; // 5.0
+// Link Code
+$LNG['link_code_header'] = "Link Code"; // 5.0
 
 // Lost Password
 $LNG['lost_password_header'] = "Lost Password"; // 5.0
@@ -115,7 +105,7 @@ $LNG['lost_password_finish'] = "Your password has been reset to the new password
 $LNG['lost_password_error'] = "Please make sure you have the right ID number and try again."; // 5.0
 
 // Main Page
-$LNG['main_header'] = "Main Page"; // 4.0
+$LNG['main_header'] = "Rankings"; // 5.0
 $LNG['main_all'] = "All Sites"; // 4.2.0
 $LNG['main_method'] = "Ranking method";
 $LNG['main_members'] = "Members";
@@ -142,9 +132,9 @@ $LNG['table_description'] = "Description"; // 4.0
 // Rate and Review
 $LNG['rate_header'] = "Rate and Review";
 $LNG['rate_rating'] = "Rating";
-$LNG['rate_review'] = "Review";
-$LNG['rate_thanks'] = "Thanks for rating and reviewing this site!";
-$LNG['rate_error'] = "You have already rated or reviewed this site.";
+$LNG['rate_review'] = "Review - No HTML Allowed"; // 5.0
+$LNG['rate_thanks'] = "Thanks for rating this site!";
+$LNG['rate_error'] = "You have already rated this site.";
 $LNG['rate_back'] = "Back To Stats";
 
 // Search
@@ -159,12 +149,12 @@ $LNG['search_next'] = "Next"; // 3.2.1
 
 // Stats
 $LNG['stats_header'] = "Stats";
+$LNG['stats_info'] = "Info";
 $LNG['stats_member_since'] = "Member Since"; // 5.0
 $LNG['stats_rating_avg'] = "Average Rating";
 $LNG['stats_rating_num'] = "Number of Ratings";
-$LNG['stats_rate'] = "Rate And Review This Site";
+$LNG['stats_rate'] = "Rate and Review This Site";
 $LNG['stats_reviews'] = "Reviews";
-$LNG['stats_error_id'] = "Invalid ID."; // 4.0
 $LNG['stats_allreviews'] = "Show All Reviews"; // 4.0
 $LNG['stats_week'] = "Week"; // 5.0
 
@@ -174,8 +164,12 @@ $LNG['ssi_newmembers'] = "%s Newest Members"; //4.0
 $LNG['ssi_join'] = "Join"; //4.0
 $LNG['ssi_all'] = "All Sites"; //4.0
 
-// User Control Panel
-$LNG['user_cp_header'] = "User Control Panel";
+// User Control Panel // 5.0
+$LNG['user_cp_header'] = "User Control Panel"; // 5.0
+$LNG['user_cp_login'] = "Login"; // 5.0
+$LNG['user_cp_logout'] = "Logout"; // 5.0
+$LNG['user_cp_welcome'] = "Welcome to the user control panel.  Use the links to the left to manage your account."; // 5.0
+$LNG['user_cp_logout_message'] = "You successfully logged out of the user control panel."; // 5.0
 
 // Admin > Approve New Memers // 4.0
 $LNG['a_approve'] = "Approve"; // 4.0

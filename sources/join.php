@@ -56,7 +56,7 @@ class join extends join_edit {
       $TMPL['email'] = $DB->escape($FORM['email']);
       $password = md5($FORM['password']);
 
-      $join_date = date('Y-m-d');
+      $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, title, description, category, banner_url, email, join_date, active)
                   VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);

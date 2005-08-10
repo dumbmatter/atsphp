@@ -33,6 +33,8 @@ class session {
 
     $DB->query("INSERT INTO {$CONF['sql_prefix']}_sessions (type, sid, time, data) VALUES ('{$type}', '{$sid}', {$time}, '{$data}')", __FILE__, __LINE__);
 
+    setcookie("atsphp_sid_{$type}", $sid);
+
     return $sid;
   }
 
@@ -40,7 +42,10 @@ class session {
     global $CONF, $DB;
 
     if ($this->check_sid($sid)) {
+      list($type, $data) = $this->get($sid);
+      setcookie("atsphp_sid_{$type}", 0, 1);
       $DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE sid = '{$sid}'", __FILE__, __LINE__);
+
       return 1;
     }
     else {

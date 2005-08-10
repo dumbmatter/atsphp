@@ -63,7 +63,7 @@ class in_out extends base {
     }
 
     // Is this a unique hit?
-    $ip = getenv("REMOTE_ADDR");
+    $ip = getenv('REMOTE_ADDR');
     list($ip_sql, $unq) = $DB->fetch("SELECT ip_address, unq_{$in_out} FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
 
     $unique_sql = ", unq_{$in_out}_overall = unq_{$in_out}_overall + 1, unq_{$in_out}_0_daily = unq_{$in_out}_0_daily + 1, unq_{$in_out}_0_weekly = unq_{$in_out}_0_weekly + 1, unq_{$in_out}_0_monthly = unq_{$in_out}_0_monthly + 1";

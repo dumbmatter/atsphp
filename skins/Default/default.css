@@ -4,10 +4,6 @@ body {
   font-size: small;
   font-family: sans-serif;
 }
-
-fieldset {
-  width: 0px;
-}
 form {
   margin: 0px;
 }
@@ -62,8 +58,8 @@ a.menu {
   background-color: #fff;
   border: 1px solid #737373;
   color: #000;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
   padding: 3px;
   text-decoration: none;
 }

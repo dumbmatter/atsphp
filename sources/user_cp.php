@@ -18,15 +18,41 @@
 
 class user_cp extends base {
   function user_cp() {
-    global $FORM, $LNG, $TMPL;
+    global $CONF, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['user_cp_header'];
 
-    if (!isset($FORM['sid'])) {
+    if (!isset($_COOKIE['atsphp_sid_user_cp'])) {
       $this->login();
     }
     else {
-      $this->main();
+      require_once("{$CONF['path']}/sources/misc/session.php");
+      $session = new session;
+      list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_user_cp']);
+      if ($type == 'user_cp') {
+        // Array containing the valid .php files from the sources/user_cp directory
+        $action = array(
+                    'edit' => 1,
+                    'link_code' => 1
+                  );
+
+        if (isset($FORM['b']) && isset($action[$FORM['b']])) {
+          $page_name = $FORM['b'];
+          require_once("{$CONF['path']}/sources/user_cp/{$page_name}.php");
+          $page = new $page_name;
+
+          $TMPL['content'] = $this->do_skin('user_cp');
+        }
+        elseif (isset($FORM['b']) && $FORM['b'] == 'logout') {
+          $this->logout();
+        }
+        else {
+          $this->main();
+        }
+      }
+      else {
+        $this->login();
+      }
     }
   }
 
@@ -37,36 +63,37 @@ class user_cp extends base {
       $TMPL['content'] = $this->do_skin('user_cp_login');
     }
     else {
-      $username = $DB->escape($FORM['u']);
+      $TMPL['username'] = $DB->escape($FORM['u']);
       $password = md5($FORM['password']);
-
-      list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}' AND password = '{$password}'", __FILE__, __LINE__);
-      if ($username == $username_sql) {
+      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}' AND password = '{$password}'", __FILE__, __LINE__);
+      if ($TMPL['username'] == $username) {
         require_once("{$CONF['path']}/sources/misc/session.php");
         $session = new session;
-        $FORM['sid'] = $session->create('user_cp', $username);
+        $session->create('user_cp', $TMPL['username']);
 
         $this->main();
       }
       else {
-        $TMPL['content'] = $LNG['g_invalid_u_or_p'];
+        $this->error($LNG['g_invalid_u_or_p']);
       }
     }
   }
 
-  function main() {
-    global $CONF, $DB, $FORM, $TMPL;
+  function logout() {
+    global $CONF, $LNG, $TMPL;
 
     require_once("{$CONF['path']}/sources/misc/session.php");
     $session = new session;
-    list($type, $username) = $session->get($FORM['sid']);
+    $session->delete($_COOKIE['atsphp_sid_user_cp']);
 
-    if ($type == 'user_cp') {
-      $TMPL['content'] = "whatup";
-    }
-    else {
-      $TMPL['content'] = $LNG['g_session_expired'];
-    }
+    $TMPL['content'] = $LNG['user_cp_logout_message'];
+  }
+
+  function main() {
+    global $LNG, $TMPL;
+
+    $TMPL['user_cp_content'] = $LNG['user_cp_welcome'];
+    $TMPL['content'] = $this->do_skin('user_cp');
   }
 }
 ?>

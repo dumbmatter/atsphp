@@ -44,25 +44,25 @@ class stats extends base {
     }
 
     for ($i = 2; $i < 10; $i++) {
-      $TMPL["{$i}_daily"] = date('M j', time()-3600*24*$i);
+      $TMPL["{$i}_daily"] = date('M j', time()-3600*24*$i + (3600*$CONF['time_offset']));
     }
     for ($i = 2; $i < 10; $i++) {
-      $TMPL["{$i}_weekly"] = "{$LNG['stats_week']} ".date('W', time()-3600*24*7*$i);
+      $TMPL["{$i}_weekly"] = "{$LNG['stats_week']} ".date('W', time()-3600*24*7*$i + (3600*$CONF['time_offset']));
     }
     for ($i = 2; $i < 10; $i++) {
       $TMPL["{$i}_monthly"] = date('M y', mktime(0, 0, 0, date('m')-$i, 1));
     }
 
-    $query = "SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE username = '{$TMPL['username']}' ORDER BY date DESC";
+    $query = "SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE username = '{$TMPL['username']}'";
     if (isset($FORM['all_reviews']) && $FORM['all_reviews']) {
-      $result = $DB->execute($query, __FILE__, __LINE__);
+      $result = $DB->query("{$query} ORDER BY date DESC", __FILE__, __LINE__);
     }
     else {
-      $result = $DB->select_limit($query, 5, 0, __FILE__, __LINE__);
+      $result = $DB->select_limit("{$query} ORDER BY RAND()", 2, 0, __FILE__, __LINE__);
     }
     $TMPL['reviews'] = '';
-    while (list($id, $date, $review) = $DB->fetch_array($result)) {
-      $TMPL['reviews'] .= "<b>{$id} - {$date}</b><br />\n{$review}<br /><br />\n";
+    while (list($TMPL['id'], $TMPL['date'], $TMPL['review']) = $DB->fetch_array($result)) {
+      $TMPL['reviews'] .= $this->do_skin('stats_review');
     }
 
     $TMPL['content'] = $this->do_skin('stats');

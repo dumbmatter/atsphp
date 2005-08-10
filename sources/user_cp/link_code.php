@@ -16,19 +16,13 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-class lost_code extends base {
-  function lost_code() {
+class link_code extends base {
+  function link_code() {
     global $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['lost_code_header'];
+    $TMPL['header'] = $LNG['link_code_header'];
 
-    if (!isset($FORM['u'])) {
-      $TMPL['content'] = $this->do_skin('lost_code_form');
-    }
-    else {
-      $TMPL['username'] = $FORM['u'];
-      $TMPL['content'] = $this->do_skin('lost_code_finish');
-    }
+    $TMPL['user_cp_content'] = $this->do_skin('link_code');
   }
 }
 ?>
