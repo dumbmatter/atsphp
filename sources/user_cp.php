@@ -30,6 +30,8 @@ class user_cp extends base {
       $session = new session;
       list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_user_cp']);
       if ($type == 'user_cp') {
+        $session->update($_COOKIE['atsphp_sid_user_cp']);
+
         // Array containing the valid .php files from the sources/user_cp directory
         $action = array(
                     'edit' => 1,
@@ -51,7 +53,7 @@ class user_cp extends base {
         }
       }
       else {
-        $this->login();
+        $TMPL['content'] = $LNG['g_session_expired'];
       }
     }
   }

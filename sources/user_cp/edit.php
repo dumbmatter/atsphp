@@ -1,42 +1,83 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
-$TMPL['header'] = $LNG['edit_header'];
-if (!$FORM['do']) {
-  $TMPL['content'] = do_template("edit_form");
-}
-elseif ($FORM['do'] == "form" && is_numeric($FORM['id'])) {
-  $result = $db->Execute("SELECT id, password, url, title, description, category, urlbanner, email FROM ".$CONFIG['sql_prefix']."_members WHERE id = ".$FORM['id']." LIMIT 1");
-  list($TMPL['id'], $password, $TMPL['url'], $TMPL['title'], $TMPL['description'], $TMPL['cat'], $TMPL['urlbanner'], $TMPL['email']) = $db->FetchArray($result);
+class edit extends join_edit {
+  function edit() {
+    global $FORM, $LNG, $TMPL;
 
-  $TMPL['catselect'] = "<select name=\"cat\">\n";
-  foreach ($CONFIG['categories'] as $cat) {
-    if ($cat == $TMPL['cat']) { $TMPL['catselect'] .= "<option value=\"$cat\" selected=\"selected\">$cat\n"; }
-    else { $TMPL['catselect'] .= "<option value=\"$cat\">$cat\n"; }
+    $TMPL['header'] = $LNG['edit_header'];
+
+    if (!isset($FORM['submit'])) {
+      $this->form();
+    }
+    else {
+      $this->process();
+    }
   }
-  $TMPL['catselect'] .= "</select>";
 
-  $FORM['password'] = md5($FORM['password']);
+  function form() {
+    global $CONF, $DB, $TMPL;
 
-  if ($FORM['password'] == $password) {
-    $TMPL['content'] = do_template("edit_form2");
+    $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    $TMPL = array_merge($TMPL, $row);
+
+    $TMPL['categories_menu'] = "<select name=\"category\">\n";
+    foreach ($CONF['categories'] as $category) {
+      if ($TMPL['category'] == $category) {
+        $TMPL['categories_menu'] .= "<option value=\"{$category}\" selected=\"selected\">{$category}\n";
+      }
+      else {
+        $TMPL['categories_menu'] .= "<option value=\"{$category}\">{$category}\n";
+      }
+    }
+    $TMPL['categories_menu'] .= "</select>";
+
+    $TMPL['user_cp_content'] = $this->do_skin('edit_form');
   }
-  else { $TMPL['content'] = $LNG['edit_error']."<br /><br />\n".$LNG['edit_error_id_password']; }
+
+  function process() {
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
+
+    if ($this->check_input('edit')) {
+      $TMPL['url'] = $DB->escape($FORM['url']);
+      $TMPL['title'] = $DB->escape($FORM['title']);
+      $TMPL['description'] = $DB->escape($FORM['description']);
+      $TMPL['category'] = $DB->escape($FORM['category']);
+      $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
+      $TMPL['email'] = $DB->escape($FORM['email']);
+      if ($FORM['password']) {
+        $password = md5($FORM['password']);
+        $password_sql = ", password = '{$password}'";
+      }
+      else {
+        $password_sql = '';
+      }
+
+      require_once("{$CONF['path']}/sources/in.php");
+      $short_url = in::short_url($TMPL['url']);
+
+      $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+ 
+      $TMPL['user_cp_content'] = $LNG['edit_info_edited'];
+    }
+  }
 }
+/*
 elseif ($FORM['do'] == "submit") {
   $result = $db->Execute("SELECT password FROM ".$CONFIG['sql_prefix']."_members WHERE id = ".$FORM['id']." LIMIT 1");
   list($password) = $db->FetchArray($result);
@@ -85,4 +126,5 @@ elseif ($FORM['do'] == "submit") {
   else { error($LNG['edit_error_id_password'], 1); }
 }
 else { error($LNG['edit_error_id_password'], 1); }
+*/
 ?>

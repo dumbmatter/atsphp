@@ -4,12 +4,22 @@ body {
   font-size: small;
   font-family: sans-serif;
 }
+
+fieldset {
+  border: 1px solid #737373;
+}
 form {
   margin: 0px;
 }
 h1, h2, h3 {
   margin: 0px;
   padding: 0px;
+}
+hr {
+  background-color: #737373;
+  border: 0px;
+  color: #737373;
+  height: 1px;
 }
 
 a:link {
@@ -30,6 +40,12 @@ div.bottom {
   color: #737373;
   font-size: x-small;
   text-align: center;
+}
+div.container {
+  margin-left: 5%;
+  margin-right: 5%;
+  min-width: 728px;
+  width:expression(document.body.clientWidth < 728? "728px": "auto" ); /* IE hack for min-width */
 }
 
 /* Define some colors */

@@ -6,11 +6,12 @@
 </head>
 <body>
 
-<table align="center" cellspacing="0" cellpadding="0" width="728"><tr><td>
+<div class="container">
+<center>
 <a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/logo.png" width="728" height="66" alt="{$list_name}" border="0" /></a>
-</td></tr></table>
+</center>
 
-<table align="center" cellspacing="0" cellpadding="0" width="728" style="margin-top: 16px; margin-bottom: 16px;">
+<table align="center" cellspacing="0" cellpadding="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
 <tr><td>
 <form action="index.php" method="get">
 {$ranking_methods_menu}
@@ -30,7 +31,7 @@
 </td></tr>
 </table>
 
-<table align="center" cellspacing="0" cellpadding="0" width="728" style="clear: both;"><tr><td>
+<table align="center" cellspacing="0" cellpadding="0" width="100%" style="clear: both;"><tr><td>
 
 {$content}
 
@@ -41,6 +42,7 @@
 <div class="bottom">
 {$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
 {$list_name} - {$powered_by}
+</div>
 </div>
 
 </body>

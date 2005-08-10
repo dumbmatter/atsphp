@@ -15,16 +15,22 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-PHP 4 and 5 compatability
-More detailed stats
-- Last 10 days, weeks, and months
-Rank caching
-- Vastly increased performance
-Direct links
-- out.php: Called by JavaScript
-- in.php: Analyzes referer
-- button.php: Do nothing
-Usability and simplicity
-PHP 4 OOP, not PHP 5 OOP
-Usernames, not user ID numbers
-User Control Panel
+=======
+ROADMAP
+=======
+
+ALPHA
+  Check skin in IE (min-width)
+  Installer
+
+BETA
+  Reasses text in english.php
+  Admin  
+  Extensive Testing
+
+RC
+  Fix all bugs
+  Upgrader
+
+FINAL
+  Fix all bugs

@@ -68,8 +68,14 @@ class rankings extends base {
                                  FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                                  WHERE sites.username = stats.username AND active = 1 {$category_sql}
                                  ORDER BY {$order_by}
-                                 ", $CONF['num_list'], $start, __FILE__, __LINE__);
+                                ", $CONF['num_list'], $start, __FILE__, __LINE__);
 
+    if ($CONF['ranking_period'] == 'overall') {
+      $ranking_period = 'daily';
+    }
+    else {
+      $ranking_period = $CONF['ranking_period'];
+    }
     $TMPL['rank'] = $start + 1;
     $page_rank = 1;
     $top_done = 0;
@@ -94,10 +100,10 @@ class rankings extends base {
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?u='.$TMPL['username'];
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
-      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$CONF['ranking_period']}"];
+      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$ranking_period}"];
       $TMPL['average'] = 0;
       for ($i = 0; $i < 10; $i++) {
-        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$CONF['ranking_period']}"];
+        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$ranking_period}"];
       }
       $TMPL['average'] = $TMPL['average'] / 10;
 

@@ -20,31 +20,35 @@ class in extends in_out {
   function in() {
     global $CONF, $DB, $FORM;
 
-    if ($FORM['a'] == 'in') {
+    $go_to_rankings = 0;
+    if (isset($FORM['a']) && $FORM['a'] == 'in') {
       $go_to_rankings = 1;
       $username = $DB->escape($FORM['u']);
     }
-    else {
-      $go_to_rankings = 0;
-      require_once("{$CONF['path']}/sources/misc/get_username.php");
+    elseif (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
       $username = $this->get_username($_SERVER['HTTP_REFERER']);
     }
+    else {
+      $username = '';
+    }
 
-    list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
-    if ($username && $username_sql == $username) {
-      if ($CONF['gateway'] && !isset($FORM['sid'])) {
-        $this->gateway($username);
-      }
-      else {
-        if ($CONF['gateway']) {
-          $valid = $this->check($username);
+    if ($username) {
+      list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
+      if ($username_sql == $username) {
+        if ($CONF['gateway'] && !isset($FORM['sid'])) {
+          $this->gateway($username);
         }
         else {
-          $valid = 1;
-        }
+          if ($CONF['gateway']) {
+            $valid = $this->check($username);
+          }
+          else {
+            $valid = 1;
+          }
 
-        if ($valid) {
-          $this->record($username, 'in');
+          if ($valid) {
+            $this->record($username, 'in');
+          }
         }
       }
     }
@@ -86,16 +90,17 @@ class in extends in_out {
   }
 
   function get_username($url) {
-    global $CONF;
+    global $CONF, $DB;
 
-    $url = make_url($url);
+    $url = $this->short_url($url);
     $count = 0;
 
+    $username = '';
     while (!$username) {
-      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_members WHERE make_url = '{$url}'", __FILE__, __LINE__);
+      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE short_url = '{$url}'", __FILE__, __LINE__);
 
       if (!$username) {
-        $url = make_url("{$url}.");
+        $url = $this->short_url("{$url}.");
       }
 
       $count++;
@@ -108,13 +113,13 @@ class in extends in_out {
     return $username;
   }
 
-  function make_url($url) {
+  function short_url($url) {
     // Get rid of www.
     $url = preg_replace('/\/\/www./', '//', $url);
 
     // Get rid of page after the trailing slash
     preg_match('/^(http:\/\/.+)\/(.+)/', $url, $matches);
-    if (!$matches[0]) {
+    if (!isset($matches[0])) {
       // Just a domain with a slash at the end
       $url = preg_replace('/^(http:\/\/.+)\//', '\\1', $url);
     }

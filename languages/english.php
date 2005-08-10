@@ -58,7 +58,8 @@ $LNG['g_session_expired'] = "Your session has expired.  Please login again."; //
 
 // Edit Account
 $LNG['edit_header'] = "Edit Account";
-$LNG['edit_info_edited'] = "Your information has been successfully edited.";
+$LNG['edit_info_edited'] = "Your account has been successfully edited.";
+$LNG['edit_password_blank'] = "Leave this blank to keep the current password"; // 4.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Topsites Gateway Page";
@@ -67,9 +68,6 @@ $LNG['gateway_vote'] = "Enter and vote.";
 $LNG['gateway_novote'] = "Tricked into coming here?  Enter without voting.";
 $LNG['gateway_cheating'] = "The site you are coming from is cheating.  This vote will not be recorded.";
 $LNG['gateway_enter'] = "Enter";
-
-// Graph
-$LNG['graph_header'] = "Graph";
 
 // Join
 $LNG['join_header'] = "Join";
@@ -184,7 +182,6 @@ $LNG['a_del_warn'] = "Are you sure you want to delete"; // 4.2.0
 $LNG['a_del_dne'] = "There is no member with the ID number"; // 4.2.0
 
 // Admin > Edit Member Info
-$LNG['a_edit_password_blank'] = "Leave this blank to keep the current password"; // 4.0
 $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactive (Temporarily Banned, Not Listed)"; // 4.0
@@ -318,5 +315,5 @@ $LNG['a_s_tmpl_diff_skins'] = "If you want different skins for different categor
 // Admin > Version Check
 $LNG['a_version_your'] = "Your version";
 $LNG['a_version_latest'] = "Latest version";
-$LNG['a_version_new'] = "<a href=\"http://www.aardvarkind.com/\" target=\"_blank\">Aardvark Topsites PHP Website</a>"; // 4.2.0
+$LNG['a_version_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 ?>

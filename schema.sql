@@ -60,6 +60,7 @@ CREATE TABLE `ats_sites` (
   `username` varchar(255) default '',
   `password` varchar(32) default '',
   `url` varchar(255) default '',
+  `short_url` varchar(255) default '',
   `title` varchar(255) default '',
   `description` varchar(255) default '',
   `category` varchar(255) default '',

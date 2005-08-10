@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-09)';
+$TMPL['version'] = '5.0 Alpha (2005-08-10)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -103,6 +103,10 @@ if ($CONF['gzip']) {
   ob_start('ob_gzhandler');
 }
 
+// Check for hits in
+require_once("{$CONF['path']}/sources/in.php");
+$in = new in;
+
 // Array containing the valid .php files from the sources directory
 $action = array(
             'in' => 1,
@@ -136,21 +140,11 @@ $DB->close();
 if ($DB->debug) {
   echo '<div style="clear: both;">';
   foreach ($DB->queries as $value) {
-    echo "<hr />{$value}";
+    echo "<hr /><pre>{$value}</pre>";
   }
   echo '<hr /><pre>';
   print_r($_COOKIE);
   echo '</pre>';
   echo '</div>';
 }
-
-/*$methods = array('unq_pv', 'tot_pv', 'unq_in', 'tot_in', 'unq_out', 'tot_out');
-foreach ($methods as $method) {
-  for ($i = 9; $i >= 0; $i--) {
-    $j = $i - 1;
-    if ($j == -1) { echo "{$method}_{$i}_monthly = 0, "; }
-    else { echo "{$method}_{$i}_monthly = {$method}_{$j}_monthly, "; }
-  }
-  echo "<br>";
-}*/
 ?>

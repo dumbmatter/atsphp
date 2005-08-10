@@ -32,7 +32,6 @@ class session {
     $time = time();
 
     $DB->query("INSERT INTO {$CONF['sql_prefix']}_sessions (type, sid, time, data) VALUES ('{$type}', '{$sid}', {$time}, '{$data}')", __FILE__, __LINE__);
-
     setcookie("atsphp_sid_{$type}", $sid);
 
     return $sid;

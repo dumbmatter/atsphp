@@ -22,7 +22,7 @@ class join extends join_edit {
 
     $TMPL['header'] = $LNG['join_header'];
 
-    if (!isset($FORM['url'])) {
+    if (!isset($FORM['submit'])) {
       $this->form();
     }
     else {
@@ -47,7 +47,7 @@ class join extends join_edit {
 
     $TMPL['username'] = $DB->escape($FORM['u']);
 
-    if ($this->check_input()) {
+    if ($this->check_input('join')) {
       $TMPL['url'] = $DB->escape($FORM['url']);
       $TMPL['title'] = $DB->escape($FORM['title']);
       $TMPL['description'] = $DB->escape($FORM['description']);
@@ -56,9 +56,13 @@ class join extends join_edit {
       $TMPL['email'] = $DB->escape($FORM['email']);
       $password = md5($FORM['password']);
 
+      require_once("{$CONF['path']}/sources/in.php");
+      $short_url = in::short_url($TMPL['url']);
+
       $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, title, description, category, banner_url, email, join_date, active)
-                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
+
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
  
       $join_email = new skin('join_email');
