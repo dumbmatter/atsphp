@@ -156,7 +156,7 @@ EndHTML;
                     `search_results` int(2) default 10,
                     `gzip` tinyint(1) default 0,
                     `time_offset` int(2) default 0,
-                    `gateway` tinyint(1) default 1
+                    `gateway` tinyint(1) default 1,
                     `captcha` tinyint(1) default 1
                   )", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_url, default_language, your_email, default_banner, button_url, button_dir)
