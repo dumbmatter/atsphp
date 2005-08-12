@@ -55,6 +55,8 @@ $LNG['g_tot_out'] = "Total Out"; // 5.0
 $LNG['g_invalid_u_or_p'] = "Invalid username or password.  Please try again."; // 5.0
 $LNG['g_invalid_u'] = "Invalid username."; // 4.0
 $LNG['g_session_expired'] = "Your session has expired.  Please login again."; // 5.0
+$LNG['g_error'] = "Error"; // 5.0
+$LNG['g_delete_install'] = "For security reasons, you must delete the install directory before the script will run."; // 5.0
 
 // Edit Account
 $LNG['edit_header'] = "Edit Account";
@@ -69,11 +71,17 @@ $LNG['gateway_novote'] = "Tricked into coming here?  Enter without voting.";
 $LNG['gateway_cheating'] = "The site you are coming from is cheating.  This vote will not be recorded.";
 $LNG['gateway_enter'] = "Enter";
 
+// Install
+$LNG['install_header'] = "Install";
+$LNG['install_welcome'] = "Welcome to Aardvark Topsites PHP 5.  Fill out the form below to install the script.";
+$LNG['install_sql_prefix'] = "Table prefix - only change this if you are running more than one list from the same database";
+$LNG['install_error_chmod'] = "<b>Error</b>: Could not write to settings_sql.php.  Make sure you CHMOD 666 settings_sql.php.";
+$LNG['install_error_sql'] = "<b>Error</b>: Could not connect to the SQL database.  Please go back and check your SQL settings.";
+
 // Join
 $LNG['join_header'] = "Join";
 $LNG['join_user'] = "User";
 $LNG['join_website'] = "Website";
-$LNG['join_error'] = "Error";
 $LNG['join_error_forgot'] = "You forgot to:";
 $LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
@@ -248,20 +256,21 @@ $LNG['a_reset_done'] = "All members' stats have been reset to 0."; // 4.1.0
 
 // Admin > Settings
 $LNG['a_s_general'] = "General Settings";
+$LNG['a_s_admin_password'] = "Admin password";
 $LNG['a_s_list_name'] = "Name of your topsites list";
 $LNG['a_s_deflanguage'] = "Default language";
 $LNG['a_s_path'] = "The full path to the topsites directory";
 $LNG['a_s_list_url'] = "URL to the topsites directory";
 $LNG['a_s_skins_path'] = "The full path to the skins directory"; // 4.2.0
 $LNG['a_s_skins_url'] = "URL to the directory the skins directory"; // 4.2.0
-$LNG['a_s_youremail'] = "Your email address";
+$LNG['a_s_your_email'] = "Your email address";
 
 $LNG['a_s_sql'] = "SQL Settings";
 $LNG['a_s_sql_type'] = "Database Type"; // 4.1.0
 $LNG['a_s_sql_host'] = "Host";
 $LNG['a_s_sql_database'] = "Database";
-$LNG['a_s_sql_user'] = "Username";
-$LNG['a_s_sql_pass'] = "Password";
+$LNG['a_s_sql_username'] = "Username";
+$LNG['a_s_sql_password'] = "Password";
 
 $LNG['a_s_ranking'] = "Ranking Settings";
 $LNG['a_s_categories'] = "Categories (separate with commas)"; // 4.1.0

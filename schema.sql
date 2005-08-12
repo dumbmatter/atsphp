@@ -53,7 +53,9 @@ CREATE TABLE `ats_ip_log` (
   `unq_pv` tinyint(1) default 0,
   `unq_in` tinyint(1) default 0,
   `unq_out` tinyint(1) default 0,
-  `rate` tinyint(1) default 0
+  `rate` tinyint(1) default 0,
+  KEY `ip_address` (`ip_address`),
+  KEY `username` (`username`)
 );
 
 CREATE TABLE `ats_sites` (

@@ -15,6 +15,8 @@
 // GNU General Public License for more details.                    \\
 //=================================================================\\
 
+$database = 'MySQL';
+
 class sql {
   var $dbl;
   var $debug;
@@ -22,8 +24,8 @@ class sql {
   var $queries;
 
   function connect ($host, $user, $password, $database, $debug = 0) {
-    $this->dbl = mysql_connect($host, $user, $password) or $this->error(__FILE__, __LINE__);
-    $db = mysql_select_db($database, $this->dbl) or $this->error(__FILE__, __LINE__);
+    $this->dbl = mysql_connect($host, $user, $password)	;
+    $db = mysql_select_db($database, $this->dbl);
 
     $this->num_queries = 0;
     $this->debug = $debug ? 1 : 0;
