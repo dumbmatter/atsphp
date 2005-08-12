@@ -33,6 +33,10 @@ class join extends join_edit {
   function form() {
     global $CONF, $FORM, $TMPL;
 
+    if ($CONF['captcha']) {
+      $TMPL['join_captcha'] = $this->do_skin('join_captcha');
+    }
+
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $category) {
       $TMPL['categories_menu'] .= "<option value=\"{$category}\">{$category}\n";
@@ -62,7 +66,7 @@ class join extends join_edit {
       $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
 
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
-                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', {$join_date}, {$CONF['active_default']})", __FILE__, __LINE__);
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
  
       $join_email = new skin('join_email');

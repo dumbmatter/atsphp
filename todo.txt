@@ -20,8 +20,7 @@ ROADMAP
 =======
 
 ALPHA
-  Check skin in IE (min-width)
-  Installer
+  Done
 
 BETA
   Reasses text in english.php

@@ -17,7 +17,7 @@
 //===========================================================================\\
 
 class skin {
-  public $filename;
+  var $filename;
 
   function skin($filename) {
     $this->filename = $filename;
@@ -76,7 +76,7 @@ class skin {
     $subject = $this->parse($subject);
     $body = $this->parse($body);
 
-    mail($email, $subject, $body, "From: ".$CONF['youremail']."\r\n");
+    mail($email, $subject, $body, "From: ".$CONF['your_email']."\r\n");
   }
   
   function parse($skin) {

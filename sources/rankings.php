@@ -124,7 +124,7 @@ class rankings extends base {
         $TMPL['content'] .= $this->do_skin('table_body');
         $top_done = 1;
       }
-      if ($page_rank == $CONF['top_skin_num'] && $FORM['start'] <= 1) {
+      if ($page_rank == $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
         $TMPL['content'] .= $this->do_skin('table_top_close');
         $do_table_open = 1;
       }

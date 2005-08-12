@@ -77,11 +77,16 @@ $LNG['install_welcome'] = "Welcome to Aardvark Topsites PHP 5.  Fill out the for
 $LNG['install_sql_prefix'] = "Table prefix - only change this if you are running more than one list from the same database";
 $LNG['install_error_chmod'] = "<b>Error</b>: Could not write to settings_sql.php.  Make sure you CHMOD 666 settings_sql.php.";
 $LNG['install_error_sql'] = "<b>Error</b>: Could not connect to the SQL database.  Please go back and check your SQL settings.";
+$LNG['install_done'] = "Your topsites list is now installed.  Delete this directory now.";
+$LNG['install_your'] = "Your Topsites List";
+$LNG['install_admin'] = "Admin";
+$LNG['install_manual'] = "Manual";
 
 // Join
 $LNG['join_header'] = "Join";
-$LNG['join_user'] = "User";
-$LNG['join_website'] = "Website";
+$LNG['join_enter_text'] = "Enter the text as it is shown in the image below:"; // 4.2.2
+$LNG['join_user'] = "User"; // 5.0
+$LNG['join_website'] = "Website"; // 5.0
 $LNG['join_error_forgot'] = "You forgot to:";
 $LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
@@ -92,6 +97,7 @@ $LNG['join_error_password'] = "Enter a password.";
 $LNG['join_error_urlbanner'] = "Enter a valid banner.  Leave it blank if you don't have one.  It must be smaller than"; // 4.0
 $LNG['join_error_back'] = "Please go back and fix those errors.";
 $LNG['join_error_time'] = "Do not refresh the join confirmation page."; // 4.2.0
+$LNG['join_error_captcha'] = "The word you entered does not match the image."; // 4.2.2
 $LNG['join_success'] = "Success!";
 $LNG['join_thanks'] = "Thank you!  Put this code into your site to be ranked.";
 $LNG['join_changewarning'] = "If you change the code, it might not work.";
@@ -306,6 +312,7 @@ $LNG['a_s_other'] = "Other Settings";
 $LNG['a_s_gzip'] = "Enable gzip - gzip saves bandwidth but uses a little more CPU power";
 $LNG['a_s_timeoffset'] = "Time offset from your server";
 $LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
+$LNG['a_s_captcha'] = "Enable word verification on join - added security against spammers"; // 4.2.2
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";

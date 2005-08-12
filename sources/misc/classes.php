@@ -100,18 +100,29 @@ class join_edit extends base {
     $error_email = 0;
     $error_title = 0;
     $error_banner_url = 0;
-
+    $error_captcha = 0;
 
     if ($type == 'join') {
       if (!preg_match('/^[a-zA-Z0-9\-]+$/', $FORM['u'])) {
         $error_username = 1;
       }
       list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-      if ($username_sql == $TMPL['username']) {
+      if ($username_sql && $username_sql == $TMPL['username']) {
         $error_username_duplicate = 1;
       }
       if (!$FORM['password']) {
         $error_password = 1;
+      }
+      if ($CONF['captcha']) {
+        list($sid) = $DB->fetch("SELECT sid FROM {$CONF['sql_prefix']}_sessions WHERE type = 'captcha' AND data LIKE '{$_SERVER['REMOTE_ADDR']}|%'", __FILE__, __LINE__);
+        require_once("{$CONF['path']}/sources/misc/session.php");
+        $session = new session;
+        list($type, $data) = $session->get($sid);
+        list($ip, $hash) = explode('|', $data);
+        if ($hash != sha1($FORM['captcha']) || strlen($FORM['captcha']) != 6) {
+          $error_captcha = 1;
+        }
+        $session->delete($sid);
       }
     }
     if (!preg_match('/http/', $FORM['url'])) {
@@ -134,7 +145,7 @@ class join_edit extends base {
       if (!isset($size[0]) && !isset($size[1])) { $error_banner_url = 1; }
     }
 
-    if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url) {
+    if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha) {
       $error = "{$LNG['join_error_forgot']}<br />\n";
       if ($error_username) { $error .= "{$LNG['join_error_username']}<br />"; }
       if ($error_username_duplicate) { $error .= "{$LNG['join_error_username_duplicate']}<br />"; }
@@ -143,6 +154,7 @@ class join_edit extends base {
       if ($error_email) { $error .= "{$LNG['join_error_email']}<br />"; }
       if ($error_title) { $error .= "{$LNG['join_error_title']}<br />"; }
       if ($error_banner_url) { $error .= "{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.<br />"; }
+      if ($error_captcha) { $error .= "{$LNG['join_error_captcha']}<br />"; }
       $error .= "<br />{$LNG['join_error_back']}";
 
       $this->error($error);

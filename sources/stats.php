@@ -17,7 +17,7 @@
 //===========================================================================\\
 
 class stats extends base {
-  function __construct() {
+  function stats() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['stats_header'];

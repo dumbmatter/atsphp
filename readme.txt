@@ -15,5 +15,14 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+This is an alpha release.  Some features are incomplete and the script has not
+been thoroughly tested.
 
-This is alpha code, do not use it on a live website.
+Do not forget to give feedback.  Let us know what you think about this alpha
+release and your input will help mold the final version.
+Development forum: http://www.aardvarkind.com/forums/viewforum.php?f=12
+
+To install:
+Upload all the files to your web server
+CHMOD 666 settings_sql.php
+Go to install/index.php in your browser
