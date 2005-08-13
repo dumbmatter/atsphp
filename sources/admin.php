@@ -16,23 +16,23 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-class user_cp extends base {
-  function user_cp() {
+class admin extends base {
+  function admin() {
     global $CONF, $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['user_cp_header'];
+    $TMPL['header'] = $LNG['a_header'];
 
-    if (!isset($_COOKIE['atsphp_sid_user_cp'])) {
+    if (!isset($_COOKIE['atsphp_sid_admin'])) {
       $this->login();
     }
     else {
       require_once("{$CONF['path']}/sources/misc/session.php");
       $session = new session;
-      list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_user_cp']);
-      if ($type == 'user_cp') {
-        $session->update($_COOKIE['atsphp_sid_user_cp']);
+      list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_admin']);
+      if ($type == 'admin') {
+        $session->update($_COOKIE['atsphp_sid_admin']);
 
-        // Array containing the valid .php files from the sources/user_cp directory
+        // Array containing the valid .php files from the sources/admin directory
         $action = array(
                     'edit' => 1,
                     'link_code' => 1
@@ -40,10 +40,10 @@ class user_cp extends base {
 
         if (isset($FORM['b']) && isset($action[$FORM['b']])) {
           $page_name = $FORM['b'];
-          require_once("{$CONF['path']}/sources/user_cp/{$page_name}.php");
+          require_once("{$CONF['path']}/sources/admin/{$page_name}.php");
           $page = new $page_name;
 
-          $TMPL['content'] = $this->do_skin('user_cp');
+          $TMPL['content'] = $this->do_skin('admin');
         }
         elseif (isset($FORM['b']) && $FORM['b'] == 'logout') {
           $this->logout();
@@ -61,22 +61,20 @@ class user_cp extends base {
   function login() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    if (!isset($FORM['u']) || !isset($FORM['password']) || !$FORM['u'] || !$FORM['password']) {
-      $TMPL['content'] = $this->do_skin('user_cp_login');
+    if (!isset($FORM['password']) || !$FORM['password']) {
+      $TMPL['content'] = $this->do_skin('admin_login');
     }
     else {
-      $TMPL['username'] = $DB->escape($FORM['u']);
-      $password = md5($FORM['password']);
-      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}' AND password = '{$password}'", __FILE__, __LINE__);
-      if ($TMPL['username'] == $username) {
+      list($admin_password) = $DB->fetch("SELECT admin_password FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
+      if ($admin_password == md5($FORM['password'])) {
         require_once("{$CONF['path']}/sources/misc/session.php");
         $session = new session;
-        $session->create('user_cp', $TMPL['username']);
+        $session->create('admin', 1);
 
         $this->main();
       }
       else {
-        $this->error($LNG['g_invalid_u_or_p']);
+        $this->error($LNG['g_invalid_p']);
       }
     }
   }
@@ -86,16 +84,16 @@ class user_cp extends base {
 
     require_once("{$CONF['path']}/sources/misc/session.php");
     $session = new session;
-    $session->delete($_COOKIE['atsphp_sid_user_cp']);
+    $session->delete($_COOKIE['atsphp_sid_admin']);
 
-    $TMPL['content'] = $LNG['user_cp_logout_message'];
+    $TMPL['content'] = $LNG['a_logout_message'];
   }
 
   function main() {
     global $LNG, $TMPL;
 
-    $TMPL['user_cp_content'] = $LNG['user_cp_welcome'];
-    $TMPL['content'] = $this->do_skin('user_cp');
+    $TMPL['admin_content'] = $LNG['a_main'];
+    $TMPL['content'] = $this->do_skin('admin');
   }
 }
 ?>

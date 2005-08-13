@@ -116,6 +116,7 @@ $in = new in;
 
 // Array containing the valid .php files from the sources directory
 $action = array(
+            'admin' => 1,
             'in' => 1,
             'join' => 1,
             'lost_password' => 1,

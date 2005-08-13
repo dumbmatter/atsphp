@@ -24,6 +24,7 @@ ALPHA
 
 BETA
   Reasses text in english.php
+  Lost Password
   Admin  
   Extensive Testing
 

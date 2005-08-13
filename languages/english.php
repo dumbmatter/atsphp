@@ -53,7 +53,8 @@ $LNG['g_tot_in'] = "Total In"; // 5.0
 $LNG['g_unq_out'] = "Unique Out"; // 5.0
 $LNG['g_tot_out'] = "Total Out"; // 5.0
 $LNG['g_invalid_u_or_p'] = "Invalid username or password.  Please try again."; // 5.0
-$LNG['g_invalid_u'] = "Invalid username."; // 4.0
+$LNG['g_invalid_u'] = "Invalid username.  Please try again."; // 5.0
+$LNG['g_invalid_p'] = "Invalid password.  Please try again."; // 5.0
 $LNG['g_session_expired'] = "Your session has expired.  Please login again."; // 5.0
 $LNG['g_error'] = "Error"; // 5.0
 $LNG['g_delete_install'] = "For security reasons, you must delete the install directory before the script will run."; // 5.0
@@ -181,7 +182,7 @@ $LNG['user_cp_header'] = "User Control Panel"; // 5.0
 $LNG['user_cp_login'] = "Login"; // 5.0
 $LNG['user_cp_logout'] = "Logout"; // 5.0
 $LNG['user_cp_welcome'] = "Welcome to the user control panel.  Use the links to the left to manage your account."; // 5.0
-$LNG['user_cp_logout_message'] = "You successfully logged out of the user control panel."; // 5.0
+$LNG['user_cp_logout_message'] = "You have successfully logged out of the user control panel."; // 5.0
 
 // Admin > Approve New Memers // 4.0
 $LNG['a_approve'] = "Approve"; // 4.0
@@ -228,10 +229,11 @@ $LNG['a_login_invalidpw'] = "Invalid password!";
 $LNG['a_login_session'] = "Your session has expired, please <a href=\"admin.php\">click here</a> to login again."; // 4.1.0
 
 // Admin > Logout
-$LNG['a_logout'] = "You are logged out.";
+$LNG['admin_logout'] = "You have successfully logged out of the admin."; // 5.0
 
 // Admin > Main
-$LNG['a_main'] = "Use the links at the left to go to the different areas of the admin.";
+$LNG['a_header'] = "Admin"; // 5.0
+$LNG['a_main'] = "Welcome to the user control panel.  Use the links to the left to manage your account.";
 $LNG['a_main_approve'] = "There are %s sites waiting to be approved.";
 
 // Admin > Manage Members
@@ -242,8 +244,7 @@ $LNG['a_man_email'] = "Email"; // 4.2.0
 
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
-$LNG['a_menu_main'] = "Main Page";
-$LNG['a_menu_approve'] = "Approve New Members";
+$LNG['a_menu_approve'] = "Approve Members";
 $LNG['a_menu_delete'] = "Delete Member";
 $LNG['a_menu_edit'] = "Edit Member";
 $LNG['a_menu_delete_review'] = "Delete Review";
@@ -251,9 +252,8 @@ $LNG['a_menu_email'] = "Email Members";
 $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_reset'] = "Reset Stats"; // 4.1.0
-$LNG['a_menu_settings'] = "Settings";
-$LNG['a_menu_settings_general'] = "General"; // 4.2.0
-$LNG['a_menu_settings_skins'] = "Skins"; // 4.2.0
+$LNG['a_menu_settings_general'] = "Settings"; // 5.0
+$LNG['a_menu_skins'] = "Skins"; // 5.0
 
 // Admin > Reset
 $LNG['a_reset_confirm'] = "This will delete all the stats.  It will not delete your members, it will only reset all their stats to 0."; // 4.1.0

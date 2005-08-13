@@ -436,7 +436,7 @@ EndHTML;
       $TMPL['content'] = <<<EndHTML
 {$LNG['install_done']}<br /><br />
 <a href="{$list_url}/">{$LNG['install_your']}</a><br />
-{$LNG['install_admin']}<br />
+<a href="{$list_url}/index.php?a=admin">{$LNG['install_admin']}</a><br />
 {$LNG['install_manual']}
 EndHTML;
     }
