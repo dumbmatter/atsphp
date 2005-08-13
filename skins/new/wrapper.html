@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>{$list_name} - {$header}</title>
+<link rel="stylesheet" type="text/css" media="screen" href="{$skins_url}/{$skin_name}/default.css" />
+</head>
+<body>
+
+<div class="container">
+<center>
+<a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/logo.png" width="728" height="66" alt="{$list_name}" border="0" /></a>
+</center>
+
+<table align="center" cellspacing="0" cellpadding="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
+<tr><td>
+<form action="index.php" method="get">
+{$ranking_methods_menu}
+{$categories_menu}
+{$multiple_pages_menu}
+<input type="submit" value="{$lng->g_form_submit_short}" />
+</form>
+</td><td align="center">
+<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
+<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
+</td><td align="right">
+<form action="index.php" method="get">
+<input type="hidden" name="a" value="search" />
+<input type="text" name="q" size="18" value="{$query}" />
+<input type="submit" value="{$lng->search_search}" />
+</form>
+</td></tr>
+</table>
+
+<table align="center" cellspacing="0" cellpadding="0" width="100%" style="clear: both;"><tr><td>
+
+{$content}</td></tr></table>
+
+<p style="margin: 0px; height: 16px;"></p>
+
+<div class="bottom">
+{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
+{$list_name} - {$powered_by}
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-size: small;
+  font-family: sans-serif;
+}
+
+fieldset {
+  border: 1px solid #737373;
+}
+form {
+  margin: 0px;
+}
+h1, h2, h3 {
+  margin: 0px;
+  padding: 0px;
+}
+hr {
+  background-color: #737373;
+  border: 0px;
+  color: #737373;
+  height: 1px;
+}
+
+a:link {
+  color: #33c;
+  font-weight: bold;
+  text-decoration: underline;
+}
+a:visited {
+  color: #4040ff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+a:active, a:hover {
+  color: #000;
+}
+
+div.bottom {
+  color: #737373;
+  font-size: x-small;
+  text-align: center;
+}
+div.container {
+  margin-left: 5%;
+  margin-right: 5%;
+  min-width: 728px;
+}
+
+/* Define some colors */
+
+.darkbg {
+  background-color: #737373;
+  color: #fff;
+}
+.mediumbg {
+  background-color: #09c;
+  background-image: url(grad_bg.png);
+  color: #fff;
+}
+.lightbg {
+  background-color: #fff;
+  color: #000;
+}
+.lightbgalt {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Top menu */
+
+a.menu {
+  background-color: #fff;
+  border: 1px solid #737373;
+  color: #000;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 3px;
+  text-decoration: none;
+}
+a.menu:hover, a.menu:active {
+  color: #fff;
+  background-color: #09c;
+  background-image: url(grad_bg.png);
+}
+
+a.table_top {
+  color: #fff;
+  text-decoration: underline;
+}
+a.table_top:hover, a.table_top:active {
+  color: #c0c0c0;
+}
