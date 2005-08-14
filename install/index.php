@@ -153,8 +153,6 @@ EndHTML;
                     `button_ext` varchar(255) default '',
                     `button_num` int(3) default 5,
                     `search` tinyint(1) default 1,
-                    `search_results` int(2) default 10,
-                    `gzip` tinyint(1) default 0,
                     `time_offset` int(2) default 0,
                     `gateway` tinyint(1) default 1,
                     `captcha` tinyint(1) default 1

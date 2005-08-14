@@ -64,7 +64,7 @@ class search extends base {
     }
     $query .= ")";
 
-    $result = $DB->select_limit($query, $CONF['search_results'], $start, __FILE__, __LINE__);
+    $result = $DB->select_limit($query, 10, $start, __FILE__, __LINE__);
 
     $TMPL['results'] = '';
     $TMPL['rank'] = $start + 1;
@@ -83,11 +83,11 @@ class search extends base {
       $this->error($LNG['search_no_sites']);
     }
 
-    $TMPL['prev'] = $start - $CONF['search_results'];
+    $TMPL['prev'] = $start - 10;
     if ($TMPL['prev'] < 0) {
       $TMPL['prev'] = 0;
     }
-    $TMPL['next'] = $start + $CONF['search_results'];
+    $TMPL['next'] = $start + 10;
 
     $TMPL['content'] = $this->do_skin('search_results');
   }

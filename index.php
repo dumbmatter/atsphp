@@ -29,7 +29,7 @@ $TIMER = new timer;
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
-$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 0);
+$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
 // Settings
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
@@ -97,11 +97,6 @@ if ($last_new_month != $current_month) {
   $LNG['g_2days'] = $LNG['g_2'.$CONF['day_week_month'].'s'];
   $LNG['g_3days'] = $LNG['g_3'.$CONF['day_week_month'].'s'];
 }*/
-
-// gzip
-if ($CONF['gzip']) {
-  ob_start('ob_gzhandler');
-}
 
 // Check if installer is there
 if (file_exists("{$CONF['path']}/install/")) {

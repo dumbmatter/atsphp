@@ -6,22 +6,26 @@
 </head>
 <body>
 
-<div class="container">
+<table width="728" align="center"><tr><td>
+
 <center>
 <a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/logo.png" width="728" height="66" alt="{$list_name}" border="0" /></a>
 </center>
 
-<table align="center" cellspacing="0" cellpadding="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
-<tr><td>
+<center>
+<a href="{$list_url}/" class="menu">{$lng->main_menu_rankings}</a>
+<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
+<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
+</center>
+
+<table cellspacing="0" cellpadding="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
+<tr><td align="left">
 <form action="index.php" method="get">
 {$ranking_methods_menu}
 {$categories_menu}
 {$multiple_pages_menu}
 <input type="submit" value="{$lng->g_form_submit_short}" />
 </form>
-</td><td align="center">
-<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a>
-<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
 </td><td align="right">
 <form action="index.php" method="get">
 <input type="hidden" name="a" value="search" />
@@ -41,7 +45,8 @@
 {$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
 {$list_name} - {$powered_by}
 </div>
-</div>
+
+</td></tr></table>
 
 </body>
 </html>

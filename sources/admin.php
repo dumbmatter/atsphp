@@ -34,8 +34,15 @@ class admin extends base {
 
         // Array containing the valid .php files from the sources/admin directory
         $action = array(
+                    'approve' => 1,
+                    'delete' => 1,
+                    'delete_review' => 1,
                     'edit' => 1,
-                    'link_code' => 1
+                    'email' => 1,
+                    'manage' => 1,
+                    'settings' => 1,
+                    'skins' => 1,
+                    'reset' => 1
                   );
 
         if (isset($FORM['b']) && isset($action[$FORM['b']])) {

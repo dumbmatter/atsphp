@@ -122,6 +122,7 @@ $LNG['main_header'] = "Rankings"; // 5.0
 $LNG['main_all'] = "All Sites"; // 4.2.0
 $LNG['main_method'] = "Ranking method";
 $LNG['main_members'] = "Members";
+$LNG['main_menu_rankings'] = "Rankings";
 $LNG['main_menu_join'] = "Join";
 $LNG['main_menu_random'] = "Random Member";
 $LNG['main_menu_search'] = "Search";
@@ -184,31 +185,22 @@ $LNG['user_cp_logout'] = "Logout"; // 5.0
 $LNG['user_cp_welcome'] = "Welcome to the user control panel.  Use the links to the left to manage your account."; // 5.0
 $LNG['user_cp_logout_message'] = "You have successfully logged out of the user control panel."; // 5.0
 
-// Admin > Approve New Memers // 4.0
+// Admin > Approve New Members // 4.0
 $LNG['a_approve'] = "Approve"; // 4.0
 $LNG['a_approve_del'] = "Delete"; // 4.0
 $LNG['a_approve_none'] = "There are no members waiting to be approved."; // 4.0
 $LNG['a_approve_done'] = "The site has been approved successfully."; // 4.0
 
-// Admin > Delete
-$LNG['a_del_mems'] = "The member has been successfully deleted.";
-$LNG['a_del_mem'] = "Delete Member";
+// Admin > Delete Member
+$LNG['a_del_header'] = "Delete Member"; // 5.0
+$LNG['a_del_success'] = "The member has been successfully deleted."; // 5.0
 $LNG['a_del_warn'] = "Are you sure you want to delete"; // 4.2.0
-$LNG['a_del_dne'] = "There is no member with the ID number"; // 4.2.0
 
 // Admin > Edit Member Info
+$LNG['a_edit_header'] = "Edit Member"; // 5.0
 $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
-$LNG['a_edit_inactive'] = "Inactive (Temporarily Banned, Not Listed)"; // 4.0
-$LNG['a_edit_error_id'] = "Invalid ID.";
-$LNG['a_edit_error'] = "Error";
-$LNG['a_edit_error_forgot'] = "You forgot to:";
-$LNG['a_edit_error_url'] = "Enter a valid url.";
-$LNG['a_edit_error_email'] = "Enter a valid email address.";
-$LNG['a_edit_error_title'] = "Enter a title for your web site.";
-$LNG['a_edit_error_password'] = "Enter a password.";
-$LNG['a_edit_error_back'] = "Please go back and fix those errors.";
-$LNG['a_edit_success'] = "Success!";
+$LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
 $LNG['a_edit_info_edited'] = "The member's information has been successfully edited.";
 
 // Admin > Delete Review
@@ -237,6 +229,7 @@ $LNG['a_main'] = "Welcome to the user control panel.  Use the links to the left 
 $LNG['a_main_approve'] = "There are %s sites waiting to be approved.";
 
 // Admin > Manage Members
+$LNG['a_man_header'] = "Manage Members"; // 5.0
 $LNG['a_man_actions'] = "Actions"; // 4.2.0
 $LNG['a_man_delete'] = "Delete"; // 4.2.0
 $LNG['a_man_edit'] = "Edit"; // 4.2.0
@@ -252,7 +245,7 @@ $LNG['a_menu_email'] = "Email Members";
 $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_reset'] = "Reset Stats"; // 4.1.0
-$LNG['a_menu_settings_general'] = "Settings"; // 5.0
+$LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_skins'] = "Skins"; // 5.0
 
 // Admin > Reset
@@ -261,58 +254,44 @@ $LNG['a_reset_stats'] = "Reset Stats"; // 4.1.0
 $LNG['a_reset_done'] = "All members' stats have been reset to 0."; // 4.1.0
 
 // Admin > Settings
+$LNG['a_s_header'] = "Change Settings";
 $LNG['a_s_general'] = "General Settings";
 $LNG['a_s_admin_password'] = "Admin password";
-$LNG['a_s_list_name'] = "Name of your topsites list";
-$LNG['a_s_deflanguage'] = "Default language";
-$LNG['a_s_path'] = "The full path to the topsites directory";
+$LNG['a_s_list_name'] = "The name of your topsites list";
 $LNG['a_s_list_url'] = "URL to the topsites directory";
-$LNG['a_s_skins_path'] = "The full path to the skins directory"; // 4.2.0
-$LNG['a_s_skins_url'] = "URL to the directory the skins directory"; // 4.2.0
+$LNG['a_s_default_language'] = "Default language";
 $LNG['a_s_your_email'] = "Your email address";
-
-$LNG['a_s_sql'] = "SQL Settings";
-$LNG['a_s_sql_type'] = "Database Type"; // 4.1.0
-$LNG['a_s_sql_host'] = "Host";
-$LNG['a_s_sql_database'] = "Database";
-$LNG['a_s_sql_username'] = "Username";
-$LNG['a_s_sql_password'] = "Password";
 
 $LNG['a_s_ranking'] = "Ranking Settings";
 $LNG['a_s_categories'] = "Categories (separate with commas)"; // 4.1.0
-$LNG['a_s_numlist'] = "Number of members to list per page";
-$LNG['a_s_daymonth'] = "Keep hits for days, weeks, or months"; // 4.2.0
-$LNG['a_s_rankingmethod'] = "Ranking method"; // 4.0.2
-$LNG['a_s_featured'] = "Activate \"Featured Member\"?  You have to add <#featured> to wrapper.html after you turn this on."; // 4.1.0
-$LNG['a_s_top'] = "Number of members to use the _top skin for";
-$LNG['a_s_adbreak'] = "Show an ad break after these ranks (separate with commas)";
+$LNG['a_s_num_list'] = "Number of members to list per page"; // 5.0
+$LNG['a_s_ranking_period'] = "Ranking period"; // 5.0
+$LNG['a_s_ranking_method'] = "Ranking method"; // 5.0
+$LNG['a_s_featured_member'] = "Activate \"Featured Member\"?  You have to add <#featured> to wrapper.html after you turn this on."; // 4.1.0
+$LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
+$LNG['a_s_ad_breaks'] = "Show ad breaks after these ranks (separate with commas)";
 
-$LNG['a_s_members'] = "Members Settings";
-$LNG['a_s_active_default'] = "Require new members to be approved by you before being listed";
-$LNG['a_s_delete_after'] = "Delete inactive members after this many days"; // 4.1.0
+$LNG['a_s_member'] = "Member Settings";
+$LNG['a_s_active_default'] = "Require new members to be approved before being listed";
+$LNG['a_s_delete_after'] = "Delete inactive members after this many days (set to 0 to turn off)"; // 4.1.0
 $LNG['a_s_email_admin_on_join'] = "Email you when a new member joins";
 $LNG['a_s_max_banner_width'] = "Member's maximum banner width (set to 0 to turn off)"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "Member's maximum banner height (set to 0 to turn off)"; // 4.2.0
-$LNG['a_s_defbanner'] = "Default banner to give members if they don't supply one when they join";
+$LNG['a_s_default_banner'] = "Default banner for members who do not supply one";
 
 $LNG['a_s_button'] = "Button Settings";
 $LNG['a_s_ranks_on_buttons'] = "Do you want your member's rank on their button?  See <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\" target=\"_blank\">the manual</a> for details.  Only choose Stat Buttons if you have already read that section of the manual.  If you choose Stat Buttons, the rest of this section will not have an effect."; // 4.2.0
 $LNG['a_s_stat_buttons'] = "Stat Buttons"; // 4.2.0
-$LNG['a_s_button_url'] = "<b>If No</b> - URL to the button you want to appear on members' sites"; // 4.0
-$LNG['a_s_button_dir'] = "<b>If Yes</b> - URL to the directory the buttons are in"; // 4.0
-$LNG['a_s_button_ext'] = "<b>If Yes</b> - Extension of the buttons (gif, png, jpg, etc.)"; // 4.0
-$LNG['a_s_button_num'] = "<b>If Yes</b> - Number of buttons you have made - The higher you set this, the more resources the script will use"; // 4.0
-
-$LNG['a_s_searchs'] = "Search Settings"; // 4.0
-$LNG['a_s_search_id'] = "<a href=\"http://www.searchtraffic.com/wsignup.php3?atsphp\" target=\"_blank\">SearchTraffic</a> Affiliate ID - See the manual for more details"; // 4.2.0
-$LNG['a_s_search'] = "The search feature";
-$LNG['a_s_searchresults'] = "Search results per page";
+$LNG['a_s_button_url'] = "If Yes/No - URL to the default button you want to appear on members' sites"; // 4.0
+$LNG['a_s_button_dir'] = "If Yes - URL to the directory the buttons are in"; // 4.0
+$LNG['a_s_button_ext'] = "If Yes - Extension of the buttons (gif, png, jpg, etc.)"; // 4.0
+$LNG['a_s_button_num'] = "If Yes - Number of buttons you have made"; // 4.0
 
 $LNG['a_s_other'] = "Other Settings";
-$LNG['a_s_gzip'] = "Enable gzip - gzip saves bandwidth but uses a little more CPU power";
-$LNG['a_s_timeoffset'] = "Time offset from your server";
+$LNG['a_s_search'] = "Search";
+$LNG['a_s_time_offset'] = "Time offset from your server (in hours)";
 $LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
-$LNG['a_s_captcha'] = "Enable word verification on join - added security against spammers"; // 4.2.2
+$LNG['a_s_captcha'] = "Word verification on join - security against spammers"; // 4.2.2
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";

@@ -41,11 +41,6 @@ div.bottom {
   font-size: x-small;
   text-align: center;
 }
-div.container {
-  margin-left: 5%;
-  margin-right: 5%;
-  min-width: 728px;
-}
 
 /* Define some colors */
 

@@ -36,6 +36,9 @@ class join extends join_edit {
     if ($CONF['captcha']) {
       $TMPL['join_captcha'] = $this->do_skin('join_captcha');
     }
+    else {
+      $TMPL['join_captcha'] = '';
+    }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $category) {

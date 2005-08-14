@@ -18,11 +18,17 @@
 
 
 class base {
-  function error($message) {
+  function error($message, $skin = 0) {
     global $TMPL;
 
     $TMPL['error'] = $message;
-    $TMPL['content'] = $this->do_skin('error');
+    if ($skin) {
+      $TMPL["{$skin}_content"] = $this->do_skin('error');
+      $TMPL['content'] = $this->do_skin($skin);
+    }
+    else {
+      $TMPL['content'] = $this->do_skin('error');
+    }
 
     $skin = new main_skin('wrapper');
     echo $skin->make();
@@ -157,7 +163,12 @@ class join_edit extends base {
       if ($error_captcha) { $error .= "{$LNG['join_error_captcha']}<br />"; }
       $error .= "<br />{$LNG['join_error_back']}";
 
-      $this->error($error);
+      if ($type == 'edit') {
+        $this->error($error, 'user_cp');
+      }
+      else {
+        $this->error($error);
+      }
 
       return 0;
     }
