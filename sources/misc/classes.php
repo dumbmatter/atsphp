@@ -53,6 +53,9 @@ class base {
     if ($ranking_period == 'overall') {
       $rank_by = "unq_{$ranking_method}_overall";
     }
+    elseif (!$CONF['ranking_average']) {
+      $rank_by .= "unq_{$ranking_method}_0_{$ranking_period}";
+    }
     else {
       $rank_by = '(';
       for ($i = 0; $i < 10; $i++) {

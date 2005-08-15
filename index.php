@@ -35,10 +35,10 @@ $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $C
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
-$ad_breaks = explode('|', $CONF['ad_breaks']);
+$ad_breaks = explode(',', $CONF['ad_breaks']);
 $CONF['ad_breaks'] = array();
 foreach ($ad_breaks as $key => $value) {
-  $CONF['ad_breaks'][$value] = 1;
+  $CONF['ad_breaks'][$value] = $value;
 }
 
 $CONF['categories'] = array();
@@ -91,12 +91,18 @@ if ($last_new_month != $current_month) {
 }
 
 // Adjust the output text based on days, weeks, or months
-/*if ($CONF['day_week_month'] == 'week' || $CONF['day_week_month'] == 'month') {
-  $LNG['g_today'] = $LNG['g_this'.$CONF['day_week_month']];
-  $LNG['g_yesterday'] = $LNG['g_last'.$CONF['day_week_month']];
-  $LNG['g_2days'] = $LNG['g_2'.$CONF['day_week_month'].'s'];
-  $LNG['g_3days'] = $LNG['g_3'.$CONF['day_week_month'].'s'];
-}*/
+if ($CONF['ranking_period'] == 'daily') {
+  $LNG['g_this_period'] = $LNG['g_today'];
+  $LNG['g_last_period'] = $LNG['g_yesterday'];
+}
+elseif ($CONF['ranking_period'] == 'weekly') {
+  $LNG['g_this_period'] = $LNG['g_this_week'];
+  $LNG['g_last_period'] = $LNG['g_last_week'];
+}
+elseif ($CONF['ranking_period'] == 'monthly') {
+  $LNG['g_this_period'] = $LNG['g_this_month'];
+  $LNG['g_last_period'] = $LNG['g_last_month'];
+}
 
 // Check if installer is there
 if (file_exists("{$CONF['path']}/install/")) {

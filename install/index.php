@@ -138,6 +138,7 @@ EndHTML;
                     `num_list` int(5) default 10,
                     `ranking_period` varchar(7) default 'daily',
                     `ranking_method` varchar(255) default 'pv',
+                    `ranking_average` tinyint(1) default 1,
                     `featured_member` tinyint(1) default 0,
                     `top_skin_num` int(5) default 2,
                     `ad_breaks` varchar(255) default '',

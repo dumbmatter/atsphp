@@ -100,7 +100,7 @@ class rankings extends base {
       $TMPL['out_url'] = $CONF['list_url'].'/out.php?u='.$TMPL['username'];
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
-      $TMPL['today'] = $TMPL["unq_{$ranking_method}_0_{$ranking_period}"];
+      $TMPL['this_period'] = $TMPL["unq_{$ranking_method}_0_{$ranking_period}"];
       $TMPL['average'] = 0;
       for ($i = 0; $i < 10; $i++) {
         $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$ranking_period}"];
@@ -130,7 +130,7 @@ class rankings extends base {
       }
 
       if (isset($CONF['ad_breaks'][$page_rank])) {
-        if ($is_top) {
+        if (isset($is_top) && $is_top) {
           $TMPL['content'] .= $this->do_skin('table_top_close');
           $TMPL['content'] .= $this->do_skin('ad_break_top');
           $TMPL['content'] .= $this->do_skin('table_top_open');

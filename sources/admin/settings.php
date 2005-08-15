@@ -43,48 +43,81 @@ class settings extends base {
       }
     }
 
-    $search_menu = '';
+    $ranking_period_menu = '';
+    $ranking_periods = array('daily', 'weekly', 'monthly', 'overall');
+    foreach ($ranking_periods as $ranking_period) {
+      if ($ranking_period == $CONF['ranking_period']) { $ranking_period_menu .= "<option value=\"$ranking_period\" selected=\"selected\">{$LNG["g_{$ranking_period}"]}\n"; }
+      else { $ranking_period_menu .= "<option value=\"$ranking_period\">{$LNG["g_{$ranking_period}"]}\n"; }
+    }
+
+    $ranking_method_menu = '';
+    $ranking_methods = array('pv', 'in', 'out');
+    foreach ($ranking_methods as $ranking_method) {
+      if ($ranking_method == $CONF['ranking_method']) { $ranking_method_menu .= "<option value=\"$ranking_method\" selected=\"selected\">{$LNG["g_{$ranking_method}"]}\n"; }
+      else { $ranking_method_menu .= "<option value=\"$ranking_method\">{$LNG["g_{$ranking_method}"]}\n"; }
+    }
+
+    if ($CONF['ranking_average']) {
+      $ranking_average_menu = "<option value=\"1\" selected=\"selected\">{$LNG['g_average']}\n<option value=\"0\">{$LNG['g_this_period']}\n";
+    }
+    else {
+      $ranking_average_menu = "<option value=\"1\">{$LNG['g_average']}\n<option value=\"0\" selected=\"selected\">{$LNG['g_this_period']}\n";
+    }
+    $LNG['a_s_ranking_average'] = sprintf($LNG['a_s_ranking_average'], strtolower($LNG['g_this_period']));
+
+    if ($CONF['ranks_on_buttons'] == 1) {
+      $ranks_on_buttons_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n<option value=\"2\">{$LNG['a_s_stat_buttons']}";
+    }
+    elseif ($CONF['ranks_on_buttons'] == 2) {
+      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n<option value=\"2\" selected=\"selected\">{$LNG['a_s_stat_buttons']}";
+    }
+    else {
+      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}\n<option value=\"2\">{$LNG['a_s_stat_buttons']}";
+    }
+
     if ($CONF['search']) {
-      $search_menu .= "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $search_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
     else {
-      $search_menu .= "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $search_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
-    $featured_member_menu = '';
+
     if ($CONF['featured_member']) {
-      $featured_member_menu .= "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $featured_member_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
     else {
-      $featured_member_menu .= "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $featured_member_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
-    $active_default_menu = '';
+
     if (!$CONF['active_default']) {
-      $active_default_menu .= "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
+      $active_default_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
     }
     else {
-      $active_default_menu .= "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $active_default_menu = "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
-    $email_admin_on_join_menu = '';
+
     if ($CONF['email_admin_on_join']) {
-      $email_admin_on_join_menu .= "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $email_admin_on_join_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
     else {
-      $email_admin_on_join_menu .= "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $email_admin_on_join_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
-    $gateway_menu = '';
+
     if ($CONF['gateway']) {
-      $gateway_menu .= "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $gateway_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
     else {
-      $gateway_menu .= "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $gateway_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
-    $captcha_menu = '';
+
     if ($CONF['captcha']) {
-      $captcha_menu .= "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $captcha_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
     else {
-      $captcha_menu .= "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $captcha_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
+
+    $ad_breaks = implode(',', $CONF['ad_breaks']);
 
     $TMPL['admin_content'] = <<<EndHTML
 <form action="index.php?a=admin&amp;b=settings" method="post">
@@ -97,7 +130,7 @@ class settings extends base {
 <input type="text" name="list_url" size="50" value="{$CONF['list_url']}" /><br /><br />
 </label>
 <label>{$LNG['a_s_default_language']}<br />
-<select name="language">
+<select name="default_language">
 {$languages_menu}</select><br /><br />
 </label>
 <label>{$LNG['a_s_your_email']}<br />
@@ -107,19 +140,20 @@ class settings extends base {
 
 <fieldset>
 <legend>{$LNG['a_s_ranking']}</legend>
-<label>{$LNG['a_s_categories']}<br />
-{$categories_menu}<br /><br />
-</label>
 <label>{$LNG['a_s_num_list']}<br />
 <input type="text" name="num_list" size="5" value="{$CONF['num_list']}" /><br /><br />
 </label>
-<label>{$LNG['a_s_ranking_period']}overall<br />
+<label>{$LNG['a_s_ranking_period']}<br />
 <select name="ranking_period">
 {$ranking_period_menu}</select><br /><br />
 </label>
 <label>{$LNG['a_s_ranking_method']}<br />
 <select name="ranking_method">
 {$ranking_method_menu}</select><br /><br />
+</label>
+<label>{$LNG['a_s_ranking_average']}<br />
+<select name="ranking_average">
+{$ranking_average_menu}</select><br /><br />
 </label>
 <label>{$LNG['a_s_featured_member']}<br />
 <select name="featured_member">
@@ -129,7 +163,7 @@ class settings extends base {
 <input type="text" name="top_skin_num" size="5" value="{$CONF['top_skin_num']}" /><br /><br />
 </label>
 <label>{$LNG['a_s_ad_breaks']}<br />
-{$ad_breaks_menu}
+<input type="text" name="ad_breaks" size="20" value="{$ad_breaks}" />
 </label>
 </fieldset>
 
@@ -203,29 +237,45 @@ EndHTML;
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    if ($this->check_input('edit')) {
-      $TMPL['url'] = $DB->escape($FORM['url']);
-      $TMPL['title'] = $DB->escape($FORM['title']);
-      $TMPL['description'] = $DB->escape($FORM['description']);
-      $TMPL['category'] = $DB->escape($FORM['category']);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
-      $TMPL['email'] = $DB->escape($FORM['email']);
-      $TMPL['active'] = intval($FORM['active']);
-      if ($FORM['password']) {
-        $password = md5($FORM['password']);
-        $password_sql = ", password = '{$password}'";
-      }
-      else {
-        $password_sql = '';
-      }
+    $list_name = $DB->escape($FORM['list_name']);
+    $list_url = $DB->escape($FORM['list_url']);
+    $default_language = $DB->escape($FORM['default_language']);
+    $your_email = $DB->escape($FORM['your_email']);
 
-      require_once("{$CONF['path']}/sources/in.php");
-      $short_url = in::short_url($TMPL['url']);
+    $num_list = intval($FORM['num_list']);
+    $ranking_period = $DB->escape($FORM['ranking_period']);
+    $ranking_method = $DB->escape($FORM['ranking_method']);
+    $ranking_average = intval($FORM['ranking_average']);
+    $featured_member = intval($FORM['featured_member']);
+    $top_skin_num = intval($FORM['top_skin_num']);
+    $ad_breaks = $DB->escape($FORM['ad_breaks']);
+    $ad_breaks = preg_replace('/[^0-9,]/m', '', $ad_breaks);
 
-      $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}', active = {$TMPL['active']}{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    $active_default = intval($FORM['active_default']);
+    $delete_after = intval($FORM['delete_after']);
+    $email_admin_on_join = intval($FORM['email_admin_on_join']);
+    $max_banner_width = intval($FORM['max_banner_width']);
+    $max_banner_height = intval($FORM['max_banner_height']);
+    $default_banner = $DB->escape($FORM['default_banner']);
+
+    $ranks_on_buttons = intval($FORM['ranks_on_buttons']);
+    $button_url = $DB->escape($FORM['button_url']);
+    $button_dir = $DB->escape($FORM['button_dir']);
+    $button_ext = $DB->escape($FORM['button_ext']);
+    $button_num = intval($FORM['button_num']);
+
+    $search = intval($FORM['search']);
+    $time_offset = intval($FORM['time_offset']);
+    $gateway = intval($FORM['gateway']);
+    $captcha = intval($FORM['captcha']);
+    $DB->query("UPDATE {$CONF['sql_prefix']}_settings SET list_name = '{$list_name}', list_url = '{$list_url}', default_language = '{$default_language}', your_email = '{$your_email}',
+                num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}',
+                active_default = {$active_default}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
+                ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num},
+                search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}
+               ", __FILE__, __LINE__);
  
-      $TMPL['admin_content'] = $LNG['a_edit_info_edited'];
-    }
+    $TMPL['admin_content'] = $LNG['a_s_updated'];
   }
 }
 ?>

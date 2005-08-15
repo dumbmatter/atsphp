@@ -44,6 +44,7 @@ $LNG['g_this_week'] = "This Week"; // 5.0
 $LNG['g_last_week'] = "Last Week"; // 5.0
 $LNG['g_weekly'] = "Weekly"; // 5.0
 $LNG['g_pv'] = 'Pageviews'; // 5.0
+$LNG['g_overall'] = 'Overall'; // 5.0
 $LNG['g_in'] = 'In'; // 5.0
 $LNG['g_out'] = 'Out'; // 5.0
 $LNG['g_unq_pv'] = "Unique PVs"; // 5.0
@@ -153,7 +154,7 @@ $LNG['rate_back'] = "Back To Stats";
 
 // Search
 $LNG['search_header'] = "Search";
-$LNG['search_off'] = "The search feature has been turned off for this topsites list.";
+$LNG['search_off'] = "The search feature has been disabled.";
 $LNG['search_rank'] = "Rank";
 $LNG['search_search'] = "Search";
 $LNG['search_for'] = "You searched for";
@@ -171,6 +172,7 @@ $LNG['stats_rate'] = "Rate and Review This Site";
 $LNG['stats_reviews'] = "Reviews";
 $LNG['stats_allreviews'] = "Show All Reviews"; // 4.0
 $LNG['stats_week'] = "Week"; // 5.0
+$LNG['stats_highest'] = "Highest"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; //4.0
@@ -246,7 +248,7 @@ $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_reset'] = "Reset Stats"; // 4.1.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
-$LNG['a_menu_skins'] = "Skins"; // 5.0
+$LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
 
 // Admin > Reset
 $LNG['a_reset_confirm'] = "This will delete all the stats.  It will not delete your members, it will only reset all their stats to 0."; // 4.1.0
@@ -263,11 +265,11 @@ $LNG['a_s_default_language'] = "Default language";
 $LNG['a_s_your_email'] = "Your email address";
 
 $LNG['a_s_ranking'] = "Ranking Settings";
-$LNG['a_s_categories'] = "Categories (separate with commas)"; // 4.1.0
 $LNG['a_s_num_list'] = "Number of members to list per page"; // 5.0
 $LNG['a_s_ranking_period'] = "Ranking period"; // 5.0
 $LNG['a_s_ranking_method'] = "Ranking method"; // 5.0
-$LNG['a_s_featured_member'] = "Activate \"Featured Member\"?  You have to add <#featured> to wrapper.html after you turn this on."; // 4.1.0
+$LNG['a_s_ranking_average'] = "Rank by average or by %s"; // 5.0
+$LNG['a_s_featured_member'] = 'Featured member - You have to add {$featured_member} to wrapper.html after you turn this on.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
 $LNG['a_s_ad_breaks'] = "Show ad breaks after these ranks (separate with commas)";
 
@@ -280,7 +282,7 @@ $LNG['a_s_max_banner_height'] = "Member's maximum banner height (set to 0 to tur
 $LNG['a_s_default_banner'] = "Default banner for members who do not supply one";
 
 $LNG['a_s_button'] = "Button Settings";
-$LNG['a_s_ranks_on_buttons'] = "Do you want your member's rank on their button?  See <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\" target=\"_blank\">the manual</a> for details.  Only choose Stat Buttons if you have already read that section of the manual.  If you choose Stat Buttons, the rest of this section will not have an effect."; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  See <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">the manual</a> for details.  Only choose Stat Buttons if you have already read that section of the manual.  If you choose Stat Buttons, the rest of this section will not have an effect."; // 4.2.0
 $LNG['a_s_stat_buttons'] = "Stat Buttons"; // 4.2.0
 $LNG['a_s_button_url'] = "If Yes/No - URL to the default button you want to appear on members' sites"; // 4.0
 $LNG['a_s_button_dir'] = "If Yes - URL to the directory the buttons are in"; // 4.0
@@ -291,7 +293,7 @@ $LNG['a_s_other'] = "Other Settings";
 $LNG['a_s_search'] = "Search";
 $LNG['a_s_time_offset'] = "Time offset from your server (in hours)";
 $LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
-$LNG['a_s_captcha'] = "Word verification on join - security against spammers"; // 4.2.2
+$LNG['a_s_captcha'] = "Word verification on join - Security against spammers"; // 4.2.2
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";

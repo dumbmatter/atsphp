@@ -154,18 +154,11 @@ class main_skin extends skin {
 
     // Featured member
     if ($CONF['featured_member'] && $TMPL['num_members']) {
-      unset($TMPL['id']);
-      while (!$TMPL['id']) {
-        if ($TMPL['num_members']) {
-          $limit = rand(0, ($TMPL['num_members'] - 1));
-        }
-        else { $limit = 0; }
-        $result = $DB->select_limit('SELECT id, url, title, description, banner_url FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', 1, $limit, __FILE__, __LINE__);
-        $row = $DB->fetch_array($result);
-        $TMPL = array_merge($TMPL, $row);
-      }
-      $TMPL['out_url'] = $CONF['list_url'].'/out.php?id='.$TMPL['id'];
-      $TMPL['featured_member'] = do_template('featured_member');
+      $result = $DB->select_limit("SELECT username, url, title, description, banner_url FROM {$CONF['sql_prefix']}_sites WHERE active = 1 ORDER BY RAND()", 1, 0, __FILE__, __LINE__);
+      $row = $DB->fetch_array($result);
+      $TMPL = array_merge($TMPL, $row);
+
+      $TMPL['featured_member'] = base::do_skin('featured_member');
     }
 
     $TMPL['query'] = isset($TMPL['query']) ? $TMPL['query'] : '';

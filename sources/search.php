@@ -23,7 +23,7 @@ class search extends base {
     $TMPL['header'] = $LNG['search_header'];
 
     if (!$CONF['search']) {
-      error($LNG['search_off']);
+      $this->error($LNG['search_off']);
     }
     elseif (!isset($FORM['q'])) {
       $this->form();
