@@ -41,8 +41,7 @@ class admin extends base {
                     'email' => 1,
                     'manage' => 1,
                     'settings' => 1,
-                    'skins' => 1,
-                    'reset' => 1
+                    'skins' => 1
                   );
 
         if (isset($FORM['b']) && isset($action[$FORM['b']])) {
@@ -97,9 +96,25 @@ class admin extends base {
   }
 
   function main() {
-    global $LNG, $TMPL;
+    global $DB, $CONF, $LNG, $TMPL;
 
-    $TMPL['admin_content'] = $LNG['a_main'];
+    $TMPL['admin_content'] = "{$LNG['a_main']}<br /><br />";
+
+    list($num_waiting) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_sites WHERE active = 0", __FILE__, __LINE__);
+    if ($num_waiting) {
+      $TMPL['admin_content'] .= "<a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve\">".sprintf($LNG['a_main_approve'], $num_waiting)."</a><br /><br />";
+    }
+
+    $phpversion = phpversion();
+    if (version_compare($phpversion, '4.3.0', '>=')) {
+      $latest_version = @file_get_contents('http://www.aardvarkind.com/topsitesphp/version.txt');
+    }
+    if (!$latest_version) {
+      $latest_version = '?';
+    }
+    $TMPL['admin_content'] .= "{$LNG['a_version_your']}: {$TMPL['version']}<br />{$LNG['a_version_latest']}: {$latest_version}<br />\n{$LNG['a_version_new']}";
+
+
     $TMPL['content'] = $this->do_skin('admin');
   }
 }

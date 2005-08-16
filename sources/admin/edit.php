@@ -74,7 +74,7 @@ class edit extends join_edit {
 <input type="text" name="title" size="50" value="{$TMPL['title']}" /><br /><br />
 </label>
 <label>{$LNG['g_description']}<br />
-<input type="text" name="description" size="50" value="{$TMPL['description']}" /><br /><br />
+<textarea cols="40" rows="5" name="description">{$TMPL['description']}</textarea><br /><br />
 </label>
 <label>{$LNG['g_category']}<br />
 {$TMPL['categories_menu']}<br /><br />

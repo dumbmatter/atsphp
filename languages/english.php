@@ -111,12 +111,13 @@ $LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
 $LNG['link_code_header'] = "Link Code"; // 5.0
 
 // Lost Password
-$LNG['lost_password_header'] = "Lost Password"; // 5.0
-$LNG['lost_password_email'] = "To pick a new password for your site, just go to the url below."; // 5.0
-$LNG['lost_password_emailed'] = "Instructions on how to reset your password have been emailed to you."; // 5.0
-$LNG['lost_password_newpassword'] = "Enter a New Password"; // 5.0
-$LNG['lost_password_finish'] = "Your password has been reset to the new password you have just chosen."; // 5.0
-$LNG['lost_password_error'] = "Please make sure you have the right ID number and try again."; // 5.0
+$LNG['lost_pw_header'] = "Lost Password"; // 5.0
+$LNG['lost_pw_forgot'] = "Forgot your password?"; // 5.0
+$LNG['lost_pw_get'] = "Get Password"; // 5.0
+$LNG['lost_pw_emailed'] = "Please check your email for further instructions."; // 5.0
+$LNG['lost_pw_email'] = "To pick a new password for your site, just go to the url below."; // 5.0
+$LNG['lost_pw_new'] = "Enter a New Password"; // 5.0
+$LNG['lost_pw_finish'] = "Your password has been reset to the new password you have just chosen."; // 5.0
 
 // Main Page
 $LNG['main_header'] = "Rankings"; // 5.0
@@ -147,7 +148,7 @@ $LNG['table_description'] = "Description"; // 4.0
 // Rate and Review
 $LNG['rate_header'] = "Rate and Review";
 $LNG['rate_rating'] = "Rating";
-$LNG['rate_review'] = "Review - No HTML Allowed"; // 5.0
+$LNG['rate_review'] = "Review - No HTML allowed"; // 5.0
 $LNG['rate_thanks'] = "Thanks for rating this site!";
 $LNG['rate_error'] = "You have already rated this site.";
 $LNG['rate_back'] = "Back To Stats";
@@ -185,17 +186,17 @@ $LNG['user_cp_header'] = "User Control Panel"; // 5.0
 $LNG['user_cp_login'] = "Login"; // 5.0
 $LNG['user_cp_logout'] = "Logout"; // 5.0
 $LNG['user_cp_welcome'] = "Welcome to the user control panel.  Use the links to the left to manage your account."; // 5.0
-$LNG['user_cp_logout_message'] = "You have successfully logged out of the user control panel."; // 5.0
+$LNG['user_cp_logout_message'] = "You are now logged out of the user control panel."; // 5.0
 
 // Admin > Approve New Members // 4.0
+$LNG['a_approve_header'] = "Approve New Members"; // 5.0
 $LNG['a_approve'] = "Approve"; // 4.0
-$LNG['a_approve_del'] = "Delete"; // 4.0
 $LNG['a_approve_none'] = "There are no members waiting to be approved."; // 4.0
-$LNG['a_approve_done'] = "The site has been approved successfully."; // 4.0
+$LNG['a_approve_done'] = "The member has been approved."; // 4.0
 
 // Admin > Delete Member
 $LNG['a_del_header'] = "Delete Member"; // 5.0
-$LNG['a_del_success'] = "The member has been successfully deleted."; // 5.0
+$LNG['a_del_done'] = "The member has been deleted."; // 5.0
 $LNG['a_del_warn'] = "Are you sure you want to delete"; // 4.2.0
 
 // Admin > Edit Member Info
@@ -203,31 +204,32 @@ $LNG['a_edit_header'] = "Edit Member"; // 5.0
 $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
-$LNG['a_edit_info_edited'] = "The member's information has been successfully edited.";
+$LNG['a_edit_info_edited'] = "The member's information has been edited.";
 
 // Admin > Delete Review
 $LNG['a_del_rev'] = "Delete One Review";
-$LNG['a_del_rev_done'] = "The review has been successfully deleted.";
+$LNG['a_del_rev_done'] = "The review has been deleted.";
 $LNG['a_del_rev_id'] = "Review ID";
 
 // Admin > Email Members
+$LNG['a_email_header'] = "Email Members"; // 5.0
 $LNG['a_email_subject'] = "Subject"; // 4.2.0
 $LNG['a_email_message'] = "Message"; // 4.2.0
-$LNG['a_email_not_sent'] = "The email couldn't be sent to "; // 4.2.0
-$LNG['a_email_msg_sent'] = "The message has been sent to "; // 4.2.0
-$LNG['a_email_sent'] = "The message has been sent to %s members."; // 4.2.0
-$LNG['a_email_failed'] = "There were %s members that haven't receved this message."; // 4.2.0
+$LNG['a_email_msg_sent'] = "An email has been sent to %s"; // 5.0
+$LNG['a_email_not_sent'] = "An email couldn't be sent to %s"; // 5.0
+$LNG['a_email_sent'] = "%s members were emailed."; // 4.2.0
+$LNG['a_email_failed'] = "%s members were not emailed."; // 4.2.0
 
 // Admin > Login
 $LNG['a_login_invalidpw'] = "Invalid password!";
 $LNG['a_login_session'] = "Your session has expired, please <a href=\"admin.php\">click here</a> to login again."; // 4.1.0
 
 // Admin > Logout
-$LNG['admin_logout'] = "You have successfully logged out of the admin."; // 5.0
+$LNG['admin_logout'] = "You are now logged out of the admin."; // 5.0
 
 // Admin > Main
 $LNG['a_header'] = "Admin"; // 5.0
-$LNG['a_main'] = "Welcome to the user control panel.  Use the links to the left to manage your account.";
+$LNG['a_main'] = "Welcome to the admin.  Use the links to the left to manage your topsites list."; // 5.0
 $LNG['a_main_approve'] = "There are %s sites waiting to be approved.";
 
 // Admin > Manage Members
@@ -239,21 +241,16 @@ $LNG['a_man_email'] = "Email"; // 4.2.0
 
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
-$LNG['a_menu_approve'] = "Approve Members";
+$LNG['a_menu_main'] = "Main"; // 5.0
+$LNG['a_menu_approve'] = "Approve New Members";
 $LNG['a_menu_delete'] = "Delete Member";
 $LNG['a_menu_edit'] = "Edit Member";
 $LNG['a_menu_delete_review'] = "Delete Review";
 $LNG['a_menu_email'] = "Email Members";
 $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
-$LNG['a_menu_reset'] = "Reset Stats"; // 4.1.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
-
-// Admin > Reset
-$LNG['a_reset_confirm'] = "This will delete all the stats.  It will not delete your members, it will only reset all their stats to 0."; // 4.1.0
-$LNG['a_reset_stats'] = "Reset Stats"; // 4.1.0
-$LNG['a_reset_done'] = "All members' stats have been reset to 0."; // 4.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";

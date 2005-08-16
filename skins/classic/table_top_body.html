@@ -1,7 +1,7 @@
 <table class="darkbg" cellpadding="2" cellspacing="1" width="100%"><tr>
 <td class="mediumbg" colspan="3">
 <h3>{$rank} <img src="{$skins_url}/{$skin_name}/{$up_down}.png" alt="{$up_down}" />
-<a href="{$url}" onclick="window.location='index.php?a=out&u={$username}';" class="table_top">{$title}</a> - 
+<a href="{$url}" onclick="out('{$username}');" class="table_top">{$title}</a> - 
 <a href="{$list_url}/index.php?a=stats&amp;u={$username}" class="table_top">{$lng->table_stats}</a></h3>
 </td></tr><tr class="lightbg"><td rowspan="5" valign="top">
 {$description}<br /><br />

@@ -3,6 +3,12 @@
 <head>
 <title>{$list_name} - {$header}</title>
 <link rel="stylesheet" type="text/css" media="screen" href="{$skins_url}/{$skin_name}/default.css" />
+<script language="javascript">
+function out(username)
+{
+  window.location='{$list_url}/index.php?a=out&u=' + username;
+}
+</script>
 </head>
 <body>
 

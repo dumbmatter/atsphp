@@ -73,7 +73,7 @@ class edit extends join_edit {
 
       $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
  
-      $TMPL['user_cp_content'] = $LNG['edit_info_edited'];
+      $TMPL['user_cp_content'] = $this->do_skin('edit_finish');
     }
   }
 }

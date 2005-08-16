@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-12)';
+$TMPL['version'] = '5.0 Beta (2005-08-15)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -120,7 +120,7 @@ $action = array(
             'admin' => 1,
             'in' => 1,
             'join' => 1,
-            'lost_password' => 1,
+            'lost_pw' => 1,
             'out' => 1,
             'rankings' => 1,
             'rate' => 1,
