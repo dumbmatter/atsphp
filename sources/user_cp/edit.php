@@ -37,12 +37,12 @@ class edit extends join_edit {
     $TMPL = array_merge($TMPL, $row);
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
-    foreach ($CONF['categories'] as $category) {
-      if ($TMPL['category'] == $category) {
-        $TMPL['categories_menu'] .= "<option value=\"{$category}\" selected=\"selected\">{$category}\n";
+    foreach ($CONF['categories'] as $cat => $skin) {
+      if ($TMPL['category'] == $cat) {
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
       }
       else {
-        $TMPL['categories_menu'] .= "<option value=\"{$category}\">{$category}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
       }
     }
     $TMPL['categories_menu'] .= "</select>";

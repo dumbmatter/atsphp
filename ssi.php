@@ -1,91 +1,106 @@
 <?php
-//=================================================================\\
-// Aardvark Topsites PHP 4.2.1                                     \\
-//-----------------------------------------------------------------\\
-// Copyright 2003-2004 Jeremy Scheff - http://www.aardvarkind.com/ \\
-//-----------------------------------------------------------------\\
-// This program is free software; you can redistribute it and/or   \\
-// modify it under the terms of the GNU General Public License     \\
-// as published by the Free Software Foundation; either version 2  \\
-// of the License, or (at your option) any later version.          \\
-//                                                                 \\
-// This program is distributed in the hope that it will be useful, \\
-// but WITHOUT ANY WARRANTY; without even the implied warranty of  \\
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   \\
-// GNU General Public License for more details.                    \\
-//=================================================================\\
+//===========================================================================\\
+// Aardvark Topsites PHP 5                                                   \\
+// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+//---------------------------------------------------------------------------\\
+// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+//---------------------------------------------------------------------------\\
+// This program is free software; you can redistribute it and/or modify it   \\
+// under the terms of the GNU General Public License as published by the     \\
+// Free Software Foundation; either version 2 of the License, or (at your    \\
+// option) any later version.                                                \\
+//                                                                           \\
+// This program is distributed in the hope that it will be useful, but       \\
+// WITHOUT ANY WARRANTY; without even the implied warranty of                \\
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
+// Public License for more details.                                          \\
+//===========================================================================\\
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-set_magic_quotes_runtime(0);
-
-// Start the timer
-$starttime = microtime();
-$starttime = explode(' ', $starttime);
-$starttime = $starttime[1] + $starttime[0];
-
-// Settings
-require_once 'config.php';
-require_once $CONFIG['path'].'/config_skins.php';
-$queries = array();
-$TMPL['queries'] = 0;
-
-// Require functions and process GET and POST input
-require_once $CONFIG['path'].'/sources/functions.php';
-$FORM = parse_form();
-
-// The language file
-require_once $CONFIG['path'].'/languages/'.$CONFIG['deflanguage'].'.php';
-
-// Skin stuff
-if ($FORM['skin_name']) { $TMPL['skin_name'] = $FORM['skin_name']; }
-else { $TMPL['skin_name'] = isset($CONFIG['skin'][$FORM['cat']]) ? $CONFIG['skin'][$FORM['cat']] : $CONFIG['default_skin']; }
-if (!is_dir($CONFIG['path'].'/skins/'.$TMPL['skin_name'])) { $TMPL['skin_name'] = $CONFIG['default_skin']; }
-require_once $CONFIG['path'] . '/sources/template.php';
+// Change the path to your full path if necessary
+$CONF['path'] = '.';
+$TMPL['version'] = '5.0 Alpha (2005-08-16)';
 
 // Connect to the database
-require_once $CONFIG['path'].'/sources/drivers/'.$CONFIG['sql'].'.php';
-$db = new SQL;
-$db->Connect($CONFIG['sql_host'], $CONFIG['sql_user'], $CONFIG['sql_pass'], $CONFIG['sql_database']);
+require_once("{$CONF['path']}/settings_sql.php");
+require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
+$DB = new sql;
+$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database']);
 
-if ($FORM['a'] == "top") {
-  $TMPL['num'] = $FORM['num'] ? $FORM['num'] : 5;
-  $rankingmethod = $FORM['method'] ? $FORM['method'] : $CONFIG['rankingmethod'];
-  $TMPL['rank'] = 1;
+// Settings
+$settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
+$CONF = array_merge($CONF, $settings);
 
-  $result = $db->Execute("SELECT id, url, title, description, urlbanner
-                         FROM ".$CONFIG['sql_prefix']."_members, ".$CONFIG['sql_prefix']."_stats
-                         WHERE id = id2 AND active = 1
-                         ORDER BY (".$rankingmethod."_today + ".$rankingmethod."_1 + ".$rankingmethod."_2 + ".$rankingmethod."_3) / 4 DESC
-                         LIMIT ".$TMPL['num']);
+$CONF['skins_path'] = "{$CONF['path']}/skins";
+$CONF['skins_url'] = "{$CONF['list_url']}/skins";
+$TMPL['skins_url'] = $CONF['skins_url'];
+$TMPL['list_name'] = $CONF['list_name'];
+$TMPL['list_url'] = $CONF['list_url'];
 
-  while (list($TMPL['id'], $TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['urlbanner']) = $db->FetchArray($result)) {
-    $TMPL['url'] = $CONFIG['list_url']."/out.php?id=".$TMPL['id'];
-    $TMPL['sites'] .= $TMPL['rank'].". <a href=\"".$TMPL['url']."\" target=\"_blank\">".$TMPL['title']."</a><br />\n";
-    $TMPL['rank']++;
+// Combine the GET and POST input
+$FORM = array_merge($_GET, $_POST);
+
+// The language file
+require_once("{$CONF['path']}/languages/{$CONF['default_language']}.php");
+
+// The skin
+$TMPL['skin_name'] = $CONF['default_skin'];
+require_once("{$CONF['path']}/sources/misc/skin.php");
+
+if (isset($FORM['a']) && $FORM['a'] == 'new') {
+  if (isset($FORM['num'])) {
+    $TMPL['num'] = intval($FORM['num']);
+  }
+  if (!isset($TMPL['num']) || !$TMPL['num']) {
+    $TMPL['num'] = 5;
+  }
+
+  $TMPL['sites'] = '';
+
+  $result = $DB->select_limit("SELECT *
+                               FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
+                               WHERE sites.username = stats.username AND active = 1
+                               ORDER BY join_date DESC
+                              ", $TMPL['num'], 0, __FILE__, __LINE__);
+
+  while ($row = $DB->fetch_array($result)) {
+    $TMPL = array_merge($TMPL, $row);
+    $TMPL['sites'] .= "<li><a href=\"{$TMPL['url']}\" target=\"_blank\">{$TMPL['title']}</a></li>\n";
+  }
+
+  $LNG['ssi_top'] = sprintf($LNG['ssi_new_members'], $TMPL['num']);
+
+  $skin = new skin('ssi_top');
+}
+else {
+  if (isset($FORM['num'])) {
+    $TMPL['num'] = intval($FORM['num']);
+  }
+  if (!isset($TMPL['num']) || !$TMPL['num']) {
+    $TMPL['num'] = 5;
+  }
+
+  $TMPL['sites'] = '';
+
+  require_once("{$CONF['path']}/sources/misc/classes.php");
+  $order_by = base::rank_by()." DESC";
+
+  $result = $DB->select_limit("SELECT *
+                               FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
+                               WHERE sites.username = stats.username AND active = 1
+                               ORDER BY {$order_by}
+                              ", $TMPL['num'], 0, __FILE__, __LINE__);
+
+  while ($row = $DB->fetch_array($result)) {
+    $TMPL = array_merge($TMPL, $row);
+    $TMPL['sites'] .= "<li><a href=\"{$TMPL['url']}\" target=\"_blank\">{$TMPL['title']}</a></li>\n";
   }
 
   $LNG['ssi_top'] = sprintf($LNG['ssi_top'], $TMPL['num']);
 
-  echo do_template("ssi_top");
-}
-elseif ($FORM['a'] == "newmembers") {
-  $TMPL['num'] = $FORM['num'] ? $FORM['num'] : 5;
-
-  $result = $db->Execute("SELECT id, url, title, description, urlbanner
-                         FROM ".$CONFIG['sql_prefix']."_members
-                         WHERE active = 1
-                         ORDER BY jointime DESC
-                         LIMIT ".$TMPL['num']);
-
-  while (list($TMPL['id'], $TMPL['real_url'], $TMPL['title'], $TMPL['description'], $TMPL['urlbanner']) = $db->FetchArray($result)) {
-    $TMPL['url'] = $CONFIG['list_url']."/out.php?id=".$TMPL['id'];
-    $TMPL['sites'] .= "<a href=\"".$TMPL['url']."\" target=\"_blank\">".$TMPL['title']."</a><br />\n";
-  }
-
-  $LNG['ssi_newmembers'] = sprintf($LNG['ssi_newmembers'], $TMPL['num']);
-
-  echo do_template("ssi_newmembers");
+  $skin = new skin('ssi_top');
 }
 
-$db->Close;
+echo $skin->make();
+
+$DB->close();
 ?>

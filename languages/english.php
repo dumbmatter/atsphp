@@ -56,7 +56,7 @@ $LNG['g_tot_out'] = "Total Out"; // 5.0
 $LNG['g_invalid_u_or_p'] = "Invalid username or password.  Please try again."; // 5.0
 $LNG['g_invalid_u'] = "Invalid username.  Please try again."; // 5.0
 $LNG['g_invalid_p'] = "Invalid password.  Please try again."; // 5.0
-$LNG['g_session_expired'] = "Your session has expired.  Please login again."; // 5.0
+$LNG['g_session_expired'] = "Your session has expired.  Please try again."; // 5.0
 $LNG['g_error'] = "Error"; // 5.0
 $LNG['g_delete_install'] = "For security reasons, you must delete the install directory before the script will run."; // 5.0
 
@@ -69,9 +69,7 @@ $LNG['edit_password_blank'] = "Leave this blank to keep the current password"; /
 $LNG['gateway_header'] = "Topsites Gateway Page";
 $LNG['gateway_text'] = "To deter cheating, a gateway page has been put up.  Click the link below to enter the topsites list.";
 $LNG['gateway_vote'] = "Enter and vote.";
-$LNG['gateway_novote'] = "Tricked into coming here?  Enter without voting.";
-$LNG['gateway_cheating'] = "The site you are coming from is cheating.  This vote will not be recorded.";
-$LNG['gateway_enter'] = "Enter";
+$LNG['gateway_no_vote'] = "Enter without voting."; // 5.0
 
 // Install
 $LNG['install_header'] = "Install";
@@ -100,9 +98,8 @@ $LNG['join_error_urlbanner'] = "Enter a valid banner.  Leave it blank if you don
 $LNG['join_error_back'] = "Please go back and fix those errors.";
 $LNG['join_error_time'] = "Do not refresh the join confirmation page."; // 4.2.0
 $LNG['join_error_captcha'] = "The word you entered does not match the image."; // 4.2.2
-$LNG['join_success'] = "Success!";
-$LNG['join_thanks'] = "Thank you!  Put this code into your site to be ranked.";
-$LNG['join_changewarning'] = "If you change the code, it might not work.";
+$LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to be ranked.";
+$LNG['join_change_warning'] = "If you change the code, it might not work.";
 $LNG['join_welcome'] = "Welcome to the topsites list!";
 $LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
 $LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
@@ -117,7 +114,8 @@ $LNG['lost_pw_get'] = "Get Password"; // 5.0
 $LNG['lost_pw_emailed'] = "Please check your email for further instructions."; // 5.0
 $LNG['lost_pw_email'] = "To pick a new password for your site, just go to the url below."; // 5.0
 $LNG['lost_pw_new'] = "Enter a New Password"; // 5.0
-$LNG['lost_pw_finish'] = "Your password has been reset to the new password you have just chosen."; // 5.0
+$LNG['lost_pw_set_new'] = "Set New Password"; // 5.0
+$LNG['lost_pw_finish'] = "Your password has been set to the new password you have just chosen."; // 5.0
 
 // Main Page
 $LNG['main_header'] = "Rankings"; // 5.0
@@ -135,7 +133,7 @@ $LNG['main_menu_user_cp'] = "User Control Panel"; // 5.0
 $LNG['main_featured'] = "Featured Member"; // 4.0.2
 $LNG['main_executiontime'] = "Script Execution Time"; // 4.0
 $LNG['main_queries'] = "SQL Queries"; // 4.0
-$LNG['main_powered'] = "Powered By";
+$LNG['main_powered'] = "Powered by";
 
 // Ranking Table
 $LNG['table_stats'] = "Stats";
@@ -156,8 +154,6 @@ $LNG['rate_back'] = "Back To Stats";
 // Search
 $LNG['search_header'] = "Search";
 $LNG['search_off'] = "The search feature has been disabled.";
-$LNG['search_rank'] = "Rank";
-$LNG['search_search'] = "Search";
 $LNG['search_for'] = "You searched for";
 $LNG['search_no_sites'] = "Sorry, no sites matching your criteria were found."; // 5.0
 $LNG['search_prev'] = "Previous"; // 3.2.1
@@ -176,10 +172,9 @@ $LNG['stats_week'] = "Week"; // 5.0
 $LNG['stats_highest'] = "Highest"; // 5.0
 
 // ssi.php
-$LNG['ssi_top'] = "Top %s Sites"; //4.0
-$LNG['ssi_newmembers'] = "%s Newest Members"; //4.0
-$LNG['ssi_join'] = "Join"; //4.0
-$LNG['ssi_all'] = "All Sites"; //4.0
+$LNG['ssi_top'] = "Top %s Sites"; // 4.0
+$LNG['ssi_new_members'] = "%s Newest Members"; // 5.0
+$LNG['ssi_all'] = "All Sites"; // 4.0
 
 // User Control Panel // 5.0
 $LNG['user_cp_header'] = "User Control Panel"; // 5.0
@@ -197,7 +192,7 @@ $LNG['a_approve_done'] = "The member has been approved."; // 4.0
 // Admin > Delete Member
 $LNG['a_del_header'] = "Delete Member"; // 5.0
 $LNG['a_del_done'] = "The member has been deleted."; // 5.0
-$LNG['a_del_warn'] = "Are you sure you want to delete"; // 4.2.0
+$LNG['a_del_warn'] = "Are you sure you want to delete \"%s\"?"; // 4.2.0
 
 // Admin > Edit Member Info
 $LNG['a_edit_header'] = "Edit Member"; // 5.0
@@ -207,9 +202,10 @@ $LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
 $LNG['a_edit_info_edited'] = "The member's information has been edited.";
 
 // Admin > Delete Review
-$LNG['a_del_rev'] = "Delete One Review";
+$LNG['a_del_rev_header'] = "Delete Review"; // 5.0
+$LNG['a_del_rev_id'] = "Review ID - The number to the right of the date";
 $LNG['a_del_rev_done'] = "The review has been deleted.";
-$LNG['a_del_rev_id'] = "Review ID";
+$LNG['a_del_rev_invalid_id'] = "Invalid review ID.  Please try again."; // 5.0
 
 // Admin > Email Members
 $LNG['a_email_header'] = "Email Members"; // 5.0
@@ -220,37 +216,36 @@ $LNG['a_email_not_sent'] = "An email couldn't be sent to %s"; // 5.0
 $LNG['a_email_sent'] = "%s members were emailed."; // 4.2.0
 $LNG['a_email_failed'] = "%s members were not emailed."; // 4.2.0
 
-// Admin > Login
-$LNG['a_login_invalidpw'] = "Invalid password!";
-$LNG['a_login_session'] = "Your session has expired, please <a href=\"admin.php\">click here</a> to login again."; // 4.1.0
-
 // Admin > Logout
-$LNG['admin_logout'] = "You are now logged out of the admin."; // 5.0
+$LNG['a_logout_message'] = "You are now logged out of the admin."; // 5.0
 
 // Admin > Main
 $LNG['a_header'] = "Admin"; // 5.0
 $LNG['a_main'] = "Welcome to the admin.  Use the links to the left to manage your topsites list."; // 5.0
 $LNG['a_main_approve'] = "There are %s sites waiting to be approved.";
+$LNG['a_main_your'] = "Your version"; // 5.0
+$LNG['a_main_latest'] = "Latest version"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Manage Members"; // 5.0
 $LNG['a_man_actions'] = "Actions"; // 4.2.0
-$LNG['a_man_delete'] = "Delete"; // 4.2.0
 $LNG['a_man_edit'] = "Edit"; // 4.2.0
+$LNG['a_man_delete'] = "Delete"; // 4.2.0
 $LNG['a_man_email'] = "Email"; // 4.2.0
 
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Main"; // 5.0
 $LNG['a_menu_approve'] = "Approve New Members";
-$LNG['a_menu_delete'] = "Delete Member";
-$LNG['a_menu_edit'] = "Edit Member";
-$LNG['a_menu_delete_review'] = "Delete Review";
-$LNG['a_menu_email'] = "Email Members";
-$LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
+$LNG['a_menu_email'] = "Email Members";
+$LNG['a_menu_delete_review'] = "Delete Review";
+$LNG['a_menu_logout'] = "Logout";
+$LNG['a_menu_delete'] = "Delete Member";
+$LNG['a_menu_edit'] = "Edit Member";
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";
@@ -260,6 +255,13 @@ $LNG['a_s_list_name'] = "The name of your topsites list";
 $LNG['a_s_list_url'] = "URL to the topsites directory";
 $LNG['a_s_default_language'] = "Default language";
 $LNG['a_s_your_email'] = "Your email address";
+
+$LNG['a_s_sql'] = "SQL Settings";
+$LNG['a_s_sql_type'] = "Database Type"; // 4.1.0
+$LNG['a_s_sql_host'] = "Host";
+$LNG['a_s_sql_database'] = "Database";
+$LNG['a_s_sql_username'] = "Username";
+$LNG['a_s_sql_password'] = "Password";
 
 $LNG['a_s_ranking'] = "Ranking Settings";
 $LNG['a_s_num_list'] = "Number of members to list per page"; // 5.0
@@ -302,12 +304,21 @@ $LNG['a_s_no'] = "No";
 
 $LNG['a_s_updated'] = "Your settings have been updated.";
 
-// Admin > Skin Settings
-$LNG['a_s_tmpl_default_skin'] = "Default Skin"; // 4.2.0
-$LNG['a_s_tmpl_diff_skins'] = "If you want different skins for different categories, change them below.  For information on adding categories and skins, see <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\" target=\"_blank\">the manual</a>."; // 4.2.0
-
-// Admin > Version Check
-$LNG['a_version_your'] = "Your version";
-$LNG['a_version_latest'] = "Latest version";
-$LNG['a_version_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+// Admin > Skins and Categories // 5.0
+$LNG['a_skins_header'] = "Skins and Categories"; // 5.0
+$LNG['a_skins_default'] = "Default Skin"; // 5.0
+$LNG['a_skins_set_default'] = "Set Default Skin"; // 5.0
+$LNG['a_skins_anon'] = "Anonymous"; // 5.0
+$LNG['a_skins_default_done'] = "The default skin has been set."; // 5.0
+$LNG['a_skins_categories_done'] = "The category skins have been set."; // 5.0
+$LNG['a_skins_new_category_done'] = "The new category has been created."; // 5.0
+$LNG['a_skins_delete_done'] = "The category has been deleted."; // 5.0
+$LNG['a_skins_edit_done'] = "The category has been edited."; // 5.0
+$LNG['a_skins_invalid_skin'] = "Invalid skin: %s.  Please try again."; // 5.0
+$LNG['a_skins_categories'] = "Categories"; // 5.0
+$LNG['a_skins_new_category'] = "Create New Category"; // 5.0
+$LNG['a_skins_set_skins'] = "Set Category Skins"; // 5.0
+$LNG['a_skins_edit_category'] = "Edit Category"; // 5.0
+$LNG['a_skins_category_name'] = "Category Name"; // 5.0
+$LNG['a_skins_diff_skins'] = "If you want different skins for different categories, select them below."; // 5.0
 ?>

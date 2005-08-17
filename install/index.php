@@ -30,7 +30,7 @@ Please select your language.<br /><br />
 EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
-    if ($file != '.' && $file != '..') {
+    if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/languages/{$file}")) {
       $file = str_replace('.php', '', $file);
       require "{$CONF['path']}/languages/{$file}.php";
       $TMPL['content'] .= "<option value=\"{$file}\">{$translation}</option>\n";
@@ -59,8 +59,8 @@ elseif (!isset($FORM['submit'])) {
 
   $TMPL['content'] = <<<EndHTML
 {$LNG['install_welcome']}<br /><br />
-<strong>This is an alpha release.  Some features are incomplete and the script has not been thoroughly tested.</strong><br /><br />
-Do not forget to give feedback.  Let us know what you think about this alpha release and your input will help mold the final version.  <a href="http://www.aardvarkind.com/forums/viewforum.php?f=12">Post at the development forum.</a><br /><br />
+<strong>This is a beta release.  It is mostly feature-complete, but not thoroughly tested.  Use it at your own risk.</strong><br /><br />
+Do not forget to give feedback.  Let us know what you think about this beta release and your input will help mold the final version.  <a href="http://www.aardvarkind.com/forums/viewforum.php?f=12">Post at the development forum.</a><br /><br />
 <form action="index.php" method="post">
 <input name="l" type="hidden" value="{$FORM['l']}" />
 <fieldset>
@@ -133,7 +133,7 @@ EndHTML;
                     `list_name` varchar(255) default 'My Topsites List',
                     `list_url` varchar(255) default '',
                     `default_language` varchar(255) default '',
-                    `default_skin` varchar(255) default 'Default',
+                    `default_skin` varchar(255) default 'classic',
                     `your_email` varchar(255) default '',
                     `num_list` int(5) default 10,
                     `ranking_period` varchar(7) default 'daily',
@@ -171,9 +171,10 @@ EndHTML;
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
                     `category` varchar(255) default '',
-                    `skin` varchar(255) default ''
+                    `skin` varchar(255) default '',
+                    PRIMARY KEY  (`category`)
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category, skin) VALUES ('Default', 'Default')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category, skin) VALUES ('Category', '')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
                     `ip_address` varchar(32) default '',
@@ -447,6 +448,24 @@ EndHTML;
     $TMPL['content'] = $LNG['install_error_sql'];
   }
 }
-
-echo $TMPL['content'];
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Aardvark Topsites PHP 5 - Install</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../skins/classic/default.css" />
+</head>
+<body>
+
+<table width="728" align="center"><tr><td>
+
+<center>
+<img src="../skins/classic/logo.png" width="728" height="66" alt="{$list_name}" />
+</center><br />
+
+<?= $TMPL['content'] ?>
+
+</td></tr></table>
+
+</body>
+</html>

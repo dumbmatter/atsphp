@@ -135,19 +135,19 @@ class main_skin extends skin {
   
     // Build the categories menu
     $current_cat = isset($FORM['cat']) ? $FORM['cat'] : $LNG['main_all'];
-    $TMPL['categories_menu'] = '<select name="cat">'."\n";
+    $TMPL['categories_menu'] = "<select name=\"cat\">\n";
     if ($current_cat == $LNG['main_all']) {
-      $TMPL['categories_menu'] .= '<option value="" selected="selected">'.$LNG['main_all']."\n";
+      $TMPL['categories_menu'] .= "<option value=\"\" selected=\"selected\">{$LNG['main_all']}\n";
     }
     else {
-      $TMPL['categories_menu'] .= '<option value="">'.$LNG['main_all']."\n";
+      $TMPL['categories_menu'] .= "<option value=\"\">{$LNG['main_all']}\n";
     }
-    foreach ($CONF['categories'] as $cat) {
+    foreach ($CONF['categories'] as $cat => $skin) {
       if ($current_cat == $cat) {
-        $TMPL['categories_menu'] .= '<option value="'.$cat.'" selected="selected">'.$cat."\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
       }
       else {
-        $TMPL['categories_menu'] .= '<option value="'.$cat.'">'.$cat."\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
       }
     }
     $TMPL['categories_menu'] .= '</select>';

@@ -1,3 +1,4 @@
+<?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
 // Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
@@ -15,18 +16,49 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-This is a beta release.  It is mostly feature-complete, but not thoroughly
-tested.  Use it at your own risk.
+class delete_review extends base {
+  function delete_review() {
+    global $FORM, $LNG, $TMPL;
 
-Do not forget to give feedback.  Let us know what you think about this beta
-release and your input will help mold the final version.
-Development forum: http://www.aardvarkind.com/forums/viewforum.php?f=12
+    $TMPL['header'] = $LNG['a_del_rev_header'];
 
-INSTALL:
-Upload all the files to your web server
-CHMOD 666 settings_sql.php
-Go to install/index.php in your browser
+    if (!isset($FORM['submit'])) {
+      $this->form();
+    }
+    else {
+      $this->process();
+    }
+  }
 
-UPGRADE:
-Not supported yet.  The upgrader will be in the next release: either another
-beta or a release candidate.
+  function form() {
+    global $LNG, $TMPL;
+
+    $TMPL['admin_content'] = <<<EndHTML
+<form action="index.php?a=admin&amp;b=delete_review" method="post">
+<fieldset>
+<legend>{$LNG['a_del_rev_header']}</legend>
+<label>{$LNG['a_del_rev_id']}<br />
+<input type="text" name="id" size="5" /><br /><br />
+</label>
+<input type="submit" name="submit" value="{$LNG['a_del_rev_header']}" />
+</fieldset>
+</form>
+EndHTML;
+  }
+
+  function process() {
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
+
+    $id = intval($FORM['id']);
+    list($id_sql) = $DB->fetch("SELECT id FROM {$CONF['sql_prefix']}_reviews WHERE id = {$id}", __FILE__, __LINE__);
+    if ($id && $id == $id_sql) {
+      $DB->query("DELETE FROM {$CONF['sql_prefix']}_reviews WHERE id = {$id}", __FILE__, __LINE__);
+
+      $TMPL['admin_content'] = $LNG['a_del_rev_done'];
+    }
+    else {
+      $this->error($LNG['a_del_rev_invalid_id'], 'admin');
+    }
+  }
+}
+?>

@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Beta (2005-08-15)';
+$TMPL['version'] = '5.0 Alpha (2005-08-16)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -41,8 +41,7 @@ foreach ($ad_breaks as $key => $value) {
   $CONF['ad_breaks'][$value] = $value;
 }
 
-$CONF['categories'] = array();
-$result = $DB->query("SELECT category, skin FROM {$CONF['sql_prefix']}_categories", __FILE__, __LINE__);
+$result = $DB->query("SELECT category, skin FROM {$CONF['sql_prefix']}_categories ORDER BY category", __FILE__, __LINE__);
 while (list($category, $skin) = $DB->fetch_array($result)) {
   $CONF['categories'][$category] = $skin;
 }
@@ -66,7 +65,7 @@ if (isset($FORM['cat']) && isset($CONF['categories'][$FORM['cat']])) {
 else {
   $TMPL['skin_name'] = $CONF['default_skin'];
 }
-if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}")) {
+if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}/") || !$TMPL['skin_name']) {
   $TMPL['skin_name'] = $CONF['default_skin'];
 }
 require_once("{$CONF['path']}/sources/misc/skin.php");

@@ -18,7 +18,7 @@
 
 class user_cp extends base {
   function user_cp() {
-    global $CONF, $FORM, $LNG, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['user_cp_header'];
 
@@ -28,7 +28,9 @@ class user_cp extends base {
     else {
       require_once("{$CONF['path']}/sources/misc/session.php");
       $session = new session;
-      list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_user_cp']);
+      list($type, $data) = $session->get($_COOKIE['atsphp_sid_user_cp']);
+      $TMPL['username'] = $DB->escape($data);
+
       if ($type == 'user_cp') {
         $session->update($_COOKIE['atsphp_sid_user_cp']);
 
@@ -53,7 +55,7 @@ class user_cp extends base {
         }
       }
       else {
-        $this->error($LNG['g_session_expired']);
+        $this->login();
       }
     }
   }

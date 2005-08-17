@@ -112,7 +112,7 @@ class admin extends base {
     if (!$latest_version) {
       $latest_version = '?';
     }
-    $TMPL['admin_content'] .= "{$LNG['a_version_your']}: {$TMPL['version']}<br />{$LNG['a_version_latest']}: {$latest_version}<br />\n{$LNG['a_version_new']}";
+    $TMPL['admin_content'] .= "{$LNG['a_main_your']}: {$TMPL['version']}<br />{$LNG['a_main_latest']}: {$latest_version}<br />\n{$LNG['a_main_new']}";
 
 
     $TMPL['content'] = $this->do_skin('admin');

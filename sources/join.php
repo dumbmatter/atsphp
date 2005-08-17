@@ -41,8 +41,8 @@ class join extends join_edit {
     }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
-    foreach ($CONF['categories'] as $category) {
-      $TMPL['categories_menu'] .= "<option value=\"{$category}\">{$category}\n";
+    foreach ($CONF['categories'] as $cat => $skin) {
+      $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
     }
     $TMPL['categories_menu'] .= "</select>";
 
@@ -79,6 +79,8 @@ class join extends join_edit {
         $join_email_admin = new skin('join_email_admin');
         $join_email_admin->send_email($CONF['your_email']);
       }
+
+      $TMPL['link_code'] = $this->do_skin('link_code');
 
       $TMPL['content'] = $this->do_skin('join_finish');
     }

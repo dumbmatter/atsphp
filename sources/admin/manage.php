@@ -81,8 +81,8 @@ EndHTML;
 <tr class="lightbg{$alt}">
 <td align="center" valign="top">{$username}</td>
 <td valign="top" width="100%"><a href="$url" target="_blank">{$title}</a></td>
-<td align="center" valign="top"><a href="index.php?a=admin&amp;b=delete&u={$username}">{$LNG['a_man_delete']}</a></td>
 <td align="center" valign="top"><a href="index.php?a=admin&amp;b=edit&u={$username}">{$LNG['a_man_edit']}</a></td>
+<td align="center" valign="top"><a href="index.php?a=admin&amp;b=delete&u={$username}">{$LNG['a_man_delete']}</a></td>
 <td align="center" valign="top"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 </tr>
 EndHTML;

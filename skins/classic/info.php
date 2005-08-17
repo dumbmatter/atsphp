@@ -1,3 +1,4 @@
+<?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
 // Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
@@ -15,18 +16,9 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-This is a beta release.  It is mostly feature-complete, but not thoroughly
-tested.  Use it at your own risk.
-
-Do not forget to give feedback.  Let us know what you think about this beta
-release and your input will help mold the final version.
-Development forum: http://www.aardvarkind.com/forums/viewforum.php?f=12
-
-INSTALL:
-Upload all the files to your web server
-CHMOD 666 settings_sql.php
-Go to install/index.php in your browser
-
-UPGRADE:
-Not supported yet.  The upgrader will be in the next release: either another
-beta or a release candidate.
+// You must give a name for your skin.  The other fields are optional.
+$name = 'Classic';
+$author = 'Jeremy Scheff';
+$email = 'webmaster@aardvarkind.com';
+$url = 'http://www.aardvarkind.com/';
+?>

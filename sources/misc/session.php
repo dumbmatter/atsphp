@@ -25,14 +25,17 @@ class session {
     $DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE time < {$check_time}", __FILE__, __LINE__);
   }
 
-  function create($type, $data) {
+  function create($type, $data, $cookie = 1) {
     global $CONF, $DB;
 
     $sid = $this->make_sid(32);
     $time = time();
 
     $DB->query("INSERT INTO {$CONF['sql_prefix']}_sessions (type, sid, time, data) VALUES ('{$type}', '{$sid}', {$time}, '{$data}')", __FILE__, __LINE__);
-    setcookie("atsphp_sid_{$type}", $sid);
+
+    if ($cookie) {
+      setcookie("atsphp_sid_{$type}", $sid);
+    }
 
     return $sid;
   }

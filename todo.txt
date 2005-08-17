@@ -23,10 +23,7 @@ ALPHA
   Done
 
 BETA
-  Reasses text in english.php
-  Lost Password
-  Admin  
-  Extensive Testing
+  Check emails
 
 RC
   Fix all bugs
