@@ -19,6 +19,6 @@
 // You must give a name for your skin.  The other fields are optional.
 $name = 'Classic';
 $author = 'Jeremy Scheff';
-$email = 'webmaster@aardvarkind.com';
+$email = '';
 $url = 'http://www.aardvarkind.com/';
 ?>

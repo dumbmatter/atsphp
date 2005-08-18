@@ -50,7 +50,7 @@ class join extends join_edit {
   }
 
   function process() {
-    global $CONF, $DB, $FORM, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $TMPL['username'] = $DB->escape($FORM['u']);
 
@@ -71,7 +71,9 @@ class join extends join_edit {
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
                   VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
- 
+
+      $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
+
       $join_email = new skin('join_email');
       $join_email->send_email($TMPL['email']);
 

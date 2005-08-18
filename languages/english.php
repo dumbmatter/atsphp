@@ -90,7 +90,7 @@ $LNG['join_website'] = "Website"; // 5.0
 $LNG['join_error_forgot'] = "You forgot to:";
 $LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
-$LNG['join_error_url'] = "Enter a valid url.";
+$LNG['join_error_url'] = "Enter a valid URL.";
 $LNG['join_error_email'] = "Enter a valid email address.";
 $LNG['join_error_title'] = "Enter a title for your web site.";
 $LNG['join_error_password'] = "Enter a password.";
@@ -100,9 +100,9 @@ $LNG['join_error_time'] = "Do not refresh the join confirmation page."; // 4.2.0
 $LNG['join_error_captcha'] = "The word you entered does not match the image."; // 4.2.2
 $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to be ranked.";
 $LNG['join_change_warning'] = "If you change the code, it might not work.";
-$LNG['join_welcome'] = "Welcome to the topsites list!";
+$LNG['join_welcome'] = "Welcome to %s";
 $LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
-$LNG['join_welcome_admin'] = "A New Member Has Joined Your Topsites";
+$LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -112,7 +112,7 @@ $LNG['lost_pw_header'] = "Lost Password"; // 5.0
 $LNG['lost_pw_forgot'] = "Forgot your password?"; // 5.0
 $LNG['lost_pw_get'] = "Get Password"; // 5.0
 $LNG['lost_pw_emailed'] = "Please check your email for further instructions."; // 5.0
-$LNG['lost_pw_email'] = "To pick a new password for your site, just go to the url below."; // 5.0
+$LNG['lost_pw_email'] = "To pick a new password for your site, just go to this URL:"; // 5.0
 $LNG['lost_pw_new'] = "Enter a New Password"; // 5.0
 $LNG['lost_pw_set_new'] = "Set New Password"; // 5.0
 $LNG['lost_pw_finish'] = "Your password has been set to the new password you have just chosen."; // 5.0
@@ -173,7 +173,7 @@ $LNG['stats_highest'] = "Highest"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; // 4.0
-$LNG['ssi_new_members'] = "%s Newest Members"; // 5.0
+$LNG['ssi_new'] = "%s Newest Members"; // 5.0
 $LNG['ssi_all'] = "All Sites"; // 4.0
 
 // User Control Panel // 5.0

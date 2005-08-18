@@ -48,10 +48,10 @@ class skins extends base {
     $default_skin_menu = '';
     $dir = opendir("{$CONF['path']}/skins/");
     while (false !== ($subdir = readdir($dir))) {
-      if ($subdir != '.' && $subdir != '..' && is_dir("{$CONF['path']}/skins/{$subdir}/")) {
+      if ($subdir != '.' && $subdir != '..' && file_exists("{$CONF['path']}/skins/{$subdir}/info.php")) {
         unset($name, $author, $email, $url);
 
-        require "{$CONF['path']}/skins/{$subdir}/info.php";
+        include "{$CONF['path']}/skins/{$subdir}/info.php";
 
         if ($CONF['default_skin'] == $subdir) {
           $checked = ' checked="checked"';
@@ -210,7 +210,7 @@ EndHTML;
     $skins_menu = '';
     $dir = opendir("{$CONF['path']}/skins/");
     while (false !== ($subdir = readdir($dir))) {
-      if ($subdir != '.' && $subdir != '..' && is_dir("{$CONF['path']}/skins/{$subdir}/")) {
+      if ($subdir != '.' && $subdir != '..' && file_exists("{$CONF['path']}/skins/{$subdir}/info.php")) {
         unset($name, $author, $email, $url);
 
         require "{$CONF['path']}/skins/{$subdir}/info.php";

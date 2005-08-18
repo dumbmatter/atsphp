@@ -66,7 +66,7 @@ Do not forget to give feedback.  Let us know what you think about this beta rele
 <fieldset>
 <legend>{$LNG['a_s_general']}</legend>
 <label>{$LNG['a_s_admin_password']}<br />
-<input name="admin_password" type="text" size="20" /><br /><br />
+<input name="admin_password" type="password" size="20" /><br /><br />
 </label>
 <label>{$LNG['a_s_list_url']}<br />
 <input name="list_url" type="text" size="50" value="{$list_url}" /><br /><br />
@@ -151,7 +151,7 @@ EndHTML;
                     `ranks_on_buttons` tinyint(1) default 1,
                     `button_url` varchar(255) default '',
                     `button_dir` varchar(255) default '',
-                    `button_ext` varchar(255) default '',
+                    `button_ext` varchar(255) default 'png',
                     `button_num` int(3) default 5,
                     `search` tinyint(1) default 1,
                     `time_offset` int(2) default 0,

@@ -44,9 +44,11 @@ class lost_pw extends base {
     if ($email) {
       require_once("{$CONF['path']}/sources/misc/session.php");
       $session = new session;
-      $sid = $session->create('lost_pw', $username, 0);
-// send email
-//////////NOCOOKIE
+      $TMPL['sid'] = $session->create('lost_pw', $username, 0);
+
+      $email = new skin('lost_pw_email');
+      $email->send_email($CONF['your_email']);
+
       $TMPL['content'] = $this->do_skin('lost_pw_finish');
     }
     else {

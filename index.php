@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-16)';
+$TMPL['version'] = '5.0 Beta (2005-08-17)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -29,7 +29,7 @@ $TIMER = new timer;
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
-$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 1);
+$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 0);
 
 // Settings
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);

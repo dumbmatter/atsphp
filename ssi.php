@@ -64,12 +64,14 @@ if (isset($FORM['a']) && $FORM['a'] == 'new') {
 
   while ($row = $DB->fetch_array($result)) {
     $TMPL = array_merge($TMPL, $row);
-    $TMPL['sites'] .= "<li><a href=\"{$TMPL['url']}\" target=\"_blank\">{$TMPL['title']}</a></li>\n";
+
+    $skin = new skin('ssi_new_row');
+    $TMPL['sites'] .= $skin->make();
   }
 
-  $LNG['ssi_top'] = sprintf($LNG['ssi_new_members'], $TMPL['num']);
+  $LNG['ssi_new'] = sprintf($LNG['ssi_new'], $TMPL['num']);
 
-  $skin = new skin('ssi_top');
+  $skin = new skin('ssi_new');
 }
 else {
   if (isset($FORM['num'])) {
@@ -92,7 +94,9 @@ else {
 
   while ($row = $DB->fetch_array($result)) {
     $TMPL = array_merge($TMPL, $row);
-    $TMPL['sites'] .= "<li><a href=\"{$TMPL['url']}\" target=\"_blank\">{$TMPL['title']}</a></li>\n";
+
+    $skin = new skin('ssi_top_row');
+    $TMPL['sites'] .= $skin->make();
   }
 
   $LNG['ssi_top'] = sprintf($LNG['ssi_top'], $TMPL['num']);
