@@ -68,19 +68,23 @@ $LNG['edit_password_blank'] = "Leave this blank to keep the current password"; /
 // Gateway Page
 $LNG['gateway_header'] = "Topsites Gateway Page";
 $LNG['gateway_text'] = "To deter cheating, a gateway page has been put up.  Click the link below to enter the topsites list.";
-$LNG['gateway_vote'] = "Enter and vote.";
-$LNG['gateway_no_vote'] = "Enter without voting."; // 5.0
+$LNG['gateway_vote'] = "Enter and vote";
+$LNG['gateway_no_vote'] = "Enter without voting"; // 5.0
 
 // Install
 $LNG['install_header'] = "Install";
 $LNG['install_welcome'] = "Welcome to Aardvark Topsites PHP 5.  Fill out the form below to install the script.";
 $LNG['install_sql_prefix'] = "Table prefix - only change this if you are running more than one list from the same database";
-$LNG['install_error_chmod'] = "<b>Error</b>: Could not write to settings_sql.php.  Make sure you CHMOD 666 settings_sql.php.";
-$LNG['install_error_sql'] = "<b>Error</b>: Could not connect to the SQL database.  Please go back and check your SQL settings.";
-$LNG['install_done'] = "Your topsites list is now installed.  Delete this directory now.";
+$LNG['install_error_chmod'] = "Could not write to settings_sql.php.  Make sure you CHMOD 666 settings_sql.php.";
+$LNG['install_error_sql'] = "Could not connect to the SQL database.  Please go back and check your SQL settings.";
+$LNG['install_done'] = "Your topsites list has been installed.  Delete this directory now.";
 $LNG['install_your'] = "Your Topsites List";
 $LNG['install_admin'] = "Admin";
 $LNG['install_manual'] = "Manual";
+$LNG['upgrade_header'] = "Upgrade";
+$LNG['upgrade_welcome'] = "Welcome to Aardvark Topsites PHP 5.  Before you upgrade, remember to back up your data.";
+$LNG['upgrade_error_version'] = "Upgrading is only supported for Aardvark Topsites PHP 4.1.0 or higher.";
+$LNG['upgrade_done'] = "Your topsites list has been upgraded.  Delete this directory now.";
 
 // Join
 $LNG['join_header'] = "Join";
@@ -147,9 +151,9 @@ $LNG['table_description'] = "Description"; // 4.0
 $LNG['rate_header'] = "Rate and Review";
 $LNG['rate_rating'] = "Rating";
 $LNG['rate_review'] = "Review - No HTML allowed"; // 5.0
-$LNG['rate_thanks'] = "Thanks for rating this site!";
+$LNG['rate_thanks'] = "Thank you for your rating.";
 $LNG['rate_error'] = "You have already rated this site.";
-$LNG['rate_back'] = "Back To Stats";
+$LNG['rate_back'] = "Back to Stats";
 
 // Search
 $LNG['search_header'] = "Search";

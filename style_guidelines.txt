@@ -22,7 +22,7 @@ GENERAL
   whichever is easier.
 - Array keys should always be quoted: $array['key'];
 - Arguments are separated by a space: function($a, $b, $c);
-- Comments should use single-line style: // Comment
+- Comments should use single-line C style: // Comment
 
 NAMING CONVENTIONS
 - Variable names should be in all lowercase, with words separated by an
@@ -41,4 +41,4 @@ CODE LAYOUT
 - Spaces should be between operators, like this:
   if (($i < 7) && ($j > 8)) {
 - SQL should be one line if it is short enough.  If not, put line breaks
-  wherever it looks good.  Don't try to align columns with spaces.
+  wherever it looks good.

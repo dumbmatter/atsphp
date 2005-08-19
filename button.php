@@ -29,7 +29,13 @@ $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $C
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
-$username = $DB->escape($_GET['u']);
+// Check id for backwards compatability with 4.x
+if ($_GET['id'] && !$_GET['u']) {
+  $username = $DB->escape($_GET['id']);
+}
+else {
+  $username = $DB->escape($_GET['u']);
+}
 
 // Is this a unique hit?
 $ip = getenv("REMOTE_ADDR");
@@ -90,7 +96,7 @@ if ($CONF['ranks_on_buttons']) {
 
   // Stat Buttons
   if ($CONF['ranks_on_buttons'] == 2) {
-    require_once "{$CONFIG['path']}/config_buttons.php";
+    require_once "{$CONF['path']}/settings_buttons.php";
     exit;
   }
 }

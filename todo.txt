@@ -23,11 +23,10 @@ ALPHA
   Done
 
 BETA
-  Check emails
+  Done
 
 RC
   Fix all bugs
-  Upgrader
 
 FINAL
   Fix all bugs

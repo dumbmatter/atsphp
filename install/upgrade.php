@@ -25,7 +25,7 @@ $FORM = array_merge($_GET, $_POST);
 if (!isset($FORM['l'])) {
   $TMPL['content'] = <<<EndHTML
 Please select your language.<br /><br />
-<form action="index.php" method="get">
+<form action="upgrade.php" method="get">
 <select name="l">
 EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
@@ -45,89 +45,68 @@ EndHTML;
 elseif (!isset($FORM['submit'])) {
   require_once("{$CONF['path']}/languages/{$FORM['l']}.php");
 
-  $path = str_replace('/install/index.php', '', $_SERVER['PHP_SELF']);
-  $list_url = "http://{$_SERVER['HTTP_HOST']}{$path}";
+  require_once("{$CONF['path']}/config.php");
 
-  $dir = opendir("{$CONF['path']}/sources/sql/");
-  while (false !== ($file = readdir($dir))) {
-    if ($file != '.' && $file != '..') {
-      $file = str_replace('.php', '', $file);
-      require "{$CONF['path']}/sources/sql/{$file}.php";
-      $sql_menu = "<option value=\"{$file}\">{$database}</option>\n";
-    }
-  }
-
-  $TMPL['content'] = <<<EndHTML
-{$LNG['install_welcome']}<br /><br />
+  if (strpos($TMPL['version'], '4.2.') !== false || strpos($TMPL['version'], '4.1.') !== false) {
+    $TMPL['content'] = <<<EndHTML
+{$LNG['upgrade_welcome']}<br /><br />
 <strong>This is a beta release.  It is mostly feature-complete, but not thoroughly tested.  Use it at your own risk.</strong><br /><br />
 Do not forget to give feedback.  Let us know what you think about this beta release and your input will help mold the final version.  <a href="http://www.aardvarkind.com/forums/viewforum.php?f=12">Post at the development forum.</a><br /><br />
-<form action="index.php" method="post">
+<form action="upgrade.php" method="post">
 <input name="l" type="hidden" value="{$FORM['l']}" />
-<fieldset>
-<legend>{$LNG['a_s_general']}</legend>
-<label>{$LNG['a_s_admin_password']}<br />
-<input name="admin_password" type="password" size="20" /><br /><br />
-</label>
-<label>{$LNG['a_s_list_url']}<br />
-<input name="list_url" type="text" size="50" value="{$list_url}" /><br /><br />
-</label>
-<label>{$LNG['a_s_your_email']}<br />
-<input name="your_email" type="text" size="50" />
-</label>
-</fieldset>
-<fieldset>
-<legend>{$LNG['a_s_sql']}</legend>
-<label>{$LNG['a_s_sql_type']}<br />
-<select name="sql">
-$sql_menu</select><br /><br />
-</label>
-<label>{$LNG['a_s_sql_host']}<br />
-<input name="sql_host" type="text" size="20" value="localhost" /><br /><br />
-</label>
-<label>{$LNG['a_s_sql_database']}<br />
-<input name="sql_database" type="text" size="20" /><br /><br />
-</label>
-<label>{$LNG['a_s_sql_username']}<br />
-<input name="sql_username" type="text" size="20" /><br /><br />
-</label>
-<label>{$LNG['a_s_sql_password']}<br />
-<input name="sql_password" type="password" size="20" /><br /><br />
-</label>
-<label>{$LNG['install_sql_prefix']}<br />
-<input name="sql_prefix" type="text" size="20" value="ats" /><br /><br />
-</label>
-<input name="submit" type="submit" value="{$LNG['install_header']}" />
-</fieldset>
+<input name="submit" type="submit" value="{$LNG['upgrade_header']}" />
 </form>
 EndHTML;
+  }
+  else {
+    $TMPL['content'] = "<h3>{$LNG['g_error']}</h3><br />{$LNG['upgrade_error_version']}";
+  }
 }
 else {
   require_once("{$CONF['path']}/languages/{$FORM['l']}.php");
 
-  require_once("{$CONF['path']}/sources/sql/{$FORM['sql']}.php");
+  require_once("{$CONF['path']}/config.php");
+
+  require_once("{$CONF['path']}/sources/sql/{$CONFIG['sql']}.php");
   $DB = new sql;
 
-  if ($DB->connect($FORM['sql_host'], $FORM['sql_username'], $FORM['sql_password'], $FORM['sql_database'])) {
+  if ($DB->connect($CONFIG['sql_host'], $CONFIG['sql_user'], $CONFIG['sql_pass'], $CONFIG['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);
-    $admin_password = md5($FORM['admin_password']);
-    $list_url = $DB->escape($FORM['list_url']);
-    $your_email = $DB->escape($FORM['your_email']);
 
     $file = "{$CONF['path']}/settings_sql.php";
     if ($fh = @fopen($file, 'w')) {
       $settings_sql = <<<EndHTML
 <?php
-\$CONF['sql'] = '{$FORM['sql']}';
-\$CONF['sql_host'] = '{$FORM['sql_host']}';
-\$CONF['sql_database'] = '{$FORM['sql_database']}';
-\$CONF['sql_username'] = '{$FORM['sql_username']}';
-\$CONF['sql_password'] = '{$FORM['sql_password']}';
-\$CONF['sql_prefix'] = '{$FORM['sql_prefix']}';
+\$CONF['sql'] = '{$CONFIG['sql']}';
+\$CONF['sql_host'] = '{$CONFIG['sql_host']}';
+\$CONF['sql_database'] = '{$CONFIG['sql_database']}';
+\$CONF['sql_username'] = '{$CONFIG['sql_user']}';
+\$CONF['sql_password'] = '{$CONFIG['sql_pass']}';
+\$CONF['sql_prefix'] = '{$CONFIG['sql_prefix']}';
 ?>
 EndHTML;
       fwrite($fh, $settings_sql);
       fclose($fh);
       require_once("{$CONF['path']}/settings_sql.php");
+
+      if ($CONFIG['daymonth'] == 1) {
+        $ranking_period = 'monthly';
+      }
+      elseif ($CONFIG['daymonth'] == 2) {
+        $ranking_period = 'weekly';
+      }
+      else {
+        $ranking_period = 'daily';
+      }
+
+      $ranking_method = substr($CONFIG['rankingmethod'], 4);
+      if ($ranking_method != 'pv' && $ranking_method != 'in' && $ranking_method != 'out') {
+        $ranking_method = 'pv';
+      }
+
+      if (!isset($CONFIG['captcha'])) {
+        $CONFIG['captcha'] = 1;
+      }
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_settings` (
                     `list_name` varchar(255) default 'My Topsites List',
@@ -158,9 +137,11 @@ EndHTML;
                     `gateway` tinyint(1) default 1,
                     `captcha` tinyint(1) default 1
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_url, default_language, your_email, default_banner, button_url, button_dir)
-                  VALUES ('{$list_url}', '{$default_language}', '{$your_email}', '{$list_url}/images/button.png', '{$list_url}/images/button.png', '{$list_url}/images')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_name, list_url, default_language, your_email, num_list, ranking_period, ranking_method, featured_member, top_skin_num, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, time_offset, gateway, captcha)
+                  VALUES ('{$TMPL['list_name']}', '{$TMPL['list_url']}', '{$default_language}', '{$CONFIG['youremail']}', '{$CONFIG['numlist']}', '{$ranking_period}', '{$ranking_method}', '{$CONFIG['featured']}', '{$CONFIG['top']}', '{$CONFIG['active_default']}', '{$CONFIG['delete_after']}', '{$CONFIG['email_admin_on_join']}', '{$CONFIG['max_banner_width']}', '{$CONFIG['max_banner_height']}', '{$CONFIG['defbanner']}', '{$CONFIG['ranks_on_buttons']}', '{$CONFIG['button_url']}', '{$CONFIG['button_dir']}', '{$CONFIG['button_ext']}', '{$CONFIG['button_num']}', '{$CONFIG['search']}', '{$CONFIG['timeoffset']}', '{$CONFIG['gateway']}', '{$CONFIG['captcha']}')", __FILE__, __LINE__);
 
+      list($admin_password) = $DB->fetch("SELECT admin_password FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
+      $DB->query("DROP TABLE {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_etc` (
                     `admin_password` varchar(32) default '',
                     `last_new_day` tinyint(4) default 0,
@@ -174,8 +155,11 @@ EndHTML;
                     `skin` varchar(255) default '',
                     PRIMARY KEY  (`category`)
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category) VALUES ('Category')", __FILE__, __LINE__);
+      foreach ($CONFIG['categories'] as $category) {
+        $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category) VALUES ('{$category}')", __FILE__, __LINE__);
+      }
 
+      $DB->query("DROP TABLE {$CONF['sql_prefix']}_iplog", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
                     `ip_address` varchar(32) default '',
                     `username` varchar(255) default '',
@@ -187,14 +171,12 @@ EndHTML;
                     KEY `username` (`username`)
                   )", __FILE__, __LINE__);
 
-      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_reviews` (
-                    `username` varchar(255) default '',
-                    `id` bigint(20) unsigned default 0,
-                    `date` datetime default '0000-00-00 00:00:00',
-                    `review` text,
-                    PRIMARY KEY  (`id`)
-                  )", __FILE__, __LINE__);
+      $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_reviews`
+                  CHANGE `id3` `username` varchar(255),
+                  CHANGE `review_id` `id` bigint,
+                  CHANGE `review_date` `date` datetime", __FILE__, __LINE__);
 
+      $DB->query("DROP TABLE {$CONF['sql_prefix']}_sessions", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
                     `type` varchar(7) default '',
                     `sid` varchar(32) default '',
@@ -218,6 +200,7 @@ EndHTML;
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
+      $DB->query("DROP TABLE {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats` (
                     `username` varchar(255) default '',
                     `rank_cache` bigint(20) unsigned default 0,
@@ -433,10 +416,24 @@ EndHTML;
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
+      require_once("{$CONF['path']}/sources/misc/classes.php");
+      require_once("{$CONF['path']}/sources/in.php");
+      $result = $DB->query("SELECT id, password, url, title, description, category, urlbanner, email, total_ratings, num_ratings, jointime, active FROM {$CONF['sql_prefix']}_members", __FILE__, __LINE__);
+      while (list($username, $password, $url, $title, $description, $category, $banner_url, $email, $total_rating, $num_ratings, $jointime, $active) = $DB->fetch_array($result)) {
+        $join_date = date('Y-m-d', $jointime);
+        $short_url = in::short_url($url);
+
+        $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
+                    VALUES ('{$username}', '{$password}', '{$url}', '{$short_url}', '{$title}', '{$description}', '{$category}', '{$banner_url}', '{$email}', '{$join_date}', {$active})", __FILE__, __LINE__);
+
+        $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username, total_rating, num_ratings)
+                    VALUES ('{$username}', '{$total_rating}', '{$num_ratings}')", __FILE__, __LINE__);
+      }
+
       $TMPL['content'] = <<<EndHTML
-{$LNG['install_done']}<br /><br />
-<a href="{$list_url}/">{$LNG['install_your']}</a><br />
-<a href="{$list_url}/index.php?a=admin">{$LNG['install_admin']}</a><br />
+{$LNG['upgrade_done']}<br /><br />
+<a href="{$TMPL['list_url']}/">{$LNG['install_your']}</a><br />
+<a href="{$TMPL['list_url']}/index.php?a=admin">{$LNG['install_admin']}</a><br />
 {$LNG['install_manual']}
 EndHTML;
     }
@@ -452,7 +449,7 @@ EndHTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Aardvark Topsites PHP 5 - <?= $LNG['install_header'] ?></title>
+<title>Aardvark Topsites PHP 5 - <?= $LNG['upgrade_header'] ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/classic/default.css" />
 </head>
 <body>
