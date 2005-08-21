@@ -35,11 +35,14 @@ class admin extends base {
         // Array containing the valid .php files from the sources/admin directory
         $action = array(
                     'approve' => 1,
+                    'approve_reviews' => 1,
                     'delete' => 1,
                     'delete_review' => 1,
                     'edit' => 1,
+                    'edit_review' => 1,
                     'email' => 1,
                     'manage' => 1,
+                    'manage_reviews' => 1,
                     'settings' => 1,
                     'skins' => 1
                   );
@@ -101,8 +104,19 @@ class admin extends base {
     $TMPL['admin_content'] = "{$LNG['a_main']}<br /><br />";
 
     list($num_waiting) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_sites WHERE active = 0", __FILE__, __LINE__);
-    if ($num_waiting) {
-      $TMPL['admin_content'] .= "<a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve\">".sprintf($LNG['a_main_approve'], $num_waiting)."</a><br /><br />";
+    if ($num_waiting == 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve\">{$LNG['a_main_approve']}</a></b><br /><br />";
+    }
+    elseif ($num_waiting > 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve\">".sprintf($LNG['a_main_approves'], $num_waiting)."</a></b><br /><br />";
+    }
+
+    list($num_waiting_rev) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_reviews WHERE active = 0", __FILE__, __LINE__);
+    if ($num_waiting_rev == 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews\">{$LNG['a_main_approve_rev']}</a></b><br /><br />";
+    }
+    elseif ($num_waiting_rev > 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews\">".sprintf($LNG['a_main_approve_revs'], $num_waiting)."</a></b><br /><br />";
     }
 
     $phpversion = phpversion();

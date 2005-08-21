@@ -18,47 +18,81 @@
 
 class delete_review extends base {
   function delete_review() {
-    global $FORM, $LNG, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['a_del_rev_header'];
-
-    if (!isset($FORM['submit'])) {
-      $this->form();
+    if (is_array($FORM['id']) && count($FORM['id']) > 1) {
+      $LNG['a_del_rev_header'] = $LNG['a_del_rev_headers'];
+      $LNG['a_del_rev_done'] = $LNG['a_del_rev_dones'];
+      $LNG['a_del_rev_warn'] = $LNG['a_del_rev_warns'];
+      $date = 1;
     }
     else {
-      $this->process();
+      if (is_array($FORM['id']) && count($FORM['id']) == 1) {
+        $TMPL['id'] = intval($FORM['id'][0]);
+      }
+      else {
+        $TMPL['id'] = intval($FORM['id']);
+      }
+      list($date) = $DB->fetch("SELECT date FROM {$CONF['sql_prefix']}_reviews WHERE id = {$TMPL['id']}", __FILE__, __LINE__);
+    }
+    $TMPL['header'] = $LNG['a_del_rev_header'];
+
+    if ($date) {
+      if (!isset($FORM['submit'])) {
+        $this->warning();
+      }
+      else {
+        $this->process();
+      }
+    }
+    else {
+      $this->error($LNG['a_del_rev_invalid_id'], 'admin');
     }
   }
 
-  function form() {
-    global $LNG, $TMPL;
+  function warning() {
+    global $FORM, $LNG, $TMPL;
+
+    $del_warn = $LNG['a_del_rev_warn'];
+
+    $ids = '';
+
+    if (is_array($FORM['id']) && count($FORM['id']) > 1) {
+      foreach ($FORM['id'] as $id) {
+        $ids .= "<input type=\"hidden\" name=\"id[]\" value=\"{$id}\" />\n";
+      }
+    }
+    else {
+        $ids .= "<input type=\"hidden\" name=\"id[]\" value=\"{$TMPL['id']}\" />\n";
+    }
 
     $TMPL['admin_content'] = <<<EndHTML
+{$del_warn}<br /><br />
 <form action="index.php?a=admin&amp;b=delete_review" method="post">
-<fieldset>
-<legend>{$LNG['a_del_rev_header']}</legend>
-<label>{$LNG['a_del_rev_id']}<br />
-<input type="text" name="id" size="5" /><br /><br />
-</label>
-<input type="submit" name="submit" value="{$LNG['a_del_rev_header']}" />
-</fieldset>
+{$ids}<input type="submit" name="submit" value="{$LNG['a_del_rev_header']}" />
 </form>
 EndHTML;
   }
 
   function process() {
-    global $CONF, $DB, $FORM, $LNG, $TMPL;
+    global $FORM, $LNG, $TMPL;
 
-    $id = intval($FORM['id']);
-    list($id_sql) = $DB->fetch("SELECT id FROM {$CONF['sql_prefix']}_reviews WHERE id = {$id}", __FILE__, __LINE__);
-    if ($id && $id == $id_sql) {
-      $DB->query("DELETE FROM {$CONF['sql_prefix']}_reviews WHERE id = {$id}", __FILE__, __LINE__);
-
-      $TMPL['admin_content'] = $LNG['a_del_rev_done'];
+    if (is_array($FORM['id']) && count($FORM['id']) > 1) {
+      foreach ($FORM['id'] as $id) {
+        $this->do_delete($id);
+      }
     }
     else {
-      $this->error($LNG['a_del_rev_invalid_id'], 'admin');
+      $this->do_delete($TMPL['id']);
     }
+
+    $TMPL['admin_content'] = $LNG['a_del_rev_done'];
+  }
+
+  function do_delete($id) {
+    global $CONF, $DB;
+
+    $DB->query("DELETE FROM {$CONF['sql_prefix']}_reviews WHERE id = {$id}", __FILE__, __LINE__);
   }
 }
 ?>

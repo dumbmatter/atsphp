@@ -16,13 +16,13 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-class approve extends base {
-  function approve() {
+class approve_reviews extends base {
+  function approve_reviews() {
     global $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['a_approve_header'];
+    $TMPL['header'] = $LNG['a_approve_rev_header'];
 
-    if (!isset($FORM['u'])) {
+    if (!isset($FORM['id'])) {
       $this->form();
     }
     else {
@@ -35,7 +35,7 @@ class approve extends base {
 
     $alt = '';
     $num = 0;
-    $result = $DB->query("SELECT username, url, title FROM {$CONF['sql_prefix']}_sites WHERE active = 0 ORDER BY username ASC", __FILE__, __LINE__);
+    $result = $DB->query("SELECT username, id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE active = 0", __FILE__, __LINE__);
     if ($DB->num_rows($result)) {
       $TMPL['admin_content'] = <<<EndHTML
 <script language="javascript">
@@ -62,21 +62,26 @@ function check(form_name, field_name, value)
 <tr class="mediumbg">
 <td></td>
 <td align="center" width="1%">{$LNG['g_username']}</td>
-<td width="100%">${LNG['table_title']}</td>
+<td align="center" width="1%">{$LNG['a_man_rev_id']}</td>
+<td align="center" width="1%">{$LNG['a_man_rev_date']}</td>
+<td width="100%">{$LNG['a_man_rev_rev']}</td>
 <td align="center" colspan="2">{$LNG['a_man_actions']}</td>
 </tr>
 EndHTML;
 
-      while (list($username, $url, $title) = $DB->fetch_array($result)) {
+      while (list($username, $id, $date, $review) = $DB->fetch_array($result)) {
         $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
-<td><input type="checkbox" name="u[]" value="{$username}" id="checkbox_{$num}" /></td>
-<td align="center" valign="top">$username</td>
-<td valign="top" width="100%"><a href="$url">$title</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve&amp;u={$username}">{$LNG['a_approve']}</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td><input type="checkbox" name="id[]" value="{$id}" id="checkbox_{$num}" /></td>
+<td align="center">{$id}</td>
+<td align="center">{$username}</td>
+<td align="center">{$date}</td>
+<td valign="top" width="100%">{$review}</td>
+<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews&amp;id={$id}">{$LNG['a_approve']}</a></td>
+<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_review&amp;id={$id}">{$LNG['a_man_delete']}</a></td>
 </tr>
 EndHTML;
+
         if ($alt) { $alt = ''; }
         else { $alt = 'alt'; }
         $num++;
@@ -84,50 +89,50 @@ EndHTML;
 
       $TMPL['admin_content'] .= <<<EndHTML
 </table><br />
-<a href="javascript:void;" onclick="check('approve', 'u[]', true)">{$LNG['a_man_all']}</a> | 
-<a href="javascript:void;" onclick="check('approve', 'u[]', false)">{$LNG['a_man_none']}</a><br /><br />
+<a href="javascript:void;" onclick="check('approve', 'id[]', true)">{$LNG['a_man_all']}</a> | 
+<a href="javascript:void;" onclick="check('approve', 'id[]', false)">{$LNG['a_man_none']}</a><br /><br />
 {$LNG['a_approve_sel']}<br />
 <select name="b">
-<option value="approve">{$LNG['a_approve']}</option>
-<option value="delete">{$LNG['a_man_delete']}</option>
+<option value="approve_reviews">{$LNG['a_approve']}</option>
+<option value="delete_review">{$LNG['a_man_delete']}</option>
 </select>
 <input type="submit" value="{$LNG['g_form_submit_short']}" />
 </form>
 EndHTML;
     }
     else {
-      $TMPL['admin_content'] = $this->error($LNG['a_approve_none'], 'admin');
+      $TMPL['admin_content'] = $this->error($LNG['a_approve_rev_none'], 'admin');
     }
   }
 
   function process() {
     global $DB, $FORM, $LNG, $TMPL;
 
-    if (is_array($FORM['u']) && count($FORM['u']) > 1) {
-      foreach ($FORM['u'] as $username) {
-        $this->do_approve($username);
+    if (is_array($FORM['id']) && count($FORM['id']) > 1) {
+      foreach ($FORM['id'] as $id) {
+        $this->do_approve($id);
       }
 
-      $LNG['a_approve_done'] = $LNG['a_approve_dones'];
+      $LNG['a_approve_rev_done'] = $LNG['a_approve_rev_dones'];
     }
     else {
-      if (is_array($FORM['u']) && count($FORM['u']) == 1) {
-        $username = $DB->escape($FORM['u'][0]);
+      if (is_array($FORM['id']) && count($FORM['id']) == 1) {
+        $id = $DB->escape($FORM['id'][0]);
       }
       else {
-        $username = $DB->escape($FORM['u']);
+        $id = $DB->escape($FORM['id']);
       }
 
-      $this->do_approve($username);
+      $this->do_approve($id);
     }
 
-    $TMPL['admin_content'] = $LNG['a_approve_done'];
+    $TMPL['admin_content'] = $LNG['a_approve_rev_done'];
   }
 
-  function do_approve($username) {
+  function do_approve($id) {
     global $CONF, $DB;
 
-    $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET active = 1 WHERE username = '{$username}'", __FILE__, __LINE__);
+    $DB->query("UPDATE {$CONF['sql_prefix']}_reviews SET active = 1 WHERE id = {$id}", __FILE__, __LINE__);
   }
 }
 ?>

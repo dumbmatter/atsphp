@@ -24,12 +24,10 @@ hr {
 
 a:link {
   color: #33c;
-  font-weight: bold;
   text-decoration: underline;
 }
 a:visited {
   color: #4040ff;
-  font-weight: bold;
   text-decoration: underline;
 }
 a:active, a:hover {
@@ -61,6 +59,10 @@ div.bottom {
   background-color: #f0f0f0;
   color: #000;
 }
+.highlight {
+  background-color: yellow;
+  color: #000;
+}
 
 /* Top menu */
 
@@ -68,6 +70,7 @@ a.menu {
   background-color: #fff;
   border: 1px solid #737373;
   color: #000;
+  font-weight: bold;
   margin-left: 4px;
   margin-right: 4px;
   padding: 3px;

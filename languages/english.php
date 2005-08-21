@@ -92,7 +92,7 @@ $LNG['join_enter_text'] = "Enter the text as it is shown in the image below:"; /
 $LNG['join_user'] = "User"; // 5.0
 $LNG['join_website'] = "Website"; // 5.0
 $LNG['join_error_forgot'] = "You forgot to:";
-$LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, and dashes."; // 5.0
+$LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, underscores, and dashes."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
 $LNG['join_error_url'] = "Enter a valid URL.";
 $LNG['join_error_email'] = "Enter a valid email address.";
@@ -146,6 +146,9 @@ $LNG['table_total'] = "Total";
 $LNG['table_rank'] = "Rank";
 $LNG['table_title'] = "Title"; // 4.0
 $LNG['table_description'] = "Description"; // 4.0
+$LNG['table_up'] = "Up"; // 5.0
+$LNG['table_down'] = "Down"; // 5.0
+$LNG['table_neutral'] = "Neutral"; // 5.0
 
 // Rate and Review
 $LNG['rate_header'] = "Rate and Review";
@@ -192,24 +195,42 @@ $LNG['a_approve_header'] = "Approve New Members"; // 5.0
 $LNG['a_approve'] = "Approve"; // 4.0
 $LNG['a_approve_none'] = "There are no members waiting to be approved."; // 4.0
 $LNG['a_approve_done'] = "The member has been approved."; // 4.0
+$LNG['a_approve_dones'] = "The members have been approved."; // 4.0
+$LNG['a_approve_sel'] = "With selected:"; // 5.0
+
+// Admin > Approve New Reviews // 5.0
+$LNG['a_approve_rev_header'] = "Approve New Reviews"; // 5.0
+$LNG['a_approve_rev_none'] = "There are no reviews waiting to be approved."; // 5.0
+$LNG['a_approve_rev_done'] = "The review has been approved."; // 5.0
+$LNG['a_approve_rev_dones'] = "The reviews have been approved."; // 5.0
 
 // Admin > Delete Member
 $LNG['a_del_header'] = "Delete Member"; // 5.0
+$LNG['a_del_headers'] = "Delete Members"; // 5.0
 $LNG['a_del_done'] = "The member has been deleted."; // 5.0
-$LNG['a_del_warn'] = "Are you sure you want to delete \"%s\"?"; // 4.2.0
+$LNG['a_del_dones'] = "The members have been deleted."; // 5.0
+$LNG['a_del_warn'] = "Are you sure you want to delete %s?"; // 5.0
+$LNG['a_del_multi'] = "these %s members"; //5.0
 
-// Admin > Edit Member Info
+// Admin > Delete Review // 5.0
+$LNG['a_del_rev_header'] = "Delete Review"; // 5.0
+$LNG['a_del_rev_headers'] = "Delete Reviews"; // 5.0
+$LNG['a_del_rev_done'] = "The review has been deleted."; // 5.0
+$LNG['a_del_rev_dones'] = "The reviews have been deleted."; // 5.0
+$LNG['a_del_rev_warn'] = "Are you sure you want to delete this review?"; //5.0
+$LNG['a_del_rev_warns'] = "Are you sure you want to delete these reviews?"; //5.0
+$LNG['a_del_rev_invalid_id'] = "Invalid review ID.  Please try again."; // 5.0
+
+// Admin > Edit Member
 $LNG['a_edit_header'] = "Edit Member"; // 5.0
 $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
-$LNG['a_edit_info_edited'] = "The member's information has been edited.";
+$LNG['a_edit_edited'] = "The member has been edited.";
 
-// Admin > Delete Review
-$LNG['a_del_rev_header'] = "Delete Review"; // 5.0
-$LNG['a_del_rev_id'] = "Review ID - The number to the right of the date";
-$LNG['a_del_rev_done'] = "The review has been deleted.";
-$LNG['a_del_rev_invalid_id'] = "Invalid review ID.  Please try again."; // 5.0
+// Admin > Edit Review // 5.0
+$LNG['a_edit_rev_header'] = "Edit Review"; // 5.0
+$LNG['a_edit_rev_edited'] = "The review has been edited.";
 
 // Admin > Email Members
 $LNG['a_email_header'] = "Email Members"; // 5.0
@@ -226,7 +247,10 @@ $LNG['a_logout_message'] = "You are now logged out of the admin."; // 5.0
 // Admin > Main
 $LNG['a_header'] = "Admin"; // 5.0
 $LNG['a_main'] = "Welcome to the admin.  Use the links to the left to manage your topsites list."; // 5.0
-$LNG['a_main_approve'] = "There are %s sites waiting to be approved.";
+$LNG['a_main_approve'] = "There is 1 site waiting to be approved."; // 5.0
+$LNG['a_main_approves'] = "There are %s sites waiting to be approved."; // 5.0
+$LNG['a_main_approve_rev'] = "There is 1 review waiting to be approved."; // 5.0
+$LNG['a_main_approve_revs'] = "There are %s reviews waiting to be approved."; // 5.0
 $LNG['a_main_your'] = "Your version"; // 5.0
 $LNG['a_main_latest'] = "Latest version"; // 5.0
 $LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
@@ -237,6 +261,16 @@ $LNG['a_man_actions'] = "Actions"; // 4.2.0
 $LNG['a_man_edit'] = "Edit"; // 4.2.0
 $LNG['a_man_delete'] = "Delete"; // 4.2.0
 $LNG['a_man_email'] = "Email"; // 4.2.0
+$LNG['a_man_all'] = "Select All"; // 5.0
+$LNG['a_man_none'] = "Select None"; // 5.0
+$LNG['a_man_del_sel'] = "Delete Selected"; // 5.0
+
+// Admin > Manage Reviews // 5.0
+$LNG['a_man_rev_header'] = "Manage Reviews"; // 5.0
+$LNG['a_man_rev_enter'] = "To manage the reviews of a site, enter the member's username below."; // 5.0
+$LNG['a_man_rev_id'] = "ID"; // 5.0
+$LNG['a_man_rev_rev'] = "Review"; // 5.0
+$LNG['a_man_rev_date'] = "Date"; // 5.0
 
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
@@ -245,11 +279,16 @@ $LNG['a_menu_approve'] = "Approve New Members";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
+$LNG['a_menu_approve_reviews'] = "Approve New Reviews"; // 5.0
+$LNG['a_menu_manage_reviews'] = "Manage Reviews"; // 5.0
 $LNG['a_menu_email'] = "Email Members";
 $LNG['a_menu_delete_review'] = "Delete Review";
 $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_delete'] = "Delete Member";
 $LNG['a_menu_edit'] = "Edit Member";
+$LNG['a_header_members'] = "Members"; // 5.0
+$LNG['a_header_settings'] = "Settings"; // 5.0
+$LNG['a_header_reviews'] = "Reviews"; // 5.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";
@@ -278,6 +317,7 @@ $LNG['a_s_ad_breaks'] = "Show ad breaks after these ranks (separate with commas)
 
 $LNG['a_s_member'] = "Member Settings";
 $LNG['a_s_active_default'] = "Require new members to be approved before being listed";
+$LNG['a_s_active_default_review'] = "Require new reviews to be approved before being listed";
 $LNG['a_s_delete_after'] = "Delete inactive members after this many days (set to 0 to turn off)"; // 4.1.0
 $LNG['a_s_email_admin_on_join'] = "Email you when a new member joins";
 $LNG['a_s_max_banner_width'] = "Member's maximum banner width (set to 0 to turn off)"; // 4.2.0

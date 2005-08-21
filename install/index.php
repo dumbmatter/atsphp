@@ -143,6 +143,7 @@ EndHTML;
                     `top_skin_num` int(5) default 2,
                     `ad_breaks` varchar(255) default '',
                     `active_default` tinyint(1) default 1,
+                    `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
                     `max_banner_width` int(4) default 0,
@@ -192,6 +193,7 @@ EndHTML;
                     `id` bigint(20) unsigned default 0,
                     `date` datetime default '0000-00-00 00:00:00',
                     `review` text,
+                    `active` tinyint(1) default 1,
                     PRIMARY KEY  (`id`)
                   )", __FILE__, __LINE__);
 

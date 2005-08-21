@@ -30,7 +30,7 @@ Delete the install directory when you are done
 
 UPGRADE:
 Back up your data before attempting to upgrade in case something goes wrong
-Upgrading is only supported for Aardvark Topsites PHP 4.2.0 or higher
+Upgrading is only supported for Aardvark Topsites PHP 4.1.0 or higher
 Delete all your old Aardvark Topsites PHP files except config.php
 Upload all the new files to the same directory as your old config.php
 CHMOD 666 settings_sql.php

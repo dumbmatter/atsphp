@@ -16,7 +16,6 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-
 class base {
   function error($message, $skin = 0) {
     global $TMPL;
@@ -112,7 +111,7 @@ class join_edit extends base {
     $error_captcha = 0;
 
     if ($type == 'join') {
-      if (!preg_match('/^[a-zA-Z0-9\-]+$/', $FORM['u'])) {
+      if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $FORM['u'])) {
         $error_username = 1;
       }
       list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);

@@ -117,7 +117,10 @@ class in extends in_out {
     // Get rid of www.
     $url = preg_replace('/\/\/www./', '//', $url);
 
-    // Get rid of page after the trailing slash
+    // Get rid of trailing slash
+    $url = preg_replace('/\/$/', '', $url);
+
+    // Get rid of page after the last slash
     preg_match('/^(http:\/\/.+)\/(.+)/', $url, $matches);
     if (!isset($matches[0])) {
       // Just a domain with a slash at the end

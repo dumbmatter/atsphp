@@ -105,6 +105,7 @@ EndHTML;
     $categories_menu .= '</table>';
 
     $TMPL['admin_content'] = <<<EndHTML
+<form action="index.php?a=admin&amp;b=skins" method="post">
 <fieldset>
 <legend>{$LNG['a_skins_default']}</legend>
 {$default_skin_menu}

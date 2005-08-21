@@ -26,8 +26,12 @@ FEATURES
 - Rank by either an average or just this day/week/month
 - New ranking period: overall
 - Simplified user interface
+- Approve reviews before they are posted in the admin
+- Manage reviews in the admin, like manage members
+- Checkboxes to approve or delete multiple members or reviews easily in the admin
 BUG FIXES
 - More input validation in the admin
 - IP log resets daily even if ranking period is weeks or month
 - Installer can be translated with the rest of the script
+- Up/down/neutral text can be translated
 - Script won't die if you enable the featured member with no members

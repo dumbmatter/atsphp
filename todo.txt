@@ -27,6 +27,8 @@ BETA
 
 RC
   Fix all bugs
+  Don't average in 0's
 
 FINAL
   Fix all bugs
+  Manual

@@ -72,7 +72,7 @@ class rate extends base {
       $review = nl2br($review);
       $review = $DB->escape($review);
 
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_reviews (username, id, date, review) VALUES ('{$TMPL['username']}', {$id}, '{$date}', '{$review}')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_reviews (username, id, date, review, active) VALUES ('{$TMPL['username']}', {$id}, '{$date}', '{$review}', {$CONF['active_default_review']})", __FILE__, __LINE__);
     }
 
     // Rating

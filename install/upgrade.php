@@ -122,6 +122,7 @@ EndHTML;
                     `top_skin_num` int(5) default 2,
                     `ad_breaks` varchar(255) default '',
                     `active_default` tinyint(1) default 1,
+                    `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
                     `max_banner_width` int(4) default 0,
@@ -174,7 +175,8 @@ EndHTML;
       $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_reviews`
                   CHANGE `id3` `username` varchar(255),
                   CHANGE `review_id` `id` bigint,
-                  CHANGE `review_date` `date` datetime", __FILE__, __LINE__);
+                  CHANGE `review_date` `date` datetime,
+                  ADD `active` tinyint(1) default 1", __FILE__, __LINE__);
 
       $DB->query("DROP TABLE {$CONF['sql_prefix']}_sessions", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
@@ -423,11 +425,18 @@ EndHTML;
         $join_date = date('Y-m-d', $jointime);
         $short_url = in::short_url($url);
 
+        $url = $DB->escape($url);
+        $title = $DB->escape($title);
+        $description = $DB->escape($description);
+        $category = $DB->escape($category);
+        $banner_url = $DB->escape($banner_url);
+        $email = $DB->escape($email);
+
         $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
                     VALUES ('{$username}', '{$password}', '{$url}', '{$short_url}', '{$title}', '{$description}', '{$category}', '{$banner_url}', '{$email}', '{$join_date}', {$active})", __FILE__, __LINE__);
 
         $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username, total_rating, num_ratings)
-                    VALUES ('{$username}', '{$total_rating}', '{$num_ratings}')", __FILE__, __LINE__);
+                    VALUES ('{$username}', {$total_rating}, {$num_ratings})", __FILE__, __LINE__);
       }
 
       $TMPL['content'] = <<<EndHTML

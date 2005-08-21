@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Beta (2005-08-18)';
+$TMPL['version'] = '5.0 Beta (2005-08-19)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -151,7 +151,7 @@ if ($DB->debug) {
     echo "<hr /><pre>{$value}</pre>";
   }
   echo '<hr /><pre>';
-  print_r($_COOKIE);
+  print_r($_REQUEST);
   echo '</pre>';
   echo '</div>';
 }

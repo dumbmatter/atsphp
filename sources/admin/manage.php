@@ -32,13 +32,13 @@ class manage extends base {
     }
 
     $usernames_menu = '';
-    $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites ORDER BY username ASC", 1, 0, __FILE__, __LINE__);
+    $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE active = 1 ORDER BY username ASC", 1, 0, __FILE__, __LINE__);
     list($username_start) = $DB->fetch_array($result);
     while ($username_start) {
-      $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username > '{$username_start}' ORDER BY username ASC", 2, $num_list - 2, __FILE__, __LINE__);
+      $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE active = 1 AND username > '{$username_start}' ORDER BY username ASC", 2, $num_list - 2, __FILE__, __LINE__);
       list($username_end) = $DB->fetch_array($result);
       if (!$username_end) {
-        $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites ORDER BY username DESC", 1, 0, __FILE__, __LINE__);
+        $result = $DB->select_limit("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE active = 1 ORDER BY username DESC", 1, 0, __FILE__, __LINE__);
         list($username_end) = $DB->fetch_array($result);
       }
 
@@ -48,7 +48,7 @@ class manage extends base {
       list($username_start) = $DB->fetch_array($result);
     }
 
-    list($num_members) = $DB->fetch('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', __FILE__, __LINE__);
+    list($num_members) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_sites WHERE active = 1", __FILE__, __LINE__);
     if ($num_members > $num_list) {
       $TMPL['admin_content'] = <<<EndHTML
 <form action="index.php" method="get">
@@ -66,8 +66,29 @@ EndHTML;
     }
 
     $TMPL['admin_content'] .= <<<EndHTML
+<script language="javascript">
+function check(form_name, field_name, value)
+{
+  var check_boxes = document.forms[form_name].elements[field_name];
+  var num_check_boxes = check_boxes.length;
+
+  if (!num_check_boxes)
+  {
+    check_boxes.checked = value;
+  }
+  else {
+    for(var i = 0; i < num_check_boxes; i++)
+    {
+      check_boxes[i].checked = value;
+    }
+  }
+}
+</script>
+
+<form action="index.php?a=admin&b=delete" method="post" name="manage">
 <table class="darkbg" cellpadding="1" cellspacing="1" width="100%">
 <tr class="mediumbg">
+<td></td>
 <td align="center" width="1%">{$LNG['g_username']}</td>
 <td width="100%">{$LNG['table_title']}</td>
 <td align="center" colspan="3">{$LNG['a_man_actions']}</td>
@@ -75,23 +96,32 @@ EndHTML;
 EndHTML;
 
     $alt = '';
-    $result = $DB->select_limit("SELECT username, title, url, email FROM {$CONF['sql_prefix']}_sites WHERE username >= '{$start}' ORDER BY username ASC", $num_list, 0, __FILE__, __LINE__);
+    $num = 0;
+    $result = $DB->select_limit("SELECT username, title, url, email FROM {$CONF['sql_prefix']}_sites WHERE active = 1 AND username >= '{$start}' ORDER BY username ASC", $num_list, 0, __FILE__, __LINE__);
     while (list($username, $title, $url, $email) = $DB->fetch_array($result)) {
       $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
-<td align="center" valign="top">{$username}</td>
+<td><input type="checkbox" name="u[]" value="{$username}" id="checkbox_{$num}" /></td>
+<td align="center">{$username}</td>
 <td valign="top" width="100%"><a href="$url" target="_blank">{$title}</a></td>
-<td align="center" valign="top"><a href="index.php?a=admin&amp;b=edit&u={$username}">{$LNG['a_man_edit']}</a></td>
-<td align="center" valign="top"><a href="index.php?a=admin&amp;b=delete&u={$username}">{$LNG['a_man_delete']}</a></td>
-<td align="center" valign="top"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
+<td align="center"><a href="index.php?a=admin&amp;b=edit&u={$username}">{$LNG['a_man_edit']}</a></td>
+<td align="center"><a href="index.php?a=admin&amp;b=delete&u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 </tr>
 EndHTML;
 
       if ($alt) { $alt = ''; }
       else { $alt = 'alt'; }
+      $num++;
     }
 
-    $TMPL['admin_content'] .= '</table>';
+    $TMPL['admin_content'] .= <<<EndHTML
+</table><br />
+<a href="javascript:void;" onclick="check('manage', 'u[]', true)">{$LNG['a_man_all']}</a> | 
+<a href="javascript:void;" onclick="check('manage', 'u[]', false)">{$LNG['a_man_none']}</a><br /><br />
+<input type="submit" value="{$LNG['a_man_del_sel']}" />
+</form>
+EndHTML;
   }
 }
 ?>

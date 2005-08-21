@@ -101,6 +101,13 @@ class settings extends base {
       $active_default_menu = "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
 
+    if (!$CONF['active_default_review']) {
+      $active_default_review_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
+    }
+    else {
+      $active_default_review_menu = "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
+    }
+
     if ($CONF['email_admin_on_join']) {
       $email_admin_on_join_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
@@ -177,6 +184,10 @@ class settings extends base {
 <label>{$LNG['a_s_active_default']}<br />
 <select name="active_default">
 {$active_default_menu}</select><br /><br />
+</label>
+<label>{$LNG['a_s_active_default_review']}<br />
+<select name="active_default_review">
+{$active_default_review_menu}</select><br /><br />
 </label>
 <label>{$LNG['a_s_delete_after']}<br />
 <input type="text" name="delete_after" size="5" value="{$CONF['delete_after']}" /><br /><br />
@@ -257,6 +268,7 @@ EndHTML;
     $ad_breaks = preg_replace('/[^0-9,]/m', '', $ad_breaks);
 
     $active_default = intval($FORM['active_default']);
+    $active_default_review = intval($FORM['active_default_review']);
     $delete_after = intval($FORM['delete_after']);
     $email_admin_on_join = intval($FORM['email_admin_on_join']);
     $max_banner_width = intval($FORM['max_banner_width']);
@@ -273,9 +285,10 @@ EndHTML;
     $time_offset = intval($FORM['time_offset']);
     $gateway = intval($FORM['gateway']);
     $captcha = intval($FORM['captcha']);
+
     $DB->query("UPDATE {$CONF['sql_prefix']}_settings SET list_name = '{$list_name}', list_url = '{$list_url}', default_language = '{$default_language}', your_email = '{$your_email}',
                 num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}',
-                active_default = {$active_default}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
+                active_default = {$active_default}, active_default_review = {$active_default_review}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
                 ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num},
                 search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}
                ", __FILE__, __LINE__);

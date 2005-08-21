@@ -125,7 +125,7 @@ EndHTML;
 
       $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}', active = {$TMPL['active']}{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
  
-      $TMPL['admin_content'] = $LNG['a_edit_info_edited'];
+      $TMPL['admin_content'] = $LNG['a_edit_edited'];
     }
   }
 }

@@ -88,11 +88,11 @@ class rankings extends base {
           $TMPL['old_rank'] = $TMPL['rank'];
           $DB->query("UPDATE {$CONF['sql_prefix']}_stats_general SET old_rank = {$TMPL['old_rank']} WHERE username = {$TMPL['username']}");
         }
-        if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; }
-        elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; }
-        else { $TMPL['up_down'] = 'neutral'; }
+        if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; $LNG['up_down'] = $LNG['table_up']; }
+        elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; $LNG['up_down'] = $LNG['table_down']; }
+        else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
       }
-      else { $TMPL['up_down'] = 'neutral'; }
+      else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
 
       if ($TMPL['alt']) { $TMPL['alt'] = ''; }
       else { $TMPL['alt'] = 'alt'; }
@@ -109,7 +109,7 @@ class rankings extends base {
 
       // Only use _top skin on the first page
       if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
-        $TMPL['content'] .= $this->do_skin('table_top_body');
+        $TMPL['content'] .= $this->do_skin('table_top_row');
         $is_top = 1;
       }
       else {
@@ -121,7 +121,7 @@ class rankings extends base {
           $do_table_open = 0;
         }
 
-        $TMPL['content'] .= $this->do_skin('table_body');
+        $TMPL['content'] .= $this->do_skin('table_row');
         $top_done = 1;
       }
       if ($page_rank == $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
