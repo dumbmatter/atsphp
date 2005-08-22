@@ -152,7 +152,7 @@ EndHTML;
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password) VALUES ('{$admin_password}')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
-                    `category` varchar(255) default '',
+                    `category` varchar(255) default '' NOT NULL,
                     `skin` varchar(255) default '',
                     PRIMARY KEY  (`category`)
                   )", __FILE__, __LINE__);
@@ -160,7 +160,6 @@ EndHTML;
         $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category) VALUES ('{$category}')", __FILE__, __LINE__);
       }
 
-      $DB->query("DROP TABLE {$CONF['sql_prefix']}_iplog", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
                     `ip_address` varchar(32) default '',
                     `username` varchar(255) default '',
@@ -173,7 +172,7 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_reviews`
-                  CHANGE `id3` `username` varchar(255),
+                  CHANGE `id3` `username` varchar(255) NOT NULL,
                   CHANGE `review_id` `id` bigint,
                   CHANGE `review_date` `date` datetime,
                   ADD `active` tinyint(1) default 1", __FILE__, __LINE__);
@@ -181,14 +180,14 @@ EndHTML;
       $DB->query("DROP TABLE {$CONF['sql_prefix']}_sessions", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
                     `type` varchar(7) default '',
-                    `sid` varchar(32) default '',
+                    `sid` varchar(32) default '' NOT NULL,
                     `time` int(10) unsigned default '',
                     `data` varchar(255) default '',
                     PRIMARY KEY  (`sid`)
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sites` (
-                    `username` varchar(255) default '',
+                    `username` varchar(255) default '' NOT NULL,
                     `password` varchar(32) default '',
                     `url` varchar(255) default '',
                     `short_url` varchar(255) default '',
@@ -204,7 +203,7 @@ EndHTML;
 
       $DB->query("DROP TABLE {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats` (
-                    `username` varchar(255) default '',
+                    `username` varchar(255) default '' NOT NULL,
                     `rank_cache` bigint(20) unsigned default 0,
                     `rank_cache_time` int(10) unsigned default 0,
                     `old_rank` bigint(20) unsigned default 0,
@@ -438,6 +437,8 @@ EndHTML;
         $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username, total_rating, num_ratings)
                     VALUES ('{$username}', {$total_rating}, {$num_ratings})", __FILE__, __LINE__);
       }
+
+      $DB->query("DROP TABLE {$CONF['sql_prefix']}_iplog", __FILE__, __LINE__);
 
       $TMPL['content'] = <<<EndHTML
 {$LNG['upgrade_done']}<br /><br />

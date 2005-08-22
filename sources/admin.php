@@ -28,7 +28,7 @@ class admin extends base {
     else {
       require_once("{$CONF['path']}/sources/misc/session.php");
       $session = new session;
-      list($type, $TMPL['username']) = $session->get($_COOKIE['atsphp_sid_admin']);
+      list($type, $data) = $session->get($_COOKIE['atsphp_sid_admin']);
       if ($type == 'admin') {
         $session->update($_COOKIE['atsphp_sid_admin']);
 

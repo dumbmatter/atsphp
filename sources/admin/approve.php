@@ -35,7 +35,7 @@ class approve extends base {
 
     $alt = '';
     $num = 0;
-    $result = $DB->query("SELECT username, url, title FROM {$CONF['sql_prefix']}_sites WHERE active = 0 ORDER BY username ASC", __FILE__, __LINE__);
+    $result = $DB->query("SELECT username, url, title, email FROM {$CONF['sql_prefix']}_sites WHERE active = 0 ORDER BY username ASC", __FILE__, __LINE__);
     if ($DB->num_rows($result)) {
       $TMPL['admin_content'] = <<<EndHTML
 <script language="javascript">
@@ -63,18 +63,20 @@ function check(form_name, field_name, value)
 <td></td>
 <td align="center" width="1%">{$LNG['g_username']}</td>
 <td width="100%">${LNG['table_title']}</td>
-<td align="center" colspan="2">{$LNG['a_man_actions']}</td>
+<td align="center" colspan="4">{$LNG['a_man_actions']}</td>
 </tr>
 EndHTML;
 
-      while (list($username, $url, $title) = $DB->fetch_array($result)) {
+      while (list($username, $url, $title, $email) = $DB->fetch_array($result)) {
         $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
 <td><input type="checkbox" name="u[]" value="{$username}" id="checkbox_{$num}" /></td>
 <td align="center" valign="top">$username</td>
-<td valign="top" width="100%"><a href="$url">$title</a></td>
+<td valign="top" width="100%"><a href="{$url}" onclick="out('{$username}');">{$title}</a></td>
 <td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve&amp;u={$username}">{$LNG['a_approve']}</a></td>
+<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$username}">{$LNG['a_man_edit']}</a></td>
 <td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 </tr>
 EndHTML;
         if ($alt) { $alt = ''; }

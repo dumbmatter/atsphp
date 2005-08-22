@@ -1,4 +1,4 @@
-<?php
+p<?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
 // Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
@@ -171,7 +171,7 @@ EndHTML;
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password) VALUES ('{$admin_password}')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
-                    `category` varchar(255) default '',
+                    `category` varchar(255) default '' NOT NULL,
                     `skin` varchar(255) default '',
                     PRIMARY KEY  (`category`)
                   )", __FILE__, __LINE__);
@@ -189,7 +189,7 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_reviews` (
-                    `username` varchar(255) default '',
+                    `username` varchar(255) default '' NOT NULL,
                     `id` bigint(20) unsigned default 0,
                     `date` datetime default '0000-00-00 00:00:00',
                     `review` text,
@@ -199,14 +199,14 @@ EndHTML;
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
                     `type` varchar(7) default '',
-                    `sid` varchar(32) default '',
+                    `sid` varchar(32) default '' NOT NULL,
                     `time` int(10) unsigned default '',
                     `data` varchar(255) default '',
                     PRIMARY KEY  (`sid`)
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sites` (
-                    `username` varchar(255) default '',
+                    `username` varchar(255) default '' NOT NULL,
                     `password` varchar(32) default '',
                     `url` varchar(255) default '',
                     `short_url` varchar(255) default '',
@@ -221,7 +221,7 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats` (
-                    `username` varchar(255) default '',
+                    `username` varchar(255) default '' NOT NULL,
                     `rank_cache` bigint(20) unsigned default 0,
                     `rank_cache_time` int(10) unsigned default 0,
                     `old_rank` bigint(20) unsigned default 0,

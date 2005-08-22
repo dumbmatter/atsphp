@@ -27,7 +27,7 @@ BETA
 
 RC
   Fix all bugs
-  Don't average in 0's
+  RSS
 
 FINAL
   Fix all bugs
