@@ -18,7 +18,6 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Alpha (2005-08-16)';
 
 // Connect to the database
 require_once("{$CONF['path']}/settings_sql.php");
@@ -57,8 +56,8 @@ if (isset($FORM['a']) && $FORM['a'] == 'new') {
   $TMPL['sites'] = '';
 
   $result = $DB->select_limit("SELECT *
-                               FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
-                               WHERE sites.username = stats.username AND active = 1
+                               FROM {$CONF['sql_prefix']}_sites
+                               WHERE active = 1
                                ORDER BY join_date DESC
                               ", $TMPL['num'], 0, __FILE__, __LINE__);
 

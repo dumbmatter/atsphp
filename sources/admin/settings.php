@@ -47,6 +47,7 @@ class settings extends base {
         }
       }
     }
+    require "{$CONF['path']}/languages/{$CONF['default_language']}.php";
 
     $ranking_period_menu = '';
     $ranking_periods = array('daily', 'weekly', 'monthly', 'overall');

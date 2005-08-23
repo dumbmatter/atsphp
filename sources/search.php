@@ -68,7 +68,7 @@ class search extends base {
 
     $TMPL['results'] = '';
     $TMPL['rank'] = $start + 1;
-    while (list($TMPL['username'], $TMPL['url'], $TMPL['title'], $TMPL['description'], $TMPL['urlbanner']) = $DB->fetch_array($result)) {
+    while (list($TMPL['username'], $TMPL['url'], $TMPL['title'], $TMPL['description'], $TMPL['banner_url']) = $DB->fetch_array($result)) {
       foreach ($words as $word) {
         $TMPL['description'] = str_replace($word, "<b>{$word}</b>", $TMPL['description']);
         $TMPL['title'] = str_replace($word, "<b>{$word}</b>", $TMPL['title']);
