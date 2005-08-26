@@ -172,8 +172,8 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_reviews`
-                  CHANGE `id3` `username` varchar(255) NOT NULL,
-                  CHANGE `review_id` `id` bigint,
+                  CHANGE `id3` `username` varchar(255),
+                  CHANGE `review_id` `id` bigint NOT NULL,
                   CHANGE `review_date` `date` datetime,
                   ADD `active` tinyint(1) default 1", __FILE__, __LINE__);
 

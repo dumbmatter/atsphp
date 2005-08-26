@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Beta (2005-08-22)';
+$TMPL['version'] = '5.0 Beta (2005-08-26)';
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -29,7 +29,7 @@ $TIMER = new timer;
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
-$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 0);
+$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 1);
 
 // Settings
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
@@ -90,17 +90,17 @@ if ($last_new_month != $current_month) {
 }
 
 // Adjust the output text based on days, weeks, or months
-if ($CONF['ranking_period'] == 'daily') {
-  $LNG['g_this_period'] = $LNG['g_today'];
-  $LNG['g_last_period'] = $LNG['g_yesterday'];
-}
-elseif ($CONF['ranking_period'] == 'weekly') {
+if ($CONF['ranking_period'] == 'weekly') {
   $LNG['g_this_period'] = $LNG['g_this_week'];
   $LNG['g_last_period'] = $LNG['g_last_week'];
 }
 elseif ($CONF['ranking_period'] == 'monthly') {
   $LNG['g_this_period'] = $LNG['g_this_month'];
   $LNG['g_last_period'] = $LNG['g_last_month'];
+}
+else {
+  $LNG['g_this_period'] = $LNG['g_today'];
+  $LNG['g_last_period'] = $LNG['g_yesterday'];
 }
 
 // Check if installer is there

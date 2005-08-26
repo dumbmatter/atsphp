@@ -27,7 +27,6 @@ BETA
 
 RC
   Fix all bugs
-  RSS
 
 FINAL
   Fix all bugs

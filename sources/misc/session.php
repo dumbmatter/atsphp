@@ -40,12 +40,16 @@ class session {
     return $sid;
   }
 
-  function delete($sid) {
+  function delete($sid, $name = 0) {
     global $CONF, $DB;
 
     if ($this->check_sid($sid)) {
       list($type, $data) = $this->get($sid);
-      setcookie("atsphp_sid_{$type}", 0, 1);
+      if (!$name) {
+        $name = "atsphp_sid_{$type}";
+      }
+
+      setcookie($name, 0, time() - 3600);
       $DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE sid = '{$sid}'", __FILE__, __LINE__);
 
       return 1;

@@ -1,4 +1,4 @@
-p<?php
+<?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
 // Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
@@ -189,8 +189,8 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_reviews` (
-                    `username` varchar(255) default '' NOT NULL,
-                    `id` bigint(20) unsigned default 0,
+                    `username` varchar(255) default '',
+                    `id` bigint(20) unsigned default 0 NOT NULL,
                     `date` datetime default '0000-00-00 00:00:00',
                     `review` text,
                     `active` tinyint(1) default 1,
