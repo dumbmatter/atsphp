@@ -72,6 +72,8 @@ class join extends join_edit {
                   VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
 
+      $TMPL['link_code'] = $this->do_skin('link_code');
+
       $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
 
       $join_email = new skin('join_email');
@@ -81,8 +83,6 @@ class join extends join_edit {
         $join_email_admin = new skin('join_email_admin');
         $join_email_admin->send_email($CONF['your_email']);
       }
-
-      $TMPL['link_code'] = $this->do_skin('link_code');
 
       $TMPL['content'] = $this->do_skin('join_finish');
     }

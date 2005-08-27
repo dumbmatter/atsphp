@@ -105,7 +105,6 @@ $LNG['join_error_captcha'] = "The word you entered does not match the image."; /
 $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to be ranked.";
 $LNG['join_change_warning'] = "If you change the code, it might not work.";
 $LNG['join_welcome'] = "Welcome to %s";
-$LNG['join_welcome_look'] = "If that doesn't look right, use this code:";
 $LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
 
 // Link Code

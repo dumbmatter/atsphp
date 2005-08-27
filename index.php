@@ -19,6 +19,8 @@
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
 $TMPL['version'] = '5.0 Beta (2005-08-26)';
+// Set to 1 to display SQL queries and GET/POST/COOKIE data
+$CONF['debug'] = 0;
 
 // Require some classes and start the timer
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -29,7 +31,7 @@ $TIMER = new timer;
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
-$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], 1);
+$DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'], $CONF['debug']);
 
 // Settings
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
@@ -145,7 +147,7 @@ echo $skin->make();
 $DB->close();
 
 // Print out debugging info, if necessary
-if ($DB->debug) {
+if ($CONF['debug']) {
   echo '<div style="clear: both;">';
   foreach ($DB->queries as $value) {
     echo "<hr /><pre>{$value}</pre>";
