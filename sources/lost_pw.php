@@ -47,7 +47,7 @@ class lost_pw extends base {
       $TMPL['sid'] = $session->create('lost_pw', $username, 0);
 
       $email = new skin('lost_pw_email');
-      $email->send_email($CONF['your_email']);
+      $email->send_email($email);
 
       $TMPL['content'] = $this->do_skin('lost_pw_finish');
     }
