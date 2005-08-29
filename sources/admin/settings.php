@@ -43,7 +43,12 @@ class settings extends base {
         require "{$CONF['path']}/languages/{$file}.php";
 
         if (isset($translation)) {
-          $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
+          if ($CONF['default_language'] == $file) {
+            $languages_menu .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
+          }
+          else {
+            $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
+          }
         }
       }
     }
