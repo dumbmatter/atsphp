@@ -34,7 +34,7 @@ function new_day($current_day) {
     }
 
     if ($i != 0) {
-      $DB->query("DELETE FROM {$CONF['sql_prefix']}_members WHERE username IN({$delete_usernames})", __FILE__, __LINE__);
+      $DB->query("DELETE FROM {$CONF['sql_prefix']}_sites WHERE username IN({$delete_usernames})", __FILE__, __LINE__);
       $DB->query("DELETE FROM {$CONF['sql_prefix']}_stats WHERE username IN({$delete_usernames})", __FILE__, __LINE__);
       $DB->query("DELETE FROM {$CONF['sql_prefix']}_reviews WHERE username IN({$delete_usernames})", __FILE__, __LINE__);
     }
