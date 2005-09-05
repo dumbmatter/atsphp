@@ -15,7 +15,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-5.0 - 2005-??-??
+5.0 - 2005-09-??
 NOTES
 - The script was mostly rewritten with higher standards for code quality
 FEATURES

@@ -59,8 +59,6 @@ elseif (!isset($FORM['submit'])) {
 
   $TMPL['content'] = <<<EndHTML
 {$LNG['install_welcome']}<br /><br />
-<strong>This is a beta release.  It is mostly feature-complete, but not thoroughly tested.  Use it at your own risk.</strong><br /><br />
-Do not forget to give feedback.  Let us know what you think about this beta release and your input will help mold the final version.  <a href="http://www.aardvarkind.com/forums/viewforum.php?f=12">Post at the development forum.</a><br /><br />
 <form action="index.php" method="post">
 <input name="l" type="hidden" value="{$FORM['l']}" />
 <fieldset>
