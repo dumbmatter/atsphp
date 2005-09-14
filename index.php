@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 Beta (2005-09-05)';
+$TMPL['version'] = '5.0 Beta (2005-09-11)';
 // Set to 1 to display SQL queries and GET/POST/COOKIE data
 $CONF['debug'] = 0;
 
@@ -69,6 +69,9 @@ else {
 }
 if (!is_dir("{$CONF['path']}/skins/{$TMPL['skin_name']}/") || !$TMPL['skin_name']) {
   $TMPL['skin_name'] = $CONF['default_skin'];
+}
+if (!is_dir("{$CONF['path']}/skins/{$CONF['default_skin']}/")) {
+  $TMPL['skin_name'] = 'fusion';
 }
 require_once("{$CONF['path']}/sources/misc/skin.php");
 

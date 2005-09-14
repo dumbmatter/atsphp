@@ -1,0 +1,410 @@
+<h1>{$title}</h1><br />
+<a href="{$url}" onclick="out('{$username}');"><img src="{$banner_url}" alt="{$title}" border="0" /></a><br /><br />
+
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td><h3>{$lng->stats_info}</h3><br />
+			<b>{$lng->g_username}:</b> {$username}<br />
+			<b>{$lng->g_description}:</b> {$description}<br />
+			<b>{$lng->g_url}:</b> <a href="{$url}" onclick="out('{$username}');">{$url}</a><br />
+			<b>{$lng->g_category}:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
+			<b>{$lng->stats_member_since}:</b> {$join_date}<br /><br />
+			<b>{$lng->stats_rating_avg}:</b> {$average_rating} / 5<br />
+			<b>{$lng->stats_rating_num}:</b> {$num_ratings}<br />
+			<img src="{$skins_url}/{$skin_name}/rate_{$average_rating}.png" bgcolor="transparent" alt="{$average_rating}/5" />
+		</td>
+		<td><h3>{$lng->stats_reviews}</h3><br />
+			{$reviews}
+			<a href="{$list_url}/index.php?a=rate&amp;u={$username}">{$lng->stats_rate}</a><br />
+			<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a>
+		</td>
+	</tr>
+</table>
+<br /><br />
+
+<h3>{$lng->stats_header}</h3>
+<div class="table_border">
+<table cellspacing="1" cellpadding="1">
+	<tr>
+		<th class="stats_top">{$lng->g_daily}</th>
+		<th class="stats_top">{$lng->g_unq_pv}</th>
+		<th class="stats_top">{$lng->g_tot_pv}</th>
+		<th class="stats_top">{$lng->g_unq_in}</th>
+		<th class="stats_top">{$lng->g_tot_in}</th>
+		<th class="stats_top">{$lng->g_unq_out}</th>
+		<th class="stats_top">{$lng->g_tot_out}</th>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_average}</td>
+		<td class="stats2">{$unq_pv_avg_daily}</td>
+		<td class="stats1">{$tot_pv_avg_daily}</td>
+		<td class="stats2">{$unq_in_avg_daily}</td>
+		<td class="stats1">{$tot_in_avg_daily}</td>
+		<td class="stats2">{$unq_out_avg_daily}</td>
+		<td class="stats1">{$tot_out_avg_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_today}</td>
+		<td class="stats2">{$unq_pv_0_daily}</td>
+		<td class="stats1">{$tot_pv_0_daily}</td>
+		<td class="stats2">{$unq_in_0_daily}</td>
+		<td class="stats1">{$tot_in_0_daily}</td>
+		<td class="stats2">{$unq_out_0_daily}</td>
+		<td class="stats1">{$tot_out_0_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_yesterday}</td>
+		<td class="stats2">{$unq_pv_1_daily}</td>
+		<td class="stats1">{$tot_pv_1_daily}</td>
+		<td class="stats2">{$unq_in_1_daily}</td>
+		<td class="stats1">{$tot_in_1_daily}</td>
+		<td class="stats2">{$unq_out_1_daily}</td>
+		<td class="stats1">{$tot_out_1_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$2_daily}</td>
+		<td class="stats2">{$unq_pv_2_daily}</td>
+		<td class="stats1">{$tot_pv_2_daily}</td>
+		<td class="stats2">{$unq_in_2_daily}</td>
+		<td class="stats1">{$tot_in_2_daily}</td>
+		<td class="stats2">{$unq_out_2_daily}</td>
+		<td class="stats1">{$tot_out_2_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$3_daily}</td>
+		<td class="stats2">{$unq_pv_3_daily}</td>
+		<td class="stats1">{$tot_pv_3_daily}</td>
+		<td class="stats2">{$unq_in_3_daily}</td>
+		<td class="stats1">{$tot_in_3_daily}</td>
+		<td class="stats2">{$unq_out_3_daily}</td>
+		<td class="stats1">{$tot_out_3_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$4_daily}</td>
+		<td class="stats2">{$unq_pv_4_daily}</td>
+		<td class="stats1">{$tot_pv_4_daily}</td>
+		<td class="stats2">{$unq_in_4_daily}</td>
+		<td class="stats1">{$tot_in_4_daily}</td>
+		<td class="stats2">{$unq_out_4_daily}</td>
+		<td class="stats1">{$tot_out_4_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$5_daily}</td>
+		<td class="stats2">{$unq_pv_5_daily}</td>
+		<td class="stats1">{$tot_pv_5_daily}</td>
+		<td class="stats2">{$unq_in_5_daily}</td>
+		<td class="stats1">{$tot_in_5_daily}</td>
+		<td class="stats2">{$unq_out_5_daily}</td>
+		<td class="stats1">{$tot_out_5_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$6_daily}</td>
+		<td class="stats2">{$unq_pv_6_daily}</td>
+		<td class="stats1">{$tot_pv_6_daily}</td>
+		<td class="stats2">{$unq_in_6_daily}</td>
+		<td class="stats1">{$tot_in_6_daily}</td>
+		<td class="stats2">{$unq_out_6_daily}</td>
+		<td class="stats1">{$tot_out_6_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$7_daily}</td>
+		<td class="stats2">{$unq_pv_7_daily}</td>
+		<td class="stats1">{$tot_pv_7_daily}</td>
+		<td class="stats2">{$unq_in_7_daily}</td>
+		<td class="stats1">{$tot_in_7_daily}</td>
+		<td class="stats2">{$unq_out_7_daily}</td>
+		<td class="stats1">{$tot_out_7_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$8_daily}</td>
+		<td class="stats2">{$unq_pv_8_daily}</td>
+		<td class="stats1">{$tot_pv_8_daily}</td>
+		<td class="stats2">{$unq_in_8_daily}</td>
+		<td class="stats1">{$tot_in_8_daily}</td>
+		<td class="stats2">{$unq_out_8_daily}</td>
+		<td class="stats1">{$tot_out_8_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$9_daily}</td>
+		<td class="stats2">{$unq_pv_9_daily}</td>
+		<td class="stats1">{$tot_pv_9_daily}</td>
+		<td class="stats2">{$unq_in_9_daily}</td>
+		<td class="stats1">{$tot_in_9_daily}</td>
+		<td class="stats2">{$unq_out_9_daily}</td>
+		<td class="stats1">{$tot_out_9_daily}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->stats_highest}</td>
+		<td class="stats2">{$unq_pv_max_daily}</td>
+		<td class="stats1">{$tot_pv_max_daily}</td>
+		<td class="stats2">{$unq_in_max_daily}</td>
+		<td class="stats1">{$tot_in_max_daily}</td>
+		<td class="stats2">{$unq_out_max_daily}</td>
+		<td class="stats1">{$tot_out_max_daily}</td>
+	</tr>
+</table>
+</div>
+<div class="table_border">
+<table cellspacing="1" cellpadding="1">
+	<tr>
+		<th class="stats_top">{$lng->g_weekly}</th>
+		<th class="stats_top">{$lng->g_unq_pv}</th>
+		<th class="stats_top">{$lng->g_tot_pv}</th>
+		<th class="stats_top">{$lng->g_unq_in}</th>
+		<th class="stats_top">{$lng->g_tot_in}</th>
+		<th class="stats_top">{$lng->g_unq_out}</th>
+		<th class="stats_top">{$lng->g_tot_out}</th>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_average}</td>
+		<td class="stats2">{$unq_pv_avg_weekly}</td>
+		<td class="stats1">{$tot_pv_avg_weekly}</td>
+		<td class="stats2">{$unq_in_avg_weekly}</td>
+		<td class="stats1">{$tot_in_avg_weekly}</td>
+		<td class="stats2">{$unq_out_avg_weekly}</td>
+		<td class="stats1">{$tot_out_avg_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_this_week}</td>
+		<td class="stats2">{$unq_pv_0_weekly}</td>
+		<td class="stats1">{$tot_pv_0_weekly}</td>
+		<td class="stats2">{$unq_in_0_weekly}</td>
+		<td class="stats1">{$tot_in_0_weekly}</td>
+		<td class="stats2">{$unq_out_0_weekly}</td>
+		<td class="stats1">{$tot_out_0_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_last_week}</td>
+		<td class="stats2">{$unq_pv_1_weekly}</td>
+		<td class="stats1">{$tot_pv_1_weekly}</td>
+		<td class="stats2">{$unq_in_1_weekly}</td>
+		<td class="stats1">{$tot_in_1_weekly}</td>
+		<td class="stats2">{$unq_out_1_weekly}</td>
+		<td class="stats1">{$tot_out_1_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$2_weekly}</td>
+		<td class="stats2">{$unq_pv_2_weekly}</td>
+		<td class="stats1">{$tot_pv_2_weekly}</td>
+		<td class="stats2">{$unq_in_2_weekly}</td>
+		<td class="stats1">{$tot_in_2_weekly}</td>
+		<td class="stats2">{$unq_out_2_weekly}</td>
+		<td class="stats1">{$tot_out_2_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$3_weekly}</td>
+		<td class="stats2">{$unq_pv_3_weekly}</td>
+		<td class="stats1">{$tot_pv_3_weekly}</td>
+		<td class="stats2">{$unq_in_3_weekly}</td>
+		<td class="stats1">{$tot_in_3_weekly}</td>
+		<td class="stats2">{$unq_out_3_weekly}</td>
+		<td class="stats1">{$tot_out_3_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$4_weekly}</td>
+		<td class="stats2">{$unq_pv_4_weekly}</td>
+		<td class="stats1">{$tot_pv_4_weekly}</td>
+		<td class="stats2">{$unq_in_4_weekly}</td>
+		<td class="stats1">{$tot_in_4_weekly}</td>
+		<td class="stats2">{$unq_out_4_weekly}</td>
+		<td class="stats1">{$tot_out_4_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$5_weekly}</td>
+		<td class="stats2">{$unq_pv_5_weekly}</td>
+		<td class="stats1">{$tot_pv_5_weekly}</td>
+		<td class="stats2">{$unq_in_5_weekly}</td>
+		<td class="stats1">{$tot_in_5_weekly}</td>
+		<td class="stats2">{$unq_out_5_weekly}</td>
+		<td class="stats1">{$tot_out_5_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$6_weekly}</td>
+		<td class="stats2">{$unq_pv_6_weekly}</td>
+		<td class="stats1">{$tot_pv_6_weekly}</td>
+		<td class="stats2">{$unq_in_6_weekly}</td>
+		<td class="stats1">{$tot_in_6_weekly}</td>
+		<td class="stats2">{$unq_out_6_weekly}</td>
+		<td class="stats1">{$tot_out_6_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$7_weekly}</td>
+		<td class="stats2">{$unq_pv_7_weekly}</td>
+		<td class="stats1">{$tot_pv_7_weekly}</td>
+		<td class="stats2">{$unq_in_7_weekly}</td>
+		<td class="stats1">{$tot_in_7_weekly}</td>
+		<td class="stats2">{$unq_out_7_weekly}</td>
+		<td class="stats1">{$tot_out_7_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$8_weekly}</td>
+		<td class="stats2">{$unq_pv_8_weekly}</td>
+		<td class="stats1">{$tot_pv_8_weekly}</td>
+		<td class="stats2">{$unq_in_8_weekly}</td>
+		<td class="stats1">{$tot_in_8_weekly}</td>
+		<td class="stats2">{$unq_out_8_weekly}</td>
+		<td class="stats1">{$tot_out_8_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$9_weekly}</td>
+		<td class="stats2">{$unq_pv_9_weekly}</td>
+		<td class="stats1">{$tot_pv_9_weekly}</td>
+		<td class="stats2">{$unq_in_9_weekly}</td>
+		<td class="stats1">{$tot_in_9_weekly}</td>
+		<td class="stats2">{$unq_out_9_weekly}</td>
+		<td class="stats1">{$tot_out_9_weekly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->stats_highest}</td>
+		<td class="stats2">{$unq_pv_max_weekly}</td>
+		<td class="stats1">{$tot_pv_max_weekly}</td>
+		<td class="stats2">{$unq_in_max_weekly}</td>
+		<td class="stats1">{$tot_in_max_weekly}</td>
+		<td class="stats2">{$unq_out_max_weekly}</td>
+		<td class="stats1">{$tot_out_max_weekly}</td>
+	</tr>
+</table>
+</div>
+<div class="table_border">
+<table cellspacing="1" cellpadding="1">
+	<tr>
+		<th class="stats_top">{$lng->g_monthly}</th>
+		<th class="stats_top">{$lng->g_unq_pv}</th>
+		<th class="stats_top">{$lng->g_tot_pv}</th>
+		<th class="stats_top">{$lng->g_unq_in}</th>
+		<th class="stats_top">{$lng->g_tot_in}</th>
+		<th class="stats_top">{$lng->g_unq_out}</th>
+		<th class="stats_top">{$lng->g_tot_out}</th>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_average}</td>
+		<td class="stats2">{$unq_pv_avg_monthly}</td>
+		<td class="stats1">{$tot_pv_avg_monthly}</td>
+		<td class="stats2">{$unq_in_avg_monthly}</td>
+		<td class="stats1">{$tot_in_avg_monthly}</td>
+		<td class="stats2">{$unq_out_avg_monthly}</td>
+		<td class="stats1">{$tot_out_avg_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_this_month}</td>
+		<td class="stats2">{$unq_pv_0_monthly}</td>
+		<td class="stats1">{$tot_pv_0_monthly}</td>
+		<td class="stats2">{$unq_in_0_monthly}</td>
+		<td class="stats1">{$tot_in_0_monthly}</td>
+		<td class="stats2">{$unq_out_0_monthly}</td>
+		<td class="stats1">{$tot_out_0_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_last_month}</td>
+		<td class="stats2">{$unq_pv_1_monthly}</td>
+		<td class="stats1">{$tot_pv_1_monthly}</td>
+		<td class="stats2">{$unq_in_1_monthly}</td>
+		<td class="stats1">{$tot_in_1_monthly}</td>
+		<td class="stats2">{$unq_out_1_monthly}</td>
+		<td class="stats1">{$tot_out_1_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$2_monthly}</td>
+		<td class="stats2">{$unq_pv_2_monthly}</td>
+		<td class="stats1">{$tot_pv_2_monthly}</td>
+		<td class="stats2">{$unq_in_2_monthly}</td>
+		<td class="stats1">{$tot_in_2_monthly}</td>
+		<td class="stats2">{$unq_out_2_monthly}</td>
+		<td class="stats1">{$tot_out_2_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$3_monthly}</td>
+		<td class="stats2">{$unq_pv_3_monthly}</td>
+		<td class="stats1">{$tot_pv_3_monthly}</td>
+		<td class="stats2">{$unq_in_3_monthly}</td>
+		<td class="stats1">{$tot_in_3_monthly}</td>
+		<td class="stats2">{$unq_out_3_monthly}</td>
+		<td class="stats1">{$tot_out_3_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$4_monthly}</td>
+		<td class="stats2">{$unq_pv_4_monthly}</td>
+		<td class="stats1">{$tot_pv_4_monthly}</td>
+		<td class="stats2">{$unq_in_4_monthly}</td>
+		<td class="stats1">{$tot_in_4_monthly}</td>
+		<td class="stats2">{$unq_out_4_monthly}</td>
+		<td class="stats1">{$tot_out_4_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$5_monthly}</td>
+		<td class="stats2">{$unq_pv_5_monthly}</td>
+		<td class="stats1">{$tot_pv_5_monthly}</td>
+		<td class="stats2">{$unq_in_5_monthly}</td>
+		<td class="stats1">{$tot_in_5_monthly}</td>
+		<td class="stats2">{$unq_out_5_monthly}</td>
+		<td class="stats1">{$tot_out_5_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$6_monthly}</td>
+		<td class="stats2">{$unq_pv_6_monthly}</td>
+		<td class="stats1">{$tot_pv_6_monthly}</td>
+		<td class="stats2">{$unq_in_6_monthly}</td>
+		<td class="stats1">{$tot_in_6_monthly}</td>
+		<td class="stats2">{$unq_out_6_monthly}</td>
+		<td class="stats1">{$tot_out_6_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$7_monthly}</td>
+		<td class="stats2">{$unq_pv_7_monthly}</td>
+		<td class="stats1">{$tot_pv_7_monthly}</td>
+		<td class="stats2">{$unq_in_7_monthly}</td>
+		<td class="stats1">{$tot_in_7_monthly}</td>
+		<td class="stats2">{$unq_out_7_monthly}</td>
+		<td class="stats1">{$tot_out_7_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$8_monthly}</td>
+		<td class="stats2">{$unq_pv_8_monthly}</td>
+		<td class="stats1">{$tot_pv_8_monthly}</td>
+		<td class="stats2">{$unq_in_8_monthly}</td>
+		<td class="stats1">{$tot_in_8_monthly}</td>
+		<td class="stats2">{$unq_out_8_monthly}</td>
+		<td class="stats1">{$tot_out_8_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$9_monthly}</td>
+		<td class="stats2">{$unq_pv_9_monthly}</td>
+		<td class="stats1">{$tot_pv_9_monthly}</td>
+		<td class="stats2">{$unq_in_9_monthly}</td>
+		<td class="stats1">{$tot_in_9_monthly}</td>
+		<td class="stats2">{$unq_out_9_monthly}</td>
+		<td class="stats1">{$tot_out_9_monthly}</td>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->stats_highest}</td>
+		<td class="stats2">{$unq_pv_max_monthly}</td>
+		<td class="stats1">{$tot_pv_max_monthly}</td>
+		<td class="stats2">{$unq_in_max_monthly}</td>
+		<td class="stats1">{$tot_in_max_monthly}</td>
+		<td class="stats2">{$unq_out_max_monthly}</td>
+		<td class="stats1">{$tot_out_max_monthly}</td>
+	</tr>
+</table>
+</div>
+<div class="table_border">
+<table cellspacing="1" cellpadding="1">
+	<tr>
+		<th class="stats_top"></th>
+		<th class="stats_top">{$lng->g_unq_pv}</th>
+		<th class="stats_top">{$lng->g_tot_pv}</th>
+		<th class="stats_top">{$lng->g_unq_in}</th>
+		<th class="stats_top">{$lng->g_tot_in}</th>
+		<th class="stats_top">{$lng->g_unq_out}</th>
+		<th class="stats_top">{$lng->g_tot_out}</th>
+	</tr>
+	<tr>
+		<td class="stats_left">{$lng->g_overall}</td>
+		<td class="stats2">{$unq_pv_overall}</td>
+		<td class="stats1">{$tot_pv_overall}</td>
+		<td class="stats2">{$unq_in_overall}</td>
+		<td class="stats1">{$tot_in_overall}</td>
+		<td class="stats2">{$unq_out_overall}</td>
+		<td class="stats1">{$tot_out_overall}</td>
+	</tr>
+</table>
+</div>

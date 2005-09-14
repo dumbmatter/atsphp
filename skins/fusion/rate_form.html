@@ -1,0 +1,17 @@
+<form action="index.php" method="post">
+<input type="hidden" value="rate" name="a" />
+<input type="hidden" value="{$username}" name="u" />
+<fieldset>
+<legend>{$lng->rate_header}</legend>
+{$lng->rate_rating}<br />
+<label><input type="radio" name="rating" value="5" /><img src="{$skins_url}/{$skin_name}/rate_5.png" bgcolor="transparent" alt="5/5" /><br /></label>
+<label><input type="radio" name="rating" value="4" /><img src="{$skins_url}/{$skin_name}/rate_4.png" bgcolor="transparent" alt="4/5" /><br /></label>
+<label><input type="radio" name="rating" value="3" checked="checked" /><img src="{$skins_url}/{$skin_name}/rate_3.png" bgcolor="transparent" alt="3/5" /><br /></label>
+<label><input type="radio" name="rating" value="2" /><img src="{$skins_url}/{$skin_name}/rate_2.png" bgcolor="transparent" alt="2/5" /><br /></label>
+<label><input type="radio" name="rating" value="1" /><img src="{$skins_url}/{$skin_name}/rate_1.png" bgcolor="transparent" alt="1/5" /><br /><br /></label>
+<label>{$lng->rate_review}<br />
+<textarea name="review" cols="40" rows="5"></textarea><br /><br />
+</label>
+<input type="submit" value="{$lng->rate_header}" />
+</fieldset>
+</form>

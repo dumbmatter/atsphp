@@ -145,6 +145,7 @@ $LNG['table_total'] = "Total";
 $LNG['table_rank'] = "Rank";
 $LNG['table_title'] = "Title"; // 4.0
 $LNG['table_description'] = "Description"; // 4.0
+$LNG['table_movement'] = "Movement";
 $LNG['table_up'] = "Up"; // 5.0
 $LNG['table_down'] = "Down"; // 5.0
 $LNG['table_neutral'] = "Neutral"; // 5.0

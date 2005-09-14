@@ -110,7 +110,7 @@ EndHTML;
                     `list_name` varchar(255) default 'My Topsites List',
                     `list_url` varchar(255) default '',
                     `default_language` varchar(255) default '',
-                    `default_skin` varchar(255) default 'classic',
+                    `default_skin` varchar(255) default 'fusion',
                     `your_email` varchar(255) default '',
                     `num_list` int(5) default 10,
                     `ranking_period` varchar(7) default 'daily',
@@ -442,7 +442,7 @@ EndHTML;
 {$LNG['upgrade_done']}<br /><br />
 <a href="{$TMPL['list_url']}/">{$LNG['install_your']}</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-{$LNG['install_manual']}
+<a href="http://www.aardvarkind.com/manual/">{$LNG['install_manual']}</a>
 EndHTML;
     }
     else {
@@ -455,22 +455,15 @@ EndHTML;
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Aardvark Topsites PHP 5 - <?= $LNG['upgrade_header'] ?></title>
-<link rel="stylesheet" type="text/css" media="screen" href="../skins/classic/default.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>
 
-<table width="728" align="center"><tr><td>
-
-<center>
-<img src="../skins/classic/logo.png" width="728" height="66" alt="{$list_name}" />
-</center><br />
-
-<?= $TMPL['content'] ?>
-
-</td></tr></table>
-
+<div id="wrapper">
+	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
+	<div id="content"><?= $TMPL['content'] ?></div>
 </body>
 </html>

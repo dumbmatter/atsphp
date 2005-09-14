@@ -1,0 +1,31 @@
+<form action="index.php?a=user_cp&amp;b=edit" method="post">
+<fieldset>
+<legend>{$lng->join_website}</legend>
+<label>{$lng->g_url}<br />
+<input type="text" name="url" size="50" value="{$url}" /><br /><br />
+</label>
+<label>{$lng->g_title}<br />
+<input type="text" name="title" size="50" value="{$title}" /><br /><br />
+</label>
+<label>{$lng->g_description}<br />
+<textarea cols="40" rows="5" name="description">{$description}</textarea><br /><br />
+</label>
+<label>{$lng->g_category}<br />
+{$categories_menu}<br /><br />
+</label>
+<label>{$lng->g_banner_url}<br />
+<input type="text" name="banner_url" size="50" value="{$banner_url}" /><br /><br />
+</label>
+<label>{$lng->g_email}<br />
+<input type="text" name="email" size="50" value="{$email}" />
+</label>
+</fieldset>
+
+<fieldset>
+<legend>{$lng->join_user}</legend>
+<label>{$lng->g_password} - {$lng->edit_password_blank}<br />
+<input type="password" name="password" size="20" /><br /><br />
+</label>
+<input name="submit" type="submit" value="{$lng->edit_header}" />
+</fieldset>
+</form>

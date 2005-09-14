@@ -1,0 +1,35 @@
+<form action="index.php?a=join" method="post">
+<fieldset>
+<legend>{$lng->join_user}</legend>
+<label>{$lng->g_username}<br />
+<input type="text" name="u" size="20" /><br /><br />
+</label>
+<label>{$lng->g_password}<br />
+<input type="password" name="password" size="20" />
+</label>
+</fieldset>
+
+<fieldset>
+<legend>{$lng->join_website}</legend>
+<label>{$lng->g_url}<br />
+<input type="text" name="url" size="50" value="http://" /><br /><br />
+</label>
+<label>{$lng->g_title}<br />
+<input type="text" name="title" size="50" /><br /><br />
+</label>
+<label>{$lng->g_description}<br />
+<textarea cols="40" rows="5" name="description"></textarea><br /><br />
+</label>
+<label>{$lng->g_category}<br />
+{$categories_menu}<br /><br />
+</label>
+<label>{$lng->g_banner_url}<br />
+<input type="text" name="banner_url" size="50" value="http://" /><br /><br />
+</label>
+<label>{$lng->g_email}<br />
+<input type="text" name="email" size="50" /><br /><br />
+</label>
+{$join_captcha}
+<input name="submit" type="submit" value="{$lng->join_header}" />
+</fieldset>
+</form>

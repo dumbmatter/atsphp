@@ -25,7 +25,7 @@ class in extends in_out {
       $go_to_rankings = 1;
       $username = $DB->escape($FORM['u']);
     }
-    elseif (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
+    elseif (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
       $username = $this->get_username($_SERVER['HTTP_REFERER']);
     }
     else {

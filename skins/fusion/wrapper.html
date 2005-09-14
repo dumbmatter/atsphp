@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$list_name} - {$header}</title>
+<link rel="stylesheet" type="text/css" media="screen" href="{$skins_url}/{$skin_name}/screen.css" />
+<script language="javascript">
+function out(username)
+{
+  out_frame = document.getElementById('out_frame');
+  out_frame.src = '{$list_url}/index.php?a=out&u=' + username;
+}
+</script>
+</head>
+<body>
+<iframe id="out_frame" name="out_frame" style="display: none;"></iframe>
+
+<div id="wrapper">
+	<div id="header"><a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/header.jpg" width="700" height="65" alt="{$list_name}" /></a></div>
+	<div id="navigation">
+		<a href="{$list_url}/" class="menu">{$lng->main_menu_rankings}</a> - 
+		<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a> - 
+		<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
+	</div>
+	<div id="filters"><form action="index.php" method="get">
+{$ranking_methods_menu}
+{$categories_menu}
+{$multiple_pages_menu}
+		<input type="submit" value="{$lng->g_form_submit_short}" />
+	</form></div>
+	<div id="search"><form action="index.php" method="get">
+		<input type="hidden" name="a" value="search" />
+		<input type="text" name="q" size="18" value="{$query}" />
+		<input type="submit" value="{$lng->search_header}" />
+	</form></div>
+	<div id="content">{$content}</div>
+	<div id="copyright"><br />{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
+		{$list_name} - {$powered_by}</div>
+</div>
+</body>
+</html>
