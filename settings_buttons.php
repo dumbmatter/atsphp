@@ -1,8 +1,8 @@
 <?php
-$row = $DB->fetch("SELECT *
+$TMPL = $DB->fetch("SELECT *
                    FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                    WHERE sites.username = stats.username AND sites.username = '{$username}'", __FILE__, __LINE__);
-$TMPL = array_merge($TMPL, $row);
+$TMPL['rank'] = $rank;
 
 $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
