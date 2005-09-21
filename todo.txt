@@ -19,14 +19,9 @@
 ROADMAP
 =======
 
-ALPHA
-  Done
+5.0
+  Fix Bugs
+  update german
 
-BETA
-  Done
-
-RC
-  Done
-
-FINAL
-  Up/down arrows
+5.1.0
+  AJAX for pre-validating forms (fix captcha refresh bug)

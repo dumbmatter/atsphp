@@ -2,7 +2,12 @@
 $TMPL = $DB->fetch("SELECT *
                    FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                    WHERE sites.username = stats.username AND sites.username = '{$username}'", __FILE__, __LINE__);
-$TMPL['rank'] = $rank;
+if ($rank) {
+  $TMPL['rank'] = $rank;
+}
+else {
+  $TMPL['rank'] = $TMPL['old_rank'];
+}
 
 $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
@@ -18,8 +23,7 @@ foreach ($ranking_periods as $ranking_period) {
   }
 }
 
-$TMPL['rank'] = $rank;
-$TMPL['averagae_rating'] = $TMPL['ratenum'] ? round($total_ratings / $TMPL['ratenum'], 0) : 0;
+$TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
 $img = imagecreatefrompng("{$CONF['path']}/images/ranking.png");
 $color1 = imagecolorallocate($img, 0, 0, 255);

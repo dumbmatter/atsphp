@@ -26,12 +26,12 @@ $translator_url = 'http://www.speedmike.de/';
 // Global
 $LNG['g_form_submit_short'] = "Los";
 $LNG['g_username'] = "Benutzername";
-$LNG['g_url'] = "URL";
-$LNG['g_title'] = "Titel";
+$LNG['g_url'] = "Adresse";
+$LNG['g_title'] = "Webseitentitel";
 $LNG['g_description'] = "Beschreibung";
 $LNG['g_category'] = "Kategorie"; // 4.1.0
 $LNG['g_email'] = "E-Mail";
-$LNG['g_banner_url'] = "Banner URL";
+$LNG['g_banner_url'] = "Banneradresse";
 $LNG['g_password'] = "Passwort";
 $LNG['g_average'] = "Durchschnitt";
 $LNG['g_today'] = "Heute";
@@ -125,7 +125,7 @@ $LNG['main_header'] = "Hauptseite"; // 5.0
 $LNG['main_all'] = "Alle Einträge"; // 4.2.0
 $LNG['main_method'] = "Platzierungsmethode";
 $LNG['main_members'] = "Mitglieder";
-$LNG['main_menu_rankings'] = "Hauptseite";
+$LNG['main_menu_rankings'] = "Rangliste";
 $LNG['main_menu_join'] = "Seite eintragen";
 $LNG['main_menu_random'] = "Zufallsseite";
 $LNG['main_menu_search'] = "Suchen";
@@ -133,13 +133,15 @@ $LNG['main_menu_lost_code'] = "Code vergessen"; // 5.0
 $LNG['main_menu_lost_password'] = "Passwort vergessen"; // 5.0
 $LNG['main_menu_edit'] = "Daten ändern";
 $LNG['main_menu_user_cp'] = "Benutzer-Kontrollbereich"; // 5.0
-$LNG['main_featured'] = "Tip:"; // 4.0.2
+$LNG['main_featured'] = "Site Of The Moment"; // 4.0.2
 $LNG['main_executiontime'] = "Script Laufzeit"; // 4.0
 $LNG['main_queries'] = "SQL Abfragen"; // 4.0
 $LNG['main_powered'] = "Powered by";
 
 // Ranking Table
-$LNG['table_stats'] = "Statistik";
+$LNG['table_stats'] = "Statistik
+Kommentare
+Bewertungen";
 $LNG['table_unique'] = "Besucher";
 $LNG['table_total'] = "Seitenaufrufe";
 $LNG['table_rank'] = "Platzierung";
@@ -350,7 +352,7 @@ $LNG['a_s_updated'] = "Ihre Einstellungen wurden aktualisiert.";
 
 // Admin > Skins and Categories // 5.0
 $LNG['a_skins_header'] = "Oberflächen und Kategorien"; // 5.0
-$LNG['a_skins_default'] = "Standardoberfläche"; // 5.0
+$LNG['a_skins_default'] = "Standard"; // 5.0
 $LNG['a_skins_set_default'] = "Standardoberfläche setzen"; // 5.0
 $LNG['a_skins_anon'] = "Anonym"; // 5.0
 $LNG['a_skins_default_done'] = "Die Standardoberfläche wurde gesetzt."; // 5.0

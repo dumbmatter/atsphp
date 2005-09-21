@@ -18,7 +18,7 @@
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.0 RC1 (2005-09-14)';
+$TMPL['version'] = '5.0 RC2';
 // Set to 1 to display SQL queries and GET/POST/COOKIE data
 $CONF['debug'] = 0;
 

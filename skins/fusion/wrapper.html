@@ -6,8 +6,10 @@
 <script language="javascript">
 function out(username)
 {
-  out_frame = document.getElementById('out_frame');
-  out_frame.src = '{$list_url}/index.php?a=out&u=' + username;
+  image = new Image();
+  image.src= '{$list_url}/index.php?a=out&u=' + username;
+//  out_frame = document.getElementById('out_frame');
+//  out_frame.src = '{$list_url}/index.php?a=out&u=' + username;
 }
 </script>
 </head>
@@ -36,5 +38,24 @@ function out(username)
 	<div id="copyright"><br />{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
 		{$list_name} - {$powered_by}</div>
 </div>
+<script language="javascript">
+/*var a = document.getElementsByTagName("a");
+for(i=0; i<a.length; i++)
+{
+  if(a[i].id != '')
+  {
+    a[i].onclick = out;
+  }
+}
+function out()
+{
+alert(this.id);
+//  image = new Image();
+//  image.src= '{$list_url}/index.php?a=out&u=' + this.id;
+  out_frame = document.getElementById('out_frame');
+  out_frame.src = '{$list_url}/index.php?a=out&u=' + this.id;
+  return true;
+}*/
+</script>
 </body>
 </html>

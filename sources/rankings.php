@@ -76,6 +76,12 @@ class rankings extends base {
     else {
       $ranking_period = $CONF['ranking_period'];
     }
+    if ($TMPL['category'] == $LNG['main_all']) {
+      $is_main = 1;
+    }
+    else {
+      $is_main = 0;
+    }
     $TMPL['rank'] = $start + 1;
     $page_rank = 1;
     $top_done = 0;
@@ -83,17 +89,16 @@ class rankings extends base {
     $TMPL['alt'] = 'alt';
     while ($row = $DB->fetch_array($result)) {
       $TMPL = array_merge($TMPL, $row);
-      if ($CONF['ranking_method'] == $ranking_method && $TMPL['category'] == $LNG['main_all']) {
+      if ($CONF['ranking_method'] == $ranking_method && $is_main) {
         if (!$TMPL['old_rank']) {
           $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET old_rank = {$TMPL['old_rank']} WHERE username = '{$TMPL['username']}'");
+          $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET old_rank = {$TMPL['old_rank']} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
         }
         if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; $LNG['up_down'] = $LNG['table_up']; }
         elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; $LNG['up_down'] = $LNG['table_down']; }
         else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
       }
       else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
-
       if ($TMPL['alt']) { $TMPL['alt'] = ''; }
       else { $TMPL['alt'] = 'alt'; }
 

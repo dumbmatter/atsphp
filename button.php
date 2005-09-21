@@ -30,7 +30,7 @@ $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__,
 $CONF = array_merge($CONF, $settings);
 
 // Check id for backwards compatability with 4.x
-if ($_GET['id'] && !$_GET['u']) {
+if (isset($_GET['id']) && $_GET['id'] && !$_GET['u']) {
   $username = $DB->escape($_GET['id']);
 }
 else {
