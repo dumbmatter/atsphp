@@ -20,8 +20,7 @@ ROADMAP
 =======
 
 5.0
-  Fix Bugs
-  update german
+  highlight link code
 
 5.1.0
   AJAX for pre-validating forms (fix captcha refresh bug)

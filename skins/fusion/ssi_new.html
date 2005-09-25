@@ -1,11 +1,10 @@
 <script language="javascript">
 function out(username)
 {
-  out_frame = document.getElementById('out_frame');
-  out_frame.src = '{$list_url}/index.php?a=out&u=' + username;
+  image = new Image();
+  image.src= '{$list_url}/index.php?a=out&u=' + username;
 }
 </script>
-<iframe id="out_frame" name="out_frame" style="display: none;"></iframe>
 <table><tr><td>
 <center><b>{$lng->ssi_new}</b></center>
 <ol>
