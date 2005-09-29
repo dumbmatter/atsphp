@@ -44,8 +44,8 @@ function new_day($current_day) {
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_daily = tot_pv_0_daily WHERE tot_pv_0_daily > tot_pv_max_daily", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_in_max_daily = unq_in_0_daily WHERE unq_in_0_daily > unq_in_max_daily", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_in_max_daily = tot_in_0_daily WHERE tot_in_0_daily > tot_in_max_daily", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_max_daily = unq_out_0_daily WHERE unq_out_0_daily > unq_out_max_daily", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_daily = tot_out_0_daily WHERE tot_out_0_daily > tot_out_max_daily", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_out_max_daily = unq_out_0_daily WHERE unq_out_0_daily > unq_out_max_daily", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_out_max_daily = tot_out_0_daily WHERE tot_out_0_daily > tot_out_max_daily", __FILE__, __LINE__);
 
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_9_daily = unq_pv_8_daily, unq_pv_8_daily = unq_pv_7_daily, unq_pv_7_daily = unq_pv_6_daily, unq_pv_6_daily = unq_pv_5_daily, unq_pv_5_daily = unq_pv_4_daily, unq_pv_4_daily = unq_pv_3_daily, unq_pv_3_daily = unq_pv_2_daily, unq_pv_2_daily = unq_pv_1_daily, unq_pv_1_daily = unq_pv_0_daily, unq_pv_0_daily = 0,
                                                      tot_pv_9_daily = tot_pv_8_daily, tot_pv_8_daily = tot_pv_7_daily, tot_pv_7_daily = tot_pv_6_daily, tot_pv_6_daily = tot_pv_5_daily, tot_pv_5_daily = tot_pv_4_daily, tot_pv_4_daily = tot_pv_3_daily, tot_pv_3_daily = tot_pv_2_daily, tot_pv_2_daily = tot_pv_1_daily, tot_pv_1_daily = tot_pv_0_daily, tot_pv_0_daily = 0,
@@ -65,8 +65,8 @@ function new_week($current_week) {
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_weekly = tot_pv_0_weekly WHERE tot_pv_0_weekly > tot_pv_max_weekly", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_in_max_weekly = unq_in_0_weekly WHERE unq_in_0_weekly > unq_in_max_weekly", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_in_max_weekly = tot_in_0_weekly WHERE tot_in_0_weekly > tot_in_max_weekly", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_max_weekly = unq_out_0_weekly WHERE unq_out_0_weekly > unq_out_max_weekly", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_weekly = tot_out_0_weekly WHERE tot_out_0_weekly > tot_out_max_weekly", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_out_max_weekly = unq_out_0_weekly WHERE unq_out_0_weekly > unq_out_max_weekly", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_out_max_weekly = tot_out_0_weekly WHERE tot_out_0_weekly > tot_out_max_weekly", __FILE__, __LINE__);
 
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_9_weekly = unq_pv_8_weekly, unq_pv_8_weekly = unq_pv_7_weekly, unq_pv_7_weekly = unq_pv_6_weekly, unq_pv_6_weekly = unq_pv_5_weekly, unq_pv_5_weekly = unq_pv_4_weekly, unq_pv_4_weekly = unq_pv_3_weekly, unq_pv_3_weekly = unq_pv_2_weekly, unq_pv_2_weekly = unq_pv_1_weekly, unq_pv_1_weekly = unq_pv_0_weekly, unq_pv_0_weekly = 0,
                                                      tot_pv_9_weekly = tot_pv_8_weekly, tot_pv_8_weekly = tot_pv_7_weekly, tot_pv_7_weekly = tot_pv_6_weekly, tot_pv_6_weekly = tot_pv_5_weekly, tot_pv_5_weekly = tot_pv_4_weekly, tot_pv_4_weekly = tot_pv_3_weekly, tot_pv_3_weekly = tot_pv_2_weekly, tot_pv_2_weekly = tot_pv_1_weekly, tot_pv_1_weekly = tot_pv_0_weekly, tot_pv_0_weekly = 0,
@@ -85,8 +85,8 @@ function new_month($current_month) {
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_monthly = tot_pv_0_monthly WHERE tot_pv_0_monthly > tot_pv_max_monthly", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_in_max_monthly = unq_in_0_monthly WHERE unq_in_0_monthly > unq_in_max_monthly", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_in_max_monthly = tot_in_0_monthly WHERE tot_in_0_monthly > tot_in_max_monthly", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_max_monthly = unq_out_0_monthly WHERE unq_out_0_monthly > unq_out_max_monthly", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_max_monthly = tot_out_0_monthly WHERE tot_out_0_monthly > tot_out_max_monthly", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_out_max_monthly = unq_out_0_monthly WHERE unq_out_0_monthly > unq_out_max_monthly", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_out_max_monthly = tot_out_0_monthly WHERE tot_out_0_monthly > tot_out_max_monthly", __FILE__, __LINE__);
 
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET unq_pv_9_monthly = unq_pv_8_monthly, unq_pv_8_monthly = unq_pv_7_monthly, unq_pv_7_monthly = unq_pv_6_monthly, unq_pv_6_monthly = unq_pv_5_monthly, unq_pv_5_monthly = unq_pv_4_monthly, unq_pv_4_monthly = unq_pv_3_monthly, unq_pv_3_monthly = unq_pv_2_monthly, unq_pv_2_monthly = unq_pv_1_monthly, unq_pv_1_monthly = unq_pv_0_monthly, unq_pv_0_monthly = 0,
                                                      tot_pv_9_monthly = tot_pv_8_monthly, tot_pv_8_monthly = tot_pv_7_monthly, tot_pv_7_monthly = tot_pv_6_monthly, tot_pv_6_monthly = tot_pv_5_monthly, tot_pv_5_monthly = tot_pv_4_monthly, tot_pv_4_monthly = tot_pv_3_monthly, tot_pv_3_monthly = tot_pv_2_monthly, tot_pv_2_monthly = tot_pv_1_monthly, tot_pv_1_monthly = tot_pv_0_monthly, tot_pv_0_monthly = 0,
