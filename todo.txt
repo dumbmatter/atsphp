@@ -20,7 +20,7 @@ ROADMAP
 =======
 
 5.0
-  highlight link code
+  check approve reviews
 
 5.1.0
   AJAX for pre-validating forms (fix captcha refresh bug)
