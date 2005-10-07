@@ -41,6 +41,7 @@ EndHTML;
       }
     }
   }
+  require "{$CONF['path']}/languages/english.php";
   $TMPL['content'] .= <<<EndHTML
 </select>
 <input type="submit" value="Go" />
@@ -55,7 +56,7 @@ elseif (!isset($FORM['submit'])) {
 
   $dir = opendir("{$CONF['path']}/sources/sql/");
   while (false !== ($file = readdir($dir))) {
-    if ($file != '.' && $file != '..') {
+    if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/sources/sql/{$file}")) {
       $file = str_replace('.php', '', $file);
       require "{$CONF['path']}/sources/sql/{$file}.php";
       $sql_menu = "<option value=\"{$file}\">{$database}</option>\n";

@@ -19,8 +19,10 @@
 ROADMAP
 =======
 
-5.0
-  check approve reviews
+5.0.1
+  Update category names automatically on change
+  DONE Sanity-check SQL in installer
+  DONE English by default in installer header
 
 5.1.0
   AJAX for pre-validating forms (fix captcha refresh bug)
