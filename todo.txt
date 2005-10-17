@@ -20,9 +20,11 @@ ROADMAP
 =======
 
 5.0.1
-  Update category names automatically on change
   DONE Sanity-check SQL in installer
   DONE English by default in installer header
+  No HTML in member info
 
 5.1.0
+  Update category names automatically on change
   AJAX for pre-validating forms (fix captcha refresh bug)
+  Improve and integrate search

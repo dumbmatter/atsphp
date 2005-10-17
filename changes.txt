@@ -15,6 +15,12 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+5.0.1 - 2005-10-1?
+BUG FIXES
+- Sanity-check SQL in installer
+- English by default in installer header
+- No HTML allowed in member info
+
 5.0 - 2005-10-03
 NOTES
 - The script was mostly rewritten with higher standards for code quality

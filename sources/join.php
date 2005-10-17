@@ -55,12 +55,12 @@ class join extends join_edit {
     $TMPL['username'] = $DB->escape($FORM['u']);
 
     if ($this->check_input('join')) {
-      $TMPL['url'] = $DB->escape($FORM['url']);
-      $TMPL['title'] = $DB->escape($FORM['title']);
-      $TMPL['description'] = $DB->escape($FORM['description']);
-      $TMPL['category'] = $DB->escape($FORM['category']);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
-      $TMPL['email'] = $DB->escape($FORM['email']);
+      $TMPL['url'] = $DB->escape($FORM['url'], 1);
+      $TMPL['title'] = $DB->escape($FORM['title'], 1);
+      $TMPL['description'] = $DB->escape($FORM['description'], 1);
+      $TMPL['category'] = $DB->escape($FORM['category'], 1);
+      $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
+      $TMPL['email'] = $DB->escape($FORM['email'], 1);
       $password = md5($FORM['password']);
 
       require_once("{$CONF['path']}/sources/in.php");

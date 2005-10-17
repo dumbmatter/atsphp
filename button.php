@@ -72,9 +72,7 @@ if ($CONF['ranks_on_buttons']) {
     require_once "{$CONF['path']}/sources/misc/classes.php";
     $rank_by = base::rank_by();
 
-    list($hits) = $DB->fetch("SELECT {$rank_by}
-                            FROM {$CONF['sql_prefix']}_stats
-                            WHERE username = '{$username}'", __FILE__, __LINE__);
+    list($hits) = $DB->fetch("SELECT {$rank_by} FROM {$CONF['sql_prefix']}_stats WHERE username = '{$username}'", __FILE__, __LINE__);
     if ($hits) {
       $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$rank_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
       list($rank) = $DB->fetch_array($result);

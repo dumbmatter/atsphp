@@ -66,12 +66,16 @@ class sql {
     return mysql_num_rows($result);
   }
 
-  function escape($value) {
+  function escape($value, $no_html = 0) {
     if (get_magic_quotes_gpc()) {
       $value = stripslashes($value);
     }
     $value = mysql_real_escape_string($value, $this->dbl);
 
+    if ($no_html) {
+      $value = strip_tags($value);
+    }
+    
     return $value;
   }
 

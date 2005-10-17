@@ -54,12 +54,12 @@ class edit extends join_edit {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     if ($this->check_input('edit')) {
-      $TMPL['url'] = $DB->escape($FORM['url']);
-      $TMPL['title'] = $DB->escape($FORM['title']);
-      $TMPL['description'] = $DB->escape($FORM['description']);
-      $TMPL['category'] = $DB->escape($FORM['category']);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
-      $TMPL['email'] = $DB->escape($FORM['email']);
+      $TMPL['url'] = $DB->escape($FORM['url'], 1);
+      $TMPL['title'] = $DB->escape($FORM['title'], 1);
+      $TMPL['description'] = $DB->escape($FORM['description'], 1);
+      $TMPL['category'] = $DB->escape($FORM['category'], 1);
+      $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
+      $TMPL['email'] = $DB->escape($FORM['email'], 1);
       if ($FORM['password']) {
         $password = md5($FORM['password']);
         $password_sql = ", password = '{$password}'";
