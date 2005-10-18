@@ -33,7 +33,7 @@ EndHTML;
     if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/languages/{$file}")) {
       $file = str_replace('.php', '', $file);
       require "{$CONF['path']}/languages/{$file}.php";
-      if ($file = 'english') {
+      if ($file == 'english') {
         $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
       }
       else {
