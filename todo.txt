@@ -21,8 +21,16 @@ ROADMAP
 
 5.1.0
   Update category names automatically on change
+  Gracefully handle no categories
   AJAX for pre-validating forms (fix captcha refresh bug)
   Improve and integrate search
   Custom pages from the admin
   Site name in stats page
   Copy average code from stats.php to rankings.php
+  Delete categories with & in them (POST instead of GET?)
+  Sites with no trailing slash on domain
+  Scaling in rankings.php - struggles with 100+ sites per page
+  - caching?
+  - compare with 4.2.2
+  Delayed welcome email for approve-based lists
+  Order language list alphabetically
