@@ -20,6 +20,7 @@ ROADMAP
 =======
 
 5.1.0
+  TODO
   Update category names automatically on change
   Gracefully handle no categories
   AJAX for pre-validating forms (fix captcha refresh bug)
@@ -34,3 +35,6 @@ ROADMAP
   - compare with 4.2.2
   Delayed welcome email for approve-based lists
   Order language list alphabetically
+
+  DONE
+  Play nice with Frontpage

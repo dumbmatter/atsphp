@@ -36,7 +36,7 @@ class settings extends base {
     $languages_menu = '';
     $dir = opendir("{$CONF['path']}/languages/");
     while (false !== ($file = readdir($dir))) {
-      if ($file != '.' && $file != '..') {
+      if (is_file("{$CONF['path']}/languages/{$file}")) {
         unset($translation);
 
         $file = str_replace('.php', '', $file);

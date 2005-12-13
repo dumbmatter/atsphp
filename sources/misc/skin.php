@@ -163,9 +163,9 @@ class main_skin extends skin {
 
     $TMPL['query'] = isset($TMPL['query']) ? $TMPL['query'] : '';
   
-    // Please do not remove the link to http://www.aardvarkind.com/.
+    // Please do not remove the link to http://www.aardvarktopsitesphp.com/.
     // This is a free script, all I ask for is a link back.
-    $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarkind.com/"><b>Aardvark Topsites PHP</b></a> '.$TMPL['version'];
+    $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarktopsitesphp.com/"><b>Aardvark Topsites PHP</b></a> '.$TMPL['version'];
     $TMPL['powered_by'] .= '<br /><a href="http://www.avatic.com/">Avatic</a>  | <a href="http://www.itopsites.com/">iTopsites</a>  | <a href="http://www.consolidatestudentloansnow.org/">Consolidate Student Loan Consolidation</a>';
 
     $TMPL['num_queries'] = $DB->num_queries;

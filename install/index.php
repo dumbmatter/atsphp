@@ -30,7 +30,7 @@ Please select your language.<br /><br />
 EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
-    if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/languages/{$file}")) {
+    if (is_file("{$CONF['path']}/languages/{$file}")) {
       $file = str_replace('.php', '', $file);
       require "{$CONF['path']}/languages/{$file}.php";
       if ($file == 'english') {
