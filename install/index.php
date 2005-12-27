@@ -204,7 +204,7 @@ EndHTML;
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
                     `type` varchar(7) default '',
                     `sid` varchar(32) default '' NOT NULL,
-                    `time` int(10) unsigned default '',
+                    `time` int(10) unsigned default 0,
                     `data` varchar(255) default '',
                     PRIMARY KEY  (`sid`)
                   )", __FILE__, __LINE__);

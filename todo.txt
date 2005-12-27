@@ -38,3 +38,4 @@ ROADMAP
 
   DONE
   Play nice with Frontpage
+  Play nice with MySQL 5?
