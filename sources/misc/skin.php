@@ -162,7 +162,7 @@ class main_skin extends skin {
     }
 
     $TMPL['query'] = isset($TMPL['query']) ? $TMPL['query'] : '';
-  
+
     // Please do not remove the link to http://www.aardvarktopsitesphp.com/.
     // This is a free script, all I ask for is a link back.
     $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarktopsitesphp.com/"><b>Aardvark Topsites PHP</b></a> '.$TMPL['version'];

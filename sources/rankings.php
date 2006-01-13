@@ -16,10 +16,6 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-///////
-// Refactor this code?
-///////
-
 class rankings extends base {
   function rankings() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
@@ -44,14 +40,6 @@ class rankings extends base {
 
     // Make ORDER BY clause
     $order_by = $this->rank_by($ranking_method)." DESC";
-
-    // Start the output with table_top_open if we're on the first page
-    if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
-      $TMPL['content'] = $this->do_skin('table_top_open');
-    }
-    else {
-      $TMPL['content'] = $this->do_skin('table_open');
-    }
 
     // Figure out what rows we want, and SELECT them
     if (isset($FORM['start'])) {
@@ -87,94 +75,117 @@ class rankings extends base {
     $top_done = 0;
     $do_table_open = 0;
     $TMPL['alt'] = 'alt';
-    while ($row = $DB->fetch_array($result)) {
-      $TMPL = array_merge($TMPL, $row);
-      if ($CONF['ranking_method'] == $ranking_method && $is_main) {
-        if (!$TMPL['old_rank']) {
-          $TMPL['old_rank'] = $TMPL['rank'];
-          $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET old_rank = {$TMPL['old_rank']} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-        }
-        if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; $LNG['up_down'] = $LNG['table_up']; }
-        elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; $LNG['up_down'] = $LNG['table_down']; }
-        else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
-      }
-      else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
-      if ($TMPL['alt']) { $TMPL['alt'] = ''; }
-      else { $TMPL['alt'] = 'alt'; }
 
-      $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
-
-      $TMPL['this_period'] = $TMPL["unq_{$ranking_method}_0_{$ranking_period}"];
-      $TMPL['average'] = 0;
-      for ($i = 0; $i < 10; $i++) {
-        $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$ranking_period}"];
-      }
-      $TMPL['average'] = $TMPL['average'] / 10;
-
-      $TMPL['unq_pv_max_daily'] = $TMPL['unq_pv_0_daily'] > $TMPL['unq_pv_max_daily'] ? $TMPL['unq_pv_0_daily'] : $TMPL['unq_pv_max_daily'];
-      $TMPL['tot_pv_max_daily'] = $TMPL['tot_pv_0_daily'] > $TMPL['tot_pv_max_daily'] ? $TMPL['tot_pv_0_daily'] : $TMPL['tot_pv_max_daily'];
-      $TMPL['unq_in_max_daily'] = $TMPL['unq_in_0_daily'] > $TMPL['unq_in_max_daily'] ? $TMPL['unq_in_0_daily'] : $TMPL['unq_in_max_daily'];
-      $TMPL['tot_in_max_daily'] = $TMPL['tot_in_0_daily'] > $TMPL['tot_in_max_daily'] ? $TMPL['tot_in_0_daily'] : $TMPL['tot_in_max_daily'];
-      $TMPL['unq_out_max_daily'] = $TMPL['unq_out_0_daily'] > $TMPL['unq_out_max_daily'] ? $TMPL['unq_out_0_daily'] : $TMPL['unq_out_max_daily'];
-      $TMPL['tot_out_max_daily'] = $TMPL['tot_out_0_daily'] > $TMPL['tot_out_max_daily'] ? $TMPL['tot_out_0_daily'] : $TMPL['tot_out_max_daily'];
-      $TMPL['unq_pv_max_weekly'] = $TMPL['unq_pv_0_weekly'] > $TMPL['unq_pv_max_weekly'] ? $TMPL['unq_pv_0_weekly'] : $TMPL['unq_pv_max_weekly'];
-      $TMPL['tot_pv_max_weekly'] = $TMPL['tot_pv_0_weekly'] > $TMPL['tot_pv_max_weekly'] ? $TMPL['tot_pv_0_weekly'] : $TMPL['tot_pv_max_weekly'];
-      $TMPL['unq_in_max_weekly'] = $TMPL['unq_in_0_weekly'] > $TMPL['unq_in_max_weekly'] ? $TMPL['unq_in_0_weekly'] : $TMPL['unq_in_max_weekly'];
-      $TMPL['tot_in_max_weekly'] = $TMPL['tot_in_0_weekly'] > $TMPL['tot_in_max_weekly'] ? $TMPL['tot_in_0_weekly'] : $TMPL['tot_in_max_weekly'];
-      $TMPL['unq_out_max_weekly'] = $TMPL['unq_out_0_weekly'] > $TMPL['unq_out_max_weekly'] ? $TMPL['unq_out_0_weekly'] : $TMPL['unq_out_max_weekly'];
-      $TMPL['tot_out_max_weekly'] = $TMPL['tot_out_0_weekly'] > $TMPL['tot_out_max_weekly'] ? $TMPL['tot_out_0_weekly'] : $TMPL['tot_out_max_weekly'];
-      $TMPL['unq_pv_max_monthly'] = $TMPL['unq_pv_0_monthly'] > $TMPL['unq_pv_max_monthly'] ? $TMPL['unq_pv_0_monthly'] : $TMPL['unq_pv_max_monthly'];
-      $TMPL['tot_pv_max_monthly'] = $TMPL['tot_pv_0_monthly'] > $TMPL['tot_pv_max_monthly'] ? $TMPL['tot_pv_0_monthly'] : $TMPL['tot_pv_max_monthly'];
-      $TMPL['unq_in_max_monthly'] = $TMPL['unq_in_0_monthly'] > $TMPL['unq_in_max_monthly'] ? $TMPL['unq_in_0_monthly'] : $TMPL['unq_in_max_monthly'];
-      $TMPL['tot_in_max_monthly'] = $TMPL['tot_in_0_monthly'] > $TMPL['tot_in_max_monthly'] ? $TMPL['tot_in_0_monthly'] : $TMPL['tot_in_max_monthly'];
-      $TMPL['unq_out_max_monthly'] = $TMPL['unq_out_0_monthly'] > $TMPL['unq_out_max_monthly'] ? $TMPL['unq_out_0_monthly'] : $TMPL['unq_out_max_monthly'];
-      $TMPL['tot_out_max_monthly'] = $TMPL['tot_out_0_monthly'] > $TMPL['tot_out_max_monthly'] ? $TMPL['tot_out_0_monthly'] : $TMPL['tot_out_max_monthly'];
-
-      // Only use _top skin on the first page
-      if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
-        $TMPL['content'] .= $this->do_skin('table_top_row');
-        $is_top = 1;
+    if ($DB->num_rows($result)) {
+      // Start the output with table_top_open if we're on the first page
+      if ($CONF['top_skin_num'] > 0 && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
+        $TMPL['content'] = $this->do_skin('table_top_open');
       }
       else {
-        // This sees if $do_table_open had been set during the last loop.  If so,
-        // a new table_open is printed.  This keeps a table_open form being the
-        // last thing on the page when there is an ad break at the end.
-        if ($do_table_open) {
-          $TMPL['content'] .= $this->do_skin('table_open');
-          $do_table_open = 0;
+        $TMPL['content'] = $this->do_skin('table_open');
+      }
+
+      while ($row = $DB->fetch_array($result)) {
+        $TMPL = array_merge($TMPL, $row);
+        if ($CONF['ranking_method'] == $ranking_method && $is_main) {
+          if (!$TMPL['old_rank']) {
+            $TMPL['old_rank'] = $TMPL['rank'];
+            $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET old_rank = {$TMPL['old_rank']} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+          }
+          if ($TMPL['old_rank'] > $TMPL['rank']) { $TMPL['up_down'] = 'up'; $LNG['up_down'] = $LNG['table_up']; }
+          elseif ($TMPL['old_rank'] < $TMPL['rank']) { $TMPL['up_down'] = 'down'; $LNG['up_down'] = $LNG['table_down']; }
+          else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
+        }
+        else { $TMPL['up_down'] = 'neutral'; $LNG['up_down'] = $LNG['table_neutral']; }
+        if ($TMPL['alt']) { $TMPL['alt'] = ''; }
+        else { $TMPL['alt'] = 'alt'; }
+
+        $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
+
+        $ranking_periods = array('daily', 'weekly', 'monthly');
+        $ranking_methods = array('unq_pv', 'tot_pv', 'unq_in', 'tot_in', 'unq_out', 'tot_out');
+        foreach ($ranking_periods as $ranking_period2) {
+          foreach ($ranking_methods as $ranking_method2) {
+            $TMPL["{$ranking_method2}_avg_{$ranking_period2}"] = 0;
+            for ($i = 0; $i < 10; $i++) {
+              $TMPL["{$ranking_method2}_avg_{$ranking_period2}"] = $TMPL["{$ranking_method2}_avg_{$ranking_period2}"] + $TMPL["{$ranking_method2}_{$i}_{$ranking_period2}"];
+            }
+            $TMPL["{$ranking_method2}_avg_{$ranking_period2}"] = $TMPL["{$ranking_method2}_avg_{$ranking_period2}"] / 10;
+          }
         }
 
-        $TMPL['content'] .= $this->do_skin('table_row');
-        $top_done = 1;
-      }
-      if ($page_rank == $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
-        $TMPL['content'] .= $this->do_skin('table_top_close');
-        $do_table_open = 1;
-      }
+        $TMPL['this_period'] = $TMPL["unq_{$ranking_method}_0_{$ranking_period}"];
+        $TMPL['average'] = 0;
+        for ($i = 0; $i < 10; $i++) {
+          $TMPL['average'] = $TMPL['average'] + $TMPL["unq_{$ranking_method}_{$i}_{$ranking_period}"];
+        }
+        $TMPL['average'] = $TMPL['average'] / 10;
 
-      if (isset($CONF['ad_breaks'][$page_rank])) {
-        if (isset($is_top) && $is_top) {
-          $TMPL['content'] .= $this->do_skin('table_top_close');
-          $TMPL['content'] .= $this->do_skin('ad_break_top');
-          $TMPL['content'] .= $this->do_skin('table_top_open');
+        $TMPL['unq_pv_max_daily'] = $TMPL['unq_pv_0_daily'] > $TMPL['unq_pv_max_daily'] ? $TMPL['unq_pv_0_daily'] : $TMPL['unq_pv_max_daily'];
+        $TMPL['tot_pv_max_daily'] = $TMPL['tot_pv_0_daily'] > $TMPL['tot_pv_max_daily'] ? $TMPL['tot_pv_0_daily'] : $TMPL['tot_pv_max_daily'];
+        $TMPL['unq_in_max_daily'] = $TMPL['unq_in_0_daily'] > $TMPL['unq_in_max_daily'] ? $TMPL['unq_in_0_daily'] : $TMPL['unq_in_max_daily'];
+        $TMPL['tot_in_max_daily'] = $TMPL['tot_in_0_daily'] > $TMPL['tot_in_max_daily'] ? $TMPL['tot_in_0_daily'] : $TMPL['tot_in_max_daily'];
+        $TMPL['unq_out_max_daily'] = $TMPL['unq_out_0_daily'] > $TMPL['unq_out_max_daily'] ? $TMPL['unq_out_0_daily'] : $TMPL['unq_out_max_daily'];
+        $TMPL['tot_out_max_daily'] = $TMPL['tot_out_0_daily'] > $TMPL['tot_out_max_daily'] ? $TMPL['tot_out_0_daily'] : $TMPL['tot_out_max_daily'];
+        $TMPL['unq_pv_max_weekly'] = $TMPL['unq_pv_0_weekly'] > $TMPL['unq_pv_max_weekly'] ? $TMPL['unq_pv_0_weekly'] : $TMPL['unq_pv_max_weekly'];
+        $TMPL['tot_pv_max_weekly'] = $TMPL['tot_pv_0_weekly'] > $TMPL['tot_pv_max_weekly'] ? $TMPL['tot_pv_0_weekly'] : $TMPL['tot_pv_max_weekly'];
+        $TMPL['unq_in_max_weekly'] = $TMPL['unq_in_0_weekly'] > $TMPL['unq_in_max_weekly'] ? $TMPL['unq_in_0_weekly'] : $TMPL['unq_in_max_weekly'];
+        $TMPL['tot_in_max_weekly'] = $TMPL['tot_in_0_weekly'] > $TMPL['tot_in_max_weekly'] ? $TMPL['tot_in_0_weekly'] : $TMPL['tot_in_max_weekly'];
+        $TMPL['unq_out_max_weekly'] = $TMPL['unq_out_0_weekly'] > $TMPL['unq_out_max_weekly'] ? $TMPL['unq_out_0_weekly'] : $TMPL['unq_out_max_weekly'];
+        $TMPL['tot_out_max_weekly'] = $TMPL['tot_out_0_weekly'] > $TMPL['tot_out_max_weekly'] ? $TMPL['tot_out_0_weekly'] : $TMPL['tot_out_max_weekly'];
+        $TMPL['unq_pv_max_monthly'] = $TMPL['unq_pv_0_monthly'] > $TMPL['unq_pv_max_monthly'] ? $TMPL['unq_pv_0_monthly'] : $TMPL['unq_pv_max_monthly'];
+        $TMPL['tot_pv_max_monthly'] = $TMPL['tot_pv_0_monthly'] > $TMPL['tot_pv_max_monthly'] ? $TMPL['tot_pv_0_monthly'] : $TMPL['tot_pv_max_monthly'];
+        $TMPL['unq_in_max_monthly'] = $TMPL['unq_in_0_monthly'] > $TMPL['unq_in_max_monthly'] ? $TMPL['unq_in_0_monthly'] : $TMPL['unq_in_max_monthly'];
+        $TMPL['tot_in_max_monthly'] = $TMPL['tot_in_0_monthly'] > $TMPL['tot_in_max_monthly'] ? $TMPL['tot_in_0_monthly'] : $TMPL['tot_in_max_monthly'];
+        $TMPL['unq_out_max_monthly'] = $TMPL['unq_out_0_monthly'] > $TMPL['unq_out_max_monthly'] ? $TMPL['unq_out_0_monthly'] : $TMPL['unq_out_max_monthly'];
+        $TMPL['tot_out_max_monthly'] = $TMPL['tot_out_0_monthly'] > $TMPL['tot_out_max_monthly'] ? $TMPL['tot_out_0_monthly'] : $TMPL['tot_out_max_monthly'];
+
+        // Only use _top skin on the first page
+        if ($page_rank <= $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
+          $TMPL['content'] .= $this->do_skin('table_top_row');
+          $is_top = 1;
         }
         else {
-          $TMPL['content'] .= $this->do_skin('table_close');
-          $TMPL['content'] .= $this->do_skin('ad_break');
+          // This sees if $do_table_open had been set during the last loop.  If so,
+          // a new table_open is printed.  This keeps a table_open form being the
+          // last thing on the page when there is an ad break at the end.
+          if ($do_table_open) {
+            $TMPL['content'] .= $this->do_skin('table_open');
+            $do_table_open = 0;
+          }
+
+          $TMPL['content'] .= $this->do_skin('table_row');
+          $top_done = 1;
+        }
+        if ($page_rank == $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
+          $TMPL['content'] .= $this->do_skin('table_top_close');
           $do_table_open = 1;
         }
+
+        if (isset($CONF['ad_breaks'][$page_rank])) {
+          if (isset($is_top) && $is_top) {
+            $TMPL['content'] .= $this->do_skin('table_top_close');
+            $TMPL['content'] .= $this->do_skin('ad_break_top');
+            $TMPL['content'] .= $this->do_skin('table_top_open');
+          }
+          else {
+            $TMPL['content'] .= $this->do_skin('table_close');
+            $TMPL['content'] .= $this->do_skin('ad_break');
+            $do_table_open = 1;
+          }
+        }
+
+        $is_top = 0;
+        $TMPL['rank']++;
+        $page_rank++;
       }
 
-      $is_top = 0;
-      $TMPL['rank']++;
-      $page_rank++;
-    }
-
-    if ($top_done) {
-      $TMPL['content'] .= $this->do_skin('table_close');
-    }
-    elseif (!$do_table_open) {
-      $TMPL['content'] .= $this->do_skin('table_top_close');
+      if ($top_done) {
+        $TMPL['content'] .= $this->do_skin('table_close');
+      }
+      elseif (!$do_table_open) {
+        $TMPL['content'] .= $this->do_skin('table_top_close');
+      }
     }
   }
 }

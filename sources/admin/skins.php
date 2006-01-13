@@ -88,12 +88,13 @@ EndHTML;
     $categories_menu = '<table cellspacing="0" cellpadding="0" width="100%">';
     foreach ($CONF['categories'] as $cat => $skin) {
       $skins_menu = $this->skins_menu($skin);
+      $cat_url = urlencode($cat);
 
       $categories_menu .= <<<EndHTML
 <tr>
 <td valign="top" width="20%">{$cat}</td>
-<td valign="top" width="30%"><a href="index.php?a=admin&amp;b=skins&amp;c=edit&amp;cat={$cat}">{$LNG['a_man_edit']}</a>
-<a href="index.php?a=admin&amp;b=skins&amp;c=delete&amp;cat={$cat}">{$LNG['a_man_delete']}</a></td>
+<td valign="top" width="30%"><a href="index.php?a=admin&amp;b=skins&amp;c=edit&amp;cat={$cat_url}">{$LNG['a_man_edit']}</a>
+<a href="index.php?a=admin&amp;b=skins&amp;c=delete&amp;cat={$cat_url}">{$LNG['a_man_delete']}</a></td>
 <td valign="top" width="50%">
 <select name="skin_{$cat}">
 <option value="">{$LNG['a_skins_default']}
@@ -156,9 +157,8 @@ EndHTML;
       }
 
       $DB->query("UPDATE {$CONF['sql_prefix']}_categories SET skin = '{$new_skin}' WHERE category = '{$category}'", __FILE__, __LINE__);
-
-      $TMPL['admin_content'] = $LNG['a_skins_categories_done'];
     }
+    $TMPL['admin_content'] = $LNG['a_skins_categories_done'];
   }
 
   function process_new_category() {
@@ -183,8 +183,10 @@ EndHTML;
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     if (!isset($FORM['submit'])) {
+      $cat = $DB->escape($FORM['cat']);
+      $cat_url = urlencode($cat);
       $TMPL['admin_content'] = <<<EndHTML
-<form action="index.php?a=admin&amp;b=skins&amp;c=edit&amp;cat={$FORM['cat']}" method="post">
+<form action="index.php?a=admin&amp;b=skins&amp;c=edit&amp;cat={$cat_url}" method="post">
 <fieldset>
 <legend>{$LNG['a_skins_edit_category']}</legend>
 <label>{$LNG['a_skins_category_name']}<br />
@@ -198,7 +200,7 @@ EndHTML;
     else {
       $category = $DB->escape($FORM['cat']);
       $new_category = $DB->escape($FORM['new_cat']);
-
+echo "UPDATE {$CONF['sql_prefix']}_categories SET category = '{$new_category}' WHERE category = '{$category}'";
       $DB->query("UPDATE {$CONF['sql_prefix']}_categories SET category = '{$new_category}' WHERE category = '{$category}'", __FILE__, __LINE__);
 
       $TMPL['admin_content'] = $LNG['a_skins_edit_done'];

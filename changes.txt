@@ -15,6 +15,15 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+5.0.2 - 2006-01-12
+BUG FIXES
+- Works with Frontpage
+- Works with MySQL 5
+- Categories containing & are supported
+- Tags for average stats are functional
+- Site name in the stats page
+- Layout bug for categories with few members
+
 5.0.1 - 2005-10-18
 BUG FIXES
 - Sanity-check SQL modules in installer

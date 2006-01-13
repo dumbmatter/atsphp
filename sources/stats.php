@@ -30,6 +30,8 @@ class stats extends base {
     if ($row) {
       $TMPL = array_merge($TMPL, $row);
 
+      $TMPL['header'] .= " - {$TMPL['title']}";
+
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
       $ranking_periods = array('daily', 'weekly', 'monthly');
@@ -46,7 +48,7 @@ class stats extends base {
 
       for ($i = 2; $i < 10; $i++) {
         $TMPL["{$i}_daily"] = date('M j', time()-3600*24*$i + (3600*$CONF['time_offset']));
-     }
+      }
       for ($i = 2; $i < 10; $i++) {
         $TMPL["{$i}_weekly"] = "{$LNG['stats_week']} ".date('W', time()-3600*24*7*$i + (3600*$CONF['time_offset']));
       }
