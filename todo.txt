@@ -40,3 +40,7 @@ ROADMAP
   - AJAX
   - Solicit community input on these issues
   Easy-to-use stat buttons editor
+  SQL:
+    ALTER TABLE `ats_ip_log` DROP INDEX `ip_address`;
+    ALTER TABLE `ats_ip_log` DROP INDEX `username`;
+    ALTER TABLE `ats_ip_log` ADD PRIMARY KEY (`ip_address`, `username`);
