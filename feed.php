@@ -93,7 +93,8 @@ if(isset($FORM['t']) && 'atom' == $FORM['t']) {
 		<id><?php echo $entry['username'];?></id>
 		<title><?php echo $entry['title'];?></title>
 		<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
-		<link rel="alternate" href="<?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $entry['username'];?>"/>
+		<link rel="alternate" href="<?php echo $entry['url'];?>"/>
+		<!--<link rel="alternate" href="<?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $entry['username'];?>"/>-->
 	</entry>
 
 <?php
@@ -120,7 +121,8 @@ else {
 
 		<item>
 			<title><?php echo $item['title'];?></title>
-			<link><?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $item['username'];?></link>
+			<link><?php echo $item['url'];?></link>
+			<!--<link><?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $item['username'];?></link>-->
 			<description><?php echo $item['description'];?></description>
 			<guid><?php echo $entry['username'];?></guid>
 		</item>
