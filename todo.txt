@@ -21,6 +21,7 @@ ROADMAP
 
 5.1.0
   TODO
+  Make google-friendly links an option
   Gracefully handle no categories
   AJAX for pre-validating forms (fix captcha refresh bug), update today/week/month in admin
   Improve and integrate search
@@ -34,6 +35,8 @@ ROADMAP
   Order language list alphabetically
   Refresh in admin ala joomla
   - look into overall admin experience
-  Caching ala itopsites
-
-5.0.2
+  Web 2.0 to increase usability
+  - RSS
+  - AJAX
+  - Solicit community input on these issues
+  Easy-to-use stat buttons editor
