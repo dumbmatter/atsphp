@@ -52,6 +52,17 @@ $CONF = array_merge($CONF, $settings);
  */
 $FORM = array_merge($_GET, $_POST);
 /**
+ * Get the category, default to no category
+ */
+if (isset($FORM['cat']) && $FORM['cat']) {
+  $TMPL['category'] = $FORM['cat'];
+  $category_sql = "AND category = '{$TMPL['category']}'";
+}
+else {
+  $TMPL['category'] = $LNG['main_all'];
+  $category_sql = '';
+}
+/**
  * How to Order the sites
  */
 require_once("{$CONF['path']}/sources/misc/classes.php");
@@ -86,13 +97,14 @@ if(isset($FORM['t']) && 'atom' == $FORM['t']) {
 	<link href="<?php echo $CONF['list_url'] . '/feed.php?t=atom';?>" rel="self"/>
 
 <?php
-  while($entry = $DB->fetch_array($result)) {
+  for($rank = 1; $entry = $DB->fetch_array($result); $rank++) {
 ?>
 
 	<entry>
 		<id><?php echo $entry['username'];?></id>
-		<title><?php echo $entry['title'];?></title>
+		<title><?php echo $rank . ' ' . $entry['title'];?></title>
 		<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
+		<summary><?php echo $item['description'];?></summary>
 		<link rel="alternate" href="<?php echo $entry['url'];?>"/>
 		<!--<link rel="alternate" href="<?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $entry['username'];?>"/>-->
 	</entry>
@@ -116,11 +128,11 @@ else {
 		<generator>Aardvark Topsites PHP 5.1</generator>
 
 <?php
-  while($item = $DB->fetch_array($result)) {
+  for($rank = 1; $item = $DB->fetch_array($result); $rank++) {
 ?>
 
 		<item>
-			<title><?php echo $item['title'];?></title>
+			<title><?php echo $rank . ' - ' . $item['title'];?></title>
 			<link><?php echo $item['url'];?></link>
 			<!--<link><?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $item['username'];?></link>-->
 			<description><?php echo $item['description'];?></description>
