@@ -109,10 +109,10 @@ class main_skin extends skin {
         $FORM['start'] = isset($FORM['start']) ? $FORM['start'] : 1;
   
         if ($FORM['start'] == $start) {
-          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\" selected=\"selected\">{$start} - {$end}\n";
+          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\" selected=\"selected\">{$start} - {$end}</option>\n";
         }
         else {
-          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\">{$start} - {$end}\n";
+          $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\">{$start} - {$end}</option>\n";
         }
   
         $num = $num - $CONF['num_list'];
@@ -125,11 +125,11 @@ class main_skin extends skin {
     // Build the ranking method menu
     $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
     $TMPL['ranking_methods_menu'] = '<select name="method">'."\n";
-    if ($ranking_method == 'pv') { $TMPL['ranking_methods_menu'] .= '<option value="pv" selected="selected">'.$LNG['g_pv']."\n"; }
+    if ($ranking_method == 'pv') { $TMPL['ranking_methods_menu'] .= '<option value="pv" selected="selected">'.$LNG['g_pv']."</option>\n"; }
     else { $TMPL['ranking_methods_menu'] .= '<option value="pv">'.$LNG['g_pv']."\n"; }
-    if ($ranking_method == 'in') { $TMPL['ranking_methods_menu'] .= '<option value="in" selected="selected">'.$LNG['g_in']."\n"; }
+    if ($ranking_method == 'in') { $TMPL['ranking_methods_menu'] .= '<option value="in" selected="selected">'.$LNG['g_in']."</option>\n"; }
     else { $TMPL['ranking_methods_menu'] .= '<option value="in">'.$LNG['g_in']."\n"; }
-    if ($ranking_method == 'out') { $TMPL['ranking_methods_menu'] .= '<option value="out" selected="selected">'.$LNG['g_out']."\n"; }
+    if ($ranking_method == 'out') { $TMPL['ranking_methods_menu'] .= '<option value="out" selected="selected">'.$LNG['g_out']."</option>\n"; }
     else { $TMPL['ranking_methods_menu'] .= '<option value="out">'.$LNG['g_out']."\n"; }
     $TMPL['ranking_methods_menu'] .= '</select>';
   
@@ -137,17 +137,17 @@ class main_skin extends skin {
     $current_cat = isset($FORM['cat']) ? $FORM['cat'] : $LNG['main_all'];
     $TMPL['categories_menu'] = "<select name=\"cat\">\n";
     if ($current_cat == $LNG['main_all']) {
-      $TMPL['categories_menu'] .= "<option value=\"\" selected=\"selected\">{$LNG['main_all']}\n";
+      $TMPL['categories_menu'] .= "<option value=\"\" selected=\"selected\">{$LNG['main_all']}</option>\n";
     }
     else {
       $TMPL['categories_menu'] .= "<option value=\"\">{$LNG['main_all']}\n";
     }
     foreach ($CONF['categories'] as $cat => $skin) {
       if ($current_cat == $cat) {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}</option>\n";
       }
       else {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}</option>\n";
       }
     }
     $TMPL['categories_menu'] .= '</select>';
