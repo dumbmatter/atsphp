@@ -16,6 +16,11 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+// Help prevent register_globals injection
+$CONF = array();
+$FORM = array();
+$TMPL = array();
+
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
 

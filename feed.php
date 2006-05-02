@@ -21,6 +21,12 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @version 1.0
  */
+
+// Help prevent register_globals injection
+$CONF = array();
+$FORM = array();
+$TMPL = array();
+
 /**
  * Path to Aardvark Topsites PHP folder on the server
  * @var string
