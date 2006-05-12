@@ -21,7 +21,7 @@
 $translation = 'English';
 $translator_name = 'Jeremy Scheff';
 $translator_email = 'webmaster@aardvarkind.com';
-$translator_url = 'http://www.aardvarkind.com/';
+$translator_url = 'http://www.aardvarktopsitesphp.com/';
 
 // Global
 $LNG['g_form_submit_short'] = "Go";
@@ -91,7 +91,6 @@ $LNG['join_header'] = "Join";
 $LNG['join_enter_text'] = "Enter the text as it is shown in the image below:"; // 4.2.2
 $LNG['join_user'] = "User"; // 5.0
 $LNG['join_website'] = "Website"; // 5.0
-$LNG['join_error_forgot'] = "You forgot to:";
 $LNG['join_error_username'] = "Enter a valid username: use only letters, numbers, underscores, and dashes."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
 $LNG['join_error_url'] = "Enter a valid URL.";
@@ -99,7 +98,6 @@ $LNG['join_error_email'] = "Enter a valid email address.";
 $LNG['join_error_title'] = "Enter a title for your web site.";
 $LNG['join_error_password'] = "Enter a password.";
 $LNG['join_error_urlbanner'] = "Enter a valid banner.  Leave it blank if you don't have one.  It must be smaller than"; // 4.0
-$LNG['join_error_back'] = "Please go back and fix those errors.";
 $LNG['join_error_time'] = "Do not refresh the join confirmation page."; // 4.2.0
 $LNG['join_error_captcha'] = "The word you entered does not match the image."; // 4.2.2
 $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to be ranked.";
@@ -204,6 +202,13 @@ $LNG['a_approve_rev_none'] = "There are no reviews waiting to be approved."; // 
 $LNG['a_approve_rev_done'] = "The review has been approved."; // 5.0
 $LNG['a_approve_rev_dones'] = "The reviews have been approved."; // 5.0
 
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "Create Custom Page"; // 5.1.0
+$LNG['a_create_page_id'] = "Page ID - This will be used in the URL, so it can contain only letters, numbers, underscores, and dashes"; // 5.1.0
+$LNG['a_create_page_error_id'] = "The page ID can contain only letters, numbers, underscores, and dashes.  Please go back and correct the page ID."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "There is already a custom page with that page ID.  Please go back and select a new page ID."; // 5.1.0
+$LNG['a_create_page_created'] = "The page has been created.  You will have to manually add a link to %s in wrapper.html."; // 5.1.0
+
 // Admin > Delete Member
 $LNG['a_del_header'] = "Delete Member"; // 5.0
 $LNG['a_del_headers'] = "Delete Members"; // 5.0
@@ -211,6 +216,15 @@ $LNG['a_del_done'] = "The member has been deleted."; // 5.0
 $LNG['a_del_dones'] = "The members have been deleted."; // 5.0
 $LNG['a_del_warn'] = "Are you sure you want to delete %s?"; // 5.0
 $LNG['a_del_multi'] = "these %s members"; //5.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "Delete Custom Page"; // 5.1.0
+$LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
+$LNG['a_del_page_done'] = "The custom page has been deleted."; // 5.1.0
+$LNG['a_del_page_dones'] = "The custom pages have been deleted."; // 5.1.0
+$LNG['a_del_page_warn'] = "Are you sure you want to delete %s?"; //5.1.0
+$LNG['a_del_page_multi'] = "these %s members"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "Invalid custom page ID.  Please try again."; // 5.1.0
 
 // Admin > Delete Review // 5.0
 $LNG['a_del_rev_header'] = "Delete Review"; // 5.0
@@ -227,6 +241,11 @@ $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
 $LNG['a_edit_edited'] = "The member has been edited.";
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "Edit Custom Page"; // 5.1.0
+$LNG['a_edit_page_content'] = "Content - You can use HTML here"; // 5.1.0
+$LNG['a_edit_page_edited'] = "The page has been edited."; // 5.1.0
 
 // Admin > Edit Review // 5.0
 $LNG['a_edit_rev_header'] = "Edit Review"; // 5.0
@@ -253,7 +272,7 @@ $LNG['a_main_approve_rev'] = "There is 1 review waiting to be approved."; // 5.0
 $LNG['a_main_approve_revs'] = "There are %s reviews waiting to be approved."; // 5.0
 $LNG['a_main_your'] = "Your version"; // 5.0
 $LNG['a_main_latest'] = "Latest version"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Manage Members"; // 5.0
@@ -264,6 +283,9 @@ $LNG['a_man_email'] = "Email"; // 4.2.0
 $LNG['a_man_all'] = "Select All"; // 5.0
 $LNG['a_man_none'] = "Select None"; // 5.0
 $LNG['a_man_del_sel'] = "Delete Selected"; // 5.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "Manage Custom Pages"; // 5.1.0
 
 // Admin > Manage Reviews // 5.0
 $LNG['a_man_rev_header'] = "Manage Reviews"; // 5.0
@@ -286,9 +308,12 @@ $LNG['a_menu_delete_review'] = "Delete Review";
 $LNG['a_menu_logout'] = "Logout";
 $LNG['a_menu_delete'] = "Delete Member";
 $LNG['a_menu_edit'] = "Edit Member";
+$LNG['a_menu_create_page'] = "Create Custom Page"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Manage Custom Pages"; // 5.1.0
 $LNG['a_header_members'] = "Members"; // 5.0
 $LNG['a_header_settings'] = "Settings"; // 5.0
 $LNG['a_header_reviews'] = "Reviews"; // 5.0
+$LNG['a_header_pages'] = "Custom Pages"; // 5.1
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";
@@ -357,6 +382,7 @@ $LNG['a_skins_default_done'] = "The default skin has been set."; // 5.0
 $LNG['a_skins_categories_done'] = "The category skins have been set."; // 5.0
 $LNG['a_skins_new_category_done'] = "The new category has been created."; // 5.0
 $LNG['a_skins_delete_done'] = "The category has been deleted."; // 5.0
+$LNG['a_skins_delete_error'] = "The category cannot be deleted because you must have at least one category."; // 5.1.0
 $LNG['a_skins_edit_done'] = "The category has been edited."; // 5.0
 $LNG['a_skins_invalid_skin'] = "Invalid skin: %s.  Please try again."; // 5.0
 $LNG['a_skins_categories'] = "Categories"; // 5.0

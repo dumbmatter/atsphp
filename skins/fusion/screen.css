@@ -162,6 +162,11 @@ a:hover { color: #333; }
 	background-color: #DCDCDC;
 	text-align: center;
 }
+.join_edit_error {
+	background-color: #f0f0f0;
+	border: 1px solid #f00;
+	padding: 2px;
+}
 
 table { width: 100%; }
 /* No Borders Images */

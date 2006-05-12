@@ -36,12 +36,16 @@ class admin extends base {
         $action = array(
                     'approve' => 1,
                     'approve_reviews' => 1,
+                    'create_page' => 1,
                     'delete' => 1,
+                    'delete_page' => 1,
                     'delete_review' => 1,
                     'edit' => 1,
+                    'edit_page' => 1,
                     'edit_review' => 1,
                     'email' => 1,
                     'manage' => 1,
+                    'manage_pages' => 1,
                     'manage_reviews' => 1,
                     'settings' => 1,
                     'skins' => 1
@@ -122,7 +126,7 @@ class admin extends base {
 
     $phpversion = phpversion();
     if (version_compare($phpversion, '4.3.0', '>=')) {
-      $latest_version = @file_get_contents('http://www.aardvarkind.com/topsitesphp/version.txt');
+      $latest_version = @file_get_contents('http://www.aardvarktopsitesphp.com/topsitesphp/version.txt');
     }
     if (!$latest_version) {
       $latest_version = '?';

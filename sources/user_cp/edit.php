@@ -33,8 +33,10 @@ class edit extends join_edit {
   function form() {
     global $CONF, $DB, $TMPL;
 
-    $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-    $TMPL = array_merge($TMPL, $row);
+    if (!isset($TMPL['url'])) {
+      $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+      $TMPL = array_merge($TMPL, $row);
+    }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
@@ -47,19 +49,27 @@ class edit extends join_edit {
     }
     $TMPL['categories_menu'] .= "</select>";
 
+    if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
+    if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
+    if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
+    if (isset($TMPL['category'])) { $TMPL['category'] = stripslashes($TMPL['category']); }
+    if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
+    if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
+
     $TMPL['user_cp_content'] = $this->do_skin('edit_form');
   }
 
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
+    $TMPL['url'] = $DB->escape($FORM['url'], 1);
+    $TMPL['title'] = $DB->escape($FORM['title'], 1);
+    $TMPL['description'] = $DB->escape($FORM['description'], 1);
+    $TMPL['category'] = $DB->escape($FORM['category'], 1);
+    $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
+    $TMPL['email'] = $DB->escape($FORM['email'], 1);
+
     if ($this->check_input('edit')) {
-      $TMPL['url'] = $DB->escape($FORM['url'], 1);
-      $TMPL['title'] = $DB->escape($FORM['title'], 1);
-      $TMPL['description'] = $DB->escape($FORM['description'], 1);
-      $TMPL['category'] = $DB->escape($FORM['category'], 1);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
-      $TMPL['email'] = $DB->escape($FORM['email'], 1);
       if ($FORM['password']) {
         $password = md5($FORM['password']);
         $password_sql = ", password = '{$password}'";
@@ -74,6 +84,9 @@ class edit extends join_edit {
       $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
  
       $TMPL['user_cp_content'] = $this->do_skin('edit_finish');
+    }
+    else {
+      $this->form();
     }
   }
 }

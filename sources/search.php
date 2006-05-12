@@ -42,7 +42,7 @@ class search extends base {
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['query'] = $DB->escape($FORM['q']);
+    $TMPL['query'] = $DB->escape($FORM['q'], 1);
     $words = explode(' ', $FORM['q']);
 
     if (isset($FORM['start'])) {

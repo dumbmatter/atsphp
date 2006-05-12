@@ -57,7 +57,7 @@ function check(form_name, field_name, value)
 }
 </script>
 
-<form action="index.php?a=admin" method="post" name="approve">
+<form action="{$TMPL['list_url']}/index.php?a=admin" method="post" name="approve">
 <table class="darkbg" cellpadding="1" cellspacing="1" width="100%">
 <tr class="mediumbg">
 <td></td>
@@ -71,11 +71,11 @@ EndHTML;
         $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
 <td><input type="checkbox" name="u[]" value="{$username}" id="checkbox_{$num}" /></td>
-<td align="center" valign="top">$username</td>
-<td valign="top" width="100%"><a href="{$url}" onclick="out('{$username}');">{$title}</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve&amp;u={$username}">{$LNG['a_approve']}</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$username}">{$LNG['a_man_edit']}</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center">$username</td>
+<td width="100%"><a href="{$url}" onclick="out('{$username}');">{$title}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve&amp;u={$username}">{$LNG['a_approve']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$username}">{$LNG['a_man_edit']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
 <td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 </tr>
 EndHTML;

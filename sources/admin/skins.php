@@ -70,14 +70,15 @@ class skins extends base {
           $author_link = $author;
         }
         if (isset($url) && $url) {
-          $url_link = " - <a href=\"{$url}\">{$url}</a>";
+          $url_link = "<br /><a href=\"{$url}\">{$url}</a>";
         }
         else {
           $url_link = '';
         }
 
         $default_skin_menu .= <<<EndHTML
-<label><table cellpadding="0" cellspacing="0"><tr><td><input type="radio" name="default_skin" value="{$subdir}"{$checked} />
+<label>
+<table cellpadding="0" cellspacing="0"><tr><td width="20px"><input type="radio" name="default_skin" value="{$subdir}"{$checked} />
 </td><td>{$name}<br />
 by {$author_link}{$url_link}</td></tr></table><br />
 </label>
@@ -173,10 +174,16 @@ EndHTML;
   function delete_category() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $category = $DB->escape($FORM['cat']);
-    $result = $DB->query("DELETE FROM {$CONF['sql_prefix']}_categories WHERE category = '{$category}'", __FILE__, __LINE__);
+    list($num_cats) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_categories", __FILE__, __LINE__);
+    if ($num_cats > 1) {
+      $category = $DB->escape($FORM['cat']);
+      $result = $DB->query("DELETE FROM {$CONF['sql_prefix']}_categories WHERE category = '{$category}'", __FILE__, __LINE__);
 
-    $TMPL['admin_content'] = $LNG['a_skins_delete_done'];
+      $TMPL['admin_content'] = $LNG['a_skins_delete_done'];
+    }
+    else {
+      $this->error($LNG['a_skins_delete_error'], 'admin');
+    }
   }
 
   function edit_category() {

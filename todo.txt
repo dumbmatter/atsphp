@@ -22,14 +22,8 @@ ROADMAP
 5.1.0
   TODO
   Make google-friendly links an option
-  Gracefully handle no categories
-  AJAX for pre-validating forms (fix captcha refresh bug), update today/week/month in admin
+  Captcha refresh bug
   Improve and integrate search
-  Custom pages from the admin
-  Sites with no trailing slash on domain
-  Scaling in rankings.php - struggles with 100+ sites per page
-  - caching?
-  - compare with 4.2.2
   Delayed welcome email for approve-based lists
   - look into overall user experience for approval
   Order language list alphabetically
@@ -38,9 +32,30 @@ ROADMAP
   Web 2.0 to increase usability
   - RSS
   - AJAX
-  - Solicit community input on these issues
   Easy-to-use stat buttons editor
-  SQL:
-    ALTER TABLE `ats_ip_log` DROP INDEX `ip_address`;
-    ALTER TABLE `ats_ip_log` DROP INDEX `username`;
-    ALTER TABLE `ats_ip_log` ADD PRIMARY KEY (`ip_address`, `username`);
+  UTF-8 charset - http://www.zolw.tuchola.pl/top/ (polish)
+  aardvarkind to aardvarktopsitesphp
+  2005 to 2006
+
+  DONE
+  More robust in non-standard environments (no <?=, handles weird files in languages dir)
+  Custom pages from the admin
+  Admin does not allow you to delete the last category
+  Major performance increase in rankings.php for lists with lots of sites per page
+
+  SVN
+  add sources/page.php, admin/create_page.php, admin/edit_page.php, admin/delete_page.php, admin/manage_pages.php
+
+  THINGS TO DO IN UPGRADE
+
+    SKIN CHANGES
+    join_form.html
+    edit_form.html
+    admin.html
+    screen.css
+
+    SQL CHANGES
+    ALTER TABLE ats_ip_log DROP INDEX ip_address;
+    ALTER TABLE ats_ip_log DROP INDEX username;
+    ALTER TABLE ats_ip_log ADD PRIMARY KEY (ip_address, username);
+    ats_custom_pages

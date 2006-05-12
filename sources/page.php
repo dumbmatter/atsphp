@@ -16,9 +16,13 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-// You must give a name for your skin.  The other fields are optional.
-$name = 'Classic';
-$author = 'Jeremy Scheff';
-$email = '';
-$url = 'http://www.aardvarktopsitesphp.com/';
+class page extends base {
+  function page() {
+    global $CONF, $DB, $FORM, $TMPL;
+
+    $id = $DB->escape($FORM['id']);
+
+    list($TMPL['id'], $TMPL['header'], $TMPL['content']) = $DB->fetch("SELECT id, title, content FROM {$CONF['sql_prefix']}_custom_pages WHERE id = '{$id}'", __FILE__, __LINE__);
+  }
+}
 ?>

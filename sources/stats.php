@@ -22,7 +22,7 @@ class stats extends base {
 
     $TMPL['header'] = $LNG['stats_header'];
 
-    $TMPL['username'] = $DB->escape($FORM['u']);
+    $TMPL['username'] = $DB->escape($FORM['u'], 1);
 
     $row = $DB->fetch("SELECT *
                        FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats

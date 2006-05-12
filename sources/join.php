@@ -42,9 +42,24 @@ class join extends join_edit {
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
-      $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
+      if ($TMPL['category'] == $cat) {
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
+      }
+      else {
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
+      }
     }
     $TMPL['categories_menu'] .= "</select>";
+
+    if (!isset($TMPL['url'])) { $TMPL['url'] = 'http://'; }
+    if (!isset($TMPL['banner_url'])) { $TMPL['banner_url'] = 'http://'; }
+
+    if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
+    if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
+    if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
+    if (isset($TMPL['category'])) { $TMPL['category'] = stripslashes($TMPL['category']); }
+    if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
+    if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
 
     $TMPL['content'] = $this->do_skin('join_form');
   }
@@ -52,15 +67,16 @@ class join extends join_edit {
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['username'] = $DB->escape($FORM['u']);
+    $TMPL['username'] = $DB->escape($FORM['u'], 1);
+    $TMPL['url'] = $DB->escape($FORM['url'], 1);
+    $TMPL['title'] = $DB->escape($FORM['title'], 1);
+    $FORM['description'] = str_replace(array("\r\n", "\n", "\r"), ' ', $FORM['description']);
+    $TMPL['description'] = $DB->escape($FORM['description'], 1);
+    $TMPL['category'] = $DB->escape($FORM['category'], 1);
+    $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
+    $TMPL['email'] = $DB->escape($FORM['email'], 1);
 
     if ($this->check_input('join')) {
-      $TMPL['url'] = $DB->escape($FORM['url'], 1);
-      $TMPL['title'] = $DB->escape($FORM['title'], 1);
-      $TMPL['description'] = $DB->escape($FORM['description'], 1);
-      $TMPL['category'] = $DB->escape($FORM['category'], 1);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
-      $TMPL['email'] = $DB->escape($FORM['email'], 1);
       $password = md5($FORM['password']);
 
       require_once("{$CONF['path']}/sources/in.php");
@@ -85,6 +101,9 @@ class join extends join_edit {
       }
 
       $TMPL['content'] = $this->do_skin('join_finish');
+    }
+    else {
+      $this->form();
     }
   }
 }

@@ -57,7 +57,7 @@ function check(form_name, field_name, value)
 }
 </script>
 
-<form action="index.php?a=admin" method="post" name="approve">
+<form action="{$TMPL['list_url']}/index.php?a=admin" method="post" name="approve">
 <table class="darkbg" cellpadding="1" cellspacing="1" width="100%">
 <tr class="mediumbg">
 <td></td>
@@ -76,9 +76,9 @@ EndHTML;
 <td align="center">{$id}</td>
 <td align="center">{$username}</td>
 <td align="center">{$date}</td>
-<td valign="top" width="100%">{$review}</td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews&amp;id={$id}">{$LNG['a_approve']}</a></td>
-<td align="center" valign="top"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_review&amp;id={$id}">{$LNG['a_man_delete']}</a></td>
+<td width="100%">{$review}</td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews&amp;id={$id}">{$LNG['a_approve']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_review&amp;id={$id}">{$LNG['a_man_delete']}</a></td>
 </tr>
 EndHTML;
 

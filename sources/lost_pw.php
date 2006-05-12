@@ -64,7 +64,7 @@ class lost_pw extends base {
     list($type, $data) = $session->get($FORM['sid']);
 
     if ($type == 'lost_pw') {
-      $TMPL['sid'] = $FORM['sid'];
+      $TMPL['sid'] = strip_tags($FORM['sid']);
       $TMPL['content'] = $this->do_skin('lost_pw_form_2');
     }
     else {

@@ -133,17 +133,17 @@ class join_edit extends base {
         $session->delete($sid);
       }
     }
-    if (!preg_match('/http/', $FORM['url'])) {
+    if (!preg_match('/^https?:\/\/.+/', $TMPL['url'])) {
       $error_url = 1;
     }
-    if (!preg_match('/.+\@.+\.\w+/', $FORM['email'])) {
+    if (!preg_match('/.+\@.+\.\w+/', $TMPL['email'])) {
       $error_email = 1;
     }
-    if (!$FORM['title']) {
+    if (!$TMPL['title']) {
       $error_title = 1;
     }
-    if ($FORM['banner_url'] == '' || $FORM['banner_url'] == 'http://') {
-      $FORM['banner_url'] = $CONF['default_banner'];
+    if (!preg_match('/^https?:\/\/.+/', $TMPL['banner_url'])) {
+      $TMPL['banner_url'] = $CONF['default_banner'];
     }
     elseif ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
       $size = @getimagesize($FORM['banner_url']);
@@ -154,22 +154,35 @@ class join_edit extends base {
     }
 
     if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha) {
-      $error = "{$LNG['join_error_forgot']}<br />\n";
-      if ($error_username) { $error .= "{$LNG['join_error_username']}<br />"; }
-      if ($error_username_duplicate) { $error .= "{$LNG['join_error_username_duplicate']}<br />"; }
-      if ($error_password) { $error .= "{$LNG['join_error_password']}<br />"; }
-      if ($error_url) { $error .= "{$LNG['join_error_url']}<br />"; }
-      if ($error_email) { $error .= "{$LNG['join_error_email']}<br />"; }
-      if ($error_title) { $error .= "{$LNG['join_error_title']}<br />"; }
-      if ($error_banner_url) { $error .= "{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.<br />"; }
-      if ($error_captcha) { $error .= "{$LNG['join_error_captcha']}<br />"; }
-      $error .= "<br />{$LNG['join_error_back']}";
-
-      if ($type == 'edit') {
-        $this->error($error, 'user_cp');
+      if ($error_username) {
+        $TMPL['error_username'] = "<br />{$LNG['join_error_username']}";
+        $TMPL['error_style_username'] = 'join_edit_error';
       }
-      else {
-        $this->error($error);
+      if ($error_username_duplicate) {
+        $TMPL['error_username'] = "<br />{$LNG['join_error_username_duplicate']}";
+        $TMPL['error_style_username'] = 'join_edit_error';
+      }
+      $TMPL['error_password'] = "<br />{$LNG['join_error_password']}";
+      $TMPL['error_style_password'] = 'join_edit_error';
+      if ($error_url) {
+        $TMPL['error_url'] .= "<br />{$LNG['join_error_url']}";
+        $TMPL['error_style_url'] = 'join_edit_error';
+      }
+      if ($error_email) {
+        $TMPL['error_email'] .= "<br />{$LNG['join_error_email']}";
+        $TMPL['error_style_email'] = 'join_edit_error';
+      }
+      if ($error_title) {
+        $TMPL['error_title'] .= "<br />{$LNG['join_error_title']}";
+        $TMPL['error_style_title'] = 'join_edit_error';
+      }
+      if ($error_banner_url) {
+        $TMPL['error_banner_url'] .= "<br />{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.";
+        $TMPL['error_style_banner_url'] = 'join_edit_error';
+      }
+      if ($error_captcha) {
+        $TMPL['error_captcha'] .= "<br />{$LNG['join_error_captcha']}";
+        $TMPL['error_style_captcha'] = 'join_edit_error';
       }
 
       return 0;

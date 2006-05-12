@@ -23,7 +23,7 @@ class rate extends base {
     $TMPL['header'] = $LNG['rate_header'];
 
     if (isset($FORM['u']) && $FORM['u']) {
-      $TMPL['username'] = $DB->escape($FORM['u']);
+      $TMPL['username'] = $DB->escape($FORM['u'], 1);
 
       $ip = getenv('REMOTE_ADDR');
       list($ip_sql, $rate) = $DB->fetch("SELECT ip_address, rate FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$TMPL['username']}'", __FILE__, __LINE__);

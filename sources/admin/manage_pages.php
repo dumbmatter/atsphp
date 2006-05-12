@@ -16,48 +16,56 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-class manage_reviews extends base {
-  function manage_reviews() {
+class manage_pages extends base {
+  function manage_pages() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['header'] = $LNG['a_man_rev_header'];
+    $TMPL['header'] = $LNG['a_man_pages_header'];
 
-    if (!isset($FORM['u']) || !$FORM['u']) {
-      $this->form();
+    $num_list = 20;
+
+    if (isset($FORM['start'])) {
+      $start = $DB->escape($FORM['start']);
     }
     else {
-      $username = $DB->escape($FORM['u']);;
-      list($TMPL['username']) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
-
-      if ($TMPL['username']) {
-        $this->process();
-      }
-      else {
-        $this->error($LNG['g_invalid_u'], 'admin');
-      }
+      $start = '';
     }
 
+    $ids_menu = '';
+    $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_custom_pages ORDER BY id ASC", 1, 0, __FILE__, __LINE__);
+    list($id_start) = $DB->fetch_array($result);
+    while ($id_start) {
+      $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_custom_pages WHERE id > '{$id_start}' ORDER BY id ASC", 2, $num_list - 2, __FILE__, __LINE__);
+      list($id_end) = $DB->fetch_array($result);
+      if (!$id_end) {
+        $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_custom_pages ORDER BY id DESC", 1, 0, __FILE__, __LINE__);
+        list($id_end) = $DB->fetch_array($result);
+      }
 
-  }
+      if ($id_start == $start) { $ids_menu .= "<option value=\"{$id_start}\" selected=\"selected\">{$id_start} - {$id_end}</option>"; }
+      else { $ids_menu .= "<option value=\"{$id_start}\">{$id_start} - {$id_end}</option>"; }
 
-  function form() {
-    global $LNG, $TMPL;
+      list($id_start) = $DB->fetch_array($result);
+    }
 
-    $TMPL['admin_content'] = <<<EndHTML
-{$LNG['a_man_rev_enter']}<br /><br />
-<form action="{$TMPL['list_url']}/index.php" method="get">
+    list($num_pages) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_custom_pages", __FILE__, __LINE__);
+    if ($num_pages > $num_list) {
+      $TMPL['admin_content'] = <<<EndHTML
+<form action="index.php" method="get">
 <input type="hidden" name="a" value="admin" />
-<input type="hidden" name="b" value="manage_reviews" />
-<input type="text" name="u" size="20" />
-<input type="submit" value="{$LNG['a_man_rev_header']}" />
+<input type="hidden" name="b" value="manage_pages" />
+<select name="start">
+{$ids_menu}
+</select>
+<input type="submit" value="{$LNG['g_form_submit_short']}" />
 </form><br />
 EndHTML;
-  }
+    }
+    else {
+      $TMPL['admin_content'] = '';
+    }
 
-  function process() {
-    global $CONF, $DB, $FORM, $LNG, $TMPL;
-
-    $TMPL['admin_content'] = <<<EndHTML
+    $TMPL['admin_content'] .= <<<EndHTML
 <script language="javascript">
 function check(form_name, field_name, value)
 {
@@ -77,29 +85,27 @@ function check(form_name, field_name, value)
 }
 </script>
 
-<form action="index.php?a=admin&amp;b=delete_review" method="post" name="manage">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_page" method="post" name="manage">
 <table class="darkbg" cellpadding="1" cellspacing="1" width="100%">
 <tr class="mediumbg">
 <td></td>
 <td align="center" width="1%">{$LNG['a_man_rev_id']}</td>
-<td align="center" width="1%">{$LNG['a_man_rev_date']}</td>
-<td width="100%">{$LNG['a_man_rev_rev']}</td>
+<td width="100%">{$LNG['table_title']}</td>
 <td align="center" colspan="2">{$LNG['a_man_actions']}</td>
 </tr>
 EndHTML;
 
     $alt = '';
     $num = 0;
-    $result = $DB->query("SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE active = 1 AND username = '{$TMPL['username']}' ORDER BY id ASC", __FILE__, __LINE__);
-    while (list($id, $date, $review) = $DB->fetch_array($result)) {
+    $result = $DB->select_limit("SELECT id, title, content FROM {$CONF['sql_prefix']}_custom_pages WHERE id >= '{$start}' ORDER BY id ASC", $num_list, 0, __FILE__, __LINE__);
+    while (list($id, $title, $content) = $DB->fetch_array($result)) {
       $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
 <td><input type="checkbox" name="id[]" value="{$id}" id="checkbox_{$num}" /></td>
 <td align="center">{$id}</td>
-<td align="center">{$date}</td>
-<td width="100%">{$review}</td>
-<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit_review&amp;id={$id}">{$LNG['a_man_edit']}</a></td>
-<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_review&amp;id={$id}">{$LNG['a_man_delete']}</a></td>
+<td width="100%"><a href="{$TMPL['list_url']}/index.php?a=page&amp;id={$id}">{$title}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit_page&amp;id={$id}">{$LNG['a_man_edit']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete_page&amp;id={$id}">{$LNG['a_man_delete']}</a></td>
 </tr>
 EndHTML;
 

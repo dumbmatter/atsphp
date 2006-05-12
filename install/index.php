@@ -35,8 +35,8 @@ Please select your language.<br /><br />
 EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
-    if (is_file("{$CONF['path']}/languages/{$file}")) {
-      $file = str_replace('.php', '', $file);
+    $file = str_replace('.php', '', $file);
+    if (is_file("{$CONF['path']}/languages/{$file}.php")) {
       require "{$CONF['path']}/languages/{$file}.php";
       if ($file == 'english') {
         $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
@@ -463,13 +463,13 @@ EndHTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>Aardvark Topsites PHP 5 - <?= $LNG['install_header'] ?></title>
+<title>Aardvark Topsites PHP 5 - <?php echo $LNG['install_header']; ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>
 
 <div id="wrapper">
 	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
-	<div id="content"><?= $TMPL['content'] ?></div>
+	<div id="content"><?php echo $TMPL['content']; ?></div>
 </body>
 </html>

@@ -22,7 +22,7 @@ class rankings extends base {
 
     // Get the category, default to no category
     if (isset($FORM['cat']) && $FORM['cat']) {
-      $TMPL['category'] = $FORM['cat'];
+      $TMPL['category'] = strip_tags($FORM['cat']);
       $category_sql = "AND category = '{$TMPL['category']}'";
     }
     else {
@@ -85,8 +85,17 @@ class rankings extends base {
         $TMPL['content'] = $this->do_skin('table_open');
       }
 
+      // All this $TMPL_original stuff is a hack to avoid doing an array_merge
+      // on large arrays with conflicting keys, because that is very slow
+      $TMPL_original = $TMPL;
+
       while ($row = $DB->fetch_array($result)) {
+        $TMPL_original['content'] = $TMPL['content'];
+        $TMPL_original['alt'] = $TMPL['alt'];
+        $TMPL_original['rank'] = $TMPL['rank'];
+        $TMPL = $TMPL_original;
         $TMPL = array_merge($TMPL, $row);
+
         if ($CONF['ranking_method'] == $ranking_method && $is_main) {
           if (!$TMPL['old_rank']) {
             $TMPL['old_rank'] = $TMPL['rank'];

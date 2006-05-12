@@ -36,10 +36,9 @@ class settings extends base {
     $languages_menu = '';
     $dir = opendir("{$CONF['path']}/languages/");
     while (false !== ($file = readdir($dir))) {
-      if (is_file("{$CONF['path']}/languages/{$file}")) {
+      $file = str_replace('.php', '', $file);      if (is_file("{$CONF['path']}/languages/{$file}.php")) {
         unset($translation);
 
-        $file = str_replace('.php', '', $file);
         require "{$CONF['path']}/languages/{$file}.php";
 
         if (isset($translation)) {
