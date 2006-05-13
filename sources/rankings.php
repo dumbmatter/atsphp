@@ -52,7 +52,7 @@ class rankings extends base {
       $start = 0;
     }
 
-    $result = $DB->select_limit("SELECT SQL_CACHE *
+    $result = $DB->select_limit("SELECT *
                                  FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                                  WHERE sites.username = stats.username AND active = 1 {$category_sql}
                                  ORDER BY {$order_by}

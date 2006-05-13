@@ -27,92 +27,69 @@ $CONF = array();
 $FORM = array();
 $TMPL = array();
 
-/**
- * Path to Aardvark Topsites PHP folder on the server
- * @var string
- */
-$CONF['path'] = dirname(__FILE__);
-/**
- * Set to 1 to display SQL queries and GET/POST/COOKIE data
- * @var boolean
- */
-$CONF['debug'] = 0;
-/**
- * Connect to the database
- */
+// Change the path to your full path if necessary
+$CONF['path'] = '.';
+
+// Connect to the database
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
 $DB = new sql;
 $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database']);
-/**
- * Get Settings from DB
- */
+
+// Settings
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
-/**
- * @var array contains configeration settings
- */
 $CONF = array_merge($CONF, $settings);
-/**
- * Combines GET and POST data
- * @var array combination of GET and POST data
- */
+
+// Combine the GET and POST input
 $FORM = array_merge($_GET, $_POST);
-/**
- * Get the category, default to no category
- */
+
+// Get the category, default to no category
 if (isset($FORM['cat']) && $FORM['cat']) {
-  $TMPL['category'] = $FORM['cat'];
+  $TMPL['category'] = strip_tags($FORM['cat']);
   $category_sql = "AND category = '{$TMPL['category']}'";
 }
 else {
   $TMPL['category'] = $LNG['main_all'];
   $category_sql = '';
 }
-/**
- * How to Order the sites
- */
+
+// Make ORDER BY clause
 require_once("{$CONF['path']}/sources/misc/classes.php");
 $order_by = base::rank_by()." DESC";
-/**
- * Output XML header
- */
+
 header('Content-Type: application/xml');
 echo '<?xml version="1.0"?>';
-/**
- * Select Sites from DB
- */
+
 $result = $DB->select_limit("SELECT *
                              FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                              WHERE sites.username = stats.username AND active = 1 {$category_sql}
                              ORDER BY {$order_by}
-                            ", $CONF['num_list'], $start, __FILE__, __LINE__);
+                            ", $CONF['num_list'], 0, __FILE__, __LINE__);
 
-if(isset($FORM['t']) && 'atom' == $FORM['t']) {
-  /**
-   * Atom 1.0 Feed
-   */
+if(isset($FORM['a']) && $FORM['a'] == 'atom') {
+// Atom
 ?>
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id><?php echo $CONF['list_url'];?></id>
-	<title><?php echo $CONF['list_url'];?></title>
+	<id><?php echo $CONF['list_url']; ?></id>
+	<title><?php echo $CONF['list_url']; ?></title>
 	<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
 
-	<generator version="1.0">Aardvark Topsites PHP 5.1</generator>
-	<link href="<?php echo $CONF['list_url'];?>"/>
-	<link href="<?php echo $CONF['list_url'] . '/feed.php?t=atom';?>" rel="self"/>
+	<generator version="1.0">Aardvark Topsites PHP</generator>
+	<link href="<?php echo $CONF['list_url']; ?>/"/>
+	<link href="<?php echo $CONF['list_url'] . '/feed.php?a=atom'; ?>" rel="self"/>
 
 <?php
-  for($rank = 1; $entry = $DB->fetch_array($result); $rank++) {
+  for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
 ?>
 
 	<entry>
-		<id><?php echo $entry['username'];?></id>
-		<title><?php echo $rank . ' ' . $entry['title'];?></title>
+		<id><?php echo $row['username']; ?></id>
+		<title><?php echo $rank . ' ' . $row['title']; ?></title>
 		<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
-		<summary><?php echo $item['description'];?></summary>
-		<link rel="alternate" href="<?php echo $entry['url'];?>"/>
-		<!--<link rel="alternate" href="<?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $entry['username'];?>"/>-->
+		<summary><?php echo $row['description']; ?></summary>
+		<link rel="alternate" href="<?php echo $row['url']; ?>"/>
+		<!--<link rel="alternate" href="<?php echo $CONF['list_url']; ?>/index.php?a=out&amp;u=<?php echo $row['username']; ?>"/>-->
 	</entry>
 
 <?php
@@ -120,29 +97,34 @@ if(isset($FORM['t']) && 'atom' == $FORM['t']) {
   echo '</feed>';
 }
 else {
-  /**
-   * RSS 2.0 Feed
-   */
+// RSS
 ?>
 
 <rss version="2.0">
 	<channel>
-		<title><?php echo $CONF['list_name'];?></title>
-		<link><?php echo $CONF['list_url'];?></link>
-		<description><?php echo 'Needs a description';?></description>
+		<title><?php echo $CONF['list_name']; ?></title>
+		<link><?php echo $CONF['list_url']; ?>/</link>
+		<description><?php echo 'Needs a description'; ?></description>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
-		<generator>Aardvark Topsites PHP 5.1</generator>
+		<generator>Aardvark Topsites PHP</generator>
+
+		<item>
+			<title><?php echo $CONF['list_name']; ?></title>
+			<link><?php echo $CONF['list_url']; ?>/</link>
+			<description></description>
+			<guid><?php echo $CONF['list_url']; ?>/</guid>
+		</item>
+
 
 <?php
-  for($rank = 1; $item = $DB->fetch_array($result); $rank++) {
+  for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
 ?>
 
 		<item>
-			<title><?php echo $rank . ' - ' . $item['title'];?></title>
-			<link><?php echo $item['url'];?></link>
-			<!--<link><?php echo $CONF['list_url'];?>/index.php?a=out&amp;u=<?php echo $item['username'];?></link>-->
-			<description><?php echo $item['description'];?></description>
-			<guid><?php echo $entry['username'];?></guid>
+			<title><?php echo $rank . ' - ' . $row['title']; ?></title>
+			<link><?php echo $CONF['list_url']; ?>/index.php?a=out&amp;u=<?php echo $row['username']; ?></link>
+			<description><?php echo $row['description']; ?></description>
+			<guid><?php echo $CONF['list_url'] . '/index.php?a=stats&amp;u=' . $row['username']; ?></guid>
 		</item>
 
 <?php

@@ -21,7 +21,6 @@ ROADMAP
 
 5.1.0
   TODO
-  Make google-friendly links an option
   Captcha refresh bug
   Improve and integrate search
   Delayed welcome email for approve-based lists
@@ -32,10 +31,16 @@ ROADMAP
   Web 2.0 to increase usability
   - RSS
   - AJAX
-  Easy-to-use stat buttons editor
   UTF-8 charset - http://www.zolw.tuchola.pl/top/ (polish)
   aardvarkind to aardvarktopsitesphp
   2005 to 2006
+  new settings:
+    Make google-friendly links an option
+    email admin when review is posted option
+    - rethink admin emails: no skin needed?
+  profanity filter
+  - needs to filter members and reviews
+  security in feed.php
 
   DONE
   More robust in non-standard environments (no <?=, handles weird files in languages dir)
