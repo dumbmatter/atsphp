@@ -25,11 +25,21 @@ class in extends in_out {
       $go_to_rankings = 1;
       $username = $DB->escape($FORM['u']);
     }
-    elseif (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
-      $username = $this->get_username($_SERVER['HTTP_REFERER']);
-    }
     else {
-      $username = '';
+      // Get user by referer?       
+      if (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
+        // Make sure it's not a search engine
+        if (strpos($_SERVER['HTTP_REFERER'], 'http://www.google.com/search') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.yahoo.com') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.msn.com') === FALSE) {
+          $good_referer = 1;
+        }
+      }
+
+      if ($good_referer) {
+        $username = $this->get_username($_SERVER['HTTP_REFERER']);
+      }
+      else {
+        $username = '';
+      }
     }
 
     if ($username) {

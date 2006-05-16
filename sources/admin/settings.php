@@ -34,20 +34,21 @@ class settings extends base {
     global $CONF, $DB, $LNG, $TMPL;
 
     $languages_menu = '';
+    $languages = array();
     $dir = opendir("{$CONF['path']}/languages/");
     while (false !== ($file = readdir($dir))) {
-      $file = str_replace('.php', '', $file);      if (is_file("{$CONF['path']}/languages/{$file}.php")) {
-        unset($translation);
-
+      $file = str_replace('.php', '', $file);
+      array_push($languages, $file);
+   }
+    natcasesort($languages);
+    foreach ($languages as $file) {
+      if (is_file("{$CONF['path']}/languages/{$file}.php")) {
         require "{$CONF['path']}/languages/{$file}.php";
-
-        if (isset($translation)) {
-          if ($CONF['default_language'] == $file) {
-            $languages_menu .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
-          }
-          else {
-            $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
-          }
+        if ($file == $CONF['default_language']) {
+          $languages_menu .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
+        }
+        else {
+          $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
         }
       }
     }

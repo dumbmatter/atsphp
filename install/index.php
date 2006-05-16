@@ -33,9 +33,14 @@ Please select your language.<br /><br />
 <form action="index.php" method="get">
 <select name="l">
 EndHTML;
+  $languages = array();
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
     $file = str_replace('.php', '', $file);
+    array_push($languages, $file);
+  }
+  natcasesort($languages);
+  foreach ($languages as $file) {
     if (is_file("{$CONF['path']}/languages/{$file}.php")) {
       require "{$CONF['path']}/languages/{$file}.php";
       if ($file == 'english') {

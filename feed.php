@@ -15,12 +15,8 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
-/**
- * Feed Generator
- * @author Matt Wells <cerberus@users.berlios.de>
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version 1.0
- */
+
+// feed.php originally by Matt Wells <cerberus@users.berlios.de>
 
 // Help prevent register_globals injection
 $CONF = array();
@@ -65,42 +61,8 @@ $result = $DB->select_limit("SELECT *
                              WHERE sites.username = stats.username AND active = 1 {$category_sql}
                              ORDER BY {$order_by}
                             ", $CONF['num_list'], 0, __FILE__, __LINE__);
-
-if(isset($FORM['a']) && $FORM['a'] == 'atom') {
-// Atom
 ?>
-
-<feed xmlns="http://www.w3.org/2005/Atom">
-	<id><?php echo $CONF['list_url']; ?></id>
-	<title><?php echo $CONF['list_url']; ?></title>
-	<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
-
-	<generator version="1.0">Aardvark Topsites PHP</generator>
-	<link href="<?php echo $CONF['list_url']; ?>/"/>
-	<link href="<?php echo $CONF['list_url'] . '/feed.php?a=atom'; ?>" rel="self"/>
-
-<?php
-  for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
-?>
-
-	<entry>
-		<id><?php echo $row['username']; ?></id>
-		<title><?php echo $rank . ' ' . $row['title']; ?></title>
-		<updated><?php echo date('Y-m-d\TH:i:s\Z'); ?></updated>
-		<summary><?php echo $row['description']; ?></summary>
-		<link rel="alternate" href="<?php echo $row['url']; ?>"/>
-		<!--<link rel="alternate" href="<?php echo $CONF['list_url']; ?>/index.php?a=out&amp;u=<?php echo $row['username']; ?>"/>-->
-	</entry>
-
-<?php
-  }
-  echo '</feed>';
-}
-else {
-// RSS
-?>
-
-<rss version="2.0">
+<rss version="2.0">
 	<channel>
 		<title><?php echo $CONF['list_name']; ?></title>
 		<link><?php echo $CONF['list_url']; ?>/</link>
@@ -117,21 +79,18 @@ else {
 
 
 <?php
-  for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
+for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
 ?>
 
 		<item>
 			<title><?php echo $rank . ' - ' . $row['title']; ?></title>
-			<link><?php echo $CONF['list_url']; ?>/index.php?a=out&amp;u=<?php echo $row['username']; ?></link>
+			<link><?php echo $CONF['list_url']; ?>/index.php?a=out&amp;u=<?php echo $row['username']; ?>&amp;go=1</link>
 			<description><?php echo $row['description']; ?></description>
 			<guid><?php echo $CONF['list_url'] . '/index.php?a=stats&amp;u=' . $row['username']; ?></guid>
 		</item>
 
 <?php
-  }
+}
 ?>
 	</channel>
 </rss>
-<?php
-}
-?>

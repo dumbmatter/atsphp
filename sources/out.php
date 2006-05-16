@@ -22,7 +22,13 @@ class out extends in_out {
 
     $username = $DB->escape($FORM['u']);
     $this->record($username, 'out');
-    exit;
+    if (!$_GET['go']) {
+      exit;
+    }
+    else {
+      list($url) = $DB->fetch("SELECT url FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
+      header("Location: {$url}");
+    }
   }
 }
 ?>

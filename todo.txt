@@ -25,9 +25,6 @@ ROADMAP
   Improve and integrate search
   Delayed welcome email for approve-based lists
   - look into overall user experience for approval
-  Order language list alphabetically
-  Refresh in admin ala joomla
-  - look into overall admin experience
   Web 2.0 to increase usability
   - RSS
   - AJAX
@@ -38,18 +35,21 @@ ROADMAP
     Make google-friendly links an option
     email admin when review is posted option
     - rethink admin emails: no skin needed?
-  profanity filter
-  - needs to filter members and reviews
-  security in feed.php
+    profanity filter
+    - needs to filter members and reviews
+  spruce up feed.php
+  - only rss2.0?
+  mysqli plugin
 
   DONE
   More robust in non-standard environments (no <?=, handles weird files in languages dir)
   Custom pages from the admin
   Admin does not allow you to delete the last category
   Major performance increase in rankings.php for lists with lots of sites per page
+  Hits in from search engines are filtered to prevent cheating
+  Order language list alphabetically
 
   SVN
-  add sources/page.php, admin/create_page.php, admin/edit_page.php, admin/delete_page.php, admin/manage_pages.php
 
   THINGS TO DO IN UPGRADE
 
