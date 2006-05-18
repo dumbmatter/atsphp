@@ -1,26 +1,18 @@
 <h1>{$title}</h1><br />
 <a href="{$url}" onclick="out('{$username}');"><img src="{$banner_url}" alt="{$title}" border="0" /></a><br /><br />
-
-<table cellspacing="0" cellpadding="0">
-	<tr>
-		<td><h3>{$lng->stats_info}</h3><br />
-			<b>{$lng->g_username}:</b> {$username}<br />
-			<b>{$lng->g_description}:</b> {$description}<br />
-			<b>{$lng->g_url}:</b> <a href="{$url}" onclick="out('{$username}');">{$url}</a><br />
-			<b>{$lng->g_category}:</b> <a href="{$list_url}/index.php?cat={$category}">{$category}</a><br />
-			<b>{$lng->stats_member_since}:</b> {$join_date}<br /><br />
-			<b>{$lng->stats_rating_avg}:</b> {$average_rating} / 5<br />
-			<b>{$lng->stats_rating_num}:</b> {$num_ratings}<br />
-			<img src="{$skins_url}/{$skin_name}/rate_{$average_rating}.png" bgcolor="transparent" alt="{$average_rating}/5" />
-		</td>
-		<td><h3>{$lng->stats_reviews}</h3><br />
-			{$reviews}
-			<a href="{$list_url}/index.php?a=rate&amp;u={$username}">{$lng->stats_rate}</a><br />
-			<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a>
-		</td>
-	</tr>
-</table>
-<br /><br />
+<h3>{$lng->stats_info}</h3><br />
+<b>{$lng->g_username}:</b> {$username}<br />
+<b>{$lng->g_description}:</b> {$description}<br />
+<b>{$lng->g_url}:</b> <a href="{$url}" onclick="out('{$username}');">{$url}</a><br />
+<b>{$lng->g_category}:</b> <a href="{$list_url}/index.php?cat={$category_url}">{$category}</a><br />
+<b>{$lng->stats_member_since}:</b> {$join_date}<br /><br />
+<b>{$lng->stats_rating_avg}:</b> {$average_rating} / 5<br />
+<b>{$lng->stats_rating_num}:</b> {$num_ratings}<br />
+<img src="{$skins_url}/{$skin_name}/rate_{$average_rating}.png" bgcolor="transparent" alt="{$average_rating}/5" /><br /><br />
+<h3>{$lng->stats_reviews}</h3><br />
+{$reviews}
+<a href="{$list_url}/index.php?a=rate&amp;u={$username}">{$lng->stats_rate}</a><br />
+<a href="{$list_url}/index.php?a=stats&amp;u={$username}&amp;all_reviews=1">{$lng->stats_allreviews}</a><br /><br />
 
 <h3>{$lng->stats_header}</h3>
 <div class="table_border">

@@ -32,6 +32,8 @@ class stats extends base {
 
       $TMPL['header'] .= " - {$TMPL['title']}";
 
+      $TMPL['category_url'] = urlencode($TMPL['category']);
+
       $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
       $ranking_periods = array('daily', 'weekly', 'monthly');

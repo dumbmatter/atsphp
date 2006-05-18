@@ -166,7 +166,10 @@ class main_skin extends skin {
     // Please do not remove the link to http://www.aardvarktopsitesphp.com/.
     // This is a free script, all I ask for is a link back.
     $TMPL['powered_by'] = $LNG['main_powered'].' <a href="http://www.aardvarktopsitesphp.com/"><b>Aardvark Topsites PHP</b></a> '.$TMPL['version'];
-    $TMPL['powered_by'] .= '<br /><a href="http://www.avatic.com/">Avatic</a>  | <a href="http://www.itopsites.com/">iTopsites</a>  | <a href="http://www.consolidatestudentloansnow.org/">Consolidate Student Loan Consolidation</a>';
+
+    // If you want to remove these links, you can; however, I would appreciate
+    // it if you left them there.
+    $TMPL['powered_by'] .= '<br /><a href="http://www.avatic.com/">Avatic</a>  | <a href="http://www.itopsites.com/">iTopsites</a>  | <a href="http://www.pollverize.com/">Pollverize</a> | <a href="http://www.consolidatestudentloansnow.org/">Consolidate Student Loans</a>';
 
     $TMPL['num_queries'] = $DB->num_queries;
     $TMPL['execution_time'] = $TIMER->get_time();

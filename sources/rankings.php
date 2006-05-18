@@ -96,6 +96,8 @@ class rankings extends base {
         $TMPL = $TMPL_original;
         $TMPL = array_merge($TMPL, $row);
 
+        $TMPL['category_url'] = urlencode($TMPL['category']);
+
         if ($CONF['ranking_method'] == $ranking_method && $is_main) {
           if (!$TMPL['old_rank']) {
             $TMPL['old_rank'] = $TMPL['rank'];

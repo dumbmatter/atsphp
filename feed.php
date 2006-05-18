@@ -60,7 +60,7 @@ $result = $DB->select_limit("SELECT *
                              FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                              WHERE sites.username = stats.username AND active = 1 {$category_sql}
                              ORDER BY {$order_by}
-                            ", $CONF['num_list'], 0, __FILE__, __LINE__);
+                            ", 10, 0, __FILE__, __LINE__);
 ?>
 <rss version="2.0">
 	<channel>

@@ -171,3 +171,8 @@ a:hover { color: #333; }
 table { width: 100%; }
 /* No Borders Images */
 img { border: 0; }
+
+textarea, input {
+	font-family: sans-serif;
+	font-size: 12px;
+}

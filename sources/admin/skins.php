@@ -207,8 +207,9 @@ EndHTML;
     else {
       $category = $DB->escape($FORM['cat']);
       $new_category = $DB->escape($FORM['new_cat']);
-echo "UPDATE {$CONF['sql_prefix']}_categories SET category = '{$new_category}' WHERE category = '{$category}'";
+
       $DB->query("UPDATE {$CONF['sql_prefix']}_categories SET category = '{$new_category}' WHERE category = '{$category}'", __FILE__, __LINE__);
+      $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET category = '{$new_category}' WHERE category = '{$category}'", __FILE__, __LINE__);
 
       $TMPL['admin_content'] = $LNG['a_skins_edit_done'];
     }

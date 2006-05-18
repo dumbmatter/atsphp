@@ -22,7 +22,9 @@ ROADMAP
 5.1.0
   TODO
   Captcha refresh bug
-  Improve and integrate search
+  Improve search
+  - $query="SELECT * FROM City WHERE LOCATE('$q', Name) > 0 ORDER BY LOCATE('$q', Name) LIMIT 7";
+    - "I think LOCATE('$q',Name) can be set to an alias so you don't have to look it up twice"
   Delayed welcome email for approve-based lists
   - look into overall user experience for approval
   Web 2.0 to increase usability
@@ -38,16 +40,27 @@ ROADMAP
     profanity filter
     - needs to filter members and reviews
   spruce up feed.php
-  - only rss2.0?
+  - description
+  - new sites?
   mysqli plugin
+  - offers little/no advantage
+  define constant in index.php, etc. to prevent sources from being executed
+  concurrent release of official mods:
+    category/page text links along with dropdown menu
+    change admin password
 
   DONE
   More robust in non-standard environments (no <?=, handles weird files in languages dir)
   Custom pages from the admin
+  When an edit form or join form has errors in it, the user is presented with inline error messages
   Admin does not allow you to delete the last category
   Major performance increase in rankings.php for lists with lots of sites per page
   Hits in from search engines are filtered to prevent cheating
   Order language list alphabetically
+  Minor skin tweaks
+  When a category name is edited, sites currently in that category are moved to the edited category
+  Categories containing & work correctly
+  RSS feed of the top 10 sites via feed.php
 
   SVN
 
@@ -64,3 +77,6 @@ ROADMAP
     ALTER TABLE ats_ip_log DROP INDEX username;
     ALTER TABLE ats_ip_log ADD PRIMARY KEY (ip_address, username);
     ats_custom_pages
+
+    MANUAL CHANGES
+    {$category_url} in stats.html, table_row.html, and table_top_row.html
