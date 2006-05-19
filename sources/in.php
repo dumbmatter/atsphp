@@ -27,6 +27,7 @@ class in extends in_out {
     }
     else {
       // Get user by referer?       
+      $good_referer = 0;
       if (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
         // Make sure it's not a search engine
         if (strpos($_SERVER['HTTP_REFERER'], 'http://www.google.com/search') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.yahoo.com') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.msn.com') === FALSE) {

@@ -30,7 +30,6 @@ ROADMAP
   Web 2.0 to increase usability
   - RSS
   - AJAX
-  UTF-8 charset - http://www.zolw.tuchola.pl/top/ (polish)
   aardvarkind to aardvarktopsitesphp
   2005 to 2006
   new settings:
@@ -45,9 +44,14 @@ ROADMAP
   mysqli plugin
   - offers little/no advantage
   define constant in index.php, etc. to prevent sources from being executed
+  - including openid folder
   concurrent release of official mods:
-    category/page text links along with dropdown menu
-    change admin password
+  - category/page text links along with dropdown menu
+  - change admin password
+  openid
+  - add links to explain openid
+  - compare with zoomr
+  - maybe create my own lightweight openid library?
 
   DONE
   More robust in non-standard environments (no <?=, handles weird files in languages dir)
@@ -59,23 +63,30 @@ ROADMAP
   Order language list alphabetically
   Minor skin tweaks
   When a category name is edited, sites currently in that category are moved to the edited category
-  Categories containing & work correctly
+  Categories containing ampersands (&) work correctly
   RSS feed of the top 10 sites via feed.php
+  Accounts can be created with an OpenID identity or with a traditional username and password
 
   SVN
+    sources/openid/*
+    skins/fusion/openid.png
 
   THINGS TO DO IN UPGRADE
 
     SKIN CHANGES
     join_form.html
     edit_form.html
+    edit_form_openid.html
     admin.html
+    user_cp_login.html
     screen.css
+    openid.png
 
     SQL CHANGES
-    ALTER TABLE ats_ip_log DROP INDEX ip_address;
-    ALTER TABLE ats_ip_log DROP INDEX username;
-    ALTER TABLE ats_ip_log ADD PRIMARY KEY (ip_address, username);
+    ALTER TABLE ats_ip_log DROP INDEX ip_address
+    ALTER TABLE ats_ip_log DROP INDEX username
+    ALTER TABLE ats_ip_log ADD PRIMARY KEY (ip_address, username)
+    ALTER TABLE ats_sites ADD openid tinyint(1) default 0
     ats_custom_pages
 
     MANUAL CHANGES

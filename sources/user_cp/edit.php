@@ -56,7 +56,12 @@ class edit extends join_edit {
     if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
     if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
 
-    $TMPL['user_cp_content'] = $this->do_skin('edit_form');
+    if ($TMPL['openid']) {
+      $TMPL['user_cp_content'] = $this->do_skin('edit_form_openid');
+    }
+    else {
+      $TMPL['user_cp_content'] = $this->do_skin('edit_form');
+    }
   }
 
   function process() {
@@ -68,6 +73,7 @@ class edit extends join_edit {
     $TMPL['category'] = $DB->escape($FORM['category'], 1);
     $TMPL['banner_url'] = $DB->escape($FORM['banner_url'], 1);
     $TMPL['email'] = $DB->escape($FORM['email'], 1);
+    $TMPL['openid'] = intval($FORM['openid']);
 
     if ($this->check_input('edit')) {
       if ($FORM['password']) {

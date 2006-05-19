@@ -104,6 +104,8 @@ $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to b
 $LNG['join_change_warning'] = "If you change the code, it might not work.";
 $LNG['join_welcome'] = "Welcome to %s";
 $LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
+$LNG['join_type'] = "Account type"; // 5.1.0
+$LNG['join_standard'] = "Standard"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -187,6 +189,13 @@ $LNG['user_cp_login'] = "Login"; // 5.0
 $LNG['user_cp_logout'] = "Logout"; // 5.0
 $LNG['user_cp_welcome'] = "Welcome to the user control panel.  Use the links to the left to manage your account."; // 5.0
 $LNG['user_cp_logout_message'] = "You are now logged out of the user control panel."; // 5.0
+$LNG['user_cp_login_long'] = "Login with your username and password or your OpenID."; // 5.1.0
+$LNG['user_cp_openid'] = "OpenID"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "Unable to find OpenID server for %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "You must join the topsites list before you can access the user control panel."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "An error occurred while processing your login.  Please try again."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "You must grant access to proceed.  Please try again."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Error from server: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Approve New Members"; // 5.0

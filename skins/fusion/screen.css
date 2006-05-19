@@ -176,3 +176,10 @@ textarea, input {
 	font-family: sans-serif;
 	font-size: 12px;
 }
+
+.openid {
+	background: url("openid.png") no-repeat;
+	background-color: #fff;
+	background-position: 0 50%;
+	padding-left: 18px;
+}

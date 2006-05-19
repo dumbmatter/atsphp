@@ -31,7 +31,7 @@ class join extends join_edit {
   }
 
   function form() {
-    global $CONF, $FORM, $TMPL;
+    global $CONF, $FORM, $LNG, $TMPL;
 
     if ($CONF['captcha']) {
       $TMPL['join_captcha'] = $this->do_skin('join_captcha');
@@ -51,6 +51,19 @@ class join extends join_edit {
     }
     $TMPL['categories_menu'] .= "</select>";
 
+    if (!$TMPL['openid']) {
+      $TMPL['openid_options'] = <<<EndHTML
+<option value="0" selected="selected">{$LNG['join_standard']}</option>
+<option value="1">{$LNG['user_cp_openid']}</option>
+EndHTML;
+    }
+    else {
+      $TMPL['openid_options'] = <<<EndHTML
+<option value="0">{$LNG['join_standard']}</option>
+<option value="1" selected="selected">{$LNG['user_cp_openid']}</option>
+EndHTML;
+    }
+
     if (!isset($TMPL['url'])) { $TMPL['url'] = 'http://'; }
     if (!isset($TMPL['banner_url'])) { $TMPL['banner_url'] = 'http://'; }
 
@@ -67,7 +80,13 @@ class join extends join_edit {
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['username'] = $DB->escape($FORM['u'], 1);
+    $TMPL['openid'] = intval($FORM['openid']);
+    if ($TMPL['openid']) {
+      $TMPL['username'] = $DB->escape($FORM['openid_url'], 1);
+    }
+    else {
+      $TMPL['username'] = $DB->escape($FORM['u'], 1);
+    }
     $TMPL['url'] = $DB->escape($FORM['url'], 1);
     $TMPL['title'] = $DB->escape($FORM['title'], 1);
     $FORM['description'] = str_replace(array("\r\n", "\n", "\r"), ' ', $FORM['description']);
@@ -84,8 +103,8 @@ class join extends join_edit {
 
       $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
 
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active)
-                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']})", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid)
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, {$TMPL['openid']})", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
 
       $TMPL['link_code'] = $this->do_skin('link_code');

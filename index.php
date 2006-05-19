@@ -146,6 +146,7 @@ if (isset($FORM['a']) && isset($action[$FORM['a']])) {
 else {
   $page_name = 'rankings';
 }
+
 require_once("{$CONF['path']}/sources/{$page_name}.php");
 $page = new $page_name;
 

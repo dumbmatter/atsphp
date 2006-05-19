@@ -1,40 +1,66 @@
-<form action="index.php?a=join" method="post">
+
+<form action="index.php?a=join" method="post" name="join_form">
 <fieldset>
 <legend>{$lng->join_user}</legend>
-<label><div class="{$error_style_username}">{$lng->g_username}<br />
+<label>{$lng->join_type}<br />
+<select name="openid" onchange="toggle_openid(document.join_form.openid.options[document.join_form.openid.selectedIndex].value);">
+{$openid_options}
+</select><br /><br />
+</label>
+<div id="type">
+<div class="{$error_style_username}"><label>{$lng->g_username}<br />
 <input type="text" name="u" size="20" value="{$username}" />
-{$error_username}</div><br />
-</label>
-<label><div class="{$error_style_password}">{$lng->g_password}<br />
+{$error_username}
+</label></div><br />
+<div class="{$error_style_password}"><label>{$lng->g_password}<br />
 <input type="password" name="password" size="20" value="{$password}" />
-{$error_password}</div>
-</label>
+{$error_password}
+</label></div>
+</div>
+
+<script type="text/javascript">
+var openid_div = '<div class="{$error_style_openid}"><label>{$lng->user_cp_openid}<br /><input type="text" name="openid_url" size="30" value="{$username}" class="openid" />{$error_openid}</label></div>';
+var standard_div = '<div class="{$error_style_username}"><label>{$lng->g_username}<br /><input type="text" name="u" size="20" value="{$username}" />{$error_username}</label></div><br /><div class="{$error_style_password}"><label>{$lng->g_password}<br /><input type="password" name="password" size="20" value="{$password}" />{$error_password}</label></div>';
+
+if (document.join_form.openid.options[document.join_form.openid.selectedIndex].value == 1) {
+  document.getElementById('type').innerHTML = openid_div;
+}
+
+function toggle_openid(openid) {
+  if (openid == 1) {
+    document.getElementById('type').innerHTML = openid_div;
+  }
+  else {
+    document.getElementById('type').innerHTML = standard_div;
+  }
+}
+</script>
 </fieldset>
 
 <fieldset>
 <legend>{$lng->join_website}</legend>
-<label><div class="{$error_style_url}">{$lng->g_url}<br />
+<div class="{$error_style_url}"><label>{$lng->g_url}<br />
 <input type="text" name="url" size="50" value="{$url}" />
-{$error_url}</div><br />
-</label>
-<label><div class="{$error_style_title}">{$lng->g_title}<br />
+{$error_url}
+</label></div><br />
+<div class="{$error_style_title}"><label>{$lng->g_title}<br />
 <input type="text" name="title" size="50" value="{$title}" />
-{$error_title}</div><br />
-</label>
+{$error_title}
+</label></div><br />
 <label>{$lng->g_description}<br />
 <textarea cols="40" rows="5" name="description">{$description}</textarea><br /><br />
 </label>
 <label>{$lng->g_category}<br />
 {$categories_menu}<br /><br />
 </label>
-<label><div class="{$error_style_banner_url}">{$lng->g_banner_url}<br />
+<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url}<br />
 <input type="text" name="banner_url" size="50" value="{$banner_url}" />
-{$error_banner_url}</div><br />
-</label>
-<label><div class="{$error_style_email}">{$lng->g_email}<br />
+{$error_banner_url}
+</label></div><br />
+<div class="{$error_style_email}"><label>{$lng->g_email}<br />
 <input type="text" name="email" size="50" value="{$email}" />
-{$error_email}</div><br />
-</label>
+{$error_email}
+</label></div><br />
 {$join_captcha}
 <input name="submit" type="submit" value="{$lng->join_header}" />
 </fieldset>
