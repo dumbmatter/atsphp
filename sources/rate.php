@@ -73,6 +73,12 @@ class rate extends base {
       $review = $DB->escape($review);
 
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_reviews (username, id, date, review, active) VALUES ('{$TMPL['username']}', {$id}, '{$date}', '{$review}', {$CONF['active_default_review']})", __FILE__, __LINE__);
+
+      $TMPL['review'] = $review;
+      if ($CONF['email_admin_on_review']) {
+        $rate_email_admin = new skin('rate_email_admin');
+        $rate_email_admin->send_email($CONF['your_email']);
+      }
     }
 
     // Rating

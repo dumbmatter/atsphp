@@ -121,6 +121,13 @@ class settings extends base {
       $email_admin_on_join_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
 
+    if ($CONF['email_admin_on_review']) {
+      $email_admin_on_review_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+    }
+    else {
+      $email_admin_on_review_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+    }
+
     if ($CONF['gateway']) {
       $gateway_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
     }
@@ -134,6 +141,14 @@ class settings extends base {
     else {
       $captcha_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
+
+    if ($CONF['google_friendly_links']) {
+      $google_friendly_links_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+    }
+    else {
+      $google_friendly_links_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+    }
+
 
     $ad_breaks = implode(',', $CONF['ad_breaks']);
 
@@ -202,6 +217,10 @@ class settings extends base {
 <select name="email_admin_on_join">
 {$email_admin_on_join_menu}</select><br /><br />
 </label>
+<label>{$LNG['a_s_email_admin_on_review']}<br />
+<select name="email_admin_on_review">
+{$email_admin_on_review_menu}</select><br /><br />
+</label>
 <label>{$LNG['a_s_max_banner_width']}<br />
 <input type="text" name="max_banner_width" size="5" value="{$CONF['max_banner_width']}" /><br /><br />
 </label>
@@ -229,7 +248,11 @@ class settings extends base {
 <input type="text" name="button_ext" size="5" value="{$CONF['button_ext']}" /><br /><br />
 </label>
 <label>{$LNG['a_s_button_num']}<br />
-<input type="text" name="button_num" size="5" value="{$CONF['button_num']}" />
+<input type="text" name="button_num" size="5" value="{$CONF['button_num']}" /><br /><br />
+</label>
+<label>{$LNG['a_s_google_friendly_links']}<br />
+<select name="google_friendly_links">
+{$google_friendly_links_menu}</select>
 </label>
 </fieldset>
 
@@ -277,6 +300,7 @@ EndHTML;
     $active_default_review = intval($FORM['active_default_review']);
     $delete_after = intval($FORM['delete_after']);
     $email_admin_on_join = intval($FORM['email_admin_on_join']);
+    $email_admin_on_review = intval($FORM['email_admin_on_review']);
     $max_banner_width = intval($FORM['max_banner_width']);
     $max_banner_height = intval($FORM['max_banner_height']);
     $default_banner = $DB->escape($FORM['default_banner']);
@@ -286,6 +310,7 @@ EndHTML;
     $button_dir = $DB->escape($FORM['button_dir']);
     $button_ext = $DB->escape($FORM['button_ext']);
     $button_num = intval($FORM['button_num']);
+    $google_friendly_links = intval($FORM['google_friendly_links']);
 
     $search = intval($FORM['search']);
     $time_offset = intval($FORM['time_offset']);
@@ -294,8 +319,8 @@ EndHTML;
 
     $DB->query("UPDATE {$CONF['sql_prefix']}_settings SET list_name = '{$list_name}', list_url = '{$list_url}', default_language = '{$default_language}', your_email = '{$your_email}',
                 num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}',
-                active_default = {$active_default}, active_default_review = {$active_default_review}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
-                ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num},
+                active_default = {$active_default}, active_default_review = {$active_default_review}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, email_admin_on_review = {$email_admin_on_review}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
+                ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num}, google_friendly_links = {$google_friendly_links},
                 search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}
                ", __FILE__, __LINE__);
  

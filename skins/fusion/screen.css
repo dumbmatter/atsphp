@@ -150,17 +150,14 @@ a:hover { color: #333; }
 	font-weight: normal;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	text-align: center;
 }
 .lightbg {
 	color: #000;
 	background-color: #FFF;
-	text-align: center;
 }
 .lightbgalt {
 	color: #000;
 	background-color: #DCDCDC;
-	text-align: center;
 }
 .join_edit_error {
 	background-color: #f0f0f0;
@@ -183,3 +180,6 @@ textarea, input {
 	background-position: 0 50%;
 	padding-left: 18px;
 }
+
+a.help { color: #f00; font-weight: bold; text-decoration: none; }
+a.help:hover { color: #333; }

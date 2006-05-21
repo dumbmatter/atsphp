@@ -45,6 +45,7 @@ class admin extends base {
                     'edit_review' => 1,
                     'email' => 1,
                     'manage' => 1,
+                    'manage_bad_words' => 1,
                     'manage_pages' => 1,
                     'manage_reviews' => 1,
                     'settings' => 1,

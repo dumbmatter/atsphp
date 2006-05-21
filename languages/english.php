@@ -293,6 +293,18 @@ $LNG['a_man_all'] = "Select All"; // 5.0
 $LNG['a_man_none'] = "Select None"; // 5.0
 $LNG['a_man_del_sel'] = "Delete Selected"; // 5.0
 
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "Profanity Filter"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Enter a word and its replacement below.  For example, you could enter \"hell\" in the word field and \"h***\" in the replacement field."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Exact matching will only match the exact word.  Global matching will match anything containing the word.  So, global matching of \"hell\" would also match \"shell\" and \"hello\"."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Word"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Replacement"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "Matching"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "Exact"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Filter Word"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filter."; // 5.1.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Manage Custom Pages"; // 5.1.0
 
@@ -309,6 +321,7 @@ $LNG['a_menu_main'] = "Main"; // 5.0
 $LNG['a_menu_approve'] = "Approve New Members";
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0
 $LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Approve New Reviews"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Manage Reviews"; // 5.0
@@ -322,10 +335,12 @@ $LNG['a_menu_manage_pages'] = "Manage Custom Pages"; // 5.1.0
 $LNG['a_header_members'] = "Members"; // 5.0
 $LNG['a_header_settings'] = "Settings"; // 5.0
 $LNG['a_header_reviews'] = "Reviews"; // 5.0
-$LNG['a_header_pages'] = "Custom Pages"; // 5.1
+$LNG['a_header_pages'] = "Custom Pages"; // 5.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";
+$LNG['a_s_help'] = "Help";
+
 $LNG['a_s_general'] = "General Settings";
 $LNG['a_s_admin_password'] = "Admin password";
 $LNG['a_s_list_name'] = "The name of your topsites list";
@@ -347,30 +362,32 @@ $LNG['a_s_ranking_method'] = "Ranking method"; // 5.0
 $LNG['a_s_ranking_average'] = "Rank by average or by just %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Featured member - You have to add {$featured_member} to wrapper.html after you turn this on.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
-$LNG['a_s_ad_breaks'] = "Show ad breaks after these ranks (separate with commas)";
+$LNG['a_s_ad_breaks'] = "Show ads after these ranks (separate with commas) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_member'] = "Member Settings";
 $LNG['a_s_active_default'] = "Require new members to be approved before being listed";
 $LNG['a_s_active_default_review'] = "Require new reviews to be approved before being listed";
 $LNG['a_s_delete_after'] = "Delete inactive members after this many days (set to 0 to turn off)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Email you when a new member joins";
+$LNG['a_s_email_admin_on_join'] = "Email admin when a new member joins"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Email admin when a new review is posted"; // 5.1.0
 $LNG['a_s_max_banner_width'] = "Member's maximum banner width (set to 0 to turn off)"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "Member's maximum banner height (set to 0 to turn off)"; // 4.2.0
 $LNG['a_s_default_banner'] = "Default banner for members who do not supply one";
 
 $LNG['a_s_button'] = "Button Settings";
-$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  See <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">the manual</a> for details.  Only choose Stat Buttons if you have already read that section of the manual.  If you choose Stat Buttons, the rest of this section will not have an effect."; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "Stat Buttons"; // 4.2.0
 $LNG['a_s_button_url'] = "If Yes/No - URL to the default button you want to appear on members' sites"; // 4.0
 $LNG['a_s_button_dir'] = "If Yes - URL to the directory the buttons are in"; // 4.0
 $LNG['a_s_button_ext'] = "If Yes - Extension of the buttons (gif, png, jpg, etc.)"; // 4.0
 $LNG['a_s_button_num'] = "If Yes - Number of buttons you have made"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_other'] = "Other Settings";
 $LNG['a_s_search'] = "Search";
 $LNG['a_s_time_offset'] = "Time offset from your server (in hours)";
 $LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
-$LNG['a_s_captcha'] = "Word verification on join - Security against spammers"; // 4.2.2
+$LNG['a_s_captcha'] = "Word verification on join (protect against spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";

@@ -182,9 +182,9 @@ class join_edit extends base {
         $TMPL['error_banner_url'] .= "<br />{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.";
         $TMPL['error_style_banner_url'] = 'join_edit_error';
       }
+      $TMPL['error_style_captcha'] = 'join_edit_error';
       if ($error_captcha) {
         $TMPL['error_captcha'] .= "<br />{$LNG['join_error_captcha']}";
-        $TMPL['error_style_captcha'] = 'join_edit_error';
       }
 
       return 0;

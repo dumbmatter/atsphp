@@ -18,9 +18,16 @@
 
 class link_code extends base {
   function link_code() {
-    global $FORM, $LNG, $TMPL;
+    global $CONF, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['link_code_header'];
+
+    if ($CONF['google_friendly_links']) {
+      $TMPL['verbose_link'] = "";
+    }
+    else {
+      $TMPL['verbose_link'] = "index.php?a=in&u={$TMPL['username']}";
+    }
 
     $TMPL['user_cp_content'] = $this->do_skin('link_code');
   }

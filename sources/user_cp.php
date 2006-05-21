@@ -186,7 +186,7 @@ class simple_action_handler extends ActionHandler {
   }
 
   function doValidLogin($login) {
-    global $CONF, $DB, $FORM, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     preg_match("/^.*\/\/(.+)\/$/", $this->query['open_id'], $matches);
     $openid = $matches[1];
@@ -207,10 +207,14 @@ class simple_action_handler extends ActionHandler {
   }
 
   function doInvalidLogin() {
+    global $LNG;
+
     $this->base->error($LNG['user_cp_openid_error_general']);
   }
 
   function doUserCancelled() {
+    global $LNG;
+
     $this->base->error($LNG['user_cp_openid_error_cancel']);
   }
 
@@ -223,6 +227,8 @@ class simple_action_handler extends ActionHandler {
   }
 
   function doErrorFromServer($message) {
+    global $LNG;
+
     $this->base->error(sprintf($LNG['user_cp_openid_error_from_server'], $message));
   }
 
