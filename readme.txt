@@ -1,8 +1,8 @@
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,8 +15,24 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-Manual: http://www.aardvarkind.com/manual/
-Support Forum: http://www.aardvarkind.com/forums/
+Official Website... http://www.aardvarktopsitesphp.com/
+Manual............. http://www.aardvarktopsitesphp.com/manual/
+Support Forum...... http://www.aardvarktopsitesphp.com/forums/
 
 The manual contains installation and upgrading instructions.  If you have
 trouble, go to the support forum.
+
+--------------------------
+QUICK INSTALL INSTRUCTIONS
+--------------------------
+WARNING:
+THESE INSTRUCTIONS ONLY APPLY FOR NEW INSTALLATIONS.  IF YOU ARE UPGRADING FROM
+A PREVIOUS VERSION, PLEASE READ THE "UPGRADE" SECTION OF THE MANUAL.
+
+1. Upload all the files to your web server
+2. CHMOD 666 settings_sql.php
+3. Go to install/index.php in your browser and follow the instructions there
+4. Delete the install directory when you are done
+
+If these instructions sound confusing, please read the manual for more a more
+verbose tutorial.

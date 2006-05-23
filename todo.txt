@@ -1,8 +1,8 @@
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -21,30 +21,12 @@ ROADMAP
 
 5.1.0
   TODO
-  Improve search
-  - $query="SELECT * FROM City WHERE LOCATE('$q', Name) > 0 ORDER BY LOCATE('$q', Name) LIMIT 7";
-    - "I think LOCATE('$q',Name) can be set to an alias so you don't have to look it up twice"
   Delayed welcome email for approve-based lists
   - look into overall user experience for approval
-  Web 2.0 to increase usability
-  - RSS
-  - AJAX
-  aardvarkind to aardvarktopsitesphp
-  2005 to 2006
-  new settings
-    email admin when review is posted option
-    - TEST!!!! along with join email
-    profanity filter
-    - needs to filter members and reviews
-    - edit and delete
-  spruce up feed.php
-  - description
-  - new sites?
-  - sydication in manual
+  aardvarkind to aardvarktopsitesphp, 2005 to 2006; define constant in index.php, etc. to prevent sources from being executed
+  - todo: languages besides english, openid
   mysqli plugin
   - offers little/no advantage
-  define constant in index.php, etc. to prevent sources from being executed
-  - including openid folder
   atsphp-mods
   - category/page text links along with dropdown menu
   openid
@@ -55,11 +37,14 @@ ROADMAP
 
 FEATURES
 - When an edit form or join form has errors in it, the user is presented with inline error messages
-- RSS feed of the top 10 sites via feed.php
+- RSS feed of the top 10 sites (overall and by category) via feed.php
 - New admin stuff:
   - Topical links to the manual for confusing options on the settings page
   - Google-friendly links is now an option
-  - Custom pages
+  - Option to email admin when a new review is posted
+  - Custom pages: easily add static content to integrate with your topsites (FAQ, rules, etc.)
+  - Profanity filter
+  - Overall stats displayed on main page
 
 BUG FIXES
 - More robust in non-standard environments (no <?=, handles weird files in languages dir)
@@ -70,17 +55,22 @@ BUG FIXES
 - When a category name is edited, sites currently in that category are moved to the edited category
 - Categories containing ampersands (&) work correctly
 - Admin does not allow you to delete the last category
+- Minor search improvements (UI and sorting)
+- Uses preg_replace_callback() instead of preg_replace() to speed up skin parsing
+  - 10% faster skin parsing results in 1% faster overall script execution
 
-  SVN
-    skins/fusion/rate_email_admin.html
+  SVN ADD
 
   THINGS TO DO IN UPGRADE
 
     SKIN CHANGES
+    join_captcha.html
     join_form.html
     edit_form.html
+    link_code.html
     admin.html
     user_cp_login.html
+    search_results.html
     screen.css
     SKIN NEW
     openid.png
@@ -98,3 +88,4 @@ BUG FIXES
 
     MANUAL CHANGES
     {$category_url} in stats.html, table_row.html, and table_top_row.html
+    info about feed.php on the syndication page

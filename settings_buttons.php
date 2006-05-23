@@ -1,4 +1,8 @@
 <?php
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
+
 $TMPL = $DB->fetch("SELECT *
                    FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                    WHERE sites.username = stats.username AND sites.username = '{$username}'", __FILE__, __LINE__);

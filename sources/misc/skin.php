@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,6 +15,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
 
 class skin {
   var $filename;
@@ -80,12 +84,17 @@ class skin {
   }
   
   function parse($skin) {
-    global $LNG, $TMPL;
+    global $LNG, $TMPL, $n, $parse_time;
 
-    $skin = preg_replace('/{\$lng->(.+?)}/ei', "\$LNG['\\1']", $skin);
-    $skin = preg_replace('/{include \"(.+?)\"}/ei', "file_get_contents('\\1')", $skin);
-    $skin = preg_replace('/{\$(.+?)}/ei', "\$TMPL['\\1']", $skin);
+    $skin = preg_replace_callback('/{\$lng->(.+?)}/i', create_function('$matches', 'global $LNG; return $LNG[$matches[1]];'), $skin);
+    $skin = preg_replace_callback('/{include \"(.+?)\"}/i', create_function('$matches', 'return file_get_contents($matches[1]);'), $skin);
+    $skin = preg_replace_callback('/{\$(.+?)}/i', create_function('$matches', 'global $TMPL; return $TMPL[$matches[1]];'), $skin);
+
     return $skin;
+  }
+
+  function callback($matches) {
+    return $matches[1];
   }
 }
 
@@ -133,7 +142,8 @@ class main_skin extends skin {
     else { $TMPL['ranking_methods_menu'] .= '<option value="out">'.$LNG['g_out']."\n"; }
     $TMPL['ranking_methods_menu'] .= '</select>';
   
-    // Build the categories menu
+    // Build the categories menu and feed.php link
+    $TMPL['feed'] = 'feed.php';
     $current_cat = isset($FORM['cat']) ? $FORM['cat'] : $LNG['main_all'];
     $TMPL['categories_menu'] = "<select name=\"cat\">\n";
     if ($current_cat == $LNG['main_all']) {
@@ -145,6 +155,7 @@ class main_skin extends skin {
     foreach ($CONF['categories'] as $cat => $skin) {
       if ($current_cat == $cat) {
         $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}</option>\n";
+        $TMPL['feed'] .= "?cat={$cat}";
       }
       else {
         $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}</option>\n";

@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -16,6 +16,10 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
+
 class search extends base {
   function search() {
     global $CONF, $FORM, $LNG, $TMPL;
@@ -25,7 +29,7 @@ class search extends base {
     if (!$CONF['search']) {
       $this->error($LNG['search_off']);
     }
-    elseif (!isset($FORM['q'])) {
+    elseif (!isset($FORM['q']) || !$FORM['q']) {
       $this->form();
     }
     else {
@@ -45,6 +49,13 @@ class search extends base {
     $TMPL['query'] = $DB->escape($FORM['q'], 1);
     $words = explode(' ', $FORM['q']);
 
+    // Filter out words that are only 1 or 2 characters
+    $filtered_words = array_filter($words, create_function('$word', 'return strlen($word) > 2;'));
+
+    if (count($filtered_words) > 0) {
+      $words = $filtered_words;
+    }
+
     if (isset($FORM['start'])) {
       $start = intval($FORM['start']);
       if ($start > 0) {
@@ -55,14 +66,23 @@ class search extends base {
       $start = 0;
     }
 
-    $query = "SELECT username, url, title, description, banner_url FROM {$CONF['sql_prefix']}_sites WHERE active = 1 AND (";
-    for ($i = 0; $i < count($words); $i++) {
+    $query = "SELECT sites.username, url, title, description, banner_url FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats WHERE active = 1 AND sites.username = stats.username AND (";
+    $i = 0;
+    foreach ($words as $word) {
       if ($i > 0) {
         $query .= " OR ";
       }
-      $query .= "description LIKE '%{$words[$i]}%' OR title LIKE '%{$words[$i]}%'";
+      $query .= "description LIKE '%{$word}%' OR title LIKE '%{$word}%'";
+
+      $i++;
     }
     $query .= ")";
+
+    $result = $DB->query($query, __FILE__, __LINE__);
+    $TMPL['num_results'] = $DB->num_rows($result);
+
+    $order_by = $this->rank_by()." DESC";
+    $query .= " ORDER BY {$order_by}";
 
     $result = $DB->select_limit($query, 10, $start, __FILE__, __LINE__);
 
@@ -70,8 +90,11 @@ class search extends base {
     $TMPL['rank'] = $start + 1;
     while (list($TMPL['username'], $TMPL['url'], $TMPL['title'], $TMPL['description'], $TMPL['banner_url']) = $DB->fetch_array($result)) {
       foreach ($words as $word) {
-        $TMPL['description'] = str_replace($word, "<b>{$word}</b>", $TMPL['description']);
-        $TMPL['title'] = str_replace($word, "<b>{$word}</b>", $TMPL['title']);
+        $word = preg_quote($word);
+        $TMPL['description'] = preg_replace_callback("/({$word})/i", create_function('$matches', 'return "<b>{$matches[1]}</b>";'), $TMPL['description']);
+        $TMPL['title'] = preg_replace_callback("/({$word})/i", create_function('$matches', 'return "<b>{$matches[1]}</b>";'), $TMPL['title']);
+//        $TMPL['description'] = preg_replace("/({$word})/ie", "<b>\\1</b>", $TMPL['description']);
+//        $TMPL['title'] = preg_replace($word, "<b>{$word}</b>", $TMPL['title']);
       }
 
       $TMPL['results'] .= $this->do_skin('search_result');
@@ -83,11 +106,27 @@ class search extends base {
       $this->error($LNG['search_no_sites']);
     }
 
-    $TMPL['prev'] = $start - 10;
-    if ($TMPL['prev'] < 0) {
-      $TMPL['prev'] = 0;
+    $prev_num = $start - 9;
+    if ($prev_num < 1) {
+      $prev_num = 1;
     }
-    $TMPL['next'] = $start + 10;
+    $next_num = $start + 11;
+
+    if ($start >= 1) {
+      $TMPL['previous'] = "<a href=\"{$TMPL['list_url']}/index.php?a=search&amp;q={$TMPL['query']}&amp;start={$prev_num}\">{$LNG['search_prev']}</a>";
+    }
+    else {
+      $TMPL['previous'] = $LNG['search_prev'];
+    }
+
+    if ($next_num <= $TMPL['num_results']) {
+      $TMPL['next'] = "<a href=\"{$TMPL['list_url']}/index.php?a=search&amp;q={$TMPL['query']}&amp;start={$next_num}\">{$LNG['search_next']}</a>";
+    }
+    else {
+      $TMPL['next'] = $LNG['search_next'];
+    }
+
+    $TMPL['displaying_results'] = sprintf($LNG['search_displaying_results'], ++$start, --$TMPL['rank'], $TMPL['num_results'], $TMPL['query']);
 
     $TMPL['content'] = $this->do_skin('search_results');
   }

@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -19,6 +19,7 @@
 // feed.php originally by Matt Wells <cerberus@users.berlios.de>
 
 // Help prevent register_globals injection
+define('ATSPHP', 1);
 $CONF = array();
 $FORM = array();
 $TMPL = array();
@@ -39,14 +40,20 @@ $CONF = array_merge($CONF, $settings);
 // Combine the GET and POST input
 $FORM = array_merge($_GET, $_POST);
 
+// The language file
+require_once("{$CONF['path']}/languages/{$CONF['default_language']}.php");
+
 // Get the category, default to no category
 if (isset($FORM['cat']) && $FORM['cat']) {
   $TMPL['category'] = strip_tags($FORM['cat']);
-  $category_sql = "AND category = '{$TMPL['category']}'";
+  $category_escaped = $DB->escape($FORM['cat']);
+  $category_sql = "AND category = '{$category_escaped}'";
+  $category_url = "/index.php?cat={$TMPL['category']}";
 }
 else {
   $TMPL['category'] = $LNG['main_all'];
   $category_sql = '';
+  $category_url = '';
 }
 
 // Make ORDER BY clause
@@ -64,15 +71,15 @@ $result = $DB->select_limit("SELECT *
 ?>
 <rss version="2.0">
 	<channel>
-		<title><?php echo $CONF['list_name']; ?></title>
-		<link><?php echo $CONF['list_url']; ?>/</link>
-		<description><?php echo 'Needs a description'; ?></description>
+		<title><?php echo "{$CONF['list_name']} - {$TMPL['category']}"; ?></title>
+		<link><?php echo $CONF['list_url'].$category_url; ?></link>
+		<description></description>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
 		<generator>Aardvark Topsites PHP</generator>
 
 		<item>
-			<title><?php echo $CONF['list_name']; ?></title>
-			<link><?php echo $CONF['list_url']; ?>/</link>
+			<title><?php echo "{$CONF['list_name']} - {$TMPL['category']}"; ?></title>
+			<link><?php echo $CONF['list_url'].$category_url; ?></link>
 			<description></description>
 			<guid><?php echo $CONF['list_url']; ?>/</guid>
 		</item>

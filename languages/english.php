@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,6 +15,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
@@ -157,14 +161,15 @@ $LNG['rate_review'] = "Review - No HTML allowed"; // 5.0
 $LNG['rate_thanks'] = "Thank you for your rating.";
 $LNG['rate_error'] = "You have already rated this site.";
 $LNG['rate_back'] = "Back to Stats";
+$LNG['rate_email_admin'] = "A new review has been posted at your topsites list.";
 
 // Search
 $LNG['search_header'] = "Search";
 $LNG['search_off'] = "The search feature has been disabled.";
-$LNG['search_for'] = "You searched for";
 $LNG['search_no_sites'] = "Sorry, no sites matching your criteria were found."; // 5.0
 $LNG['search_prev'] = "Previous"; // 3.2.1
 $LNG['search_next'] = "Next"; // 3.2.1
+$LNG['search_displaying_results'] = "Displaying %s to %s of %s results for <b>%s</b>."; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "Stats";
@@ -226,6 +231,15 @@ $LNG['a_del_dones'] = "The members have been deleted."; // 5.0
 $LNG['a_del_warn'] = "Are you sure you want to delete %s?"; // 5.0
 $LNG['a_del_multi'] = "these %s members"; //5.0
 
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "Delete Filtered Word"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Delete Filtered Words"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "The filtered word has been deleted."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "The filtered words have been deleted."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "Are you sure you want to delete %s from the filtered words list?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "these %s words"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "Invalid filtered word ID.  Please try again."; // 5.1.0
+
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Delete Custom Page"; // 5.1.0
 $LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
@@ -250,6 +264,10 @@ $LNG['a_edit_site_is'] = "This site is"; // 4.0
 $LNG['a_edit_active'] = "Active (Listed)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactive (Not Listed)"; // 5.0
 $LNG['a_edit_edited'] = "The member has been edited.";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Edit Filtered Word"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "The filtered word has been edited."; // 5.1.0
 
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Edit Custom Page"; // 5.1.0

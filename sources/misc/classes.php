@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,6 +15,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
 
 class base {
   function error($message, $skin = 0) {
@@ -64,6 +68,27 @@ class base {
     }
 
     return $rank_by;
+  }
+
+  function bad_words($text) {
+    global $CONF, $DB;
+
+    $result = $DB->query("SELECT word, replacement, matching FROM {$CONF['sql_prefix']}_bad_words", __FILE__, __LINE__);
+    while (list($word, $replacement, $matching) = $DB->fetch_array($result)) {
+      if ($matching) { // Exact matching
+        $word = preg_quote($word);
+        $text = preg_replace("/\b{$word}\b/i", $replacement, $text);
+      }
+      else { // Global matching
+        $word = preg_quote($word);
+        $text = preg_replace("/{$word}/i", $replacement, $text);
+
+        // str_ireplace() would be ideal, but it's only in PHP 5 :(
+        // $text = str_ireplace($word, $replacement, $text);
+      }
+    }
+
+    return $text;
   }
 }
 
