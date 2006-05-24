@@ -180,7 +180,7 @@ class main_skin extends skin {
 
     // If you want to remove these links, you can; however, I would appreciate
     // it if you left them there.
-    $TMPL['powered_by'] .= '<br /><a href="http://www.avatic.com/">Avatic</a>  | <a href="http://www.itopsites.com/">iTopsites</a>  | <a href="http://www.pollverize.com/">Pollverize</a> | <a href="http://www.consolidatestudentloansnow.org/">Student Loan Consolidation</a>';
+    $TMPL['powered_by'] .= '<br /><a href="http://www.avatic.com/">Avatic</a>  | <a href="http://www.itopsites.com/" title="Get a free hosted topsites list">iTopsites</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Pollverize</a> | <a href="http://www.consolidatestudentloansnow.org/" title="Consolidate student loans now">Student Loan Consolidation</a>';
 
     $TMPL['num_queries'] = $DB->num_queries;
     $TMPL['execution_time'] = $TIMER->get_time();

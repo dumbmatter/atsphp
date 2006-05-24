@@ -174,12 +174,5 @@ textarea, input {
 	font-size: 12px;
 }
 
-.openid {
-	background: url("openid.png") no-repeat;
-	background-color: #fff;
-	background-position: 0 50%;
-	padding-left: 18px;
-}
-
 a.help { color: #f00; font-weight: bold; text-decoration: none; }
 a.help:hover { color: #333; }

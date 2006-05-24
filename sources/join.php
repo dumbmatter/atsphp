@@ -55,19 +55,6 @@ class join extends join_edit {
     }
     $TMPL['categories_menu'] .= "</select>";
 
-    if (!$TMPL['openid']) {
-      $TMPL['openid_options'] = <<<EndHTML
-<option value="0" selected="selected">{$LNG['join_standard']}</option>
-<option value="1">{$LNG['user_cp_openid']}</option>
-EndHTML;
-    }
-    else {
-      $TMPL['openid_options'] = <<<EndHTML
-<option value="0">{$LNG['join_standard']}</option>
-<option value="1" selected="selected">{$LNG['user_cp_openid']}</option>
-EndHTML;
-    }
-
     if (!isset($TMPL['url'])) { $TMPL['url'] = 'http://'; }
     if (!isset($TMPL['banner_url'])) { $TMPL['banner_url'] = 'http://'; }
 
@@ -84,13 +71,7 @@ EndHTML;
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['openid'] = intval($FORM['openid']);
-    if ($TMPL['openid']) {
-      $TMPL['username'] = $DB->escape($FORM['openid_url'], 1);
-    }
-    else {
-      $TMPL['username'] = $DB->escape($FORM['u'], 1);
-    }
+    $TMPL['username'] = $DB->escape($FORM['u'], 1);
     $TMPL['url'] = $DB->escape($FORM['url'], 1);
     $TMPL['title'] = $DB->escape($FORM['title'], 1);
     $FORM['description'] = str_replace(array("\r\n", "\n", "\r"), ' ', $FORM['description']);
@@ -111,7 +92,7 @@ EndHTML;
       $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
 
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid)
-                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, {$TMPL['openid']})", __FILE__, __LINE__);
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, 0)", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
 
       if ($CONF['google_friendly_links']) {
@@ -123,6 +104,13 @@ EndHTML;
       $TMPL['link_code'] = $this->do_skin('link_code');
 
       $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
+
+      if ($CONF['active_default']) {
+        $TMPL['approve_message'] = '';
+      }
+      else {
+        $TMPL['approve_message'] = $LNG['join_approve'];
+      }
 
       $join_email = new skin('join_email');
       $join_email->send_email($TMPL['email']);

@@ -108,6 +108,7 @@ $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to b
 $LNG['join_change_warning'] = "If you change the code, it might not work.";
 $LNG['join_welcome'] = "Welcome to %s";
 $LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
+$LNG['join_approve'] = "Your site will be listed when the admin of the topsites list approves it."; // 5.1.0
 $LNG['join_type'] = "Account type"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
 

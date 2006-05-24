@@ -1,8 +1,5 @@
 <fieldset>
 <legend>{$lng->user_cp_header}</legend>
-{$lng->user_cp_login_long}<br /><br />
-<table cellspacing="0" cellpadding="0">
-<tr><td valign="top" width="50%">
 <form action="{$list_url}/index.php?a=user_cp" method="post">
 <label>{$lng->g_username}<br />
 <input type="text" name="u" size="20" /><br /><br />
@@ -13,14 +10,4 @@
 <input type="submit" value="{$lng->user_cp_login}" /><br /><br />
 <a href="{$list_url}/index.php?a=lost_pw">{$lng->lost_pw_forgot}</a>
 </form>
-</td><td valign="top" width="50%">
-<form action="{$list_url}/index.php?a=user_cp" method="post">
-<input type="hidden" name="openid" value="1" />
-<label>{$lng->user_cp_openid}<br />
-<input type="text" name="openid_url" size="30" class="openid" /><br /><br />
-</label>
-<input type="submit" value="{$lng->user_cp_login}" />
-</form>
-</td></tr>
-</table>
 </fieldset>

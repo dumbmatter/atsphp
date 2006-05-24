@@ -136,14 +136,14 @@ class join_edit extends base {
     $error_captcha = 0;
 
     if ($type == 'join') {
-      if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $FORM['u']) && !$TMPL['openid']) {
+      if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $FORM['u'])) {
         $error_username = 1;
       }
       list($username_sql) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
       if ($username_sql && $username_sql == $TMPL['username']) {
         $error_username_duplicate = 1;
       }
-      if (!$FORM['password'] && !$TMPL['openid']) {
+      if (!$FORM['password']) {
         $error_password = 1;
       }
       if ($CONF['captcha']) {
@@ -186,8 +186,6 @@ class join_edit extends base {
       if ($error_username_duplicate) {
         $TMPL['error_username'] = "<br />{$LNG['join_error_username_duplicate']}";
         $TMPL['error_style_username'] = 'join_edit_error';
-        $TMPL['error_openid'] = "<br />{$LNG['join_error_username_duplicate']}";
-        $TMPL['error_style_openid'] = 'join_edit_error';
       }
       $TMPL['error_password'] = "<br />{$LNG['join_error_password']}";
       $TMPL['error_style_password'] = 'join_edit_error';

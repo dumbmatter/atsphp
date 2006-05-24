@@ -15,6 +15,10 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+5.0.3 - 2006-05-07
+BUG FIXES
+- Minor security fix
+
 5.0.2 - 2006-01-12
 BUG FIXES
 - Works with Frontpage
