@@ -15,6 +15,15 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+This is a BETA release.  That means it has not been extensively tested.  Be on
+the lookout for any bugs and please report them at the support forum.
+
+There is NO UPGRADER in this release and NO TRANSLATIONS besides English.  The
+upgrader and more translations will be present in the release candidate, which
+should be released in about a week.
+
+-------------------------------------------------------------------------------
+
 Official Website... http://www.aardvarktopsitesphp.com/
 Manual............. http://www.aardvarktopsitesphp.com/manual/
 Support Forum...... http://www.aardvarktopsitesphp.com/forums/

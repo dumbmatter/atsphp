@@ -161,6 +161,7 @@ EndHTML;
                     `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
+                    `email_admin_on_review` tinyint(1) default 0,
                     `max_banner_width` int(4) default 0,
                     `max_banner_height` int(4) default 0,
                     `default_banner` varchar(255) default '',
@@ -169,6 +170,7 @@ EndHTML;
                     `button_dir` varchar(255) default '',
                     `button_ext` varchar(255) default 'png',
                     `button_num` int(3) default 5,
+                    `google_friendly_links` tinyint(1) default '1',
                     `search` tinyint(1) default 1,
                     `time_offset` int(2) default 0,
                     `gateway` tinyint(1) default 1,
@@ -176,6 +178,21 @@ EndHTML;
                   )", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_url, default_language, your_email, default_banner, button_url, button_dir)
                   VALUES ('{$list_url}', '{$default_language}', '{$your_email}', '{$list_url}/images/button.png', '{$list_url}/images/button.png', '{$list_url}/images')", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
+                    `id` int(10) unsigned,
+                    `word` varchar(255),
+                    `replacement` varchar(255),
+                    `matching` tinyint(1),
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
+                    `id` varchar(255) default '',
+                    `title` varchar(255) default '',
+                    `content` text,
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_etc` (
                     `admin_password` varchar(32) default '',
@@ -199,8 +216,7 @@ EndHTML;
                     `unq_in` tinyint(1) default 0,
                     `unq_out` tinyint(1) default 0,
                     `rate` tinyint(1) default 0,
-                    KEY `ip_address` (`ip_address`),
-                    KEY `username` (`username`)
+                    PRIMARY KEY  (`ip_address`,`username`)
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_reviews` (
@@ -232,6 +248,7 @@ EndHTML;
                     `email` varchar(255) default '',
                     `join_date` date default '0000-00-00',
                     `active` tinyint(1) default 1,
+                    `openid` tinyint(1) default '0',
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
@@ -454,15 +471,15 @@ EndHTML;
 {$LNG['install_done']}<br /><br />
 <a href="{$list_url}/">{$LNG['install_your']}</a><br />
 <a href="{$list_url}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a>
+<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br />
 EndHTML;
     }
     else {
-      $TMPL['content'] = "<h3>{$LNG['g_error']}</h3><br />{$LNG['install_error_chmod']}";
+      $TMPL['content'] = "<h3>{$LNG['g_error']}</h3><br />{$LNG['install_error_chmod']}<br />";
     }
   }
   else {
-    $TMPL['content'] = "<h3>{$LNG['g_error']}</h3><br />{$LNG['install_error_sql']}";
+    $TMPL['content'] = "<h3>{$LNG['g_error']}</h3><br />{$LNG['install_error_sql']}<br />";
   }
 }
 ?>
@@ -476,6 +493,6 @@ EndHTML;
 
 <div id="wrapper">
 	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
-	<div id="content"><?php echo $TMPL['content']; ?></div>
+	<div id="content"><?php echo $TMPL['content']; ?><br /></div>
 </body>
 </html>
