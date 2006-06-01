@@ -248,7 +248,7 @@ EndHTML;
                     `email` varchar(255) default '',
                     `join_date` date default '0000-00-00',
                     `active` tinyint(1) default 1,
-                    `openid` tinyint(1) default '0',
+                    `openid` tinyint(1) default 0,
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
@@ -494,5 +494,6 @@ EndHTML;
 <div id="wrapper">
 	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
 	<div id="content"><?php echo $TMPL['content']; ?><br /></div>
+</div>
 </body>
 </html>

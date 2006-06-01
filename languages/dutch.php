@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,6 +15,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
@@ -83,6 +87,7 @@ $LNG['install_admin'] = "Beheer pagina";
 $LNG['install_manual'] = "Handleiding";
 $LNG['upgrade_header'] = "Upgrade";
 $LNG['upgrade_welcome'] = "Welkom bij Aardvark Topsites PHP 5.  Maak een backup van bestanden voordat je upgrade.";
+$LNG['upgrade_version'] = "Please make sure that you are upgrading from version %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Upgraden wordt alleen ondersteund voor Aardvark Topsites PHP 4.1.0 of hoger.";
 $LNG['upgrade_done'] = "Topsite Lijst upgrade voltooid. Je kan deze map nu verwijderen.";
 
@@ -91,7 +96,6 @@ $LNG['join_header'] = "Registreer";
 $LNG['join_enter_text'] = "Vul de tekst van het onderstaande plaatje in:"; // 4.2.2
 $LNG['join_user'] = "Lid"; // 5.0
 $LNG['join_website'] = "Website"; // 5.0
-$LNG['join_error_forgot'] = "Je vergat om:";
 $LNG['join_error_username'] = "Een correcte gebruikersnaam in te vullen: Gebruikt alleen letters (A-Z), Cijfers (0-9), Laag liggende streepjes (_) en Streepjes (-)."; // 5.0
 $LNG['join_error_username_duplicate'] = "Een correcte gebruikersnaam in te vullen: Je gebruikersnaam is al ingebruik."; // 5.0
 $LNG['join_error_url'] = "Een correcte URL in te vullen.";
@@ -99,13 +103,15 @@ $LNG['join_error_email'] = "Een correct E-mail adres in te vullen.";
 $LNG['join_error_title'] = "Een correcte titel voor je website in te vullen.";
 $LNG['join_error_password'] = "Een correct wachtwoord in te vullen.";
 $LNG['join_error_urlbanner'] = "Een correcte Banner URL in te vullen.  Laat het veld leeg als je er geen hebt.  Het moet kleiner zijn dan"; // 4.0
-$LNG['join_error_back'] = "Ga terug en verander de fouten.";
 $LNG['join_error_time'] = "Ververs de lid bevestigings pagina niet."; // 4.2.0
 $LNG['join_error_captcha'] = "Het woord dat je invulde komt niet overeen met het plaatje."; // 4.2.2
 $LNG['join_thanks'] = "Bedankt! Zet deze code op je pagina om op je website te laten stemmen";
 $LNG['join_change_warning'] = "Als je de code veranderd kan het zijn dat hij het niet doet.";
 $LNG['join_welcome'] = "Welkom bij %s";
 $LNG['join_welcome_admin'] = "Je topsite lijst heeft een nieuw lid.";
+$LNG['join_approve'] = "Your site will be listed when the admin of the topsites list approves it."; // 5.1.0
+$LNG['join_type'] = "Account type"; // 5.1.0
+$LNG['join_standard'] = "Standard"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -157,14 +163,15 @@ $LNG['rate_review'] = "Commentaar - Geen HTML toegestaan"; // 5.0
 $LNG['rate_thanks'] = "Bedankt voor je beoordeling.";
 $LNG['rate_error'] = "Je hebt deze site al beoordeeld.";
 $LNG['rate_back'] = "Terug naar stats";
+$LNG['rate_email_admin'] = "A new review has been posted at your topsites list."; // 5.1.0
 
 // Zoeken
 $LNG['search_header'] = "Zoeken";
 $LNG['search_off'] = "De zoek functie is uitgeschakeld.";
-$LNG['search_for'] = "Je zocht naar";
 $LNG['search_no_sites'] = "Sorry, er zijn geen sites gevonden die jouw woord(en) bevatten."; // 5.0
 $LNG['search_prev'] = "Vorige"; // 3.2.1
 $LNG['search_next'] = "Volgende"; // 3.2.1
+$LNG['search_displaying_results'] = "Displaying %s to %s of %s results for <b>%s</b>."; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "Stats";
@@ -189,6 +196,13 @@ $LNG['user_cp_login'] = "Login"; // 5.0
 $LNG['user_cp_logout'] = "Loguit"; // 5.0
 $LNG['user_cp_welcome'] = "Welkom bij het leden paneel. Gebruikt de links aan de linker kant om je gegevens te beheren."; // 5.0
 $LNG['user_cp_logout_message'] = "Je bent nu uitgelogd bij het leden paneel."; // 5.0
+$LNG['user_cp_login_long'] = "Login with your username and password or your OpenID."; // 5.1.0
+$LNG['user_cp_openid'] = "OpenID"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "Unable to find OpenID server for %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "You must join the topsites list before you can access the user control panel."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "An error occurred while processing your login.  Please try again."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "You must grant access to proceed.  Please try again."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Error from server: %s"; // 5.1.0
 
 // Admin > Nieuwe leden goedkeuren // 4.0
 $LNG['a_approve_header'] = "Nieuwe leden goedkeuren"; // 5.0
@@ -204,6 +218,13 @@ $LNG['a_approve_rev_none'] = "Er is geen commentaar dat wacht om te worden goedg
 $LNG['a_approve_rev_done'] = "Het commentaar is goedgekeurd."; // 5.0
 $LNG['a_approve_rev_dones'] = "De commentaren zijn goedgekeurd."; // 5.0
 
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "Create Custom Page"; // 5.1.0
+$LNG['a_create_page_id'] = "Page ID - This will be used in the URL, so it can contain only letters, numbers, underscores, and dashes"; // 5.1.0
+$LNG['a_create_page_error_id'] = "The page ID can contain only letters, numbers, underscores, and dashes.  Please go back and correct the page ID."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "There is already a custom page with that page ID.  Please go back and select a new page ID."; // 5.1.0
+$LNG['a_create_page_created'] = "The page has been created.  You will have to manually add a link to %s in wrapper.html."; // 5.1.0
+
 // Admin > Verwijder lid
 $LNG['a_del_header'] = "Verwijder lid"; // 5.0
 $LNG['a_del_headers'] = "Verwijder leden"; // 5.0
@@ -211,6 +232,24 @@ $LNG['a_del_done'] = "Het lid is verwijderd."; // 5.0
 $LNG['a_del_dones'] = "De leden zijn verwijderd."; // 5.0
 $LNG['a_del_warn'] = "Weet je zeker dat je %s wilt verwijderen?"; // 5.0
 $LNG['a_del_multi'] = "Deze %s leden"; //5.0
+
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "Delete Filtered Word"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Delete Filtered Words"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "The filtered word has been deleted."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "The filtered words have been deleted."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "Are you sure you want to delete %s from the filtered words list?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "these %s words"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "Invalid filtered word ID.  Please try again."; // 5.1.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "Delete Custom Page"; // 5.1.0
+$LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
+$LNG['a_del_page_done'] = "The custom page has been deleted."; // 5.1.0
+$LNG['a_del_page_dones'] = "The custom pages have been deleted."; // 5.1.0
+$LNG['a_del_page_warn'] = "Are you sure you want to delete %s?"; //5.1.0
+$LNG['a_del_page_multi'] = "these %s members"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "Invalid custom page ID.  Please try again."; // 5.1.0
 
 // Admin > Verwijder commentaar // 5.0
 $LNG['a_del_rev_header'] = "Verwijder commentaar"; // 5.0
@@ -227,6 +266,15 @@ $LNG['a_edit_site_is'] = "Deze site is"; // 4.0
 $LNG['a_edit_active'] = "Actief (In ranglijst)"; // 4.0
 $LNG['a_edit_inactive'] = "Inactief (Niet in ranglijst)"; // 5.0
 $LNG['a_edit_edited'] = "Het lid is bewerkt.";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Edit Filtered Word"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "The filtered word has been edited."; // 5.1.0
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "Edit Custom Page"; // 5.1.0
+$LNG['a_edit_page_content'] = "Content - You can use HTML here"; // 5.1.0
+$LNG['a_edit_page_edited'] = "The page has been edited."; // 5.1.0
 
 // Admin > Bewerk commentaar // 5.0
 $LNG['a_edit_rev_header'] = "Bewerk commentaar"; // 5.0
@@ -265,6 +313,21 @@ $LNG['a_man_all'] = "Selecteer alles"; // 5.0
 $LNG['a_man_none'] = "Selecteer Niets"; // 5.0
 $LNG['a_man_del_sel'] = "Verwijder geselecteerde"; // 5.0
 
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "Profanity Filter"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Enter a word and its replacement below.  For example, you could enter \"hell\" in the word field and \"h***\" in the replacement field."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Exact matching will only match the exact word.  Global matching will match anything containing the word.  So, global matching of \"hell\" would also match \"shell\" and \"hello\"."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Word"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Replacement"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "Matching"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "Exact"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Filter Word"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filter."; // 5.1.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "Manage Custom Pages"; // 5.1.0
+
 // Admin > Beheer commentaar // 5.0
 $LNG['a_man_rev_header'] = "Beheer commentaar"; // 5.0
 $LNG['a_man_rev_enter'] = "Om het commentaar van een site te beheren voer je de gebruikersnaam van de site hieronder in."; // 5.0
@@ -278,6 +341,7 @@ $LNG['a_menu_main'] = "Begin"; // 5.0
 $LNG['a_menu_approve'] = "Nieuwe leden goedkeuren";
 $LNG['a_menu_manage'] = "Beheer leden"; // 4.2.0
 $LNG['a_menu_settings'] = "Verander instellingen"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0
 $LNG['a_menu_skins'] = "Uiterlijk en Categorien"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Commentaar goedkeuren"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Beheer commentaar"; // 5.0
@@ -286,12 +350,17 @@ $LNG['a_menu_delete_review'] = "Verwijder commentaar";
 $LNG['a_menu_logout'] = "Loguit";
 $LNG['a_menu_delete'] = "Verwijder lid";
 $LNG['a_menu_edit'] = "Bewerk lid";
+$LNG['a_menu_create_page'] = "Create Custom Page"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Manage Custom Pages"; // 5.1.0
 $LNG['a_header_members'] = "Leden"; // 5.0
 $LNG['a_header_settings'] = "Instellingen"; // 5.0
 $LNG['a_header_reviews'] = "Commentaren"; // 5.0
+$LNG['a_header_pages'] = "Custom Pages"; // 5.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Verander instellingen";
+$LNG['a_s_help'] = "Help"; // 5.1.0
+
 $LNG['a_s_general'] = "Algemene instellingen";
 $LNG['a_s_admin_password'] = "Beheerders wachtwoord";
 $LNG['a_s_list_name'] = "De naam van je Topsite Lijst";
@@ -319,24 +388,26 @@ $LNG['a_s_member'] = "Leden Instellingen";
 $LNG['a_s_active_default'] = "Moeten nieuwe leden goedgekeurd worden na registratie voordat ze in de ranglijst komen";
 $LNG['a_s_active_default_review'] = "Moet nieuwe commentaar goedgekeurd worden voordat het gelezen kan worden";
 $LNG['a_s_delete_after'] = "Verwijder leden na ... dagen van inactiviteit (Zet op 0 om uit te schakelen)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "E-mail jou als er nieuwe leden zijn";
+$LNG['a_s_email_admin_on_join'] = "Email admin when a new member joins"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Email admin when a new review is posted"; // 5.1.0
 $LNG['a_s_max_banner_width'] = "Maximale banner wijdte (zet op 0 om uit te schakelen)"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "Maximale banner hoogte (zet op 0 om uit te schakelen)"; // 4.2.0
 $LNG['a_s_default_banner'] = "Standaard banner die leden krijgen als ze geen banner opgeven";
 
 $LNG['a_s_button'] = "Button Instellingen";
-$LNG['a_s_ranks_on_buttons'] = "Rang op buttons -  Zie <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">De handleiding</a> voor meer informatie.  Kies alleen statische buttons als je de sectie van de handleiding hebt gelezen.  Als je statische buttons kiest heeft de rest van deze sectie geen nut."; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "Statische Buttons"; // 4.2.0
 $LNG['a_s_button_url'] = "Bij Ja/Nee - URL naar standaard button die verschijnd op site van de leden"; // 4.0
 $LNG['a_s_button_dir'] = "Bij Ja - URL naar de map waar de buttons in staan"; // 4.0
 $LNG['a_s_button_ext'] = "Bij Ja - Extentie van de buttons (gif, png, jpg, enz.)"; // 4.0
 $LNG['a_s_button_num'] = "Bij Ja - aantal buttons die je hebt gemaakt"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_other'] = "Andere instellingen";
 $LNG['a_s_search'] = "Zoeken";
 $LNG['a_s_time_offset'] = "Tijd verschil met de server (in uren)";
 $LNG['a_s_gateway'] = "Anti cheat pagina, om cheaters tegen te gaan";
-$LNG['a_s_captcha'] = "Woord verificatie om te registreren - Beveiliging tegen spammers"; // 4.2.2
+$LNG['a_s_captcha'] = "Word verification on join (protect against spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Aan";
 $LNG['a_s_off'] = "Uit";
@@ -357,6 +428,7 @@ $LNG['a_skins_default_done'] = "De standaard uiterlijk is ingesteld."; // 5.0
 $LNG['a_skins_categories_done'] = "De categorie uiterlijk is ingesteld."; // 5.0
 $LNG['a_skins_new_category_done'] = "De nieuwe categorie is gemaakt."; // 5.0
 $LNG['a_skins_delete_done'] = "De categorie is verwijderd."; // 5.0
+$LNG['a_skins_delete_error'] = "The category cannot be deleted because you must have at least one category."; // 5.1.0
 $LNG['a_skins_edit_done'] = "De categorie is bewerkt."; // 5.0
 $LNG['a_skins_invalid_skin'] = "Ongeldig uiterlijk: %s.  Probeer opnieuw."; // 5.0
 $LNG['a_skins_categories'] = "Categorien"; // 5.0

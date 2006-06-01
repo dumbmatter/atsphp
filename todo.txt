@@ -19,6 +19,16 @@
 ROADMAP
 =======
 
+5.2.0
+openid
+- old files in atsphp-openid folder
+review admin ui
+review approval process - approval will be more popular
+rss icon in wrapper
+version number in sql database (for upgrader to check)
+new gateway design
+graphs
+
 5.1.0
   FOR BETA:
   - languages: english only
@@ -28,10 +38,19 @@ ROADMAP
       - offers little/no advantage
 
   FOR RC:
-  - all languages
-      aardvarkind to aardvarktopsitesphp, 2005 to 2006; define constant in index.php, etc. to prevent sources from being executed
-      - todo: languages besides english, openid
+  - classic skin
+  - update/test languages
+    - UPDATED
+      czech
+      danish
+      romanian
+      russian
+      spanish
+    - TESTED
+      english
+    - get real name of language ala wikipedia (dansk not danish)
   - upgrader
+    - test 5.0.3 again
 
   FOR FINAL
   changes.txt
@@ -41,6 +60,9 @@ ROADMAP
 
 
   SVN ADD
+  languages/swedish.php languages/czech.php install/upgrade-4.x.php install/upgrade-5.0.x.php
+  SVN DELETE
+  install/upgrade.php
 
   THINGS TO DO IN UPGRADE
 
@@ -67,9 +89,18 @@ ROADMAP
     ats_custom_pages, ats_bad_words
 
     MANUAL CHANGES
+    archive old manual and put up links for old manuals
+    - /manual/5.0.x/
     {$category_url} in stats.html, table_row.html, and table_top_row.html
     info about feed.php on the syndication page
     {$feed} in wrapper.html: url to the rss feed for this category
+    upgrading instructions
+    - upgrade.php is now renamed!!!
+from 5.0.x:
+   1. Delete all your old Aardvark Topsites PHP files except settings_sql.php
+   2. Upload all the new files (except settings_sql.php) to the same directory as your old settings_sql.php
+   3. Go to install/upgrade-5.0.x.php in your browser and follow the instructions there
+   4. Delete the install directory when you are done
 
     ON RELEASE
     Upload atsphp-x.x.x.zip
@@ -81,5 +112,3 @@ ROADMAP
     Notify of release:
     - hotscripts
     - freshmeat
-
-OPENID in atsphp-openid

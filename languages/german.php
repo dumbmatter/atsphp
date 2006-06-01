@@ -139,9 +139,7 @@ $LNG['main_queries'] = "SQL Abfragen"; // 4.0
 $LNG['main_powered'] = "Powered by";
 
 // Ranking Table
-$LNG['table_stats'] = "Statistik
-Kommentare
-Bewertungen";
+$LNG['table_stats'] = "Statistik Kommentare Bewertungen";
 $LNG['table_unique'] = "Besucher";
 $LNG['table_total'] = "Seitenaufrufe";
 $LNG['table_rank'] = "Platzierung";

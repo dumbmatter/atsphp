@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -15,6 +15,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
@@ -83,6 +87,7 @@ $LNG['install_admin'] = "Администрирование";
 $LNG['install_manual'] = "Руководство";
 $LNG['upgrade_header'] = "Обновление";
 $LNG['upgrade_welcome'] = "Добро пожаловать в программу обновления Aardvark Topsites PHP 5. Перед обновлением обязательно сделайте резервную копию базы данных.";
+$LNG['upgrade_version'] = "Удостоверьтесь, что Вы обновляете версию %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Обновление возможно только для версии Aardvark Topsites PHP 4.1.0 или выше.";
 $LNG['upgrade_done'] = "Ваша копия Topsites рейтинга была обновлена. Немедленно удалите директорию /install.";
 
@@ -91,7 +96,6 @@ $LNG['join_header'] = "Зарегистрировать сайт в рейтинге";
 $LNG['join_enter_text'] = "Введите текст, который показан на изображении ниже:"; // 4.2.2
 $LNG['join_user'] = "Участник"; // 5.0
 $LNG['join_website'] = "Веб сайт"; // 5.0
-$LNG['join_error_forgot'] = "Вы забыли:";
 $LNG['join_error_username'] = "Имя пользователя может состоять только из: букв, цифр, подчеркиваний и тире."; // 5.0
 $LNG['join_error_username_duplicate'] = "Используйте другое имя пользователя, это уже занято."; // 5.0
 $LNG['join_error_url'] = "Введите правильный URL.";
@@ -99,13 +103,15 @@ $LNG['join_error_email'] = "Введите корректный e-mail адрес.";
 $LNG['join_error_title'] = "Введите заголовок Вашего сайта.";
 $LNG['join_error_password'] = "Введите пароль.";
 $LNG['join_error_urlbanner'] = "Введите адрес существующего баннера. Не заполняйте это поле, если у Вас нет баннера. Он должен быть меньше"; // 4.0
-$LNG['join_error_back'] = "Вернитесь и исправьте ошибки.";
 $LNG['join_error_time'] = "Не обновляйте страницу с подтверждением регистрации."; // 4.2.0
 $LNG['join_error_captcha'] = "Значение, которое вы ввели, не совпадает с тем, что написано на изображении."; // 4.2.2
 $LNG['join_thanks'] = "Спасибо за регистрацию! Внесите этот код на ваш сайт и он появится в рейтинге.";
 $LNG['join_change_warning'] = "Изменения в коде могут нарушить его работоспособность.";
 $LNG['join_welcome'] = "Добро пожаловать в %s";
 $LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
+$LNG['join_approve'] = "Ваш сайт появится в рейтинге после проверки администрацией."; // 5.1.0
+$LNG['join_type'] = "Тип аккаунта"; // 5.1.0
+$LNG['join_standard'] = "Обычный"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "Код ссылки"; // 5.0
@@ -157,14 +163,15 @@ $LNG['rate_review'] = "Отзыв  - использование HTML запрещено"; // 5.0
 $LNG['rate_thanks'] = "Спасибо за вашу оценку.";
 $LNG['rate_error'] = "Вы уже голосовали за этот сайт.";
 $LNG['rate_back'] = "Вернуться в статистику";
+$LNG['rate_email_admin'] = "В Ваш рейтинг добавили новый обзор сайта."; // 5.1.0
 
 // Search
 $LNG['search_header'] = "Поиск";
 $LNG['search_off'] = "Поисковая функция выключена.";
-$LNG['search_for'] = "Вы искали: ";
 $LNG['search_no_sites'] = "По заданным условиям поиска сайтов не обнаружено."; // 5.0
 $LNG['search_prev'] = "Предыдущий"; // 3.2.1
 $LNG['search_next'] = "Следующий"; // 3.2.1
+$LNG['search_displaying_results'] = "Показаны от %s до %s из %s результатов для <b>%s</b>."; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "Статистика";
@@ -189,6 +196,13 @@ $LNG['user_cp_login'] = "Войти"; // 5.0
 $LNG['user_cp_logout'] = "Выйти"; // 5.0
 $LNG['user_cp_welcome'] = "Добро пожаловать в контрольную панель участника.  Используйте ссылки слева для управления Вашим аккаунтом."; // 5.0
 $LNG['user_cp_logout_message'] = "Вы вышли из контрольной панели участника."; // 5.0
+$LNG['user_cp_login_long'] = "Войдите в систему используя Ваше имя пользователя и пароль или Ваш открытый идентификатор."; // 5.1.0
+$LNG['user_cp_openid'] = "Открытый идентификатор"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "Невозможно найти сервер с открытым идентификатором для %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "Вы должны зарегистрироваться в рейтинге, чтобы получить доступ к контрольной панели пользователя."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "В процессе авторизации произошла ошибка. Попробуйте еще раз."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "Вы должны иметь права доступа для этого действия.  Попробуйте еще раз."; // 5.1.0 ---------------------------
+$LNG['user_cp_openid_error_from_server'] = "Ошибка на сервере: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Разрешить вход в рейтинг новому участнику"; // 5.0
@@ -204,6 +218,13 @@ $LNG['a_approve_rev_none'] = "Нет обзоров, ожидающих разрешения."; // 5.0
 $LNG['a_approve_rev_done'] = "Обзор был разрешен."; // 5.0
 $LNG['a_approve_rev_dones'] = "Обзоры были разрешены."; // 5.0
 
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "Создание специализированной страницы"; // 5.1.0
+$LNG['a_create_page_id'] = "Идентификатор страницы - будет использован в URL и может состоять только из английских букв, цифр, подчеркиваний и тире"; // 5.1.0
+$LNG['a_create_page_error_id'] = "Идентификатор страницы может состоять только из английских букв, цифр, подчеркиваний и тире. Вернитесь и исправьте идентификатор страницы."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "Страница с таким идентификатором уже существует.  Вернитесь и выберите новый идентификатор."; // 5.1.0
+$LNG['a_create_page_created'] = "Страница создана.  Вы можете добавить ссылку на %s вручную в файл wrapper.html."; // 5.1.0
+
 // Admin > Delete Member
 $LNG['a_del_header'] = "Удалить участника"; // 5.0
 $LNG['a_del_headers'] = "Удалить участников"; // 5.0
@@ -211,6 +232,24 @@ $LNG['a_del_done'] = "Участник был удален."; // 5.0
 $LNG['a_del_dones'] = "Участники были удалены."; // 5.0
 $LNG['a_del_warn'] = "Вы уверены, что хотите удалить %s?"; // 5.0
 $LNG['a_del_multi'] = "всего %s участников"; //5.0
+
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "Удалить фильтрующее слово"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Удалить фильтрующие слова"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "Фильтрующее слово удалено."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "Фильтрующие слова удалены."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "Вы уверены, что хотите удалить %s из списка фильтрующих слов?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "это %s слова"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "Ошибочный идентификатор фильтрующего слова. Попробуйте еще раз."; // 5.1.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "Удалить специализированную страницу"; // 5.1.0
+$LNG['a_del_page_headers'] = "Удалить специализированные страницы"; // 5.1.0
+$LNG['a_del_page_done'] = "Специализированная страница удалена."; // 5.1.0
+$LNG['a_del_page_dones'] = "Специализированные страницы удалены."; // 5.1.0
+$LNG['a_del_page_warn'] = "Вы уверены, что хотите удалить %s?"; //5.1.0
+$LNG['a_del_page_multi'] = "это %s участников"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "Неверный идентификатор специализированной страницы. Попробуйте еще раз."; // 5.1.0
 
 // Admin > Delete Review // 5.0
 $LNG['a_del_rev_header'] = "Удалить обзор"; // 5.0
@@ -227,6 +266,15 @@ $LNG['a_edit_site_is'] = "Это сайт"; // 4.0
 $LNG['a_edit_active'] = "Активен (в рейтинге)"; // 4.0
 $LNG['a_edit_inactive'] = "Неактивен (не в рейтинге)"; // 5.0
 $LNG['a_edit_edited'] = "Участник был отредактирован.";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Редактировать фильтрующее слово"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "Фильтрующее слово отредактировано."; // 5.1.0
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "Редактировать специализированную страницу"; // 5.1.0
+$LNG['a_edit_page_content'] = "Содержание - Вы можете использовать HTML"; // 5.1.0
+$LNG['a_edit_page_edited'] = "Страница отредактирована."; // 5.1.0
 
 // Admin > Edit Review // 5.0
 $LNG['a_edit_rev_header'] = "Редактировать обзор"; // 5.0
@@ -265,6 +313,21 @@ $LNG['a_man_all'] = "Выбрать все"; // 5.0
 $LNG['a_man_none'] = "Ничего не выбирать"; // 5.0
 $LNG['a_man_del_sel'] = "Удалить выбранные"; // 5.0
 
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "Фильтр ненормативной лексики"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Введите слово и ниже его замену. К примеру, Вы можете ввести \"мудак\" в поле слово и \"м***к\" в поле замены."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Точное совпадение заменит только полностью совпадающее слово. Глобальное совпадение заменит любую часть слова. К примеру, глобальная замена слова \"сук\" также изменит слова \"барсук\" и \"сукно\"."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Слово"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Замена"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "Совпадение"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "Точное"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Глобальное"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Фильтровать слово"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "Слово \"%s\" было добавлено в список ненормативной лексики."; // 5.1.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "Управление специализированными страницами"; // 5.1.0
+
 // Admin > Manage Reviews // 5.0
 $LNG['a_man_rev_header'] = "Управление обзорами сайтов"; // 5.0
 $LNG['a_man_rev_enter'] = "Чтобы редактировать обзор сайта, введите имя пользователя."; // 5.0
@@ -278,6 +341,7 @@ $LNG['a_menu_main'] = "В начало"; // 5.0
 $LNG['a_menu_approve'] = "Проверить новых участников";
 $LNG['a_menu_manage'] = "Управление участниками"; // 4.2.0
 $LNG['a_menu_settings'] = "Изменить настройки"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "Фильтр ненормативной лексики"; // 5.1.0
 $LNG['a_menu_skins'] = "Шаблоны и категории"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Проверить новые обзоры"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Редактировать обзоры"; // 5.0
@@ -286,12 +350,17 @@ $LNG['a_menu_delete_review'] = "Удалить обзор";
 $LNG['a_menu_logout'] = "Выйти";
 $LNG['a_menu_delete'] = "Удалить участника";
 $LNG['a_menu_edit'] = "Редактировать участника";
+$LNG['a_menu_create_page'] = "Создание специализированной страницы"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Управление специализированными страницами"; // 5.1.0
 $LNG['a_header_members'] = "Участники"; // 5.0
 $LNG['a_header_settings'] = "Установки"; // 5.0
 $LNG['a_header_reviews'] = "Описания"; // 5.0
+$LNG['a_header_pages'] = "Специализированные страницы"; // 5.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Изменить настройки";
+$LNG['a_s_help'] = "Помощь"; // 5.1.0
+
 $LNG['a_s_general'] = "Основные настройки";
 $LNG['a_s_admin_password'] = "Пароль администратора";
 $LNG['a_s_list_name'] = "Название Вашего рейтинга";
@@ -313,30 +382,32 @@ $LNG['a_s_ranking_method'] = "Метод рейтинга"; // 5.0
 $LNG['a_s_ranking_average'] = "Рейтинг по средним значениям или по %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Продвинутый участник - добавьте {$featured_member} в файл wrapper.html после включения этой установки.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Количество участников, которые отбражаются в виде _top";
-$LNG['a_s_ad_breaks'] = "Показывать рекламные вставки после следующих значений (разделить запятыми)";
+$LNG['a_s_ad_breaks'] = "Показывать рекламу после этих значений (разделяйте запятыми) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_member'] = "Настройки участников";
 $LNG['a_s_active_default'] = "Требуется ли разрешение новому участнику перед тем, как он начнет показываться в рейтинге";
 $LNG['a_s_active_default_review'] = "Нужно ли проверять новые обзоры перед тем, как они станут доступны всем";
 $LNG['a_s_delete_after'] = "После скольки дней бездействия удалять неактивных участников (если выбрать 0, удаляться не будут)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Посылать Вам email, когда новый участник зарегистрировался";
+$LNG['a_s_email_admin_on_join'] = "Отправлять e-mail администратору при регистрации нового участника"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Отправлять e-mail администратору при получении нового обзора"; // 5.1.0
 $LNG['a_s_max_banner_width'] = "Максимальная ширина баннера участника (если выбрать 0, ограничений не будет)"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "Максимальная высота баннера участника (если выбрать 0, ограничений не будет)"; // 4.2.0
 $LNG['a_s_default_banner'] = "Баннер по умолчанию для тех участников, кто не загрузил свой";
 
 $LNG['a_s_button'] = "Настройки кнопок рейтинга";
-$LNG['a_s_ranks_on_buttons'] = "Рейтинг на кнопках - для подробностей прочитайте <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">руководство</a>.  Выбирайте \"Кнопка со статистикой\" только, если Вы прочитали этот раздел руководства.  Если Вы выбрали \"Кнопка со статистикой\", значения всех остальных полей не окажут никакого воздействия на настройки."; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "Значения на кнопках -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "Кнопка со статистикой"; // 4.2.0
 $LNG['a_s_button_url'] = "При выборе \"Да\" или \"Нет\" - для показа на сайтах участников будет выбран URL кнопки по умолчанию"; // 4.0
 $LNG['a_s_button_dir'] = "Если выбрано \"Да\" - URL директории, в которой находится кнопка"; // 4.0
 $LNG['a_s_button_ext'] = "Если выбрано \"Да\" - расширение файла кнопки (gif, png, jpg, etc.)"; // 4.0
 $LNG['a_s_button_num'] = "Если выбрано \"Да\" - число кнопок, которое Вы сделаете"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Список похожий на выдачу Google - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_other'] = "Прочие настройки";
 $LNG['a_s_search'] = "Поиск";
 $LNG['a_s_time_offset'] = "Сдвиг времени рейтинга по отношению к времени сервера (в часах)";
 $LNG['a_s_gateway'] = "Шлюзовая страница для перенаправления накрутчиков";
-$LNG['a_s_captcha'] = "Проверка по вводу символов с изображения - защита против спамеров"; // 4.2.2
+$LNG['a_s_captcha'] = "Проверка на ввод символов при регистрации (защита от спаммеров) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Вкл";
 $LNG['a_s_off'] = "Выкл";
@@ -357,6 +428,7 @@ $LNG['a_skins_default_done'] = "Шаблон по умолчанию был выбран."; // 5.0
 $LNG['a_skins_categories_done'] = "Шаблон для категории был выбран."; // 5.0
 $LNG['a_skins_new_category_done'] = "Новая категория создана."; // 5.0
 $LNG['a_skins_delete_done'] = "Категория была удалена."; // 5.0
+$LNG['a_skins_delete_error'] = "Категория не может быть удалена, поскольку в рейтинге должна быть хоть одна категория."; // 5.1.0
 $LNG['a_skins_edit_done'] = "Категория была отредактирована."; // 5.0
 $LNG['a_skins_invalid_skin'] = "Неправильный шаблон: %s. Попробуйте еще раз."; // 5.0
 $LNG['a_skins_categories'] = "Категории"; // 5.0

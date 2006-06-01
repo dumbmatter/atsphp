@@ -87,6 +87,7 @@ $LNG['install_admin'] = "Admin";
 $LNG['install_manual'] = "Manual";
 $LNG['upgrade_header'] = "Upgrade";
 $LNG['upgrade_welcome'] = "Welcome to Aardvark Topsites PHP 5.  Before you upgrade, remember to back up your data.";
+$LNG['upgrade_version'] = "Please make sure that you are upgrading from version %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Upgrading is only supported for Aardvark Topsites PHP 4.1.0 or higher.";
 $LNG['upgrade_done'] = "Your topsites list has been upgraded.  Delete this directory now.";
 
@@ -162,7 +163,7 @@ $LNG['rate_review'] = "Review - No HTML allowed"; // 5.0
 $LNG['rate_thanks'] = "Thank you for your rating.";
 $LNG['rate_error'] = "You have already rated this site.";
 $LNG['rate_back'] = "Back to Stats";
-$LNG['rate_email_admin'] = "A new review has been posted at your topsites list.";
+$LNG['rate_email_admin'] = "A new review has been posted at your topsites list."; // 5.1.0
 
 // Search
 $LNG['search_header'] = "Search";
@@ -358,7 +359,7 @@ $LNG['a_header_pages'] = "Custom Pages"; // 5.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "Change Settings";
-$LNG['a_s_help'] = "Help";
+$LNG['a_s_help'] = "Help"; // 5.1.0
 
 $LNG['a_s_general'] = "General Settings";
 $LNG['a_s_admin_password'] = "Admin password";

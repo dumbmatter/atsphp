@@ -21,7 +21,7 @@ FEATURES
 - RSS feed of the top 10 sites (overall and by category) via feed.php
 - New admin stuff:
   - Topical links to the manual for confusing options on the settings page
-  - Google-friendly links is now an option
+  - Google-friendly links can be disabled
   - Option to email admin when a new review is posted
   - Custom pages: easily add static content to integrate with your topsites (FAQ, rules, etc.)
   - Profanity filter

@@ -31,7 +31,7 @@ $FORM = array_merge($_GET, $_POST);
 if (!isset($FORM['l'])) {
   $TMPL['content'] = <<<EndHTML
 Please select your language.<br /><br />
-<form action="upgrade.php" method="get">
+<form action="upgrade-4.x.php" method="get">
 <select name="l">
 EndHTML;
   $languages = array();
@@ -64,10 +64,13 @@ elseif (!isset($FORM['submit'])) {
 
   require_once("{$CONF['path']}/config.php");
 
+  $upgrade_version = sprintf($LNG['upgrade_version'], '4.x');
+
   if (strpos($TMPL['version'], '4.2.') !== false || strpos($TMPL['version'], '4.1.') !== false) {
     $TMPL['content'] = <<<EndHTML
 {$LNG['upgrade_welcome']}<br /><br />
-<form action="upgrade.php" method="post">
+{$upgrade_version}<br /><br />
+<form action="upgrade-4.x.php" method="post">
 <input name="l" type="hidden" value="{$FORM['l']}" />
 <input name="submit" type="submit" value="{$LNG['upgrade_header']}" />
 </form>
@@ -140,6 +143,7 @@ EndHTML;
                     `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
+                    `email_admin_on_review` tinyint(1) default 0,
                     `max_banner_width` int(4) default 0,
                     `max_banner_height` int(4) default 0,
                     `default_banner` varchar(255) default '',
@@ -148,6 +152,7 @@ EndHTML;
                     `button_dir` varchar(255) default '',
                     `button_ext` varchar(255) default 'png',
                     `button_num` int(3) default 5,
+                    `google_friendly_links` tinyint(1) default '1',
                     `search` tinyint(1) default 1,
                     `time_offset` int(2) default 0,
                     `gateway` tinyint(1) default 1,
@@ -155,6 +160,21 @@ EndHTML;
                   )", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_name, list_url, default_language, your_email, num_list, ranking_period, ranking_method, featured_member, top_skin_num, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, time_offset, gateway, captcha)
                   VALUES ('{$TMPL['list_name']}', '{$TMPL['list_url']}', '{$default_language}', '{$CONFIG['youremail']}', '{$CONFIG['numlist']}', '{$ranking_period}', '{$ranking_method}', '{$CONFIG['featured']}', '{$CONFIG['top']}', '{$CONFIG['active_default']}', '{$CONFIG['delete_after']}', '{$CONFIG['email_admin_on_join']}', '{$CONFIG['max_banner_width']}', '{$CONFIG['max_banner_height']}', '{$CONFIG['defbanner']}', '{$CONFIG['ranks_on_buttons']}', '{$CONFIG['button_url']}', '{$CONFIG['button_dir']}', '{$CONFIG['button_ext']}', '{$CONFIG['button_num']}', '{$CONFIG['search']}', '{$CONFIG['timeoffset']}', '{$CONFIG['gateway']}', '{$CONFIG['captcha']}')", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
+                    `id` int(10) unsigned,
+                    `word` varchar(255),
+                    `replacement` varchar(255),
+                    `matching` tinyint(1),
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
+                    `id` varchar(255) default '',
+                    `title` varchar(255) default '',
+                    `content` text,
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
 
       list($admin_password) = $DB->fetch("SELECT admin_password FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
       $DB->query("DROP TABLE {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
@@ -182,8 +202,7 @@ EndHTML;
                     `unq_in` tinyint(1) default 0,
                     `unq_out` tinyint(1) default 0,
                     `rate` tinyint(1) default 0,
-                    KEY `ip_address` (`ip_address`),
-                    KEY `username` (`username`)
+                    PRIMARY KEY  (`ip_address`,`username`)
                   )", __FILE__, __LINE__);
 
       $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_reviews`
@@ -196,7 +215,7 @@ EndHTML;
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sessions` (
                     `type` varchar(7) default '',
                     `sid` varchar(32) default '' NOT NULL,
-                    `time` int(10) unsigned default '',
+                    `time` int(10) unsigned default 0,
                     `data` varchar(255) default '',
                     PRIMARY KEY  (`sid`)
                   )", __FILE__, __LINE__);
@@ -213,6 +232,7 @@ EndHTML;
                     `email` varchar(255) default '',
                     `join_date` date default '0000-00-00',
                     `active` tinyint(1) default 1,
+                    `openid` tinyint(1) default 0,
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
@@ -459,7 +479,7 @@ EndHTML;
 {$LNG['upgrade_done']}<br /><br />
 <a href="{$TMPL['list_url']}/">{$LNG['install_your']}</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a>
+<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br />
 EndHTML;
     }
     else {
@@ -481,6 +501,7 @@ EndHTML;
 
 <div id="wrapper">
 	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
-	<div id="content"><?php echo $TMPL['content']; ?></div>
+	<div id="content"><?php echo $TMPL['content']; ?><br /></div>
+</div>
 </body>
 </html>
