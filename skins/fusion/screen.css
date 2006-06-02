@@ -159,11 +159,6 @@ a:hover { color: #333; }
 	color: #000;
 	background-color: #DCDCDC;
 }
-.join_edit_error {
-	background-color: #f0f0f0;
-	border: 1px solid #f00;
-	padding: 2px;
-}
 
 table { width: 100%; }
 /* No Borders Images */
@@ -172,6 +167,12 @@ img { border: 0; }
 textarea, input {
 	font-family: sans-serif;
 	font-size: 12px;
+}
+
+.join_edit_error {
+	background-color: #f0f0f0;
+	border: 1px solid #f00;
+	padding: 2px;
 }
 
 a.help { color: #f00; font-weight: bold; text-decoration: none; }

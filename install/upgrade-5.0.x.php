@@ -38,18 +38,18 @@ EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
     $file = str_replace('.php', '', $file);
-    array_push($languages, $file);
-  }
-  natcasesort($languages);
-  foreach ($languages as $file) {
     if (is_file("{$CONF['path']}/languages/{$file}.php")) {
       require "{$CONF['path']}/languages/{$file}.php";
-      if ($file == 'english') {
-        $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
-      }
-      else {
-        $TMPL['content'] .= "<option value=\"{$file}\">{$translation}</option>\n";
-      }
+      $languages[$file] = $translation;
+    }
+  }
+  natcasesort($languages);
+  foreach ($languages as $file => $translation) {
+    if ($file == 'english') {
+      $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
+    }
+    else {
+      $TMPL['content'] .= "<option value=\"{$file}\">{$translation}</option>\n";
     }
   }
   require "{$CONF['path']}/languages/english.php";
@@ -105,7 +105,7 @@ else {
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD email_admin_on_review tinyint(1) default 0 AFTER email_admin_on_join", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD google_friendly_links tinyint(1) default 1 AFTER button_num", __FILE__, __LINE__);
 
-    list($TMPL['list_url'] = $DB->fetch("SELECT list_url FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
+    list($TMPL['list_url']) = $DB->fetch("SELECT list_url FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 
     $TMPL['content'] = <<<EndHTML
 {$LNG['upgrade_done']}<br /><br />

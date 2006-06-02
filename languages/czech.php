@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Čeština';
+$translation = 'Česky';
 $translator_name = 'Robert Adamek';
 $translator_email = 'admin@ultima.cz';
 $translator_url = 'http://www.ultima.cz';

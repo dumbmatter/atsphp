@@ -89,3 +89,12 @@ a.table_top {
 a.table_top:hover, a.table_top:active {
   color: #c0c0c0;
 }
+
+.join_edit_error {
+	background-color: #f0f0f0;
+	border: 1px solid #f00;
+	padding: 2px;
+}
+
+a.help { color: #f00; font-weight: bold; text-decoration: none; }
+a.help:hover { color: #333; }

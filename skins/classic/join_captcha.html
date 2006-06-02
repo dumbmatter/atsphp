@@ -1,4 +1,5 @@
-<label>{$lng->join_enter_text}<br />
+<div class="{$error_style_captcha}"><label>{$lng->join_enter_text}<br />
 <img src="{$list_url}/captcha.php" /><br />
-<input name="captcha" type="text" size="50" maxlength="6" /><br /><br />
-</label>
+<input name="captcha" type="text" size="50" maxlength="6" />
+{$error_captcha}
+</label></div><br />

@@ -38,18 +38,18 @@ EndHTML;
   $dir = opendir("{$CONF['path']}/languages/");
   while (false !== ($file = readdir($dir))) {
     $file = str_replace('.php', '', $file);
-    array_push($languages, $file);
-  }
-  natcasesort($languages);
-  foreach ($languages as $file) {
     if (is_file("{$CONF['path']}/languages/{$file}.php")) {
       require "{$CONF['path']}/languages/{$file}.php";
-      if ($file == 'english') {
-        $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
-      }
-      else {
-        $TMPL['content'] .= "<option value=\"{$file}\">{$translation}</option>\n";
-      }
+      $languages[$file] = $translation;
+    }
+  }
+  natcasesort($languages);
+  foreach ($languages as $file => $translation) {
+    if ($file == 'english') {
+      $TMPL['content'] .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
+    }
+    else {
+      $TMPL['content'] .= "<option value=\"{$file}\">{$translation}</option>\n";
     }
   }
   require "{$CONF['path']}/languages/english.php";

@@ -1,24 +1,28 @@
 <form action="index.php?a=user_cp&amp;b=edit" method="post">
 <fieldset>
 <legend>{$lng->join_website}</legend>
-<label>{$lng->g_url}<br />
-<input type="text" name="url" size="50" value="{$url}" /><br /><br />
-</label>
-<label>{$lng->g_title}<br />
-<input type="text" name="title" size="50" value="{$title}" /><br /><br />
-</label>
+<div class="{$error_style_url}"><label>{$lng->g_url}<br />
+<input type="text" name="url" size="50" value="{$url}" />
+{$error_url}
+</label></div><br />
+<div class="{$error_style_title}"><label>{$lng->g_title}<br />
+<input type="text" name="title" size="50" value="{$title}" />
+{$error_title}
+</label></div><br />
 <label>{$lng->g_description}<br />
 <textarea cols="40" rows="5" name="description">{$description}</textarea><br /><br />
 </label>
 <label>{$lng->g_category}<br />
 {$categories_menu}<br /><br />
 </label>
-<label>{$lng->g_banner_url}<br />
-<input type="text" name="banner_url" size="50" value="{$banner_url}" /><br /><br />
-</label>
-<label>{$lng->g_email}<br />
+<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url}<br />
+<input type="text" name="banner_url" size="50" value="{$banner_url}" />
+{$error_banner_url}
+</label></div><br />
+<div class="{$error_style_email}"><label>{$lng->g_email}<br />
 <input type="text" name="email" size="50" value="{$email}" />
-</label>
+{$error_email}
+</label></div>
 </fieldset>
 
 <fieldset>

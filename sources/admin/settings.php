@@ -42,18 +42,18 @@ class settings extends base {
     $dir = opendir("{$CONF['path']}/languages/");
     while (false !== ($file = readdir($dir))) {
       $file = str_replace('.php', '', $file);
-      array_push($languages, $file);
-   }
-    natcasesort($languages);
-    foreach ($languages as $file) {
       if (is_file("{$CONF['path']}/languages/{$file}.php")) {
         require "{$CONF['path']}/languages/{$file}.php";
-        if ($file == $CONF['default_language']) {
-          $languages_menu .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
-        }
-        else {
-          $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
-        }
+        $languages[$file] = $translation;
+      }
+    }
+    natcasesort($languages);
+    foreach ($languages as $file => $translation) {
+      if ($file == $CONF['default_language']) {
+        $languages_menu .= "<option value=\"{$file}\" selected=\"selected\">{$translation}</option>\n";
+      }
+      else {
+        $languages_menu .= "<option value=\"{$file}\">{$translation}</option>\n";
       }
     }
     require "{$CONF['path']}/languages/{$CONF['default_language']}.php";
@@ -327,7 +327,7 @@ EndHTML;
                 ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num}, google_friendly_links = {$google_friendly_links},
                 search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}
                ", __FILE__, __LINE__);
- 
+
     $TMPL['admin_content'] = $LNG['a_s_updated'];
   }
 }

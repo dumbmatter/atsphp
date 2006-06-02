@@ -28,29 +28,25 @@ rss icon in wrapper
 version number in sql database (for upgrader to check)
 new gateway design
 graphs
+timestamp for jointime
 
 5.1.0
   FOR BETA:
-  - languages: english only
-  - no upgrader
   - no mysqli
       mysqli plugin
       - offers little/no advantage
 
   FOR RC:
-  - classic skin
   - update/test languages
-    - UPDATED
+    - TESTED
       czech
       danish
+      english
       romanian
       russian
       spanish
-    - TESTED
-      english
-    - get real name of language ala wikipedia (dansk not danish)
-  - upgrader
-    - test 5.0.3 again
+    - check russian encoding in svn
+    - get real name of language ala wikipedia, debian.org (dansk not danish)
 
   FOR FINAL
   changes.txt
@@ -60,22 +56,32 @@ graphs
 
 
   SVN ADD
-  languages/swedish.php languages/czech.php install/upgrade-4.x.php install/upgrade-5.0.x.php
   SVN DELETE
-  install/upgrade.php
 
   THINGS TO DO IN UPGRADE
 
     SKIN CHANGES
+overwrite your old files (probably):
     join_captcha.html
     join_form.html
     join_finish.html
     edit_form.html
     link_code.html
     admin.html
+might have a little integration work to do:
     search_results.html
     wrapper.html - rss stuff only
     screen.css
+.join_edit_error {
+	background-color: #f0f0f0;
+	border: 1px solid #f00;
+	padding: 2px;
+}
+
+a.help { color: #f00; font-weight: bold; text-decoration: none; }
+a.help:hover { color: #333; }
+
+
     SKIN NEW
     rate_email_admin.html
 
@@ -89,20 +95,12 @@ graphs
     ats_custom_pages, ats_bad_words
 
     MANUAL CHANGES
-    archive old manual and put up links for old manuals
-    - /manual/5.0.x/
-    {$category_url} in stats.html, table_row.html, and table_top_row.html
-    info about feed.php on the syndication page
-    {$feed} in wrapper.html: url to the rss feed for this category
-    upgrading instructions
-    - upgrade.php is now renamed!!!
-from 5.0.x:
-   1. Delete all your old Aardvark Topsites PHP files except settings_sql.php
-   2. Upload all the new files (except settings_sql.php) to the same directory as your old settings_sql.php
-   3. Go to install/upgrade-5.0.x.php in your browser and follow the instructions there
-   4. Delete the install directory when you are done
+    skin upgrade in upgrade instructions
+    skins tutorial: key tags and detailed explainations for wrapper and table
 
     ON RELEASE
+    create atsphp-x.x.x.zip from public_html/atsphp
+    - remove unneccesary files and invalid languages
     Upload atsphp-x.x.x.zip
     Upload topsitesphp/version.txt
     Post news at:

@@ -1,6 +1,15 @@
-<a href="{$list_url}/">
+<a href="{$list_url}/{$verbose_link}">
 <img src="{$list_url}/button.php?u={$username}" alt="{$list_name}" border="0" />
 </a><br /><br />
-&lt;a href="{$list_url}/"><br />
-&lt;img src="{$list_url}/button.php?u={$username}" alt="{$list_name}" border="0" /><br />
-&lt;/a>
+<script type="text/javascript">
+function select_all() {
+  var text = document.code.code;
+  text.focus();
+  text.select();
+}
+</script>
+<form name="code">
+<textarea readonly="readonly" name="code" rows="6" style="width: 100%;" onclick="select_all();">&lt;a href="{$list_url}/{$verbose_link}">
+&lt;img src="{$list_url}/button.php?u={$username}" alt="{$list_name}" border="0" />
+&lt;/a></textarea>
+</form>
