@@ -56,6 +56,10 @@ else {
   $category_url = '';
 }
 
+$TMPL['category'] = htmlspecialchars($TMPL['category']);
+$CONF['list_url'] = htmlspecialchars($CONF['list_url']);
+$CONF['list_name'] = htmlspecialchars($CONF['list_name']);
+
 // Make ORDER BY clause
 require_once("{$CONF['path']}/sources/misc/classes.php");
 $order_by = base::rank_by()." DESC";
@@ -87,6 +91,8 @@ $result = $DB->select_limit("SELECT *
 
 <?php
 for($rank = 1; $row = $DB->fetch_array($result); $rank++) {
+  $row['title'] = htmlspecialchars($row['title']);
+  $row['description'] = htmlspecialchars($row['description']);
 ?>
 
 		<item>
