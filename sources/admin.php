@@ -139,33 +139,40 @@ class admin extends base {
       $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews\">".sprintf($LNG['a_main_approve_revs'], $num_waiting_rev)."</a></b><br /><br />";
     }
 
+    if ($CONF['ranking_period'] == 'overall') {
+      $ranking_period = 'monthly';
+    }
+    else {
+      $ranking_period = $CONF['ranking_period'];
+    }
+
     list($TMPL["unq_pv_avg_daily"], $TMPL["tot_pv_avg_daily"], $TMPL["unq_in_avg_daily"], $TMPL["tot_in_avg_daily"], $TMPL["unq_out_avg_daily"], $TMPL["tot_out_avg_daily"],
          $TMPL["unq_pv_0_daily"], $TMPL["unq_pv_1_daily"], $TMPL["tot_pv_0_daily"], $TMPL["tot_pv_1_daily"],
          $TMPL["unq_in_0_daily"], $TMPL["unq_in_1_daily"], $TMPL["tot_in_0_daily"], $TMPL["tot_in_1_daily"],
          $TMPL["unq_out_0_daily"], $TMPL["unq_out_1_daily"], $TMPL["tot_out_0_daily"], $TMPL["tot_out_1_daily"],
          $TMPL['unq_pv_overall'], $TMPL['tot_pv_overall'], $TMPL['unq_in_overall'], $TMPL['tot_in_overall'], $TMPL['unq_out_overall'], $TMPL['tot_out_overall']
          ) = $DB->fetch("SELECT
-                         ROUND(SUM(unq_pv_0_{$CONF['ranking_period']} + unq_pv_1_{$CONF['ranking_period']} + unq_pv_2_{$CONF['ranking_period']} + unq_pv_3_{$CONF['ranking_period']} + unq_pv_4_{$CONF['ranking_period']} + unq_pv_5_{$CONF['ranking_period']} + unq_pv_6_{$CONF['ranking_period']} + unq_pv_7_{$CONF['ranking_period']} + unq_pv_8_{$CONF['ranking_period']} + unq_pv_9_{$CONF['ranking_period']}) / 10, 0),
-                         ROUND(SUM(tot_pv_0_{$CONF['ranking_period']} + tot_pv_1_{$CONF['ranking_period']} + tot_pv_2_{$CONF['ranking_period']} + tot_pv_3_{$CONF['ranking_period']} + tot_pv_4_{$CONF['ranking_period']} + tot_pv_5_{$CONF['ranking_period']} + tot_pv_6_{$CONF['ranking_period']} + tot_pv_7_{$CONF['ranking_period']} + tot_pv_8_{$CONF['ranking_period']} + tot_pv_9_{$CONF['ranking_period']}) / 10, 0),
-                         ROUND(SUM(unq_in_0_{$CONF['ranking_period']} + unq_in_1_{$CONF['ranking_period']} + unq_in_2_{$CONF['ranking_period']} + unq_in_3_{$CONF['ranking_period']} + unq_in_4_{$CONF['ranking_period']} + unq_in_5_{$CONF['ranking_period']} + unq_in_6_{$CONF['ranking_period']} + unq_in_7_{$CONF['ranking_period']} + unq_in_8_{$CONF['ranking_period']} + unq_in_9_{$CONF['ranking_period']}) / 10, 0),
-                         ROUND(SUM(tot_in_0_{$CONF['ranking_period']} + tot_in_1_{$CONF['ranking_period']} + tot_in_2_{$CONF['ranking_period']} + tot_in_3_{$CONF['ranking_period']} + tot_in_4_{$CONF['ranking_period']} + tot_in_5_{$CONF['ranking_period']} + tot_in_6_{$CONF['ranking_period']} + tot_in_7_{$CONF['ranking_period']} + tot_in_8_{$CONF['ranking_period']} + tot_in_9_{$CONF['ranking_period']}) / 10, 0),
-                         ROUND(SUM(unq_out_0_{$CONF['ranking_period']} + unq_out_1_{$CONF['ranking_period']} + unq_out_2_{$CONF['ranking_period']} + unq_out_3_{$CONF['ranking_period']} + unq_out_4_{$CONF['ranking_period']} + unq_out_5_{$CONF['ranking_period']} + unq_out_6_{$CONF['ranking_period']} + unq_out_7_{$CONF['ranking_period']} + unq_out_8_{$CONF['ranking_period']} + unq_out_9_{$CONF['ranking_period']}) / 10, 0),
-                         ROUND(SUM(tot_out_0_{$CONF['ranking_period']} + tot_out_1_{$CONF['ranking_period']} + tot_out_2_{$CONF['ranking_period']} + tot_out_3_{$CONF['ranking_period']} + tot_out_4_{$CONF['ranking_period']} + tot_out_5_{$CONF['ranking_period']} + tot_out_6_{$CONF['ranking_period']} + tot_out_7_{$CONF['ranking_period']} + tot_out_8_{$CONF['ranking_period']} + tot_out_9_{$CONF['ranking_period']}) / 10, 0),
-                         SUM(unq_pv_0_{$CONF['ranking_period']}), SUM(unq_pv_1_{$CONF['ranking_period']}), SUM(tot_pv_0_{$CONF['ranking_period']}), SUM(tot_pv_1_{$CONF['ranking_period']}),
-                         SUM(unq_in_0_{$CONF['ranking_period']}), SUM(unq_in_1_{$CONF['ranking_period']}), SUM(tot_in_0_{$CONF['ranking_period']}), SUM(tot_in_1_{$CONF['ranking_period']}),
-                         SUM(unq_out_0_{$CONF['ranking_period']}), SUM(unq_out_1_{$CONF['ranking_period']}), SUM(tot_out_0_{$CONF['ranking_period']}), SUM(tot_out_1_{$CONF['ranking_period']}),
+                         ROUND(SUM(unq_pv_0_{$ranking_period} + unq_pv_1_{$ranking_period} + unq_pv_2_{$ranking_period} + unq_pv_3_{$ranking_period} + unq_pv_4_{$ranking_period} + unq_pv_5_{$ranking_period} + unq_pv_6_{$ranking_period} + unq_pv_7_{$ranking_period} + unq_pv_8_{$ranking_period} + unq_pv_9_{$ranking_period}) / 10, 0),
+                         ROUND(SUM(tot_pv_0_{$ranking_period} + tot_pv_1_{$ranking_period} + tot_pv_2_{$ranking_period} + tot_pv_3_{$ranking_period} + tot_pv_4_{$ranking_period} + tot_pv_5_{$ranking_period} + tot_pv_6_{$ranking_period} + tot_pv_7_{$ranking_period} + tot_pv_8_{$ranking_period} + tot_pv_9_{$ranking_period}) / 10, 0),
+                         ROUND(SUM(unq_in_0_{$ranking_period} + unq_in_1_{$ranking_period} + unq_in_2_{$ranking_period} + unq_in_3_{$ranking_period} + unq_in_4_{$ranking_period} + unq_in_5_{$ranking_period} + unq_in_6_{$ranking_period} + unq_in_7_{$ranking_period} + unq_in_8_{$ranking_period} + unq_in_9_{$ranking_period}) / 10, 0),
+                         ROUND(SUM(tot_in_0_{$ranking_period} + tot_in_1_{$ranking_period} + tot_in_2_{$ranking_period} + tot_in_3_{$ranking_period} + tot_in_4_{$ranking_period} + tot_in_5_{$ranking_period} + tot_in_6_{$ranking_period} + tot_in_7_{$ranking_period} + tot_in_8_{$ranking_period} + tot_in_9_{$ranking_period}) / 10, 0),
+                         ROUND(SUM(unq_out_0_{$ranking_period} + unq_out_1_{$ranking_period} + unq_out_2_{$ranking_period} + unq_out_3_{$ranking_period} + unq_out_4_{$ranking_period} + unq_out_5_{$ranking_period} + unq_out_6_{$ranking_period} + unq_out_7_{$ranking_period} + unq_out_8_{$ranking_period} + unq_out_9_{$ranking_period}) / 10, 0),
+                         ROUND(SUM(tot_out_0_{$ranking_period} + tot_out_1_{$ranking_period} + tot_out_2_{$ranking_period} + tot_out_3_{$ranking_period} + tot_out_4_{$ranking_period} + tot_out_5_{$ranking_period} + tot_out_6_{$ranking_period} + tot_out_7_{$ranking_period} + tot_out_8_{$ranking_period} + tot_out_9_{$ranking_period}) / 10, 0),
+                         SUM(unq_pv_0_{$ranking_period}), SUM(unq_pv_1_{$ranking_period}), SUM(tot_pv_0_{$ranking_period}), SUM(tot_pv_1_{$ranking_period}),
+                         SUM(unq_in_0_{$ranking_period}), SUM(unq_in_1_{$ranking_period}), SUM(tot_in_0_{$ranking_period}), SUM(tot_in_1_{$ranking_period}),
+                         SUM(unq_out_0_{$ranking_period}), SUM(unq_out_1_{$ranking_period}), SUM(tot_out_0_{$ranking_period}), SUM(tot_out_1_{$ranking_period}),
                          SUM(unq_pv_overall), SUM(tot_pv_overall), SUM(unq_in_overall), SUM(tot_in_overall), SUM(unq_out_overall), SUM(tot_out_overall)
                          FROM {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
 
-    if ($CONF['ranking_period'] == 'daily') {
+    if ($ranking_period == 'daily') {
       $today = $LNG['g_today'];
       $yesterday = $LNG['g_yesterday'];
     }
-    elseif ($CONF['ranking_period'] == 'weekly') {
+    elseif ($ranking_period == 'weekly') {
       $today = $LNG['g_this_week'];
       $yesterday = $LNG['g_last_week'];
     }
-    elseif ($CONF['ranking_period'] == 'monthly') {
+    elseif ($ranking_period == 'monthly') {
       $today = $LNG['g_this_month'];
       $yesterday = $LNG['g_last_month'];
     }
@@ -174,7 +181,7 @@ class admin extends base {
 <div class="table_border">
 <table cellspacing="1" cellpadding="1">
 	<tr>
-		<th class="stats_top">{$LNG["g_{$CONF['ranking_period']}"]}</th>
+		<th class="stats_top">{$LNG["g_{$ranking_period}"]}</th>
 		<th class="stats_top">{$LNG['g_average']}</td>
 		<th class="stats_top">{$today}</td>
 		<th class="stats_top">{$yesterday}</td>
