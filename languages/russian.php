@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Русский';
+$translation = 'Russian (Русский)';
 $translator_name = 'Andrey Kanevsky';
 $translator_email = 'admin@americaru.com';
 $translator_url = 'http://www.americaru.com/';
@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "1 обзор ждет разрешения."; // 5
 $LNG['a_main_approve_revs'] = "%s обзоров ждет разрешения."; // 5.0
 $LNG['a_main_your'] = "Ваша версия"; // 5.0
 $LNG['a_main_latest'] = "Последняя версия"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP веб сайт</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP веб сайт</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Управление участниками"; // 5.0

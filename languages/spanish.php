@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Español';
+$translation = 'Spanish (Español)';
 $translator_name = 'Eduardo Sainz';
 $translator_email = 'eduardosainz@gmail.com';
 $translator_url = 'http://www.encastellano.org';
@@ -248,7 +248,7 @@ $LNG['a_del_page_headers'] = "Borrar páginas personalizadas"; // 5.1.0
 $LNG['a_del_page_done'] = "La página personalizada ha sido borrada."; // 5.1.0
 $LNG['a_del_page_dones'] = "Las páginas personalizadas han sido borradas."; // 5.1.0
 $LNG['a_del_page_warn'] = "¿Estás seguro de querer borrar %s?"; //5.1.0
-$LNG['a_del_page_multi'] = "estos %s miembros"; //5.1.0
+$LNG['a_del_page_multi'] = "estos %s páginas"; //5.1.0
 $LNG['a_del_page_invalid_id'] = "La ID de la página es inválida. Por favor vuelve a intentarlo."; // 5.1.0
 
 // Admin > Delete Review // 5.0
@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "Hay un comentario esperando ser aprobado."; // 5.0
 $LNG['a_main_approve_revs'] = "Hay %s comentarios esperando ser aprobados."; // 5.0
 $LNG['a_main_your'] = "Tu versión"; // 5.0
 $LNG['a_main_latest'] = "Ultima versión"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Web de Aardvark Topsites PHP</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Web de Aardvark Topsites PHP</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Administrar miembros"; // 5.0

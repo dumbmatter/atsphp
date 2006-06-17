@@ -44,8 +44,10 @@ class edit extends join_edit {
   function form() {
     global $CONF, $DB, $LNG, $TMPL;
 
-    $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-    $TMPL = array_merge($TMPL, $row);
+    if (!isset($TMPL['url'])) {
+      $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+      $TMPL = array_merge($TMPL, $row);
+    }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
@@ -67,28 +69,39 @@ class edit extends join_edit {
     }
     $TMPL['active_menu'] .= '</select>';
 
+    if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
+    if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
+    if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
+    if (isset($TMPL['category'])) { $TMPL['category'] = stripslashes($TMPL['category']); }
+    if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
+    if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
+
     $TMPL['admin_content'] = <<<EndHTML
 <form action="index.php?a=admin&amp;b=edit&amp;u={$TMPL['username']}" method="post">
 <fieldset>
 <legend>{$LNG['join_website']}</legend>
-<label>{$LNG['g_url']}<br />
-<input type="text" name="url" size="50" value="{$TMPL['url']}" /><br /><br />
-</label>
-<label>{$LNG['g_title']}<br />
-<input type="text" name="title" size="50" value="{$TMPL['title']}" /><br /><br />
-</label>
+<div class="{$TMPL['error_style_url']}"><label>{$LNG['g_url']}<br />
+<input type="text" name="url" size="50" value="{$TMPL['url']}" />
+{$TMPL['error_url']}
+</label></div><br />
+<div class="{$TMPL['error_style_title']}"><label>{$LNG['g_title']}<br />
+<input type="text" name="title" size="50" value="{$TMPL['title']}" />
+{$TMPL['error_title']}
+</label></div><br />
 <label>{$LNG['g_description']}<br />
 <textarea cols="40" rows="5" name="description">{$TMPL['description']}</textarea><br /><br />
 </label>
 <label>{$LNG['g_category']}<br />
 {$TMPL['categories_menu']}<br /><br />
 </label>
-<label>{$LNG['g_banner_url']}<br />
-<input type="text" name="banner_url" size="50" value="{$TMPL['banner_url']}" /><br /><br />
-</label>
-<label>{$LNG['g_email']}<br />
+<div class="{$TMPL['error_style_banner_url']}"><label>{$LNG['g_banner_url']}<br />
+<input type="text" name="banner_url" size="50" value="{$TMPL['banner_url']}" />
+{$TMPL['error_banner_url']}
+</label></div><br />
+<div class="{$TMPL['error_style_email']}"><label>{$LNG['g_email']}<br />
 <input type="text" name="email" size="50" value="{$TMPL['email']}" />
-</label>
+{$TMPL['error_email']}
+</label></div>
 </fieldset>
 
 <fieldset>
@@ -108,14 +121,15 @@ EndHTML;
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
+    $TMPL['url'] = $DB->escape($FORM['url']);
+    $TMPL['title'] = $DB->escape($FORM['title']);
+    $TMPL['description'] = $DB->escape($FORM['description']);
+    $TMPL['category'] = $DB->escape($FORM['category']);
+    $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
+    $TMPL['email'] = $DB->escape($FORM['email']);
+    $TMPL['active'] = intval($FORM['active']);
+
     if ($this->check_input('edit')) {
-      $TMPL['url'] = $DB->escape($FORM['url']);
-      $TMPL['title'] = $DB->escape($FORM['title']);
-      $TMPL['description'] = $DB->escape($FORM['description']);
-      $TMPL['category'] = $DB->escape($FORM['category']);
-      $TMPL['banner_url'] = $DB->escape($FORM['banner_url']);
-      $TMPL['email'] = $DB->escape($FORM['email']);
-      $TMPL['active'] = intval($FORM['active']);
       if ($FORM['password']) {
         $password = md5($FORM['password']);
         $password_sql = ", password = '{$password}'";
@@ -130,6 +144,9 @@ EndHTML;
       $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}', active = {$TMPL['active']}{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
  
       $TMPL['admin_content'] = $LNG['a_edit_edited'];
+    }
+    else {
+      $this->form();
     }
   }
 }

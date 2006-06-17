@@ -73,8 +73,7 @@ class admin extends base {
         }
       }
       else {
-        $session->delete($_COOKIE['atsphp_sid_admin'], 'atsphp_sid_admin');
-        $TMPL['content'] = $LNG['g_session_expired'];
+        $this->login();
       }
     }
   }

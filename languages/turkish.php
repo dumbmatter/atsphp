@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -16,353 +16,425 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
+
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Turkish';
-$translator_name = 'Ergün Acar';
+$translation = 'Turkish (TÃ¼rkÃ§e)';
+$translator_name = 'ErgÃ¼n Acar';
 $translator_email = 'admin@letreset.com';
 $translator_url = 'http://www.weblistele.com/';
 
 // Global
 $LNG['g_form_submit_short'] = "Git";
-$LNG['g_username'] = "Kullanıcı";
+$LNG['g_username'] = "KullanÄ±cÄ±";
 $LNG['g_url'] = "URL";
-$LNG['g_title'] = "Başlık";
-$LNG['g_description'] = "Açıklama";
+$LNG['g_title'] = "BaÅŸlÄ±k";
+$LNG['g_description'] = "AÃ§Ä±klama";
 $LNG['g_category'] = "Kategori"; // 4.1.0
 $LNG['g_email'] = "E-mail";
 $LNG['g_banner_url'] = "Banner URL";
-$LNG['g_password'] = "Şifre";
+$LNG['g_password'] = "Åifre";
 $LNG['g_average'] = "Ortalama";
-$LNG['g_today'] = "Bugün";
-$LNG['g_yesterday'] = "Dün";
-$LNG['g_daily'] = "Günlük"; // 5.0
+$LNG['g_today'] = "BugÃ¼n";
+$LNG['g_yesterday'] = "DÃ¼n";
+$LNG['g_daily'] = "GÃ¼nlÃ¼k"; // 5.0
 $LNG['g_this_month'] = "Bu ay"; // 5.0
-$LNG['g_last_month'] = "Geçen ay"; // 5.0
-$LNG['g_monthly'] = "Aylık"; // 5.0
+$LNG['g_last_month'] = "GeÃ§en ay"; // 5.0
+$LNG['g_monthly'] = "AylÄ±k"; // 5.0
 $LNG['g_this_week'] = "Bu Hafta"; // 5.0
-$LNG['g_last_week'] = "Geçen Hafta"; // 5.0
-$LNG['g_weekly'] = "Haftalık"; // 5.0
-$LNG['g_pv'] = 'Gösterimler'; // 5.0
+$LNG['g_last_week'] = "GeÃ§en Hafta"; // 5.0
+$LNG['g_weekly'] = "HaftalÄ±k"; // 5.0
+$LNG['g_pv'] = 'GÃ¶sterimler'; // 5.0
 $LNG['g_overall'] = 'Toplam'; // 5.0
-$LNG['g_in'] = 'Girişler'; // 5.0
-$LNG['g_out'] = 'Çıkışlar'; // 5.0
-$LNG['g_unq_pv'] = "Tekil sayfa gösterimi"; // 5.0
-$LNG['g_tot_pv'] = "Toplam sayfa gösterimi"; // 5.0
-$LNG['g_unq_in'] = "Tekil girişler"; // 5.0
-$LNG['g_tot_in'] = "Toplam girişler"; // 5.0
-$LNG['g_unq_out'] = "Tekil çıkışlar"; // 5.0
-$LNG['g_tot_out'] = "Toplam çıkışlar"; // 5.0
-$LNG['g_invalid_u_or_p'] = "Yanlış kullanıcı adı ya da şifre. Lütfen tekrar deneyin."; // 5.0
-$LNG['g_invalid_u'] = "Yanlış kullanıcı adı.  Lütfen tekrar deneyin."; // 5.0
-$LNG['g_invalid_p'] = "Yanlış şifre.  Lütfen tekrar deneyin."; // 5.0
-$LNG['g_session_expired'] = "Oturumunuz sonlandı.  Lütfen tekrar deneyin."; // 5.0
+$LNG['g_in'] = 'GiriÅŸler'; // 5.0
+$LNG['g_out'] = 'Ã‡Ä±kÄ±ÅŸlar'; // 5.0
+$LNG['g_unq_pv'] = "Tekil sayfa gÃ¶sterimi"; // 5.0
+$LNG['g_tot_pv'] = "Toplam sayfa gÃ¶sterimi"; // 5.0
+$LNG['g_unq_in'] = "Tekil giriÅŸler"; // 5.0
+$LNG['g_tot_in'] = "Toplam giriÅŸler"; // 5.0
+$LNG['g_unq_out'] = "Tekil Ã§Ä±kÄ±ÅŸlar"; // 5.0
+$LNG['g_tot_out'] = "Toplam Ã§Ä±kÄ±ÅŸlar"; // 5.0
+$LNG['g_invalid_u_or_p'] = "YanlÄ±ÅŸ kullanÄ±cÄ± adÄ± ya da ÅŸifre. LÃ¼tfen tekrar deneyin."; // 5.0
+$LNG['g_invalid_u'] = "YanlÄ±ÅŸ kullanÄ±cÄ± adÄ±.  LÃ¼tfen tekrar deneyin."; // 5.0
+$LNG['g_invalid_p'] = "YanlÄ±ÅŸ ÅŸifre.  LÃ¼tfen tekrar deneyin."; // 5.0
+$LNG['g_session_expired'] = "Oturumunuz sonlandÄ±.  LÃ¼tfen tekrar deneyin."; // 5.0
 $LNG['g_error'] = "Hata"; // 5.0
-$LNG['g_delete_install'] = "Güvenlik sebebiyle, siteyi çalıştırmadan önce install klasörünü silin."; // 5.0
+$LNG['g_delete_install'] = "GÃ¼venlik sebebiyle, siteyi Ã§alÄ±ÅŸtÄ±rmadan Ã¶nce install klasÃ¶rÃ¼nÃ¼ silin."; // 5.0
 
 // Edit Account
-$LNG['edit_header'] = "Bilgilerinizi düzenleyin";
-$LNG['edit_info_edited'] = "Bilgileriniz başarıyla değiştirildi.";
-$LNG['edit_password_blank'] = "Eski şifrenizi kullanmak istiyorsanız burayı boş bırakın"; // 4.0
+$LNG['edit_header'] = "Bilgilerinizi dÃ¼zenleyin";
+$LNG['edit_info_edited'] = "Bilgileriniz baÅŸarÄ±yla deÄŸiÅŸtirildi.";
+$LNG['edit_password_blank'] = "Eski ÅŸifrenizi kullanmak istiyorsanÄ±z burayÄ± boÅŸ bÄ±rakÄ±n"; // 4.0
 
 // Gateway Page
-$LNG['gateway_header'] = "Giriş";
-$LNG['gateway_text'] = "Toplist'e girmek için aşağıdaki linki tıklayınız.";
-$LNG['gateway_vote'] = "Oy vererek giriş.";
-$LNG['gateway_no_vote'] = "Oy vermeden giriş."; // 5.0
+$LNG['gateway_header'] = "GiriÅŸ";
+$LNG['gateway_text'] = "Toplist'e girmek iÃ§in aÅŸaÄŸÄ±daki linki tÄ±klayÄ±nÄ±z.";
+$LNG['gateway_vote'] = "Oy vererek giriÅŸ.";
+$LNG['gateway_no_vote'] = "Oy vermeden giriÅŸ."; // 5.0
 
 // Install
 $LNG['install_header'] = "Kurulum";
-$LNG['install_welcome'] = "Aardvark Topsites PHP 5 kurulumuna hoşgeldiniz.  Scripti yüklemek için aşağıdaki alanları doldurun.";
-$LNG['install_sql_prefix'] = "Tablo ön eki - sadece aynı veritabanında birden fazla listeyle çalışıyorsanız değiştirin";
-$LNG['install_error_chmod'] = "settings_sql.php dosyasına yazılamıyor. settings_sql.php dosyanızın CHMOD değerini 666 yapınız.";
-$LNG['install_error_sql'] = "SQL veritabanıyla bağlantı kurulamıyor.  Lütfen geri gelip SQL ayarlarınızı kontrol edin.";
-$LNG['install_done'] = "Toplistiniz kurulmuştur.  Install klasörünü silebilirsiniz.";
+$LNG['install_welcome'] = "Aardvark Topsites PHP 5 kurulumuna hoÅŸgeldiniz.  Scripti yÃ¼klemek iÃ§in aÅŸaÄŸÄ±daki alanlarÄ± doldurun.";
+$LNG['install_sql_prefix'] = "Tablo Ã¶n eki - sadece aynÄ± veritabanÄ±nda birden fazla listeyle Ã§alÄ±ÅŸÄ±yorsanÄ±z deÄŸiÅŸtirin";
+$LNG['install_error_chmod'] = "settings_sql.php dosyasÄ±na yazÄ±lamÄ±yor. settings_sql.php dosyanÄ±zÄ±n CHMOD deÄŸerini 666 yapÄ±nÄ±z.";
+$LNG['install_error_sql'] = "SQL veritabanÄ±yla baÄŸlantÄ± kurulamÄ±yor.  LÃ¼tfen geri gelip SQL ayarlarÄ±nÄ±zÄ± kontrol edin.";
+$LNG['install_done'] = "Toplistiniz kurulmuÅŸtur.  Install klasÃ¶rÃ¼nÃ¼ silebilirsiniz.";
 $LNG['install_your'] = "Toplist Listeniz";
-$LNG['install_admin'] = "Yönetim";
-$LNG['install_manual'] = "Kılavuz";
-$LNG['upgrade_header'] = "Yükselt";
-$LNG['upgrade_welcome'] = "Aardvark Topsites PHP 5 yükseltmesine hoşgeldiniz.  Yükseltmeden önce tüm bilgilerinizin yedeğini almayı unutmayın.";
-$LNG['upgrade_error_version'] = "Yükseltem sadece Aardvark Topsites PHP 4.1.0 veya daha üst versiyonlar içindir.";
-$LNG['upgrade_done'] = "Toplistiniz yükseltilmiştir.  Install klasörünü silebilirsiniz.";
+$LNG['install_admin'] = "YÃ¶netim";
+$LNG['install_manual'] = "KÄ±lavuz";
+$LNG['upgrade_header'] = "YÃ¼kselt";
+$LNG['upgrade_welcome'] = "Aardvark Topsites PHP 5 yÃ¼kseltmesine hoÅŸgeldiniz.  YÃ¼kseltmeden Ã¶nce tÃ¼m bilgilerinizin yedeÄŸini almayÄ± unutmayÄ±n.";
+$LNG['upgrade_error_version'] = "YÃ¼kseltme sadece Aardvark Topsites PHP 4.1.0 veya daha Ã¼st versiyonlar iÃ§indir.";
+$LNG['upgrade_done'] = "Toplistiniz yÃ¼kseltilmiÅŸtir.  Install klasÃ¶rÃ¼nÃ¼ silebilirsiniz.";
+$LNG['upgrade_version'] = "LÃ¼tfen %s versiyonundan yÃ¼kslettiÄŸinize emin olun."; // 5.1.0
 
 // Join
 $LNG['join_header'] = "Site Ekle";
-$LNG['join_enter_text'] = "Resimdeki yazıyı girin:"; // 4.2.2
-$LNG['join_user'] = "Kullanıcı Adı"; // 5.0
+$LNG['join_enter_text'] = "Resimdeki yazÄ±yÄ± girin:"; // 4.2.2
+$LNG['join_user'] = "KullanÄ±cÄ± AdÄ±"; // 5.0
 $LNG['join_website'] = "Web Sitesi"; // 5.0
-$LNG['join_error_forgot'] = "Unuttuklarınız:";
-$LNG['join_error_username'] = "Geçerli bir kulanıcı adı girin: Sadece rakam,harf,alt çizgi ve tire kullanabilirsiniz."; // 5.0
-$LNG['join_error_username_duplicate'] = "Geçerli bir kulanıcı adı girin: Bu kullanıcı adı kullanılmaktadır."; // 5.0
-$LNG['join_error_url'] = "Geçerli bir URL giriniz.";
-$LNG['join_error_email'] = "Geçerli bir e-mail giriniz.";
-$LNG['join_error_title'] = "Siteniz için bir başlık giriniz.";
-$LNG['join_error_password'] = "Bir şifre giriniz.";
-$LNG['join_error_urlbanner'] = "Geçerli bir banner URLsi giriniz (yoksa boş bırakınız)"; // 4.0
-$LNG['join_error_back'] = "Lütfen geri dönüp hataları düzeltiniz.";
-$LNG['join_error_time'] = "Lütfen yeniden yüklemeyiniz."; // 4.2.0
-$LNG['join_error_captcha'] = "Girdiğiniz yazı resimdeki yazıyla uyuşmuyor."; // 4.2.2
-$LNG['join_thanks'] = "Teşekkürler siteniz eklendi! Aşağıdaki kodu sitenize ekleyiniz.";
-$LNG['join_change_warning'] = "Kodda değişiklik yaparsanız çalışmayabilir.";
+$LNG['join_error_username'] = "GeÃ§erli bir kulanÄ±cÄ± adÄ± girin: Sadece rakam,harf,alt Ã§izgi ve tire kullanabilirsiniz."; // 5.0
+$LNG['join_error_username_duplicate'] = "GeÃ§erli bir kulanÄ±cÄ± adÄ± girin: Bu kullanÄ±cÄ± adÄ± kullanÄ±lmaktadÄ±r."; // 5.0
+$LNG['join_error_url'] = "GeÃ§erli bir URL giriniz.";
+$LNG['join_error_email'] = "GeÃ§erli bir e-mail giriniz.";
+$LNG['join_error_title'] = "Siteniz iÃ§in bir baÅŸlÄ±k giriniz.";
+$LNG['join_error_password'] = "Bir ÅŸifre giriniz.";
+$LNG['join_error_urlbanner'] = "GeÃ§erli bir banner URLsi giriniz (yoksa boÅŸ bÄ±rakÄ±nÄ±z)"; // 4.0
+$LNG['join_error_time'] = "LÃ¼tfen yeniden yÃ¼klemeyiniz."; // 4.2.0
+$LNG['join_error_captcha'] = "GirdiÄŸiniz yazÄ± resimdeki yazÄ±yla uyuÅŸmuyor."; // 4.2.2
+$LNG['join_thanks'] = "TeÅŸekkÃ¼rler siteniz eklendi! AÅŸaÄŸÄ±daki kodu sitenize ekleyiniz.";
+$LNG['join_change_warning'] = "Kodda deÄŸiÅŸiklik yaparsanÄ±z Ã§alÄ±ÅŸmayabilir.";
 $LNG['join_welcome'] = "%s'e Hosgeldiniz";
-$LNG['join_welcome_admin'] = "Yeni bir üye katıldı.";
+$LNG['join_welcome_admin'] = "Yeni bir Ã¼ye katÄ±ldÄ±.";
+$LNG['join_approve'] = "YÃ¶netici sitenizi onayladÄ±ÄŸÄ± anda siteniz listede gÃ¶zÃ¼kecektir."; // 5.1.0
+$LNG['join_type'] = "Hesap Tipi"; // 5.1.0
+$LNG['join_standard'] = "Standart"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "HTML Kodu"; // 5.0
 
 // Lost Password
-$LNG['lost_pw_header'] = "Kayıp Şifre"; // 5.0
-$LNG['lost_pw_forgot'] = "Şifrenizi mi unuttunuz?"; // 5.0
-$LNG['lost_pw_get'] = "Şifreyi sor"; // 5.0
-$LNG['lost_pw_emailed'] = "Şifrenizi değiştirmeniz için gerekli bilgiler e-mailinize yollandı."; // 5.0
-$LNG['lost_pw_email'] = "Yeni bir şifre belirlemek için aşağıdaki URLye gidiniz:"; // 5.0
-$LNG['lost_pw_new'] = "Yeni şifrenizi giriniz"; // 5.0
-$LNG['lost_pw_set_new'] = "Yani şifrenizi ayarlayınız"; // 5.0
-$LNG['lost_pw_finish'] = "Yeni şifreniz seçtiğiniz şifre ile değiştirildi."; // 5.0
+$LNG['lost_pw_header'] = "KayÄ±p Åifre"; // 5.0
+$LNG['lost_pw_forgot'] = "Åifrenizi mi unuttunuz?"; // 5.0
+$LNG['lost_pw_get'] = "Åifreyi sor"; // 5.0
+$LNG['lost_pw_emailed'] = "Åifrenizi deÄŸiÅŸtirmeniz iÃ§in gerekli bilgiler e-mailinize yollandÄ±."; // 5.0
+$LNG['lost_pw_email'] = "Yeni bir ÅŸifre belirlemek iÃ§in aÅŸaÄŸÄ±daki URLye gidiniz:"; // 5.0
+$LNG['lost_pw_new'] = "Yeni ÅŸifrenizi giriniz"; // 5.0
+$LNG['lost_pw_set_new'] = "Yani ÅŸifrenizi ayarlayÄ±nÄ±z"; // 5.0
+$LNG['lost_pw_finish'] = "Yeni ÅŸifreniz seÃ§tiÄŸiniz ÅŸifre ile deÄŸiÅŸtirildi."; // 5.0
 
 // Main Page
 $LNG['main_header'] = "Anasayfa"; // 5.0
-$LNG['main_all'] = "Tüm Siteler"; // 4.2.0
-$LNG['main_method'] = "Sıralama metodu";
-$LNG['main_members'] = "Üyeler";
-$LNG['main_menu_rankings'] = "Sıralama";
+$LNG['main_all'] = "TÃ¼m Siteler"; // 4.2.0
+$LNG['main_method'] = "SÄ±ralama metodu";
+$LNG['main_members'] = "Ãœyeler";
+$LNG['main_menu_rankings'] = "SÄ±ralama";
 $LNG['main_menu_join'] = "Site Ekle";
 $LNG['main_menu_random'] = "Rastgele";
 $LNG['main_menu_search'] = "Arama";
 $LNG['main_menu_lost_code'] = "HTML Kodu"; // 5.0
-$LNG['main_menu_lost_password'] = "Kayıp Şifre"; // 5.0
-$LNG['main_menu_edit'] = "Üye Bilgileri";
-$LNG['main_menu_user_cp'] = "Üye Kontrol Paneli"; // 5.0
-$LNG['main_featured'] = "Günün Üyesi"; // 4.0.2
-$LNG['main_executiontime'] = "Script Derleme Süresi"; // 4.0
-$LNG['main_queries'] = "SQL Sorguları"; // 4.0
+$LNG['main_menu_lost_password'] = "KayÄ±p Åifre"; // 5.0
+$LNG['main_menu_edit'] = "Ãœye Bilgileri";
+$LNG['main_menu_user_cp'] = "Ãœye Kontrol Paneli"; // 5.0
+$LNG['main_featured'] = "GÃ¼nÃ¼n Ãœyesi"; // 4.0.2
+$LNG['main_executiontime'] = "Script Derleme SÃ¼resi"; // 4.0
+$LNG['main_queries'] = "SQL SorgularÄ±"; // 4.0
 $LNG['main_powered'] = "Destekleyen";
 
 // Ranking Table
-$LNG['table_stats'] = "İstatistikler";
+$LNG['table_stats'] = "Ä°statistikler";
 $LNG['table_unique'] = "Tekil";
-$LNG['table_total'] = "Çoğul";
+$LNG['table_total'] = "Ã‡oÄŸul";
 $LNG['table_rank'] = "Puan";
-$LNG['table_title'] = "Başlık"; // 4.0
-$LNG['table_description'] = "Açıklama"; // 4.0
+$LNG['table_title'] = "BaÅŸlÄ±k"; // 4.0
+$LNG['table_description'] = "AÃ§Ä±klama"; // 4.0
 $LNG['table_movement'] = "Hareket";
-$LNG['table_up'] = "Yukarı"; // 5.0
-$LNG['table_down'] = "Aşağı"; // 5.0
+$LNG['table_up'] = "YukarÄ±"; // 5.0
+$LNG['table_down'] = "AÅŸaÄŸÄ±"; // 5.0
 $LNG['table_neutral'] = "Sabit"; // 5.0
 
 // Rate and Review
 $LNG['rate_header'] = "Oy ver ve yorum yap";
 $LNG['rate_rating'] = "Puan";
 $LNG['rate_review'] = "Yorum"; // 5.0
-$LNG['rate_thanks'] = "Puanınız ve yorumunuz için teşekkürler!";
-$LNG['rate_error'] = "Bu siteye zaten oy verip yorum yapmışsınız.";
-$LNG['rate_back'] = "İstatistiklere dön";
+$LNG['rate_thanks'] = "PuanÄ±nÄ±z ve yorumunuz iÃ§in teÅŸekkÃ¼rler!";
+$LNG['rate_error'] = "Bu siteye zaten oy verip yorum yapmÄ±ÅŸsÄ±nÄ±z.";
+$LNG['rate_back'] = "Ä°statistiklere dÃ¶n";
+$LNG['rate_email_admin'] = "Listeye yeni bir yorum eklenmiÅŸtir."; // 5.1.0
 
 // Search
 $LNG['search_header'] = "Arama";
-$LNG['search_off'] = "Arama özelliği iptal edilmiştir.";
-$LNG['search_for'] = "Aradığınız";
-$LNG['search_no_sites'] = "Aradığınızla ilgili bir site bulunamadı."; // 5.0
-$LNG['search_prev'] = "Önceki"; // 3.2.1
+$LNG['search_off'] = "Arama Ã¶zelliÄŸi iptal edilmiÅŸtir.";
+$LNG['search_no_sites'] = "AradÄ±ÄŸÄ±nÄ±zla ilgili bir site bulunamadÄ±."; // 5.0
+$LNG['search_prev'] = "Ã–nceki"; // 3.2.1
 $LNG['search_next'] = "Sonraki"; // 3.2.1
+$LNG['search_displaying_results'] = "%s ile %s arasÄ±nda %s adet sonuÃ§ <b>%s</b> iÃ§in gÃ¶steriliyor."; // 5.1.0
 
 // Stats
-$LNG['stats_header'] = "İstatistikler";
+$LNG['stats_header'] = "Ä°statistikler";
 $LNG['stats_info'] = "Bilgi";
-$LNG['stats_member_since'] = "Kayıt Zamanı"; // 5.0
+$LNG['stats_member_since'] = "KayÄ±t ZamanÄ±"; // 5.0
 $LNG['stats_rating_avg'] = "Ortalama Puan";
-$LNG['stats_rating_num'] = "Sıralama sayısı";
-$LNG['stats_rate'] = "Siteye puan verin ve yorum yapın";
+$LNG['stats_rating_num'] = "SÄ±ralama sayÄ±sÄ±";
+$LNG['stats_rate'] = "Siteye puan verin ve yorum yapÄ±n";
 $LNG['stats_reviews'] = "Yorumlar";
-$LNG['stats_allreviews'] = "Tüm yorumları göster"; // 4.0
+$LNG['stats_allreviews'] = "TÃ¼m yorumlarÄ± gÃ¶ster"; // 4.0
 $LNG['stats_week'] = "Hafta"; // 5.0
-$LNG['stats_highest'] = "En Yüksek"; // 5.0
+$LNG['stats_highest'] = "En YÃ¼ksek"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "En iyi %s Site"; // 4.0
-$LNG['ssi_new'] = "En Yeni %s Üye"; // 5.0
-$LNG['ssi_all'] = "TÜm Siteler"; // 4.0
+$LNG['ssi_new'] = "En Yeni %s Ãœye"; // 5.0
+$LNG['ssi_all'] = "TÃœm Siteler"; // 4.0
 
 // User Control Panel // 5.0
-$LNG['user_cp_header'] = "Kullanıcı Kontrol Paneli"; // 5.0
-$LNG['user_cp_login'] = "Giriş"; // 5.0
-$LNG['user_cp_logout'] = "Çıkış"; // 5.0
-$LNG['user_cp_welcome'] = "Kullanıcı kontrol paneline hoşgeldiniz. Sol taraftaki menüyü kullanarak hesabınızı yönetebilirsiniz."; // 5.0
-$LNG['user_cp_logout_message'] = "Kullanıcı kontrol panelinden çıkış yaptınız."; // 5.0
+$LNG['user_cp_header'] = "KullanÄ±cÄ± Kontrol Paneli"; // 5.0
+$LNG['user_cp_login'] = "GiriÅŸ"; // 5.0
+$LNG['user_cp_logout'] = "Ã‡Ä±kÄ±ÅŸ"; // 5.0
+$LNG['user_cp_welcome'] = "KullanÄ±cÄ± kontrol paneline hoÅŸgeldiniz. Sol taraftaki menÃ¼yÃ¼ kullanarak hesabÄ±nÄ±zÄ± yÃ¶netebilirsiniz."; // 5.0
+$LNG['user_cp_logout_message'] = "KullanÄ±cÄ± kontrol panelinden Ã§Ä±kÄ±ÅŸ yaptÄ±nÄ±z."; // 5.0
+$LNG['user_cp_login_long'] = "KullanÄ±cÄ± adÄ± ve ÅŸifrenizle ya da OpenID ile giriÅŸ yapÄ±n."; // 5.1.0
+$LNG['user_cp_openid'] = "OpenID"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "%s iÃ§in OpenID bulunamadÄ±."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "Kontrol paneline girmeden Ã¶nce topliste Ã¼ye olmanÄ±z gerekmektedir."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "GiriÅŸ yapÄ±lÄ±rken hata oluÅŸtu.LÃ¼tfen tekrar deneyin."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "Girmeniz iÃ§in onaylamanÄ±z gerekmektedir.LÃ¼tfen tekrar deneyin."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Server HatasÄ±: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Yeni Site Onaylama"; // 5.0
 $LNG['a_approve'] = "Onayla"; // 4.0
-$LNG['a_approve_none'] = "Bekleyen başvuru yok."; // 4.0
-$LNG['a_approve_done'] = "Site başarıyla onaylandı."; // 4.0
-$LNG['a_approve_dones'] = "Siteler başarıyla onaylandı."; // 4.0
-$LNG['a_approve_sel'] = "Seçilenler:"; // 5.0
+$LNG['a_approve_none'] = "Bekleyen baÅŸvuru yok."; // 4.0
+$LNG['a_approve_done'] = "Site baÅŸarÄ±yla onaylandÄ±."; // 4.0
+$LNG['a_approve_dones'] = "Siteler baÅŸarÄ±yla onaylandÄ±."; // 4.0
+$LNG['a_approve_sel'] = "SeÃ§ilenler:"; // 5.0
 
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Yeni Yorum Onaylama"; // 5.0
 $LNG['a_approve_rev_none'] = "Bekleyen yorum yok."; // 5.0
-$LNG['a_approve_rev_done'] = "Yorum başarıyla onaylandı."; // 5.0
-$LNG['a_approve_rev_dones'] = "Yorumlar başarıyla onaylandı."; // 5.0
+$LNG['a_approve_rev_done'] = "Yorum baÅŸarÄ±yla onaylandÄ±."; // 5.0
+$LNG['a_approve_rev_dones'] = "Yorumlar baÅŸarÄ±yla onaylandÄ±."; // 5.0
+
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "Yeni Sayfa OluÅŸtur"; // 5.1.0
+$LNG['a_create_page_id'] = "Sayfa ID - Bu URL verilirken kullanÄ±lacaktÄ±r, sadece harf, sayÄ±, altÃ§izgi ve tire iÃ§erebilir"; // 5.1.0
+$LNG['a_create_page_error_id'] = "Sayfa IDleri sadece harf, sayÄ±, altÃ§izgi ve tire iÃ§erebilir.  LÃ¼tfen geri gidip sayfa IDsini deÄŸiÅŸtirin."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "Bu sayfa IDsinde sayfa bulunmaktadÄ±r.  LÃ¼tfen geri gidip baÅŸka bir sayfa IDsi seÃ§in."; // 5.1.0
+$LNG['a_create_page_created'] = "Sayfa oluÅŸturuldu.  LÃ¼tfen elle %s da wrapper.html iÃ§inde link verin."; // 5.1.0
 
 // Admin > Delete Member
-$LNG['a_del_header'] = "Üye Sil"; // 5.0
-$LNG['a_del_headers'] = "Üyeleri Sil"; // 5.0
-$LNG['a_del_done'] = "Üye başarıyla silindi."; // 5.0
-$LNG['a_del_dones'] = "Üyeler başarıyla silindi."; // 5.0
-$LNG['a_del_warn'] = "%s adlı kullanıcıyı silmek istediğinize emin misiniz??"; // 5.0
-$LNG['a_del_multi'] = "Bu %s adlı üyeler"; //5.0
+$LNG['a_del_header'] = "Ãœye Sil"; // 5.0
+$LNG['a_del_headers'] = "Ãœyeleri Sil"; // 5.0
+$LNG['a_del_done'] = "Ãœye baÅŸarÄ±yla silindi."; // 5.0
+$LNG['a_del_dones'] = "Ãœyeler baÅŸarÄ±yla silindi."; // 5.0
+$LNG['a_del_warn'] = "%s adlÄ± kullanÄ±cÄ±yÄ± silmek istediÄŸinize emin misiniz??"; // 5.0
+$LNG['a_del_multi'] = "Bu %s adlÄ± Ã¼yeler"; //5.0
+
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "Filtreli Kelimeyi Sil"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Filtreli Kelimeleri Sil"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "Filtreli Kelime Silindi."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "Filtreli Kelimeler Silindi."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "%s kelimesini listeden silmek istiyormusunuz?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "Bu %s kelimelerini"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "YanlÄ±ÅŸ filtreli kelime IDsi.  LÃ¼tfen tekrar deneyin."; // 5.1.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "Yeni SayfayÄ± Sil"; // 5.1.0
+$LNG['a_del_page_headers'] = "Yeni SayfalarÄ± Sil"; // 5.1.0
+$LNG['a_del_page_done'] = "Yeni Sayfa Silindi."; // 5.1.0
+$LNG['a_del_page_dones'] = "Yeni Sayfalar Silindi."; // 5.1.0
+$LNG['a_del_page_warn'] = "%s Bu sayfayÄ± silmek istediÄŸinize emin misiniz?"; //5.1.0
+$LNG['a_del_page_multi'] = "Bu %s adlÄ± sayfalar"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "YanlÄ±ÅŸ yeni sayfa IDsi.  LÃ¼tfen tekrar deneyin."; // 5.1.0
 
 // Admin > Delete Review // 5.0
 $LNG['a_del_rev_header'] = "Yorum Sil"; // 5.0
-$LNG['a_del_rev_headers'] = "Yorumları Sil"; // 5.0
-$LNG['a_del_rev_done'] = "Yorum başarıyla silindi."; // 5.0
-$LNG['a_del_rev_dones'] = "Yorumlar başarıyla silindi."; // 5.0
-$LNG['a_del_rev_warn'] = "Yorumu silmek istediğinize emin misiniz?"; //5.0
-$LNG['a_del_rev_warns'] = "Yorumları silmek istediğinize emin misiniz?"; //5.0
-$LNG['a_del_rev_invalid_id'] = "Bu id numarasına sahip yorum yok."; // 5.0
+$LNG['a_del_rev_headers'] = "YorumlarÄ± Sil"; // 5.0
+$LNG['a_del_rev_done'] = "Yorum baÅŸarÄ±yla silindi."; // 5.0
+$LNG['a_del_rev_dones'] = "Yorumlar baÅŸarÄ±yla silindi."; // 5.0
+$LNG['a_del_rev_warn'] = "Yorumu silmek istediÄŸinize emin misiniz?"; //5.0
+$LNG['a_del_rev_warns'] = "YorumlarÄ± silmek istediÄŸinize emin misiniz?"; //5.0
+$LNG['a_del_rev_invalid_id'] = "Bu id numarasÄ±na sahip yorum yok."; // 5.0
 
 // Admin > Edit Member
-$LNG['a_edit_header'] = "Üye Düzenle"; // 5.0
-$LNG['a_edit_site_is'] = "Üyenin sitesi"; // 4.0
+$LNG['a_edit_header'] = "Ãœye DÃ¼zenle"; // 5.0
+$LNG['a_edit_site_is'] = "Ãœyenin sitesi"; // 4.0
 $LNG['a_edit_active'] = "Aktif (Listelenen)"; // 4.0
-$LNG['a_edit_inactive'] = "İnaktif (Listelenmeyen)"; // 5.0
-$LNG['a_edit_edited'] = "Üye başarıyla düzenlendi.";
+$LNG['a_edit_inactive'] = "Ä°naktif (Listelenmeyen)"; // 5.0
+$LNG['a_edit_edited'] = "Ãœye baÅŸarÄ±yla dÃ¼zenlendi.";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Filtreli Kelimeleri YÃ¶net"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "Filtreli Kelimeler DÃ¼zenlendi."; // 5.1.0
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "Yeni SayfayÄ± DeÄŸiÅŸtir"; // 5.1.0
+$LNG['a_edit_page_content'] = "Ä°Ã§erik - HTML kodu kullanabilirsiniz"; // 5.1.0
+$LNG['a_edit_page_edited'] = "Sayfa DeÄŸiÅŸtirildi."; // 5.1.0
 
 // Admin > Edit Review // 5.0
-$LNG['a_edit_rev_header'] = "Yorum Düzenle"; // 5.0
-$LNG['a_edit_rev_edited'] = "Yorum başarıyla düzenlendi.";
+$LNG['a_edit_rev_header'] = "Yorum DÃ¼zenle"; // 5.0
+$LNG['a_edit_rev_edited'] = "Yorum baÅŸarÄ±yla dÃ¼zenlendi.";
 
 // Admin > Email Members
-$LNG['a_email_header'] = "Üyelere Mesaj"; // 5.0
+$LNG['a_email_header'] = "Ãœyelere Mesaj"; // 5.0
 $LNG['a_email_subject'] = "Konu"; // 4.2.0
 $LNG['a_email_message'] = "Mesaj"; // 4.2.0
-$LNG['a_email_msg_sent'] = "E-mail %s adlı üyeye gönderildi"; // 5.0
-$LNG['a_email_not_sent'] = "E-mail %s adlı üyeye gönderilemedi"; // 5.0
-$LNG['a_email_sent'] = "%s adlı üyelere mail gönderildi."; // 4.2.0
-$LNG['a_email_failed'] = "%s adlı üyelere mail gönderilemedi."; // 4.2.0
+$LNG['a_email_msg_sent'] = "E-mail %s adlÄ± Ã¼yeye gÃ¶nderildi"; // 5.0
+$LNG['a_email_not_sent'] = "E-mail %s adlÄ± Ã¼yeye gÃ¶nderilemedi"; // 5.0
+$LNG['a_email_sent'] = "%s adlÄ± Ã¼yelere mail gÃ¶nderildi."; // 4.2.0
+$LNG['a_email_failed'] = "%s adlÄ± Ã¼yelere mail gÃ¶nderilemedi."; // 4.2.0
 
 // Admin > Logout
-$LNG['a_logout_message'] = "Yönetim panelinden başarıyla çıkış yaptınız."; // 5.0
+$LNG['a_logout_message'] = "YÃ¶netim panelinden baÅŸarÄ±yla Ã§Ä±kÄ±ÅŸ yaptÄ±nÄ±z."; // 5.0
 
 // Admin > Main
 $LNG['a_header'] = "Admin"; // 5.0
-$LNG['a_main'] = "Welcome to the admin.  Use the links to the left to manage your topsites list."; // 5.0
+$LNG['a_main'] = "Sahip hoÅŸgeldin. Sol taraftaki menÃ¼den toplisti yÃ¶netebilirsin."; // 5.0
 $LNG['a_main_approve'] = "1 site onay bekliyor."; // 5.0
 $LNG['a_main_approves'] = "%s site onay bekliyor."; // 5.0
 $LNG['a_main_approve_rev'] = "1 yorum onay bekliyor."; // 5.0
 $LNG['a_main_approve_revs'] = "%s yorum onay bekliyor."; // 5.0
-$LNG['a_main_your'] = "Kullandığınız versiyon"; // 5.0
+$LNG['a_main_your'] = "KullandÄ±ÄŸÄ±nÄ±z versiyon"; // 5.0
 $LNG['a_main_latest'] = "Son versiyon"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
-$LNG['a_man_header'] = "Üye Yönetimi"; // 5.0
-$LNG['a_man_actions'] = "İşlemler"; // 4.2.0
-$LNG['a_man_edit'] = "Düzenle"; // 4.2.0
+$LNG['a_man_header'] = "Ãœye YÃ¶netimi"; // 5.0
+$LNG['a_man_actions'] = "Ä°ÅŸlemler"; // 4.2.0
+$LNG['a_man_edit'] = "DÃ¼zenle"; // 4.2.0
 $LNG['a_man_delete'] = "Sil"; // 4.2.0
 $LNG['a_man_email'] = "Mail At"; // 4.2.0
-$LNG['a_man_all'] = "Tümünü Seç"; // 5.0
-$LNG['a_man_none'] = "Tümünü Seçme"; // 5.0
-$LNG['a_man_del_sel'] = "Seçilenleri Sil"; // 5.0
+$LNG['a_man_all'] = "TÃ¼mÃ¼nÃ¼ SeÃ§"; // 5.0
+$LNG['a_man_none'] = "TÃ¼mÃ¼nÃ¼ SeÃ§me"; // 5.0
+$LNG['a_man_del_sel'] = "SeÃ§ilenleri Sil"; // 5.0
+
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "KÃ¼fÃ¼r Filtresi"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "DeÄŸiÅŸilecek kelimeyi girin.  Mesela  \"hell\" kelimesi geÃ§en yerlerde \"h***\" ÅŸeklinde yazÄ±lacak."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Kesin uyuÅŸma tam olarak kelime geÃ§tiÄŸi zaman.  Genel uyuÅŸma ise yazÄ±lan kelimenin herhangi bi yerde geÃ§mesidir.  Mesela \"hell\" kelimesi hem \"shell\" kelimesinde hem de \"hello\" kelimesinde var."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Kelime"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "DeÄŸiÅŸtirme"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "UyuÅŸma"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "Kesin"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Genel"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Kelimeyi Filtrele"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "\"%s\" kelimesi filtreli kelime olarak eklendi."; // 5.1.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "Yeni SayfalarÄ± YÃ¶net"; // 5.1.0
 
 // Admin > Manage Reviews // 5.0
-$LNG['a_man_rev_header'] = "Yorum Yönetimi"; // 5.0
-$LNG['a_man_rev_enter'] = "Sitenin yorumlarını düzeltmek için lütfen kullanıcı adı giriniz.."; // 5.0
+$LNG['a_man_rev_header'] = "Yorum YÃ¶netimi"; // 5.0
+$LNG['a_man_rev_enter'] = "Sitenin yorumlarÄ±nÄ± dÃ¼zeltmek iÃ§in lÃ¼tfen kullanÄ±cÄ± adÄ± giriniz.."; // 5.0
 $LNG['a_man_rev_id'] = "ID"; // 5.0
 $LNG['a_man_rev_rev'] = "Yorum"; // 5.0
 $LNG['a_man_rev_date'] = "Tarih"; // 5.0
 
 // Admin > Menu
-$LNG['a_menu'] = "Menü";
-$LNG['a_menu_main'] = "Yönetim anasayfası"; // 5.0
-$LNG['a_menu_approve'] = "Yeni üye başvuruları";
-$LNG['a_menu_manage'] = "Üye Yönetimi"; // 4.2.0
+$LNG['a_menu'] = "MenÃ¼";
+$LNG['a_menu_main'] = "YÃ¶netim anasayfasÄ±"; // 5.0
+$LNG['a_menu_approve'] = "Yeni Ã¼ye baÅŸvurularÄ±";
+$LNG['a_menu_manage'] = "Ãœye YÃ¶netimi"; // 4.2.0
 $LNG['a_menu_settings'] = "Ayarlar"; // 5.0
-$LNG['a_menu_skins'] = "Görünümler ve Kategoriler"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "KÃ¼fÃ¼r Filtresi"; // 5.1.0
+$LNG['a_menu_skins'] = "GÃ¶rÃ¼nÃ¼mler ve Kategoriler"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Yeni Yorumlar"; // 5.0
-$LNG['a_menu_manage_reviews'] = "Yorum Yönetimi"; // 5.0
-$LNG['a_menu_email'] = "Üyelere Mesaj";
+$LNG['a_menu_manage_reviews'] = "Yorum YÃ¶netimi"; // 5.0
+$LNG['a_menu_email'] = "Ãœyelere Mesaj";
 $LNG['a_menu_delete_review'] = "Yorum Sil";
-$LNG['a_menu_logout'] = "Çıkış";
-$LNG['a_menu_delete'] = "Üye Sil";
-$LNG['a_menu_edit'] = "Üye Düzenle";
-$LNG['a_header_members'] = "Üyeler"; // 5.0
+$LNG['a_menu_logout'] = "Ã‡Ä±kÄ±ÅŸ";
+$LNG['a_menu_delete'] = "Ãœye Sil";
+$LNG['a_menu_edit'] = "Ãœye DÃ¼zenle";
+$LNG['a_menu_create_page'] = "Yeni Sayfa OluÅŸtur"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Yeni SayfalarÄ± YÃ¶net"; // 5.1.0
+$LNG['a_header_members'] = "Ãœyeler"; // 5.0
 $LNG['a_header_settings'] = "Ayarlar"; // 5.0
 $LNG['a_header_reviews'] = "Yorumlar"; // 5.0
+$LNG['a_header_pages'] = "Yeni Sayfalar"; // 5.1.0
 
 // Admin > Settings
-$LNG['a_s_header'] = "Ayarları Değiştir";
+$LNG['a_s_header'] = "AyarlarÄ± DeÄŸiÅŸtir";
+$LNG['a_s_help'] = "YardÄ±m"; // 5.1.0
+
 $LNG['a_s_general'] = "Genel Ayarlar";
-$LNG['a_s_admin_password'] = "Yönetici Şifresi";
-$LNG['a_s_list_name'] = "Toplistinizin adı";
-$LNG['a_s_list_url'] = "Toplist klasörünün URLsi";
-$LNG['a_s_default_language'] = "Asıl dil";
+$LNG['a_s_admin_password'] = "YÃ¶netici Åifresi";
+$LNG['a_s_list_name'] = "Toplistinizin adÄ±";
+$LNG['a_s_list_url'] = "Toplist klasÃ¶rÃ¼nÃ¼n URLsi";
+$LNG['a_s_default_language'] = "AsÄ±l dil";
 $LNG['a_s_your_email'] = "E-mail adresiniz";
 
-$LNG['a_s_sql'] = "SQL Ayarları";
-$LNG['a_s_sql_type'] = "Veritabanı Tipi"; // 4.1.0
+$LNG['a_s_sql'] = "SQL AyarlarÄ±";
+$LNG['a_s_sql_type'] = "VeritabanÄ± Tipi"; // 4.1.0
 $LNG['a_s_sql_host'] = "Sunucu";
-$LNG['a_s_sql_database'] = "Veritabanı";
-$LNG['a_s_sql_username'] = "Kullanıcı adı";
-$LNG['a_s_sql_password'] = "Şifre";
+$LNG['a_s_sql_database'] = "VeritabanÄ±";
+$LNG['a_s_sql_username'] = "KullanÄ±cÄ± adÄ±";
+$LNG['a_s_sql_password'] = "Åifre";
 
-$LNG['a_s_ranking'] = "Puan Ayarları";
-$LNG['a_s_num_list'] = "Her sayfada gösterilecek site sayısı"; // 5.0
-$LNG['a_s_ranking_period'] = "Sıralama Periyodu"; // 5.0
-$LNG['a_s_ranking_method'] = "Sıralama metodu"; // 5.0
-$LNG['a_s_ranking_average'] = "Rank by average or by just %s"; // 5.0
-$LNG['a_s_featured_member'] = 'Featured member - You have to add {$featured_member} to wrapper.html after you turn this on.'; // 4.1.0
+$LNG['a_s_ranking'] = "Puan AyarlarÄ±";
+$LNG['a_s_num_list'] = "Her sayfada gÃ¶sterilecek site sayÄ±sÄ±"; // 5.0
+$LNG['a_s_ranking_period'] = "SÄ±ralama Periyodu"; // 5.0
+$LNG['a_s_ranking_method'] = "SÄ±ralama metodu"; // 5.0
+$LNG['a_s_ranking_average'] = "Ortlamaya gÃ¶re sÄ±rala ya da %s"; // 5.0
+$LNG['a_s_featured_member'] = 'Ã–zel Ãœye - Ä°sterseniz wrapper.html de {$featured_member} deÄŸiÅŸkenine ekleyerek aktif edebilirsiniz.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
-$LNG['a_s_ad_breaks'] = "Şu sıralardan sonra reklam koy(Virgülle ayırınız)";
+$LNG['a_s_ad_breaks'] = "Bu sÄ±ralardan sonra reklam koy (VirgÃ¼lle ayÄ±rabilirsiniz) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_member'] = "Üye Ayarları";
-$LNG['a_s_active_default'] = "Yeni siteler listede gözükmeden önce sizin onayınız alınsın mı?";
-$LNG['a_s_active_default_review'] = "Yeni yorumlar listede gözükmeden önce sizin onayınız alınsın mı?";
-$LNG['a_s_delete_after'] = "Aktif olmayan üyeleri bu zamandan sonra sil (0 yazılırsa kapalı olur)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Yeni üye başvurusu size e-mail ile yollansın mı?";
-$LNG['a_s_max_banner_width'] = "Üyelerin maksimum banner genişliği (0 yazılırsa kapalı olur)"; // 4.2.0
-$LNG['a_s_max_banner_height'] = "Üyelerin maksimum banner yüksekliği (0 yazılırsa kapalı olur)"; // 4.2.0
-$LNG['a_s_default_banner'] = "Banner'ı olmayan üyelere geçerli bir banner koy";
+$LNG['a_s_member'] = "Ãœye AyarlarÄ±";
+$LNG['a_s_active_default'] = "Yeni siteler listede gÃ¶zÃ¼kmeden Ã¶nce sizin onayÄ±nÄ±z alÄ±nsÄ±n mÄ±?";
+$LNG['a_s_active_default_review'] = "Yeni yorumlar listede gÃ¶zÃ¼kmeden Ã¶nce sizin onayÄ±nÄ±z alÄ±nsÄ±n mÄ±?";
+$LNG['a_s_delete_after'] = "Aktif olmayan Ã¼yeleri bu zamandan sonra sil (0 yazÄ±lÄ±rsa kapalÄ± olur)"; // 4.1.0
+$LNG['a_s_email_admin_on_join'] = "Yeni Ã¼ye baÅŸvurusu size e-mail ile yollansÄ±n mÄ±?"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Yeni yorum eklendiÄŸinide size e-mail ile yollansÄ±n mÄ±?"; // 5.1.0
+$LNG['a_s_max_banner_width'] = "Ãœyelerin maksimum banner geniÅŸliÄŸi (0 yazÄ±lÄ±rsa kapalÄ± olur)"; // 4.2.0
+$LNG['a_s_max_banner_height'] = "Ãœyelerin maksimum banner yÃ¼ksekliÄŸi (0 yazÄ±lÄ±rsa kapalÄ± olur)"; // 4.2.0
+$LNG['a_s_default_banner'] = "Banner'Ä± olmayan Ã¼yelere geÃ§erli bir banner koy";
 
-$LNG['a_s_button'] = "Logo Ayarları";
-$LNG['a_s_ranks_on_buttons'] = "Butonun üzerinde puan -  Ayar için <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">Kılavuza</a> bakın."; // 4.2.0
-$LNG['a_s_stat_buttons'] = "Durum Butonları"; // 4.2.0
-$LNG['a_s_button_url'] = "<b>Hayır ise</b> - Üye sitelerde gözükecek logo URLsini giriniz"; // 4.0
-$LNG['a_s_button_dir'] = "<b>Evet ise</b> - Logoların klasör URLsini giriniz"; // 4.0
-$LNG['a_s_button_ext'] = "<b>Evet ise</b> - Logoların uzantısı (gif, png, jpg, etc.)"; // 4.0
-$LNG['a_s_button_num'] = "<b>Evet ise</b> - Seçmeli logo sayısı"; // 4.0
+$LNG['a_s_button'] = "Logo AyarlarÄ±";
+$LNG['a_s_ranks_on_buttons'] = "Butonlar Ã¼zerinde sÄ±ra no -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_stat_buttons'] = "Durum ButonlarÄ±"; // 4.2.0
+$LNG['a_s_button_url'] = "<b>HayÄ±r ise</b> - Ãœye sitelerde gÃ¶zÃ¼kecek logo URLsini giriniz"; // 4.0
+$LNG['a_s_button_dir'] = "<b>Evet ise</b> - LogolarÄ±n klasÃ¶r URLsini giriniz"; // 4.0
+$LNG['a_s_button_ext'] = "<b>Evet ise</b> - LogolarÄ±n uzantÄ±sÄ± (gif, png, jpg, etc.)"; // 4.0
+$LNG['a_s_button_num'] = "<b>Evet ise</b> - SeÃ§meli logo sayÄ±sÄ±"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Google dostu linkler - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_other'] = "Diğer Ayarlar";
+$LNG['a_s_other'] = "DiÄŸer Ayarlar";
 $LNG['a_s_search'] = "Arama";
-$LNG['a_s_time_offset'] = "Serverınızın zaman ofseti";
-$LNG['a_s_gateway'] = "Hileye karşı giriş kapısı";
-$LNG['a_s_captcha'] = "Kayıtta kelime onaylama- Spam'lere karşı"; // 4.2.2
+$LNG['a_s_time_offset'] = "ServerÄ±nÄ±zÄ±n zaman ofseti";
+$LNG['a_s_gateway'] = "Hileye karÅŸÄ± giriÅŸ kapÄ±sÄ±";
+$LNG['a_s_captcha'] = "GiriÅŸte gÃ¶rsel doÄŸrulama (spammerlara karÅŸÄ± koruma) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_on'] = "Açık";
-$LNG['a_s_off'] = "Kapalı";
-$LNG['a_s_days'] = "Günler";
+$LNG['a_s_on'] = "AÃ§Ä±k";
+$LNG['a_s_off'] = "KapalÄ±";
+$LNG['a_s_days'] = "GÃ¼nler";
 $LNG['a_s_months'] = "Aylar";
 $LNG['a_s_weeks'] = "Haftalar"; // 4.2.0
 $LNG['a_s_yes'] = "Evet";
-$LNG['a_s_no'] = "Hayır";
+$LNG['a_s_no'] = "HayÄ±r";
 
-$LNG['a_s_updated'] = "Ayarlar güncellendi.";
+$LNG['a_s_updated'] = "Ayarlar gÃ¼ncellendi.";
 
 // Admin > Skins and Categories // 5.0
-$LNG['a_skins_header'] = "Görünümler ve Kategoriler"; // 5.0
-$LNG['a_skins_default'] = "Geçerli Görünüm"; // 5.0
-$LNG['a_skins_set_default'] = "Geçerli Görünüm Olarak Ayarla"; // 5.0
+$LNG['a_skins_header'] = "GÃ¶rÃ¼nÃ¼mler ve Kategoriler"; // 5.0
+$LNG['a_skins_default'] = "GeÃ§erli GÃ¶rÃ¼nÃ¼m"; // 5.0
+$LNG['a_skins_set_default'] = "GeÃ§erli GÃ¶rÃ¼nÃ¼m Olarak Ayarla"; // 5.0
 $LNG['a_skins_anon'] = "Anonim"; // 5.0
-$LNG['a_skins_default_done'] = "Geçerli görünüm olarak ayarlandı."; // 5.0
-$LNG['a_skins_categories_done'] = "Kategori görünümü ayarlandı."; // 5.0
-$LNG['a_skins_new_category_done'] = "Yeni kategori oluşturuldu."; // 5.0
+$LNG['a_skins_default_done'] = "GeÃ§erli gÃ¶rÃ¼nÃ¼m olarak ayarlandÄ±."; // 5.0
+$LNG['a_skins_categories_done'] = "Kategori gÃ¶rÃ¼nÃ¼mÃ¼ ayarlandÄ±."; // 5.0
+$LNG['a_skins_new_category_done'] = "Yeni kategori oluÅŸturuldu."; // 5.0
 $LNG['a_skins_delete_done'] = "Kategori silindi."; // 5.0
-$LNG['a_skins_edit_done'] = "Kategori düzenlendi."; // 5.0
-$LNG['a_skins_invalid_skin'] = "Yanlış görünüm: %s.  Lütfen ayarınızı değiştirin."; // 5.0
+$LNG['a_skins_delete_error'] = "Bu kategori silinemez Ã§Ã¼nkÃ¼ en az bir kategori olmalÄ±dÄ±r."; // 5.1.0
+$LNG['a_skins_edit_done'] = "Kategori dÃ¼zenlendi."; // 5.0
+$LNG['a_skins_invalid_skin'] = "YanlÄ±ÅŸ gÃ¶rÃ¼nÃ¼m: %s.  LÃ¼tfen ayarÄ±nÄ±zÄ± deÄŸiÅŸtirin."; // 5.0
 $LNG['a_skins_categories'] = "Kategoriler"; // 5.0
-$LNG['a_skins_new_category'] = "Yeni Kategori Oluştur"; // 5.0
-$LNG['a_skins_set_skins'] = "Kategori Görünümleri Ayarla"; // 5.0
-$LNG['a_skins_edit_category'] = "Kategori Düzenle"; // 5.0
-$LNG['a_skins_category_name'] = "Kategori Adı"; // 5.0
-$LNG['a_skins_diff_skins'] = "Her kategoriye farklı bir görünümü aşağıdan seçiniz."; // 5.0
+$LNG['a_skins_new_category'] = "Yeni Kategori OluÅŸtur"; // 5.0
+$LNG['a_skins_set_skins'] = "Kategori GÃ¶rÃ¼nÃ¼mleri Ayarla"; // 5.0
+$LNG['a_skins_edit_category'] = "Kategori DÃ¼zenle"; // 5.0
+$LNG['a_skins_category_name'] = "Kategori AdÄ±"; // 5.0
+$LNG['a_skins_diff_skins'] = "Her kategoriye farklÄ± bir gÃ¶rÃ¼nÃ¼mÃ¼ aÅŸaÄŸÄ±dan seÃ§iniz."; // 5.0
 ?>

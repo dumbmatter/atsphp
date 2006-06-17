@@ -57,7 +57,7 @@ class base {
       $rank_by = "unq_{$ranking_method}_overall";
     }
     elseif (!$CONF['ranking_average']) {
-      $rank_by .= "unq_{$ranking_method}_0_{$ranking_period}";
+      $rank_by = "unq_{$ranking_method}_0_{$ranking_period}";
     }
     else {
       $rank_by = '(';
@@ -83,7 +83,7 @@ class base {
         $word = preg_quote($word);
         $text = preg_replace("/{$word}/i", $replacement, $text);
 
-        // str_ireplace() would be ideal, but it's only in PHP 5 :(
+        // str_ireplace() would be faster, but it's only in PHP 5 :(
         // $text = str_ireplace($word, $replacement, $text);
       }
     }

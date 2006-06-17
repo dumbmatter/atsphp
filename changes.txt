@@ -15,7 +15,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-5.1.0 - 2006-??-??
+5.1.0 - 2006-06-16
 FEATURES
 - When an edit form or join form has errors in it, the user is presented with inline error messages
 - RSS feed of the top 10 sites (overall and by category) via feed.php
@@ -39,6 +39,7 @@ BUG FIXES
 - When users join lists that require admin approval, they are warned that they will not be listed immediately
 - Uses preg_replace_callback() instead of preg_replace() to speed up skin parsing
   - 10% faster skin parsing results in 1% faster overall script execution
+- Got rid of g and 9 in the captcha because they look the same in the default font
 
 5.0.3 - 2006-05-07
 BUG FIXES

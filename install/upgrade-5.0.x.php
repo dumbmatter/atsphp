@@ -84,7 +84,7 @@ else {
     $default_language = $DB->escape($FORM['l']);
 
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
-                  `id` int(10) unsigned,
+                  `id` int(10) unsigned NOT NULL,
                   `word` varchar(255),
                   `replacement` varchar(255),
                   `matching` tinyint(1),
@@ -92,14 +92,17 @@ else {
                 )", __FILE__, __LINE__);
 
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
-                  `id` varchar(255) default '',
+                  `id` varchar(255) default '' NOT NULL,
                   `title` varchar(255) default '',
                   `content` text,
                   PRIMARY KEY  (`id`)
                 )", __FILE__, __LINE__);
 
+    $DB->query("TRUNCATE TABLE {$CONF['sql_prefix']}_ip_log", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log DROP INDEX ip_address", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log DROP INDEX username", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log CHANGE ip_address ip_address varchar(32) default '' NOT NULL", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log CHANGE username username varchar(255) default '' NOT NULL", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log ADD PRIMARY KEY (ip_address, username)", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_sites ADD openid tinyint(1) default 0", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD email_admin_on_review tinyint(1) default 0 AFTER email_admin_on_join", __FILE__, __LINE__);
@@ -123,6 +126,7 @@ EndHTML;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Aardvark Topsites PHP 5 - <?php echo $LNG['upgrade_header']; ?></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>

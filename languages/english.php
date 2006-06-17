@@ -248,7 +248,7 @@ $LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
 $LNG['a_del_page_done'] = "The custom page has been deleted."; // 5.1.0
 $LNG['a_del_page_dones'] = "The custom pages have been deleted."; // 5.1.0
 $LNG['a_del_page_warn'] = "Are you sure you want to delete %s?"; //5.1.0
-$LNG['a_del_page_multi'] = "these %s members"; //5.1.0
+$LNG['a_del_page_multi'] = "these %s pages"; //5.1.0
 $LNG['a_del_page_invalid_id'] = "Invalid custom page ID.  Please try again."; // 5.1.0
 
 // Admin > Delete Review // 5.0

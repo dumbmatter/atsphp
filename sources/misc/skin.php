@@ -87,8 +87,8 @@ class skin {
     global $LNG, $TMPL, $n, $parse_time;
 
     $skin = preg_replace_callback('/{\$lng->(.+?)}/i', create_function('$matches', 'global $LNG; return $LNG[$matches[1]];'), $skin);
-    $skin = preg_replace_callback('/{include \"(.+?)\"}/i', create_function('$matches', 'return file_get_contents($matches[1]);'), $skin);
     $skin = preg_replace_callback('/{\$(.+?)}/i', create_function('$matches', 'global $TMPL; return $TMPL[$matches[1]];'), $skin);
+    $skin = preg_replace_callback('/{include \"(.+?)\"}/i', create_function('$matches', 'return file_get_contents($matches[1]);'), $skin);
 
     return $skin;
   }

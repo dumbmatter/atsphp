@@ -15,15 +15,6 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-This is a BETA release.  That means it has not been extensively tested.  Be on
-the lookout for any bugs and please report them at the support forum.
-
-There is NO UPGRADER in this release and NO TRANSLATIONS besides English.  The
-upgrader and more translations will be present in the release candidate, which
-should be released in about a week.
-
--------------------------------------------------------------------------------
-
 Official Website... http://www.aardvarktopsitesphp.com/
 Manual............. http://www.aardvarktopsitesphp.com/manual/
 Support Forum...... http://www.aardvarktopsitesphp.com/forums/
@@ -42,6 +33,8 @@ A PREVIOUS VERSION, PLEASE READ THE "UPGRADE" SECTION OF THE MANUAL.
 2. CHMOD 666 settings_sql.php
 3. Go to install/index.php in your browser and follow the instructions there
 4. Delete the install directory when you are done
+
+After installing, you can log into the admin by going to index.php?a=admin
 
 If these instructions sound confusing, please read the manual for more a more
 verbose tutorial.

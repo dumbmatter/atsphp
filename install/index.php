@@ -180,7 +180,7 @@ EndHTML;
                   VALUES ('{$list_url}', '{$default_language}', '{$your_email}', '{$list_url}/images/button.png', '{$list_url}/images/button.png', '{$list_url}/images')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
-                    `id` int(10) unsigned,
+                    `id` int(10) unsigned NOT NULL,
                     `word` varchar(255),
                     `replacement` varchar(255),
                     `matching` tinyint(1),
@@ -188,7 +188,7 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
-                    `id` varchar(255) default '',
+                    `id` varchar(255) default '' NOT NULL,
                     `title` varchar(255) default '',
                     `content` text,
                     PRIMARY KEY  (`id`)
@@ -210,8 +210,8 @@ EndHTML;
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category) VALUES ('Category')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
-                    `ip_address` varchar(32) default '',
-                    `username` varchar(255) default '',
+                    `ip_address` varchar(32) default '' NOT NULL,
+                    `username` varchar(255) default '' NOT NULL,
                     `unq_pv` tinyint(1) default 0,
                     `unq_in` tinyint(1) default 0,
                     `unq_out` tinyint(1) default 0,
@@ -487,6 +487,7 @@ EndHTML;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Aardvark Topsites PHP 5 - <?php echo $LNG['install_header']; ?></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>

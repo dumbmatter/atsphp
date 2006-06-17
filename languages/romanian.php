@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Română';
+$translation = 'Romanian (Română)';
 $translator_name = 'Adrian-Marius Mihai alias Mastermind';
 $translator_email = 'webmaster@masterminds.ro';
 $translator_url = 'http://www.masterminds.ro';
@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "Exista un comentariu care asteapta sa fie aprobat.
 $LNG['a_main_approve_revs'] = "Exista %s comentarii care asteapta sa fie aprobate."; // 5.0
 $LNG['a_main_your'] = "Versiunea instalata"; // 5.0
 $LNG['a_main_latest'] = "Ultima versiune disponibila"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Site-ul Aardvark Topsites PHP</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Site-ul Aardvark Topsites PHP</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Administrare Membrii"; // 5.0
@@ -395,13 +395,13 @@ $LNG['a_s_max_banner_height'] = "Member's maximum banner height (pune '0' pentru
 $LNG['a_s_default_banner'] = "Afiseaza acesta imagine membrilor care nu au banner";
 
 $LNG['a_s_button'] = "Buton (imaginea cu statistici de pe site-ul fiecarui membru) ";
-$LNG['a_s_ranks_on_buttons'] = "Afiseaza locul in clasament al respectivului membru -  Vezi <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">manualul de utilizare</a> pentru mai multe detalii.  Alege 'Buton cu Statistici' daca ai citit deja aceasta sectiune din manual.  Daca ai ales 'Buton cu Statistici' restul sectiunii numai are nici o importanta."; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "Afiseaza locul in clasament al respectivului membru - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 4.2.0
 $LNG['a_s_stat_buttons'] = "Buton cu Statistici"; // 4.2.0
 $LNG['a_s_button_url'] = "Daca alege-ti Da introduce-ti adresa catre imaginea buton care v-a apare pe site-urile membrilor'"; // 4.0
 $LNG['a_s_button_dir'] = "Daca ati ales Da introduce-ti adresa (directorul) la care se gasesc imaginile buton"; // 4.0
 $LNG['a_s_button_ext'] = "Daca ati ales Da introduce-ti extensia imaginii buton va fi (alege-ti dintre gif, png, jpg, etc.)"; // 4.0
 $LNG['a_s_button_num'] = "Daca ati ales Da introduce-ti numarul de imagini buton pe care le aveti disponibile"; // 4.0
-$LNG['a_s_google_friendly_links'] = "Google-friendly links (Link-uri vizibile de catre Google)- <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_google_friendly_links'] = "Google-friendly links (Link-uri vizibile de catre Google) - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_other'] = "Alte preferinte";
 $LNG['a_s_search'] = "Cauta";

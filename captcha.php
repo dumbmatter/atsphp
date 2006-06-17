@@ -39,7 +39,7 @@ $black = imagecolorallocate($image, 0, 0, 0);
 
 $string = mt_rand();
 $string = substr(sha1($string), 0, 6);
-$string = str_replace(array('0', 'O', 'o'), rand(1, 9), $string);
+$string = str_replace(array('0', 'O', 'o', '9', 'g', 'G'), rand(1, 8), $string);
 
 for ($i=0; $i<25; $i++) {
   $x1 = rand(0,140);
@@ -50,14 +50,14 @@ for ($i=0; $i<25; $i++) {
 }
 
 for ($i=0; $i<6; $i++) {
- $size = rand(4, 5);
- $x = $x + rand(12 , 20);
- $y = rand(7 , 12); 
- imagestring($image, $size, $x, $y, $string{$i} , $black); 
+  $size = rand(4, 5);
+  $x = $x + rand(12 , 20);
+  $y = rand(7 , 12); 
+  imagestring($image, $size, $x, $y, $string{$i} , $black); 
 }
 
 $DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE data LIKE '{$_SERVER['REMOTE_ADDR']}|%'", __FILE__, __LINE__);
-$data = "{$_SERVER['REMOTE_ADDR']}|".sha1($string);
+$data = "{$_SERVER['REMOTE_ADDR']}|" . sha1($string);
 
 require_once("{$CONF['path']}/sources/misc/session.php");
 $session = new session;

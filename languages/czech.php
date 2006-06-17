@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Česky';
+$translation = 'Czech (Česky)';
 $translator_name = 'Robert Adamek';
 $translator_email = 'admin@ultima.cz';
 $translator_url = 'http://www.ultima.cz';
@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "1 komentáø èeká na schválení."; // 5.0
 $LNG['a_main_approve_revs'] = "%s komentáøù èeká na schválení"; // 5.0
 $LNG['a_main_your'] = "Vae verze"; // 5.0
 $LNG['a_main_latest'] = "Poslední verze"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Nastavení uivatelù"; // 5.0

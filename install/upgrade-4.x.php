@@ -162,7 +162,7 @@ EndHTML;
                   VALUES ('{$TMPL['list_name']}', '{$TMPL['list_url']}', '{$default_language}', '{$CONFIG['youremail']}', '{$CONFIG['numlist']}', '{$ranking_period}', '{$ranking_method}', '{$CONFIG['featured']}', '{$CONFIG['top']}', '{$CONFIG['active_default']}', '{$CONFIG['delete_after']}', '{$CONFIG['email_admin_on_join']}', '{$CONFIG['max_banner_width']}', '{$CONFIG['max_banner_height']}', '{$CONFIG['defbanner']}', '{$CONFIG['ranks_on_buttons']}', '{$CONFIG['button_url']}', '{$CONFIG['button_dir']}', '{$CONFIG['button_ext']}', '{$CONFIG['button_num']}', '{$CONFIG['search']}', '{$CONFIG['timeoffset']}', '{$CONFIG['gateway']}', '{$CONFIG['captcha']}')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
-                    `id` int(10) unsigned,
+                    `id` int(10) unsigned NOT NULL,
                     `word` varchar(255),
                     `replacement` varchar(255),
                     `matching` tinyint(1),
@@ -170,7 +170,7 @@ EndHTML;
                   )", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
-                    `id` varchar(255) default '',
+                    `id` varchar(255) default '' NOT NULL,
                     `title` varchar(255) default '',
                     `content` text,
                     PRIMARY KEY  (`id`)
@@ -196,8 +196,8 @@ EndHTML;
       }
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
-                    `ip_address` varchar(32) default '',
-                    `username` varchar(255) default '',
+                    `ip_address` varchar(32) default '' NOT NULL,
+                    `username` varchar(255) default '' NOT NULL,
                     `unq_pv` tinyint(1) default 0,
                     `unq_in` tinyint(1) default 0,
                     `unq_out` tinyint(1) default 0,
@@ -495,6 +495,7 @@ EndHTML;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Aardvark Topsites PHP 5 - <?php echo $LNG['upgrade_header']; ?></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>

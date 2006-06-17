@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "Er is 1 commentaar dat wacht op goedkeuring."; // 
 $LNG['a_main_approve_revs'] = "Er zijn %s commentaren die wachten op goedkeuring."; // 5.0
 $LNG['a_main_your'] = "Jouw versie"; // 5.0
 $LNG['a_main_latest'] = "Nieuwste versie"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Beheer leden
 $LNG['a_man_header'] = "Beheer leden"; // 5.0

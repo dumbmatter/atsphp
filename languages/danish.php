@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Dansk';
+$translation = 'Danish (Dansk)';
 $translator_name = 'Helmuth Mikkelsen';
 $translator_email = 'helmuthm@gmail.com';
 $translator_url = 'http://www.helmuth.dk/';
@@ -301,7 +301,7 @@ $LNG['a_main_approve_rev'] = "1 kommentar venter på godkendelse."; // 5.0
 $LNG['a_main_approve_revs'] = "%s kommentarer venter på godkendelse."; // 5.0
 $LNG['a_main_your'] = "Din version"; // 5.0
 $LNG['a_main_latest'] = "Seneste version"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "Rediger brugere"; // 5.0

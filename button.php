@@ -62,6 +62,7 @@ else {
 $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET tot_pv_overall = tot_pv_overall + 1, tot_pv_0_daily = tot_pv_0_daily + 1, tot_pv_0_weekly = tot_pv_0_weekly + 1, tot_pv_0_monthly = tot_pv_0_monthly + 1{$unique_sql} WHERE username = '{$username}'", __FILE__, __LINE__);
 
 // What button to display?
+$rank_on_button = 0;
 if ($CONF['ranks_on_buttons']) {
   // See if rank is freshly cached.  If so, use cached value.  If not, calculate rank.
   list($rank_cache, $rank_cache_time) = $DB->fetch("SELECT rank_cache, rank_cache_time FROM {$CONF['sql_prefix']}_stats WHERE username = '{$username}'", __FILE__, __LINE__);
@@ -83,17 +84,15 @@ if ($CONF['ranks_on_buttons']) {
       $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$rank_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
       list($rank) = $DB->fetch_array($result);
 
+      $new_rank_cache = 0;
       if ($rank <= $CONF['button_num']) {
         $location = "{$CONF['button_dir']}/{$rank}.{$CONF['button_ext']}";
         $rank_on_button = 1;
 
         $new_rank_cache = $rank;
       }
-      else {
-        $new_rank_cache = 0;
-      }
     }
-    if (isset($new_rank_cache)) {
+    if ($new_rank_cache) {
       $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET rank_cache = {$new_rank_cache}, rank_cache_time = {$current_time} WHERE username = '{$username}'", __FILE__, __LINE__);
     }
   }

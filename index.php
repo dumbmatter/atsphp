@@ -24,7 +24,7 @@ $TMPL = array();
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.1.0 Beta';
+$TMPL['version'] = '5.1.0';
 // Set to 1 to display SQL queries and GET/POST/COOKIE data
 $CONF['debug'] = 0;
 
