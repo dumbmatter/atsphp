@@ -43,6 +43,10 @@ smtp
 http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20023#20023
 backup
 secondary ranking method to avoid ties
+sohbet (search forum)
+
+5.1.1
+http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
 
 5.1.0
   FOR FINAL
@@ -58,12 +62,8 @@ secondary ranking method to avoid ties
       romanian
       russian
       spanish
+      swedish
       turkish
-  - test 5.0.3 upgrade again
-  atsphp-mods
-      - category/page text links along with dropdown menu
-      - arbitrary hits in url - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4484
-
 
   SVN ADD
   SVN DELETE

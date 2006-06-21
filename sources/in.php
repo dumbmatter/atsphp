@@ -30,7 +30,7 @@ class in extends in_out {
       $username = $DB->escape($FORM['u']);
     }
     else {
-      // Get user by referer?       
+      // Get user by referer?
       $good_referer = 0;
       if (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
         // Make sure it's not a search engine
