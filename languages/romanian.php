@@ -22,10 +22,13 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Romanian (RomÃ¢nÄƒ)';
+$translation = 'Romanian (Românã)';
 $translator_name = 'Adrian-Marius Mihai alias Mastermind';
 $translator_email = 'webmaster@masterminds.ro';
 $translator_url = 'http://www.masterminds.ro';
+
+// Set this to the character encoding of your translation
+$LNG['charset'] = "iso-8859-2";
 
 // Global
 $LNG['g_form_submit_short'] = "Afiseaza";

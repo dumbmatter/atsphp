@@ -43,22 +43,27 @@ smtp
 http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20023#20023
 backup
 secondary ranking method to avoid ties
+
+5.1.2
+http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
 sohbet (search forum)
+cache overall stats (like in main page of admin) and allow all skins to post them
+charset in install folder
+
+DONE
+Automatically deleting inactive members is working again
+button.php rank calculating ignores inactive sites
 
 5.1.1
-http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
-
-5.1.0
   FOR FINAL
   - no mysqli
-  - update/test languages
-    - PARTIAL
-    - UNTESTED
-    - TESTED
+  - update charsets
       czech
+    DONE
       danish
       english
       german
+      polish
       romanian
       russian
       spanish

@@ -36,7 +36,7 @@ $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__,
 $CONF = array_merge($CONF, $settings);
 
 // Check id for backwards compatability with 4.x
-if (isset($_GET['id']) && $_GET['id'] && !$_GET['u']) {
+if (isset($_GET['id']) && $_GET['id'] && !isset($_GET['u'])) {
   $username = $DB->escape($_GET['id']);
 }
 else {
@@ -79,10 +79,9 @@ if ($CONF['ranks_on_buttons']) {
     require_once "{$CONF['path']}/sources/misc/classes.php";
     $rank_by = base::rank_by();
 
-    list($hits) = $DB->fetch("SELECT {$rank_by} FROM {$CONF['sql_prefix']}_stats WHERE username = '{$username}'", __FILE__, __LINE__);
+    list($hits) = $DB->fetch("SELECT {$rank_by} FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats WHERE sites.username = stats.username AND active = 1 AND sites.username = '{$username}'", __FILE__, __LINE__);
     if ($hits) {
-      $result = $DB->select_limit("SELECT count(*) FROM {$CONF['sql_prefix']}_stats WHERE ({$rank_by}) >= $hits", $CONF['button_num'], 0, __FILE__, __LINE__);
-      list($rank) = $DB->fetch_array($result);
+      list($rank) = $DB->fetch("SELECT count(*) FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats WHERE sites.username = stats.username AND active = 1 AND ({$rank_by}) >= $hits", __FILE__, __LINE__);
 
       $new_rank_cache = 0;
       if ($rank <= $CONF['button_num']) {

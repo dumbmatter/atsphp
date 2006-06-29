@@ -27,25 +27,28 @@ $translator_name = 'Topplista.se';
 $translator_email = 'info@topplista.se';
 $translator_url = 'http://www.topplista.se/';
 
+// Set this to the character encoding of your translation
+$LNG['charset'] = "iso-8859-1";
+
 // Global
 $LNG['g_form_submit_short'] = "OK";
-$LNG['g_username'] = "AnvÃ¤ndarnamn";
+$LNG['g_username'] = "Användarnamn";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Titel";
 $LNG['g_description'] = "Beskrivning";
 $LNG['g_category'] = "Kategori"; // 4.1.0
 $LNG['g_email'] = "E-post";
 $LNG['g_banner_url'] = "URL till banner";
-$LNG['g_password'] = "LÃ¶senord";
+$LNG['g_password'] = "Lösenord";
 $LNG['g_average'] = "Genomsnitt";
 $LNG['g_today'] = "Idag";
-$LNG['g_yesterday'] = "IgÃ¥r";
+$LNG['g_yesterday'] = "Igår";
 $LNG['g_daily'] = "Dagligen"; // 5.0
-$LNG['g_this_month'] = "Den hÃ¤r mÃ¥naden"; // 5.0
-$LNG['g_last_month'] = "FÃ¶rra mÃ¥naden"; // 5.0
-$LNG['g_monthly'] = "MÃ¥natligen"; // 5.0
-$LNG['g_this_week'] = "Den hÃ¤r veckan"; // 5.0
-$LNG['g_last_week'] = "FÃ¶rra veckan"; // 5.0
+$LNG['g_this_month'] = "Den här månaden"; // 5.0
+$LNG['g_last_month'] = "Förra månaden"; // 5.0
+$LNG['g_monthly'] = "Månatligen"; // 5.0
+$LNG['g_this_week'] = "Den här veckan"; // 5.0
+$LNG['g_last_week'] = "Förra veckan"; // 5.0
 $LNG['g_weekly'] = "Veckovis"; // 5.0
 $LNG['g_pv'] = 'Visningar'; // 5.0
 $LNG['g_overall'] = 'Totalt'; // 5.0
@@ -57,74 +60,74 @@ $LNG['g_unq_in'] = "Unika in"; // 5.0
 $LNG['g_tot_in'] = "In"; // 5.0
 $LNG['g_unq_out'] = "Unika ut"; // 5.0
 $LNG['g_tot_out'] = "Ut"; // 5.0
-$LNG['g_invalid_u_or_p'] = "Fel anvÃ¤ndarnamn eller lÃ¶senord. FÃ¶rsÃ¶k igen."; // 5.0
-$LNG['g_invalid_u'] = "Felaktigt anvÃ¤ndarnamn. FÃ¶rsÃ¶k igen."; // 5.0
-$LNG['g_invalid_p'] = "Felaktigt lÃ¶senord. FÃ¶rsÃ¶k igen."; // 5.0
-$LNG['g_session_expired'] = "Din inloggningssession har gÃ¥tt ut. FÃ¶rsÃ¶k igen."; // 5.0
+$LNG['g_invalid_u_or_p'] = "Fel användarnamn eller lösenord. Försök igen."; // 5.0
+$LNG['g_invalid_u'] = "Felaktigt användarnamn. Försök igen."; // 5.0
+$LNG['g_invalid_p'] = "Felaktigt lösenord. Försök igen."; // 5.0
+$LNG['g_session_expired'] = "Din inloggningssession har gått ut. Försök igen."; // 5.0
 $LNG['g_error'] = "Fel"; // 5.0
-$LNG['g_delete_install'] = "Av sÃ¤kerhetsskÃ¤l mÃ¥ste du ta bort katalogen install innan scriptet kÃ¶rs."; // 5.0
+$LNG['g_delete_install'] = "Av säkerhetsskäl måste du ta bort katalogen install innan scriptet körs."; // 5.0
 
 // Edit Account
-$LNG['edit_header'] = "Ã„ndra anvÃ¤ndarkonto";
-$LNG['edit_info_edited'] = "Ditt anvÃ¤ndarkonto Ã¤ndrades.";
-$LNG['edit_password_blank'] = "LÃ¤mna fÃ¤ltet tomt fÃ¶r att behÃ¥lla nuvarande lÃ¶senord"; // 4.0
+$LNG['edit_header'] = "Ändra användarkonto";
+$LNG['edit_info_edited'] = "Ditt användarkonto ändrades.";
+$LNG['edit_password_blank'] = "Lämna fältet tomt för att behålla nuvarande lösenord"; // 4.0
 
 // Gateway Page
-$LNG['gateway_header'] = "IngÃ¥ngssida";
-$LNG['gateway_text'] = "Den hÃ¤r sidan finns till fÃ¶r att fÃ¶rhindra fusk. Klicka pÃ¥ lÃ¤nken nedan fÃ¶r att komma till topplistan.";
-$LNG['gateway_vote'] = "GÃ¥ in";
-$LNG['gateway_no_vote'] = "GÃ¥ in utan att rÃ¶sta"; // 5.0
+$LNG['gateway_header'] = "Ingångssida";
+$LNG['gateway_text'] = "Den här sidan finns till för att förhindra fusk. Klicka på länken nedan för att komma till topplistan.";
+$LNG['gateway_vote'] = "Gå in";
+$LNG['gateway_no_vote'] = "Gå in utan att rösta"; // 5.0
 
 // Install
 $LNG['install_header'] = "Installation";
-$LNG['install_welcome'] = "VÃ¤lkommen till Aardvark Topsites PHP 5. Fyll i formulÃ¤ret nedan fÃ¶r att installera scriptet.";
-$LNG['install_sql_prefix'] = "Tabell-prefix (table prefix) - Ã¤ndra bara om det finns mer Ã¤n en installation i samma databas";
-$LNG['install_error_chmod'] = "Kunde inte skriva till settings_sql.php. Se till att du har satt CHMOD 666 pÃ¥ settings_sql.php.";
-$LNG['install_error_sql'] = "Kunde inte ansluta till SQL-databasen. GÃ¥ tillbaka och kontrollera instÃ¤llningarna fÃ¶r SQL.";
+$LNG['install_welcome'] = "Välkommen till Aardvark Topsites PHP 5. Fyll i formuläret nedan för att installera scriptet.";
+$LNG['install_sql_prefix'] = "Tabell-prefix (table prefix) - ändra bara om det finns mer än en installation i samma databas";
+$LNG['install_error_chmod'] = "Kunde inte skriva till settings_sql.php. Se till att du har satt CHMOD 666 på settings_sql.php.";
+$LNG['install_error_sql'] = "Kunde inte ansluta till SQL-databasen. Gå tillbaka och kontrollera inställningarna för SQL.";
 $LNG['install_done'] = "Din topplista installerades. Ta bort katalogen install.";
 $LNG['install_your'] = "Din topplista";
 $LNG['install_admin'] = "Administration";
 $LNG['install_manual'] = "Manual";
 $LNG['upgrade_header'] = "Uppgradera";
-$LNG['upgrade_welcome'] = "VÃ¤lkommen till Aardvark Topsites PHP 5. Se till att du har en backup av databasen innan du uppgraderar.";
-$LNG['upgrade_version'] = "Se till att du uppgraderar frÃ¥n version %s."; // 5.1.0
-$LNG['upgrade_error_version'] = "Uppgraderingen stÃ¶djer bara Aardvark Topsites PHP 4.1.0 eller senare version.";
+$LNG['upgrade_welcome'] = "Välkommen till Aardvark Topsites PHP 5. Se till att du har en backup av databasen innan du uppgraderar.";
+$LNG['upgrade_version'] = "Se till att du uppgraderar från version %s."; // 5.1.0
+$LNG['upgrade_error_version'] = "Uppgraderingen stödjer bara Aardvark Topsites PHP 4.1.0 eller senare version.";
 $LNG['upgrade_done'] = "Din topplista uppgraderades. Ta bort katalogen install.";
 
 // Join
 $LNG['join_header'] = "Registrera ny webbplats";
 $LNG['join_enter_text'] = "Enter the text as it is shown in the image below:"; // 4.2.2
-$LNG['join_user'] = "AnvÃ¤ndarnamn"; // 5.0
+$LNG['join_user'] = "Användarnamn"; // 5.0
 $LNG['join_website'] = "Webbplats"; // 5.0
-$LNG['join_error_username'] = "Skriva in ett giltig anvÃ¤ndarnamn: anvÃ¤nd bara bokstÃ¤ver, siffror, understreck och bindestreck."; // 5.0
+$LNG['join_error_username'] = "Skriva in ett giltig användarnamn: använd bara bokstäver, siffror, understreck och bindestreck."; // 5.0
 $LNG['join_error_username_duplicate'] = "Enter a valid username: your username is already in use."; // 5.0
 $LNG['join_error_url'] = "Skriva in en giltig URL.";
 $LNG['join_error_email'] = "Skriva in en giltig e-postadress.";
-$LNG['join_error_title'] = "Skriva in en titel fÃ¶r din webbplats.";
-$LNG['join_error_password'] = "Skriva in ett lÃ¶senord.";
-$LNG['join_error_urlbanner'] = "Skriva in en giltig banner. LÃ¤mna fÃ¤ltet tomt om du inte har nÃ¥gon. Den mÃ¥ste vara mindre Ã¤n"; // 4.0
-$LNG['join_error_time'] = "Uppdatera inte den hÃ¤r sidan."; // 4.2.0
-$LNG['join_error_captcha'] = "Ordet du skrev stÃ¤mde inte Ã¶verens med innehÃ¥llet i bilden."; // 4.2.2
-$LNG['join_thanks'] = "Tack fÃ¶r din registrering! LÃ¤gg in den hÃ¤r lÃ¤nkkoden pÃ¥ din webbplats fÃ¶r att bÃ¶rja skicka rÃ¶ster.";
-$LNG['join_change_warning'] = "Om du Ã¤ndrar koden riskerar du att den inte fungerar.";
-$LNG['join_welcome'] = "VÃ¤lkommen till %s";
+$LNG['join_error_title'] = "Skriva in en titel för din webbplats.";
+$LNG['join_error_password'] = "Skriva in ett lösenord.";
+$LNG['join_error_urlbanner'] = "Skriva in en giltig banner. Lämna fältet tomt om du inte har någon. Den måste vara mindre än"; // 4.0
+$LNG['join_error_time'] = "Uppdatera inte den här sidan."; // 4.2.0
+$LNG['join_error_captcha'] = "Ordet du skrev stämde inte överens med innehållet i bilden."; // 4.2.2
+$LNG['join_thanks'] = "Tack för din registrering! Lägg in den här länkkoden på din webbplats för att börja skicka röster.";
+$LNG['join_change_warning'] = "Om du ändrar koden riskerar du att den inte fungerar.";
+$LNG['join_welcome'] = "Välkommen till %s";
 $LNG['join_welcome_admin'] = "En ny webbplats har registrerats.";
 $LNG['join_approve'] = "Your site will be listed when the admin of the topsites list approves it."; // 5.1.0
 $LNG['join_type'] = "Kontotyp"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
 
 // Link Code
-$LNG['link_code_header'] = "LÃ¤nkkod"; // 5.0
+$LNG['link_code_header'] = "Länkkod"; // 5.0
 
 // Lost Password
-$LNG['lost_pw_header'] = "GlÃ¶mt lÃ¶senordet"; // 5.0
-$LNG['lost_pw_forgot'] = "GlÃ¶m lÃ¶senordet?"; // 5.0
-$LNG['lost_pw_get'] = "Ã…terfÃ¥ lÃ¶senordet"; // 5.0
-$LNG['lost_pw_emailed'] = "Du har fÃ¥tt e-post med instruktioner."; // 5.0
-$LNG['lost_pw_email'] = "FÃ¶r att skapa ett nytt lÃ¶senord till ditt anvÃ¤ndarkonto, gÃ¥ hit:"; // 5.0
-$LNG['lost_pw_new'] = "Skriv in ett nytt lÃ¶senord"; // 5.0
-$LNG['lost_pw_set_new'] = "VÃ¤lj nytt lÃ¶senord"; // 5.0
-$LNG['lost_pw_finish'] = "Ditt lÃ¶senord har Ã¤ndrats."; // 5.0
+$LNG['lost_pw_header'] = "Glömt lösenordet"; // 5.0
+$LNG['lost_pw_forgot'] = "Glöm lösenordet?"; // 5.0
+$LNG['lost_pw_get'] = "Återfå lösenordet"; // 5.0
+$LNG['lost_pw_emailed'] = "Du har fått e-post med instruktioner."; // 5.0
+$LNG['lost_pw_email'] = "För att skapa ett nytt lösenord till ditt användarkonto, gå hit:"; // 5.0
+$LNG['lost_pw_new'] = "Skriv in ett nytt lösenord"; // 5.0
+$LNG['lost_pw_set_new'] = "Välj nytt lösenord"; // 5.0
+$LNG['lost_pw_finish'] = "Ditt lösenord har ändrats."; // 5.0
 
 // Main Page
 $LNG['main_header'] = "Topplista"; // 5.0
@@ -134,15 +137,15 @@ $LNG['main_members'] = "Webbplatser";
 $LNG['main_menu_rankings'] = "Topplista";
 $LNG['main_menu_join'] = "Registrera ny webbplats";
 $LNG['main_menu_random'] = "Slumpa en webbplats";
-$LNG['main_menu_search'] = "SÃ¶k";
-$LNG['main_menu_lost_code'] = "GlÃ¶mt koden"; // 5.0
-$LNG['main_menu_lost_password'] = "GlÃ¶mt lÃ¶senordet"; // 5.0
-$LNG['main_menu_edit'] = "Ã„ndra anvÃ¤ndaruppgifter";
+$LNG['main_menu_search'] = "Sök";
+$LNG['main_menu_lost_code'] = "Glömt koden"; // 5.0
+$LNG['main_menu_lost_password'] = "Glömt lösenordet"; // 5.0
+$LNG['main_menu_edit'] = "Ändra användaruppgifter";
 $LNG['main_menu_user_cp'] = "Kontrollpanel"; // 5.0
 $LNG['main_featured'] = "Utvald webbplats"; // 4.0.2
 $LNG['main_executiontime'] = "Sidvisningstid"; // 4.0
-$LNG['main_queries'] = "SQL-frÃ¥gor"; // 4.0
-$LNG['main_powered'] = "Med kraft frÃ¥n";
+$LNG['main_queries'] = "SQL-frågor"; // 4.0
+$LNG['main_powered'] = "Med kraft från";
 
 // Ranking Table
 $LNG['table_stats'] = "Statistik";
@@ -154,24 +157,24 @@ $LNG['table_description'] = "Beskrivning"; // 4.0
 $LNG['table_movement'] = "Trend";
 $LNG['table_up'] = "Upp"; // 5.0
 $LNG['table_down'] = "Ner"; // 5.0
-$LNG['table_neutral'] = "OfÃ¶rÃ¤ndrad"; // 5.0
+$LNG['table_neutral'] = "Oförändrad"; // 5.0
 
 // Rate and Review
 $LNG['rate_header'] = "Betyg och recension";
 $LNG['rate_rating'] = "Ge betyg";
 $LNG['rate_review'] = "Skriv recension - bara text, ingen HTML"; // 5.0
-$LNG['rate_thanks'] = "Tack fÃ¶r ditt betyg.";
-$LNG['rate_error'] = "Du har redan gett betyg Ã¥t den hÃ¤r webbplatsen.";
+$LNG['rate_thanks'] = "Tack för ditt betyg.";
+$LNG['rate_error'] = "Du har redan gett betyg åt den här webbplatsen.";
 $LNG['rate_back'] = "Tillbaka till statistiken";
 $LNG['rate_email_admin'] = "En ny kommentar har skrivits i din topplista."; // 5.1.0
 
 // Search
-$LNG['search_header'] = "SÃ¶k";
-$LNG['search_off'] = "SÃ¶kfunktionen har inaktiverats.";
-$LNG['search_no_sites'] = "Hittade inga webbplatser i topplistan som matchade din sÃ¶kning."; // 5.0
-$LNG['search_prev'] = "FÃ¶regÃ¥ende"; // 3.2.1
-$LNG['search_next'] = "NÃ¤sta"; // 3.2.1
-$LNG['search_displaying_results'] = "Visar %s till %s av totalt %s sÃ¶kresultat pÃ¥ sÃ¶kordet <b>%s</b>."; // 5.1.0
+$LNG['search_header'] = "Sök";
+$LNG['search_off'] = "Sökfunktionen har inaktiverats.";
+$LNG['search_no_sites'] = "Hittade inga webbplatser i topplistan som matchade din sökning."; // 5.0
+$LNG['search_prev'] = "Föregående"; // 3.2.1
+$LNG['search_next'] = "Nästa"; // 3.2.1
+$LNG['search_displaying_results'] = "Visar %s till %s av totalt %s sökresultat på sökordet <b>%s</b>."; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "Statistik";
@@ -183,7 +186,7 @@ $LNG['stats_rate'] = "Ge betyg eller skriv recension";
 $LNG['stats_reviews'] = "Recensioner";
 $LNG['stats_allreviews'] = "Visa alla recensioner"; // 4.0
 $LNG['stats_week'] = "Vecka"; // 5.0
-$LNG['stats_highest'] = "HÃ¶gst"; // 5.0
+$LNG['stats_highest'] = "Högst"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "Topp %s webbplatser"; // 4.0
@@ -194,119 +197,119 @@ $LNG['ssi_all'] = "Alla webbplatser"; // 4.0
 $LNG['user_cp_header'] = "Kontrollpanel"; // 5.0
 $LNG['user_cp_login'] = "Logga in"; // 5.0
 $LNG['user_cp_logout'] = "Logga ut"; // 5.0
-$LNG['user_cp_welcome'] = "VÃ¤lkommen till kontrollpanelen. AnvÃ¤nd lÃ¤nkarna i menyn till vÃ¤nster fÃ¶r att Ã¤ndra ditt anvÃ¤ndarkonto."; // 5.0
-$LNG['user_cp_logout_message'] = "Du har loggats ut frÃ¥n kontrollpanelen."; // 5.0
-$LNG['user_cp_login_long'] = "Logga in med ditt anvÃ¤ndarnamn och lÃ¶senord eller med ditt OpenID."; // 5.1.0
+$LNG['user_cp_welcome'] = "Välkommen till kontrollpanelen. Använd länkarna i menyn till vänster för att ändra ditt användarkonto."; // 5.0
+$LNG['user_cp_logout_message'] = "Du har loggats ut från kontrollpanelen."; // 5.0
+$LNG['user_cp_login_long'] = "Logga in med ditt användarnamn och lösenord eller med ditt OpenID."; // 5.1.0
 $LNG['user_cp_openid'] = "OpenID"; // 5.1.0
-$LNG['user_cp_openid_error_server'] = "Kunde inte hitta en OpenID-server fÃ¶r %s."; // 5.1.0
-$LNG['user_cp_openid_error_join'] = "Du mÃ¥ste registrera dig som anvÃ¤ndare fÃ¶r att fÃ¥ tillgÃ¥ng till kontrollpanelen."; // 5.1.0
-$LNG['user_cp_openid_error_general'] = "Ett fel intrÃ¤ffade vid inloggningen. GÃ¥ tillbaka och fÃ¶rsÃ¶k igen."; // 5.1.0
-$LNG['user_cp_openid_error_cancel'] = "Du mÃ¥ste ges behÃ¶righet fÃ¶r att fortsÃ¤tta. GÃ¥ tillbaka och fÃ¶rsÃ¶k igen."; // 5.1.0
-$LNG['user_cp_openid_error_from_server'] = "Felmeddelande frÃ¥n server: %s"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "Kunde inte hitta en OpenID-server för %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "Du måste registrera dig som användare för att få tillgång till kontrollpanelen."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "Ett fel inträffade vid inloggningen. Gå tillbaka och försök igen."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "Du måste ges behörighet för att fortsätta. Gå tillbaka och försök igen."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Felmeddelande från server: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
-$LNG['a_approve_header'] = "GodkÃ¤nn nya webbplatser"; // 5.0
-$LNG['a_approve'] = "GodkÃ¤nn"; // 4.0
-$LNG['a_approve_none'] = "Inga webbplatser vÃ¤ntar pÃ¥ godkÃ¤nnande."; // 4.0
-$LNG['a_approve_done'] = "Webbplatsen godkÃ¤ndes."; // 4.0
-$LNG['a_approve_dones'] = "Webbplatserna godkÃ¤ndes."; // 4.0
+$LNG['a_approve_header'] = "Godkänn nya webbplatser"; // 5.0
+$LNG['a_approve'] = "Godkänn"; // 4.0
+$LNG['a_approve_none'] = "Inga webbplatser väntar på godkännande."; // 4.0
+$LNG['a_approve_done'] = "Webbplatsen godkändes."; // 4.0
+$LNG['a_approve_dones'] = "Webbplatserna godkändes."; // 4.0
 $LNG['a_approve_sel'] = "Med markerade:"; // 5.0
 
 // Admin > Approve New Reviews // 5.0
-$LNG['a_approve_rev_header'] = "GodkÃ¤nn nya recensioner"; // 5.0
-$LNG['a_approve_rev_none'] = "Inga recensioner vÃ¤ntar pÃ¥ godkÃ¤nnande."; // 5.0
-$LNG['a_approve_rev_done'] = "Recensionen godkÃ¤ndes."; // 5.0
-$LNG['a_approve_rev_dones'] = "Recensionerna godkÃ¤ndes."; // 5.0
+$LNG['a_approve_rev_header'] = "Godkänn nya recensioner"; // 5.0
+$LNG['a_approve_rev_none'] = "Inga recensioner väntar på godkännande."; // 5.0
+$LNG['a_approve_rev_done'] = "Recensionen godkändes."; // 5.0
+$LNG['a_approve_rev_dones'] = "Recensionerna godkändes."; // 5.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Skapa en ny sida"; // 5.1.0
-$LNG['a_create_page_id'] = "Sid-ID - det kommer att anvÃ¤ndas i URL:en, sÃ¥ det kan bara innehÃ¥lla bokstÃ¤ver, siffror, understreck och bindestreck"; // 5.1.0
-$LNG['a_create_page_error_id'] = "Sid-ID:n kan bara innehÃ¥lla bokstÃ¤ver, siffror, understreck och bindestreck. GÃ¥ tillbaka och vÃ¤lj ett annat sid-ID."; // 5.1.0
-$LNG['a_create_page_error_id_duplicate'] = "Det finns redan en sida med detta sid-ID. GÃ¥ tillbaka och vÃ¤lj ett annat sid-ID."; // 5.1.0
-$LNG['a_create_page_created'] = "Sidan skapades. Du mÃ¥ste lÃ¤gga in en lÃ¤nk till %s manuellt i wrapper.html."; // 5.1.0
+$LNG['a_create_page_id'] = "Sid-ID - det kommer att användas i URL:en, så det kan bara innehålla bokstäver, siffror, understreck och bindestreck"; // 5.1.0
+$LNG['a_create_page_error_id'] = "Sid-ID:n kan bara innehålla bokstäver, siffror, understreck och bindestreck. Gå tillbaka och välj ett annat sid-ID."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "Det finns redan en sida med detta sid-ID. Gå tillbaka och välj ett annat sid-ID."; // 5.1.0
+$LNG['a_create_page_created'] = "Sidan skapades. Du måste lägga in en länk till %s manuellt i wrapper.html."; // 5.1.0
 
 // Admin > Delete Member
-$LNG['a_del_header'] = "Ta bort anvÃ¤ndarkonto"; // 5.0
-$LNG['a_del_headers'] = "Ta bort anvÃ¤ndarkonton"; // 5.0
-$LNG['a_del_done'] = "AnvÃ¤ndarkontot togs bort."; // 5.0
-$LNG['a_del_dones'] = "AnvÃ¤ndarkontona togs bort."; // 5.0
-$LNG['a_del_warn'] = "Ã„r du sÃ¤ker pÃ¥ att du vill ta bort %s?"; // 5.0
-$LNG['a_del_multi'] = "dessa %s anvÃ¤ndarkonton"; //5.0
+$LNG['a_del_header'] = "Ta bort användarkonto"; // 5.0
+$LNG['a_del_headers'] = "Ta bort användarkonton"; // 5.0
+$LNG['a_del_done'] = "Användarkontot togs bort."; // 5.0
+$LNG['a_del_dones'] = "Användarkontona togs bort."; // 5.0
+$LNG['a_del_warn'] = "Är du säker på att du vill ta bort %s?"; // 5.0
+$LNG['a_del_multi'] = "dessa %s användarkonton"; //5.0
 
 // Admin > Delete Bad Word // 5.1.0
 $LNG['a_del_bad_word_header'] = "Ta bort filtrerade ord"; // 5.1.0
 $LNG['a_del_bad_word_headers'] = "Ta bort filtrerade ord"; // 5.1.0
 $LNG['a_del_bad_word_done'] = "Det filtrerade ordet har tagits bort."; // 5.1.0
 $LNG['a_del_bad_word_dones'] = "De filtrerade orden har tagits bort."; // 5.1.0
-$LNG['a_del_bad_word_warn'] = "Ã„r du sÃ¤ker pÃ¥ att du vill ta bort %s frÃ¥n listan Ã¶ver filtrerade ord?"; //5.1.0
+$LNG['a_del_bad_word_warn'] = "Är du säker på att du vill ta bort %s från listan över filtrerade ord?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "dessa %s ord"; //5.1.0
-$LNG['a_del_bad_word_invalid_id'] = "Felaktigt ID-nummer fÃ¶r filtrerade ord. GÃ¥ tillbaka och fÃ¶rsÃ¶k igen."; // 5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "Felaktigt ID-nummer för filtrerade ord. Gå tillbaka och försök igen."; // 5.1.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Ta bort sida"; // 5.1.0
 $LNG['a_del_page_headers'] = "Ta bort sidor"; // 5.1.0
 $LNG['a_del_page_done'] = "Sidan togs bort."; // 5.1.0
 $LNG['a_del_page_dones'] = "Sidorna togs bort."; // 5.1.0
-$LNG['a_del_page_warn'] = "Ã„r du sÃ¤ker pÃ¥ att du vill ta bort %s?"; //5.1.0
+$LNG['a_del_page_warn'] = "Är du säker på att du vill ta bort %s?"; //5.1.0
 $LNG['a_del_page_multi'] = "dessa %s sidor"; //5.1.0
-$LNG['a_del_page_invalid_id'] = "Felaktigt sid-ID. GÃ¥ tillbaka och fÃ¶rsÃ¶k igen."; // 5.1.0
+$LNG['a_del_page_invalid_id'] = "Felaktigt sid-ID. Gå tillbaka och försök igen."; // 5.1.0
 
 // Admin > Delete Review // 5.0
 $LNG['a_del_rev_header'] = "Ta bort recension"; // 5.0
 $LNG['a_del_rev_headers'] = "Ta bort recensioner"; // 5.0
 $LNG['a_del_rev_done'] = "Recensionen togs bort."; // 5.0
 $LNG['a_del_rev_dones'] = "Recensionerna togs bort."; // 5.0
-$LNG['a_del_rev_warn'] = "Ã„r du sÃ¤ker pÃ¥ att du vill ta bort den hÃ¤r recensionen?"; //5.0
-$LNG['a_del_rev_warns'] = "Ã„r du sÃ¤ker pÃ¥ att du vill ta bort dessa recensionener?"; //5.0
-$LNG['a_del_rev_invalid_id'] = "Felaktigt recensions-ID. FÃ¶rsÃ¶k igen."; // 5.0
+$LNG['a_del_rev_warn'] = "Är du säker på att du vill ta bort den här recensionen?"; //5.0
+$LNG['a_del_rev_warns'] = "Är du säker på att du vill ta bort dessa recensionener?"; //5.0
+$LNG['a_del_rev_invalid_id'] = "Felaktigt recensions-ID. Försök igen."; // 5.0
 
 // Admin > Edit Member
-$LNG['a_edit_header'] = "Ã„ndra anvÃ¤ndaruppgifter"; // 5.0
-$LNG['a_edit_site_is'] = "Den hÃ¤r webbplatsen Ã¤r"; // 4.0
+$LNG['a_edit_header'] = "Ändra användaruppgifter"; // 5.0
+$LNG['a_edit_site_is'] = "Den här webbplatsen är"; // 4.0
 $LNG['a_edit_active'] = "Aktiv (visas)"; // 4.0
 $LNG['a_edit_inactive'] = "Inaktiv (dold)"; // 5.0
-$LNG['a_edit_edited'] = "AnvÃ¤ndaruppgifterna Ã¤ndrades.";
+$LNG['a_edit_edited'] = "Användaruppgifterna ändrades.";
 
 // Admin > Edit Bad Word // 5.1.0
-$LNG['a_edit_bad_word_header'] = "Ã„ndra filtrerade ord"; // 5.1.0
-$LNG['a_edit_bad_word_edited'] = "Det filtrerade ordet har Ã¤ndrats."; // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Ändra filtrerade ord"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "Det filtrerade ordet har ändrats."; // 5.1.0
 
 // Admin > Edit Custom Page // 5.1.0
-$LNG['a_edit_page_header'] = "Ã„ndra sida"; // 5.1.0
-$LNG['a_edit_page_content'] = "InnehÃ¥ll - HTML Ã¤r tillÃ¥tet"; // 5.1.0
-$LNG['a_edit_page_edited'] = "Sidan Ã¤ndrades."; // 5.1.0
+$LNG['a_edit_page_header'] = "Ändra sida"; // 5.1.0
+$LNG['a_edit_page_content'] = "Innehåll - HTML är tillåtet"; // 5.1.0
+$LNG['a_edit_page_edited'] = "Sidan ändrades."; // 5.1.0
 
 // Admin > Edit Review // 5.0
-$LNG['a_edit_rev_header'] = "Ã„ndra recension"; // 5.0
-$LNG['a_edit_rev_edited'] = "Recensionen Ã¤ndrades.";
+$LNG['a_edit_rev_header'] = "Ändra recension"; // 5.0
+$LNG['a_edit_rev_edited'] = "Recensionen ändrades.";
 
 // Admin > Email Members
 $LNG['a_email_header'] = "Skicka e-post"; // 5.0
-$LNG['a_email_subject'] = "Ã„mne"; // 4.2.0
+$LNG['a_email_subject'] = "Ämne"; // 4.2.0
 $LNG['a_email_message'] = "Meddelande"; // 4.2.0
 $LNG['a_email_msg_sent'] = "E-post skickades till %s"; // 5.0
 $LNG['a_email_not_sent'] = "Kunde inte skicka till %s"; // 5.0
-$LNG['a_email_sent'] = "Skickade e-post till %s anvÃ¤ndare."; // 4.2.0
-$LNG['a_email_failed'] = "Kunde inte skicka e-post till %s anvÃ¤ndare."; // 4.2.0
+$LNG['a_email_sent'] = "Skickade e-post till %s användare."; // 4.2.0
+$LNG['a_email_failed'] = "Kunde inte skicka e-post till %s användare."; // 4.2.0
 
 // Admin > Logout
-$LNG['a_logout_message'] = "Du Ã¤r utloggad."; // 5.0
+$LNG['a_logout_message'] = "Du är utloggad."; // 5.0
 
 // Admin > Main
 $LNG['a_header'] = "Administration"; // 5.0
-$LNG['a_main'] = "VÃ¤lkommen till administrationen. AnvÃ¤nd lÃ¤nkarna i menyn till vÃ¤nster fÃ¶r att administrera din topplista."; // 5.0
-$LNG['a_main_approve'] = "1 webbplats vÃ¤ntar pÃ¥ att godkÃ¤nnas."; // 5.0
-$LNG['a_main_approves'] = "%s webbplatser vÃ¤ntar pÃ¥ att godkÃ¤nnas."; // 5.0
-$LNG['a_main_approve_rev'] = "1 recension vÃ¤ntar pÃ¥ att godkÃ¤nnas."; // 5.0
-$LNG['a_main_approve_revs'] = "%s recensioner vÃ¤ntar pÃ¥ att godkÃ¤nnas."; // 5.0
+$LNG['a_main'] = "Välkommen till administrationen. Använd länkarna i menyn till vänster för att administrera din topplista."; // 5.0
+$LNG['a_main_approve'] = "1 webbplats väntar på att godkännas."; // 5.0
+$LNG['a_main_approves'] = "%s webbplatser väntar på att godkännas."; // 5.0
+$LNG['a_main_approve_rev'] = "1 recension väntar på att godkännas."; // 5.0
+$LNG['a_main_approve_revs'] = "%s recensioner väntar på att godkännas."; // 5.0
 $LNG['a_main_your'] = "Din version"; // 5.0
 $LNG['a_main_latest'] = "Senaste versionen"; // 5.0
 $LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP</a>"; // 5.0
 
 // Admin > Manage Members
-$LNG['a_man_header'] = "AnvÃ¤ndare"; // 5.0
+$LNG['a_man_header'] = "Användare"; // 5.0
 $LNG['a_man_actions'] = "Alternativ"; // 4.2.0
-$LNG['a_man_edit'] = "Ã„ndra"; // 4.2.0
+$LNG['a_man_edit'] = "Ändra"; // 4.2.0
 $LNG['a_man_delete'] = "Ta bort"; // 4.2.0
 $LNG['a_man_email'] = "Skicka e-post"; // 4.2.0
 $LNG['a_man_all'] = "Markera alla"; // 5.0
@@ -315,10 +318,10 @@ $LNG['a_man_del_sel'] = "Ta bort markerade"; // 5.0
 
 // Admin > Manage Bad Words // 5.1.0
 $LNG['a_man_bad_words_header'] = "Ordfilter"; // 5.1.0
-$LNG['a_man_bad_words_instructions'] = "Skriv in ett ord och vad det ska ersÃ¤ttas med nedan. Till exempel, skriv in \"fan\" i ordfÃ¤ltet och \"f*n\" i ersÃ¤ttningsfÃ¤ltet."; // 5.1.0
-$LNG['a_man_bad_words_instructions_matching'] = "Exakt matchning gÃ¶r att bara det exakta ordet ersÃ¤tts. Global matchning gÃ¶r att det gÃ¤ller alla ord och meningar dÃ¤r bokstavskombinationen fÃ¶rekommer. AlltsÃ¥, global matchning av \"fan\" gÃ¶r att ocksÃ¥ \"fantastisk\" och \"soffan\" Ã¤ndras."; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Skriv in ett ord och vad det ska ersättas med nedan. Till exempel, skriv in \"fan\" i ordfältet och \"f*n\" i ersättningsfältet."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Exakt matchning gör att bara det exakta ordet ersätts. Global matchning gör att det gäller alla ord och meningar där bokstavskombinationen förekommer. Alltså, global matchning av \"fan\" gör att också \"fantastisk\" och \"soffan\" ändras."; // 5.1.0
 $LNG['a_man_bad_words_word'] = "Ord"; // 5.1.0
-$LNG['a_man_bad_words_replacement'] = "ErsÃ¤ttning"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Ersättning"; // 5.1.0
 $LNG['a_man_bad_words_matching'] = "Matchning"; // 5.1.0
 $LNG['a_man_bad_words_exact'] = "Exakt"; // 5.1.0
 $LNG['a_man_bad_words_global'] = "Globalt"; // 5.1.0
@@ -326,11 +329,11 @@ $LNG['a_man_bad_words_filter'] = "Filtrera ord"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" har lagts till i ordfiltret."; // 5.1.0
 
 // Admin > Manage Custom Pages // 5.1.0
-$LNG['a_man_pages_header'] = "Ã„ndra sidor"; // 5.1.0
+$LNG['a_man_pages_header'] = "Ändra sidor"; // 5.1.0
 
 // Admin > Manage Reviews // 5.0
 $LNG['a_man_rev_header'] = "Recensioner"; // 5.0
-$LNG['a_man_rev_enter'] = "FÃ¶r att Ã¤ndra recensioner tillhÃ¶rande en webbplats, skriv in webbplatsens anvÃ¤ndarnamn nedan."; // 5.0
+$LNG['a_man_rev_enter'] = "För att ändra recensioner tillhörande en webbplats, skriv in webbplatsens användarnamn nedan."; // 5.0
 $LNG['a_man_rev_id'] = "ID"; // 5.0
 $LNG['a_man_rev_rev'] = "Recension"; // 5.0
 $LNG['a_man_rev_date'] = "Datum"; // 5.0
@@ -338,103 +341,103 @@ $LNG['a_man_rev_date'] = "Datum"; // 5.0
 // Admin > Menu
 $LNG['a_menu'] = "Meny";
 $LNG['a_menu_main'] = "Startsida"; // 5.0
-$LNG['a_menu_approve'] = "GodkÃ¤nn nya webbplatser";
-$LNG['a_menu_manage'] = "AnvÃ¤ndare"; // 4.2.0
-$LNG['a_menu_settings'] = "InstÃ¤llningar"; // 5.0
+$LNG['a_menu_approve'] = "Godkänn nya webbplatser";
+$LNG['a_menu_manage'] = "Användare"; // 4.2.0
+$LNG['a_menu_settings'] = "Inställningar"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Ordfilter"; // 5.1.0
 $LNG['a_menu_skins'] = "Stilar och kategorier"; // 5.0
-$LNG['a_menu_approve_reviews'] = "GodkÃ¤nn nya recensioner"; // 5.0
+$LNG['a_menu_approve_reviews'] = "Godkänn nya recensioner"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Recensioner"; // 5.0
 $LNG['a_menu_email'] = "Skicka e-post";
 $LNG['a_menu_delete_review'] = "Ta bort recension";
 $LNG['a_menu_logout'] = "Logga ut";
-$LNG['a_menu_delete'] = "Ta bort anvÃ¤ndare";
-$LNG['a_menu_edit'] = "Ã„ndra anvÃ¤ndare";
+$LNG['a_menu_delete'] = "Ta bort användare";
+$LNG['a_menu_edit'] = "Ändra användare";
 $LNG['a_menu_create_page'] = "Skapa sida"; // 5.1.0
-$LNG['a_menu_manage_pages'] = "Ã„ndra sidor"; // 5.1.0
-$LNG['a_header_members'] = "AnvÃ¤ndare"; // 5.0
-$LNG['a_header_settings'] = "InstÃ¤llningar"; // 5.0
+$LNG['a_menu_manage_pages'] = "Ändra sidor"; // 5.1.0
+$LNG['a_header_members'] = "Användare"; // 5.0
+$LNG['a_header_settings'] = "Inställningar"; // 5.0
 $LNG['a_header_reviews'] = "Recensioner"; // 5.0
-$LNG['a_header_pages'] = "Sidor med eget innehÃ¥ll"; // 5.1.0
+$LNG['a_header_pages'] = "Sidor med eget innehåll"; // 5.1.0
 
 // Admin > Settings
-$LNG['a_s_header'] = "Ã„ndra instÃ¤llningar";
-$LNG['a_s_help'] = "HjÃ¤lp"; // 5.1.0
+$LNG['a_s_header'] = "Ändra inställningar";
+$LNG['a_s_help'] = "Hjälp"; // 5.1.0
 
-$LNG['a_s_general'] = "AllmÃ¤nna instÃ¤llningar";
-$LNG['a_s_admin_password'] = "LÃ¶senord till administration";
+$LNG['a_s_general'] = "Allmänna inställningar";
+$LNG['a_s_admin_password'] = "Lösenord till administration";
 $LNG['a_s_list_name'] = "Topplistans namn";
 $LNG['a_s_list_url'] = "URL till topplistan";
-$LNG['a_s_default_language'] = "StandardsprÃ¥k";
+$LNG['a_s_default_language'] = "Standardspråk";
 $LNG['a_s_your_email'] = "Topplistans e-postadress";
 
-$LNG['a_s_sql'] = "SQL-instÃ¤llningar";
+$LNG['a_s_sql'] = "SQL-inställningar";
 $LNG['a_s_sql_type'] = "Databastyp"; // 4.1.0
-$LNG['a_s_sql_host'] = "VÃ¤rd";
+$LNG['a_s_sql_host'] = "Värd";
 $LNG['a_s_sql_database'] = "Databas";
-$LNG['a_s_sql_username'] = "AnvÃ¤ndarnamn";
-$LNG['a_s_sql_password'] = "LÃ¶senord";
+$LNG['a_s_sql_username'] = "Användarnamn";
+$LNG['a_s_sql_password'] = "Lösenord";
 
 $LNG['a_s_ranking'] = "Placeringar och urval";
 $LNG['a_s_num_list'] = "Antal webbplatser att visa per sida"; // 5.0
-$LNG['a_s_ranking_period'] = "RÃ¤kna statisken utifrÃ¥n dagar, veckor eller mÃ¥nader"; // 5.0
+$LNG['a_s_ranking_period'] = "Räkna statisken utifrån dagar, veckor eller månader"; // 5.0
 $LNG['a_s_ranking_method'] = "Sortera efter"; // 5.0
-$LNG['a_s_ranking_average'] = "RÃ¤kna statistiken frÃ¥n genomsnitt eller bara genom %s"; // 5.0
-$LNG['a_s_featured_member'] = 'Utvald webbplats - fÃ¶r att funktionen ska fungera mÃ¥ste taggen {$featured_member} finns i wrapper.html.'; // 4.1.0
-$LNG['a_s_top_skin_num'] = "Antal webbplatser som fÃ¥r anvÃ¤nda _top-stilen";
+$LNG['a_s_ranking_average'] = "Räkna statistiken från genomsnitt eller bara genom %s"; // 5.0
+$LNG['a_s_featured_member'] = 'Utvald webbplats - för att funktionen ska fungera måste taggen {$featured_member} finns i wrapper.html.'; // 4.1.0
+$LNG['a_s_top_skin_num'] = "Antal webbplatser som får använda _top-stilen";
 $LNG['a_s_ad_breaks'] = "Visa annonser efter dessa placeringar (separera med kommatecken) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_member'] = "AnvÃ¤ndare";
-$LNG['a_s_active_default'] = "Nyregistrerade webbplatser mÃ¥ste godkÃ¤nnas innan de fÃ¥r visas i topplistan";
-$LNG['a_s_active_default_review'] = "Nya recensioner mÃ¥ste godkÃ¤nnas innan de visas";
-$LNG['a_s_delete_after'] = "Ta bort inaktiva anvÃ¤ndare efter antal dagar (skriv 0 fÃ¶r att inaktivera funktionen)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Skicka e-post till administratÃ¶ren nÃ¤r en ny anvÃ¤ndare registreras"; // 5.1.0
-$LNG['a_s_email_admin_on_review'] = "Skicka e-post till administratÃ¶ren nÃ¤r en ny kommentar skrivits"; // 5.1.0
-$LNG['a_s_max_banner_width'] = "Maximal banner-bredd (skriv 0 fÃ¶r att inaktivera funktionen)"; // 4.2.0
-$LNG['a_s_max_banner_height'] = "Maximal banner-hÃ¶jd (skriv 0 fÃ¶r att inaktivera funktionen)"; // 4.2.0
-$LNG['a_s_default_banner'] = "Standard-banner fÃ¶r anvÃ¤ndare som inte anger en egen banner";
+$LNG['a_s_member'] = "Användare";
+$LNG['a_s_active_default'] = "Nyregistrerade webbplatser måste godkännas innan de får visas i topplistan";
+$LNG['a_s_active_default_review'] = "Nya recensioner måste godkännas innan de visas";
+$LNG['a_s_delete_after'] = "Ta bort inaktiva användare efter antal dagar (skriv 0 för att inaktivera funktionen)"; // 4.1.0
+$LNG['a_s_email_admin_on_join'] = "Skicka e-post till administratören när en ny användare registreras"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Skicka e-post till administratören när en ny kommentar skrivits"; // 5.1.0
+$LNG['a_s_max_banner_width'] = "Maximal banner-bredd (skriv 0 för att inaktivera funktionen)"; // 4.2.0
+$LNG['a_s_max_banner_height'] = "Maximal banner-höjd (skriv 0 för att inaktivera funktionen)"; // 4.2.0
+$LNG['a_s_default_banner'] = "Standard-banner för användare som inte anger en egen banner";
 
-$LNG['a_s_button'] = "KnappinstÃ¤llningar";
-$LNG['a_s_ranks_on_buttons'] = "Placeringar pÃ¥ knappar -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_button'] = "Knappinställningar";
+$LNG['a_s_ranks_on_buttons'] = "Placeringar på knappar -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "Knappar som visar placeringar"; // 4.2.0
-$LNG['a_s_button_url'] = "Om ja/nej - webbadress till knappen du vill visa pÃ¥ dina anvÃ¤ndares webbplatser"; // 4.0
+$LNG['a_s_button_url'] = "Om ja/nej - webbadress till knappen du vill visa på dina användares webbplatser"; // 4.0
 $LNG['a_s_button_dir'] = "Om ja - webbadress till mappen med knapparna"; // 4.0
-$LNG['a_s_button_ext'] = "Om ja - filtyper (gif, jpg, png och sÃ¥ vidare)"; // 4.0
-$LNG['a_s_button_num'] = "Om ja - Antal knappar - ju hÃ¶gre antal, desto mer resurser anvÃ¤nder scriptet pÃ¥ servern"; // 4.0
-$LNG['a_s_google_friendly_links'] = "SÃ¶kmotorvÃ¤nliga lÃ¤nkar - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_button_ext'] = "Om ja - filtyper (gif, jpg, png och så vidare)"; // 4.0
+$LNG['a_s_button_num'] = "Om ja - Antal knappar - ju högre antal, desto mer resurser använder scriptet på servern"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Sökmotorvänliga länkar - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_other'] = "Ã–vriga instÃ¤llningar";
-$LNG['a_s_search'] = "SÃ¶kfunktion";
+$LNG['a_s_other'] = "Övriga inställningar";
+$LNG['a_s_search'] = "Sökfunktion";
 $LNG['a_s_time_offset'] = "Tidskompensation gentemot din server (om du eventullt befinner dig i annan tidszon eller har sommartid/vintertid)";
-$LNG['a_s_gateway'] = "Aktivera separat ingÃ¥ngssida fÃ¶r topplistans besÃ¶kare (fÃ¶r att fÃ¶rhindra fusk)";
-$LNG['a_s_captcha'] = "Bildverifiering vid registrering av webbplats (fÃ¶rhindrar missbruk) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_gateway'] = "Aktivera separat ingångssida för topplistans besökare (för att förhindra fusk)";
+$LNG['a_s_captcha'] = "Bildverifiering vid registrering av webbplats (förhindrar missbruk) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Aktiverat";
 $LNG['a_s_off'] = "Inaktiverat";
 $LNG['a_s_days'] = "Dagar";
-$LNG['a_s_months'] = "MÃ¥nader";
+$LNG['a_s_months'] = "Månader";
 $LNG['a_s_weeks'] = "Veckor"; // 4.2.0
 $LNG['a_s_yes'] = "Ja";
 $LNG['a_s_no'] = "Nej";
 
-$LNG['a_s_updated'] = "InstÃ¤llningarna uppdaterades.";
+$LNG['a_s_updated'] = "Inställningarna uppdaterades.";
 
 // Admin > Skins and Categories // 5.0
 $LNG['a_skins_header'] = "Stilar och kategorier"; // 5.0
 $LNG['a_skins_default'] = "Standardstil"; // 5.0
-$LNG['a_skins_set_default'] = "VÃ¤lj standardstil"; // 5.0
+$LNG['a_skins_set_default'] = "Välj standardstil"; // 5.0
 $LNG['a_skins_anon'] = "Anonym"; // 5.0
-$LNG['a_skins_default_done'] = "Standardstilen Ã¤ndrades."; // 5.0
-$LNG['a_skins_categories_done'] = "Kategoriernas stilar Ã¤ndrades."; // 5.0
+$LNG['a_skins_default_done'] = "Standardstilen ändrades."; // 5.0
+$LNG['a_skins_categories_done'] = "Kategoriernas stilar ändrades."; // 5.0
 $LNG['a_skins_new_category_done'] = "Kategorin skapades."; // 5.0
 $LNG['a_skins_delete_done'] = "Kategorin togs bort."; // 5.0
-$LNG['a_skins_delete_error'] = "Kategorin kunde inte tas bort eftersom det mÃ¥ste finnas minst en kategori i topplistan."; // 5.1.0
-$LNG['a_skins_edit_done'] = "Kategorin Ã¤ndrades."; // 5.0
-$LNG['a_skins_invalid_skin'] = "Felaktig stil: %s. FÃ¶rsÃ¶k igen."; // 5.0
+$LNG['a_skins_delete_error'] = "Kategorin kunde inte tas bort eftersom det måste finnas minst en kategori i topplistan."; // 5.1.0
+$LNG['a_skins_edit_done'] = "Kategorin ändrades."; // 5.0
+$LNG['a_skins_invalid_skin'] = "Felaktig stil: %s. Försök igen."; // 5.0
 $LNG['a_skins_categories'] = "Kategorier"; // 5.0
 $LNG['a_skins_new_category'] = "Skapa ny kategori"; // 5.0
-$LNG['a_skins_set_skins'] = "Ã„ndra kategoriernas stilar"; // 5.0
-$LNG['a_skins_edit_category'] = "Ã„ndra kategori"; // 5.0
+$LNG['a_skins_set_skins'] = "Ändra kategoriernas stilar"; // 5.0
+$LNG['a_skins_edit_category'] = "Ändra kategori"; // 5.0
 $LNG['a_skins_category_name'] = "Kategorins namn"; // 5.0
-$LNG['a_skins_diff_skins'] = "Du kan vÃ¤lja att ha olika stilar fÃ¶r olika kategorier nedan."; // 5.0
+$LNG['a_skins_diff_skins'] = "Du kan välja att ha olika stilar för olika kategorier nedan."; // 5.0
 ?>

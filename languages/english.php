@@ -27,6 +27,9 @@ $translator_name = 'Jeremy Scheff';
 $translator_email = 'webmaster@aardvarkind.com';
 $translator_url = 'http://www.aardvarktopsitesphp.com/';
 
+// Set this to the character encoding of your translation
+$LNG['charset'] = "utf-8";
+
 // Global
 $LNG['g_form_submit_short'] = "Go";
 $LNG['g_username'] = "Username";

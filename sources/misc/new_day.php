@@ -34,7 +34,7 @@ function new_day($current_day) {
       if ($i > 0) {
         $delete_usernames .= ", ";
       }
-      $delete_usernames = "'{$username}'";
+      $delete_usernames .= "'{$username}'";
     }
 
     if ($i != 0) {

@@ -27,6 +27,9 @@ $translator_name = 'Robert Adamek';
 $translator_email = 'admin@ultima.cz';
 $translator_url = 'http://www.ultima.cz';
 
+// Set this to the character encoding of your translation
+$LNG['charset'] = "utf-8";
+
 // Global
 $LNG['g_form_submit_short'] = "Go";
 $LNG['g_username'] = "Uivatelské jméno";

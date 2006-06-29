@@ -15,6 +15,12 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+5.1.1 - 2006-06-21
+BUG FIXES
+- 5.1.0 used unicode for all the translations.  This caused lots of problems
+  for people, so I converted the translations back to their old character
+  encodings.
+
 5.1.0 - 2006-06-16
 FEATURES
 - When an edit form or join form has errors in it, the user is presented with inline error messages
