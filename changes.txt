@@ -15,6 +15,23 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+5.1.2 - 2006-07-23
+BUG FIXES
+- Critical security fix for servers with magic_quotes_gpc disabled (most
+  servers are not affected)
+- Automatically deleting inactive members is working again
+- In button.php, rank calculating ignores inactive sites
+- Character encodings in the installer/upgrader now work
+- Month names on the stats page are translated into the default language
+  instead of always being English (this has not been extensively tested, but it
+  seems to work; let me know if it doesn't)
+- Ad breaks no longer break the page layout if they are directly below the
+  final rank
+- If there are 24 members and 10 listed per page, the multiple pages drop-down
+  member will show the last page as 21-24 instead of 21-30
+- Fixed some minor HTML problems
+- Fixed search query display glitch (' was shown as \')
+
 5.1.1 - 2006-06-21
 BUG FIXES
 - 5.1.0 used unicode for all the translations.  This caused lots of problems

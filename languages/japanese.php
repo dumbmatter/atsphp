@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -16,12 +16,19 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
+
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Japanese';
+$translation = 'Japanese (日本語)';
 $translator_name = 'Mitsuhiro Yoshida';
 $translator_email = 'mits@mitstek.com';
 $translator_url = 'http://mitstek.com/';
+
+// Set this to the character encoding of your translation
+$LNG['charset'] = "utf-8";
 
 // Global
 $LNG['g_form_submit_short'] = "Go";
@@ -66,7 +73,6 @@ $LNG['edit_info_edited'] = "あなたのアカウントが正常に編集され�
 $LNG['edit_password_blank'] = "現在のパスワードを使用するには、空白のままにしてください。"; // 4.0
 
 // Gateway Page
-$LNG['gateway_charset'] = "UTF-8";
 $LNG['gateway_header'] = "Topsitesゲートウェイページ";
 $LNG['gateway_text'] = "ヒットに対する不正行為を防ぐため、ゲートウェイページが設定されました。下記のリンクをクリックして、Topsitesリストに入ってください。";
 $LNG['gateway_vote'] = "入って投票する";
@@ -84,6 +90,7 @@ $LNG['install_admin'] = "管理";
 $LNG['install_manual'] = "マニュアル";
 $LNG['upgrade_header'] = "アップグレード";
 $LNG['upgrade_welcome'] = "ようこそ Aardvark Topsites PHP 5 へ。アップグレードする前に、忘れずにデータをバックアップしてください。";
+$LNG['upgrade_version'] = "バージョン %s からアップグレードしていることを確認してください。"; // 5.1.0
 $LNG['upgrade_error_version'] = "アップグレードは Aardvark Topsites PHP 4.1.0 またはそれ以上のバージョンをサポートしています。";
 $LNG['upgrade_done'] = "あなたのTopsitesリストがアップグレードされました。このディレクトリを削除してください。";
 
@@ -92,7 +99,6 @@ $LNG['join_header'] = "ユーザ登録";
 $LNG['join_enter_text'] = "下記に表示されている画像の文字を入力してください:"; // 4.2.2
 $LNG['join_user'] = "ユーザ"; // 5.0
 $LNG['join_website'] = "ウェブサイト"; // 5.0
-$LNG['join_error_forgot'] = "エラー:";
 $LNG['join_error_username'] = "有効なユーザ名を入力してください: 文字、数字、アンダースコアおよびダッシュのみを使用してください。"; // 5.0
 $LNG['join_error_username_duplicate'] = "有効なユーザ名を入力してください: あなたのユーザ名はすでに使用されています。"; // 5.0
 $LNG['join_error_url'] = "有効なURLを入力してください。";
@@ -100,13 +106,15 @@ $LNG['join_error_email'] = "有効なメールアドレスを入力してくだ�
 $LNG['join_error_title'] = "あなたのウェブサイトのタイトルを入力してください。";
 $LNG['join_error_password'] = "パスワードを入力してください。";
 $LNG['join_error_urlbanner'] = "有効なバナーのURLを入力してください。バナーが無い場合は、空白にしてください。バナーサイズ:"; // 4.0
-$LNG['join_error_back'] = "戻ってこれらのエラーを修正してください。";
 $LNG['join_error_time'] = "ユーザ登録確認ページを更新しないでください。"; // 4.2.0
 $LNG['join_error_captcha'] = "あなたが入力した文字はイメージと合致しません。"; // 4.2.2
 $LNG['join_thanks'] = "ご登録ありがとうございます! ランキングのために下記のコードをあなたのサイトに設置してください。";
 $LNG['join_change_warning'] = "コードを変更した場合、動作しない恐れがあります。";
 $LNG['join_welcome'] = "%s へようこそ";
 $LNG['join_welcome_admin'] = "あなたのTopsitesリストに新しいメンバーがユーザ登録しました。";
+$LNG['join_approve'] = "topsitesリスト管理者の承認後、あなたのサイトは登録されます。"; // 5.1.0
+$LNG['join_type'] = "アカウントタイプ"; // 5.1.0
+$LNG['join_standard'] = "スタンダード"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "リンクコード"; // 5.0
@@ -158,14 +166,15 @@ $LNG['rate_review'] = "レビュー - HTMLは許可されません。"; // 5.0
 $LNG['rate_thanks'] = "レーティングありがとうございます。";
 $LNG['rate_error'] = "あなたはすでにこのサイトをレーティングしています。";
 $LNG['rate_back'] = "ステータスに戻る";
+$LNG['rate_email_admin'] = "あなたのtopsitesリストに新しいレビューが投稿されました。"; // 5.1.0
 
 // Search
 $LNG['search_header'] = "検索";
 $LNG['search_off'] = "検索機能は停止されています。";
-$LNG['search_for'] = "検索キーワード:";
 $LNG['search_no_sites'] = "該当するサイトは見つかりませんでした。"; // 5.0
 $LNG['search_prev'] = "前へ"; // 3.2.1
 $LNG['search_next'] = "次へ"; // 3.2.1
+$LNG['search_displaying_results'] = "%s - %s ( %s 件中 ) の結果を表示しています。検索キーワード: <b>%s</b>"; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "ステータス";
@@ -190,6 +199,13 @@ $LNG['user_cp_login'] = "ログイン"; // 5.0
 $LNG['user_cp_logout'] = "ログアウト"; // 5.0
 $LNG['user_cp_welcome'] = "ようこそユーザコントロールパネルへ。あなたのアカウントを管理するには、左側のリンクを使用してください。"; // 5.0
 $LNG['user_cp_logout_message'] = "ユーザコントロールパネルをログアウトしました。"; // 5.0
+$LNG['user_cp_login_long'] = "あなたのユーザ名およびパスワード、またはOpenIDでログインしてください。"; // 5.1.0
+$LNG['user_cp_openid'] = "OpenID"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "%s のOpenIDサーバを見つけることができませんでした。"; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "ユーザコントロールパネルにアクセスするには、topsitesリストにユーザ登録してください。"; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "ログイン処理中にエラーが発生しました。もう一度お試しください。"; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "アクセス権が必要です。もう一度お試しください。"; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "サーバエラー: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "新しいメンバーの承認"; // 5.0
@@ -205,6 +221,13 @@ $LNG['a_approve_rev_none'] = "承認が必要なレビューはありません�
 $LNG['a_approve_rev_done'] = "レビューが承認されました。"; // 5.0
 $LNG['a_approve_rev_dones'] = "レビューが承認されました。"; // 5.0
 
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "カスタムページの作成"; // 5.1.0
+$LNG['a_create_page_id'] = "ページID - これはURLの中で使用され、文字、数字、アンダースコア、ダッシュのみ含むことができます。"; // 5.1.0
+$LNG['a_create_page_error_id'] = "ページIDは、文字、数字、アンダースコア、ダッシュのみ含むことができます。戻ってページIDを修正してください。"; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "そのページIDを使用したカスタムページが存在します。戻って新しいページIDを選択してください。"; // 5.1.0
+$LNG['a_create_page_created'] = "ページが作成されました。wrapper.htmlの %s に手動でリンクを追加してください。"; // 5.1.0
+
 // Admin > Delete Member
 $LNG['a_del_header'] = "メンバーの削除"; // 5.0
 $LNG['a_del_headers'] = "メンバーの削除"; // 5.0
@@ -212,6 +235,24 @@ $LNG['a_del_done'] = "メンバーが削除されました。"; // 5.0
 $LNG['a_del_dones'] = "メンバーが削除されました。"; // 5.0
 $LNG['a_del_warn'] = "本当に %s を削除してもよろしいですか?"; // 5.0
 $LNG['a_del_multi'] = "%s 名のメンバーを削除"; //5.0
+
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "フィルタワードの削除"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "フィルタワードの削除"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "フィルタワードが削除されました。"; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "フィルタワードが削除されました。"; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "本当に %s をフィルタワードリストから削除してもよろしいですか?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "これらの %s 語"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "フィルタワードIDが無効です。もう一度お試しください。"; // 5.1.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "カスタムページの削除"; // 5.1.0
+$LNG['a_del_page_headers'] = "カスタムページの削除"; // 5.1.0
+$LNG['a_del_page_done'] = "カスタムページが削除されました。"; // 5.1.0
+$LNG['a_del_page_dones'] = "カスタムページが削除されました。"; // 5.1.0
+$LNG['a_del_page_warn'] = "本当に %s を削除してもよろしいですか?"; //5.1.0
+$LNG['a_del_page_multi'] = "これらの %s メンバ"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "カスタムページIDが正しくありません。もう一度お試しください。"; // 5.1.0
 
 // Admin > Delete Review // 5.0
 $LNG['a_del_rev_header'] = "レビューの削除"; // 5.0
@@ -228,6 +269,15 @@ $LNG['a_edit_site_is'] = "このサイトは"; // 4.0
 $LNG['a_edit_active'] = "アクティブ ( リスト掲載 )"; // 4.0
 $LNG['a_edit_inactive'] = "インアクティブ ( リスト掲載無し )"; // 5.0
 $LNG['a_edit_edited'] = "メンバーが編集されました。";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "フィルタワードの編集"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "フィルタワードが編集されました。"; // 5.1.0
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "カスタムページの編集"; // 5.1.0
+$LNG['a_edit_page_content'] = "コンテンツ - ここでHTMLを使用できます。"; // 5.1.0
+$LNG['a_edit_page_edited'] = "ページが編集されました。"; // 5.1.0
 
 // Admin > Edit Review // 5.0
 $LNG['a_edit_rev_header'] = "レビューの編集"; // 5.0
@@ -254,7 +304,7 @@ $LNG['a_main_approve_rev'] = "承認待ちのレビューが 1 件あります�
 $LNG['a_main_approve_revs'] = "承認待ちのレビューが %s 件あります。"; // 5.0
 $LNG['a_main_your'] = "あなたのバージョン"; // 5.0
 $LNG['a_main_latest'] = "最新バージョン"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
 $LNG['a_man_header'] = "メンバーの管理"; // 5.0
@@ -265,6 +315,21 @@ $LNG['a_man_email'] = "メール"; // 4.2.0
 $LNG['a_man_all'] = "すべてを選択"; // 5.0
 $LNG['a_man_none'] = "選択解除"; // 5.0
 $LNG['a_man_del_sel'] = "選択したものを削除"; // 5.0
+
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "禁止用語フィルタ"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "単語およびその置換語を下記に入力してください。例えば、ワードフィールドに「hell」と入力して、置換フィールドに「h***」と入力することができます。"; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "厳密なマッチングは、指定した文字のみに正確にマッチします。グローバルマッチングは、指定した文字が含まれている単語にマッチします。「hell」のグローバルマッチは「shell」および「hello」にもマッチします。"; // 5.1.0
+$LNG['a_man_bad_words_word'] = "ワード"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "置換"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "マッチング"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "厳密"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "グローバル"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "フィルタワード"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "「 %s 」 が禁止用語フィルタに追加されました。"; // 5.1.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "カスタムページの管理"; // 5.1.0
 
 // Admin > Manage Reviews // 5.0
 $LNG['a_man_rev_header'] = "レビューの管理"; // 5.0
@@ -279,6 +344,7 @@ $LNG['a_menu_main'] = "メイン"; // 5.0
 $LNG['a_menu_approve'] = "新しいメンバーの承認";
 $LNG['a_menu_manage'] = "メンバーの管理"; // 4.2.0
 $LNG['a_menu_settings'] = "詳細設定"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "禁止用語フィルタ"; // 5.1.0
 $LNG['a_menu_skins'] = "スキンおよびカテゴリ"; // 5.0
 $LNG['a_menu_approve_reviews'] = "新しいレビューの承認"; // 5.0
 $LNG['a_menu_manage_reviews'] = "レビューの管理"; // 5.0
@@ -287,12 +353,17 @@ $LNG['a_menu_delete_review'] = "レビューの削除";
 $LNG['a_menu_logout'] = "ログアウト";
 $LNG['a_menu_delete'] = "メンバーの削除";
 $LNG['a_menu_edit'] = "メンバーの編集";
+$LNG['a_menu_create_page'] = "カスタムページの作成"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "カスタムページの作成"; // 5.1.0
 $LNG['a_header_members'] = "メンバー"; // 5.0
 $LNG['a_header_settings'] = "設定"; // 5.0
 $LNG['a_header_reviews'] = "レビュー"; // 5.0
+$LNG['a_header_pages'] = "カスタムページ"; // 5.1.0
 
 // Admin > Settings
 $LNG['a_s_header'] = "詳細設定";
+$LNG['a_s_help'] = "ヘルプ"; // 5.1.0
+
 $LNG['a_s_general'] = "一般設定";
 $LNG['a_s_admin_password'] = "管理者パスワード";
 $LNG['a_s_list_name'] = "あなたのTopsitesリストのタイトル";
@@ -314,30 +385,32 @@ $LNG['a_s_ranking_method'] = "ランキング方法"; // 5.0
 $LNG['a_s_ranking_average'] = "%s の平均ランキング"; // 5.0
 $LNG['a_s_featured_member'] = '特別メンバー - この設定を「On」にした後、wrapper.htmlに {$featured_member} を追加してください。'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "_top skinに使用するメンバー数";
-$LNG['a_s_ad_breaks'] = "これらのランク数の後にブレーク広告を表示 ( カンマで分離 )";
+$LNG['a_s_ad_breaks'] = "これらのランクの後に広告を表示する ( カンマ区切り ) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_member'] = "メンバー設定";
 $LNG['a_s_active_default'] = "リスト表示される前に新しいメンバーの承認が必要";
 $LNG['a_s_active_default_review'] = "リスト表示される前に新しいレビューの承認が必要";
 $LNG['a_s_delete_after'] = "次の日数で未承認のメンバーを削除する ( 無効の場合 0 を設定してください )"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "新しいメンバーが登録された場合、あなたにメール通知";
+$LNG['a_s_email_admin_on_join'] = "新しいメンバー登録時に管理者にメール通知する。"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "新しいレビュー投稿時に管理者にメール通知する。"; // 5.1.0
 $LNG['a_s_max_banner_width'] = "メンバーのバナーの最大幅 ( 無効の場合 0 を設定してください )"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "メンバーのバナーの最大高 ( 無効の場合 0 を設定してください )"; // 4.2.0
 $LNG['a_s_default_banner'] = "バナーを提供しないメンバーのためのデフォルトバナー";
 
 $LNG['a_s_button'] = "ボタン設定";
-$LNG['a_s_ranks_on_buttons'] = "ランクボタン -  詳細は <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">マニュアル</a>をご覧ください。あなたがマニュアルを読んだ場合のみ、統計ボタンを選択してください。統計ボタンを選択した場合、このセクションの他の設定は有効となりません。"; // 4.2.0
+$LNG['a_s_ranks_on_buttons'] = "ランクボタン -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "統計ボタン"; // 4.2.0
 $LNG['a_s_button_url'] = "「Yes/No」の場合 - メンバーサイトに表示したいデフォルトボタンのURL"; // 4.0
 $LNG['a_s_button_dir'] = "「Yes」の場合 - ボタンを入れたディレクトリのURL"; // 4.0
 $LNG['a_s_button_ext'] = "「Yes」の場合 - ボタンの拡張子 ( gif、png、jpg等 )"; // 4.0
 $LNG['a_s_button_num'] = "「Yes」の場合 - 作成したボタン数"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Googleフレンドリーリンク - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_other'] = "他の設定";
 $LNG['a_s_search'] = "検索";
 $LNG['a_s_time_offset'] = "あなたのサーバのタイムオフセット ( 時間 )";
 $LNG['a_s_gateway'] = "ヒットに対する不正行為を防ぐゲートウェイページの使用";
-$LNG['a_s_captcha'] = "ユーザ登録に関する文字確認 - スパムに対するセキュリティ"; // 4.2.2
+$LNG['a_s_captcha'] = "登録時の文字確認 ( スパム防止 ) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";
@@ -358,6 +431,7 @@ $LNG['a_skins_default_done'] = "デフォルトスキンが設定されました
 $LNG['a_skins_categories_done'] = "カテゴリスキンが設定されました。"; // 5.0
 $LNG['a_skins_new_category_done'] = "新しいカテゴリが作成されました。"; // 5.0
 $LNG['a_skins_delete_done'] = "カテゴリが削除されました。"; // 5.0
+$LNG['a_skins_delete_error'] = "1つ以上のカテゴリを持つ必要があるため、カテゴリを削除することができませんでした。"; // 5.1.0
 $LNG['a_skins_edit_done'] = "カテゴリが編集されました。"; // 5.0
 $LNG['a_skins_invalid_skin'] = "無効なスキン: %s  もう一度お試しください。"; // 5.0
 $LNG['a_skins_categories'] = "カテゴリ"; // 5.0

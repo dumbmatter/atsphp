@@ -32,7 +32,10 @@ function new_day($current_day) {
     $result = $DB->query("SELECT username FROM {$CONF['sql_prefix']}_stats WHERE days_inactive >= {$CONF['delete_after']}", __FILE__, __LINE__);
     for ($i = 0; list($username) = $DB->fetch_array($result); $i++) {
       if ($i > 0) {
-        $delete_usernames .= ", ";
+        $delete_usernames .= ', ';
+      }
+      else {
+        $delete_usernames = '';
       }
       $delete_usernames .= "'{$username}'";
     }

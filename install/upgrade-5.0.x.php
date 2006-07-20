@@ -126,13 +126,13 @@ EndHTML;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>Aardvark Topsites PHP 5 - <?php echo $LNG['upgrade_header']; ?></title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html;charset=<?php echo $LNG['charset']; ?>" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>
 <body>
 
 <div id="wrapper">
-	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" alt="{$list_name}" /></div><br />
+	<div id="header"><img src="../skins/fusion/header.jpg" width="700" height="65" /></div><br />
 	<div id="content"><?php echo $TMPL['content']; ?><br /></div>
 </div>
 </body>

@@ -172,17 +172,24 @@ class rankings extends base {
 
           $TMPL['content'] .= $this->do_skin('table_row');
           $top_done = 1;
+          $is_top = 0;
         }
-        if ($page_rank == $CONF['top_skin_num'] && (!isset($FORM['start']) || $FORM['start'] <= 1)) {
+
+        if ($page_rank == $CONF['top_skin_num'] && $is_top) {
           $TMPL['content'] .= $this->do_skin('table_top_close');
           $do_table_open = 1;
         }
 
         if (isset($CONF['ad_breaks'][$page_rank])) {
-          if (isset($is_top) && $is_top) {
-            $TMPL['content'] .= $this->do_skin('table_top_close');
+          if ($is_top) {
+            // Close top table if it is still open
+            if (!$do_table_open) {
+              $TMPL['content'] .= $this->do_skin('table_top_close');
+            }
             $TMPL['content'] .= $this->do_skin('ad_break_top');
-            $TMPL['content'] .= $this->do_skin('table_top_open');
+            if ($page_rank < $CONF['top_skin_num']) {
+              $TMPL['content'] .= $this->do_skin('table_top_open');
+            }
           }
           else {
             $TMPL['content'] .= $this->do_skin('table_close');
@@ -191,16 +198,18 @@ class rankings extends base {
           }
         }
 
-        $is_top = 0;
         $TMPL['rank']++;
         $page_rank++;
       }
 
-      if ($top_done) {
-        $TMPL['content'] .= $this->do_skin('table_close');
-      }
-      elseif (!$do_table_open) {
-        $TMPL['content'] .= $this->do_skin('table_top_close');
+      // If an ad break is directly after the last row, then there is no need to close the table
+      if (!isset($CONF['ad_breaks'][--$page_rank])) {
+        if ($top_done) {
+          $TMPL['content'] .= $this->do_skin('table_close');
+        }
+        elseif (!$do_table_open) {
+          $TMPL['content'] .= $this->do_skin('table_top_close');
+        }
       }
     }
   }

@@ -115,15 +115,16 @@ class main_skin extends skin {
       while ($num > 0) {
         $start = $done * $CONF['num_list'] + 1;
         $end = ($done + 1) * $CONF['num_list'];
+        if ($end >= $TMPL['num_members']) { $end = $TMPL['num_members']; }
         $FORM['start'] = isset($FORM['start']) ? $FORM['start'] : 1;
-  
+
         if ($FORM['start'] == $start) {
           $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\" selected=\"selected\">{$start} - {$end}</option>\n";
         }
         else {
           $TMPL['multiple_pages_menu'] .= "<option value=\"{$start}\">{$start} - {$end}</option>\n";
         }
-  
+
         $num = $num - $CONF['num_list'];
         $done++;
       }
@@ -150,7 +151,7 @@ class main_skin extends skin {
       $TMPL['categories_menu'] .= "<option value=\"\" selected=\"selected\">{$LNG['main_all']}</option>\n";
     }
     else {
-      $TMPL['categories_menu'] .= "<option value=\"\">{$LNG['main_all']}\n";
+      $TMPL['categories_menu'] .= "<option value=\"\">{$LNG['main_all']}</option>\n";
     }
     foreach ($CONF['categories'] as $cat => $skin) {
       if ($current_cat == $cat) {

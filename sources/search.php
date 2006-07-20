@@ -46,8 +46,8 @@ class search extends base {
   function process() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    $TMPL['query'] = $DB->escape($FORM['q'], 1);
-    $words = explode(' ', $FORM['q']);
+    $TMPL['query'] = strip_tags($FORM['q']);
+    $words = explode(' ', $DB->escape($FORM['q']));
 
     // Filter out words that are only 1 or 2 characters
     $filtered_words = array_filter($words, create_function('$word', 'return strlen($word) > 2;'));

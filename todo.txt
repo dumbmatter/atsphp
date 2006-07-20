@@ -19,75 +19,94 @@
 ROADMAP
 =======
 
+-----
 5.2.0
+-----
+ETA: Summer
+HIGH PRIORITY:
+banning: url, ip, username, email
+- like profanity filter
+- only on join and on review posting (ip)
+- in admin, have Ban button on the Approve page
+review approval process: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4855
+version number in ats_etc (for upgrader to check)
+new gateway design
+nice-looking HTML emails
+validate all $_SERVER variables
+couple ratings and reviews so admin approves both
+ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL
+open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
+fill in blank ranks with "join"
+------------
+LOW PRIORITY:
+valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
+onmousedown instead of onclick for links: google does it
+secondary ranking method to avoid ties
+cache overall stats (like in main page of admin) and allow all skins to post them
+rss icon in wrapper
+graphs
+timestamp for jointime
+no exits in base::error()
+real averages... if site is new, average may be just 2 days
+ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20999#20999
+backup
+pedantic error reporting errors: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
+mail should use http://pear.php.net/package/Mail
+backlink checker
+combine upgraders into one big file
+dash instead of space in category_url
+
+-----
+5.3.0
+-----
+ETA: Who knows
+HIGH PRIORITY:
 openid
 - old files in atsphp-openid folder
 review admin ui
 - instant refresh back to previous page after form submits
-review approval process - approval will be more popular
-rss icon in wrapper
-version number in sql database (for upgrader to check)
-new gateway design
-graphs
-timestamp for jointime
-no exits in base::error()
 caching
 - rankings.php
 - button.php
   - store rank cache in a file to avoid connecting to database
-real averages... if site is new, average may be just 2 days
-ips: $ip = getenv('HTTP_X_FORWARDED_FOR') ? getenv('HTTP_X_FORWARDED_FOR') : getenv('REMOTE_ADDR');
-validate all $_SERVER variables
-approve ratings along with reviews
-smtp
-http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20023#20023
-backup
-secondary ranking method to avoid ties
+------------
+LOW PRIORITY:
+custom form fields, auto-generated forms
+tags instead of categories
 
-5.1.2
-http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
-sohbet (search forum)
-cache overall stats (like in main page of admin) and allow all skins to post them
-charset in install folder
+TRANSLATION STATUS
+  5.1
+    czech
+    danish
+    english
+    french
+    german
+    japanese
+    polish
+    portuguese
+    romanian
+    russian
+    spanish
+    swedish
+    turkish
 
-DONE
-Automatically deleting inactive members is working again
-button.php rank calculating ignores inactive sites
+SVN ADD
+SVN DELETE
 
-5.1.1
-  FOR FINAL
-  - no mysqli
-  - update charsets
-      czech
-    DONE
-      danish
-      english
-      german
-      polish
-      romanian
-      russian
-      spanish
-      swedish
-      turkish
+MANUAL CHANGES
+skins tutorial: key tags and detailed explainations for wrapper and table
 
-  SVN ADD
-  SVN DELETE
-
-  THINGS TO DO IN UPGRADE
-
-    MANUAL CHANGES
-    skins tutorial: key tags and detailed explainations for wrapper and table
-
-    ON RELEASE
-    increment version in index.php
-    create atsphp-x.x.x.zip from public_html/atsphp
-    - remove unneccesary files and invalid languages
-    Upload atsphp-x.x.x.zip
-    Upload topsitesphp/version.txt
-    Post news at:
-    - news forum
-    - berlios mailing list
-    - berlios news section
-    Notify of release:
-    - hotscripts
-    - freshmeat
+THINGS TO DO ON RELEASE
+  increment version in index.php
+  commit to svn with version number in comment
+  create atsphp-x.x.x.zip from public_html/atsphp
+  - remove unneccesary files and invalid languages
+  Upload atsphp-x.x.x.zip
+  Upload topsitesphp/version.txt
+  Post news at:
+  - news forum
+  - berlios mailing list
+  - berlios news section
+  Notify of release:
+  - hotscripts
+  - freshmeat

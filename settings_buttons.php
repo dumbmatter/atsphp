@@ -36,6 +36,6 @@ header ("Content-type: image/png");
 imagestring($img, 2, 52, 0, $TMPL['unq_pv_0_daily'], $color1);
 imagestring($img, 2, 60, 11, $TMPL['unq_pv_avg_daily'], $color1);
 imagestring($img, 2, 33, 24, "{$TMPL['average_rating']}/5", $color1);
-imagestring($img, 5, 126, 20, $TMPL['rank'], $color2);
+imagestring($img, 5, 126 - ((strlen($TMPL['rank']) - 1) * 4), 20, $TMPL['rank'], $color2);
 imagepng($img);
 ?>
