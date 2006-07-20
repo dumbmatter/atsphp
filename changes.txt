@@ -15,7 +15,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-5.1.2 - 2006-07-23
+5.1.2 (SVN 102) - 2006-07-23
 BUG FIXES
 - Critical security fix for servers with magic_quotes_gpc disabled (most
   servers are not affected)
@@ -32,13 +32,13 @@ BUG FIXES
 - Fixed some minor HTML problems
 - Fixed search query display glitch (' was shown as \')
 
-5.1.1 - 2006-06-21
+5.1.1 (SVN 101) - 2006-06-21
 BUG FIXES
 - 5.1.0 used unicode for all the translations.  This caused lots of problems
   for people, so I converted the translations back to their old character
   encodings.
 
-5.1.0 - 2006-06-16
+5.1.0 (SVN 99) - 2006-06-16
 FEATURES
 - When an edit form or join form has errors in it, the user is presented with inline error messages
 - RSS feed of the top 10 sites (overall and by category) via feed.php
@@ -68,7 +68,7 @@ BUG FIXES
 BUG FIXES
 - Minor security fix
 
-5.0.2 - 2006-01-12
+5.0.2 (SVN 72) - 2006-01-12
 BUG FIXES
 - Works with Frontpage
 - Works with MySQL 5
@@ -77,13 +77,13 @@ BUG FIXES
 - Site name in the stats page
 - Layout bug for categories with few members
 
-5.0.1 - 2005-10-18
+5.0.1 (SVN 65) - 2005-10-18
 BUG FIXES
 - Sanity-check SQL modules in installer
 - English by default in installer
 - No HTML allowed in member info
 
-5.0 - 2005-10-03
+5.0 (SVN 63) - 2005-10-03
 NOTES
 - The script was mostly rewritten with higher standards for code quality
 FEATURES
