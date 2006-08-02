@@ -158,6 +158,7 @@ $LNG['table_movement'] = "Movement";
 $LNG['table_up'] = "Up"; // 5.0
 $LNG['table_down'] = "Down"; // 5.0
 $LNG['table_neutral'] = "Neutral"; // 5.0
+$LNG['table_your_site_here'] = "Your Site Here"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Rate and Review";
@@ -386,6 +387,7 @@ $LNG['a_s_ranking_average'] = "Rank by average or by just %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Featured member - You have to add {$featured_member} to wrapper.html after you turn this on.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
 $LNG['a_s_ad_breaks'] = "Show ads after these ranks (separate with commas) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "Fill blank rows with a message saying \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Member Settings";
 $LNG['a_s_active_default'] = "Require new members to be approved before being listed";

@@ -28,7 +28,7 @@ $translator_email = 'zolwio@gmail.com';
 $translator_url = 'http://www.toplista.mojeforum.net/';
 
 // Set this to the character encoding of your translation
-$LNG['charset'] = "ISO-8859-5";
+$LNG['charset'] = "ISO-8859-2";
 
 // Global
 $LNG['g_form_submit_short'] = "Wy¶lij";

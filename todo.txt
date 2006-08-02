@@ -19,6 +19,24 @@
 ROADMAP
 =======
 
+DONE SINCE 5.1.2
+A random number is appended to captcha.php to deal with IE caching
+Profanity filter pagination is now sane
+Unapproved sites will not be automatically deleted
+Option in the admin to fill empty rows with "Your Site Here"
+SQL:
+ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
+CREATE TABLE `ats_ban` (
+  `id` int(10) unsigned NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `matching` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`id`)
+);
+ALTER TABLE `ats_settings` ADD `fill_blank_rows` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `ad_breaks`;
+ALTER TABLE `ats_etc` ADD `version` VARCHAR( 255 ) NOT NULL;
+UPDATE ats_etc SET version = '5.2.0'
+
 -----
 5.2.0
 -----
@@ -26,24 +44,32 @@ ETA: Summer
 HIGH PRIORITY:
 banning: url, ip, username, email
 - like profanity filter
-- only on join and on review posting (ip)
-- in admin, have Ban button on the Approve page
+- on join: url, ip, username, email
+- on edit: url, email
+- on review: ip
+- in admin, have Ban IP button on the Approve page
 review approval process: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4855
-version number in ats_etc (for upgrader to check)
-new gateway design
-nice-looking HTML emails
-validate all $_SERVER variables
+skins by os-mark
+- new gateway design
+- nice-looking HTML emails
 couple ratings and reviews so admin approves both
-ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL
+backlink checker
+- This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
-fill in blank ranks with "join"
+nitpicks: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=5013
+credits.txt
+- me
+- matt (feed, sql, skin, etc)
+- omar (skin)
+- osmark (skin update)
+- translators
 ------------
 LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
+validate all $_SERVER variables
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 cache overall stats (like in main page of admin) and allow all skins to post them
-rss icon in wrapper
 graphs
 timestamp for jointime
 no exits in base::error()
@@ -52,9 +78,9 @@ ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/view
 backup
 pedantic error reporting errors: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
 mail should use http://pear.php.net/package/Mail
-backlink checker
 combine upgraders into one big file
 dash instead of space in category_url
+double quotes in search = phrase
 
 -----
 5.3.0
@@ -74,6 +100,16 @@ LOW PRIORITY:
 custom form fields, auto-generated forms
 tags instead of categories
 
+UPDATED SKINS
+  gateway.html
+  join_captcha.html
+  join_email.html
+  table_filler.html
+
+SVN ADD
+skins/classic/table_filler.html
+SVN DELETE
+
 TRANSLATION STATUS
   5.1
     czech
@@ -89,9 +125,6 @@ TRANSLATION STATUS
     spanish
     swedish
     turkish
-
-SVN ADD
-SVN DELETE
 
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table

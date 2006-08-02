@@ -205,12 +205,34 @@ class rankings extends base {
       // If an ad break is directly after the last row, then there is no need to close the table
       if (!isset($CONF['ad_breaks'][--$page_rank])) {
         if ($top_done) {
-          $TMPL['content'] .= $this->do_skin('table_close');
+          $do_table_close = 1;
         }
         elseif (!$do_table_open) {
+          $do_table_top_close = 1;
           $TMPL['content'] .= $this->do_skin('table_top_close');
         }
       }
+    }
+
+    if ($CONF['fill_blank_rows'] && $page_rank < $CONF['num_list']) {
+      if (!isset($TMPL['content'])) {
+        $page_rank = 0;
+        $TMPL['content'] = $this->do_skin('table_open');
+      }
+      if (isset($do_table_top_close) && $do_table_top_close) {
+        $TMPL['content'] .= $this->do_skin('table_open');
+      }
+
+      while ($page_rank < $CONF['num_list']) {
+        $page_rank++;
+        $TMPL['content'] .= $this->do_skin('table_filler');
+        $TMPL['rank']++;
+      }
+
+      $TMPL['content'] .= $this->do_skin('table_close');
+    }
+    elseif (isset($do_table_close) && $do_table_close) {
+      $TMPL['content'] .= $this->do_skin('table_close');
     }
   }
 }

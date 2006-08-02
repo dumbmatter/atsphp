@@ -38,6 +38,7 @@ class join extends join_edit {
     global $CONF, $FORM, $LNG, $TMPL;
 
     if ($CONF['captcha']) {
+      $TMPL['rand'] = rand(1, 1000000);
       $TMPL['join_captcha'] = $this->do_skin('join_captcha');
     }
     else {

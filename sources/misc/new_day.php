@@ -25,7 +25,7 @@ function new_day($current_day) {
 
   $DB->query("UPDATE {$CONF['sql_prefix']}_etc SET last_new_day = {$current_day}", __FILE__, __LINE__);
   $DB->query("TRUNCATE TABLE {$CONF['sql_prefix']}_ip_log", __FILE__, __LINE__);
-  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET days_inactive = days_inactive + 1 WHERE tot_pv_0_daily = 0 AND tot_in_0_daily = 0", __FILE__, __LINE__);
+  $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET days_inactive = days_inactive + 1 WHERE tot_pv_0_daily = 0 AND tot_in_0_daily = 0 AND active = 1", __FILE__, __LINE__);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats SET days_inactive = 0 WHERE tot_pv_0_daily > 0 OR tot_in_0_daily > 0", __FILE__, __LINE__);
 
   if ($CONF['delete_after'] > 0) {

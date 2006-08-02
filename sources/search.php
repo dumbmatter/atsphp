@@ -93,8 +93,6 @@ class search extends base {
         $word = preg_quote($word);
         $TMPL['description'] = preg_replace_callback("/({$word})/i", create_function('$matches', 'return "<b>{$matches[1]}</b>";'), $TMPL['description']);
         $TMPL['title'] = preg_replace_callback("/({$word})/i", create_function('$matches', 'return "<b>{$matches[1]}</b>";'), $TMPL['title']);
-//        $TMPL['description'] = preg_replace("/({$word})/ie", "<b>\\1</b>", $TMPL['description']);
-//        $TMPL['title'] = preg_replace($word, "<b>{$word}</b>", $TMPL['title']);
       }
 
       $TMPL['results'] .= $this->do_skin('search_result');

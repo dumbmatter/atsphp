@@ -66,31 +66,30 @@ EndHTML;
     $num_list = 20;
 
     if (isset($FORM['start'])) {
-      $start = $DB->escape($FORM['start']);
+      $start = intval($FORM['start'] - 1);
     }
     else {
-      $start = '';
+      $start = 0;
     }
 
-    $ids_menu = '';
-    $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_bad_words ORDER BY id ASC", 1, 0, __FILE__, __LINE__);
-    list($id_start) = $DB->fetch_array($result);
-    while ($id_start) {
-      $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_bad_words WHERE id > '{$id_start}' ORDER BY id ASC", 2, $num_list - 2, __FILE__, __LINE__);
-      list($id_end) = $DB->fetch_array($result);
-      if (!$id_end) {
-        $result = $DB->select_limit("SELECT id FROM {$CONF['sql_prefix']}_bad_words ORDER BY id DESC", 1, 0, __FILE__, __LINE__);
-        list($id_end) = $DB->fetch_array($result);
+    list($num_words) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_bad_words", __FILE__, __LINE__);
+    if ($num_words > $num_list) {
+      $num_words_original = $num_words;
+      $ids_menu = '';
+      $id_start = 1;
+      $id_end = $num_list;
+
+      while ($num_words > 0) {
+        $num_words = $num_words - $num_list;
+        if ($num_words <= 0) { $id_end = $num_words_original; }
+
+        if ($id_start == ($start + 1)) { $ids_menu .= "<option value=\"{$id_start}\" selected=\"selected\">{$id_start} - {$id_end}</option>"; }
+        else { $ids_menu .= "<option value=\"{$id_start}\">{$id_start} - {$id_end}</option>"; }
+
+        $id_start = $id_start + $num_list;
+        $id_end = $id_end + $num_list;
       }
 
-      if ($id_start == $start) { $ids_menu .= "<option value=\"{$id_start}\" selected=\"selected\">{$id_start} - {$id_end}</option>"; }
-      else { $ids_menu .= "<option value=\"{$id_start}\">{$id_start} - {$id_end}</option>"; }
-
-      list($id_start) = $DB->fetch_array($result);
-    }
-
-    list($num_pages) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_bad_words", __FILE__, __LINE__);
-    if ($num_pages > $num_list) {
       $TMPL['admin_content'] .= <<<EndHTML
 <form action="index.php" method="get">
 <input type="hidden" name="a" value="admin" />
@@ -136,7 +135,7 @@ EndHTML;
 
     $alt = '';
     $num = 0;
-    $result = $DB->select_limit("SELECT id, word, replacement, matching FROM {$CONF['sql_prefix']}_bad_words WHERE id >= '{$start}' ORDER BY id ASC", $num_list, 0, __FILE__, __LINE__);
+    $result = $DB->select_limit("SELECT id, word, replacement, matching FROM {$CONF['sql_prefix']}_bad_words ORDER BY id ASC", $num_list, $start, __FILE__, __LINE__);
     while (list($id, $word, $replacement, $matching) = $DB->fetch_array($result)) {
       if ($matching) { 
         $matching = $LNG['a_man_bad_words_exact'];

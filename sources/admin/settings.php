@@ -104,6 +104,13 @@ class settings extends base {
       $featured_member_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
     }
 
+    if ($CONF['fill_blank_rows']) {
+      $fill_blank_rows_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n";
+    }
+    else {
+      $fill_blank_rows_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}\n";
+    }
+
     if (!$CONF['active_default']) {
       $active_default_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
     }
@@ -200,7 +207,11 @@ class settings extends base {
 <input type="text" name="top_skin_num" size="5" value="{$CONF['top_skin_num']}" /><br /><br />
 </label>
 <label>{$LNG['a_s_ad_breaks']}<br />
-<input type="text" name="ad_breaks" size="20" value="{$ad_breaks}" />
+<input type="text" name="ad_breaks" size="20" value="{$ad_breaks}" /><br /><br />
+</label>
+<label>{$LNG['a_s_fill_blank_rows']}<br />
+<select name="fill_blank_rows">
+{$fill_blank_rows_menu}</select>
 </label>
 </fieldset>
 
@@ -299,6 +310,7 @@ EndHTML;
     $top_skin_num = intval($FORM['top_skin_num']);
     $ad_breaks = $DB->escape($FORM['ad_breaks']);
     $ad_breaks = preg_replace('/[^0-9,]/m', '', $ad_breaks);
+    $fill_blank_rows = intval($FORM['fill_blank_rows']);
 
     $active_default = intval($FORM['active_default']);
     $active_default_review = intval($FORM['active_default_review']);
@@ -322,7 +334,7 @@ EndHTML;
     $captcha = intval($FORM['captcha']);
 
     $DB->query("UPDATE {$CONF['sql_prefix']}_settings SET list_name = '{$list_name}', list_url = '{$list_url}', default_language = '{$default_language}', your_email = '{$your_email}',
-                num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}',
+                num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}', fill_blank_rows = {$fill_blank_rows},
                 active_default = {$active_default}, active_default_review = {$active_default_review}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, email_admin_on_review = {$email_admin_on_review}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
                 ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num}, google_friendly_links = {$google_friendly_links},
                 search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}

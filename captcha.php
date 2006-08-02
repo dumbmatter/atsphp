@@ -49,6 +49,7 @@ for ($i=0; $i<25; $i++) {
   imageline($image, $x1, $y1, $x2, $y2 , $gray);  
 }
 
+$x = 0;
 for ($i=0; $i<6; $i++) {
   $size = rand(4, 5);
   $x = $x + rand(12 , 20);
