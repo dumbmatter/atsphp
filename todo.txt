@@ -67,7 +67,7 @@ credits.txt
 LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 validate all $_SERVER variables
-onmousedown instead of onclick for links: google does it
+onmousedown instead of onclick for links: google does it - Matt: Consider using onMouseUp instead of onMouseDown, this then allows the browser to move the mouse away and not activate the link like browsers do naturally.
 secondary ranking method to avoid ties
 cache overall stats (like in main page of admin) and allow all skins to post them
 graphs
