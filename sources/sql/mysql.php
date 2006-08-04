@@ -91,5 +91,30 @@ class sql {
   function close() {
     mysql_close($this->dbl);
   }
+
+  /* Backup Table Functions */
+  function table_data($table) {
+    global $CONFIG;
+
+    $result = mysql_db_query($CONFIG['sql_database'], "SELECT * FROM {$table}") OR $this->error(__FILE__, __LINE__);
+    unset($table_fields, $table_list);
+
+	$num_fields = mysql_num_fields($result);
+    for($i = 0; $i < $num_fields; $i++) { $table_fields .= mysql_field_name($result, $i) . ($i == 0 ? '' : ', '); }
+
+    for($i = 0; $data = mysql_fetch_row($result); $i++) {
+      $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
+
+      for($j = 0; $j < $num_fields; $j++) {
+	    if($j != 0) { $insert_into .= ', '; }
+
+        if(!isset($data[$j])) { $insert_into .= ' NULL'; }
+        elseif($data[$j] != '') { $insert_into .= ' "' . addslashes($data[$j]) . '"'; }
+        else { $insert_into .= ' ""'; }
+      }
+      $insert_into .= ");\r\n";
+    }
+    return stripslashes($insert_into);
+  }
 }
 ?>
