@@ -86,5 +86,30 @@ class sql {
   function close() {
     $this->dbl->close();
   }
+
+  /* Backup Table Function */
+  function fetch_table_data($table) {
+    global $CONFIG;
+
+    $result = $this->db1->query("SELECT * FROM {$table}", __FILE__, __LINE__);
+    $fields = $result->fetch_fields();
+
+    $table_fields = '';
+    foreach($fields as $field) { $table_fields .= $field->name . ('' == $table_fields ? '' : ', '); }
+
+    for($i = 0; $data = $result->fetch_row($result); $i++) {
+      $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
+
+      for($j = 0; $j < $result->field_count; $j++) {
+        if($j != 0) { $insert_into .= ', '; }
+
+        if(!isset($data[$j])) { $insert_into .= ' NULL'; }
+        elseif($data[$j] != '') { $insert_into .= ' "' . addslashes($data[$j]) . '"'; }
+        else { $insert_into .= ' ""'; }
+      }
+      $insert_into .= ");\r\n";
+    }
+    return stripslashes($insert_into);
+  }
 }
 ?>
