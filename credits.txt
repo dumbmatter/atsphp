@@ -35,7 +35,8 @@ Jeremy Scheff - http://www.aardvarktopsitesphp.com/
 - Designed the Classic skin
 
 Matt Wells - http://www.whywontyou.co.uk/
-- Wrote original version of feed.php
+- Wrote original version of feed.php, backup_database.php, and probably a few
+  other things I'm forgetting
 - Optimized some of the SQL queries
 - Helped with the Fusion skin
 
@@ -47,7 +48,7 @@ Omar Hachem - http://www.squareapex.com/
 - Designed the Fusion skin
 
 OS-Mark - http://www.osempire.com/
-- Designed gateway.html for the Fusion skin
+- Improvements to the Fusion skin
 
 -----------
 TRANSLATORS

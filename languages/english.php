@@ -66,7 +66,7 @@ $LNG['g_invalid_p'] = "Invalid password.  Please try again."; // 5.0
 $LNG['g_session_expired'] = "Your session has expired.  Please try again."; // 5.0
 $LNG['g_error'] = "Error"; // 5.0
 $LNG['g_delete_install'] = "For security reasons, you must delete the install directory before the script will run."; // 5.0
-$LNG['g_ip'] = 'IP Address'; // 5.2.0
+$LNG['g_ip'] = "IP Address"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Edit Account";
