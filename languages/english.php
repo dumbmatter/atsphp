@@ -343,6 +343,7 @@ $LNG['a_man_rev_date'] = "Date"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Main"; // 5.0
 $LNG['a_menu_approve'] = "Approve New Members";
+$LNG['a_menu_backup'] = 'Backup Database'; // 5.2
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0

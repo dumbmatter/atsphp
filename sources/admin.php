@@ -40,6 +40,7 @@ class admin extends base {
         $action = array(
                     'approve' => 1,
                     'approve_reviews' => 1,
+                    'backup_database' => 1,
                     'create_page' => 1,
                     'delete' => 1,
                     'delete_bad_word' => 1,
