@@ -85,7 +85,7 @@ class sql {
   }
 
   function error($file, $line) {
-    trigger_error('Database error in "'.$file.'" on line '.$line.'<br /><br />'."\n".@mysql_error($this->dbl), E_USER_ERROR);
+    trigger_error("Database error in &quot;<b>{$file}</b>&quot; on line <b>{$line}</b><br /><br />\n" . @mysql_error($this->dbl), E_USER_ERROR);
   }
 
   function close() {
@@ -93,28 +93,33 @@ class sql {
   }
 
   /* Backup Table Functions */
-  function table_data($table) {
-    global $CONFIG;
+  function get_table($table, $data = true) {
+    $create_table = $this->fetch("SHOW CREATE TABLE {$table}", __FILE__, __LINE__);
+	$create_table = $create_table['Create Table'] . ";\n\n";
 
-    $result = mysql_db_query($CONFIG['sql_database'], "SELECT * FROM {$table}") OR $this->error(__FILE__, __LINE__);
-    unset($table_fields, $table_list);
+    if(true == $data) {
+      $result = $this->query("SELECT * FROM {$table}", __FILE__, __LINE__);
+      unset($table_fields, $table_list);
 
-	$num_fields = mysql_num_fields($result);
-    for($i = 0; $i < $num_fields; $i++) { $table_fields .= mysql_field_name($result, $i) . ($i == 0 ? '' : ', '); }
+	  $num_fields = mysql_num_fields($result);
+      for($i = 0; $i < $num_fields; $i++) { $table_fields .= mysql_field_name($result, $i) . ($i == 0 ? '' : ', '); }
 
-    for($i = 0; $data = mysql_fetch_row($result); $i++) {
-      $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
+      for($i = 0; $data = mysql_fetch_row($result); $i++) {
+        $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
 
-      for($j = 0; $j < $num_fields; $j++) {
-	    if($j != 0) { $insert_into .= ', '; }
+        for($j = 0; $j < $num_fields; $j++) {
+	      if($j != 0) { $insert_into .= ', '; }
 
-        if(!isset($data[$j])) { $insert_into .= ' NULL'; }
-        elseif($data[$j] != '') { $insert_into .= ' "' . addslashes($data[$j]) . '"'; }
-        else { $insert_into .= ' ""'; }
+          if(!isset($data[$j])) { $insert_into .= ' NULL'; }
+          elseif($data[$j] != '') { $insert_into .= ' "' . addslashes($data[$j]) . '"'; }
+          else { $insert_into .= ' ""'; }
+        }
+        $insert_into .= ");\n";
       }
-      $insert_into .= ");\r\n";
+      $insert_into = stripslashes($insert_into) . "\n\n";
     }
-    return stripslashes($insert_into);
+
+    return $create_table . $insert_into;
   }
 }
 ?>
