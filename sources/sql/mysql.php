@@ -92,31 +92,40 @@ class sql {
     mysql_close($this->dbl);
   }
 
-  /* Backup Table Functions */
-  function get_table($table, $data = true) {
+  // For backups
+  function get_table($table, $data = 1) {
     $create_table = $this->fetch("SHOW CREATE TABLE {$table}", __FILE__, __LINE__);
-	$create_table = $create_table['Create Table'] . ";\n\n";
+    $create_table = $create_table['Create Table'] . ";\n\n";
 
-    if(true == $data) {
+    if ($data) {
       $result = $this->query("SELECT * FROM {$table}", __FILE__, __LINE__);
-      unset($table_fields, $table_list);
 
-	  $num_fields = mysql_num_fields($result);
-      for($i = 0; $i < $num_fields; $i++) { $table_fields .= mysql_field_name($result, $i) . ($i == 0 ? '' : ', '); }
+      $table_fields = '';
+      $insert_into = '';
+      $table_list = '';
+
+      $num_fields = mysql_num_fields($result);
+      for($i = 0; $i < $num_fields; $i++) {
+        $table_fields .= ($i == 0 ? '' : ', ') . mysql_field_name($result, $i);
+      }
 
       for($i = 0; $data = mysql_fetch_row($result); $i++) {
-        $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
+        $insert_into .= "INSERT INTO {$table} ({$table_fields}) VALUES (";
 
         for($j = 0; $j < $num_fields; $j++) {
-	      if($j != 0) { $insert_into .= ', '; }
+          if($j != 0) { $insert_into .= ', '; }
 
-          if(!isset($data[$j])) { $insert_into .= ' NULL'; }
-          elseif($data[$j] != '') { $insert_into .= ' "' . addslashes($data[$j]) . '"'; }
-          else { $insert_into .= ' ""'; }
+          if(!isset($data[$j])) { $insert_into .= 'NULL'; }
+          elseif(is_numeric($data[$j]) && (intval($data[$j]) == $data[$j])) { $insert_into .= intval($data[$j]); }
+          elseif($data[$j] != '') { $insert_into .= "'" . $this->escape($data[$j]) . "'"; }
+          else { $insert_into .= "''"; }
         }
         $insert_into .= ");\n";
       }
-      $insert_into = stripslashes($insert_into) . "\n\n";
+      $insert_into .= "\n\n";
+    }
+    else {
+      $insert_into = '';
     }
 
     return $create_table . $insert_into;

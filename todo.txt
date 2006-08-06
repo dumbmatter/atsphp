@@ -24,12 +24,13 @@ A random number is appended to captcha.php to deal with IE caching
 Profanity filter pagination is now sane
 Unapproved sites will not be automatically deleted
 Option in the admin to fill empty rows with "Your Site Here"
+Backup database from admin
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
 CREATE TABLE `ats_ban` (
   `id` int(10) unsigned NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `data` varchar(255) NOT NULL,
+  `string` varchar(255) NOT NULL,
+  `field` varchar(255) NOT NULL,
   `matching` tinyint(1) NOT NULL,
   PRIMARY KEY  (`id`)
 );
@@ -42,6 +43,7 @@ UPDATE ats_etc SET version = '5.2.0'
 -----
 ETA: Summer
 HIGH PRIORITY:
+check days_inactive in test list.  6 on aug 1
 banning: url, ip, username, email
 - like profanity filter
 - on join: url, ip, username, email
@@ -63,11 +65,12 @@ credits.txt
 - omar (skin)
 - osmark (skin update)
 - translators
+smtp email option via swift mailer (check email)
 ------------
 LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 validate all $_SERVER variables
-onmousedown instead of onclick for links: google does it - Matt: Consider using onMouseUp instead of onMouseDown, this then allows the browser to move the mouse away and not activate the link like browsers do naturally.
+onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 cache overall stats (like in main page of admin) and allow all skins to post them
 graphs
@@ -75,9 +78,7 @@ timestamp for jointime
 no exits in base::error()
 real averages... if site is new, average may be just 2 days
 ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20999#20999
-backup
 pedantic error reporting errors: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
-mail should use http://pear.php.net/package/Mail
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
@@ -101,6 +102,7 @@ custom form fields, auto-generated forms
 tags instead of categories
 
 UPDATED SKINS
+  admin.html
   gateway.html
   join_captcha.html
   join_email.html
@@ -108,6 +110,9 @@ UPDATED SKINS
 
 SVN ADD
 skins/classic/table_filler.html
+sources/admin/manage_ban.php
+sources/admin/delete_ban.php
+sources/admin/edit_ban.php
 SVN DELETE
 
 TRANSLATION STATUS
@@ -132,7 +137,7 @@ skins tutorial: key tags and detailed explainations for wrapper and table
 THINGS TO DO ON RELEASE
   increment version in index.php
   commit to svn with version number in comment
-  create atsphp-x.x.x.zip from public_html/atsphp
+  create atsphp-x.x.x.zip from public_html/atsphp-x.x.x
   - remove unneccesary files and invalid languages
   Upload atsphp-x.x.x.zip
   Upload topsitesphp/version.txt

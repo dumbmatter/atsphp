@@ -54,7 +54,7 @@ class edit_bad_word extends base {
     }
 
     $TMPL['admin_content'] = <<<EndHTML
-<form action="index.php?a=admin&amp;b=edit_bad_word&amp;id={$TMPL['id']}" method="post">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit_bad_word&amp;id={$TMPL['id']}" method="post">
 <fieldset>
 <legend>{$LNG['a_edit_bad_word_header']}</legend>
 <label>{$LNG['a_man_bad_words_word']}<br />

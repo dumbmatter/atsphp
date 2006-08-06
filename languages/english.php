@@ -66,6 +66,7 @@ $LNG['g_invalid_p'] = "Invalid password.  Please try again."; // 5.0
 $LNG['g_session_expired'] = "Your session has expired.  Please try again."; // 5.0
 $LNG['g_error'] = "Error"; // 5.0
 $LNG['g_delete_install'] = "For security reasons, you must delete the install directory before the script will run."; // 5.0
+$LNG['g_ip'] = 'IP Address'; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Edit Account";
@@ -246,6 +247,15 @@ $LNG['a_del_bad_word_warn'] = "Are you sure you want to delete %s from the filte
 $LNG['a_del_bad_word_multi'] = "these %s words"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Invalid filtered word ID.  Please try again."; // 5.1.0
 
+// Admin > Delete Ban // 5.2.0
+$LNG['a_del_ban_header'] = "Delete Blacklist Entry"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Delete Blacklist Entries"; // 5.2.0
+$LNG['a_del_ban_done'] = "The blacklist entry has been deleted."; // 5.2.0
+$LNG['a_del_ban_dones'] = "The blacklist entries have been deleted."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Are you sure you want to delete %s from the blacklist?"; //5.2.0
+$LNG['a_del_ban_multi'] = "these %s entries"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Invalid blacklist ID.  Please try again."; // 5.2.0
+
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Delete Custom Page"; // 5.1.0
 $LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
@@ -274,6 +284,10 @@ $LNG['a_edit_edited'] = "The member has been edited.";
 // Admin > Edit Bad Word // 5.1.0
 $LNG['a_edit_bad_word_header'] = "Edit Filtered Word"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "The filtered word has been edited."; // 5.1.0
+
+// Admin > Edit Ban // 5.2.0
+$LNG['a_edit_ban_header'] = "Edit Blacklist Entry"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "The blacklist entry has been edited."; // 5.2.0
 
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Edit Custom Page"; // 5.1.0
@@ -329,6 +343,13 @@ $LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filter Word"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filter."; // 5.1.0
 
+// Admin > Manage Ban // 5.2.0
+$LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.When a review is posted, the IP address is checked."; // 5.2.0
+$LNG['a_man_ban_string'] = "String"; // 5.2.0
+$LNG['a_man_ban_field'] = "Field"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" has been added to the blacklist."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Manage Custom Pages"; // 5.1.0
 
@@ -343,10 +364,11 @@ $LNG['a_man_rev_date'] = "Date"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Main"; // 5.0
 $LNG['a_menu_approve'] = "Approve New Members";
-$LNG['a_menu_backup'] = 'Backup Database'; // 5.2
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Blacklist"; // 5.2.0
+$LNG['a_menu_backup'] = 'Backup Database'; // 5.2.0
 $LNG['a_menu_skins'] = "Skins and Categories"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Approve New Reviews"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Manage Reviews"; // 5.0
@@ -359,6 +381,7 @@ $LNG['a_menu_create_page'] = "Create Custom Page"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Manage Custom Pages"; // 5.1.0
 $LNG['a_header_members'] = "Members"; // 5.0
 $LNG['a_header_settings'] = "Settings"; // 5.0
+$LNG['a_header_tools'] = "Tools"; // 5.2.0
 $LNG['a_header_reviews'] = "Reviews"; // 5.0
 $LNG['a_header_pages'] = "Custom Pages"; // 5.1.0
 

@@ -25,7 +25,7 @@ BUG FIXES
 - Month names on the stats page are translated into the default language
   instead of always being English (this has not been extensively tested, but it
   seems to work; let me know if it doesn't)
-- Ad breaks no longer break the page layout if they are directly below the
+- Ad breaks no longer wreck the page layout if they are directly below the
   final rank
 - If there are 24 members and 10 listed per page, the multiple pages drop-down
   member will show the last page as 21-24 instead of 21-30

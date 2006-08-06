@@ -68,7 +68,7 @@ class delete_bad_word extends base {
     else {
       $del_warn = sprintf($LNG['a_del_bad_word_warn'], $TMPL['word']);
 
-        $ids .= "<input type=\"hidden\" name=\"id[]\" value=\"{$TMPL['id']}\" />\n";
+      $ids .= "<input type=\"hidden\" name=\"id[]\" value=\"{$TMPL['id']}\" />\n";
     }
 
     $TMPL['admin_content'] = <<<EndHTML

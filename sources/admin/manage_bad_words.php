@@ -126,7 +126,7 @@ function check(form_name, field_name, value)
 <table class="darkbg" cellpadding="1" cellspacing="1" width="100%">
 <tr class="mediumbg">
 <td></td>
-<td>{$LNG['a_man_bad_words_word']}</td>
+<td width="100%">{$LNG['a_man_bad_words_word']}</td>
 <td>{$LNG['a_man_bad_words_replacement']}</td>
 <td>{$LNG['a_man_bad_words_matching']}</td>
 <td align="center" colspan="2">{$LNG['a_man_actions']}</td>

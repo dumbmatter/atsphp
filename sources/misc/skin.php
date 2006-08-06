@@ -183,6 +183,10 @@ class main_skin extends skin {
     // it if you left them there.
     $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">My Baller</a>  | <a href="http://www.itopsites.com/" title="Get a free hosted topsites list">iTopsites</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Pollverize</a> | <a href="http://www.consolidatestudentloansnow.org/" title="Consolidate student loans now">Private Student Loans</a>';
 
+    if (!isset($TMPL['content'])) {
+      $TMPL['content'] = '';
+    }
+
     $TMPL['num_queries'] = $DB->num_queries;
     $TMPL['execution_time'] = $TIMER->get_time();
   }

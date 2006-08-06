@@ -27,8 +27,8 @@ class edit extends join_edit {
     $TMPL['header'] = $LNG['a_edit_header'];
 
     $TMPL['username'] = $DB->escape($FORM['u']);
-    list($TMPL['title']) = $DB->fetch("SELECT title FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-    if ($TMPL['title']) {
+    list($check) = $DB->fetch("SELECT 1 FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+    if ($check) {
       if (!isset($FORM['submit'])) {
         $this->form();
       }
@@ -77,7 +77,7 @@ class edit extends join_edit {
     if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
 
     $TMPL['admin_content'] = <<<EndHTML
-<form action="index.php?a=admin&amp;b=edit&amp;u={$TMPL['username']}" method="post">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$TMPL['username']}" method="post">
 <fieldset>
 <legend>{$LNG['join_website']}</legend>
 <div class="{$TMPL['error_style_url']}"><label>{$LNG['g_url']}<br />

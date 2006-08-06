@@ -20,31 +20,33 @@ if (!defined('ATSPHP')) {
   die("This file cannot be accessed directly.");
 }
 
-class approve extends base {
-  function process() {
+class backup_database extends base {
+  function backup_database() {
     global $CONF, $DB;
 
     $tables_to_backup = array(
-      $CONF['sql_prefix'] . '_settings' => true,
-      $CONF['sql_prefix'] . '_bad_words' => true,
-      $CONF['sql_prefix'] . '_custom_pages' => true,
-      $CONF['sql_prefix'] . '_etc' => true,
-      $CONF['sql_prefix'] . '_categories' => true,
-      $CONF['sql_perfix'] . '_ip_log' => false,
-      $CONF['sql_prefix'] . '_reviews' => true,
-      $CONF['sql_prefix'] . '_sessions' => false,
-      $CONF['sql_prefix'] . '_sites' => true,
-      $CONF['sql_prefix'] . '_stats' => true,
+      "{$CONF['sql_prefix']}_settings" => true,
+      "{$CONF['sql_prefix']}_bad_words" => true,
+      "{$CONF['sql_prefix']}_ban" => true,
+      "{$CONF['sql_prefix']}_custom_pages" => true,
+      "{$CONF['sql_prefix']}_etc" => true,
+      "{$CONF['sql_prefix']}_categories" => true,
+      "{$CONF['sql_prefix']}_ip_log" => false,
+      "{$CONF['sql_prefix']}_reviews" => true,
+      "{$CONF['sql_prefix']}_sessions" => false,
+      "{$CONF['sql_prefix']}_sites" => true,
+      "{$CONF['sql_prefix']}_stats" => true,
     );
 
     header('Pragma: no-cache');
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-    header('content-disposition: attachment; filename="' . $CONF['list_name'] . date(' Y-m-d') '.sql"');
+    header('Content-Disposition: attachment; filename="' . $CONF['list_name'] . date(' Y-m-d') . '.sql"');
     header('Content-Type: text/x-sql');
     foreach($tables_to_backup as $table_name => $save_data) {
       echo $DB->get_table($table_name, $save_data);
     }
-	exit;
+
+    exit;
   }
 }
 ?>

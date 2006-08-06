@@ -27,8 +27,8 @@ class edit_review extends base {
     $TMPL['header'] = $LNG['a_edit_rev_header'];
 
     $TMPL['id'] = intval($FORM['id']);
-    list($TMPL['date']) = $DB->fetch("SELECT date FROM {$CONF['sql_prefix']}_reviews WHERE id = {$TMPL['id']}", __FILE__, __LINE__);
-    if ($TMPL['date']) {
+    list($check) = $DB->fetch("SELECT 1 FROM {$CONF['sql_prefix']}_reviews WHERE id = {$TMPL['id']}", __FILE__, __LINE__);
+    if ($check) {
       if (!isset($FORM['submit'])) {
         $this->form();
       }
@@ -50,7 +50,7 @@ class edit_review extends base {
     $TMPL['review']  = str_replace('&gt;', '>', $TMPL['review']);
 
     $TMPL['admin_content'] = <<<EndHTML
-<form action="index.php?a=admin&amp;b=edit_review&amp;id={$TMPL['id']}" method="post">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit_review&amp;id={$TMPL['id']}" method="post">
 <fieldset>
 <legend>{$LNG['a_edit_rev_header']}</legend>
 <label>{$LNG['a_man_rev_rev']}<br />

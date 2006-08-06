@@ -47,7 +47,7 @@ class edit_page extends base {
     list($TMPL['title'], $TMPL['content']) = $DB->fetch("SELECT title, content FROM {$CONF['sql_prefix']}_custom_pages WHERE id = '{$TMPL['id']}'", __FILE__, __LINE__);
 
     $TMPL['admin_content'] = <<<EndHTML
-<form action="index.php?a=admin&amp;b=edit_page&amp;id={$TMPL['id']}" method="post">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit_page&amp;id={$TMPL['id']}" method="post">
 <fieldset>
 <legend>{$LNG['a_edit_page_header']}</legend>
 <label>{$LNG['g_title']}<br />
