@@ -44,7 +44,7 @@ else {
 }
 
 // Is this a unique hit?
-$ip = getenv("REMOTE_ADDR");
+$ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
 list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
 
 $unique_sql = ', unq_pv_overall = unq_pv_overall + 1, unq_pv_0_daily = unq_pv_0_daily + 1, unq_pv_0_weekly = unq_pv_0_weekly + 1, unq_pv_0_monthly = unq_pv_0_monthly + 1';

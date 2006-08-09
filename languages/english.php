@@ -345,7 +345,7 @@ $LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filte
 
 // Admin > Manage Ban // 5.2.0
 $LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
-$LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.When a review is posted, the IP address is checked."; // 5.2.0
+$LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.When a review is posted, the IP address is checked.<br /><br />The blacklist will not affect your existing members."; // 5.2.0
 $LNG['a_man_ban_string'] = "String"; // 5.2.0
 $LNG['a_man_ban_field'] = "Field"; // 5.2.0
 $LNG['a_man_ban_blacklisted'] = "\"%s\" has been added to the blacklist."; // 5.2.0

@@ -92,8 +92,10 @@ class join extends join_edit {
 
       $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
 
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid)
-                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, 0)", __FILE__, __LINE__);
+      $user_ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
+
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid, user_ip)
+                  VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, 0, '{$user_ip}')", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
 
       if ($CONF['google_friendly_links']) {

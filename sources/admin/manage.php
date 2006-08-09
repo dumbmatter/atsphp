@@ -87,6 +87,16 @@ function check(form_name, field_name, value)
     }
   }
 }
+
+var count = 0;
+function popup(id)
+{
+  count = count + 1;
+  elem = document.getElementById(id);
+  elem.style.zIndex = count;
+  if (elem.style.display == "none") { elem.style.display = "block"; }
+  else { elem.style.display = "none"; }
+}
 </script>
 
 <form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete" method="post" name="manage">
@@ -95,22 +105,36 @@ function check(form_name, field_name, value)
 <td></td>
 <td align="center" width="1%">{$LNG['g_username']}</td>
 <td width="100%">{$LNG['table_title']}</td>
-<td align="center" colspan="3">{$LNG['a_man_actions']}</td>
+<td align="center" colspan="5">{$LNG['a_man_actions']}</td>
 </tr>
 EndHTML;
 
     $alt = '';
     $num = 0;
-    $result = $DB->select_limit("SELECT username, title, url, email FROM {$CONF['sql_prefix']}_sites WHERE active = 1 AND username >= '{$start}' ORDER BY username ASC", $num_list, 0, __FILE__, __LINE__);
-    while (list($username, $title, $url, $email) = $DB->fetch_array($result)) {
+    $result = $DB->select_limit("SELECT username, title, url, email, user_ip FROM {$CONF['sql_prefix']}_sites WHERE active = 1 AND username >= '{$start}' ORDER BY username ASC", $num_list, 0, __FILE__, __LINE__);
+    while (list($username, $title, $url, $email, $user_ip) = $DB->fetch_array($result)) {
+      $url_url = urlencode($url);
+      $user_ip_url = urlencode($user_ip);
+      $username_url = urlencode($username);
+      $email_url = urlencode($email);
+
       $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
 <td><input type="checkbox" name="u[]" value="{$username}" id="checkbox_{$num}" /></td>
 <td align="center">{$username}</td>
 <td width="100%"><a href="{$url}" onclick="out('{$username}');">{$title}</a></td>
 <td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$username}">{$LNG['a_man_edit']}</a></td>
-<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=amin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_reviews&amp;u={$username}">{$LNG['a_header_reviews']}</a></td>
 <td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
+<td align="center"><a href="javascript:void(0);" onclick="popup('ban_{$num}')">{$LNG['a_menu_manage_ban']}</a>
+<div id="ban_{$num}" style="display: none; color: #000; background: #fff; border: 1px solid #000; position: absolute; padding: 2px; text-align: left;">
+<a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$url_url}&amp;field=url&amp;matching=1">URL</a><br />
+<a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$user_ip_url}&amp;field=ip&amp;matching=1">User IP</a><br />
+<a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$username_url}&amp;field=username&amp;matching=1">Username</a><br />
+<a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$email_url}&amp;field=email&amp;matching=1">Email</a>
+</div>
+</td>
 </tr>
 EndHTML;
 

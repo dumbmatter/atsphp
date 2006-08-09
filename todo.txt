@@ -21,10 +21,11 @@ ROADMAP
 
 DONE SINCE 5.1.2
 A random number is appended to captcha.php to deal with IE caching
-Profanity filter pagination is now sane
+Various small admin UI fixes
 Unapproved sites will not be automatically deleted
 Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
+Validates $_SERVER before use
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
 CREATE TABLE `ats_ban` (
@@ -35,21 +36,22 @@ CREATE TABLE `ats_ban` (
   PRIMARY KEY  (`id`)
 );
 ALTER TABLE `ats_settings` ADD `fill_blank_rows` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `ad_breaks`;
+ALTER TABLE `ats_settings` ADD `smtp_server` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `captcha`;
 ALTER TABLE `ats_etc` ADD `version` VARCHAR( 255 ) NOT NULL;
-UPDATE ats_etc SET version = '5.2.0'
+UPDATE ats_etc SET version = '5.2.0';
+ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `openid`;
 
 -----
 5.2.0
 -----
 ETA: Summer
 HIGH PRIORITY:
-check days_inactive in test list.  6 on aug 1
 banning: url, ip, username, email
-- like profanity filter
 - on join: url, ip, username, email
 - on edit: url, email
 - on review: ip
 - in admin, have Ban IP button on the Approve page
+  - test menu in IE
 review approval process: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4855
 skins by os-mark
 - new gateway design
@@ -66,10 +68,10 @@ credits.txt
 - osmark (skin update)
 - translators
 smtp email option via swift mailer (check email)
+- if $CONF['smtp_server'] is set, use swift
 ------------
 LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
-validate all $_SERVER variables
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 cache overall stats (like in main page of admin) and allow all skins to post them

@@ -77,8 +77,8 @@ EndHTML;
         $TMPL['admin_content'] .= <<<EndHTML
 <tr class="lightbg{$alt}">
 <td><input type="checkbox" name="id[]" value="{$id}" id="checkbox_{$num}" /></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=stats&amp;u={$username}">{$username}</a></td>
 <td align="center">{$id}</td>
-<td align="center">{$username}</td>
 <td align="center">{$date}</td>
 <td width="100%">{$review}</td>
 <td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_reviews&amp;id={$id}">{$LNG['a_approve']}</a></td>
