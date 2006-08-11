@@ -27,7 +27,6 @@ class backup_database extends base {
     $tables_to_backup = array(
       "{$CONF['sql_prefix']}_settings" => true,
       "{$CONF['sql_prefix']}_bad_words" => true,
-      "{$CONF['sql_prefix']}_ban" => true,
       "{$CONF['sql_prefix']}_custom_pages" => true,
       "{$CONF['sql_prefix']}_etc" => true,
       "{$CONF['sql_prefix']}_categories" => true,
