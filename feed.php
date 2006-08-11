@@ -30,7 +30,8 @@ $CONF['path'] = '.';
 // Connect to the database
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
-$DB = new sql;
+$DB = 'sql_' . $CONF['sql'];
+$DB = new $DB;
 $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database']);
 
 // Settings
@@ -73,7 +74,8 @@ $result = $DB->select_limit("SELECT *
                              ORDER BY {$order_by}
                             ", 10, 0, __FILE__, __LINE__);
 ?>
-<rss version="2.0">
+
+<rss version="2.0">
 	<channel>
 		<title><?php echo "{$CONF['list_name']} - {$TMPL['category']}"; ?></title>
 		<link><?php echo $CONF['list_url'].$category_url; ?></link>
