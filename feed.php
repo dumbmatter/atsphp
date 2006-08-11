@@ -18,6 +18,8 @@
 
 // feed.php originally by Matt Wells <cerberus@users.berlios.de>
 
+error_reporting(E_ALL ^ E_NOTICE);
+
 // Help prevent register_globals injection
 define('ATSPHP', 1);
 $CONF = array();

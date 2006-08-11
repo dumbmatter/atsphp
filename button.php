@@ -16,6 +16,8 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+error_reporting(E_ALL ^ E_NOTICE);
+
 // Help prevent register_globals injection
 define('ATSPHP', 1);
 $CONF = array();
