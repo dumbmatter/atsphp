@@ -99,7 +99,7 @@ class sql_mysqli {
       $table_fields = '';
       foreach($fields as $field) { $table_fields .= $field->name . ('' == $table_fields ? '' : ', '); }
 
-      for($i = 0; $data = $result->fetch_row($result); $i++) {
+      for($i = 0; $data = $result->fetch_row(); $i++) {
         $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
 
         for($j = 0; $j < $result->field_count; $j++) {
