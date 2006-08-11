@@ -17,7 +17,7 @@
 
 $database = 'MySQL Improved';
 
-class sql {
+class sql_mysqli {
   var $dbl;
   var $debug;
   var $num_queries;

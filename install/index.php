@@ -70,7 +70,7 @@ elseif (!isset($FORM['submit'])) {
     if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/sources/sql/{$file}")) {
       $file = str_replace('.php', '', $file);
       require "{$CONF['path']}/sources/sql/{$file}.php";
-      $sql_menu = "<option value=\"{$file}\">{$database}</option>\n";
+      $sql_menu .= "<option value=\"{$file}\">{$database}</option>\n";
     }
   }
 
@@ -120,7 +120,8 @@ else {
   require_once("{$CONF['path']}/languages/{$FORM['l']}.php");
 
   require_once("{$CONF['path']}/sources/sql/{$FORM['sql']}.php");
-  $DB = new sql;
+  $DB = 'sql_' . $FORM['sql'];
+  $DB = new $DB;
 
   if ($DB->connect($FORM['sql_host'], $FORM['sql_username'], $FORM['sql_password'], $FORM['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);

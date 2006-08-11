@@ -22,7 +22,7 @@ if (!defined('ATSPHP')) {
 
 $database = 'MySQL';
 
-class sql {
+class sql_mysql {
   var $dbl;
   var $debug;
   var $num_queries;
