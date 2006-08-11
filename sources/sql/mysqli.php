@@ -100,7 +100,7 @@ class sql_mysqli {
       foreach($fields as $field) { $table_fields .= $field->name . ('' == $table_fields ? '' : ', '); }
 
       for($i = 0; $data = $result->fetch_row(); $i++) {
-        $insert_into .= "INSERT INTO {$table} ({$table_list}) VALUES (";
+        $insert_into .= "INSERT INTO {$table} ({$table_fields}) VALUES (";
 
         for($j = 0; $j < $result->field_count; $j++) {
           if($j != 0) { $insert_into .= ', '; }
