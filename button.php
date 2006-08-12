@@ -16,8 +16,6 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-error_reporting(E_ALL ^ E_NOTICE);
-
 // Help prevent register_globals injection
 define('ATSPHP', 1);
 $CONF = array();
@@ -30,7 +28,7 @@ $CONF['path'] = '.';
 // Connect to the database
 require_once("{$CONF['path']}/settings_sql.php");
 require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
-$DB = 'sql_' . $CONF['sql'];
+$DB = "sql_{$CONF['sql']}";
 $DB = new $DB;
 $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database']);
 

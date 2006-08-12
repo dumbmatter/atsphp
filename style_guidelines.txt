@@ -15,9 +15,12 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+EDITOR SETTINGS
+- Indentations are two spaces.  No tabs.
+- Use Unix newlines (LF)
+
 GENERAL
 - The header at the top of this file should appear at the top of all PHP files.
-- Indentations are two spaces.  No tabs.
 - Single quotes or double quotes make no difference; basically, just use
   whichever is easier.
 - Array keys should always be quoted: $array['key'];

@@ -69,6 +69,8 @@ credits.txt
 - translators
 smtp email option via swift mailer (check email)
 - if $CONF['smtp_server'] is set, use swift
+button.php:
+- check to make sure it's a valid user
 ------------
 LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
@@ -115,6 +117,7 @@ skins/classic/table_filler.html
 sources/admin/manage_ban.php
 sources/admin/delete_ban.php
 sources/admin/edit_ban.php
+languages/finnish.php
 SVN DELETE
 
 TRANSLATION STATUS
@@ -122,6 +125,7 @@ TRANSLATION STATUS
     czech
     danish
     english
+    finnish
     french
     german
     japanese

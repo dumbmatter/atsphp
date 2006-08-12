@@ -120,7 +120,7 @@ else {
   require_once("{$CONF['path']}/languages/{$FORM['l']}.php");
 
   require_once("{$CONF['path']}/sources/sql/{$FORM['sql']}.php");
-  $DB = 'sql_' . $FORM['sql'];
+  $DB = "sql_{$CONF['sql']}";
   $DB = new $DB;
 
   if ($DB->connect($FORM['sql_host'], $FORM['sql_username'], $FORM['sql_password'], $FORM['sql_database'])) {

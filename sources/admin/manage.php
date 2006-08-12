@@ -128,7 +128,7 @@ EndHTML;
 <td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_reviews&amp;u={$username}">{$LNG['a_header_reviews']}</a></td>
 <td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 <td align="center"><a href="javascript:void(0);" onclick="popup('ban_{$num}')">{$LNG['a_menu_manage_ban']}</a>
-<div id="ban_{$num}" style="display: none; color: #000; background: #fff; border: 1px solid #000; position: absolute; padding: 2px; text-align: left;">
+<div id="ban_{$num}" class="lightbg{$alt}" style="display: none; border: 1px solid #000; position: absolute; padding: 2px; text-align: left;">
 <a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$url_url}&amp;field=url&amp;matching=1">URL</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$user_ip_url}&amp;field=ip&amp;matching=1">User IP</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_ban&amp;string={$username_url}&amp;field=username&amp;matching=1">Username</a><br />
