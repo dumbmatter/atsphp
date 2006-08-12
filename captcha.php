@@ -65,6 +65,8 @@ require_once("{$CONF['path']}/sources/misc/session.php");
 $session = new session;
 $session->create('captcha', $data);
 
+header('Pragma: no-cache');
+header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 header('Content-type: image/png');
 imagepng($image);
 imagedestroy($image);
