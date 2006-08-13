@@ -68,13 +68,21 @@ $order_by = base::rank_by()." DESC";
 header('Content-Type: application/xml');
 echo '<?xml version="1.0"?>';
 
+// Get the category, default to no category
+if (isset($FORM['cat']) && $FORM['cat']) {
+  $TMPL['category'] = strip_tags($FORM['cat']);
+  $category_escaped = $DB->escape($FORM['cat']);
+  $category_sql = "AND category = '{$category_escaped}'";
+}
+
 $result = $DB->select_limit("SELECT *
                              FROM {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats
                              WHERE sites.username = stats.username AND active = 1 {$category_sql}
                              ORDER BY {$order_by}
                             ", 10, 0, __FILE__, __LINE__);
 ?>
-<rss version="2.0">
+
+<rss version="2.0">
 	<channel>
 		<title><?php echo "{$CONF['list_name']} - {$TMPL['category']}"; ?></title>
 		<link><?php echo $CONF['list_url'].$category_url; ?></link>
