@@ -60,6 +60,7 @@ for ($i=0; $i<6; $i++) {
 
 $image2 = imagecreate(280, 60);
 imagecopyresized($image2, $image, 0, 0, 0, 0, 280, 60, 140, 30);
+imagedestroy($image);
 
 $ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
 
@@ -74,5 +75,5 @@ header('Pragma: no-cache');
 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 header('Content-type: image/png');
 imagepng($image2);
-imagedestroy($image);
+imagedestroy($image2);
 ?>
