@@ -223,6 +223,10 @@ $LNG['a_approve_rev_none'] = "There are no reviews waiting to be approved."; // 
 $LNG['a_approve_rev_done'] = "The review has been approved."; // 5.0
 $LNG['a_approve_rev_dones'] = "The reviews have been approved."; // 5.0
 
+// Admin > Backup Database // 5.2.0
+$LNG['a_backup_header'] = "Backup Database"; // 5.2.0
+$LNG['a_backup_warn'] = "This will create a backup of your members, stats, and settings.  If you have a lot of members, it may take a long time and it may generate a large file."; // 5.2.0
+
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Create Custom Page"; // 5.1.0
 $LNG['a_create_page_id'] = "Page ID - This will be used in the URL, so it can contain only letters, numbers, underscores, and dashes"; // 5.1.0
