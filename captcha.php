@@ -58,8 +58,13 @@ for ($i=0; $i<6; $i++) {
   imagestring($image, $size, $x, $y, $string{$i} , $black); 
 }
 
-$DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE data LIKE '{$_SERVER['REMOTE_ADDR']}|%'", __FILE__, __LINE__);
-$data = "{$_SERVER['REMOTE_ADDR']}|" . sha1($string);
+$image2 = imagecreate(280, 60);
+imagecopyresized($image2, $image, 0, 0, 0, 0, 280, 60, 140, 30);
+
+$ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
+
+$DB->query("DELETE FROM {$CONF['sql_prefix']}_sessions WHERE data LIKE '{$ip}|%'", __FILE__, __LINE__);
+$data = "{$ip}|" . sha1($string);
 
 require_once("{$CONF['path']}/sources/misc/session.php");
 $session = new session;
@@ -68,6 +73,6 @@ $session->create('captcha', $data);
 header('Pragma: no-cache');
 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 header('Content-type: image/png');
-imagepng($image);
+imagepng($image2);
 imagedestroy($image);
 ?>
