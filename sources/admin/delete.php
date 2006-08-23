@@ -71,7 +71,7 @@ class delete extends base {
 
     $TMPL['admin_content'] = <<<EndHTML
 {$del_warn}<br /><br />
-<form action="index.php?a=admin&amp;b=delete" method="post">
+<form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete" method="post">
 {$usernames}<input type="submit" name="submit" value="{$LNG['a_del_header']}" />
 </form>
 EndHTML;

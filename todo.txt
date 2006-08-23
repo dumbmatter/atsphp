@@ -26,6 +26,7 @@ Unapproved sites will not be automatically deleted
 Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
 Validates $_SERVER before use
+Captcha is twice as large as before for increased readability
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
 CREATE TABLE `ats_ban` (
@@ -50,13 +51,13 @@ banning: url, ip, username, email
 - on join: url, ip, username, email
 - on edit: url, email
 - on review: ip
-- in admin, have Ban IP button on the Approve page
-  - test menu in IE
+- new field in ats_sites: banned
+  - if 1, then give a red highlight in approval menu
 review approval process: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4855
+- welcome email after approval, if necessary
 skins by os-mark
 - new gateway design
 - nice-looking HTML emails
-couple ratings and reviews so admin approves both
 backlink checker
 - This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
@@ -76,6 +77,7 @@ LOW PRIORITY:
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
+couple ratings and reviews so admin approves both
 cache overall stats (like in main page of admin) and allow all skins to post them
 graphs
 timestamp for jointime
