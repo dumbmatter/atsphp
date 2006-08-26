@@ -131,9 +131,24 @@ EndHTML;
   }
 
   function do_approve($username) {
-    global $CONF, $DB;
+    global $CONF, $DB, $LNG, $TMPL;
 
     $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET active = 1 WHERE username = '{$username}'", __FILE__, __LINE__);
+
+    list($TMPL['username'], $TMPL['email']) = $DB->fetch("SELECT username, email FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
+
+    if ($CONF['google_friendly_links']) {
+      $TMPL['verbose_link'] = "";
+    }
+    else {
+      $TMPL['verbose_link'] = "index.php?a=in&u={$TMPL['username']}";
+    }
+    $TMPL['link_code'] = $this->do_skin('link_code');
+
+    $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
+
+    $join_email = new skin('join_email');
+    $join_email->send_email($TMPL['email']);
   }
 }
 ?>

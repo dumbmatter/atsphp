@@ -27,6 +27,11 @@ Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
 Validates $_SERVER before use
 Captcha is twice as large as before for increased readability
+Displays the banner max width/height in the join and edit forms
+Redesigned gateway page and welcome email for the Fusion skin by OS-Mark
+When you enable admin approval of new members, the welcome email is delayed until you approve the site
+button.php only displays a button for valid, approved members
+
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
 CREATE TABLE `ats_ban` (
@@ -53,10 +58,8 @@ banning: url, ip, username, email
 - on review: ip
 - new field in ats_sites: banned
   - if 1, then give a red highlight in approval menu
-review approval process: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4855
-- welcome email after approval, if necessary
+delete echo from send_email in skin.php; test welcome/approval emails
 skins by os-mark
-- new gateway design
 - nice-looking HTML emails
 backlink checker
 - This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
@@ -88,6 +91,7 @@ pedantic error reporting errors: http://www.aardvarktopsitesphp.com/forums/viewt
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
+new captcha: copy phpbb's?
 
 -----
 5.3.0
@@ -109,17 +113,23 @@ tags instead of categories
 
 UPDATED SKINS
   admin.html
+  edit_form.html
   gateway.html
   join_captcha.html
   join_email.html
+  join_finish.html
+  join_finish_approve.html
+  join_form.html
   table_filler.html
 
 SVN ADD
 skins/classic/table_filler.html
+skins/classic/join_finish_approve.html
 sources/admin/manage_ban.php
 sources/admin/delete_ban.php
 sources/admin/edit_ban.php
 languages/finnish.php
+skins/fusion/join_finish_approve.html
 SVN DELETE
 
 TRANSLATION STATUS

@@ -202,7 +202,7 @@ class join_edit extends base {
         $TMPL['error_style_title'] = 'join_edit_error';
       }
       if ($error_banner_url) {
-        $TMPL['error_banner_url'] .= "<br />{$LNG['join_error_urlbanner']} {$CONF['max_banner_width']}x{$CONF['max_banner_height']}.";
+        $TMPL['error_banner_url'] .= "<br />{$LNG['join_error_urlbanner']}";
         $TMPL['error_style_banner_url'] = 'join_edit_error';
       }
       $TMPL['error_style_captcha'] = 'join_edit_error';

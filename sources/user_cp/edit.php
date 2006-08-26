@@ -35,7 +35,7 @@ class edit extends join_edit {
   }
 
   function form() {
-    global $CONF, $DB, $TMPL;
+    global $CONF, $DB, $LNG, $TMPL;
 
     if (!isset($TMPL['url'])) {
       $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
@@ -52,6 +52,13 @@ class edit extends join_edit {
       }
     }
     $TMPL['categories_menu'] .= "</select>";
+
+    if ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
+      $TMPL['join_banner_size'] = $LNG['join_banner_size'];
+    }
+    else {
+      $TMPL['join_banner_size'] = '';
+    }
 
     if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
     if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }

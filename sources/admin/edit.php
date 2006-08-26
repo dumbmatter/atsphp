@@ -69,6 +69,13 @@ class edit extends join_edit {
     }
     $TMPL['active_menu'] .= '</select>';
 
+    if ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
+      $TMPL['join_banner_size'] = $LNG['join_banner_size'];
+    }
+    else {
+      $TMPL['join_banner_size'] = '';
+    }
+
     if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
     if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
     if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
@@ -94,7 +101,7 @@ class edit extends join_edit {
 <label>{$LNG['g_category']}<br />
 {$TMPL['categories_menu']}<br /><br />
 </label>
-<div class="{$TMPL['error_style_banner_url']}"><label>{$LNG['g_banner_url']}<br />
+<div class="{$TMPL['error_style_banner_url']}"><label>{$LNG['g_banner_url']} {$TMPL['join_banner_size']}<br />
 <input type="text" name="banner_url" size="50" value="{$TMPL['banner_url']}" />
 {$TMPL['error_banner_url']}
 </label></div><br />

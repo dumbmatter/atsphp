@@ -203,7 +203,7 @@ class rankings extends base {
       }
 
       // If an ad break is directly after the last row, then there is no need to close the table
-      if (!isset($CONF['ad_breaks'][--$page_rank])) {
+      if (!isset($CONF['ad_breaks'][--$page_rank]) || $CONF['fill_blank_rows']) {
         if ($top_done) {
           $do_table_close = 1;
         }
@@ -219,7 +219,7 @@ class rankings extends base {
         $page_rank = 0;
         $TMPL['content'] = $this->do_skin('table_open');
       }
-      if (isset($do_table_top_close) && $do_table_top_close) {
+      if ((isset($do_table_top_close) && $do_table_top_close) || $do_table_open) {
         $TMPL['content'] .= $this->do_skin('table_open');
       }
 

@@ -56,6 +56,13 @@ class join extends join_edit {
     }
     $TMPL['categories_menu'] .= "</select>";
 
+    if ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
+      $TMPL['join_banner_size'] = $LNG['join_banner_size'];
+    }
+    else {
+      $TMPL['join_banner_size'] = '';
+    }
+
     if (!isset($TMPL['url'])) { $TMPL['url'] = 'http://'; }
     if (!isset($TMPL['banner_url'])) { $TMPL['banner_url'] = 'http://'; }
 
@@ -108,22 +115,20 @@ class join extends join_edit {
 
       $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
 
-      if ($CONF['active_default']) {
-        $TMPL['approve_message'] = '';
-      }
-      else {
-        $TMPL['approve_message'] = $LNG['join_approve'];
-      }
-
-      $join_email = new skin('join_email');
-      $join_email->send_email($TMPL['email']);
-
       if ($CONF['email_admin_on_join']) {
         $join_email_admin = new skin('join_email_admin');
         $join_email_admin->send_email($CONF['your_email']);
       }
 
-      $TMPL['content'] = $this->do_skin('join_finish');
+      if ($CONF['active_default']) {
+        $join_email = new skin('join_email');
+        $join_email->send_email($TMPL['email']);
+
+        $TMPL['content'] = $this->do_skin('join_finish');
+      }
+      else {
+        $TMPL['content'] = $this->do_skin('join_finish_approve');
+      }
     }
     else {
       $this->form();

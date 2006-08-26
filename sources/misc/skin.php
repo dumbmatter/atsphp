@@ -79,7 +79,7 @@ class skin {
 
     $subject = $this->parse($subject);
     $body = $this->parse($body);
-
+echo $body."<hr>";
     mail($email, $subject, $body, "From: {$CONF['your_email']}\r\n");
   }
   

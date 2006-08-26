@@ -44,6 +44,12 @@ else {
   $username = $DB->escape($_GET['u']);
 }
 
+// Is this a valid member?  If not, exit to stop leechers
+list($test) = $DB->fetch("SELECT active FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
+if (!$test && (isset($_GET['u']) || isset($_GET['id']))) {
+  exit;
+}
+
 // Is this a unique hit?
 $ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
 list($ip_sql, $unq_pv) = $DB->fetch("SELECT ip_address, unq_pv FROM {$CONF['sql_prefix']}_ip_log WHERE ip_address = '$ip' AND username = '{$username}'", __FILE__, __LINE__);
