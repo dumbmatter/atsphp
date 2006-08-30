@@ -44,10 +44,6 @@ $DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $C
 $settings = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 $CONF = array_merge($CONF, $settings);
 
-//list($smtp_server, $smtp_port)
-//ini_set('SMTP', 'example.com');
-//ini_set('smtp_port', 55);
-
 $ad_breaks = explode(',', $CONF['ad_breaks']);
 $CONF['ad_breaks'] = array();
 foreach ($ad_breaks as $key => $value) {

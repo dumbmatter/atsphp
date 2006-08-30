@@ -52,6 +52,8 @@ ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `
 -----
 ETA: Summer
 HIGH PRIORITY:
+translate months in stats.php
+- http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
 banning: url, ip, username, email
 - on join: url, ip, username, email
 - on edit: url, email
@@ -71,12 +73,10 @@ credits.txt
 - omar (skin)
 - osmark (skin update)
 - translators
-smtp email option via swift mailer (check email)
-- if $CONF['smtp_server'] is set, use swift
-button.php:
-- check to make sure it's a valid user
 ------------
 LOW PRIORITY:
+smtp email option via swift mailer (check email)
+- if $CONF['smtp_server'] is set, use swift
 valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
@@ -125,11 +125,6 @@ UPDATED SKINS
 SVN ADD
 skins/classic/table_filler.html
 skins/classic/join_finish_approve.html
-sources/admin/manage_ban.php
-sources/admin/delete_ban.php
-sources/admin/edit_ban.php
-languages/finnish.php
-skins/fusion/join_finish_approve.html
 SVN DELETE
 
 TRANSLATION STATUS

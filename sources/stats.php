@@ -52,15 +52,15 @@ class stats extends base {
         }
       }
 
+      setlocale(LC_ALL, $CONF['default_language']);
       for ($i = 2; $i < 10; $i++) {
-        $TMPL["{$i}_daily"] = date('M j', time()-3600*24*$i + (3600*$CONF['time_offset']));
+        $TMPL["{$i}_daily"] = strftime('%B %d', time()-3600*24*$i + (3600*$CONF['time_offset']));
       }
       for ($i = 2; $i < 10; $i++) {
         $TMPL["{$i}_weekly"] = "{$LNG['stats_week']} ".date('W', time()-3600*24*7*$i + (3600*$CONF['time_offset']));
       }
-      setlocale(LC_ALL, $CONF['default_language']);
       for ($i = 2; $i < 10; $i++) {
-        $TMPL["{$i}_monthly"] = strftime('%b %y', mktime(0, 0, 0, date('m')-$i, 1));
+        $TMPL["{$i}_monthly"] = strftime('%B %y', mktime(0, 0, 0, date('m')-$i, 1));
       }
 
       $TMPL['unq_pv_max_daily'] = $TMPL['unq_pv_0_daily'] > $TMPL['unq_pv_max_daily'] ? $TMPL['unq_pv_0_daily'] : $TMPL['unq_pv_max_daily'];
