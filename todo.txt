@@ -52,6 +52,9 @@ ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `
 -----
 ETA: Summer
 HIGH PRIORITY:
+	first, is the strange behaviour in title field as seen in edit_form.html. when i go into admin panel and check/edit user properties, the text put inside quotes (" ") disappers yet shows up in the top itself (and sometimes disappers even there).
+	i use title field for company names and the general format would be: plc "companyname"
+	yet only plc part shows up and everything else drops out.
 translate months in stats.php
 - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
 banning: url, ip, username, email

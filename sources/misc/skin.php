@@ -181,7 +181,7 @@ class main_skin extends skin {
 
     // If you want to remove these links, you can; however, I would appreciate
     // it if you left them there.
-    $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.itopsites.com/" title="Get a free hosted topsites list">iTopsites</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Poll</a> | <a href="http://www.consolidatestudentloansnow.org/" title="Student loan consolidation">Private Student Loans</a>';
+    $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.itopsites.com/" title="Get a free hosted topsites list">iTopsites</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Polls</a> | <a href="http://www.consolidatestudentloansnow.org/" title="Student loan consolidation">Private Student Loans</a>';
 
     if (!isset($TMPL['content'])) {
       $TMPL['content'] = '';
