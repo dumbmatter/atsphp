@@ -26,7 +26,7 @@ Unapproved sites will not be automatically deleted for inactivity
 Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
 Validates $_SERVER before use
-Captcha is twice as large as before for increased readability
+New, (hopefully) more secure captcha
 Displays the banner max width/height in the join and edit forms
 Redesigned gateway page and welcome email for the Fusion skin by OS-Mark
 When you enable admin approval of new members, the welcome email is delayed until you approve the site
@@ -68,12 +68,6 @@ delete echo from send_email in skin.php; test welcome/approval emails
 skins by os-mark
 - nice-looking HTML emails
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
-better captcha
-- ../captchas has some
-  - hn_capctha
-    - easy to set up, but need to find more FREE fonts
-  - freecap
-    - untested
 credits.txt
 - me
 - matt (feed, sql, skin, etc)
@@ -99,7 +93,6 @@ timestamp for jointime
 no exits in base::error()
 real averages... if site is new, average may be just 2 days
 ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20999#20999
-pedantic error reporting errors: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4788
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
@@ -136,12 +129,8 @@ UPDATED SKINS
   table_filler.html
 
 SVN ADD
-fonts
 skins/classic/table_filler.html
 skins/classic/join_finish_approve.html
-languages/lithuanian.php
-languages/chinese_trad.php
-languages/dutch.php
 SVN DELETE
 sources/smtp/*
 
