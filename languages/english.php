@@ -164,6 +164,7 @@ $LNG['table_your_site_here'] = "Your Site Here"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Rate and Review";
+$LNG['rate_message'] = "Please enter your rating and review for %s in the form below."; // 5.2.0
 $LNG['rate_rating'] = "Rating";
 $LNG['rate_review'] = "Review - No HTML allowed"; // 5.0
 $LNG['rate_thanks'] = "Thank you for your rating.";

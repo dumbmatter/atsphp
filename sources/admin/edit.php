@@ -26,6 +26,21 @@ class edit extends join_edit {
 
     $TMPL['header'] = $LNG['a_edit_header'];
 
+    $TMPL['error_username'] = '';
+    $TMPL['error_style_username'] = '';
+    $TMPL['error_password'] = '';
+    $TMPL['error_style_password'] = '';
+    $TMPL['error_url'] = '';
+    $TMPL['error_style_url'] = '';
+    $TMPL['error_email'] = '';
+    $TMPL['error_style_email'] = '';
+    $TMPL['error_title'] = '';
+    $TMPL['error_style_title'] = '';
+    $TMPL['error_banner_url'] = '';
+    $TMPL['error_style_banner_url'] = '';
+    $TMPL['error_captcha'] = '';
+    $TMPL['error_style_captcha'] = '';
+
     $TMPL['username'] = $DB->escape($FORM['u']);
     list($check) = $DB->fetch("SELECT 1 FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
     if ($check) {
@@ -47,6 +62,14 @@ class edit extends join_edit {
     if (!isset($TMPL['url'])) {
       $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
       $TMPL = array_merge($TMPL, $row);
+    }
+    else {
+      if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
+      if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
+      if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
+      if (isset($TMPL['category'])) { $TMPL['category'] = stripslashes($TMPL['category']); }
+      if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
+      if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
     }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
@@ -76,12 +99,11 @@ class edit extends join_edit {
       $TMPL['join_banner_size'] = '';
     }
 
-    if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
-    if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }
-    if (isset($TMPL['description'])) { $TMPL['description'] = stripslashes($TMPL['description']); }
-    if (isset($TMPL['category'])) { $TMPL['category'] = stripslashes($TMPL['category']); }
-    if (isset($TMPL['banner_url'])) { $TMPL['banner_url'] = stripslashes($TMPL['banner_url']); }
-    if (isset($TMPL['email'])) { $TMPL['email'] = stripslashes($TMPL['email']); }
+    $TMPL['url'] = htmlspecialchars($TMPL['url']);
+    $TMPL['title'] = htmlspecialchars($TMPL['title']);
+    $TMPL['description'] = htmlspecialchars($TMPL['description']);
+    $TMPL['banner_url'] = htmlspecialchars($TMPL['banner_url']);
+    $TMPL['email'] = htmlspecialchars($TMPL['email']);
 
     $TMPL['admin_content'] = <<<EndHTML
 <form action="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$TMPL['username']}" method="post">

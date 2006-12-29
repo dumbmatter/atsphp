@@ -303,6 +303,7 @@ EndHTML;
     $your_email = $DB->escape($FORM['your_email']);
 
     $num_list = intval($FORM['num_list']);
+    if ($num_list < 1) { $num_list = 1; } // Things get messed up if num_list is not a positive integer
     $ranking_period = $DB->escape($FORM['ranking_period']);
     $ranking_method = $DB->escape($FORM['ranking_method']);
     $ranking_average = intval($FORM['ranking_average']);

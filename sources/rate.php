@@ -52,10 +52,13 @@ class rate extends base {
   }
 
   function form() {
-    global $CONF, $DB, $FORM, $TMPL;
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
     $TMPL = array_merge($TMPL, $row);
+
+    $link = "<a href=\"{$TMPL['url']}\" onclick=\"out('{$TMPL['username']}');\">{$TMPL['title']}</a>";
+    $TMPL['rate_message'] = sprintf($LNG['rate_message'], $link);
 
     $TMPL['content'] = $this->do_skin('rate_form');
   }

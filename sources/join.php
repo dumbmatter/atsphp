@@ -26,6 +26,21 @@ class join extends join_edit {
 
     $TMPL['header'] = $LNG['join_header'];
 
+    $TMPL['error_username'] = '';
+    $TMPL['error_style_username'] = '';
+    $TMPL['error_password'] = '';
+    $TMPL['error_style_password'] = '';
+    $TMPL['error_url'] = '';
+    $TMPL['error_style_url'] = '';
+    $TMPL['error_email'] = '';
+    $TMPL['error_style_email'] = '';
+    $TMPL['error_title'] = '';
+    $TMPL['error_style_title'] = '';
+    $TMPL['error_banner_url'] = '';
+    $TMPL['error_style_banner_url'] = '';
+    $TMPL['error_captcha'] = '';
+    $TMPL['error_style_captcha'] = '';
+
     if (!isset($FORM['submit'])) {
       $this->form();
     }
@@ -47,7 +62,7 @@ class join extends join_edit {
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
-      if ($TMPL['category'] == $cat) {
+      if (isset($TMPL['category']) && $TMPL['category'] == $cat) {
         $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}</option>\n";
       }
       else {
@@ -63,8 +78,12 @@ class join extends join_edit {
       $TMPL['join_banner_size'] = '';
     }
 
+    if (!isset($TMPL['username'])) { $TMPL['username'] = ''; }
     if (!isset($TMPL['url'])) { $TMPL['url'] = 'http://'; }
+    if (!isset($TMPL['title'])) { $TMPL['title'] = ''; }
+    if (!isset($TMPL['description'])) { $TMPL['description'] = ''; }
     if (!isset($TMPL['banner_url'])) { $TMPL['banner_url'] = 'http://'; }
+    if (!isset($TMPL['email'])) { $TMPL['email'] = ''; }
 
     if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
     if (isset($TMPL['title'])) { $TMPL['title'] = stripslashes($TMPL['title']); }

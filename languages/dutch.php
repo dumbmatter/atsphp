@@ -22,419 +22,422 @@ if (!defined('ATSPHP')) {
 
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Dutch';
-$translator_name = 'username or gtafan';
-$translator_email = 'webmaster@gta-net.org';
-$translator_url = 'http://www.gta-net.org/';
+$translation = 'Dutch (Nederlands)';
+$translator_name = '';
+$translator_email = '';
+$translator_url = '';
 
-// Globaal
-$LNG['g_form_submit_short'] = "Ga";
+// Set this to the character encoding of your translation
+$LNG['charset'] = "utf-8";
+
+// Global
+$LNG['g_form_submit_short'] = "ga";
 $LNG['g_username'] = "Gebruikersnaam";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Titel";
-$LNG['g_description'] = "Beschrijving";
+$LNG['g_description'] = "Omschrijving";
 $LNG['g_category'] = "Categorie"; // 4.1.0
-$LNG['g_email'] = "E-mail";
+$LNG['g_email'] = "Email";
 $LNG['g_banner_url'] = "Banner URL";
 $LNG['g_password'] = "Wachtwoord";
-$LNG['g_average'] = "Gemiddeld";
+$LNG['g_average'] = "Gemiddelde";
 $LNG['g_today'] = "Vandaag";
-$LNG['g_yesterday'] = "Gisteren";
+$LNG['g_yesterday'] = "Gister";
 $LNG['g_daily'] = "Dagelijks"; // 5.0
-$LNG['g_this_month'] = "Deze maand"; // 5.0
-$LNG['g_last_month'] = "Vorige maand"; // 5.0
+$LNG['g_this_month'] = "Deze Maand"; // 5.0
+$LNG['g_last_month'] = "Vorige Maand"; // 5.0
 $LNG['g_monthly'] = "Maandelijks"; // 5.0
 $LNG['g_this_week'] = "Deze Week"; // 5.0
 $LNG['g_last_week'] = "Vorige Week"; // 5.0
 $LNG['g_weekly'] = "Wekelijks"; // 5.0
-$LNG['g_pv'] = "Geziene pagina's"; // 5.0
-$LNG['g_overall'] = 'Globaal'; // 5.0
+$LNG['g_pv'] = 'Pageviews'; // 5.0
+$LNG['g_overall'] = 'Overall'; // 5.0
 $LNG['g_in'] = 'In'; // 5.0
 $LNG['g_out'] = 'Uit'; // 5.0
-$LNG['g_unq_pv'] = "Unieke Gp's"; // 5.0
-$LNG['g_tot_pv'] = "Totaal Gp's"; // 5.0
-$LNG['g_unq_in'] = "Uniek In"; // 5.0
+$LNG['g_unq_pv'] = "Unieke PVs"; // 5.0
+$LNG['g_tot_pv'] = "Totaal PVs"; // 5.0
+$LNG['g_unq_in'] = "Unieke In"; // 5.0
 $LNG['g_tot_in'] = "Totaal In"; // 5.0
-$LNG['g_unq_out'] = "Uniek Uit"; // 5.0
+$LNG['g_unq_out'] = "Unieke Uit"; // 5.0
 $LNG['g_tot_out'] = "Totaal Uit"; // 5.0
-$LNG['g_invalid_u_or_p'] = "Vekeerde gebruikersnaam of wachtwoord. Probeer opnieuw."; // 5.0
-$LNG['g_invalid_u'] = "Vekeerde gebruikersnaam.  Probeer opnieuw."; // 5.0
-$LNG['g_invalid_p'] = "Vekeerde wachtwoord.  Probeer opnieuw."; // 5.0
-$LNG['g_session_expired'] = "Je sessie is afgelopen.  Probeer opnieuw."; // 5.0
-$LNG['g_error'] = "Fout"; // 5.0
-$LNG['g_delete_install'] = "Voor veiligheids redenen, Moet je de map 'install' verwijderen voordat het script werkt!"; // 5.0
+$LNG['g_invalid_u_or_p'] = "Ongeldige gebruikersnaam of wachtwoord.  Probeer het opnieuw."; // 5.0
+$LNG['g_invalid_u'] = "Ongeldige gebruikersnaam.  Probeer het opnieuw."; // 5.0
+$LNG['g_invalid_p'] = "Ongeldige wachtwoord.  Probeer het opnieuw."; // 5.0
+$LNG['g_session_expired'] = "Uw sessie is verlopen.  Probeer het opnieuw."; // 5.0
+$LNG['g_error'] = "Error"; // 5.0
+$LNG['g_delete_install'] = "Voor veiligheids voorzorg, moet je eerst de install directory verwijderen, alvorens het script kan werken."; // 5.0
 
-// Wijzig gegevens
-$LNG['edit_header'] = "Wijzig gegevens";
-$LNG['edit_info_edited'] = "Je gegevens zijn met succes gewijzigd.";
-$LNG['edit_password_blank'] = "Laat dit veld leeg als je je huidige wachtwoord wilt behouden."; // 4.0
+// Edit Account
+$LNG['edit_header'] = "Bewerk Account";
+$LNG['edit_info_edited'] = "Uw account is succesvol bewerkt.";
+$LNG['edit_password_blank'] = "Laat dit ongewijzigd om het huidige wachtwoord te behouden"; // 4.0
 
-// Anti cheat pagina
-$LNG['gateway_header'] = "Topsites anti cheat paginaGateway Page";
-$LNG['gateway_text'] = "Om cheaters te misleiden, is deze pagina opgezet.  Klik op de link hieronder om naar de Topsite lijst te gaan.";
-$LNG['gateway_vote'] = "Ga binnen en stem";
-$LNG['gateway_no_vote'] = "Ga binnen Zonder te stemmen"; // 5.0
+// Gateway Page
+$LNG['gateway_header'] = "Anti Cheat Pagina";
+$LNG['gateway_text'] = "Om cheaters te misleiden, is deze pagina opgezet. Klik de link hieronder om verder te gaan.";
+$LNG['gateway_vote'] = "Ga naar binnen en stem";
+$LNG['gateway_no_vote'] = "Ga naar binnen zonder te stemmen"; // 5.0
 
-// Installeren
-$LNG['install_header'] = "Installeren";
-$LNG['install_welcome'] = "Welkom bij Aardvark Topsites PHP 5.  Vul de velden hieronder in om het script te installeren.";
-$LNG['install_sql_prefix'] = "Tabel voorvoegsel - Verander dit alleen als je meerdere toplijsten hebt in één database.";
-$LNG['install_error_chmod'] = "Kan niet schrijven naar settings_sql.php.  Zorg ervoor dat settings_sql.php is geCHMOD naar 666.";
-$LNG['install_error_sql'] = "Kan geen verbinding maken met de SQL database.  Ga terug en controleer de SQL instellingen.";
-$LNG['install_done'] = "Topsite Lijst installatie voltooid.  Je kan deze map nu verwijderen.";
-$LNG['install_your'] = "Je Topsite Lijst";
-$LNG['install_admin'] = "Beheer pagina";
-$LNG['install_manual'] = "Handleiding";
+// Install
+$LNG['install_header'] = "Installeer";
+$LNG['install_welcome'] = "Welkom bij Aardvark Topsites PHP 5.  Vul onderstaand formulier in om het script te installeren.";
+$LNG['install_sql_prefix'] = "Table prefix - Verander dit alléén wanneer je meerdere toplijsten via dezelfde database laat werken";
+$LNG['install_error_chmod'] = "Could not write to settings_sql.php.  Verzeker dat de CHMOD 666 is voor de settings_sql.php.";
+$LNG['install_error_sql'] = "Kan geen verbinding maken met de SQL database.  Ga terug en controleer de SQL settings.";
+$LNG['install_done'] = "Uw topsite is geïnstalleerd.  Verwijder de install directory meteen!.";
+$LNG['install_your'] = "Uw Topsites Lijst";
+$LNG['install_admin'] = "Admin";
+$LNG['install_manual'] = "Manual";
 $LNG['upgrade_header'] = "Upgrade";
-$LNG['upgrade_welcome'] = "Welkom bij Aardvark Topsites PHP 5.  Maak een backup van bestanden voordat je upgrade.";
-$LNG['upgrade_version'] = "Please make sure that you are upgrading from version %s."; // 5.1.0
-$LNG['upgrade_error_version'] = "Upgraden wordt alleen ondersteund voor Aardvark Topsites PHP 4.1.0 of hoger.";
-$LNG['upgrade_done'] = "Topsite Lijst upgrade voltooid. Je kan deze map nu verwijderen.";
+$LNG['upgrade_welcome'] = "Welkom bij Aardvark Topsites PHP 5.  Vergeet niet voor het upgraden eerst een backup te maken van alle data.";
+$LNG['upgrade_version'] = "Verzeker je ervan dat je gaat upgraden vanaf versie %s."; // 5.1.0
+$LNG['upgrade_error_version'] = "Upgrading word alleen ondersteund voor Aardvark Topsites PHP 4.1.0 of hoger.";
+$LNG['upgrade_done'] = "Uw topsite is klaar met upgraden.  Verwijder de install directory meteen.";
 
-// Lid worden
-$LNG['join_header'] = "Registreer";
-$LNG['join_enter_text'] = "Vul de tekst van het onderstaande plaatje in:"; // 4.2.2
-$LNG['join_user'] = "Lid"; // 5.0
+// Join
+$LNG['join_header'] = "Word Lid";
+$LNG['join_enter_text'] = "Typ onderstaande text in:"; // 4.2.2
+$LNG['join_user'] = "Gebruiker"; // 5.0
 $LNG['join_website'] = "Website"; // 5.0
-$LNG['join_error_username'] = "Een correcte gebruikersnaam in te vullen: Gebruikt alleen letters (A-Z), Cijfers (0-9), Laag liggende streepjes (_) en Streepjes (-)."; // 5.0
-$LNG['join_error_username_duplicate'] = "Een correcte gebruikersnaam in te vullen: Je gebruikersnaam is al ingebruik."; // 5.0
-$LNG['join_error_url'] = "Een correcte URL in te vullen.";
-$LNG['join_error_email'] = "Een correct E-mail adres in te vullen.";
-$LNG['join_error_title'] = "Een correcte titel voor je website in te vullen.";
-$LNG['join_error_password'] = "Een correct wachtwoord in te vullen.";
-$LNG['join_error_urlbanner'] = "Een correcte Banner URL in te vullen.  Laat het veld leeg als je er geen hebt.  Het moet kleiner zijn dan"; // 4.0
-$LNG['join_error_time'] = "Ververs de lid bevestigings pagina niet."; // 4.2.0
-$LNG['join_error_captcha'] = "Het woord dat je invulde komt niet overeen met het plaatje."; // 4.2.2
-$LNG['join_thanks'] = "Bedankt! Zet deze code op je pagina om op je website te laten stemmen";
-$LNG['join_change_warning'] = "Als je de code veranderd kan het zijn dat hij het niet doet.";
+$LNG['join_error_username'] = "Gebruik een geldige gebruikersnaam: gebruik alleen letters, cijfers, streepjes, en punten."; // 5.0
+$LNG['join_error_username_duplicate'] = "Gebruik een geldige gebruikersnaam: deze naam is al in het gebruik."; // 5.0
+$LNG['join_error_url'] = "Enter a valid URL.";
+$LNG['join_error_email'] = "Vul een geldig email adres in.";
+$LNG['join_error_title'] = "Vul de titel van je website in.";
+$LNG['join_error_password'] = "Vul je wachtwoord in.";
+$LNG['join_error_urlbanner'] = "Vul hier een correct banner adres in.  Laat leeg als je er geen heeft.  Het moet kleiner zijn dan"; // 4.0
+$LNG['join_error_time'] = "Ververs niet de lidmaatschap bevestigings pagina."; // 4.2.0
+$LNG['join_error_captcha'] = "Het woord komt niet overeen met het plaatje."; // 4.2.2
+$LNG['join_thanks'] = "Bedankt!  Zet deze code op je pagina om op je website te laten stemmen.";
+$LNG['join_change_warning'] = "Als je de code verandert kan het zijn dat hij het niet doet.";
 $LNG['join_welcome'] = "Welkom bij %s";
-$LNG['join_welcome_admin'] = "Je topsite lijst heeft een nieuw lid.";
-$LNG['join_approve'] = "Your site will be listed when the admin of the topsites list approves it."; // 5.1.0
+$LNG['join_welcome_admin'] = "Er is een nieuw lid bijgekomen bij de topsite lijst.";
+$LNG['join_approve'] = "Uw site word aktief gezet zodra de admin alles goedgekeurd heeft."; // 5.1.0
 $LNG['join_type'] = "Account type"; // 5.1.0
-$LNG['join_standard'] = "Standard"; // 5.1.0
+$LNG['join_standard'] = "Standaard"; // 5.1.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
 
-// Verloren wachtwoord
-$LNG['lost_pw_header'] = "Verloren wachtwoord"; // 5.0
+// Lost Password
+$LNG['lost_pw_header'] = "Wachtwoord opvragen"; // 5.0
 $LNG['lost_pw_forgot'] = "Wachtwoord vergeten?"; // 5.0
-$LNG['lost_pw_get'] = "Stuur wachtwoord"; // 5.0
-$LNG['lost_pw_emailed'] = "Instructies om je wachtwoord te verkijgen is naar je e-mail toegestuurd."; // 5.0
-$LNG['lost_pw_email'] = "Om een nieuw wachtwoord te krijgen, klik op deze link:"; // 5.0
-$LNG['lost_pw_new'] = "Vul een wachtwoord in"; // 5.0
-$LNG['lost_pw_set_new'] = "Stel nieuw wachtwoord in"; // 5.0
-$LNG['lost_pw_finish'] = "Je wachtwoord is veranderd naar het nieuwe wachtwoord dat je net hebt gekozen."; // 5.0
+$LNG['lost_pw_get'] = "Klik voor een nieuw wachtwoord"; // 5.0
+$LNG['lost_pw_emailed'] = "Controleer je mail voor verdere instructies."; // 5.0
+$LNG['lost_pw_email'] = "Om een nieuw wachtwoord aan te vragen, ga je naar deze URL:"; // 5.0
+$LNG['lost_pw_new'] = "Typ een nieuw wachtwoord in"; // 5.0
+$LNG['lost_pw_set_new'] = "Plaats het nieuwe wachtwoord"; // 5.0
+$LNG['lost_pw_finish'] = "U kunt nu inloggen met uw nieuw gekozen wachtwoord."; // 5.0
 
-// Hoofd pagina
-$LNG['main_header'] = "Ranglijst"; // 5.0
-$LNG['main_all'] = "Alle Sites"; // 4.2.0
+// Main Page
+$LNG['main_header'] = "Hoofd pagina"; // 5.0
+$LNG['main_all'] = "alle websites"; // 4.2.0
 $LNG['main_method'] = "Meting methode";
 $LNG['main_members'] = "Leden";
-$LNG['main_menu_rankings'] = "Ranglijst";
-$LNG['main_menu_join'] = "Registreer";
-$LNG['main_menu_random'] = "Willekeurig lid";
+$LNG['main_menu_rankings'] = "Hoofd Pagina";
+$LNG['main_menu_join'] = "Word Lid";
+$LNG['main_menu_random'] = "Zo maar een lid";
 $LNG['main_menu_search'] = "Zoeken";
-$LNG['main_menu_lost_code'] = "Verloren Code"; // 5.0
-$LNG['main_menu_lost_password'] = "Verloren wachtwoord"; // 5.0
-$LNG['main_menu_edit'] = "Bewerk leden info";
-$LNG['main_menu_user_cp'] = "Leden paneel"; // 5.0
+$LNG['main_menu_lost_code'] = "Code kwijt"; // 5.0
+$LNG['main_menu_lost_password'] = "Wachtwoord vergeten"; // 5.0
+$LNG['main_menu_edit'] = "Wijzig lid informatie";
+$LNG['main_menu_user_cp'] = "Gebruikers Controle Paneel"; // 5.0
 $LNG['main_featured'] = "In de schijnwerper"; // 4.0.2
-$LNG['main_executiontime'] = "Script Uitvoerings Tijd"; // 4.0
+$LNG['main_executiontime'] = "Script opstart tijd"; // 4.0
 $LNG['main_queries'] = "SQL Queries"; // 4.0
 $LNG['main_powered'] = "Powered by";
 
-// Ranglijst
-$LNG['table_stats'] = "Stats";
-$LNG['table_unique'] = "Uniek";
+// Ranking Table
+$LNG['table_stats'] = "Statistieken";
+$LNG['table_unique'] = "Unieke";
 $LNG['table_total'] = "Totaal";
-$LNG['table_rank'] = "Rang";
+$LNG['table_rank'] = "Positie";
 $LNG['table_title'] = "Titel"; // 4.0
-$LNG['table_description'] = "Beschrijving"; // 4.0
-$LNG['table_movement'] = "Verandering";
+$LNG['table_description'] = "Omschrijving"; // 4.0
+$LNG['table_movement'] = "Status";
 $LNG['table_up'] = "Omhoog"; // 5.0
 $LNG['table_down'] = "Omlaag"; // 5.0
-$LNG['table_neutral'] = "Niet veranderd"; // 5.0
+$LNG['table_neutral'] = "Neutraal"; // 5.0
 
-// Beoordeling en commentaar
-$LNG['rate_header'] = "Beoordeling en commentaar";
-$LNG['rate_rating'] = "Beoordeling";
+// Rate and Review
+$LNG['rate_header'] = "Meting en commentaar";
+$LNG['rate_rating'] = "Meet";
 $LNG['rate_review'] = "Commentaar - Geen HTML toegestaan"; // 5.0
-$LNG['rate_thanks'] = "Bedankt voor je beoordeling.";
-$LNG['rate_error'] = "Je hebt deze site al beoordeeld.";
-$LNG['rate_back'] = "Terug naar stats";
-$LNG['rate_email_admin'] = "A new review has been posted at your topsites list."; // 5.1.0
+$LNG['rate_thanks'] = "Bedankt voor je meting en commentaar!";
+$LNG['rate_error'] = "Je hebt deze site al gemeten of commentaar gegeven.";
+$LNG['rate_back'] = "Terug naar statistieken";
+$LNG['rate_email_admin'] = "Er is nieuw commentaar toegevoegd aan de toplijst."; // 5.1.0
 
-// Zoeken
+// Search
 $LNG['search_header'] = "Zoeken";
 $LNG['search_off'] = "De zoek functie is uitgeschakeld.";
-$LNG['search_no_sites'] = "Sorry, er zijn geen sites gevonden die jouw woord(en) bevatten."; // 5.0
+$LNG['search_no_sites'] = "Sorry, er zijn geen sites die jouw woord(en) bevatten."; // 5.0
 $LNG['search_prev'] = "Vorige"; // 3.2.1
 $LNG['search_next'] = "Volgende"; // 3.2.1
-$LNG['search_displaying_results'] = "Displaying %s to %s of %s results for <b>%s</b>."; // 5.1.0
+$LNG['search_displaying_results'] = "Overzicht %s over %s van %s resultaten met <b>%s</b>."; // 5.1.0
 
 // Stats
-$LNG['stats_header'] = "Stats";
-$LNG['stats_info'] = "Informatie";
-$LNG['stats_member_since'] = "Lid sinds"; // 5.0
-$LNG['stats_rating_avg'] = "Gemiddelde beoordeling";
-$LNG['stats_rating_num'] = "Aantal beoordelingen";
-$LNG['stats_rate'] = "Beoordeel en geef commentaar voor deze site";
+$LNG['stats_header'] = "Statistieken";
+$LNG['stats_info'] = "Info";
+$LNG['stats_member_since'] = "Lid Vanaf"; // 5.0
+$LNG['stats_rating_avg'] = "Gemiddelde Meting";
+$LNG['stats_rating_num'] = "Aantal Metingen";
+$LNG['stats_rate'] = "Meet en geef commentaar over deze site";
 $LNG['stats_reviews'] = "Commentaar";
-$LNG['stats_allreviews'] = "Laat al het commentaar zien"; // 4.0
+$LNG['stats_allreviews'] = "Bekijk al het commentaar"; // 4.0
 $LNG['stats_week'] = "Week"; // 5.0
-$LNG['stats_highest'] = "Record"; // 5.0
+$LNG['stats_highest'] = "Hoogste"; // 5.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; // 4.0
-$LNG['ssi_new'] = "%s Nieuwste leden"; // 5.0
-$LNG['ssi_all'] = "Alle Sites"; // 4.0
+$LNG['ssi_new'] = "%s nieuwe leden"; // 5.0
+$LNG['ssi_all'] = "Alle websites"; // 4.0
 
-// Leden paneel // 5.0
-$LNG['user_cp_header'] = "Leden paneel"; // 5.0
-$LNG['user_cp_login'] = "Login"; // 5.0
-$LNG['user_cp_logout'] = "Loguit"; // 5.0
-$LNG['user_cp_welcome'] = "Welkom bij het leden paneel. Gebruikt de links aan de linker kant om je gegevens te beheren."; // 5.0
-$LNG['user_cp_logout_message'] = "Je bent nu uitgelogd bij het leden paneel."; // 5.0
-$LNG['user_cp_login_long'] = "Login with your username and password or your OpenID."; // 5.1.0
+// User Control Panel // 5.0
+$LNG['user_cp_header'] = "Gebruikers Controle Paneel "; // 5.0
+$LNG['user_cp_login'] = "Inloggen"; // 5.0
+$LNG['user_cp_logout'] = "Uitloggen"; // 5.0
+$LNG['user_cp_welcome'] = "Welkom in het gebruikers controle paneel.  Gebruik de links aan de linker kant om je account te bewerken."; // 5.0
+$LNG['user_cp_logout_message'] = "Je bent nu uitgelogd van het controle paneel."; // 5.0
+$LNG['user_cp_login_long'] = "Login met je gebruikersnaam of wachtwoord of je OpenID."; // 5.1.0
 $LNG['user_cp_openid'] = "OpenID"; // 5.1.0
-$LNG['user_cp_openid_error_server'] = "Unable to find OpenID server for %s."; // 5.1.0
-$LNG['user_cp_openid_error_join'] = "You must join the topsites list before you can access the user control panel."; // 5.1.0
-$LNG['user_cp_openid_error_general'] = "An error occurred while processing your login.  Please try again."; // 5.1.0
-$LNG['user_cp_openid_error_cancel'] = "You must grant access to proceed.  Please try again."; // 5.1.0
-$LNG['user_cp_openid_error_from_server'] = "Error from server: %s"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "OpenID is niet gevonden voor %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "Je moet lid zijn van de topsite lijst om in te kunnen loggen vij het controle paneel."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "Fout tijdens het inloggen.  Probeer het nog eens."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "Je hebt toestemming nodig om door te kunnen gaan.  Probeer het opnieuw."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Fout bij de server: %s"; // 5.1.0
 
-// Admin > Nieuwe leden goedkeuren // 4.0
-$LNG['a_approve_header'] = "Nieuwe leden goedkeuren"; // 5.0
-$LNG['a_approve'] = "Keur goed"; // 4.0
-$LNG['a_approve_none'] = "Er zijn geen nieuwe leden die wachten om goedgekeurd te worden."; // 4.0
-$LNG['a_approve_done'] = "Het lid is goedgekeurd."; // 4.0
-$LNG['a_approve_dones'] = "De leden zijn goedgekeurd."; // 4.0
-$LNG['a_approve_sel'] = "Met geselecteerde:"; // 5.0
+// Admin > Approve New Members // 4.0
+$LNG['a_approve_header'] = "Nieuwe Leden Goedkeuren"; // 5.0
+$LNG['a_approve'] = "Goedkeuren"; // 4.0
+$LNG['a_approve_none'] = "Er zijn geen nieuwe leden in de wacht."; // 4.0
+$LNG['a_approve_done'] = "Deze website is met succes toegevoegd."; // 4.0
+$LNG['a_approve_dones'] = "Deze websites zijn met succes toegevoegd."; // 4.0
+$LNG['a_approve_sel'] = "With selected:"; // 5.0
 
-// Admin > Commentaar goedkeuren // 5.0
-$LNG['a_approve_rev_header'] = "Commentaar goedkeuren"; // 5.0
-$LNG['a_approve_rev_none'] = "Er is geen commentaar dat wacht om te worden goedgekeurd."; // 5.0
+// Admin > Approve New Reviews // 5.0
+$LNG['a_approve_rev_header'] = "Nieuw commentaar goedkeuren"; // 5.0
+$LNG['a_approve_rev_none'] = "Er zijn geen nieuwe commentaren om goed te keuren."; // 5.0
 $LNG['a_approve_rev_done'] = "Het commentaar is goedgekeurd."; // 5.0
 $LNG['a_approve_rev_dones'] = "De commentaren zijn goedgekeurd."; // 5.0
 
 // Admin > Create Custom Page // 5.1.0
-$LNG['a_create_page_header'] = "Create Custom Page"; // 5.1.0
-$LNG['a_create_page_id'] = "Page ID - This will be used in the URL, so it can contain only letters, numbers, underscores, and dashes"; // 5.1.0
-$LNG['a_create_page_error_id'] = "The page ID can contain only letters, numbers, underscores, and dashes.  Please go back and correct the page ID."; // 5.1.0
-$LNG['a_create_page_error_id_duplicate'] = "There is already a custom page with that page ID.  Please go back and select a new page ID."; // 5.1.0
-$LNG['a_create_page_created'] = "The page has been created.  You will have to manually add a link to %s in wrapper.html."; // 5.1.0
+$LNG['a_create_page_header'] = "Maak aangepastte pagina"; // 5.1.0
+$LNG['a_create_page_id'] = "Pagina ID - Deze word gebruikt in de URL, dus kan alleen letters, cijfers, underscores, and punten bevatten"; // 5.1.0
+$LNG['a_create_page_error_id'] = "De pagina ID kan alleen letters, cijfers, underscores, and punten bevatten.  Ga terug en corrigeer pagina ID."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "Dit pagina ID bestaat al.  Ga terug en corrigeer het pagina ID."; // 5.1.0
+$LNG['a_create_page_created'] = "De pagina is gemaakt.  U moet handmatig een link maken %s in wrapper.html."; // 5.1.0
 
-// Admin > Verwijder lid
-$LNG['a_del_header'] = "Verwijder lid"; // 5.0
-$LNG['a_del_headers'] = "Verwijder leden"; // 5.0
-$LNG['a_del_done'] = "Het lid is verwijderd."; // 5.0
-$LNG['a_del_dones'] = "De leden zijn verwijderd."; // 5.0
+// Admin > Delete Member
+$LNG['a_del_header'] = "Verwijder Lid"; // 5.0
+$LNG['a_del_headers'] = "Verwijder Leden"; // 5.0
+$LNG['a_del_done'] = "Dit lid is verwijderd."; // 5.0
+$LNG['a_del_dones'] = "Deze leden zijn verwijderd."; // 5.0
 $LNG['a_del_warn'] = "Weet je zeker dat je %s wilt verwijderen?"; // 5.0
-$LNG['a_del_multi'] = "Deze %s leden"; //5.0
+$LNG['a_del_multi'] = "deze %s Leden"; //5.0
 
 // Admin > Delete Bad Word // 5.1.0
-$LNG['a_del_bad_word_header'] = "Delete Filtered Word"; // 5.1.0
-$LNG['a_del_bad_word_headers'] = "Delete Filtered Words"; // 5.1.0
-$LNG['a_del_bad_word_done'] = "The filtered word has been deleted."; // 5.1.0
-$LNG['a_del_bad_word_dones'] = "The filtered words have been deleted."; // 5.1.0
-$LNG['a_del_bad_word_warn'] = "Are you sure you want to delete %s from the filtered words list?"; //5.1.0
-$LNG['a_del_bad_word_multi'] = "these %s words"; //5.1.0
-$LNG['a_del_bad_word_invalid_id'] = "Invalid filtered word ID.  Please try again."; // 5.1.0
+$LNG['a_del_bad_word_header'] = "Verwijder gefilterd woord"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Verwijder gefilterde woorden"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "Het gefilterd woord is verwijderd."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "De  gefilterde woorden zijn verwijderd."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "Weet je zeker dat je %s wilt deleten van de gefilterde woorden lijst?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "deze %s woorden"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "Verkeerd geselecteerd woord ID.  Probeer het opnieuw."; // 5.1.0
 
 // Admin > Delete Custom Page // 5.1.0
-$LNG['a_del_page_header'] = "Delete Custom Page"; // 5.1.0
-$LNG['a_del_page_headers'] = "Delete Custom Pages"; // 5.1.0
-$LNG['a_del_page_done'] = "The custom page has been deleted."; // 5.1.0
-$LNG['a_del_page_dones'] = "The custom pages have been deleted."; // 5.1.0
-$LNG['a_del_page_warn'] = "Are you sure you want to delete %s?"; //5.1.0
-$LNG['a_del_page_multi'] = "these %s members"; //5.1.0
-$LNG['a_del_page_invalid_id'] = "Invalid custom page ID.  Please try again."; // 5.1.0
+$LNG['a_del_page_header'] = "Verwijder de aangepastte pagina"; // 5.1.0
+$LNG['a_del_page_headers'] = "Verwijder de aangepastte pagina's"; // 5.1.0
+$LNG['a_del_page_done'] = "De de aangepastte pagina is verwijderd."; // 5.1.0
+$LNG['a_del_page_dones'] = "De de aangepastte pagina's zijn verwijderd."; // 5.1.0
+$LNG['a_del_page_warn'] = "Weet u zeker dat u %s?"; //5.1.0
+$LNG['a_del_page_multi'] = "deze %s pagina's"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "Verkeerde aan te passen pagina ID.  Probeer het opnieuw."; // 5.1.0
 
-// Admin > Verwijder commentaar // 5.0
-$LNG['a_del_rev_header'] = "Verwijder commentaar"; // 5.0
-$LNG['a_del_rev_headers'] = "Verwijder commentaren"; // 5.0
+// Admin > Delete Review // 5.0
+$LNG['a_del_rev_header'] = "Verwijder Commentaar"; // 5.0
+$LNG['a_del_rev_headers'] = "Verwijder Commentaar"; // 5.0
 $LNG['a_del_rev_done'] = "Het commentaar is verwijderd."; // 5.0
-$LNG['a_del_rev_dones'] = "De commentaren zijn verwijderd."; // 5.0
+$LNG['a_del_rev_dones'] = "Het commentaar is verwijderd."; // 5.0
 $LNG['a_del_rev_warn'] = "Weet je zeker dat je dit commentaar wilt verwijderen?"; //5.0
-$LNG['a_del_rev_warns'] = "Weet je zeker dat je deze commentaren wilt verwijderen?"; //5.0
-$LNG['a_del_rev_invalid_id'] = "Verkeerd commentaar ID. Probeer opnieuw."; // 5.0
+$LNG['a_del_rev_warns'] = "Weet je zeker dat je deze commentaar wilt verwijderen?"; //5.0
+$LNG['a_del_rev_invalid_id'] = "Verkeerd geselecteerd commentaar ID. Probeer het opnieuw."; // 5.0
 
-// Admin > Bewerk lid
-$LNG['a_edit_header'] = "Bewerk lid"; // 5.0
-$LNG['a_edit_site_is'] = "Deze site is"; // 4.0
-$LNG['a_edit_active'] = "Actief (In ranglijst)"; // 4.0
-$LNG['a_edit_inactive'] = "Inactief (Niet in ranglijst)"; // 5.0
-$LNG['a_edit_edited'] = "Het lid is bewerkt.";
+// Admin > Edit Member
+$LNG['a_edit_header'] = "Bewerk Lid"; // 5.0
+$LNG['a_edit_site_is'] = "Deze website is"; // 4.0
+$LNG['a_edit_active'] = "Actief (Goed gekeurd)"; // 4.0
+$LNG['a_edit_inactive'] = "Niet actief (Niet goed gekeurd)"; // 5.0
+$LNG['a_edit_edited'] = "Dit lid is succesvol bijgewerkt.";
 
 // Admin > Edit Bad Word // 5.1.0
-$LNG['a_edit_bad_word_header'] = "Edit Filtered Word"; // 5.1.0
-$LNG['a_edit_bad_word_edited'] = "The filtered word has been edited."; // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Bewerk gefilterd woord"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "Het gefilterde woord is bijgewerkt."; // 5.1.0
 
 // Admin > Edit Custom Page // 5.1.0
-$LNG['a_edit_page_header'] = "Edit Custom Page"; // 5.1.0
-$LNG['a_edit_page_content'] = "Content - You can use HTML here"; // 5.1.0
-$LNG['a_edit_page_edited'] = "The page has been edited."; // 5.1.0
+$LNG['a_edit_page_header'] = "Bewerk aangepastte pagina"; // 5.1.0
+$LNG['a_edit_page_content'] = "Inhoud - Ja kan hier HTML gebruiken"; // 5.1.0
+$LNG['a_edit_page_edited'] = "De pagina is bewerkt."; // 5.1.0
 
-// Admin > Bewerk commentaar // 5.0
+// Admin > Edit Review // 5.0
 $LNG['a_edit_rev_header'] = "Bewerk commentaar"; // 5.0
 $LNG['a_edit_rev_edited'] = "Het commentaar is bewerkt.";
 
-// Admin > E-mail Leden
-$LNG['a_email_header'] = "E-mail Leden"; // 5.0
+// Admin > Email Members
+$LNG['a_email_header'] = "Email Leden"; // 5.0
 $LNG['a_email_subject'] = "Onderwerp"; // 4.2.0
 $LNG['a_email_message'] = "Bericht"; // 4.2.0
 $LNG['a_email_msg_sent'] = "Het bericht is verzonden naar %s"; // 5.0
-$LNG['a_email_not_sent'] = "Het bericht kon niet worden verzonden naar %s"; // 5.0
-$LNG['a_email_sent'] = "De E-mail is verzonden naar %s Leden."; // 4.2.0
-$LNG['a_email_failed'] = "De E-mail kon niet worden verzonden naar %s Leden."; // 4.2.0
+$LNG['a_email_not_sent'] = "De mail is niet verzonden naar %s"; // 5.0
+$LNG['a_email_sent'] = "%s leden zijn gemaild."; // 4.2.0
+$LNG['a_email_failed'] = "%s leden zijn niet gemaild."; // 4.2.0
 
-// Admin > Loguit
-$LNG['a_logout_message'] = "Je bent uitgelogd."; // 5.0
+// Admin > Logout
+$LNG['a_logout_message'] = "Je bent nu uitgelogd bij de admin."; // 5.0
 
-// Admin > Hoofd
-$LNG['a_header'] = "Beheer"; // 5.0
-$LNG['a_main'] = "Welkom bij het Beheer paneel. Gebruikt de links aan de linker kant om je topsite lijst te beheren."; // 5.0
-$LNG['a_main_approve'] = "Er is 1 site die wacht op goedkeuring."; // 5.0
-$LNG['a_main_approves'] = "Er zijn %s sites die wachten op goedkeuring."; // 5.0
-$LNG['a_main_approve_rev'] = "Er is 1 commentaar dat wacht op goedkeuring."; // 5.0
-$LNG['a_main_approve_revs'] = "Er zijn %s commentaren die wachten op goedkeuring."; // 5.0
-$LNG['a_main_your'] = "Jouw versie"; // 5.0
-$LNG['a_main_latest'] = "Nieuwste versie"; // 5.0
+// Admin > Main
+$LNG['a_header'] = "Admin"; // 5.0
+$LNG['a_main'] = "Welkom bij de admin.  Gebruik de links aan de linker kant om de toplist te bewerken."; // 5.0
+$LNG['a_main_approve'] = "Er is 1 website in de wacht om goedgekeurd te worden."; // 5.0
+$LNG['a_main_approves'] = "Er zijn %s websites in de wacht om goedgekeurd te worden."; // 5.0
+$LNG['a_main_approve_rev'] = "Er is 1 commentaar in de wacht om goedgekeurd te worden."; // 5.0
+$LNG['a_main_approve_revs'] = "Er zijn %s commentaars in de wacht om goedgekeurd te worden."; // 5.0
+$LNG['a_main_your'] = "Uw versie"; // 5.0
+$LNG['a_main_latest'] = "Laatste versie"; // 5.0
 $LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
-// Admin > Beheer leden
-$LNG['a_man_header'] = "Beheer leden"; // 5.0
+// Admin > Manage Members
+$LNG['a_man_header'] = "Bewerk Leden"; // 5.0
 $LNG['a_man_actions'] = "Acties"; // 4.2.0
 $LNG['a_man_edit'] = "Bewerk"; // 4.2.0
 $LNG['a_man_delete'] = "Verwijder"; // 4.2.0
-$LNG['a_man_email'] = "E-mail"; // 4.2.0
+$LNG['a_man_email'] = "Email"; // 4.2.0
 $LNG['a_man_all'] = "Selecteer alles"; // 5.0
-$LNG['a_man_none'] = "Selecteer Niets"; // 5.0
-$LNG['a_man_del_sel'] = "Verwijder geselecteerde"; // 5.0
+$LNG['a_man_none'] = "Selecteer niets"; // 5.0
+$LNG['a_man_del_sel'] = "Verwijder Geselecteerde"; // 5.0
 
 // Admin > Manage Bad Words // 5.1.0
-$LNG['a_man_bad_words_header'] = "Profanity Filter"; // 5.1.0
-$LNG['a_man_bad_words_instructions'] = "Enter a word and its replacement below.  For example, you could enter \"hell\" in the word field and \"h***\" in the replacement field."; // 5.1.0
-$LNG['a_man_bad_words_instructions_matching'] = "Exact matching will only match the exact word.  Global matching will match anything containing the word.  So, global matching of \"hell\" would also match \"shell\" and \"hello\"."; // 5.1.0
-$LNG['a_man_bad_words_word'] = "Word"; // 5.1.0
-$LNG['a_man_bad_words_replacement'] = "Replacement"; // 5.1.0
-$LNG['a_man_bad_words_matching'] = "Matching"; // 5.1.0
+$LNG['a_man_bad_words_header'] = "Verboden Woorden Filter"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Typ onderstaand het verboden woord en de vervanging ervoor.  Bijvoorbeeld, wanneer je typt \"hell\" in het woorden veld en \"h***\" in het vervangings veld."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "Exacte overeenkomst vervangt alleen het exacte woord.  Globale overeenkomst vervangt alle letters die overeenkomen in willekeurige woorden die die letters bevatten.  Dus, globale overeenkomst van \"hell\" vervangt ook de letters in \"shell\" and \"hello\"."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Woord"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Vervang met"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "Overeenkomst"; // 5.1.0
 $LNG['a_man_bad_words_exact'] = "Exact"; // 5.1.0
-$LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
-$LNG['a_man_bad_words_filter'] = "Filter Word"; // 5.1.0
-$LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filter."; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Globaal"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Filter Woord"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "\"%s\" is toegevoegd aan het filter."; // 5.1.0
 
 // Admin > Manage Custom Pages // 5.1.0
-$LNG['a_man_pages_header'] = "Manage Custom Pages"; // 5.1.0
+$LNG['a_man_pages_header'] = "Beheer aangepastte pagina's"; // 5.1.0
 
-// Admin > Beheer commentaar // 5.0
-$LNG['a_man_rev_header'] = "Beheer commentaar"; // 5.0
-$LNG['a_man_rev_enter'] = "Om het commentaar van een site te beheren voer je de gebruikersnaam van de site hieronder in."; // 5.0
+// Admin > Manage Reviews // 5.0
+$LNG['a_man_rev_header'] = "Beheer commentaren"; // 5.0
+$LNG['a_man_rev_enter'] = "Om het commentaar van een website te beheren, vul je onderstaand de gebruikersnaam in van het lid."; // 5.0
 $LNG['a_man_rev_id'] = "ID"; // 5.0
 $LNG['a_man_rev_rev'] = "Commentaar"; // 5.0
 $LNG['a_man_rev_date'] = "Datum"; // 5.0
 
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
-$LNG['a_menu_main'] = "Begin"; // 5.0
-$LNG['a_menu_approve'] = "Nieuwe leden goedkeuren";
-$LNG['a_menu_manage'] = "Beheer leden"; // 4.2.0
-$LNG['a_menu_settings'] = "Verander instellingen"; // 5.0
-$LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0
-$LNG['a_menu_skins'] = "Uiterlijk en Categorien"; // 5.0
-$LNG['a_menu_approve_reviews'] = "Commentaar goedkeuren"; // 5.0
-$LNG['a_menu_manage_reviews'] = "Beheer commentaar"; // 5.0
-$LNG['a_menu_email'] = "E-mail Leden";
-$LNG['a_menu_delete_review'] = "Verwijder commentaar";
-$LNG['a_menu_logout'] = "Loguit";
-$LNG['a_menu_delete'] = "Verwijder lid";
-$LNG['a_menu_edit'] = "Bewerk lid";
-$LNG['a_menu_create_page'] = "Create Custom Page"; // 5.1.0
-$LNG['a_menu_manage_pages'] = "Manage Custom Pages"; // 5.1.0
+$LNG['a_menu_main'] = "Hoofdmenu"; // 5.0
+$LNG['a_menu_approve'] = "Nieuwe Leden Goedkeuren";
+$LNG['a_menu_manage'] = "Leden Beheer"; // 4.2.0
+$LNG['a_menu_settings'] = "Configuratie"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "Verboden Woorden Filter"; // 5.1.0
+$LNG['a_menu_skins'] = "Thema's en Categorieën"; // 5.0
+$LNG['a_menu_approve_reviews'] = "Commentaar Goedkeuren"; // 5.0
+$LNG['a_menu_manage_reviews'] = "Commentaar Beheren"; // 5.0
+$LNG['a_menu_email'] = "Email Leden";
+$LNG['a_menu_delete_review'] = "Verwijder Commentaar";
+$LNG['a_menu_logout'] = "Uitloggen";
+$LNG['a_menu_delete'] = "Verwijder Lid";
+$LNG['a_menu_edit'] = "Beheer Lid";
+$LNG['a_menu_create_page'] = "Maak een Pagina"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Bewerk een Pagina"; // 5.1.0
 $LNG['a_header_members'] = "Leden"; // 5.0
 $LNG['a_header_settings'] = "Instellingen"; // 5.0
-$LNG['a_header_reviews'] = "Commentaren"; // 5.0
-$LNG['a_header_pages'] = "Custom Pages"; // 5.1.0
+$LNG['a_header_reviews'] = "Commentaar"; // 5.0
+$LNG['a_header_pages'] = "Aangepastte Pagina's"; // 5.1.0
 
 // Admin > Settings
-$LNG['a_s_header'] = "Verander instellingen";
+$LNG['a_s_header'] = "Verander Configuratie";
 $LNG['a_s_help'] = "Help"; // 5.1.0
 
-$LNG['a_s_general'] = "Algemene instellingen";
-$LNG['a_s_admin_password'] = "Beheerders wachtwoord";
-$LNG['a_s_list_name'] = "De naam van je Topsite Lijst";
-$LNG['a_s_list_url'] = "URL naar topsite map";
+$LNG['a_s_general'] = "Algemene Configuratie";
+$LNG['a_s_admin_password'] = "Admin wachtwoord";
+$LNG['a_s_list_name'] = "De naam van uw topsite";
+$LNG['a_s_list_url'] = "URL van de topsites directory";
 $LNG['a_s_default_language'] = "Standaard taal";
-$LNG['a_s_your_email'] = "Je e-mail adres";
+$LNG['a_s_your_email'] = "Uw email adres";
 
-$LNG['a_s_sql'] = "SQL Instellingen";
+$LNG['a_s_sql'] = "SQL configuratie";
 $LNG['a_s_sql_type'] = "Database Type"; // 4.1.0
 $LNG['a_s_sql_host'] = "Host";
 $LNG['a_s_sql_database'] = "Database";
-$LNG['a_s_sql_username'] = "Gebruikersnaam";
-$LNG['a_s_sql_password'] = "Wachtwoord";
+$LNG['a_s_sql_username'] = "Username";
+$LNG['a_s_sql_password'] = "Password";
 
-$LNG['a_s_ranking'] = "Ranglijst Instelligen";
-$LNG['a_s_num_list'] = "Aantal leden per pagina"; // 5.0
-$LNG['a_s_ranking_period'] = "Ranglijst periode"; // 5.0
-$LNG['a_s_ranking_method'] = "Ranglijst methode"; // 5.0
-$LNG['a_s_ranking_average'] = "Ranglijst bij gemiddelde of gewoon bij %s"; // 5.0
-$LNG['a_s_featured_member'] = 'Activeer "In de schijnwerper"?  Je moet wel {$featured_member} aan je wrapper.html pagina toevoegen.'; // 4.1.0
-$LNG['a_s_top_skin_num'] = "Aantal leden om _top uiterlijk voor te gebruiken";
-$LNG['a_s_ad_breaks'] = "Laat advertentie zijn na ... leden (komma's tussen de rangen plaatsen)";
+$LNG['a_s_ranking'] = "Stem configuratie";
+$LNG['a_s_num_list'] = "Aantal leden per lijst"; // 5.0
+$LNG['a_s_ranking_period'] = "Stem periode"; // 5.0
+$LNG['a_s_ranking_method'] = "Stem methode"; // 5.0
+$LNG['a_s_ranking_average'] = "Stemmen voor gemiddelde of alleen %s"; // 5.0
+$LNG['a_s_featured_member'] = 'In de schijnwerper - Je moet {$featured_member} toevoegen aan de wrapper.html wanneer deze aan staat.'; // 4.1.0
+$LNG['a_s_top_skin_num'] = "Aantal leden die de _top skin gebuiken";
+$LNG['a_s_ad_breaks'] = "Geef een break na de meting (komma's tussen plaatsen) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_member'] = "Leden Instellingen";
-$LNG['a_s_active_default'] = "Moeten nieuwe leden goedgekeurd worden na registratie voordat ze in de ranglijst komen";
-$LNG['a_s_active_default_review'] = "Moet nieuwe commentaar goedgekeurd worden voordat het gelezen kan worden";
-$LNG['a_s_delete_after'] = "Verwijder leden na ... dagen van inactiviteit (Zet op 0 om uit te schakelen)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Email admin when a new member joins"; // 5.1.0
-$LNG['a_s_email_admin_on_review'] = "Email admin when a new review is posted"; // 5.1.0
-$LNG['a_s_max_banner_width'] = "Maximale banner wijdte (zet op 0 om uit te schakelen)"; // 4.2.0
+$LNG['a_s_member'] = "Leden configuratie";
+$LNG['a_s_active_default'] = "Leden moeten worden toegelaten voor ze in de lijst komen";
+$LNG['a_s_active_default_review'] = "Commentaar moet worden toegelaten voor ze in de lijst komen";
+$LNG['a_s_delete_after'] = "Verwijder non actieve leden na hoeveel dagen (plaats een 0 om uit te schakelen)"; // 4.1.0
+$LNG['a_s_email_admin_on_join'] = "Verstuur email nadat een lid zich heeft aangemeld"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Verstuur email nadat een nieuw commentaar geplaatst is"; // 5.1.0
+$LNG['a_s_max_banner_width'] = "Maximale banner breedte (zet op 0 om uit te schakelen)"; // 4.2.0
 $LNG['a_s_max_banner_height'] = "Maximale banner hoogte (zet op 0 om uit te schakelen)"; // 4.2.0
 $LNG['a_s_default_banner'] = "Standaard banner die leden krijgen als ze geen banner opgeven";
 
-$LNG['a_s_button'] = "Button Instellingen";
-$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
-$LNG['a_s_stat_buttons'] = "Statische Buttons"; // 4.2.0
-$LNG['a_s_button_url'] = "Bij Ja/Nee - URL naar standaard button die verschijnd op site van de leden"; // 4.0
-$LNG['a_s_button_dir'] = "Bij Ja - URL naar de map waar de buttons in staan"; // 4.0
-$LNG['a_s_button_ext'] = "Bij Ja - Extentie van de buttons (gif, png, jpg, enz.)"; // 4.0
-$LNG['a_s_button_num'] = "Bij Ja - aantal buttons die je hebt gemaakt"; // 4.0
+$LNG['a_s_button'] = "Button configuratie";
+$LNG['a_s_ranks_on_buttons'] = "ilt u de leden meting op hun button laten zien?  Zie -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_stat_buttons'] = "Statistiek buttons"; // 4.2.0
+$LNG['a_s_button_url'] = "Bij Ja/Nee - URL van de button die op de pagina van het lid verschijnt"; // 4.0
+$LNG['a_s_button_dir'] = "Bij ja - URL van de map waar de buttons zich bevinden"; // 4.0
+$LNG['a_s_button_ext'] = "Bij ja - Extensie van de buttons (gif, png, jpg, enz.)"; // 4.0
+$LNG['a_s_button_num'] = "Bij ja - Aantal buttons die je hebt gemaakt"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_other'] = "Andere instellingen";
+$LNG['a_s_other'] = "Diversen configuratie";
 $LNG['a_s_search'] = "Zoeken";
 $LNG['a_s_time_offset'] = "Tijd verschil met de server (in uren)";
 $LNG['a_s_gateway'] = "Anti cheat pagina, om cheaters tegen te gaan";
-$LNG['a_s_captcha'] = "Word verification on join (protect against spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_captcha'] = "Woord verificatie voor lidmaatschap (beschermt tegen spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Aan";
 $LNG['a_s_off'] = "Uit";
 $LNG['a_s_days'] = "Dagen";
 $LNG['a_s_months'] = "Maanden";
-$LNG['a_s_weeks'] = "Weeken"; // 4.2.0
+$LNG['a_s_weeks'] = "Weken"; // 4.2.0
 $LNG['a_s_yes'] = "Ja";
 $LNG['a_s_no'] = "Nee";
 
-$LNG['a_s_updated'] = "Je instellingen zijn aangepast.";
+$LNG['a_s_updated'] = "De configuratie is uitgevoerd.";
 
-// Admin > Uiterlijk en Categorien // 5.0
-$LNG['a_skins_header'] = "Uiterlijk en Categorien"; // 5.0
-$LNG['a_skins_default'] = "Standaard uiterlijk"; // 5.0
-$LNG['a_skins_set_default'] = "Stel standaard uiterlijk in"; // 5.0
+// Admin > Skins and Categories // 5.0
+$LNG['a_skins_header'] = "Thema's en Categorieën"; // 5.0
+$LNG['a_skins_default'] = "Standaard Thema"; // 5.0
+$LNG['a_skins_set_default'] = "Plaats Standaard Thema"; // 5.0
 $LNG['a_skins_anon'] = "Anoniem"; // 5.0
-$LNG['a_skins_default_done'] = "De standaard uiterlijk is ingesteld."; // 5.0
-$LNG['a_skins_categories_done'] = "De categorie uiterlijk is ingesteld."; // 5.0
-$LNG['a_skins_new_category_done'] = "De nieuwe categorie is gemaakt."; // 5.0
+$LNG['a_skins_default_done'] = "De standaard thema is geactiveerd."; // 5.0
+$LNG['a_skins_categories_done'] = "De standaard categorie is geactiveerd."; // 5.0
+$LNG['a_skins_new_category_done'] = "De nieuwe categorie is aangemaakt."; // 5.0
 $LNG['a_skins_delete_done'] = "De categorie is verwijderd."; // 5.0
-$LNG['a_skins_delete_error'] = "The category cannot be deleted because you must have at least one category."; // 5.1.0
-$LNG['a_skins_edit_done'] = "De categorie is bewerkt."; // 5.0
-$LNG['a_skins_invalid_skin'] = "Ongeldig uiterlijk: %s.  Probeer opnieuw."; // 5.0
-$LNG['a_skins_categories'] = "Categorien"; // 5.0
-$LNG['a_skins_new_category'] = "Maak nieuwe categorie"; // 5.0
-$LNG['a_skins_set_skins'] = "Stel categorie uiterlijk in"; // 5.0
-$LNG['a_skins_edit_category'] = "Bewerk categorie"; // 5.0
-$LNG['a_skins_category_name'] = "Categorie naam"; // 5.0
-$LNG['a_skins_diff_skins'] = "Als je verschillende uiterlijken voor je categorien wilt selecteer ze dan hieronder."; // 5.0
+$LNG['a_skins_delete_error'] = "Deze categorie kan niet verwijderd worden, er moet minstens 1 categorie aanwezig zijn."; // 5.1.0
+$LNG['a_skins_edit_done'] = "De categorie is bijgewerkt."; // 5.0
+$LNG['a_skins_invalid_skin'] = "Foutief thema: %s.  Probeer het opnieuw."; // 5.0
+$LNG['a_skins_categories'] = "Categorie"; // 5.0
+$LNG['a_skins_new_category'] = "Maak een nieuwe Categorie"; // 5.0
+$LNG['a_skins_set_skins'] = "Activeer nieuwe Categorie"; // 5.0
+$LNG['a_skins_edit_category'] = "Bewerk Categorie"; // 5.0
+$LNG['a_skins_category_name'] = "Categorie Naam"; // 5.0
+$LNG['a_skins_diff_skins'] = "Wil je voor elke categorie een ander thema, verander ze hieronder."; // 5.0
 ?>

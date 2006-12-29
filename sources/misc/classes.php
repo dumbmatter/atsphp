@@ -152,7 +152,7 @@ class join_edit extends base {
         $session = new session;
         list($type, $data) = $session->get($sid);
         list($ip, $hash) = explode('|', $data);
-        if ($hash != sha1($FORM['captcha']) || strlen($FORM['captcha']) != 6) {
+        if (!isset($FORM['captcha']) || $hash != sha1(')F*RJ@FHR^%X'.$FORM['captcha'].'(*Ht3h7f9&^F'.$ip)) {
           $error_captcha = 1;
         }
         $session->delete($sid);
@@ -176,6 +176,16 @@ class join_edit extends base {
         $error_banner_url = 1;
       }
       if (!isset($size[0]) && !isset($size[1])) { $error_banner_url = 1; }
+    }
+
+    $good_cat = 0;
+    foreach ($CONF['categories'] as $cat => $skin) {
+      if ($TMPL['category'] == $cat) {
+        $good_cat = 1;
+      }
+    }
+    if (!$good_cat) {
+      $TMPL['category'] = $cat;
     }
 
     if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha) {
