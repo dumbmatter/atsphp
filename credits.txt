@@ -1,6 +1,6 @@
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -15,15 +15,30 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-This is a list of everyone who has contributed their work to Aardvark Topsites
-PHP.  If I forgot to put your name here, I apologize; just email me or post at
-the forum and I will update it.
+A good open source script requires a great community of contributors.  Even if
+one person can code an entire project by themselves (which I didn't), they
+still typically do not have the artistic ability to design an attractive user
+interface and they definitely are not fluent in 20 different languages.  So I
+really do appreciate everyone who has helped me code, design, and translate
+Aardvark Topsites PHP over the years.  I also appreciate the people who have
+not directly worked with me, but have liberally licensed their work so
+programmers like myself can create better products by standing on their
+shoulders.
+
+It goes without saying that I owe a deep debt of gratitute to the creators of
+PHP, Apache, MySQL, Linux, and other prominent open source projects.  However,
+in this file I would like to thank those who have directly aided in the
+development of Aardvark Topsites PHP and those whose work is currently
+distributed in this package.  If I forgot to put your name here, I apologize;
+just email me or post at the forum and I will update it.
 
 If you're a PHP coder and you would like to see your name here, then email me
 (webmaster@aardvarkind.com) because I am always looking for new coders to bring
 into the project.
 
 - Jeremy
+
+
 
 ------
 CODERS
@@ -53,3 +68,18 @@ OS-Mark - http://www.osempire.com/
 -----------
 TRANSLATORS
 -----------
+
+-----
+OTHER
+-----
+
+captcha.php is based on hn_captcha 1.3 by Horst Nogajski:
+http://hn273.users.phpclasses.org/browse/package/1569.html
+
+The captcha uses several GPL and public domain fonts:
+- Kozmic Jagged Hands and Rubbing Font
+  http://www.theory.org/~matt/fonts/free/
+- Bitstream Vera Sans Bold and Bitstream Vera Serif
+  http://www.gnome.org/fonts/
+- OCRA
+  http://sourceforge.net/projects/ocr-a-font/

@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -16,7 +16,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-// This file is not necessary unless you upgraded from 4.x
+// This file doesn't do anything unless you upgraded from 4.x
 
 header("Location: index.php?a=in&u=".$_GET['id']);
 ?>

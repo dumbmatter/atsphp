@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -15,14 +15,9 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
-// This file is based on:                                                    \\
-// hn_captcha 1.3 by Horst Nogajski <horst@nogajski.de>                      \\
-// http://hn273.users.phpclasses.org/browse/package/1569.html                \\
-//===========================================================================\\
-// Fonts:
-// http://www.theory.org/~matt/fonts/free/ (KozmicJaggedHands.ttf, RubbingFont.ttf)
-// http://www.gnome.org/fonts/ (VeraBd.ttf, VeraSe.ttf)
-// http://sourceforge.net/projects/ocr-a-font/ (OCRA.ttf)
+
+// This file is based on hn_captcha 1.3 by Horst Nogajski.
+// http://hn273.users.phpclasses.org/browse/package/1569.html
 
 // Help prevent register_globals injection
 define('ATSPHP', 1);

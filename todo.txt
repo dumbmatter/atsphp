@@ -1,6 +1,6 @@
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -56,6 +56,7 @@ ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `
 -----
 ETA: Summer
 HIGH PRIORITY:
+caps in referer - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=5864
 translate months in stats.php
 - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
 banning: url, ip, username, email
@@ -69,12 +70,6 @@ skins by os-mark
 - nice-looking HTML emails
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
 credits.txt
-- me
-- matt (feed, sql, skin, etc)
-- omar (skin)
-- osmark (skin update)
-- fonts (in fonts/fonts.txt)
-- captcha (in capthca.php)
 - translators
 ------------
 LOW PRIORITY:
@@ -96,7 +91,6 @@ ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/view
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
-new captcha: copy phpbb's?
 
 -----
 5.3.0
@@ -148,6 +142,7 @@ TRANSLATION STATUS
     lithuanian
     polish
     portuguese
+    portuguese_brazilian
     romanian
     russian
     spanish
