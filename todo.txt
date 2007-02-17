@@ -71,6 +71,7 @@ skins by os-mark
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
 credits.txt
 - translators
+cache overall stats (like in main page of admin) and allow all skins to post them
 ------------
 LOW PRIORITY:
 backlink checker
@@ -82,7 +83,6 @@ valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 couple ratings and reviews so admin approves both
-cache overall stats (like in main page of admin) and allow all skins to post them
 graphs
 timestamp for jointime
 no exits in base::error()
@@ -91,6 +91,7 @@ ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/view
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
+detect when allow_url_fopen is disabled for max image sizes
 
 -----
 5.3.0
@@ -126,7 +127,6 @@ SVN ADD
 skins/classic/table_filler.html
 skins/classic/join_finish_approve.html
 SVN DELETE
-sources/smtp/*
 
 TRANSLATION STATUS
   5.1

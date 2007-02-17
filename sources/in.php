@@ -24,6 +24,10 @@ class in extends in_out {
   function in() {
     global $CONF, $DB, $FORM;
 
+    if (isset($_SERVER['HTTP_REFERER'])) {
+      $referer = $DB->escape($_SERVER['HTTP_REFERER'], 1);
+    }
+
     $go_to_rankings = 0;
     if (isset($FORM['a']) && $FORM['a'] == 'in') {
       $go_to_rankings = 1;
@@ -32,15 +36,15 @@ class in extends in_out {
     else {
       // Get user by referer?
       $good_referer = 0;
-      if (isset($_SERVER['HTTP_REFERER']) && !isset($FORM['a']) && strpos($_SERVER['HTTP_REFERER'], $CONF['list_url']) === FALSE) {
+      if (isset($referer) && !isset($FORM['a']) && strpos($referer, $CONF['list_url']) === FALSE) {
         // Make sure it's not a search engine
-        if (strpos($_SERVER['HTTP_REFERER'], 'http://www.google.com/search') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.yahoo.com') === FALSE && strpos($_SERVER['HTTP_REFERER'], 'http://search.msn.com') === FALSE) {
+        if (strpos($referer, 'http://www.google.com/search') === FALSE && strpos($referer, 'http://search.yahoo.com') === FALSE && strpos($referer, 'http://search.msn.com') === FALSE) {
           $good_referer = 1;
         }
       }
 
       if ($good_referer) {
-        $username = $this->get_username($_SERVER['HTTP_REFERER']);
+        $username = $this->get_username($referer);
       }
       else {
         $username = '';

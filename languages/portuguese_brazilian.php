@@ -53,11 +53,11 @@ $LNG['g_weekly'] = "Semanal"; // 5.0
 $LNG['g_pv'] = 'Pageviews'; // 5.0
 $LNG['g_overall'] = 'Total'; // 5.0
 $LNG['g_in'] = 'Clicks'; // 5.0
-$LNG['g_out'] = 'Clicks'; // 5.0
+$LNG['g_out'] = 'Saídas'; // 5.0
 $LNG['g_unq_pv'] = "Pageviews &uacute;nicas"; // 5.0
 $LNG['g_tot_pv'] = "Total de pageviews"; // 5.0
-$LNG['g_unq_in'] = "Clicks &uacute;nicos"; // 5.0
-$LNG['g_tot_in'] = "Total de clicks"; // 5.0
+$LNG['g_unq_in'] = "Saídas &uacute;nicas"; // 5.0
+$LNG['g_tot_in'] = "Total de saídas"; // 5.0
 $LNG['g_unq_out'] = "Clicks &uacute;nicos"; // 5.0
 $LNG['g_tot_out'] = "Total de Clicks"; // 5.0
 $LNG['g_invalid_u_or_p'] = "Usu&aacute;rio ou senha inv&aacute;lidos. Tente novamente."; // 5.0
@@ -318,7 +318,7 @@ $LNG['a_man_del_sel'] = "Deletar selecionados"; // 5.0
 
 // Admin > Manage Bad Words // 5.1.0
 $LNG['a_man_bad_words_header'] = "Filtro de palavrões"; // 5.1.0
-$LNG['a_man_bad_words_instructions'] = "Coloque uma palavra e a substituição abaixo.  Por exemplo, \"porra\" e \"p****\"."; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Coloque uma palavra e a substituição abaixo.  Por exemplo, \"merda\" e \"m****\"."; // 5.1.0
 $LNG['a_man_bad_words_instructions_matching'] = "A troca exata utiliza só uma palavra. Global vai detectar qualquer coisa contendo a palavra. Então, global em \"pato\" iria filtrar também \"carrapato\"."; // 5.1.0
 $LNG['a_man_bad_words_word'] = "palavra"; // 5.1.0
 $LNG['a_man_bad_words_replacement'] = "Substituir"; // 5.1.0
@@ -361,7 +361,7 @@ $LNG['a_header_reviews'] = "Reviews"; // 5.0
 $LNG['a_header_pages'] = "Páginas"; // 5.1.0
 
 // Admin > Settings
-$LNG['a_s_header'] = "Configurações";
+$LNG['a_s_header'] = "Configurar";
 $LNG['a_s_help'] = "Ajuda"; // 5.1.0
 
 $LNG['a_s_general'] = "Configurações Gerais";
@@ -409,7 +409,7 @@ $LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://ww
 $LNG['a_s_other'] = "Outras configurações";
 $LNG['a_s_search'] = "Busca";
 $LNG['a_s_time_offset'] = "Seu fuso horário em relação ao servidor (em horas)";
-$LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
+$LNG['a_s_gateway'] = "Barreira de proteção contra cheaters";
 $LNG['a_s_captcha'] = "Verificação de palavras no cadastro (proteção contra spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Ligado";
@@ -420,7 +420,7 @@ $LNG['a_s_weeks'] = "Semanas"; // 4.2.0
 $LNG['a_s_yes'] = "Sim";
 $LNG['a_s_no'] = "Não";
 
-$LNG['a_s_updated'] = "Your settings have been updated.";
+$LNG['a_s_updated'] = "Suas configurações foram editadas.";
 
 // Admin > Skins and Categories // 5.0
 $LNG['a_skins_header'] = "Skins e Categorias"; // 5.0
