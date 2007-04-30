@@ -124,7 +124,7 @@ EndHTML;
 <td align="center">{$username}</td>
 <td width="100%"><a href="{$url}" onclick="out('{$username}');">{$title}</a></td>
 <td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=edit&amp;u={$username}">{$LNG['a_man_edit']}</a></td>
-<td align="center"><a href="{$TMPL['list_url']}/index.php?a=amin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
+<td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=delete&amp;u={$username}">{$LNG['a_man_delete']}</a></td>
 <td align="center"><a href="{$TMPL['list_url']}/index.php?a=admin&amp;b=manage_reviews&amp;u={$username}">{$LNG['a_header_reviews']}</a></td>
 <td align="center"><a href="mailto:{$email}">{$LNG['a_man_email']}</a></td>
 <td align="center"><a href="javascript:void(0);" onclick="popup('ban_{$num}')">{$LNG['a_menu_manage_ban']}</a>

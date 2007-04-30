@@ -1,9 +1,9 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2005 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
-// http://www.aardvarkind.com/                        http://www.avatic.com/ \\
+// http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
 // This program is free software; you can redistribute it and/or modify it   \\
 // under the terms of the GNU General Public License as published by the     \\
@@ -16,257 +16,324 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
+if (!defined('ATSPHP')) {
+  die("This file cannot be accessed directly.");
+}
+
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
-$translation = 'Italiano';
-$translator_name = 'Cristian Storto';
-$translator_email = 'staff@tutorialweb.org';
-$translator_url = 'http://tutorialweb.org/';
+$translation = 'Italian (Italiano)';
+$translator_name = 'Massimo Di Paolo';
+$translator_email = 'webmaster@top100-solar.it';
+$translator_url = 'http://www.top100-solar.it/';
+
+// Set this to the character encoding of your translation
+$LNG['charset'] = "utf-8";
 
 // Global
 $LNG['g_form_submit_short'] = "Vai";
-$LNG['g_username'] = "Utente";
+$LNG['g_username'] = "Username";
 $LNG['g_url'] = "URL";
 $LNG['g_title'] = "Titolo";
 $LNG['g_description'] = "Descrizione";
 $LNG['g_category'] = "Categoria"; // 4.1.0
 $LNG['g_email'] = "Email";
-$LNG['g_banner_url'] = "Indirizzo banner";
+$LNG['g_banner_url'] = "Banner URL (Es.: http://www.miosito.it/images/bannermio.gif)";
 $LNG['g_password'] = "Password";
 $LNG['g_average'] = "Media";
 $LNG['g_today'] = "Oggi";
 $LNG['g_yesterday'] = "Ieri";
-$LNG['g_daily'] = "Giornaliera"; // 5.0
-$LNG['g_this_month'] = "Mese corrente"; // 5.0
-$LNG['g_last_month'] = "Mese passato"; // 5.0
+$LNG['g_daily'] = "Giornaliero"; // 5.0
+$LNG['g_this_month'] = "Questo Mese"; // 5.0
+$LNG['g_last_month'] = "Ultimo Moese"; // 5.0
 $LNG['g_monthly'] = "Mensile"; // 5.0
-$LNG['g_this_week'] = "Questa settimana"; // 5.0
-$LNG['g_last_week'] = "Ultima settimana"; // 5.0
+$LNG['g_this_week'] = "Questa Settimana"; // 5.0
+$LNG['g_last_week'] = "Ultima Settimana"; // 5.0
 $LNG['g_weekly'] = "Settimanale"; // 5.0
-$LNG['g_pv'] = 'Pagine viste'; // 5.0
-$LNG['g_overall'] = 'Generale'; // 5.0
+$LNG['g_pv'] = 'Pagine Visitate'; // 5.0
+$LNG['g_overall'] = 'Media'; // 5.0
 $LNG['g_in'] = 'In'; // 5.0
 $LNG['g_out'] = 'Out'; // 5.0
-$LNG['g_unq_pv'] = "PVs Uniche"; // 5.0
-$LNG['g_tot_pv'] = "PVs Totali"; // 5.0
-$LNG['g_unq_in'] = "Uniche In"; // 5.0
+$LNG['g_unq_pv'] = "Unici PVs"; // 5.0
+$LNG['g_tot_pv'] = "Totale PVs"; // 5.0
+$LNG['g_unq_in'] = "Unici In"; // 5.0
 $LNG['g_tot_in'] = "Totali In"; // 5.0
-$LNG['g_unq_out'] = "Uniche Out"; // 5.0
+$LNG['g_unq_out'] = "Unici Out"; // 5.0
 $LNG['g_tot_out'] = "Totali Out"; // 5.0
-$LNG['g_invalid_u_or_p'] = "Username o password errati, prova ancora."; // 5.0
-$LNG['g_invalid_u'] = "Username errato.  Prova ancora."; // 5.0
-$LNG['g_invalid_p'] = "Password errata.  Prova ancora."; // 5.0
-$LNG['g_session_expired'] = "Sessione scaduta. Prova ancora."; // 5.0
+$LNG['g_invalid_u_or_p'] = "Username o Password NON VALIDI.  Riprovare prego."; // 5.0
+$LNG['g_invalid_u'] = "Username NON VALIDO.  Riprovare prego."; // 5.0
+$LNG['g_invalid_p'] = "Password NON VALIDA.  Riprovare prego."; // 5.0
+$LNG['g_session_expired'] = "Sessione terminata.  Riprovare prego."; // 5.0
 $LNG['g_error'] = "Errore"; // 5.0
-$LNG['g_delete_install'] = "Per ragioni di sicurezza devi eliminare la cartella install prima di poter utilizzare lo script."; // 5.0
+$LNG['g_delete_install'] = "Per questioni di sicurezza devi cancellare la directory di installazione, prima che lo script possa essere eseguito."; // 5.0
 
 // Edit Account
-$LNG['edit_header'] = "Modifica account";
-$LNG['edit_info_edited'] = "Il tuo account è stato modificato correttamente.";
-$LNG['edit_password_blank'] = "Lascia vuoto questo campo per mantenere la solita password"; // 4.0
+$LNG['edit_header'] = "Modifica Account";
+$LNG['edit_info_edited'] = "Il tuo Account e' stato modificato con successo";
+$LNG['edit_password_blank'] = "Lasciare in bianco per mantenere la password attuale"; // 4.0
 
 // Gateway Page
-$LNG['gateway_header'] = "Topsites Gateway Page";
-$LNG['gateway_text'] = "Per evitare link automatici è stata creata questa pagina. Clicca il link sottostante per entrare nella Topsite.";
-$LNG['gateway_vote'] = "Entra e vota";
-$LNG['gateway_no_vote'] = "Entra senza votare"; // 5.0
+$LNG['gateway_header'] = "TOP100-SOLAR ITALIA";
+$LNG['gateway_text'] = "Per evitare eventuale SPAM, e' stata visualizzata la seguente pagina.  Click su uno dei link sotto per entrare nel sito.";
+$LNG['gateway_vote'] = "Entra e Vota";
+$LNG['gateway_no_vote'] = "Entra Senza Votare"; // 5.0
 
 // Install
-$LNG['install_header'] = "Installa";
-$LNG['install_welcome'] = "Benvenuto in Aardvark Topsites PHP 5.  Riempi il form sottostante per installare lo script.";
-$LNG['install_sql_prefix'] = "Prefisso delle tabelle - da modificare solo nel caso in cui si stia usando più volte lo script sullo stesso database";
-$LNG['install_error_chmod'] = "Non posso scrivere il file settings_sql.php.  Assicurati di avere settato i permessi a 666 sul file settings_sql.php.";
-$LNG['install_error_sql'] = "Non è possibile connettersi al database.  Torna indietro e controlla i tuoi dati.";
-$LNG['install_done'] = "La tua topsite è stata installata.  Elimina questa directory.";
-$LNG['install_your'] = "La tua Topsite";
-$LNG['install_admin'] = "Amministratore";
+$LNG['install_header'] = "Installazione";
+$LNG['install_welcome'] = "Benvenuto all'Aardvark Topsites PHP 5.  Compila il form sotto per installare lo script.";
+$LNG['install_sql_prefix'] = "Prefissi delle Tabelle - modificali solo se stai eseguendo piu' di una lista nello stesso DataBase";
+$LNG['install_error_chmod'] = "Non puoi scrivere su settings_sql.php.  Assicurati di aver effettuato CHMOD 666 al file settings_sql.php.";
+$LNG['install_error_sql'] = "Non posso connettermi al database SQL.  Torna indietro e verifica i settaggi SQL.";
+$LNG['install_done'] = "La tua lista topsites e' stata installata.  Cancella ora la directory.";
+$LNG['install_your'] = "Your Topsites List";
+$LNG['install_admin'] = "Admin";
 $LNG['install_manual'] = "Manuale";
-$LNG['upgrade_header'] = "Upgrade";
-$LNG['upgrade_welcome'] = "Benvenuto in Aardvark Topsites PHP 5.  Prima di fare l'upgrade crea un backup dei tuoi file.";
-$LNG['upgrade_error_version'] = "L'upgrade è possibile solo per Aardvark Topsites PHP 4.1.0 o maggiore.";
-$LNG['upgrade_done'] = "L'upgrade ha avuto buon esito. Elimina questa directory.";
+$LNG['upgrade_header'] = "Aggiornamento";
+$LNG['upgrade_welcome'] = "Benvenuto a Aardvark Topsites PHP 5.  Prima di effettuare un aggiornamento ricordati di effettuare un backup dei dati.";
+$LNG['upgrade_version'] = "Stai effettuando un aggiornamento dalla versione %s."; // 5.1.0
+$LNG['upgrade_error_version'] = "L'Aggiornamento e' supportato solo per Aardvark Topsites PHP 4.1.0 or superiore.";
+$LNG['upgrade_done'] = "La tua topsites list e' stata aggiornata.  Elimina questa directory ora.";
 
 // Join
-$LNG['join_header'] = "Iscriviti";
-$LNG['join_enter_text'] = "Digita il testo dell'immagine qua sotto:"; // 4.2.2
+$LNG['join_header'] = "Registrati";
+$LNG['join_enter_text'] = "Inserire il testo mostrato dall'immagine sotto:"; // 4.2.2
 $LNG['join_user'] = "Utente"; // 5.0
-$LNG['join_website'] = "Sito"; // 5.0
-$LNG['join_error_forgot'] = "Hai dimenticato di:";
-$LNG['join_error_username'] = "Inserisci uno username valido: usa solo lettere, numeri, e trattino basso."; // 5.0
-$LNG['join_error_username_duplicate'] = "Username già in uso!"; // 5.0
-$LNG['join_error_url'] = "Inserisci un'indirizzo valido.";
+$LNG['join_website'] = "Sito WEB"; // 5.0
+$LNG['join_error_username'] = "Inserisci un nome utente valido: usa solo lettere, numeri, trattino basso, e cancelletto."; // 5.0
+$LNG['join_error_username_duplicate'] = "Inserisci un nome utente valido: quello inserito e' gia' in uso."; // 5.0
+$LNG['join_error_url'] = "Inserisci una URL valida.";
 $LNG['join_error_email'] = "Inserisci un indirizzo email valido.";
-$LNG['join_error_title'] = "Digita un titolo per il tuo sito.";
-$LNG['join_error_password'] = "Digita una password.";
-$LNG['join_error_urlbanner'] = "Inserisci un banner.  Lascia in bianco se non lo hai.  Deve essere più piccolo di"; // 4.0
-$LNG['join_error_back'] = "Torna indietro e correggi questi errori.";
-$LNG['join_error_time'] = "Non aggiornare la pagina di conferma."; // 4.2.0
-$LNG['join_error_captcha'] = "La parola che hai inserito non corrisponde all'immagine."; // 4.2.2
-$LNG['join_thanks'] = "Grazie per esserti iscritto!  Inserisci questo codice nel tuo sito per essere votato.";
-$LNG['join_change_warning'] = "Se modifichi il codice, potrebbe non funzionare.";
-$LNG['join_welcome'] = "Benvenuto %s";
-$LNG['join_welcome_admin'] = "Un nuovo membro si è iscritto alla tua topsite.";
+$LNG['join_error_title'] = "Inserisci un Titolo del tuo sito web.";
+$LNG['join_error_password'] = "Inserisci una password.";
+$LNG['join_error_urlbanner'] = "Il banner deve essere delle seguenti dimensioni"; // 4.0
+$LNG['join_error_time'] = "Non aggiornare la pagina di conferma iscrizione."; // 4.2.0
+$LNG['join_error_captcha'] = "La parola inserita non corrisponde all'immagine."; // 4.2.2
+$LNG['join_thanks'] = "Grazie per esserti iscritto!  Inserisci il seguente codice nella pagina principale del tuo sito. Ricorda che il WEBMASTER verifichera' la presenza del codice prima di approvare la Tua iscrizione e in futuro il controllo avverra' periodicamente.";
+$LNG['join_change_warning'] = "ATTENZIONE: Se fai delle modifiche, il codice potrebbe non funzionare correttamente !!";
+$LNG['join_welcome'] = "Benvenuto a %s";
+$LNG['join_welcome_admin'] = "Un nuovo utente si e' iscritto alla tua lista topsite.";
+$LNG['join_approve'] = "Il tuo sito web sara' visualizzato nella lista quando l'Amministratore avra' effettuato le verifiche ed approvato la richiesta. Possono trascorrere anche 24H dalla richiesta, faremo il massimo per inserirti quanto prima nella lista."; // 5.1.0
+$LNG['join_type'] = "Tipo Account"; // 5.1.0
+$LNG['join_standard'] = "Standard"; // 5.1.0
 
 // Link Code
-$LNG['link_code_header'] = "Codice del link"; // 5.0
+$LNG['link_code_header'] = "Link Code"; // 5.0
 
 // Lost Password
-$LNG['lost_pw_header'] = "Ho perso la password"; // 5.0
-$LNG['lost_pw_forgot'] = "Hai dimenticato la password?"; // 5.0
-$LNG['lost_pw_get'] = "Recupero della password"; // 5.0
-$LNG['lost_pw_emailed'] = "Controlla la tua casella di posta per le istruzioni."; // 5.0
-$LNG['lost_pw_email'] = "Per avere una nuova password, vai a questo indirizzo:"; // 5.0
-$LNG['lost_pw_new'] = "Nuova password"; // 5.0
-$LNG['lost_pw_set_new'] = "Salva la nuova password"; // 5.0
-$LNG['lost_pw_finish'] = "La nuova password è stata salvata";
+$LNG['lost_pw_header'] = "Password persa"; // 5.0
+$LNG['lost_pw_forgot'] = "Hai dimenticato la tua password?"; // 5.0
+$LNG['lost_pw_get'] = "Richiedi Password"; // 5.0
+$LNG['lost_pw_emailed'] = "Controlla la tua email per ulteriori istruzioni."; // 5.0
+$LNG['lost_pw_email'] = "Per ottenere una nuova password per il tuo sito, basta clikkare a questa URL:"; // 5.0
+$LNG['lost_pw_new'] = "Inserisci una Nuova Password"; // 5.0
+$LNG['lost_pw_set_new'] = "Imposta una Nuova Password"; // 5.0
+$LNG['lost_pw_finish'] = "La tua Nuova Password e' stata impostata."; // 5.0
+
 // Main Page
 $LNG['main_header'] = "Classifica"; // 5.0
-$LNG['main_all'] = "Tutti i siti"; // 4.2.0
-$LNG['main_method'] = "Visualizzazione classifica";
-$LNG['main_members'] = "Membri";
-$LNG['main_menu_rankings'] = "Classifica";
-$LNG['main_menu_join'] = "Iscriviti";
-$LNG['main_menu_random'] = "Membro casuale";
-$LNG['main_menu_search'] = "Cerca";
-$LNG['main_menu_lost_code'] = "Perso il codice"; // 5.0
-$LNG['main_menu_lost_password'] = "Persa la password"; // 5.0
-$LNG['main_menu_edit'] = "Modifica le tue info";
+$LNG['main_all'] = "Tutti i Siti"; // 4.2.0
+$LNG['main_method'] = "Tipo di Classifica";
+$LNG['main_members'] = "Utenti registrati";
+$LNG['main_menu_rankings'] = "Classifiche";
+$LNG['main_menu_join'] = "Registrati";
+$LNG['main_menu_random'] = "Random registrati";
+$LNG['main_menu_search'] = "Ricerca";
+$LNG['main_menu_lost_code'] = "Codice perso"; // 5.0
+$LNG['main_menu_lost_password'] = "Password persa"; // 5.0
+$LNG['main_menu_edit'] = "Modifica le informazioni dell'utente";
 $LNG['main_menu_user_cp'] = "Pannello di controllo utente"; // 5.0
 $LNG['main_featured'] = "Featured Member"; // 4.0.2
-$LNG['main_executiontime'] = "Script Execution Time"; // 4.0
-$LNG['main_queries'] = "SQL Queries"; // 4.0
+$LNG['main_executiontime'] = "Tempo di esecuzione script"; // 4.0
+$LNG['main_queries'] = "SQL Query"; // 4.0
 $LNG['main_powered'] = "Powered by";
 
 // Ranking Table
 $LNG['table_stats'] = "Statistiche";
-$LNG['table_unique'] = "Uniche";
+$LNG['table_unique'] = "Unici";
 $LNG['table_total'] = "Totali";
-$LNG['table_rank'] = "Posizione";
+$LNG['table_rank'] = "Classifica";
 $LNG['table_title'] = "Titolo"; // 4.0
 $LNG['table_description'] = "Descrizione"; // 4.0
-$LNG['table_movement'] = "Movimento";
+$LNG['table_movement'] = "Stato";
 $LNG['table_up'] = "Su"; // 5.0
-$LNG['table_down'] = "Giu"; // 5.0
-$LNG['table_neutral'] = "Neutrale"; // 5.0
+$LNG['table_down'] = "Giu'"; // 5.0
+$LNG['table_neutral'] = "Stazionario"; // 5.0
 
 // Rate and Review
-$LNG['rate_header'] = "Vota e commenta";
-$LNG['rate_rating'] = "Vota";
-$LNG['rate_review'] = "Commenta - Html non consentito"; // 5.0
-$LNG['rate_thanks'] = "Grazie per aver votato.";
-$LNG['rate_error'] = "Hai già votato per questo sito.";
+$LNG['rate_header'] = "Punteggio e Commenti";
+$LNG['rate_rating'] = "Punteggio";
+$LNG['rate_review'] = "Commento - No HTML consentito"; // 5.0
+$LNG['rate_thanks'] = "Grazie per il tuo voto.";
+$LNG['rate_error'] = "Hai gia' votato questo sito.";
 $LNG['rate_back'] = "Torna alle statistiche";
+$LNG['rate_email_admin'] = "Un nuovo commento e' stato inserito sulla tua lista topsites list"; // 5.1.0
 
 // Search
-$LNG['search_header'] = "Cerca";
-$LNG['search_off'] = "La ricerca non è abilitata.";
-$LNG['search_for'] = "Hai cercato";
-$LNG['search_no_sites'] = "Spiacente, nessun elemento trovato."; // 5.0
+$LNG['search_header'] = "Ricerca";
+$LNG['search_off'] = "La funzionalita' di ricerca e' stata Disabilitata.";
+$LNG['search_no_sites'] = "Spiacente, nessun sito trovato."; // 5.0
 $LNG['search_prev'] = "Precedente"; // 3.2.1
-$LNG['search_next'] = "Prossimo"; // 3.2.1
+$LNG['search_next'] = "Successivo"; // 3.2.1
+$LNG['search_displaying_results'] = "Visualizza %s di %s su %s resultati per <b>%s</b>."; // 5.1.0
 
 // Stats
 $LNG['stats_header'] = "Statistiche";
-$LNG['stats_info'] = "Info";
-$LNG['stats_member_since'] = "Membro da"; // 5.0
-$LNG['stats_rating_avg'] = "Media voti";
-$LNG['stats_rating_num'] = "Numero di voti";
-$LNG['stats_rate'] = "Vota e commenta questo sito";
-$LNG['stats_reviews'] = "Commenta";
-$LNG['stats_allreviews'] = "Mostra tutti i commenti"; // 4.0
+$LNG['stats_info'] = "Informazioni";
+$LNG['stats_member_since'] = "Iscritto dal"; // 5.0
+$LNG['stats_rating_avg'] = "Valutazioni Medie";
+$LNG['stats_rating_num'] = "Numero di Valutazioni";
+$LNG['stats_rate'] = "Valuta e commenta questo Sito";
+$LNG['stats_reviews'] = "Commenti";
+$LNG['stats_allreviews'] = "Mostra tutti i Commenti"; // 4.0
 $LNG['stats_week'] = "Settimana"; // 5.0
-$LNG['stats_highest'] = "Il più alto"; // 5.0
+$LNG['stats_highest'] = "Il piu' alto"; // 5.0
 
 // ssi.php
-$LNG['ssi_top'] = "Top %s Sites"; // 4.0
-$LNG['ssi_new'] = "%s nuovi membri"; // 5.0
-$LNG['ssi_all'] = "Tutti i siti"; // 4.0
+$LNG['ssi_top'] = "I %s Siti TOP"; // 4.0
+$LNG['ssi_new'] = "%s Nuovi Utenti"; // 5.0
+$LNG['ssi_all'] = "Tutti i Siti"; // 4.0
 
 // User Control Panel // 5.0
-$LNG['user_cp_header'] = "Pannello di controllo utente"; // 5.0
+$LNG['user_cp_header'] = "Pannello di controllo Utente"; // 5.0
 $LNG['user_cp_login'] = "Entra"; // 5.0
 $LNG['user_cp_logout'] = "Esci"; // 5.0
-$LNG['user_cp_welcome'] = "Benvenuto nel tuo pannello di controllo. Usa i link a sinistra per gestire il tuo account."; // 5.0
-$LNG['user_cp_logout_message'] = "Adesso sei disconnesso dal pannello utente."; // 5.0
+$LNG['user_cp_welcome'] = "Benvenuto nel Pannello di Controllo Utente.  Usa i Link a sinistra per gestire il Tuo Account."; // 5.0
+$LNG['user_cp_logout_message'] = "Sei uscito dal Pannello di Controllo Utente."; // 5.0
+$LNG['user_cp_login_long'] = "Entra con il tuo NomeUtente e la tua Password oppure con il tuo OpenID."; // 5.1.0
+$LNG['user_cp_openid'] = "OpenID"; // 5.1.0
+$LNG['user_cp_openid_error_server'] = "OpenID server non trovato per %s."; // 5.1.0
+$LNG['user_cp_openid_error_join'] = "Devi iscriverti alla topsite list prima di poter accedere al pannello di controllo utente."; // 5.1.0
+$LNG['user_cp_openid_error_general'] = "Un errore e' avvenuto durante la procedura di ingresso.  Prova di nuovo."; // 5.1.0
+$LNG['user_cp_openid_error_cancel'] = "Devi avere i permessi per accedere.  Prova di nuovo."; // 5.1.0
+$LNG['user_cp_openid_error_from_server'] = "Errore dal server: %s"; // 5.1.0
 
 // Admin > Approve New Members // 4.0
-$LNG['a_approve_header'] = "Approva nuovi utenti"; // 5.0
+$LNG['a_approve_header'] = "Approva i Nuovi utenti"; // 5.0
 $LNG['a_approve'] = "Approva"; // 4.0
-$LNG['a_approve_none'] = "Non ci sono utenti da approvare."; // 4.0
-$LNG['a_approve_done'] = "Utente approvato."; // 4.0
+$LNG['a_approve_none'] = "Non ci sono nuovi Utenti in attesa di approvazione."; // 4.0
+$LNG['a_approve_done'] = "L'utente e' stato approvato."; // 4.0
 $LNG['a_approve_dones'] = "Gli utenti sono stati approvati."; // 4.0
-$LNG['a_approve_sel'] = "Se selezionato:"; // 5.0
+$LNG['a_approve_sel'] = "Con selezionato:"; // 5.0
 
 // Admin > Approve New Reviews // 5.0
-$LNG['a_approve_rev_header'] = "Approva nuovi commenti"; // 5.0
-$LNG['a_approve_rev_none'] = "Non ci sono commenti da approvare."; // 5.0
-$LNG['a_approve_rev_done'] = "Il commento è stato approvato."; // 5.0
+$LNG['a_approve_rev_header'] = "Approva i Nuovi Commenti"; // 5.0
+$LNG['a_approve_rev_none'] = "Non ci sono Nuovi Commenti da approvare."; // 5.0
+$LNG['a_approve_rev_done'] = "Il commento e' stato approvato."; // 5.0
 $LNG['a_approve_rev_dones'] = "I commenti sono stati approvati."; // 5.0
 
+// Admin > Create Custom Page // 5.1.0
+$LNG['a_create_page_header'] = "Crea una Pagina Custom"; // 5.1.0
+$LNG['a_create_page_id'] = "Page ID - Questo sara' usato nella URL, quindi dovra' contenere solo lettere, numeri, trattino_basso, cancelletto"; // 5.1.0
+$LNG['a_create_page_error_id'] = "L'ID puo' contenere solo lettere, numeri, trattino_basso, cancelletto.  Torna indietro e correggi il page ID."; // 5.1.0
+$LNG['a_create_page_error_id_duplicate'] = "Esiste gia' una pagina Custom con questo ID.  Torna indietro e seleziona un nuovo ID."; // 5.1.0
+$LNG['a_create_page_created'] = "La pagina e' stata creata.  Dovrai aggiungere manualmente il link a %s in wrapper.html."; // 5.1.0
+
 // Admin > Delete Member
-$LNG['a_del_header'] = "Cancella utente"; // 5.0
-$LNG['a_del_headers'] = "Cancella utenti"; // 5.0
-$LNG['a_del_done'] = "Utente eliminato."; // 5.0
-$LNG['a_del_dones'] = "Utenti eliminati."; // 5.0
+$LNG['a_del_header'] = "Elimina singolo Utente"; // 5.0
+$LNG['a_del_headers'] = "Elimina Utenti"; // 5.0
+$LNG['a_del_done'] = "L'utente e' stato eliminato."; // 5.0
+$LNG['a_del_dones'] = "Gli utenti sono stati eliminati."; // 5.0
 $LNG['a_del_warn'] = "Sei sicuro di voler eliminare %s?"; // 5.0
 $LNG['a_del_multi'] = "questi %s utenti"; //5.0
 
+// Admin > Delete Bad Word // 5.1.0
+$LNG['a_del_bad_word_header'] = "Elimina Parola Filtrata"; // 5.1.0
+$LNG['a_del_bad_word_headers'] = "Elimina Parole Filtrate"; // 5.1.0
+$LNG['a_del_bad_word_done'] = "La parola filtrata e' stata eliminata."; // 5.1.0
+$LNG['a_del_bad_word_dones'] = "Le parole filtrate sono state eliminate."; // 5.1.0
+$LNG['a_del_bad_word_warn'] = "Sei sicuro di vole eliminare %s dalla lista delle parole filtrate ?"; //5.1.0
+$LNG['a_del_bad_word_multi'] = "queste %s parole"; //5.1.0
+$LNG['a_del_bad_word_invalid_id'] = "ID parola filtrata.  Prova di nuovo."; // 5.1.0
+
+// Admin > Delete Custom Page // 5.1.0
+$LNG['a_del_page_header'] = "Elimina Pagina Custom"; // 5.1.0
+$LNG['a_del_page_headers'] = "Elimina Pagine Custom"; // 5.1.0
+$LNG['a_del_page_done'] = "La pagina Custom e' stata eliminata."; // 5.1.0
+$LNG['a_del_page_dones'] = "Le pagine custom sono state eliminate."; // 5.1.0
+$LNG['a_del_page_warn'] = "Sei sicuro di voler eliminare %s?"; //5.1.0
+$LNG['a_del_page_multi'] = "queste %s pagine"; //5.1.0
+$LNG['a_del_page_invalid_id'] = "ID pagina custom non valido.  Prova di nuovo."; // 5.1.0
+
 // Admin > Delete Review // 5.0
-$LNG['a_del_rev_header'] = "Cancella commento"; // 5.0
-$LNG['a_del_rev_headers'] = "Cancella commenti"; // 5.0
-$LNG['a_del_rev_done'] = "Il commento è stato eliminato."; // 5.0
+$LNG['a_del_rev_header'] = "Elimina commento"; // 5.0
+$LNG['a_del_rev_headers'] = "Elimina commenti"; // 5.0
+$LNG['a_del_rev_done'] = "Il commento e' stato eliminato."; // 5.0
 $LNG['a_del_rev_dones'] = "I commenti sono stati eliminati."; // 5.0
 $LNG['a_del_rev_warn'] = "Sei sicuro di voler eliminare questo commento?"; //5.0
 $LNG['a_del_rev_warns'] = "Sei sicuro di voler eliminare questi commenti?"; //5.0
-$LNG['a_del_rev_invalid_id'] = "ID non valido.  Prova ancora."; // 5.0
+$LNG['a_del_rev_invalid_id'] = "ID commento non valido.  Prova di nuovo."; // 5.0
 
 // Admin > Edit Member
-$LNG['a_edit_header'] = "Edita utente"; // 5.0
-$LNG['a_edit_site_is'] = "Questo sito è"; // 4.0
-$LNG['a_edit_active'] = "Attivo (In lista)"; // 4.0
-$LNG['a_edit_inactive'] = "Inattivo (Non in lista)"; // 5.0
-$LNG['a_edit_edited'] = "Utente editato con successo.";
+$LNG['a_edit_header'] = "Modifica Utente"; // 5.0
+$LNG['a_edit_site_is'] = "Questo sito e'"; // 4.0
+$LNG['a_edit_active'] = "Attivi (Listati)"; // 4.0
+$LNG['a_edit_inactive'] = "Non Attivi (Non Listati)"; // 5.0
+$LNG['a_edit_edited'] = "L'utente e' stato modificato.";
+
+// Admin > Edit Bad Word // 5.1.0
+$LNG['a_edit_bad_word_header'] = "Modifica le parole filtrate"; // 5.1.0
+$LNG['a_edit_bad_word_edited'] = "Le parole filtrate sono state modificate."; // 5.1.0
+
+// Admin > Edit Custom Page // 5.1.0
+$LNG['a_edit_page_header'] = "Modifica la Custom Page"; // 5.1.0
+$LNG['a_edit_page_content'] = "Contenuto - Puoi usare codice HTML"; // 5.1.0
+$LNG['a_edit_page_edited'] = "La pagina e' stata modificata."; // 5.1.0
 
 // Admin > Edit Review // 5.0
-$LNG['a_edit_rev_header'] = "Edita commento"; // 5.0
-$LNG['a_edit_rev_edited'] = "Il commento è stato editato con successo.";
+$LNG['a_edit_rev_header'] = "Modifica Commento"; // 5.0
+$LNG['a_edit_rev_edited'] = "Il commento e' stato modificato.";
 
 // Admin > Email Members
-$LNG['a_email_header'] = "Email utenti"; // 5.0
-$LNG['a_email_subject'] = "Oggetto"; // 4.2.0
+$LNG['a_email_header'] = "Email Utenti"; // 5.0
+$LNG['a_email_subject'] = "Soggetto"; // 4.2.0
 $LNG['a_email_message'] = "Messaggio"; // 4.2.0
-$LNG['a_email_msg_sent'] = "Email inviata a %s"; // 5.0
-$LNG['a_email_not_sent'] = "Email a %s non inviabile"; // 5.0
-$LNG['a_email_sent'] = "%s è stato informato."; // 4.2.0
-$LNG['a_email_failed'] = "%s non è stato informato."; // 4.2.0
+$LNG['a_email_msg_sent'] = "La email e' stata spedita a %s"; // 5.0
+$LNG['a_email_not_sent'] = "La email non riesco a spedirla a %s"; // 5.0
+$LNG['a_email_sent'] = "%s email sono state spedite."; // 4.2.0
+$LNG['a_email_failed'] = "%s email non sono state spedite."; // 4.2.0
 
 // Admin > Logout
-$LNG['a_logout_message'] = "Sei disconnesso dal pannello di amministrazione."; // 5.0
+$LNG['a_logout_message'] = "Sei uscito dall'amministrazione."; // 5.0
 
 // Admin > Main
-$LNG['a_header'] = "Amministratore"; // 5.0
-$LNG['a_main'] = "Benvenuto in amministrazione.  Usa i link a sinistra per gestire la topsite."; // 5.0
-$LNG['a_main_approve'] = "Un sito in attesa di approvazione."; // 5.0
+$LNG['a_header'] = "Admin"; // 5.0
+$LNG['a_main'] = "Benevenuto nell'amministrazione.  Usa i link sulla sinistra per gestire la tua topsite list."; // 5.0
+$LNG['a_main_approve'] = "C'e' 1 sito in attesa di approvazione."; // 5.0
 $LNG['a_main_approves'] = "Ci sono %s siti in attesa di approvazione."; // 5.0
-$LNG['a_main_approve_rev'] = "Un commento in attesa di approvazione."; // 5.0
+$LNG['a_main_approve_rev'] = "C'e' 1 commento in attesa di approvazione."; // 5.0
 $LNG['a_main_approve_revs'] = "Ci sono %s commenti in attesa di approvazione."; // 5.0
 $LNG['a_main_your'] = "La tua versione"; // 5.0
-$LNG['a_main_latest'] = "Ultima versione"; // 5.0
-$LNG['a_main_new'] = "<a href=\"http://www.aardvarkind.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
+$LNG['a_main_latest'] = "L'ultima versione"; // 5.0
+$LNG['a_main_new'] = "<a href=\"http://www.aardvarktopsitesphp.com/\">Aardvark Topsites PHP Website</a>"; // 5.0
 
 // Admin > Manage Members
-$LNG['a_man_header'] = "Gestisci utenti"; // 5.0
+$LNG['a_man_header'] = "Gestione Utenti"; // 5.0
 $LNG['a_man_actions'] = "Azioni"; // 4.2.0
-$LNG['a_man_edit'] = "Edita"; // 4.2.0
+$LNG['a_man_edit'] = "Modifiche"; // 4.2.0
 $LNG['a_man_delete'] = "Elimina"; // 4.2.0
 $LNG['a_man_email'] = "Email"; // 4.2.0
-$LNG['a_man_all'] = "Seleziona tutto"; // 5.0
-$LNG['a_man_none'] = "Deseleziona"; // 5.0
-$LNG['a_man_del_sel'] = "Elimina selezionati"; // 5.0
+$LNG['a_man_all'] = "Seleziona Tutti"; // 5.0
+$LNG['a_man_none'] = "De-seleziona Tutti"; // 5.0
+$LNG['a_man_del_sel'] = "Elimina Selezionato"; // 5.0
+
+// Admin > Manage Bad Words // 5.1.0
+$LNG['a_man_bad_words_header'] = "Filtro parole non gradite"; // 5.1.0
+$LNG['a_man_bad_words_instructions'] = "Inserisci una parola e la rispettiva sostituzione sotto.  Per esempio potresti inserire \"maiale\" nela campo parola e \"m***\" nel campo sostituzione."; // 5.1.0
+$LNG['a_man_bad_words_instructions_matching'] = "La verifica Precisa controlla solo la parola esatta.  La verifica Globale controlla anche all'interno di parole piu' lunghe.  Ovvero, la verifica Globale di \"diavolo\" puo' essere anche  \"diavolone\" e \"porcodiavolo\"."; // 5.1.0
+$LNG['a_man_bad_words_word'] = "Parola"; // 5.1.0
+$LNG['a_man_bad_words_replacement'] = "Sostituzione"; // 5.1.0
+$LNG['a_man_bad_words_matching'] = "Verifica"; // 5.1.0
+$LNG['a_man_bad_words_exact'] = "Esatta"; // 5.1.0
+$LNG['a_man_bad_words_global'] = "Globale"; // 5.1.0
+$LNG['a_man_bad_words_filter'] = "Parola Filtrata"; // 5.1.0
+$LNG['a_man_bad_words_filtered'] = "\"%s\" e' stata aggiunta al dizionario dei filtri."; // 5.1.0
+
+// Admin > Manage Custom Pages // 5.1.0
+$LNG['a_man_pages_header'] = "Gestione Pagine Custom"; // 5.1.0
 
 // Admin > Manage Reviews // 5.0
-$LNG['a_man_rev_header'] = "Gestisci commenti"; // 5.0
-$LNG['a_man_rev_enter'] = "Per gestire i commenti di un sito, inserisci lo username dell'utente qui sotto."; // 5.0
+$LNG['a_man_rev_header'] = "Gestione Commenti"; // 5.0
+$LNG['a_man_rev_enter'] = "Per gestire i commenti di un sito, inserisci il nome dell'utente qui sotto."; // 5.0
 $LNG['a_man_rev_id'] = "ID"; // 5.0
 $LNG['a_man_rev_rev'] = "Commento"; // 5.0
 $LNG['a_man_rev_date'] = "Data"; // 5.0
@@ -274,68 +341,76 @@ $LNG['a_man_rev_date'] = "Data"; // 5.0
 // Admin > Menu
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Principale"; // 5.0
-$LNG['a_menu_approve'] = "Approva nuovi membri";
-$LNG['a_menu_manage'] = "Gestisci membri"; // 4.2.0
-$LNG['a_menu_settings'] = "Cambia impostazioni"; // 5.0
-$LNG['a_menu_skins'] = "Skins e categorie"; // 5.0
-$LNG['a_menu_approve_reviews'] = "Approva nuovi commenti"; // 5.0
-$LNG['a_menu_manage_reviews'] = "Gestisci commenti"; // 5.0
-$LNG['a_menu_email'] = "Email agli utenti";
-$LNG['a_menu_delete_review'] = "Cancella commenti";
+$LNG['a_menu_approve'] = "Approva un Nuovo Utente";
+$LNG['a_menu_manage'] = "Gestione Utenti"; // 4.2.0
+$LNG['a_menu_settings'] = "Impostazioni Sito"; // 5.0
+$LNG['a_menu_manage_bad_words'] = "Filtro Parole non gradite"; // 5.1.0
+$LNG['a_menu_skins'] = "Skins e Categorie"; // 5.0
+$LNG['a_menu_approve_reviews'] = "Approva Nuovi Commenti"; // 5.0
+$LNG['a_menu_manage_reviews'] = "Gestione Commenti"; // 5.0
+$LNG['a_menu_email'] = "Email Utenti";
+$LNG['a_menu_delete_review'] = "Elimina Commento";
 $LNG['a_menu_logout'] = "Esci";
-$LNG['a_menu_delete'] = "Elimina utente";
-$LNG['a_menu_edit'] = "Edita utente";
+$LNG['a_menu_delete'] = "Elimina Utente";
+$LNG['a_menu_edit'] = "Modifica Utente";
+$LNG['a_menu_create_page'] = "Crea una Pagina Custom"; // 5.1.0
+$LNG['a_menu_manage_pages'] = "Gestione Pagine Custom"; // 5.1.0
 $LNG['a_header_members'] = "Utenti"; // 5.0
 $LNG['a_header_settings'] = "Impostazioni"; // 5.0
 $LNG['a_header_reviews'] = "Commenti"; // 5.0
+$LNG['a_header_pages'] = "Pagine Custom"; // 5.1.0
 
 // Admin > Settings
-$LNG['a_s_header'] = "Cambia impostazioni";
-$LNG['a_s_general'] = "Impostazioni generali";
-$LNG['a_s_admin_password'] = "Password amministratore";
-$LNG['a_s_list_name'] = "Il nome della tua topsite";
-$LNG['a_s_list_url'] = "Indirizzo della topsite";
-$LNG['a_s_default_language'] = "Lingua di default";
+$LNG['a_s_header'] = "Cambia Impostazioni";
+$LNG['a_s_help'] = "Aiuto"; // 5.1.0
+
+$LNG['a_s_general'] = "Impostazioni Generali";
+$LNG['a_s_admin_password'] = "Admin password";
+$LNG['a_s_list_name'] = "Il nome della tua lista topsite";
+$LNG['a_s_list_url'] = "URL alla directory topsites";
+$LNG['a_s_default_language'] = "Lingua di Default";
 $LNG['a_s_your_email'] = "Il tuo indirizzo email";
 
 $LNG['a_s_sql'] = "Impostazioni SQL";
-$LNG['a_s_sql_type'] = "Database Type"; // 4.1.0
+$LNG['a_s_sql_type'] = "Tipologia Database"; // 4.1.0
 $LNG['a_s_sql_host'] = "Host";
 $LNG['a_s_sql_database'] = "Database";
 $LNG['a_s_sql_username'] = "Username";
 $LNG['a_s_sql_password'] = "Password";
 
-$LNG['a_s_ranking'] = "Impostazioni classifica";
-$LNG['a_s_num_list'] = "Numero di siti per pagina"; // 5.0
-$LNG['a_s_ranking_period'] = "Priodo di valutazione"; // 5.0
-$LNG['a_s_ranking_method'] = "Metodo di valutazione"; // 5.0
-$LNG['a_s_ranking_average'] = "Ordina per media o per solo %s"; // 5.0
-$LNG['a_s_featured_member'] = 'Featured members - Devi aggiungere {$featured_member} a wrapper.html dopo averlo attivato.'; // 4.1.0
-$LNG['a_s_top_skin_num'] = "Numero di utenti per usare la top skin";
-$LNG['a_s_ad_breaks'] = "Mostra ad banner dopo queste posizioni (separate con una virgola)";
+$LNG['a_s_ranking'] = "Impostazioni Ranking";
+$LNG['a_s_num_list'] = "Numero di utenti visualizzati per pagina"; // 5.0
+$LNG['a_s_ranking_period'] = "Ranking period"; // 5.0
+$LNG['a_s_ranking_method'] = "Ranking method"; // 5.0
+$LNG['a_s_ranking_average'] = "Rank by average or by just %s"; // 5.0
+$LNG['a_s_featured_member'] = 'Featured member - You have to add {$featured_member} to wrapper.html after you turn this on.'; // 4.1.0
+$LNG['a_s_top_skin_num'] = "Number of members to use the _top skin for";
+$LNG['a_s_ad_breaks'] = "Show ads after these ranks (separate with commas) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_member'] = "Impostazioni utente";
-$LNG['a_s_active_default'] = "Richiedi approvazione utenti";
-$LNG['a_s_active_default_review'] = "Richiedi approvazione commenti";
-$LNG['a_s_delete_after'] = "Elimina utenti inattivi dopo questi giorni (metti zero per disattivare)"; // 4.1.0
-$LNG['a_s_email_admin_on_join'] = "Email quando si iscrive un nuovo membro";
-$LNG['a_s_max_banner_width'] = "Larghezza massima del banner (0 per nessun limite)"; // 4.2.0
-$LNG['a_s_max_banner_height'] = "Altezza massima del banner (0 per nessun limite)"; // 4.2.0
-$LNG['a_s_default_banner'] = "Banner per utenti che non lo forniscono";
+$LNG['a_s_member'] = "Impostazioni Utente";
+$LNG['a_s_active_default'] = "Richiedi l'approvazione dei Nuovi Utenti prima di essere visualizzati";
+$LNG['a_s_active_default_review'] = "Richiedi che i nuovi commenti siano approvati prima della visualizzazione";
+$LNG['a_s_delete_after'] = "Elimina utenti inattivi dopo questo numero di giorni (imposta a 0 per disabilitare)"; // 4.1.0
+$LNG['a_s_email_admin_on_join'] = "Invia una Email all'Admin quando un nuovo utente si iscrive"; // 5.1.0
+$LNG['a_s_email_admin_on_review'] = "Invia una Email all'Admin quando un nuovo commento viene inserito"; // 5.1.0
+$LNG['a_s_max_banner_width'] = "Lunghezza massima Banner Utenti (impostare a 0 per disabiliare)"; // 4.2.0
+$LNG['a_s_max_banner_height'] = "Altezza massima Banner Utenti (impostare a 0 per disabilitare)"; // 4.2.0
+$LNG['a_s_default_banner'] = "Default banner per gli utenti che non ne forniscono uno";
 
-$LNG['a_s_button'] = "Impostazione dei banner";
-$LNG['a_s_ranks_on_buttons'] = "Banner di voto -  Consulta <a href=\"http://www.aardvarkind.com/topsitesphp/manual/\">il manuale</a> per i dettagli. Se selezioni Stat Button, il resto di questa sezione è ininfluente."; // 4.2.0
+$LNG['a_s_button'] = "Impostazioni Bottone";
+$LNG['a_s_ranks_on_buttons'] = "Ranks on buttons -  <a href=\"http://www.aardvarktopsitesphp.com/manual/buttons.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 $LNG['a_s_stat_buttons'] = "Stat Buttons"; // 4.2.0
-$LNG['a_s_button_url'] = "Se si/no - Url del banner che vuoi appaia"; // 4.0
-$LNG['a_s_button_dir'] = "Se si - URL della directory in cui si trova il banner"; // 4.0
-$LNG['a_s_button_ext'] = "Se si - Estensione del banner (gif, png, jpg, etc.)"; // 4.0
-$LNG['a_s_button_num'] = "Se si - Numero dei bottoni che hai creato"; // 4.0
+$LNG['a_s_button_url'] = "If Yes/No - URL del banner di default che si vuole far apparire sul sito degli iscritti"; // 4.0
+$LNG['a_s_button_dir'] = "If Yes - URL della directory dove sono salvati i banner"; // 4.0
+$LNG['a_s_button_ext'] = "If Yes - Estensione dei banner (gif, png, jpg, etc.)"; // 4.0
+$LNG['a_s_button_num'] = "If Yes - Numero di banner presenti"; // 4.0
+$LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
-$LNG['a_s_other'] = "Altre impostazioni";
-$LNG['a_s_search'] = "Cerca";
-$LNG['a_s_time_offset'] = "Time offset from your server (in hours)";
-$LNG['a_s_gateway'] = "Pagina per prevenire i voti fasulli";
-$LNG['a_s_captcha'] = "Sicurezza antispam"; // 4.2.2
+$LNG['a_s_other'] = "Altre Impostazioni";
+$LNG['a_s_search'] = "Ricerca";
+$LNG['a_s_time_offset'] = "Scostamento orario dal tuo server (in ore)";
+$LNG['a_s_gateway'] = "Pagina Gateway per gestire i falsi click in ingresso";
+$LNG['a_s_captcha'] = "Verifica tramite Parola-Immagine all'iscrizione (protegge dagli spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";
@@ -345,23 +420,24 @@ $LNG['a_s_weeks'] = "Settimane"; // 4.2.0
 $LNG['a_s_yes'] = "Si";
 $LNG['a_s_no'] = "No";
 
-$LNG['a_s_updated'] = "Le tue impostazioni sono state salvate.";
+$LNG['a_s_updated'] = "Le Tue impostazioni sono state aggiornate.";
 
 // Admin > Skins and Categories // 5.0
-$LNG['a_skins_header'] = "Skins e categorie"; // 5.0
-$LNG['a_skins_default'] = "Skin di default"; // 5.0
-$LNG['a_skins_set_default'] = "Imposta skin di default"; // 5.0
-$LNG['a_skins_anon'] = "Anonimo"; // 5.0
-$LNG['a_skins_default_done'] = "La skin di default è stata impostata."; // 5.0
-$LNG['a_skins_categories_done'] = "La categoria della skin è stata impostata."; // 5.0
-$LNG['a_skins_new_category_done'] = "Nuova categoria creata."; // 5.0
-$LNG['a_skins_delete_done'] = "Categoria eliminata."; // 5.0
-$LNG['a_skins_edit_done'] = "La categoria è stata modificata."; // 5.0
-$LNG['a_skins_invalid_skin'] = "Skin non valida: %s.  Prova ancora."; // 5.0
+$LNG['a_skins_header'] = "Skins e Categorie"; // 5.0
+$LNG['a_skins_default'] = "Default Skin"; // 5.0
+$LNG['a_skins_set_default'] = "Imposta il Default Skin"; // 5.0
+$LNG['a_skins_anon'] = "Anonymous"; // 5.0
+$LNG['a_skins_default_done'] = "Lo skin di default e' stato impostato."; // 5.0
+$LNG['a_skins_categories_done'] = "Lo skin della categoria e' stato impostato"; // 5.0
+$LNG['a_skins_new_category_done'] = "La nuova categoria e' stata creata."; // 5.0
+$LNG['a_skins_delete_done'] = "La categoria e' stata eliminata."; // 5.0
+$LNG['a_skins_delete_error'] = "La categoria non puo' essere eliminata perche' occorre lasciare almeno una categoria."; // 5.1.0
+$LNG['a_skins_edit_done'] = "La categoria e' stata modificata."; // 5.0
+$LNG['a_skins_invalid_skin'] = "Skin non valido: %s.  Riprovare."; // 5.0
 $LNG['a_skins_categories'] = "Categorie"; // 5.0
-$LNG['a_skins_new_category'] = "Crea una nuova categoria"; // 5.0
-$LNG['a_skins_set_skins'] = "Imposta categoria skins"; // 5.0
-$LNG['a_skins_edit_category'] = "Modifica categoria"; // 5.0
-$LNG['a_skins_category_name'] = "Nome della categoria"; // 5.0
-$LNG['a_skins_diff_skins'] = "Se vuoi una skin diversa per ogni categoria, seleziona da qua sotto."; // 5.0
+$LNG['a_skins_new_category'] = "Crea Nuova Categoria"; // 5.0
+$LNG['a_skins_set_skins'] = "Imposta lo skin della Categoria"; // 5.0
+$LNG['a_skins_edit_category'] = "Modifica Categoria"; // 5.0
+$LNG['a_skins_category_name'] = "Nome Categoria"; // 5.0
+$LNG['a_skins_diff_skins'] = "Se vuoi utilizzare differenti skin per differenti categorie, selezionarle sotto."; // 5.0
 ?>

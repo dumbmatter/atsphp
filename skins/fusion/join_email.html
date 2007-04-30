@@ -1,59 +1,9 @@
 Subject: {$lng->join_welcome}
-<html>
-<head>
-<style>
-a:link {
-color: darkred;
-text-decoration: none;
-}
+{$lng->join_thanks}
 
-a:visited {
-color: darkred;
-text-decoration: none;
-}
+<a href="{$list_url}/{$verbose_link}"><img src="{$list_url}/button.php?u={$username}" alt="{$list_name}" border="0" /></a>
 
-a:hover {
-color: black;
-text-decoration: none;
-}
-</style>
-</head>
-<body>
-<table style="font: bold 18px  sans-serif; background: #fff" cellpadding="0" cellspacing="1" width="100%">
-<tr>
-<td>
-  <table style="background: #666" width="100%"  cellpadding="0" cellspacing="1">
-   <tr>
-    <td><p style="color: #fff; font: bold 18px sans-serif; border: 1px solid #fff; background: #000;  display: block; margin: 0px; padding: 5px;"> {$lng->join_welcome}</p></td>
-
-   </tr>
-  <tr>
-   <td>
-<p style="color: #fff; font: bold 0.9em sans-serif; border-left: 1px solid #fff; border-right: 1px solid white; background: #666;  display: block; margin: 0; padding: 5px;">{$lng->join_thanks}</p>
-  <table style="background: #fff; border-top: 1px solid #fff;">
-   <tr>
-    <td style="font: 0.9em verdana, sans-serif; text-align: justify; padding: 5px;" width="70%" valign="top">
-		<p style="margin: 0; padding:10px; border: 2px solid #ccc;">
-{$link_code}
-</p>
-   </td>
-    <td style="font: 0.9em verdana, sans-serif; text-align: justify; padding: 5px;" valign="top">
-		<div style="margin: 0; padding:10px; border: 3px solid #ccc; text-align: center; background: #f8f8f8;">
-
-<p style="border-bottom: 1px dotted #666;"><b>{$lng->g_username}:</b>{$username}</p>
-
-<p style="border-bottom: 1px dotted #666;"><b><a href="{$list_url}/index.php?a=user_cp">{$lng->main_menu_user_cp}</a></b></p>
-
-        </div>
-   </td>
-  </tr>
-</table>
-
-<p style="margin: 0; padding:10px; border: 1px solid white; font: bold 11px tahoma, sans-serif; color: white;">
 {$lng->join_change_warning}
-</td>
-</tr>
-</table>
-</body>
 
-</html>
+{$lng->g_username}: {$username}
+{$lng->main_menu_user_cp}: {$list_url}/index.php?a=user_cp

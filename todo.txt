@@ -28,7 +28,7 @@ Backup database from admin
 Validates $_SERVER before use
 New, (hopefully) more secure captcha
 Displays the banner max width/height in the join and edit forms
-Redesigned gateway page and welcome email for the Fusion skin by OS-Mark
+Redesigned gateway page for the Fusion skin by OS-Mark
 When you enable admin approval of new members, the welcome email is delayed until you approve the site
 button.php only displays a button for valid, approved members
 It is impossible to set the number of members per page to 0
@@ -50,12 +50,18 @@ ALTER TABLE `ats_settings` ADD `smtp_server` VARCHAR( 255 ) DEFAULT '' NOT NULL 
 ALTER TABLE `ats_etc` ADD `version` VARCHAR( 255 ) NOT NULL;
 UPDATE ats_etc SET version = '5.2.0';
 ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `openid`;
+----------- toptopsites.com has all above
 
 -----
 5.2.0
 -----
 ETA: Summer
 HIGH PRIORITY:
+search on manage members page
+change user_cp name to avoid 403 error
+admin approve edits
+after install: form to aardvarktopsitesphp.com asking for email address for feedback
+no login to usercp while approval pending
 caps in referer - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=5864
 translate months in stats.php
 - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
@@ -67,15 +73,18 @@ banning: url, ip, username, email
   - if 1, then give a red highlight in approval menu
 delete echo from send_email in skin.php; test welcome/approval emails
 skins by os-mark
-- nice-looking HTML emails
+- nice-looking HTML emails?
 open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
 credits.txt
 - translators
 cache overall stats (like in main page of admin) and allow all skins to post them
+more strict processing of ALL user input against javascript injection and cookie hijacking
+GO BACK TO PLAIN TEXT EMAILS, BUT NICER
 ------------
 LOW PRIORITY:
 backlink checker
 - This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
+- some code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=6242
 "show all reviews" link should only be displayed if necessary
 smtp email option via swift mailer (check email)
 - if $CONF['smtp_server'] is set, use swift
@@ -138,6 +147,8 @@ TRANSLATION STATUS
     finnish
     french
     german
+    hebrew
+    italian
     japanese
     lithuanian
     polish
