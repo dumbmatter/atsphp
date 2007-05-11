@@ -20,13 +20,12 @@ ROADMAP
 =======
 
 DONE SINCE 5.1.2
-A random number is appended to captcha.php to deal with IE caching
 Various small admin UI fixes
 Unapproved sites will not be automatically deleted for inactivity
 Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
 Validates $_SERVER before use
-New, (hopefully) more secure captcha
+A (hopefully) more secure captcha, with a link for users to get a new captcha if they can't read the first
 Displays the banner max width/height in the join and edit forms
 Redesigned gateway page for the Fusion skin by OS-Mark
 When you enable admin approval of new members, the welcome email is delayed until you approve the site
@@ -35,6 +34,8 @@ It is impossible to set the number of members per page to 0
 Users cannot create their own categories by bypassing the join/edit forms
 Quotes and other special HTML characters can be used in titles and descriptions without problems
 Under normal usage, there should be no PHP error messages, even at E_ALL
+Users pending approval will not be allowed to login to the user control panel
+Banning of sites by URL, IP address, username, email
 
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
@@ -57,28 +58,28 @@ ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `
 -----
 ETA: Summer
 HIGH PRIORITY:
-search on manage members page
-change user_cp name to avoid 403 error
+better error handling if url wrappers are disabled
+- detect when allow_url_fopen is disabled for max image sizes
+- also for version check in the admin
+security question (off by default, make user add a question manually)
+- security section in the settings?
+admin approve by default
+change user_cp to user_cpl name to avoid 403 error
 admin approve edits
+- put sites in ats_sites_edited
+- approve_edit.php based on approve.php
 after install: form to aardvarktopsitesphp.com asking for email address for feedback
-no login to usercp while approval pending
-caps in referer - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=5864
 translate months in stats.php
 - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
-banning: url, ip, username, email
-- on join: url, ip, username, email
-- on edit: url, email
-- on review: ip
-- new field in ats_sites: banned
-  - if 1, then give a red highlight in approval menu
 delete echo from send_email in skin.php; test welcome/approval emails
 skins by os-mark
 - nice-looking HTML emails?
-open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
 credits.txt
 - translators
 cache overall stats (like in main page of admin) and allow all skins to post them
-more strict processing of ALL user input against javascript injection and cookie hijacking
+- unique only
+- in, out, pageview
+- average, today, yesterday, overall
 GO BACK TO PLAIN TEXT EMAILS, BUT NICER
 ------------
 LOW PRIORITY:
@@ -95,12 +96,13 @@ couple ratings and reviews so admin approves both
 graphs
 timestamp for jointime
 no exits in base::error()
+open proxies - http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4881
 real averages... if site is new, average may be just 2 days
 ad breaks with different banners: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=20999#20999
 combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
-detect when allow_url_fopen is disabled for max image sizes
+search on manage members page
 
 -----
 5.3.0

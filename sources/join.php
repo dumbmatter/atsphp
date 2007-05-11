@@ -40,6 +40,8 @@ class join extends join_edit {
     $TMPL['error_style_banner_url'] = '';
     $TMPL['error_captcha'] = '';
     $TMPL['error_style_captcha'] = '';
+    $TMPL['error_top'] = '';
+    $TMPL['error_style_top'] = '';
 
     if (!isset($FORM['submit'])) {
       $this->form();
@@ -110,43 +112,48 @@ class join extends join_edit {
     $TMPL['title'] = $this->bad_words($TMPL['title']);
     $TMPL['description'] = $this->bad_words($TMPL['description']);
 
-    if ($this->check_input('join')) {
-      $password = md5($FORM['password']);
+    if ($this->check_ban('join')) {
+      if ($this->check_input('join')) {
+        $password = md5($FORM['password']);
 
-      require_once("{$CONF['path']}/sources/in.php");
-      $short_url = in::short_url($TMPL['url']);
+        require_once("{$CONF['path']}/sources/in.php");
+        $short_url = in::short_url($TMPL['url']);
 
-      $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
+        $join_date = date('Y-m-d', time() + (3600*$CONF['time_offset']));
 
-      $user_ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
+        $user_ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
 
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid, user_ip)
+        $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites (username, password, url, short_url, title, description, category, banner_url, email, join_date, active, openid, user_ip)
                   VALUES ('{$TMPL['username']}', '{$password}', '{$TMPL['url']}', '{$short_url}', '{$TMPL['title']}', '{$TMPL['description']}', '{$TMPL['category']}', '{$TMPL['banner_url']}', '{$TMPL['email']}', '{$join_date}', {$CONF['active_default']}, 0, '{$user_ip}')", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
+        $DB->query("INSERT INTO {$CONF['sql_prefix']}_stats (username) VALUES ('{$TMPL['username']}')", __FILE__, __LINE__);
 
-      if ($CONF['google_friendly_links']) {
-        $TMPL['verbose_link'] = "";
+        if ($CONF['google_friendly_links']) {
+          $TMPL['verbose_link'] = "";
+        }
+        else {
+          $TMPL['verbose_link'] = "index.php?a=in&u={$TMPL['username']}";
+        }
+        $TMPL['link_code'] = $this->do_skin('link_code');
+
+        $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
+
+        if ($CONF['email_admin_on_join']) {
+          $join_email_admin = new skin('join_email_admin');
+          $join_email_admin->send_email($CONF['your_email']);
+        }
+
+        if ($CONF['active_default']) {
+          $join_email = new skin('join_email');
+          $join_email->send_email($TMPL['email']);
+
+          $TMPL['content'] = $this->do_skin('join_finish');
+        }
+        else {
+          $TMPL['content'] = $this->do_skin('join_finish_approve');
+        }
       }
       else {
-        $TMPL['verbose_link'] = "index.php?a=in&u={$TMPL['username']}";
-      }
-      $TMPL['link_code'] = $this->do_skin('link_code');
-
-      $LNG['join_welcome'] = sprintf($LNG['join_welcome'], $TMPL['list_name']);
-
-      if ($CONF['email_admin_on_join']) {
-        $join_email_admin = new skin('join_email_admin');
-        $join_email_admin->send_email($CONF['your_email']);
-      }
-
-      if ($CONF['active_default']) {
-        $join_email = new skin('join_email');
-        $join_email->send_email($TMPL['email']);
-
-        $TMPL['content'] = $this->do_skin('join_finish');
-      }
-      else {
-        $TMPL['content'] = $this->do_skin('join_finish_approve');
+        $this->form();
       }
     }
     else {

@@ -97,7 +97,8 @@ $LNG['upgrade_done'] = "Your topsites list has been upgraded.  Delete this direc
 
 // Join
 $LNG['join_header'] = "Join";
-$LNG['join_enter_text'] = "Enter the text as it is shown in the image below:"; // 4.2.2
+$LNG['join_enter_text'] = "Enter the text as it is shown in the image below"; // 4.2.2
+$LNG['join_enter_text_read'] = "Can't read?"; // 4.2.2
 $LNG['join_user'] = "User"; // 5.0
 $LNG['join_website'] = "Website"; // 5.0
 $LNG['join_banner_size'] = "(Maximum size: {$CONF['max_banner_width']}x{$CONF['max_banner_height']})"; // 5.2.0
@@ -117,6 +118,8 @@ $LNG['join_welcome_admin'] = "A new member has joined your topsites list.";
 $LNG['join_approve'] = "Thank you for joining!  Your site will be listed when the admin of the topsites list approves it.  You will recieve an email with more information when your site is approved."; // 5.2.0
 $LNG['join_type'] = "Account type"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
+$LNG['join_error_top'] = "An error was found in your submission.  Please correct this error below."; // 5.2.0
+$LNG['join_ban_top'] = "Your submission contains content that has been banned by the topsites administrator."; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -210,6 +213,7 @@ $LNG['user_cp_openid_error_join'] = "You must join the topsites list before you 
 $LNG['user_cp_openid_error_general'] = "An error occurred while processing your login.  Please try again."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "You must grant access to proceed.  Please try again."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Error from server: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "You cannot access the user control panel until your site has been approved.  You will recieve an email when your site is approved."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Approve New Members"; // 5.0
@@ -351,7 +355,8 @@ $LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filte
 
 // Admin > Manage Ban // 5.2.0
 $LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
-$LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.When a review is posted, the IP address is checked.<br /><br />The blacklist will not affect your existing members."; // 5.2.0
+$LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.<br /><br />The blacklist will not affect your existing members."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Exact matching will only match the exact string.  Global matching will match anything containing the string.  So, global matching of http://www.yahoo.com/ would match any page with http://www.yahoo.com/ in the URL, while exact matching of http://www.yahoo.com/ would only match that exact URL."; // 5.1.0
 $LNG['a_man_ban_string'] = "String"; // 5.2.0
 $LNG['a_man_ban_field'] = "Field"; // 5.2.0
 $LNG['a_man_ban_blacklisted'] = "\"%s\" has been added to the blacklist."; // 5.2.0

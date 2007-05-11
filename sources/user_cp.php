@@ -73,13 +73,18 @@ class user_cp extends base {
     else {
       $TMPL['username'] = $DB->escape($FORM['u']);
       $password = md5($FORM['password']);
-      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}' AND password = '{$password}'", __FILE__, __LINE__);
+      list($username, $active) = $DB->fetch("SELECT username, active FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}' AND password = '{$password}'", __FILE__, __LINE__);
       if ($TMPL['username'] == $username) {
-        require_once("{$CONF['path']}/sources/misc/session.php");
-        $session = new session;
-        $session->create('user_cp', $TMPL['username']);
+	if ($active) {
+          require_once("{$CONF['path']}/sources/misc/session.php");
+          $session = new session;
+          $session->create('user_cp', $TMPL['username']);
 
-        $this->main();
+          $this->main();
+        }
+        else {
+          $this->error($LNG['user_cp_inactive']);
+        }
       }
       else {
         $this->error($LNG['g_invalid_u_or_p']);

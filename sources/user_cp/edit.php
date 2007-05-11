@@ -40,6 +40,8 @@ class edit extends join_edit {
     $TMPL['error_style_banner_url'] = '';
     $TMPL['error_captcha'] = '';
     $TMPL['error_style_captcha'] = '';
+    $TMPL['error_top'] = '';
+    $TMPL['error_style_top'] = '';
 
     if (!isset($FORM['submit'])) {
       $this->form();
@@ -105,21 +107,26 @@ class edit extends join_edit {
     $TMPL['title'] = $this->bad_words($TMPL['title']);
     $TMPL['description'] = $this->bad_words($TMPL['description']);
 
-    if ($this->check_input('edit')) {
-      if ($FORM['password']) {
-        $password = md5($FORM['password']);
-        $password_sql = ", password = '{$password}'";
+    if ($this->check_ban('edit')) {
+      if ($this->check_input('edit')) {
+        if ($FORM['password']) {
+          $password = md5($FORM['password']);
+          $password_sql = ", password = '{$password}'";
+        }
+        else {
+          $password_sql = '';
+        }
+
+        require_once("{$CONF['path']}/sources/in.php");
+        $short_url = in::short_url($TMPL['url']);
+
+        $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+ 
+        $TMPL['user_cp_content'] = $this->do_skin('edit_finish');
       }
       else {
-        $password_sql = '';
+        $this->form();
       }
-
-      require_once("{$CONF['path']}/sources/in.php");
-      $short_url = in::short_url($TMPL['url']);
-
-      $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
- 
-      $TMPL['user_cp_content'] = $this->do_skin('edit_finish');
     }
     else {
       $this->form();

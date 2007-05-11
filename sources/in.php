@@ -133,6 +133,9 @@ class in extends in_out {
   }
 
   function short_url($url) {
+    // Lowercase
+    $url = strtolower($url);
+
     // Get rid of www.
     $url = preg_replace('/\/\/www./', '//', $url);
 

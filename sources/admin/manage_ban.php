@@ -39,7 +39,7 @@ class manage_ban extends base {
 
     $TMPL['admin_content'] = <<<EndHTML
 {$LNG['a_man_ban_instructions']}<br /><br />
-{$LNG['a_man_bad_words_instructions_matching']}<br /><br />
+{$LNG['a_man_ban_words_instructions_matching']}<br /><br />
 <form action="index.php" method="get">
 <input type="hidden" name="a" value="admin" />
 <input type="hidden" name="b" value="manage_ban" />

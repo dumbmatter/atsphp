@@ -226,6 +226,49 @@ class join_edit extends base {
         $TMPL['error_captcha'] .= "<br />{$LNG['join_error_captcha']}";
       }
 
+      $TMPL['error_style_top'] = 'join_edit_error';
+      $TMPL['error_top'] = $LNG['join_error_top'];
+
+      return 0;
+    }
+    else {
+      return 1;
+    }
+  }
+
+  // This should be called before check_input
+  function check_ban($type) {
+    global $CONF, $DB, $FORM, $LNG, $TMPL;
+
+    $ban_url = 0;
+    $ban_email = 0;
+    $ban_username = 0;
+    $ban_ip = 0;
+
+   if ($type == 'join') { $fields = array('url', 'email', 'username', 'ip'); }
+   elseif ($type == 'edit') { $fields = array('url', 'email'); }
+   elseif ($type == 'review') { $fields = array('ip'); }
+
+    $TMPL['ip'] = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
+
+    $result = $DB->query("SELECT id, string, field, matching FROM {$CONF['sql_prefix']}_ban", __FILE__, __LINE__);
+    while (list($id, $string, $field, $matching) = $DB->fetch_array($result)) {
+      if (in_array($field, $fields)) {
+        $string = preg_quote($string);
+
+        if ($matching) { $s = "^{$string}$"; } // Exact matching
+        else { $s = $string; } // Global matching
+
+        if (preg_match("|{$s}|", $TMPL[$field])) {
+          $ban_url = 1;
+        }
+      }
+    }
+
+    if ($ban_url || $ban_email || $ban_username || $ban_ip) {
+      $TMPL['error_style_top'] = 'join_edit_error';
+      $TMPL['error_top'] = $LNG['join_ban_top'];
+
       return 0;
     }
     else {
