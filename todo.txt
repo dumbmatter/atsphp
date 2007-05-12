@@ -147,9 +147,7 @@ skins/classic/table_filler.html
 skins/classic/table_wrapper.html
 skins/classic/join_finish_approve.html
 skins/classic/join_question.html
-sources/user_cpl.php
 SVN DELETE
-sources/user_cp.php
 
 TRANSLATION STATUS
   5.1

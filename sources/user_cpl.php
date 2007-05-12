@@ -20,8 +20,8 @@ if (!defined('ATSPHP')) {
   die("This file cannot be accessed directly.");
 }
 
-class user_cp extends base {
-  function user_cp() {
+class user_cpl extends base {
+  function user_cpl() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
     $TMPL['header'] = $LNG['user_cp_header'];
