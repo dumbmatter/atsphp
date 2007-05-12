@@ -77,9 +77,6 @@ captcha.php is based on hn_captcha 1.3 by Horst Nogajski:
 http://hn273.users.phpclasses.org/browse/package/1569.html
 
 The captcha uses several GPL and public domain fonts:
-- Kozmic Jagged Hands and Rubbing Font
-  http://www.theory.org/~matt/fonts/free/
-- Bitstream Vera Sans Bold and Bitstream Vera Serif
-  http://www.gnome.org/fonts/
-- OCRA
-  http://sourceforge.net/projects/ocr-a-font/
+- Kozmic Jagged Hands and Rubbing Font <http://www.theory.org/~matt/fonts/free/>
+- Bitstream Vera Sans Bold and Bitstream Vera Serif <http://www.gnome.org/fonts/>
+- OCRA <http://sourceforge.net/projects/ocr-a-font/>

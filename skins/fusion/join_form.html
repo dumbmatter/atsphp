@@ -36,8 +36,13 @@
 <div class="{$error_style_email}"><label>{$lng->g_email}<br />
 <input type="text" name="email" size="50" value="{$email}" />
 {$error_email}
-</label></div><br />
+</label></div>
+</fieldset>
+
+<fieldset>
+<legend>{$lng->join_security}</legend>
 {$join_captcha}
+{$join_question}
 <input name="submit" type="submit" value="{$lng->join_header}" />
 </fieldset>
 </form>

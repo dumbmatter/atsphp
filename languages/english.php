@@ -72,6 +72,7 @@ $LNG['g_ip'] = "IP Address"; // 5.2.0
 $LNG['edit_header'] = "Edit Account";
 $LNG['edit_info_edited'] = "Your account has been successfully edited.";
 $LNG['edit_password_blank'] = "Leave this blank to keep the current password"; // 4.0
+$LNG['edit_delay'] = "Changes to your site's title and URL must be approved by the topsites administrator before taking effect."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Topsites Gateway Page";
@@ -111,6 +112,7 @@ $LNG['join_error_password'] = "Enter a password.";
 $LNG['join_error_urlbanner'] = "Enter a valid banner.  Leave it blank if you don't have one."; // 5.2.0
 $LNG['join_error_time'] = "Do not refresh the join confirmation page."; // 4.2.0
 $LNG['join_error_captcha'] = "The word you entered does not match the image."; // 4.2.2
+$LNG['join_error_question'] = "Your answer is incorrect.  Please fix this to confirm that you are a real person and not a bot."; // 5.2.0
 $LNG['join_thanks'] = "Thank you for joining!  Put this code into your site to be ranked.";
 $LNG['join_change_warning'] = "If you change the code, it might not work.";
 $LNG['join_welcome'] = "Welcome to %s";
@@ -120,6 +122,7 @@ $LNG['join_type'] = "Account type"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
 $LNG['join_error_top'] = "An error was found in your submission.  Please correct this error below."; // 5.2.0
 $LNG['join_ban_top'] = "Your submission contains content that has been banned by the topsites administrator."; // 5.2.0
+$LNG['join_security'] = "Security"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -194,6 +197,9 @@ $LNG['stats_reviews'] = "Reviews";
 $LNG['stats_allreviews'] = "Show All Reviews"; // 4.0
 $LNG['stats_week'] = "Week"; // 5.0
 $LNG['stats_highest'] = "Highest"; // 5.0
+$LNG['stats_overall'] = "Overall Stats"; // 5.2.0
+$LNG['stats_overall_average'] = "Average (Last 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Total (All Time)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; // 4.0
@@ -222,6 +228,15 @@ $LNG['a_approve_none'] = "There are no members waiting to be approved."; // 4.0
 $LNG['a_approve_done'] = "The member has been approved."; // 4.0
 $LNG['a_approve_dones'] = "The members have been approved."; // 4.0
 $LNG['a_approve_sel'] = "With selected:"; // 5.0
+
+// Admin > Approve Edited Members // 5.2.0
+$LNG['a_approve_edited_header'] = "Approve Edited Members"; // 5.2.0
+$LNG['a_approve_edited_none'] = "There are no edits waiting to be approved."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Previous Title and URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Edited Title and URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Reject"; // 5.2.0
+$LNG['a_approve_edited_done'] = "The changes has been approved."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "The changes has been rejected."; // 5.2.0
 
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Approve New Reviews"; // 5.0
@@ -325,6 +340,8 @@ $LNG['a_header'] = "Admin"; // 5.0
 $LNG['a_main'] = "Welcome to the admin.  Use the links to the left to manage your topsites list."; // 5.0
 $LNG['a_main_approve'] = "There is 1 site waiting to be approved."; // 5.0
 $LNG['a_main_approves'] = "There are %s sites waiting to be approved."; // 5.0
+$LNG['a_main_approve_edit'] = "There is 1 site edit waiting to be approved."; // 5.2.0
+$LNG['a_main_approve_edits'] = "There are %s site edits waiting to be approved."; // 5.2.0
 $LNG['a_main_approve_rev'] = "There is 1 review waiting to be approved."; // 5.0
 $LNG['a_main_approve_revs'] = "There are %s reviews waiting to be approved."; // 5.0
 $LNG['a_main_your'] = "Your version"; // 5.0
@@ -375,6 +392,7 @@ $LNG['a_man_rev_date'] = "Date"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Main"; // 5.0
 $LNG['a_menu_approve'] = "Approve New Members";
+$LNG['a_menu_approve_edits'] = "Approve Edited Members"; // 5.2.0
 $LNG['a_menu_manage'] = "Manage Members"; // 4.2.0
 $LNG['a_menu_settings'] = "Change Settings"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Profanity Filter"; // 5.1.0
@@ -443,11 +461,13 @@ $LNG['a_s_button_ext'] = "If Yes - Extension of the buttons (gif, png, jpg, etc.
 $LNG['a_s_button_num'] = "If Yes - Number of buttons you have made"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
+$LNG['a_s_captcha'] = "Word verification on join to block spammers - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Security question and answer to block spammers (leave blank to disable) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Other Settings";
 $LNG['a_s_search'] = "Search";
 $LNG['a_s_time_offset'] = "Time offset from your server (in hours)";
-$LNG['a_s_gateway'] = "Gateway page to deter cheating for hits in";
-$LNG['a_s_captcha'] = "Word verification on join (protect against spammers) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";
@@ -456,6 +476,7 @@ $LNG['a_s_months'] = "Months";
 $LNG['a_s_weeks'] = "Weeks"; // 4.2.0
 $LNG['a_s_yes'] = "Yes";
 $LNG['a_s_no'] = "No";
+$LNG['a_s_answer'] = "Answer"; // 5.2.0
 
 $LNG['a_s_updated'] = "Your settings have been updated.";
 

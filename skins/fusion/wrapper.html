@@ -20,7 +20,7 @@ function out(username)
 	<div id="navigation">
 		<a href="{$list_url}/" class="menu">{$lng->main_menu_rankings}</a> - 
 		<a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a> - 
-		<a href="{$list_url}/index.php?a=user_cp" class="menu">{$lng->main_menu_user_cp}</a>
+		<a href="{$list_url}/index.php?a=user_cpl" class="menu">{$lng->main_menu_user_cp}</a>
 	</div>
 	<div id="filters"><form action="index.php" method="get">
 {$ranking_methods_menu}
@@ -33,9 +33,14 @@ function out(username)
 		<input type="text" name="q" size="18" value="{$query}" />
 		<input type="submit" value="{$lng->search_header}" />
 	</form></div>
-	<div id="content">{$content}</div>
+	<div id="content">
+{$content}
+	</div>
 	<div id="copyright"><br />{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
 		{$list_name} - {$powered_by}</div>
+
+
+
 </div>
 </body>
 </html>

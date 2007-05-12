@@ -102,7 +102,7 @@ EndHTML;
 <a href="index.php?a=admin&amp;b=skins&amp;c=delete&amp;cat={$cat_url}">{$LNG['a_man_delete']}</a></td>
 <td valign="top" width="50%">
 <select name="skin_{$cat}">
-<option value="">{$LNG['a_skins_default']}
+<option value="">{$LNG['a_skins_default']}</option>
 {$skins_menu}</select><br /><br />
 </td>
 </tr>
@@ -229,8 +229,8 @@ EndHTML;
         unset($name, $author, $email, $url);
 
         require "{$CONF['path']}/skins/{$subdir}/info.php";
-        if ($skin == $subdir) { $skins_menu .= "<option value=\"{$subdir}\" selected=\"selected\">{$name}\n"; }
-        else { $skins_menu .= "<option value=\"{$subdir}\">{$name}\n"; }
+        if ($skin == $subdir) { $skins_menu .= "<option value=\"{$subdir}\" selected=\"selected\">{$name}</option>\n"; }
+        else { $skins_menu .= "<option value=\"{$subdir}\">{$name}</option>\n"; }
       }
     }
 

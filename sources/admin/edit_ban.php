@@ -47,10 +47,10 @@ class edit_ban extends base {
     list($TMPL['string'], $TMPL['field'], $TMPL['matching']) = $DB->fetch("SELECT string, field, matching FROM {$CONF['sql_prefix']}_ban WHERE id = {$TMPL['id']}", __FILE__, __LINE__);
 
     if ($TMPL['matching']) {
-      $matching_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_man_bad_words_exact']}\n<option value=\"0\">{$LNG['a_man_bad_words_global']}\n";
+      $matching_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_man_bad_words_exact']}</option>\n<option value=\"0\">{$LNG['a_man_bad_words_global']}</option>\n";
     }
     else {
-      $matching_menu = "<option value=\"1\">{$LNG['a_man_bad_words_exact']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_man_bad_words_global']}\n";
+      $matching_menu = "<option value=\"1\">{$LNG['a_man_bad_words_exact']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_man_bad_words_global']}</option>\n";
     }
 
     $fields = array('url', 'email', 'username', 'ip');

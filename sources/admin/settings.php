@@ -61,103 +61,103 @@ class settings extends base {
     $ranking_period_menu = '';
     $ranking_periods = array('daily', 'weekly', 'monthly', 'overall');
     foreach ($ranking_periods as $ranking_period) {
-      if ($ranking_period == $CONF['ranking_period']) { $ranking_period_menu .= "<option value=\"$ranking_period\" selected=\"selected\">{$LNG["g_{$ranking_period}"]}\n"; }
-      else { $ranking_period_menu .= "<option value=\"$ranking_period\">{$LNG["g_{$ranking_period}"]}\n"; }
+      if ($ranking_period == $CONF['ranking_period']) { $ranking_period_menu .= "<option value=\"$ranking_period\" selected=\"selected\">{$LNG["g_{$ranking_period}"]}</option>\n"; }
+      else { $ranking_period_menu .= "<option value=\"$ranking_period\">{$LNG["g_{$ranking_period}"]}</option>\n"; }
     }
 
     $ranking_method_menu = '';
     $ranking_methods = array('pv', 'in', 'out');
     foreach ($ranking_methods as $ranking_method) {
-      if ($ranking_method == $CONF['ranking_method']) { $ranking_method_menu .= "<option value=\"$ranking_method\" selected=\"selected\">{$LNG["g_{$ranking_method}"]}\n"; }
-      else { $ranking_method_menu .= "<option value=\"$ranking_method\">{$LNG["g_{$ranking_method}"]}\n"; }
+      if ($ranking_method == $CONF['ranking_method']) { $ranking_method_menu .= "<option value=\"$ranking_method\" selected=\"selected\">{$LNG["g_{$ranking_method}"]}</option>\n"; }
+      else { $ranking_method_menu .= "<option value=\"$ranking_method\">{$LNG["g_{$ranking_method}"]}</option>\n"; }
     }
 
     if ($CONF['ranking_average']) {
-      $ranking_average_menu = "<option value=\"1\" selected=\"selected\">{$LNG['g_average']}\n<option value=\"0\">{$LNG['g_this_period']}\n";
+      $ranking_average_menu = "<option value=\"1\" selected=\"selected\">{$LNG['g_average']}</option>\n<option value=\"0\">{$LNG['g_this_period']}</option>\n";
     }
     else {
-      $ranking_average_menu = "<option value=\"1\">{$LNG['g_average']}\n<option value=\"0\" selected=\"selected\">{$LNG['g_this_period']}\n";
+      $ranking_average_menu = "<option value=\"1\">{$LNG['g_average']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['g_this_period']}</option>\n";
     }
     $LNG['a_s_ranking_average'] = sprintf($LNG['a_s_ranking_average'], strtolower($LNG['g_this_period']));
 
     if ($CONF['ranks_on_buttons'] == 1) {
-      $ranks_on_buttons_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n<option value=\"2\">{$LNG['a_s_stat_buttons']}";
+      $ranks_on_buttons_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}</option>\n<option value=\"0\">{$LNG['a_s_no']}</option>\n<option value=\"2\">{$LNG['a_s_stat_buttons']}</option>";
     }
     elseif ($CONF['ranks_on_buttons'] == 2) {
-      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n<option value=\"2\" selected=\"selected\">{$LNG['a_s_stat_buttons']}";
+      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}</option>\n<option value=\"0\">{$LNG['a_s_no']}</option>\n<option value=\"2\" selected=\"selected\">{$LNG['a_s_stat_buttons']}</option>";
     }
     else {
-      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}\n<option value=\"2\">{$LNG['a_s_stat_buttons']}";
+      $ranks_on_buttons_menu = "<option value=\"1\">{$LNG['a_s_yes']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}</option>\n<option value=\"2\">{$LNG['a_s_stat_buttons']}</option>";
     }
 
     if ($CONF['search']) {
-      $search_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $search_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $search_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $search_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['featured_member']) {
-      $featured_member_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $featured_member_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $featured_member_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $featured_member_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['fill_blank_rows']) {
-      $fill_blank_rows_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}\n<option value=\"0\">{$LNG['a_s_no']}\n";
+      $fill_blank_rows_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_yes']}</option>\n<option value=\"0\">{$LNG['a_s_no']}</option>\n";
     }
     else {
-      $fill_blank_rows_menu = "<option value=\"1\">{$LNG['a_s_yes']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}\n";
+      $fill_blank_rows_menu = "<option value=\"1\">{$LNG['a_s_yes']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_no']}</option>\n";
     }
 
     if (!$CONF['active_default']) {
-      $active_default_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
+      $active_default_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"1\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $active_default_menu = "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $active_default_menu = "<option value=\"0\">{$LNG['a_s_on']}</option>\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if (!$CONF['active_default_review']) {
-      $active_default_review_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"1\">{$LNG['a_s_off']}\n";
+      $active_default_review_menu = "<option value=\"0\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"1\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $active_default_review_menu = "<option value=\"0\">{$LNG['a_s_on']}\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $active_default_review_menu = "<option value=\"0\">{$LNG['a_s_on']}</option>\n<option value=\"1\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['email_admin_on_join']) {
-      $email_admin_on_join_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $email_admin_on_join_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $email_admin_on_join_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $email_admin_on_join_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['email_admin_on_review']) {
-      $email_admin_on_review_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $email_admin_on_review_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $email_admin_on_review_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $email_admin_on_review_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['gateway']) {
-      $gateway_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $gateway_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $gateway_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $gateway_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['captcha']) {
-      $captcha_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $captcha_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $captcha_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $captcha_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
     if ($CONF['google_friendly_links']) {
-      $google_friendly_links_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}\n<option value=\"0\">{$LNG['a_s_off']}\n";
+      $google_friendly_links_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_s_on']}</option>\n<option value=\"0\">{$LNG['a_s_off']}</option>\n";
     }
     else {
-      $google_friendly_links_menu = "<option value=\"1\">{$LNG['a_s_on']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}\n";
+      $google_friendly_links_menu = "<option value=\"1\">{$LNG['a_s_on']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_s_off']}</option>\n";
     }
 
 
@@ -272,14 +272,7 @@ class settings extends base {
 </fieldset>
 
 <fieldset>
-<legend>{$LNG['a_s_other']}</legend>
-<label>{$LNG['a_s_search']}<br />
-<select name="search">
-{$search_menu}</select><br /><br />
-</label>
-<label>{$LNG['a_s_time_offset']}<br />
-<input type="text" name="time_offset" size="5" value="{$CONF['time_offset']}" /><br /><br />
-</label>
+<legend>{$LNG['join_security']}</legend>
 <label>{$LNG['a_s_gateway']}<br />
 <select name="gateway">
 {$gateway_menu}</select><br /><br />
@@ -287,6 +280,23 @@ class settings extends base {
 <label>{$LNG['a_s_captcha']}<br />
 <select name="captcha">
 {$captcha_menu}</select><br /><br />
+</label>
+<label>{$LNG['a_s_security_question']}<br />
+<input type="text" name="security_question" size="50" value="{$CONF['security_question']}" /><br />
+</label>
+<label>
+{$LNG['a_s_answer']}: <input type="text" name="security_answer" size="5" value="{$CONF['security_answer']}" />
+</label>
+</fieldset>
+
+<fieldset>
+<legend>{$LNG['a_s_other']}</legend>
+<label>{$LNG['a_s_search']}<br />
+<select name="search">
+{$search_menu}</select><br /><br />
+</label>
+<label>{$LNG['a_s_time_offset']}<br />
+<input type="text" name="time_offset" size="5" value="{$CONF['time_offset']}" /><br /><br />
 </label>
 <input name="submit" type="submit" value="{$LNG['a_s_header']}" />
 </fieldset>
@@ -329,16 +339,19 @@ EndHTML;
     $button_num = intval($FORM['button_num']);
     $google_friendly_links = intval($FORM['google_friendly_links']);
 
-    $search = intval($FORM['search']);
-    $time_offset = intval($FORM['time_offset']);
     $gateway = intval($FORM['gateway']);
     $captcha = intval($FORM['captcha']);
+    $security_question = $DB->escape($FORM['security_question']);
+    $security_answer = $DB->escape($FORM['security_answer']);
+
+    $search = intval($FORM['search']);
+    $time_offset = intval($FORM['time_offset']);
 
     $DB->query("UPDATE {$CONF['sql_prefix']}_settings SET list_name = '{$list_name}', list_url = '{$list_url}', default_language = '{$default_language}', your_email = '{$your_email}',
                 num_list = {$num_list}, ranking_period = '{$ranking_period}', ranking_method = '{$ranking_method}', ranking_average = {$ranking_average}, featured_member = {$featured_member}, top_skin_num = {$top_skin_num}, ad_breaks = '{$ad_breaks}', fill_blank_rows = {$fill_blank_rows},
                 active_default = {$active_default}, active_default_review = {$active_default_review}, delete_after = {$delete_after}, email_admin_on_join = {$email_admin_on_join}, email_admin_on_review = {$email_admin_on_review}, max_banner_width = {$max_banner_width}, max_banner_height = {$max_banner_height}, default_banner = '{$default_banner}',
                 ranks_on_buttons = {$ranks_on_buttons}, button_url = '{$button_url}', button_dir = '{$button_dir}', button_ext = '{$button_ext}', button_num = {$button_num}, google_friendly_links = {$google_friendly_links},
-                search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}
+                search = {$search}, time_offset = {$time_offset}, gateway = {$gateway}, captcha = {$captcha}, security_question = '{$security_question}', security_answer = '{$security_answer}'
                ", __FILE__, __LINE__);
 
     $TMPL['admin_content'] = $LNG['a_s_updated'];

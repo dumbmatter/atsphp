@@ -47,10 +47,10 @@ class edit_bad_word extends base {
     list($TMPL['word'], $TMPL['replacement'], $TMPL['matching']) = $DB->fetch("SELECT word, replacement, matching FROM {$CONF['sql_prefix']}_bad_words WHERE id = {$TMPL['id']}", __FILE__, __LINE__);
 
     if ($TMPL['matching']) {
-      $matching_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_man_bad_words_exact']}\n<option value=\"0\">{$LNG['a_man_bad_words_global']}\n";
+      $matching_menu = "<option value=\"1\" selected=\"selected\">{$LNG['a_man_bad_words_exact']}</option>\n<option value=\"0\">{$LNG['a_man_bad_words_global']}</option>\n";
     }
     else {
-      $matching_menu = "<option value=\"1\">{$LNG['a_man_bad_words_exact']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_man_bad_words_global']}\n";
+      $matching_menu = "<option value=\"1\">{$LNG['a_man_bad_words_exact']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_man_bad_words_global']}</option>\n";
     }
 
     $TMPL['admin_content'] = <<<EndHTML

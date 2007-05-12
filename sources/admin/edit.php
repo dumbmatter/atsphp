@@ -75,20 +75,20 @@ class edit extends join_edit {
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
       if ($TMPL['category'] == $cat) {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}</option>\n";
       }
       else {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}</option>\n";
       }
     }
     $TMPL['categories_menu'] .= '</select>';
 
     $TMPL['active_menu'] = "<select name=\"active\">\n";
     if ($TMPL['active'] == 1) {
-      $TMPL['active_menu'] .= "<option value=\"1\" selected=\"selected\">{$LNG['a_edit_active']}\n<option value=\"0\">{$LNG['a_edit_inactive']}\n";
+      $TMPL['active_menu'] .= "<option value=\"1\" selected=\"selected\">{$LNG['a_edit_active']}</option>\n<option value=\"0\">{$LNG['a_edit_inactive']}</option>\n";
     }
     else {
-      $TMPL['active_menu'] .= "<option value=\"1\">{$LNG['a_edit_active']}\n<option value=\"0\" selected=\"selected\">{$LNG['a_edit_inactive']}\n";
+      $TMPL['active_menu'] .= "<option value=\"1\">{$LNG['a_edit_active']}</option>\n<option value=\"0\" selected=\"selected\">{$LNG['a_edit_inactive']}</option>\n";
     }
     $TMPL['active_menu'] .= '</select>';
 

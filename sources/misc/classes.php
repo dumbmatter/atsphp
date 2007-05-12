@@ -134,6 +134,7 @@ class join_edit extends base {
     $error_title = 0;
     $error_banner_url = 0;
     $error_captcha = 0;
+    $error_security_question = 0;
 
     // Filter the URL using a regex I found here: http://www.manamplified.org/archives/000318.html
     preg_match('/[A-Za-z][A-Za-z0-9+.-]{1,120}:[A-Za-z0-9\/](([A-Za-z0-9$_.+!*,;\/?:@&~=-])|%[A-Fa-f0-9]{2}){1,333}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*,;\/?:@&~=%-]{0,1000}))?/', $TMPL['url'], $matches);
@@ -163,6 +164,11 @@ class join_edit extends base {
         }
         $session->delete($sid);
       }
+      if ($CONF['security_question'] && $CONF['security_answer']) {
+        if ($FORM['security_answer'] != $CONF['security_answer']) {
+          $error_security_question = 1;
+        }
+      }
     }
     if (!preg_match('/^https?:\/\/.+/', $TMPL['url'])) {
       $error_url = 1;
@@ -176,8 +182,8 @@ class join_edit extends base {
     if (!preg_match('/^https?:\/\/.+/', $TMPL['banner_url'])) {
       $TMPL['banner_url'] = $CONF['default_banner'];
     }
-    elseif ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
-      $size = @getimagesize($FORM['banner_url']);
+    elseif ($CONF['max_banner_width'] && $CONF['max_banner_height'] && ini_get('allow_url_fopen')) {
+      $size = getimagesize($FORM['banner_url']);
       if ($size[0] > $CONF['max_banner_width'] || $size[1] > $CONF['max_banner_height']) {
         $error_banner_url = 1;
       }
@@ -194,7 +200,7 @@ class join_edit extends base {
       $TMPL['category'] = $cat;
     }
 
-    if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha) {
+    if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha || $error_security_question) {
       if ($error_username) {
         $TMPL['error_username'] = "<br />{$LNG['join_error_username']}";
         $TMPL['error_style_username'] = 'join_edit_error';
@@ -224,6 +230,10 @@ class join_edit extends base {
       $TMPL['error_style_captcha'] = 'join_edit_error';
       if ($error_captcha) {
         $TMPL['error_captcha'] .= "<br />{$LNG['join_error_captcha']}";
+      }
+      if ($error_security_question) {
+        $TMPL['error_style_question'] = 'join_edit_error';
+        $TMPL['error_question'] .= "<br />{$LNG['join_error_question']}";
       }
 
       $TMPL['error_style_top'] = 'join_edit_error';

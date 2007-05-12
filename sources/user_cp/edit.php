@@ -57,6 +57,12 @@ class edit extends join_edit {
     if (!isset($TMPL['url'])) {
       $row = $DB->fetch("SELECT * FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
       $TMPL = array_merge($TMPL, $row);
+
+      // Pending URL and title changes
+      $result = $DB->query("SELECT url, title FROM {$CONF['sql_prefix']}_sites_edited WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+      if ($DB->num_rows($result)) {
+        list($TMPL['url'], $TMPL['title']) = $DB->fetch_array($result);
+      }
     }
     else {
       if (isset($TMPL['url'])) { $TMPL['url'] = stripslashes($TMPL['url']); }
@@ -70,10 +76,10 @@ class edit extends join_edit {
     $TMPL['categories_menu'] = "<select name=\"category\">\n";
     foreach ($CONF['categories'] as $cat => $skin) {
       if ($TMPL['category'] == $cat) {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\" selected=\"selected\">{$cat}</option>\n";
       }
       else {
-        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}\n";
+        $TMPL['categories_menu'] .= "<option value=\"{$cat}\">{$cat}</option>\n";
       }
     }
     $TMPL['categories_menu'] .= "</select>";
@@ -120,8 +126,25 @@ class edit extends join_edit {
         require_once("{$CONF['path']}/sources/in.php");
         $short_url = in::short_url($TMPL['url']);
 
-        $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', short_url = '{$short_url}', title = '{$TMPL['title']}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
- 
+        // Update everything but URL and title
+        $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET short_url = '{$short_url}', description = '{$TMPL['description']}', category = '{$TMPL['category']}', banner_url = '{$TMPL['banner_url']}', email = '{$TMPL['email']}'{$password_sql} WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+
+        // Update URL and title; send to admin for approval if necessary
+        $TMPL['edit_delay'] = '';
+        if ($CONF['active_default']) {
+          $DB->query("DELETE FROM {$CONF['sql_prefix']}_sites_edited WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+          $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET url = '{$TMPL['url']}', title = '{$TMPL['title']}' WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+        }
+        else {
+          list($url, $title) = $DB->fetch("SELECT url, title FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+          if ($url != $TMPL['url'] || $title != $TMPL['title']) {
+            $DB->query("DELETE FROM {$CONF['sql_prefix']}_sites_edited WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+            $DB->query("INSERT INTO {$CONF['sql_prefix']}_sites_edited (username, url, title) VALUES ('{$TMPL['username']}', '{$TMPL['url']}', '{$TMPL['title']}')", __FILE__, __LINE__);
+
+            $TMPL['edit_delay'] = $LNG['edit_delay'];
+          }
+        }
+
         $TMPL['user_cp_content'] = $this->do_skin('edit_finish');
       }
       else {

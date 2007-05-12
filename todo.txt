@@ -25,7 +25,7 @@ Unapproved sites will not be automatically deleted for inactivity
 Option in the admin to fill empty rows with "Your Site Here"
 Backup database from admin
 Validates $_SERVER before use
-A (hopefully) more secure captcha, with a link for users to get a new captcha if they can't read the first
+A more secure captcha, with a link for users to get a new captcha if the user can't read the first one
 Displays the banner max width/height in the join and edit forms
 Redesigned gateway page for the Fusion skin by OS-Mark
 When you enable admin approval of new members, the welcome email is delayed until you approve the site
@@ -36,6 +36,13 @@ Quotes and other special HTML characters can be used in titles and descriptions 
 Under normal usage, there should be no PHP error messages, even at E_ALL
 Users pending approval will not be allowed to login to the user control panel
 Banning of sites by URL, IP address, username, email
+Checks if allow_url_fopen is On before checking banner size and checking for the latest version
+Missing </option> tags were added so that all pages should validate as XHTML 1.0 Transitional
+user_cp.php renamed to user_cpl.php because of mod_security on some servers
+Optional security question on join to block spammers
+By default, changes to the title or URL of a site must be approved by the admin
+New skin file table_wrapper.html to easily display things only on ranking pages
+Overall stats displayed on the main page
 
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
@@ -47,40 +54,40 @@ CREATE TABLE `ats_ban` (
   PRIMARY KEY  (`id`)
 );
 ALTER TABLE `ats_settings` ADD `fill_blank_rows` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `ad_breaks`;
-ALTER TABLE `ats_settings` ADD `smtp_server` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `captcha`;
 ALTER TABLE `ats_etc` ADD `version` VARCHAR( 255 ) NOT NULL;
 UPDATE ats_etc SET version = '5.2.0';
 ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `openid`;
+ALTER TABLE `ats_settings` ADD `security_question` TEXT AFTER `captcha`;
+ALTER TABLE `ats_settings` ADD `security_answer` VARCHAR(255) AFTER `security_question`;
+CREATE TABLE `ats_sites_edited` (
+  `username` varchar(255) default '' NOT NULL,
+  `url` varchar(255) default '',
+  `title` varchar(255) default '',
+  PRIMARY KEY  (`username`)
+);
+CREATE TABLE `ats_stats_overall` (
+  `in_avg` bigint(20) unsigned default 0,
+  `out_avg` bigint(20) unsigned default 0,
+  `pv_avg` bigint(20) unsigned default 0,
+  `in_overall` bigint(20) unsigned default 0,
+  `out_overall` bigint(20) unsigned default 0,
+  `pv_overall` bigint(20) unsigned default 0
+);
+INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
 ----------- toptopsites.com has all above
+
 
 -----
 5.2.0
 -----
 ETA: Summer
 HIGH PRIORITY:
-better error handling if url wrappers are disabled
-- detect when allow_url_fopen is disabled for max image sizes
-- also for version check in the admin
-security question (off by default, make user add a question manually)
-- security section in the settings?
 admin approve by default
-change user_cp to user_cpl name to avoid 403 error
-admin approve edits
-- put sites in ats_sites_edited
-- approve_edit.php based on approve.php
-after install: form to aardvarktopsitesphp.com asking for email address for feedback
-translate months in stats.php
-- http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=22262#22262
-delete echo from send_email in skin.php; test welcome/approval emails
-skins by os-mark
-- nice-looking HTML emails?
+after install get email addresses with form
+- ask for them to be added to the mailing list for updates
+- also say that they may be asked for feedback
 credits.txt
 - translators
-cache overall stats (like in main page of admin) and allow all skins to post them
-- unique only
-- in, out, pageview
-- average, today, yesterday, overall
-GO BACK TO PLAIN TEXT EMAILS, BUT NICER
 ------------
 LOW PRIORITY:
 backlink checker
@@ -89,7 +96,6 @@ backlink checker
 "show all reviews" link should only be displayed if necessary
 smtp email option via swift mailer (check email)
 - if $CONF['smtp_server'] is set, use swift
-valid code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4862
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 couple ratings and reviews so admin approves both
@@ -131,16 +137,23 @@ UPDATED SKINS
   join_finish.html
   join_finish_approve.html
   join_form.html
+  join_question.html
   rate_form.html
   table_filler.html
+  table_wrapper.html
 
 SVN ADD
 skins/classic/table_filler.html
+skins/classic/table_wrapper.html
 skins/classic/join_finish_approve.html
+skins/classic/join_question.html
+sources/user_cpl.php
 SVN DELETE
+sources/user_cp.php
 
 TRANSLATION STATUS
   5.1
+    bosnian
     chinese_trad
     czech
     danish
@@ -164,6 +177,7 @@ TRANSLATION STATUS
 
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table
+security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 THINGS TO DO ON RELEASE
   increment version in index.php

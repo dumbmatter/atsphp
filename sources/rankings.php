@@ -234,6 +234,20 @@ class rankings extends base {
     elseif (isset($do_table_close) && $do_table_close) {
       $TMPL['content'] .= $this->do_skin('table_close');
     }
+
+    // Overall stats
+    list($TMPL['in_avg'], $TMPL['out_avg'], $TMPL['pv_avg'], $TMPL['in_overall'], $TMPL['out_overall'], $TMPL['pv_overall']) = $DB->fetch("SELECT in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall FROM {$CONF['sql_prefix']}_stats_overall", __FILE__, __LINE__);
+    if ($ranking_period == 'weekly') {
+      $TMPL['stats_overall_average'] = sprintf($LNG['stats_overall_average'], $LNG['a_s_weeks']);
+    }
+    elseif ($ranking_period == 'monthly') {
+      $TMPL['stats_overall_average'] = sprintf($LNG['stats_overall_average'], $LNG['a_s_months']);
+    }
+    else {
+      $TMPL['stats_overall_average'] = sprintf($LNG['stats_overall_average'], $LNG['a_s_days']);
+    }
+
+    $TMPL['content'] = $this->do_skin('table_wrapper');
   }
 }
 ?>

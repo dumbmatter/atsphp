@@ -138,7 +138,7 @@ $action = array(
             'rate' => 1,
             'search' => 1,
             'stats' => 1,
-            'user_cp' => 1
+            'user_cpl' => 1
           );
 
 // Require the appripriate file

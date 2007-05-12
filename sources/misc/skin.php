@@ -79,7 +79,7 @@ class skin {
 
     $subject = $this->parse($subject);
     $body = $this->parse($body);
-echo $body."<hr>";
+
     mail($email, $subject, $body, "From: {$CONF['your_email']}\r\n");
   }
   
@@ -105,7 +105,7 @@ class main_skin extends skin {
     $this->filename = $filename;
 
     // Number of members
-    list($TMPL['num_members']) = $DB->fetch('SELECT COUNT(*) FROM '.$CONF['sql_prefix'].'_sites WHERE active = 1', __FILE__, __LINE__);
+    list($TMPL['num_members']) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_sites WHERE active = 1", __FILE__, __LINE__);
 
     // Build the multiple pages menu
     if ($TMPL['num_members'] > $CONF['num_list']) {
@@ -135,12 +135,12 @@ class main_skin extends skin {
     // Build the ranking method menu
     $ranking_method = isset($FORM['method']) ? $FORM['method'] : $CONF['ranking_method'];
     $TMPL['ranking_methods_menu'] = '<select name="method">'."\n";
-    if ($ranking_method == 'pv') { $TMPL['ranking_methods_menu'] .= '<option value="pv" selected="selected">'.$LNG['g_pv']."</option>\n"; }
-    else { $TMPL['ranking_methods_menu'] .= '<option value="pv">'.$LNG['g_pv']."\n"; }
-    if ($ranking_method == 'in') { $TMPL['ranking_methods_menu'] .= '<option value="in" selected="selected">'.$LNG['g_in']."</option>\n"; }
-    else { $TMPL['ranking_methods_menu'] .= '<option value="in">'.$LNG['g_in']."\n"; }
-    if ($ranking_method == 'out') { $TMPL['ranking_methods_menu'] .= '<option value="out" selected="selected">'.$LNG['g_out']."</option>\n"; }
-    else { $TMPL['ranking_methods_menu'] .= '<option value="out">'.$LNG['g_out']."\n"; }
+    if ($ranking_method == 'pv') { $TMPL['ranking_methods_menu'] .= "<option value=\"pv\" selected=\"selected\">{$LNG['g_pv']}</option>\n"; }
+    else { $TMPL['ranking_methods_menu'] .= "<option value=\"pv\">{$LNG['g_pv']}</option>\n"; }
+    if ($ranking_method == 'in') { $TMPL['ranking_methods_menu'] .= "<option value=\"in\" selected=\"selected\">{$LNG['g_in']}</option>\n"; }
+    else { $TMPL['ranking_methods_menu'] .= "<option value=\"in\">{$LNG['g_in']}</option>\n"; }
+    if ($ranking_method == 'out') { $TMPL['ranking_methods_menu'] .= "<option value=\"out\" selected=\"selected\">{$LNG['g_out']}</option>\n"; }
+    else { $TMPL['ranking_methods_menu'] .= "<option value=\"out\">{$LNG['g_out']}</option>\n"; }
     $TMPL['ranking_methods_menu'] .= '</select>';
   
     // Build the categories menu and feed.php link
@@ -181,7 +181,7 @@ class main_skin extends skin {
 
     // If you want to remove these links, you can; however, I would appreciate
     // it if you left them there.
-    $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.itopsites.com/" title="Get a free hosted topsites list">iTopsites</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Polls</a> | <a href="http://www.consolidatestudentloansnow.org/" title="Student loan consolidation">Private Student Loans</a>';
+    $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.mydebtconsolidationadvice.com/" title="Free debt consolidation advice">Debt Consolidation</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Web Polls</a>';
 
     if (!isset($TMPL['content'])) {
       $TMPL['content'] = '';

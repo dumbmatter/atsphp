@@ -38,8 +38,8 @@ h1, h2, h3 {
 }
 #content {
 	clear: both;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 #copyright {
 	margin: 10px;

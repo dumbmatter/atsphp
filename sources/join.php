@@ -38,10 +38,12 @@ class join extends join_edit {
     $TMPL['error_style_title'] = '';
     $TMPL['error_banner_url'] = '';
     $TMPL['error_style_banner_url'] = '';
-    $TMPL['error_captcha'] = '';
-    $TMPL['error_style_captcha'] = '';
     $TMPL['error_top'] = '';
     $TMPL['error_style_top'] = '';
+    $TMPL['error_captcha'] = '';
+    $TMPL['error_style_captcha'] = '';
+    $TMPL['error_question'] = '';
+    $TMPL['error_style_question'] = '';
 
     if (!isset($FORM['submit'])) {
       $this->form();
@@ -54,12 +56,25 @@ class join extends join_edit {
   function form() {
     global $CONF, $FORM, $LNG, $TMPL;
 
+    // Display the CAPTCHA?
     if ($CONF['captcha']) {
       $TMPL['rand'] = rand(1, 1000000);
       $TMPL['join_captcha'] = $this->do_skin('join_captcha');
     }
     else {
       $TMPL['join_captcha'] = '';
+    }
+
+    // Display the security question?
+    if ($CONF['security_question'] && $CONF['security_answer']) {
+      $TMPL['security_question'] = $CONF['security_question'];
+      if (isset($FORM['security_answer'])) { $TMPL['security_answer'] = strip_tags($FORM['security_answer']); }
+      else { $TMPL['security_answer'] = ''; }
+
+      $TMPL['join_question'] = $this->do_skin('join_question');
+    }
+    else {
+      $TMPL['join_question'] = '';
     }
 
     $TMPL['categories_menu'] = "<select name=\"category\">\n";

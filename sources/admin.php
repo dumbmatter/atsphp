@@ -39,6 +39,7 @@ class admin extends base {
         // Array containing the valid .php files from the sources/admin directory
         $action = array(
                     'approve' => 1,
+                    'approve_edited' => 1,
                     'approve_reviews' => 1,
                     'backup_database' => 1,
                     'create_page' => 1,
@@ -119,10 +120,10 @@ class admin extends base {
     $TMPL['admin_content'] = "{$LNG['a_main']}<br /><br />";
 
     $phpversion = phpversion();
-    if (version_compare($phpversion, '4.3.0', '>=')) {
-      $latest_version = @file_get_contents('http://www.aardvarktopsitesphp.com/topsitesphp/version.txt');
+    if (ini_get('allow_url_fopen')) {
+      $latest_version = file_get_contents('http://www.aardvarktopsitesphp.com/topsitesphp/version.txt');
     }
-    if (!$latest_version) {
+    else {
       $latest_version = '?';
     }
     $TMPL['admin_content'] .= "{$LNG['a_main_your']}: {$TMPL['version']}<br />{$LNG['a_main_latest']}: {$latest_version}<br />\n{$LNG['a_main_new']}<br /><br />";
@@ -133,6 +134,14 @@ class admin extends base {
     }
     elseif ($num_waiting > 1) {
       $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve\">".sprintf($LNG['a_main_approves'], $num_waiting)."</a></b><br /><br />";
+    }
+
+    list($num_waiting_edited) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_sites_edited", __FILE__, __LINE__);
+    if ($num_waiting_edited == 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_edited\">{$LNG['a_main_approve_edit']}</a></b><br /><br />";
+    }
+    elseif ($num_waiting_edited > 1) {
+      $TMPL['admin_content'] .= "<b><a href=\"{$TMPL['list_url']}/index.php?a=admin&amp;b=approve_edited\">".sprintf($LNG['a_main_approve_edits'], $num_waiting_edit)."</a></b><br /><br />";
     }
 
     list($num_waiting_rev) = $DB->fetch("SELECT COUNT(*) FROM {$CONF['sql_prefix']}_reviews WHERE active = 0", __FILE__, __LINE__);
@@ -186,48 +195,48 @@ class admin extends base {
 <table cellspacing="1" cellpadding="1">
 	<tr>
 		<th class="stats_top">{$LNG["g_{$ranking_period}"]}</th>
-		<th class="stats_top">{$LNG['g_average']}</td>
-		<th class="stats_top">{$today}</td>
-		<th class="stats_top">{$yesterday}</td>
-		<th class="stats_top">{$LNG['g_overall']}</td>
+		<th class="stats_top">{$LNG['g_average']}</th>
+		<th class="stats_top">{$today}</th>
+		<th class="stats_top">{$yesterday}</th>
+		<th class="stats_top">{$LNG['g_overall']}</th>
 	</tr>
 	<tr>
-		<td class="stats2" style="text-align: left;">{$LNG['g_unq_pv']}</th>
+		<td class="stats2" style="text-align: left;">{$LNG['g_unq_pv']}</td>
 		<td class="stats2">{$TMPL['unq_pv_avg_daily']}</td>
 		<td class="stats2">{$TMPL['unq_pv_0_daily']}</td>
 		<td class="stats2">{$TMPL['unq_pv_1_daily']}</td>
 		<td class="stats2">{$TMPL['unq_pv_overall']}</td>
 	</tr>
 	<tr>
-		<td class="stats1" style="text-align: left;">{$LNG['g_tot_pv']}</th>
+		<td class="stats1" style="text-align: left;">{$LNG['g_tot_pv']}</td>
 		<td class="stats1">{$TMPL['tot_pv_avg_daily']}</td>
 		<td class="stats1">{$TMPL['tot_pv_0_daily']}</td>
 		<td class="stats1">{$TMPL['tot_pv_1_daily']}</td>
 		<td class="stats1">{$TMPL['tot_pv_overall']}</td>
 	</tr>
 	<tr>
-		<td class="stats2" style="text-align: left;">{$LNG['g_unq_in']}</th>
+		<td class="stats2" style="text-align: left;">{$LNG['g_unq_in']}</td>
 		<td class="stats2">{$TMPL['unq_in_avg_daily']}</td>
 		<td class="stats2">{$TMPL['unq_in_0_daily']}</td>
 		<td class="stats2">{$TMPL['unq_in_1_daily']}</td>
 		<td class="stats2">{$TMPL['unq_in_overall']}</td>
 	</tr>
 	<tr>
-		<td class="stats1" style="text-align: left;">{$LNG['g_tot_in']}</th>
+		<td class="stats1" style="text-align: left;">{$LNG['g_tot_in']}</td>
 		<td class="stats1">{$TMPL['tot_in_avg_daily']}</td>
 		<td class="stats1">{$TMPL['tot_in_0_daily']}</td>
 		<td class="stats1">{$TMPL['tot_in_1_daily']}</td>
 		<td class="stats1">{$TMPL['tot_in_overall']}</td>
 	</tr>
 	<tr>
-		<td class="stats2" style="text-align: left;">{$LNG['g_unq_out']}</th>
+		<td class="stats2" style="text-align: left;">{$LNG['g_unq_out']}</td>
 		<td class="stats2">{$TMPL['unq_out_avg_daily']}</td>
 		<td class="stats2">{$TMPL['unq_out_0_daily']}</td>
 		<td class="stats2">{$TMPL['unq_out_1_daily']}</td>
 		<td class="stats2">{$TMPL['unq_out_overall']}</td>
 	</tr>
 	<tr>
-		<td class="stats1" style="text-align: left;">{$LNG['g_tot_out']}</th>
+		<td class="stats1" style="text-align: left;">{$LNG['g_tot_out']}</td>
 		<td class="stats1">{$TMPL['tot_out_avg_daily']}</td>
 		<td class="stats1">{$TMPL['tot_out_0_daily']}</td>
 		<td class="stats1">{$TMPL['tot_out_1_daily']}</td>
