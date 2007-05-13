@@ -40,6 +40,7 @@ Checks if allow_url_fopen is On before checking banner size and checking for the
 Missing </option> tags were added so that all pages should validate as XHTML 1.0 Transitional
 user_cp.php renamed to user_cpl.php because of mod_security on some servers
 Optional security question on join to block spammers
+By default, new members must be approved by the admin before they are listed
 By default, changes to the title or URL of a site must be approved by the admin
 New skin file table_wrapper.html to easily display things only on ranking pages
 Overall stats displayed on the main page
@@ -74,6 +75,7 @@ CREATE TABLE `ats_stats_overall` (
   `pv_overall` bigint(20) unsigned default 0
 );
 INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
+ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) default 0;
 ----------- toptopsites.com has all above
 
 
@@ -82,12 +84,14 @@ INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overal
 -----
 ETA: Summer
 HIGH PRIORITY:
-admin approve by default
+upgraders
+classic skin
 after install get email addresses with form
 - ask for them to be added to the mailing list for updates
 - also say that they may be asked for feedback
 credits.txt
 - translators
+csln?
 ------------
 LOW PRIORITY:
 backlink checker
@@ -95,7 +99,6 @@ backlink checker
 - some code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=6242
 "show all reviews" link should only be displayed if necessary
 smtp email option via swift mailer (check email)
-- if $CONF['smtp_server'] is set, use swift
 onmousedown instead of onclick for links: google does it
 secondary ranking method to avoid ties
 couple ratings and reviews so admin approves both
@@ -179,6 +182,7 @@ security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 THINGS TO DO ON RELEASE
   increment version in index.php
+  do something about version in ats_etc (installer, upgrader, etc)
   commit to svn with version number in comment
   create atsphp-x.x.x.zip from public_html/atsphp-x.x.x
   - remove unneccesary files and invalid languages

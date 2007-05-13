@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -65,6 +65,7 @@ elseif (!isset($FORM['submit'])) {
   $path = str_replace('/install/index.php', '', $_SERVER['PHP_SELF']);
   $list_url = "http://{$_SERVER['HTTP_HOST']}{$path}";
 
+  $sql_menu = '';
   $dir = opendir("{$CONF['path']}/sources/sql/");
   while (false !== ($file = readdir($dir))) {
     if ($file != '.' && $file != '..' && !is_dir("{$CONF['path']}/sources/sql/{$file}")) {
@@ -120,7 +121,7 @@ else {
   require_once("{$CONF['path']}/languages/{$FORM['l']}.php");
 
   require_once("{$CONF['path']}/sources/sql/{$FORM['sql']}.php");
-  $DB = "sql_{$CONF['sql']}";
+  $DB = "sql_{$FORM['sql']}";
   $DB = new $DB;
 
   if ($DB->connect($FORM['sql_host'], $FORM['sql_username'], $FORM['sql_password'], $FORM['sql_database'])) {
@@ -158,7 +159,8 @@ EndHTML;
                     `featured_member` tinyint(1) default 0,
                     `top_skin_num` int(5) default 2,
                     `ad_breaks` varchar(255) default '',
-                    `active_default` tinyint(1) default 1,
+                    `fill_blank_rows` tinyint(1) default 1,
+                    `active_default` tinyint(1) default 0,
                     `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
@@ -175,7 +177,9 @@ EndHTML;
                     `search` tinyint(1) default 1,
                     `time_offset` int(2) default 0,
                     `gateway` tinyint(1) default 1,
-                    `captcha` tinyint(1) default 1
+                    `captcha` tinyint(1) default 1,
+                    `security_question` text,
+                    `security_answer` varchar(255)
                   )", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_url, default_language, your_email, default_banner, button_url, button_dir)
                   VALUES ('{$list_url}', '{$default_language}', '{$your_email}', '{$list_url}/images/button.png', '{$list_url}/images/button.png', '{$list_url}/images')", __FILE__, __LINE__);
@@ -185,6 +189,14 @@ EndHTML;
                     `word` varchar(255),
                     `replacement` varchar(255),
                     `matching` tinyint(1),
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ban` (
+                    `id` int(10) unsigned NOT NULL,
+                    `string` varchar(255) NOT NULL,
+                    `field` varchar(255) NOT NULL,
+                    `matching` tinyint(1) NOT NULL,
                     PRIMARY KEY  (`id`)
                   )", __FILE__, __LINE__);
 
@@ -199,9 +211,10 @@ EndHTML;
                     `admin_password` varchar(32) default '',
                     `last_new_day` tinyint(4) default 0,
                     `last_new_week` tinyint(4) default 0,
-                    `last_new_month` tinyint(4) default 0
+                    `last_new_month` tinyint(4) default 0,
+                    `version` varchar(255) default 0
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password) VALUES ('{$admin_password}')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password, version) VALUES ('{$admin_password}', '5.2.0')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
                     `category` varchar(255) default '' NOT NULL,
@@ -211,7 +224,7 @@ EndHTML;
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_categories (category) VALUES ('Category')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
-                    `ip_address` varchar(32) default '' NOT NULL,
+                    `ip_address` varchar(245) default '' NOT NULL,
                     `username` varchar(255) default '' NOT NULL,
                     `unq_pv` tinyint(1) default 0,
                     `unq_in` tinyint(1) default 0,
@@ -250,8 +263,16 @@ EndHTML;
                     `join_date` date default '0000-00-00',
                     `active` tinyint(1) default 1,
                     `openid` tinyint(1) default 0,
+                    `user_ip` varchar(255) default '',
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sites_edited` (
+                    `username` varchar(255) default '' NOT NULL,
+                    `url` varchar(255) default '',
+                    `title` varchar(255) default '',
+                    PRIMARY KEY  (`username`)
+                  );", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats` (
                     `username` varchar(255) default '' NOT NULL,
@@ -468,6 +489,16 @@ EndHTML;
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats_overall` (
+                    `in_avg` bigint(20) unsigned default 0,
+                    `out_avg` bigint(20) unsigned default 0,
+                    `pv_avg` bigint(20) unsigned default 0,
+                    `in_overall` bigint(20) unsigned default 0,
+                    `out_overall` bigint(20) unsigned default 0,
+                    `pv_overall` bigint(20) unsigned default 0
+                  );", __FILE__, __LINE__);
+      $DB->query("INSERT INTO `{$CONF['sql_prefix']}_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);", __FILE__, __LINE__);
+
       $TMPL['content'] = <<<EndHTML
 {$LNG['install_done']}<br /><br />
 <a href="{$list_url}/">{$LNG['install_your']}</a><br />
@@ -487,7 +518,7 @@ EndHTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>Aardvark Topsites PHP 5 - <?php echo $LNG['install_header']; ?></title>
+<title>Aardvark Topsites PHP 5.2 - <?php echo $LNG['install_header']; ?></title>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo $LNG['charset']; ?>" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>

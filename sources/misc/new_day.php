@@ -33,12 +33,18 @@ function new_day($current_day) {
   else {
     $ranking_period = $CONF['ranking_period'];
   }
-  list($in_avg, $out_avg, $pv_avg, $in_overall, $out_overall, $pv_overall) = $DB->fetch("SELECT
+  list($pv_avg, $in_avg, $out_avg, $pv_overall, $in_overall, $out_overall) = $DB->fetch("SELECT
                          ROUND(SUM(unq_pv_0_{$ranking_period} + unq_pv_1_{$ranking_period} + unq_pv_2_{$ranking_period} + unq_pv_3_{$ranking_period} + unq_pv_4_{$ranking_period} + unq_pv_5_{$ranking_period} + unq_pv_6_{$ranking_period} + unq_pv_7_{$ranking_period} + unq_pv_8_{$ranking_period} + unq_pv_9_{$ranking_period}) / 10, 0),
                          ROUND(SUM(unq_in_0_{$ranking_period} + unq_in_1_{$ranking_period} + unq_in_2_{$ranking_period} + unq_in_3_{$ranking_period} + unq_in_4_{$ranking_period} + unq_in_5_{$ranking_period} + unq_in_6_{$ranking_period} + unq_in_7_{$ranking_period} + unq_in_8_{$ranking_period} + unq_in_9_{$ranking_period}) / 10, 0),
                          ROUND(SUM(unq_out_0_{$ranking_period} + unq_out_1_{$ranking_period} + unq_out_2_{$ranking_period} + unq_out_3_{$ranking_period} + unq_out_4_{$ranking_period} + unq_out_5_{$ranking_period} + unq_out_6_{$ranking_period} + unq_out_7_{$ranking_period} + unq_out_8_{$ranking_period} + unq_out_9_{$ranking_period}) / 10, 0),
                          SUM(unq_pv_overall), SUM(unq_in_overall), SUM(unq_out_overall)
                          FROM {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
+  $pv_avg = intval($pv_avg);
+  $in_avg = intval($in_avg);
+  $out_avg = intval($out_avg);
+  $pv_overall = intval($pv_overall);
+  $in_overall = intval($in_overall);
+  $out_overall = intval($out_overall);
   $DB->query("UPDATE {$CONF['sql_prefix']}_stats_overall SET in_avg = {$in_avg}, out_avg = {$out_avg}, pv_avg = {$pv_avg}, in_overall = {$in_overall}, out_overall = {$out_overall}, pv_overall = {$pv_overall}", __FILE__, __LINE__);
 
   $DB->query("UPDATE {$CONF['sql_prefix']}_sites sites, {$CONF['sql_prefix']}_stats stats SET days_inactive = days_inactive + 1 WHERE tot_pv_0_daily = 0 AND tot_in_0_daily = 0 AND active = 1 AND sites.username = stats.username", __FILE__, __LINE__);

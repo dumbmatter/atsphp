@@ -237,6 +237,12 @@ class rankings extends base {
 
     // Overall stats
     list($TMPL['in_avg'], $TMPL['out_avg'], $TMPL['pv_avg'], $TMPL['in_overall'], $TMPL['out_overall'], $TMPL['pv_overall']) = $DB->fetch("SELECT in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall FROM {$CONF['sql_prefix']}_stats_overall", __FILE__, __LINE__);
+    $TMPL['in_avg'] = number_format($TMPL['in_avg']);
+    $TMPL['out_avg'] = number_format($TMPL['out_avg']);
+    $TMPL['pv_avg'] = number_format($TMPL['pv_avg']);
+    $TMPL['in_overall'] = number_format($TMPL['in_overall']);
+    $TMPL['out_overall'] = number_format($TMPL['out_overall']);
+    $TMPL['pv_overall'] = number_format($TMPL['pv_overall']);
     if ($ranking_period == 'weekly') {
       $TMPL['stats_overall_average'] = sprintf($LNG['stats_overall_average'], $LNG['a_s_weeks']);
     }

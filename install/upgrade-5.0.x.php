@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -125,7 +125,7 @@ EndHTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>Aardvark Topsites PHP 5 - <?php echo $LNG['upgrade_header']; ?></title>
+<title>Aardvark Topsites PHP 5.2 - <?php echo $LNG['upgrade_header']; ?></title>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo $LNG['charset']; ?>" />
 <link rel="stylesheet" type="text/css" media="screen" href="../skins/fusion/screen.css" />
 </head>

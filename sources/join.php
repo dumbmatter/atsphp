@@ -89,7 +89,7 @@ class join extends join_edit {
     $TMPL['categories_menu'] .= "</select>";
 
     if ($CONF['max_banner_width'] && $CONF['max_banner_height']) {
-      $TMPL['join_banner_size'] = $LNG['join_banner_size'];
+      $TMPL['join_banner_size'] = sprintf($LNG['join_banner_size'], $CONF['max_banner_width'], $CONF['max_banner_height']);
     }
     else {
       $TMPL['join_banner_size'] = '';
