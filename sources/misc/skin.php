@@ -181,11 +181,9 @@ class main_skin extends skin {
 
     // If you want to remove these links, you can; however, I would appreciate
     // it if you left them there.
-    $TMPL['powered_by'] .= '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.mydebtconsolidationadvice.com/" title="Free debt consolidation advice">Debt Consolidation</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Web Polls</a>';
+    $TMPL['powered_by'] .= version_compare($TMPL['original_version'], '5.2.0', '<') ? '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.consolidatestudentloansnow.org/">Consolidate Student Loans</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Web Polls</a>' : '<br /><a href="http://www.myballer.com/" title="Free online basketball game">Online Basketball Game</a> | <a href="http://www.mydebtconsolidationadvice.com/" title="Free debt consolidation advice">Debt Consolidation</a>  | <a href="http://www.pollverize.com/" title="Get a free remotely hosted poll">Free Web Polls</a>';
 
-    if (!isset($TMPL['content'])) {
-      $TMPL['content'] = '';
-    }
+    if (!isset($TMPL['content'])) { $TMPL['content'] = ''; }
 
     $TMPL['num_queries'] = $DB->num_queries;
     $TMPL['execution_time'] = $TIMER->get_time();

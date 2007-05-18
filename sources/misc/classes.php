@@ -129,6 +129,7 @@ class join_edit extends base {
     $error_username = 0;
     $error_username_duplicate = 0;
     $error_password = 0;
+    $error_confirm_password = 0;
     $error_url = 0;
     $error_email = 0;
     $error_title = 0;
@@ -152,6 +153,9 @@ class join_edit extends base {
       }
       if (!$FORM['password']) {
         $error_password = 1;
+      }
+      if ($FORM['password'] != $FORM['confirm_password']) {
+        $error_confirm_password = 1;
       }
       if ($CONF['captcha']) {
         list($sid) = $DB->fetch("SELECT sid FROM {$CONF['sql_prefix']}_sessions WHERE type = 'captcha' AND data LIKE '{$_SERVER['REMOTE_ADDR']}|%'", __FILE__, __LINE__);
@@ -200,7 +204,7 @@ class join_edit extends base {
       $TMPL['category'] = $cat;
     }
 
-    if ($error_username || $error_username_duplicate || $error_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha || $error_security_question) {
+    if ($error_username || $error_username_duplicate || $error_password || $error_confirm_password || $error_url || $error_email || $error_title || $error_banner_url || $error_captcha || $error_security_question) {
       if ($error_username) {
         $TMPL['error_username'] = "<br />{$LNG['join_error_username']}";
         $TMPL['error_style_username'] = 'join_edit_error';
@@ -211,6 +215,9 @@ class join_edit extends base {
       }
       $TMPL['error_password'] = "<br />{$LNG['join_error_password']}";
       $TMPL['error_style_password'] = 'join_edit_error';
+      if ($error_confirm_password) {
+        $TMPL['error_password'] = "<br />{$LNG['join_error_confirm_password']}";
+      }
       if ($error_url) {
         $TMPL['error_url'] .= "<br />{$LNG['join_error_url']}";
         $TMPL['error_style_url'] = 'join_edit_error';

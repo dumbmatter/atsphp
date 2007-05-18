@@ -44,12 +44,12 @@ into the project.
 CODERS
 ------
 
-Jeremy Scheff - http://www.aardvarktopsitesphp.com/
+Jeremy Scheff <http://www.aardvarktopsitesphp.com/>
 - Lead developer since the beginning
 - Wrote almost all of the code
 - Designed the Classic skin
 
-Matt Wells - http://www.whywontyou.co.uk/
+Matt Wells <http://www.whywontyou.co.uk/>
 - Wrote original version of feed.php, backup_database.php, and probably a few
   other things I'm forgetting
 - Optimized some of the SQL queries
@@ -59,10 +59,10 @@ Matt Wells - http://www.whywontyou.co.uk/
 DESIGNERS
 ---------
 
-Omar Hachem - http://www.squareapex.com/
+Omar Hachem <http://www.oritsuru.com/>
 - Designed the Fusion skin
 
-OS-Mark - http://www.osempire.com/
+OS-Mark <http://www.osempire.com/>
 - Improvements to the Fusion skin
 
 -----

@@ -212,9 +212,10 @@ EndHTML;
                     `last_new_day` tinyint(4) default 0,
                     `last_new_week` tinyint(4) default 0,
                     `last_new_month` tinyint(4) default 0,
-                    `version` varchar(255) default 0
+                    `version` varchar(255) default 0,
+                    `original_version` varchar(255) default 0
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password, version) VALUES ('{$admin_password}', '5.2.0')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password, version, original_version) VALUES ('{$admin_password}', '5.2.0', '5.2.0')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
                     `category` varchar(255) default '' NOT NULL,
@@ -503,7 +504,13 @@ EndHTML;
 {$LNG['install_done']}<br /><br />
 <a href="{$list_url}/">{$LNG['install_your']}</a><br />
 <a href="{$list_url}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br />
+<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br /><br />
+{$LNG['install_mailing_list']}<br /><br />
+<form action="http://www.aardvarktopsitesphp.com/mailing_list.php?a=add" method="post">
+<input type="hidden" name="i" value="0" />
+<input type="text" name="email" size="50" value="{$your_email}" />
+<input type="submit" value="{$LNG['join_header']}" />
+</form>
 EndHTML;
     }
     else {

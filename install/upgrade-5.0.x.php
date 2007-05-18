@@ -78,11 +78,13 @@ else {
 
   require_once("{$CONF['path']}/settings_sql.php");
   require_once("{$CONF['path']}/sources/sql/{$CONF['sql']}.php");
-  $DB = new sql;
+  $DB = "sql_{$CONF['sql']}";
+  $DB = new $DB;
 
   if ($DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);
 
+    // 5.0
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
                   `id` int(10) unsigned NOT NULL,
                   `word` varchar(255),
@@ -90,14 +92,12 @@ else {
                   `matching` tinyint(1),
                   PRIMARY KEY  (`id`)
                 )", __FILE__, __LINE__);
-
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_custom_pages` (
                   `id` varchar(255) default '' NOT NULL,
                   `title` varchar(255) default '',
                   `content` text,
                   PRIMARY KEY  (`id`)
                 )", __FILE__, __LINE__);
-
     $DB->query("TRUNCATE TABLE {$CONF['sql_prefix']}_ip_log", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log DROP INDEX ip_address", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_ip_log DROP INDEX username", __FILE__, __LINE__);
@@ -108,13 +108,53 @@ else {
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD email_admin_on_review tinyint(1) default 0 AFTER email_admin_on_join", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD google_friendly_links tinyint(1) default 1 AFTER button_num", __FILE__, __LINE__);
 
+    // 5.1
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL", __FILE__, __LINE__);
+    $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ban` (
+                  `id` int(10) unsigned NOT NULL,
+                  `string` varchar(255) NOT NULL,
+                  `field` varchar(255) NOT NULL,
+                  `matching` tinyint(1) NOT NULL,
+                  PRIMARY KEY  (`id`)
+                )", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_settings` ADD `fill_blank_rows` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `ad_breaks`", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_etc` ADD `version` VARCHAR( 255 ) NOT NULL", __FILE__, __LINE__);
+    $DB->query("UPDATE {$CONF['sql_prefix']}_etc SET version = '5.2.0'", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `openid`", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_settings` ADD `security_question` TEXT AFTER `captcha`", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_settings` ADD `security_answer` VARCHAR(255) AFTER `security_question`", __FILE__, __LINE__);
+    $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sites_edited` (
+                  `username` varchar(255) default '' NOT NULL,
+                  `url` varchar(255) default '',
+                  `title` varchar(255) default '',
+                  PRIMARY KEY  (`username`)
+                )", __FILE__, __LINE__);
+    $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats_overall` (
+                  `in_avg` bigint(20) unsigned default 0,
+                  `out_avg` bigint(20) unsigned default 0,
+                  `pv_avg` bigint(20) unsigned default 0,
+                  `in_overall` bigint(20) unsigned default 0,
+                  `out_overall` bigint(20) unsigned default 0,
+                  `pv_overall` bigint(20) unsigned default 0
+                )", __FILE__, __LINE__);
+    $DB->query("INSERT INTO `{$CONF['sql_prefix']}_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0)", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_settings` CHANGE `active_default` `active_default` tinyint(1) default 0", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL", __FILE__, __LINE__);
+    $DB->query("UPDATE {$CONF['sql_prefix']}_etc SET original_version = '5.0'", __FILE__, __LINE__);
+
     list($TMPL['list_url']) = $DB->fetch("SELECT list_url FROM {$CONF['sql_prefix']}_settings", __FILE__, __LINE__);
 
     $TMPL['content'] = <<<EndHTML
 {$LNG['upgrade_done']}<br /><br />
 <a href="{$TMPL['list_url']}/">{$LNG['install_your']}</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br />
+<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br /><br />
+{$LNG['install_mailing_list']}<br /><br />
+<form action="http://www.aardvarktopsitesphp.com/mailing_list.php?a=add" method="post">
+<input type="hidden" name="i" value="0" />
+<input type="text" name="email" size="50" />
+<input type="submit" value="{$LNG['join_header']}" />
+</form>
 EndHTML;
   }
   else {

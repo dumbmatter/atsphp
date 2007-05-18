@@ -24,7 +24,7 @@ $TMPL = array();
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.2.0 Beta';
+$TMPL['version'] = '5.2.0 RC1';
 // Set to 1 to display SQL queries and GET/POST/COOKIE data
 $CONF['debug'] = 0;
 
@@ -83,7 +83,7 @@ if (!is_dir("{$CONF['path']}/skins/{$CONF['default_skin']}/")) {
 require_once("{$CONF['path']}/sources/misc/skin.php");
 
 // Is it a new day/week/month?
-list($last_new_day, $last_new_week, $last_new_month) = $DB->fetch("SELECT last_new_day, last_new_week, last_new_month FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
+list($last_new_day, $last_new_week, $last_new_month, $TMPL['original_version']) = $DB->fetch("SELECT last_new_day, last_new_week, last_new_month, original_version FROM {$CONF['sql_prefix']}_etc", __FILE__, __LINE__);
 $time = time() + (3600*$CONF['time_offset']);
 $current_day = date('d', $time);
 $current_week = date('W', $time);

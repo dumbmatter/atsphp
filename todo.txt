@@ -44,6 +44,7 @@ By default, new members must be approved by the admin before they are listed
 By default, changes to the title or URL of a site must be approved by the admin
 New skin file table_wrapper.html to easily display things only on ranking pages
 Overall stats displayed on the main page
+Password confirmation on the join page to prevent typos
 
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
@@ -77,6 +78,8 @@ CREATE TABLE `ats_stats_overall` (
 INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
 ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) default 0;
 ----------- toptopsites.com has all above
+ALTER TABLE `ats_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL;
+UPDATE ats_etc SET original_version = '5.2.0';
 
 
 -----
@@ -84,14 +87,9 @@ ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) d
 -----
 ETA: Summer
 HIGH PRIORITY:
-upgraders
 classic skin
-after install get email addresses with form
-- ask for them to be added to the mailing list for updates
-- also say that they may be asked for feedback
 credits.txt
 - translators
-csln?
 ------------
 LOW PRIORITY:
 backlink checker
@@ -112,6 +110,7 @@ combine upgraders into one big file
 dash instead of space in category_url
 double quotes in search = phrase
 search on manage members page
+cache list of valid usernames in a plain text file to avoid connecting to db to check for valid members
 
 -----
 5.3.0
@@ -124,8 +123,6 @@ review admin ui
 - instant refresh back to previous page after form submits
 caching
 - rankings.php
-- button.php
-  - store rank cache in a file to avoid connecting to database
 ------------
 LOW PRIORITY:
 custom form fields, auto-generated forms
@@ -179,6 +176,7 @@ TRANSLATION STATUS
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table
 security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+skin upgrade instructions on separate page
 
 THINGS TO DO ON RELEASE
   increment version in index.php

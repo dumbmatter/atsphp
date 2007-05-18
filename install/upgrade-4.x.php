@@ -86,7 +86,8 @@ else {
   require_once("{$CONF['path']}/config.php");
 
   require_once("{$CONF['path']}/sources/sql/{$CONFIG['sql']}.php");
-  $DB = new sql;
+  $DB = "sql_{$CONFIG['sql']}";
+  $DB = new $DB;
 
   if ($DB->connect($CONFIG['sql_host'], $CONFIG['sql_user'], $CONFIG['sql_pass'], $CONFIG['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);
@@ -139,7 +140,8 @@ EndHTML;
                     `featured_member` tinyint(1) default 0,
                     `top_skin_num` int(5) default 2,
                     `ad_breaks` varchar(255) default '',
-                    `active_default` tinyint(1) default 1,
+                    `fill_blank_rows` tinyint(1) default 1,
+                    `active_default` tinyint(1) default 0,
                     `active_default_review` tinyint(1) default 1,
                     `delete_after` int(5) default 14,
                     `email_admin_on_join` tinyint(1) default 0,
@@ -156,7 +158,9 @@ EndHTML;
                     `search` tinyint(1) default 1,
                     `time_offset` int(2) default 0,
                     `gateway` tinyint(1) default 1,
-                    `captcha` tinyint(1) default 1
+                    `captcha` tinyint(1) default 1,
+                    `security_question` text,
+                    `security_answer` varchar(255)
                   )", __FILE__, __LINE__);
       $DB->query("INSERT INTO {$CONF['sql_prefix']}_settings (list_name, list_url, default_language, your_email, num_list, ranking_period, ranking_method, featured_member, top_skin_num, active_default, delete_after, email_admin_on_join, max_banner_width, max_banner_height, default_banner, ranks_on_buttons, button_url, button_dir, button_ext, button_num, search, time_offset, gateway, captcha)
                   VALUES ('{$TMPL['list_name']}', '{$TMPL['list_url']}', '{$default_language}', '{$CONFIG['youremail']}', '{$CONFIG['numlist']}', '{$ranking_period}', '{$ranking_method}', '{$CONFIG['featured']}', '{$CONFIG['top']}', '{$CONFIG['active_default']}', '{$CONFIG['delete_after']}', '{$CONFIG['email_admin_on_join']}', '{$CONFIG['max_banner_width']}', '{$CONFIG['max_banner_height']}', '{$CONFIG['defbanner']}', '{$CONFIG['ranks_on_buttons']}', '{$CONFIG['button_url']}', '{$CONFIG['button_dir']}', '{$CONFIG['button_ext']}', '{$CONFIG['button_num']}', '{$CONFIG['search']}', '{$CONFIG['timeoffset']}', '{$CONFIG['gateway']}', '{$CONFIG['captcha']}')", __FILE__, __LINE__);
@@ -166,6 +170,14 @@ EndHTML;
                     `word` varchar(255),
                     `replacement` varchar(255),
                     `matching` tinyint(1),
+                    PRIMARY KEY  (`id`)
+                  )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ban` (
+                    `id` int(10) unsigned NOT NULL,
+                    `string` varchar(255) NOT NULL,
+                    `field` varchar(255) NOT NULL,
+                    `matching` tinyint(1) NOT NULL,
                     PRIMARY KEY  (`id`)
                   )", __FILE__, __LINE__);
 
@@ -182,9 +194,11 @@ EndHTML;
                     `admin_password` varchar(32) default '',
                     `last_new_day` tinyint(4) default 0,
                     `last_new_week` tinyint(4) default 0,
-                    `last_new_month` tinyint(4) default 0
+                    `last_new_month` tinyint(4) default 0,
+                    `version` varchar(255) default 0,
+                    `original_version` varchar(255) default 0
                   )", __FILE__, __LINE__);
-      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password) VALUES ('{$admin_password}')", __FILE__, __LINE__);
+      $DB->query("INSERT INTO {$CONF['sql_prefix']}_etc (admin_password, version, original_version) VALUES ('{$admin_password}', '5.2.0', '4')", __FILE__, __LINE__);
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_categories` (
                     `category` varchar(255) default '' NOT NULL,
@@ -196,7 +210,7 @@ EndHTML;
       }
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
-                    `ip_address` varchar(32) default '' NOT NULL,
+                    `ip_address` varchar(245) default '' NOT NULL,
                     `username` varchar(255) default '' NOT NULL,
                     `unq_pv` tinyint(1) default 0,
                     `unq_in` tinyint(1) default 0,
@@ -233,8 +247,16 @@ EndHTML;
                     `join_date` date default '0000-00-00',
                     `active` tinyint(1) default 1,
                     `openid` tinyint(1) default 0,
+                    `user_ip` varchar(255) default '',
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
+
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_sites_edited` (
+                    `username` varchar(255) default '' NOT NULL,
+                    `url` varchar(255) default '',
+                    `title` varchar(255) default '',
+                    PRIMARY KEY  (`username`)
+                  );", __FILE__, __LINE__);
 
       $DB->query("DROP TABLE {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats` (
@@ -452,6 +474,16 @@ EndHTML;
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
+      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats_overall` (
+                    `in_avg` bigint(20) unsigned default 0,
+                    `out_avg` bigint(20) unsigned default 0,
+                    `pv_avg` bigint(20) unsigned default 0,
+                    `in_overall` bigint(20) unsigned default 0,
+                    `out_overall` bigint(20) unsigned default 0,
+                    `pv_overall` bigint(20) unsigned default 0
+                  );", __FILE__, __LINE__);
+      $DB->query("INSERT INTO `{$CONF['sql_prefix']}_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);", __FILE__, __LINE__);
+
       require_once("{$CONF['path']}/sources/misc/classes.php");
       require_once("{$CONF['path']}/sources/in.php");
       $result = $DB->query("SELECT id, password, url, title, description, category, urlbanner, email, total_ratings, num_ratings, jointime, active FROM {$CONF['sql_prefix']}_members", __FILE__, __LINE__);
@@ -479,7 +511,13 @@ EndHTML;
 {$LNG['upgrade_done']}<br /><br />
 <a href="{$TMPL['list_url']}/">{$LNG['install_your']}</a><br />
 <a href="{$TMPL['list_url']}/index.php?a=admin">{$LNG['install_admin']}</a><br />
-<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br />
+<a href="http://www.aardvarktopsitesphp.com/manual/">{$LNG['install_manual']}</a><br /><br />
+{$LNG['install_mailing_list']}<br /><br />
+<form action="http://www.aardvarktopsitesphp.com/mailing_list.php?a=add" method="post">
+<input type="hidden" name="i" value="0" />
+<input type="text" name="email" size="50" />
+<input type="submit" value="{$LNG['join_header']}" />
+</form>
 EndHTML;
     }
     else {

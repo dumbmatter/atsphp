@@ -253,6 +253,7 @@ class rankings extends base {
       $TMPL['stats_overall_average'] = sprintf($LNG['stats_overall_average'], $LNG['a_s_days']);
     }
 
+    if (!isset($TMPL['content'])) { $TMPL['content'] = ''; }
     $TMPL['content'] = $this->do_skin('table_wrapper');
   }
 }
