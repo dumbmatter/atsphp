@@ -1,3 +1,5 @@
+<p class="{$error_style_top}" style="margin-top: 0px;">{$error_top}</p>
+
 <form action="index.php?a=user_cpl&amp;b=edit" method="post">
 <fieldset>
 <legend>{$lng->join_website}</legend>
@@ -15,7 +17,7 @@
 <label>{$lng->g_category}<br />
 {$categories_menu}<br /><br />
 </label>
-<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url}<br />
+<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url} {$join_banner_size}<br />
 <input type="text" name="banner_url" size="50" value="{$banner_url}" />
 {$error_banner_url}
 </label></div><br />

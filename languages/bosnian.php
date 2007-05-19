@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Pogresna Lozinka. Pokusaj Te Ponovo."; // 5.0
 $LNG['g_session_expired'] = "Posjeta Iztekla. Pokusaj Te Ponovo."; // 5.0
 $LNG['g_error'] = "Greska"; // 5.0
 $LNG['g_delete_install'] = "Za sigurnost, mora te izbrisati direktoru instalacije prije nego sto pokrenete skriptu."; // 5.0
+$LNG['g_ip'] = "IP Adresa"; // 5.2.0
 
 // Izmjeni Akaunt
 $LNG['edit_header'] = "Izmjeni Akaunt";
 $LNG['edit_info_edited'] = "Akaunt Promjenjen.";
 $LNG['edit_password_blank'] = "Ostavite Prazno za istu lozinku"; // 4.0
+$LNG['edit_delay'] = "Upisite naziv vaseg sajta i URL koji ce se morati odobriti sa strane administratora prije promjena."; // 5.2.0
 
 // Gejtvej Stranica
 $LNG['gateway_header'] = "Aarkdvark Top Sajt Gejtvej Stranica";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Dobro Dosli na Aardvark Topsites PHP 5.  Prije Apgrej
 $LNG['upgrade_version'] = "Provjerite dali radite apgrejd sa verzije %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Apgrejd moze samo za Aardvark Topsites PHP 4.1.0 ili vece.";
 $LNG['upgrade_done'] = "Apgrejd je uspjesan. Izbrisite ovu direktoru odma.";
+$LNG['install_mailing_list'] = "Ako se zelite uclaniti da dobijate novine od Aardvark Topsites PHP Mailing Liste, upisite vas email ispod.  Dobivacete rijetke novine koje izvaljuju nove verizije skripte i pronadjeni rupa u sigurnosti."; // 5.2.0
 
 // Posalji Sajt
 $LNG['join_header'] = "Posalji Link";
 $LNG['join_enter_text'] = "Ukucaj slova ko na sliki ispod:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Nemozete Procitati?"; // 5.2.0
 $LNG['join_user'] = "Korisnik"; // 5.0
 $LNG['join_website'] = "Web Stranica"; // 5.0
+$LNG['join_banner_size'] = "(Maximalna Velcina: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Ukucajte Korisnicko Ime. Koristite Slova, Brojeve i _ , - ."; // 5.0
 $LNG['join_error_username_duplicate'] = "Korisnicko ime je zauzeto."; // 5.0
 $LNG['join_error_url'] = "Ukucaj URL.";
 $LNG['join_error_email'] = "Ukucajte Tacnu email adresu.";
 $LNG['join_error_title'] = "Ukucajte glavi naslov za vasu stranicu.";
 $LNG['join_error_password'] = "Ukucajte Lozinku.";
-$LNG['join_error_urlbanner'] = "Ukucajte URL za vas Baner. Ako ga nemate ostavite prazno.  Mora biti manje od"; // 4.0
+$LNG['join_error_confirm_password'] = "Lozinke se neslazu."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Ukucajte validni Baner.  Ostavite prazno ako nemate Baner-a."; // 5.2.0
 $LNG['join_error_time'] = "Nemojte unovljivati ovu konfirmaciju [ F5 ]."; // 4.2.0
 $LNG['join_error_captcha'] = "Rijec koju ste ukucali se neslaze sa slikom."; // 4.2.2
+$LNG['join_error_question'] = "Odgovor Netacan.  Molimo vas popravite gresku za konfirmaciju da ste prava osoba a ne bot."; // 5.2.0
 $LNG['join_thanks'] = "Hvala sto ste se Registrovali!  Da bi se pocelo glasati stavite ovaj Kod na vasu stranicu.";
 $LNG['join_change_warning'] = "Ako promjenite Kod, Glasanje nece biti ispravno.";
 $LNG['join_welcome'] = "Dobro Dosli na %s";
 $LNG['join_welcome_admin'] = "Novi Korisnik je se registrovo za vasu Top Listu.";
-$LNG['join_approve'] = "Vas sajt ce biti spreman za glasanje kad admin odobri."; // 5.1.0
+$LNG['join_approve'] = "Hvala sto ste se uclanili!  Vas sajt ce biti postavljen na listi kad admin odobri. Dobicete email sa vise informacije kad vam admin odobri sajt."; // 5.2.0
 $LNG['join_type'] = "Vrsta Akaunta"; // 5.1.0
 $LNG['join_standard'] = "Obicno"; // 5.1.0
+$LNG['join_error_top'] = "Greska Pronadjena u vasim podacima, molimo vas popravite gresku ispod."; // 5.2.0
+$LNG['join_ban_top'] = "Vasi podaci imaju kontent koji je zabranjen sa strane toplist admina."; // 5.2.0
+$LNG['join_security'] = "Sigurnost"; // 5.2.0
+$LNG['join_confirm_password'] = "Potvrsi Lozinku"; // 5.2.0
 
 // Link Kod
 $LNG['link_code_header'] = "Link Kod"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Promjene";
 $LNG['table_up'] = "Gore"; // 5.0
 $LNG['table_down'] = "Dolje"; // 5.0
 $LNG['table_neutral'] = "Isto"; // 5.0
+$LNG['table_your_site_here'] = "Vas Sajt Ovde"; // 5.2.0
 
 // Ocjene i Revizije
 $LNG['rate_header'] = "Ocjene i Revizije";
+$LNG['rate_message'] = "Upisite vasu ocjenu i recenziju za %s u formi ispod."; // 5.2.0
 $LNG['rate_rating'] = "Ocjene";
 $LNG['rate_review'] = "Revizije - HTML Zabranjen"; // 5.0
 $LNG['rate_thanks'] = "Hvala za Ocjenu.";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Revizije";
 $LNG['stats_allreviews'] = "Pokazi sve Revizije"; // 4.0
 $LNG['stats_week'] = "Sedmica"; // 5.0
 $LNG['stats_highest'] = "Naj Vece"; // 5.0
+$LNG['stats_overall'] = "Ukupno Statistika"; // 5.2.0
+$LNG['stats_overall_average'] = "Prosjek (Zadnji 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Total (svi vremena)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sajt"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Morate se uclaniti za top listu prije nego 
 $LNG['user_cp_openid_error_general'] = "Greska logiranja. Pokusajte ponovo."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Morate dati odobrenje prije ulaza. Pokusajte Ponovo."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Greska od servera: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Nemozete izmjeniti akaunt dok vam se sajt neodobri.  Dobicete email kad vam se sajt odobri."; // 5.2.0
 
 // Admin > Odobri nove Korisnike // 4.0
 $LNG['a_approve_header'] = "Odobri nove Sajtove"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "Sajt je odobren."; // 4.0
 $LNG['a_approve_dones'] = "Sajtovi su odobreni."; // 4.0
 $LNG['a_approve_sel'] = "Sa izabranim:"; // 5.0
 
+// Admin > Odobri Izmjenjene Korisnike // 5.2.0
+$LNG['a_approve_edited_header'] = "Odobri Izmjene Korisnike"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Nema novi izmjena za odobrenje."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Posledni Naziv i URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Izmjeni Naziv i URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Neodobri"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Izmjene su odobrene."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Izmjene nisu odobrene."; // 5.2.0
+
 // Admin > Odobri Nove Revizije // 5.0
 $LNG['a_approve_rev_header'] = "Odobri nove revizije"; // 5.0
 $LNG['a_approve_rev_none'] = "Nema revizija na cekanju za odobrenje."; // 5.0
 $LNG['a_approve_rev_done'] = "Revizija odobrena."; // 5.0
 $LNG['a_approve_rev_dones'] = "Revizije Odobrene."; // 5.0
+
+// Admin > Backup Dejtabazu // 5.2.0
+$LNG['a_backup_header'] = "Backup Dejtabazu"; // 5.2.0
+$LNG['a_backup_warn'] = "Ovo ce napraviti Backup bazu za vase korisnike, statistike i opcije.  Ako imate puno korisnika, moze trajati duze i fajl za bazu ce biti veci."; // 5.2.0
 
 // Admin > Napravi Licnu Stranu // 5.1.0
 $LNG['a_create_page_header'] = "Napravi svoju stranicu"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "Filtrirana rijeci su izbrisane."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Jesteli sigurni da zelite da izbrisete %s sa filtrirane liste rijeci?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "ove %s rijeci"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Greska u Rijeci. Pokusajte Ponovo."; // 5.1.0
+
+// Admin > Izbrisi Zabranjeno // 5.2.0
+$LNG['a_del_ban_header'] = "Izbrisi Podatak sa Crne Liste"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Izbrisi Podatke sa Crne Liste"; // 5.2.0
+$LNG['a_del_ban_done'] = "Podatak sa Crne Listi je izbrisan."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Podatki sa Crne Liste su izbrisani."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Jesteli sigurni da zelite da izbrisete %s sa Crne Liste?"; //5.2.0
+$LNG['a_del_ban_multi'] = "ove %s podatke"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "ID Nepostoji na Crnoj Listi.  Molimo vas pokusajte ponovo."; // 5.2.0
 
 // Admin > Izbrisi Licnu Stranu // 5.1.0
 $LNG['a_del_page_header'] = "Izbrisi licnu stranicu"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "Sajt izmjenjen.";
 $LNG['a_edit_bad_word_header'] = "Izmjeni Filtrirane Rijeci"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Filtrirana rijec Izmjenjena."; // 5.1.0
 
+// Admin > Izmjeni Zabranjeno // 5.2.0
+$LNG['a_edit_ban_header'] = "Izmjeni Podatak na Crnoj Listi"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Crna Lista je izmjenjena."; // 5.2.0
+
 // Admin > Izmjeni Licnu Stranu // 5.1.0
 $LNG['a_edit_page_header'] = "Izmjeni Personal Stranicu"; // 5.1.0
 $LNG['a_edit_page_content'] = "Obsirnije. HTML Dozvoljen"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Admin"; // 5.0
 $LNG['a_main'] = "Dobro Dosli na administraciju.  Koristite Linkove lijevo za uredjivanje Top Liste."; // 5.0
 $LNG['a_main_approve'] = "1 Sajt ceka odobrenje."; // 5.0
 $LNG['a_main_approves'] = "Imate %s Na listi cekanja."; // 5.0
+$LNG['a_main_approve_edit'] = "Ima 1 izmjenjeni sajt koji ceka odobrenje."; // 5.2.0
+$LNG['a_main_approve_edits'] = "Imaju %s Izmjenjeni sajtova koji cekaju odobrenje."; // 5.2.0
 $LNG['a_main_approve_rev'] = "1 Revizija ceka odobrenje."; // 5.0
 $LNG['a_main_approve_revs'] = "Imate %s Revizija na Cekanju."; // 5.0
 $LNG['a_main_your'] = "Vasa Verzija"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Globalno"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filtriraj Rijec"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" Je sad filtrirana rijec."; // 5.1.0
 
+// Admin > Odrzavanje Zabranjenog // 5.2.0
+$LNG['a_man_ban_header'] = "Crna Lista"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Ako zelite da zabranite nekome ulaz na top sajt listu, ispunite formu ispod.  Kad se korisnik prijavi, URL, Email adresa, Korisnicko ime i IP adresa se provjeravaju.  Kad se sajt izmjeni, URL i email adresa se provjeravaju.<br /><br />Crna Lista nema efekta na trenutne korisnike."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Ista rijec ce samo izmjeniti isti konac rijeci.  Globalna izmjena ce zamjeniti sve sa istim koncom.  Znaci, Globalna Izmjena za http://www.yahoo.com/ ce izmjeniti sve sa http://www.yahoo.com/ u URL-u, dok ista izmjena za http://www.yahoo.com/ ce samo izmjeniti isti URL."; // 5.1.0
+$LNG['a_man_ban_string'] = "Konac"; // 5.2.0
+$LNG['a_man_ban_field'] = "Polje"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" Je dodano na Crnu Listu."; // 5.2.0
+
 // Admin > Uredzivanje licni strana // 5.1.0
 $LNG['a_man_pages_header'] = "Uredjivanje licni stranica"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Datum"; // 5.0
 $LNG['a_menu'] = "Menju";
 $LNG['a_menu_main'] = "Pocetna"; // 5.0
 $LNG['a_menu_approve'] = "Odobri Nove Sajtove";
+$LNG['a_menu_approve_edits'] = "Odobri izmenjene Korisnike"; // 5.2.0
 $LNG['a_menu_manage'] = "Uredjivanje Sajtova"; // 4.2.0
 $LNG['a_menu_settings'] = "Izmjena Opcija"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Filter Rijeci"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Crna Lista"; // 5.2.0
+$LNG['a_menu_backup'] = "Backup Dejtabazu"; // 5.2.0
 $LNG['a_menu_skins'] = "Izgled i Kategorije"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Odobri nove Revizije"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Uredjivanje Revizija"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Napravi Privatnu Stranicu"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Uredzivanje Privatni Stranica"; // 5.1.0
 $LNG['a_header_members'] = "Clanovi"; // 5.0
 $LNG['a_header_settings'] = "Opcije"; // 5.0
+$LNG['a_header_tools'] = "Opcije"; // 5.2.0
 $LNG['a_header_reviews'] = "Revizije"; // 5.0
 $LNG['a_header_pages'] = "Privatne Stranice"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Ocjene po Prosjeku ili %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Izabrani Sajt - Dodaj  {$featured_member} u wrapper.html kad ovu aktivirate.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Broj sajtova da koriste _top izgled za";
 $LNG['a_s_ad_breaks'] = "Prikazi Reklame posle (Koma izmedju izbora) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "U prazna polja upisi \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Opcije za Korisnike";
 $LNG['a_s_active_default'] = "Novim Clanovima je potrebno odobrenje prije aktivacije";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Ako Ja - Extenzija dugmadi (gif, png, jpg, itd.)"; // 
 $LNG['a_s_button_num'] = "Ako Ja - Koliko ste dugmadi napravili"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Prijateljski Linkovi - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Gejtvej Stranica protiv Varanja";
+$LNG['a_s_captcha'] = "Veca sigurnost za Uclanjenje (protiv spamera) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Sigurno pitanje i odgovor protiv spamer-a (ostavi prazno ako nezelite ovu opciju) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Ostale Opcije";
 $LNG['a_s_search'] = "Pretraga";
 $LNG['a_s_time_offset'] = "Vrijeme vaseg Servera (u sahatima)";
-$LNG['a_s_gateway'] = "Gejtvej Stranica protiv Varanja";
-$LNG['a_s_captcha'] = "Veca sigurnost za Uclanjenje (protiv spamera) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Ja";
 $LNG['a_s_off'] = "Ne";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Mjeseci";
 $LNG['a_s_weeks'] = "Sedmica"; // 4.2.0
 $LNG['a_s_yes'] = "Ja";
 $LNG['a_s_no'] = "Ne";
+$LNG['a_s_answer'] = "Odgovor"; // 5.2.0
 
 $LNG['a_s_updated'] = "Promjene Uspjesno spasene.";
 

@@ -139,9 +139,9 @@ class join_edit extends base {
 
     // Filter the URL using a regex I found here: http://www.manamplified.org/archives/000318.html
     preg_match('/[A-Za-z][A-Za-z0-9+.-]{1,120}:[A-Za-z0-9\/](([A-Za-z0-9$_.+!*,;\/?:@&~=-])|%[A-Fa-f0-9]{2}){1,333}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*,;\/?:@&~=%-]{0,1000}))?/', $TMPL['url'], $matches);
-    $TMPL['url'] = $matches[0];
+    $TMPL['url'] = isset($matches[0]) ? $matches[0] : $TMPL['url'];
     preg_match('/[A-Za-z][A-Za-z0-9+.-]{1,120}:[A-Za-z0-9\/](([A-Za-z0-9$_.+!*,;\/?:@&~=-])|%[A-Fa-f0-9]{2}){1,333}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*,;\/?:@&~=%-]{0,1000}))?/', $TMPL['banner_url'], $matches);
-    $TMPL['banner_url'] = $matches[0];
+    $TMPL['banner_url'] = isset($matches[0]) ? $matches[0] : $TMPL['banner_url'];
 
     if ($type == 'join') {
       if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $FORM['u'])) {

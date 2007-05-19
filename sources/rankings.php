@@ -98,8 +98,7 @@ class rankings extends base {
         $TMPL_original['content'] = $TMPL['content'];
         $TMPL_original['alt'] = $TMPL['alt'];
         $TMPL_original['rank'] = $TMPL['rank'];
-        $TMPL = $TMPL_original;
-        $TMPL = array_merge($TMPL, $row);
+        $TMPL = array_merge($TMPL_original, $row);
 
         $TMPL['category_url'] = urlencode($TMPL['category']);
 

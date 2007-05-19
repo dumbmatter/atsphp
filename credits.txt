@@ -51,7 +51,7 @@ Jeremy Scheff <http://www.aardvarktopsitesphp.com/>
 
 Matt Wells <http://www.whywontyou.co.uk/>
 - Wrote original version of feed.php, backup_database.php, and probably a few
-  other things I'm forgetting
+  other things that I'm forgetting
 - Optimized some of the SQL queries
 - Helped with the Fusion skin
 
@@ -65,11 +65,33 @@ Omar Hachem <http://www.oritsuru.com/>
 OS-Mark <http://www.osempire.com/>
 - Improvements to the Fusion skin
 
+-----------
+TRANSLATORS
+-----------
+
+Bosnian (Bosanski)
+- Hame <http://www.PortalBiH.com/>
+
+Czech (Česky)
+- Robert Adamek <http://www.ultima.cz/>
+
+Danish (Dansk)
+- Helmuth Mikkelsen <http://www.helmuth.dk/>
+
+Finnish (Suomi)
+- Pekka Pelkonen <http://www.paimiowoodland.net/>
+
+French (Francais)
+- Kamisama <http://kamidesign.thegreatspirit.net/>
+
+German (Deutsch)
+- Michael Schiecke (Speedmike) <http://www.speedmike.de/>
+
 -----
 OTHER
 -----
 
-captcha.php is based on hn_captcha 1.3 by Horst Nogajski:
+captcha.php is based on HN Captcha 1.3 by Horst Nogajski:
 http://hn273.users.phpclasses.org/browse/package/1569.html
 
 The captcha uses several GPL and public domain fonts:

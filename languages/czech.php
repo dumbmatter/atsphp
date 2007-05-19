@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -25,7 +25,7 @@ if (!defined('ATSPHP')) {
 $translation = 'Czech (Česky)';
 $translator_name = 'Robert Adamek';
 $translator_email = 'admin@ultima.cz';
-$translator_url = 'http://www.ultima.cz';
+$translator_url = 'http://www.ultima.cz/';
 
 // Set this to the character encoding of your translation
 $LNG['charset'] = "utf-8";
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Chybné heslo. Zkuste to znovu"; // 5.0
 $LNG['g_session_expired'] = "Byl jste odhláen.  Pøihlate se znovu."; // 5.0
 $LNG['g_error'] = "Error"; // 5.0
 $LNG['g_delete_install'] = "Z bezpeønostních dùvodù musíte nejprve smazat adresáø /install z vaeho FTP."; // 5.0
+$LNG['g_ip'] = "IP Addresa"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Upravit úèet";
 $LNG['edit_info_edited'] = "Úèet byl upraven.";
 $LNG['edit_password_blank'] = "Zanechte tuto poloku prázdnou pokud chcete ponechat stávající heslo"; // 4.0
+$LNG['edit_delay'] = "Zmìny v názvu a URL musí být schváleny administrátorem, do té doby nebude vá odkaz zobrazován."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Vstupní brána";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Vítejte v Aardvark Topsites PHP 5.  Døíve ne pø
 $LNG['upgrade_version'] = "Ujistìte se prosím, že jste upgradovali na verzi %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Aktualizace je moná pouze Aardvark Topsites PHP 4.1.0 a vyí.";
 $LNG['upgrade_done'] = "Aktualizoval jsem systém, nyní smate adresáø /upgrade";
+$LNG['install_mailing_list'] = "Pokud se chcete zaøadit do Aardvark Topsites PHP mailing list, vlote svou mailovou adresu.  Jedná se o informaèní systém pomocí kterého budete informováni o dùleitých aktualizacích skriptù a nových verzích."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Registrace";
 $LNG['join_enter_text'] = "Opite kód z obrázku:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Nelze pøeèíst?"; // 5.2.0
 $LNG['join_user'] = "Uivatel"; // 5.0
 $LNG['join_website'] = "Stránka"; // 5.0
+$LNG['join_banner_size'] = "(Maximální velikost: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Vlote jiné uivatelské jméno: pouijte pouze písmena, èíslice, podlomítka a nadlomítka."; // 5.0
 $LNG['join_error_username_duplicate'] = "Vlote jiné uivatelské jméno: to které jste vbrali u vlastní jiný uivatel."; // 5.0
 $LNG['join_error_url'] = "Vlote správnou URL (pøíklad: http://www.ultima.cz).";
 $LNG['join_error_email'] = "Vlote správnou emailovou adresu.";
 $LNG['join_error_title'] = "Vlote název vaí stránky.";
 $LNG['join_error_password'] = "Vlote heslo.";
-$LNG['join_error_urlbanner'] = "Vlote správný banner.  Pokud banner nemáte, ponechte kolonku prázdnou.  Musí mít rozmìry 468x60. Banner bude zobrazován podle návtìvnosti pouze prvním tøem."; // 4.0
+$LNG['join_error_confirm_password'] = "Heslo nesouhlasí."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Vlote správný banner.  Ponechte prázdné pokud jej nemáte."; // 5.2.0
 $LNG['join_error_time'] = "Neaktualizujte registraèní stránku."; // 4.2.0
 $LNG['join_error_captcha'] = "Znaky které jste vloili nesouhlasí se znaky na obrázku."; // 4.2.2
+$LNG['join_error_question'] = "Vae odpovìï není správná.  Prosím potvrïte e jste reálná osoba a ne robot."; // 5.2.0
 $LNG['join_thanks'] = "Dìkujeme za registraci. Nyní do svých stránek vlote tento kód.";
 $LNG['join_change_warning'] = "Pokud kód pozmìníte, nebude funkèní.";
 $LNG['join_welcome'] = "Vítejte v %s";
 $LNG['join_welcome_admin'] = "Nový uivatel se zaregistroval.";
-$LNG['join_approve'] = "Váš odkaz bude pøidán ve chvíli kd ho provìøí administrátor."; // 5.1.0
+$LNG['join_approve'] = "Dìkujeme za registraci!  Vae stránka byla pøedána k ovìøení administrátorem.  Jakmile bude stránka ovìøena, bude vám zaslán informaèní email."; // 5.2.0
 $LNG['join_type'] = "Typ úètu"; // 5.1.0
 $LNG['join_standard'] = "Standardní"; // 5.1.0
+$LNG['join_error_top'] = "Vyskytla se chyba pøi odeslání."; // 5.2.0
+$LNG['join_ban_top'] = "Vá obsah bylù zabanován administrátorem."; // 5.2.0
+$LNG['join_security'] = "Bezpeènost"; // 5.2.0
+$LNG['join_confirm_password'] = "Potvrzení hesla"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Kód odkazu"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Status";
 $LNG['table_up'] = "Nahoru"; // 5.0
 $LNG['table_down'] = "Dolù"; // 5.0
 $LNG['table_neutral'] = "Stálý"; // 5.0
+$LNG['table_your_site_here'] = "Vae stránka"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Hodnocení nebo komentáø";
+$LNG['rate_message'] = "Mùete zaslat své hodnocení a komentáø k %s pomocí formuláøe dole."; // 5.2.0
 $LNG['rate_rating'] = "Hodnocení";
 $LNG['rate_review'] = "Komentáø - HTML není povoleno"; // 5.0
 $LNG['rate_thanks'] = "Dìkujeme vám za hodnocení.";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Komentáøe";
 $LNG['stats_allreviews'] = "Zobrazit vechny komentáøe"; // 4.0
 $LNG['stats_week'] = "Týden"; // 5.0
 $LNG['stats_highest'] = "Nejví"; // 5.0
+$LNG['stats_overall'] = "Celkové statistiky"; // 5.2.0
+$LNG['stats_overall_average'] = "Prùmìr (Posledních 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Celkem (Celé období)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Stránek"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Musíte být pøihlášen, aby jste mohl zo
 $LNG['user_cp_openid_error_general'] = "Chyba pøi pøihlašování, zkuste to znovu."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Musíte mít kompletní pøístup do nastavení. Zkuste zo znovu.."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Chyba serveru: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Nelze se pøihlásit do systému dokud nebude vae stránka porvrzena administrátorem.  Jakmile bude stránka ovìøena, bude vám zaslán informaèní email. "; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Potvrzení uivatelù"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "Nový uivatel byl potvrzen."; // 4.0
 $LNG['a_approve_dones'] = "Noví uivatelé byli potvrzeni."; // 4.0
 $LNG['a_approve_sel'] = "Vybrané:"; // 5.0
 
+// Admin > Potvrzení editací uivatelù // 5.2.0
+$LNG['a_approve_edited_header'] = "Potvrdit editace uivatelù"; // 5.2.0
+$LNG['a_approve_edited_none'] = "ádné editace neèekají na schválení."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Pøedchozí název a URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Nový název a URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Zamítnout"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Zmìny byly potvrzeny."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Zmìny byly zamítnuty."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Potvrzení komentáøù"; // 5.0
 $LNG['a_approve_rev_none'] = "ádné komentáøe k potvrzení."; // 5.0
 $LNG['a_approve_rev_done'] = "Komentáø byl potvrzen."; // 5.0
 $LNG['a_approve_rev_dones'] = "Komentáøe byly potvrzeny."; // 5.0
+
+// Admin > Záloha databáze // 5.2.0
+$LNG['a_backup_header'] = "Záloha databáze"; // 5.2.0
+$LNG['a_backup_warn'] = "Tato funkce provede zálohu tabulek uivatelù a statistik.  Pokud máte hodnì uivatelù, trvá záloha mnohem déle a výchozí soubor je vìtí."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Vytvoøit podstránku"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "Filtrovaná slova byla vymazána."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Jste si jistý že chcete vymazat  %s ze seznamu filtrovaných slov?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "tato %s slova"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Nesprávné ID filtrovaného slova.  Zkuste to znovu."; // 5.1.0
+
+// Admin > Mazání banlistu // 5.2.0
+$LNG['a_del_ban_header'] = "Mazání banù"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Mazání poloek blacklisu"; // 5.2.0
+$LNG['a_del_ban_done'] = "Bany byly smazány."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Poloky blacklistu byly smazány."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Jste si jistý e chcete smazat %s poloek z blacklistu?"; //5.2.0
+$LNG['a_del_ban_multi'] = "je zde %s záznamù"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Chybné ID blacklistu.  Zkuste znovu."; // 5.2.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Smazat podstránku"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "Uivatel byl upraven.";
 $LNG['a_edit_bad_word_header'] = "Upravit seznam filtrovaných slov"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Filtované slovo bylo upraveno."; // 5.1.0
 
+// Admin > Editace banování // 5.2.0
+$LNG['a_edit_ban_header'] = "Editace záznamù v blacklistu"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Záznamy byly upraveny."; // 5.2.0
+
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Upravit podstránku"; // 5.1.0
 $LNG['a_edit_page_content'] = "Obsah - Mùžete použít HTML"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Administrace"; // 5.0
 $LNG['a_main'] = "Vítejte v administraci. Odkazy nalevo vám pomohou s nastavením"; // 5.0
 $LNG['a_main_approve'] = "1 stránka èeká na schválení."; // 5.0
 $LNG['a_main_approves'] = "Stránky èekající na schváleni: %s "; // 5.0
+$LNG['a_main_approve_edit'] = "1 stránka èeká ke schválení."; // 5.2.0
+$LNG['a_main_approve_edits'] = "Ke schválení èeká %s stránek."; // 5.2.0
 $LNG['a_main_approve_rev'] = "1 komentáø èeká na schválení."; // 5.0
 $LNG['a_main_approve_revs'] = "%s komentáøù èeká na schválení"; // 5.0
 $LNG['a_main_your'] = "Vae verze"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Globální"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filtrovat"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" bylo nalezeno a a pøefiltrováno."; // 5.1.0
 
+// Admin > Správa banù // 5.2.0
+$LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Pokud chcete nìkomu zam,ezit pøístup do toplistu, mùete tak uèinit zde.  Pokud se uivatel zaregistroval a nevyhovuje vám jeho záznam, povimnìte si toho ji pøi potvrzování registrace nebo úprav.<br /><br />Blacklist nefunguje na vae existující uivatele, musíte ho nejprve smazat."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Pøesné porovnání porovná pouze zadaný text. Globální porovnání porovná cokoliv, co obsahuje zadaný text. Take pøi zadání http://www.yahoo.com u standarního porovnání porovná jakoukoli stránku, která má ve svém URL http://www.yahoo.com , zatímco pøesné porovnání vyhledá pouze toto URL"; // 5.2.0
+$LNG['a_man_ban_string'] = "String"; // 5.2.0
+$LNG['a_man_ban_field'] = "Field"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" bylo pøidáno do blacklistu."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Správa podstránek"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Datum"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Hlavní"; // 5.0
 $LNG['a_menu_approve'] = "Potvrdit nové uivatele";
+$LNG['a_menu_approve_edits'] = "Potvrzení úprav uivatele"; // 5.2.0
 $LNG['a_menu_manage'] = "Nastavení uivatelù"; // 4.2.0
 $LNG['a_menu_settings'] = "Zmìna globálního nastavení"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Filtr nevhodných slov"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Blacklist"; // 5.2.0
+$LNG['a_menu_backup'] = "Záloha databáze"; // 5.2.0
 $LNG['a_menu_skins'] = "Zmìna Vzhledu a kategorií"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Potvrdit nové komentáøe"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Nastavení komentáøù"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Vtvoøit podstránku"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Správa podstránek"; // 5.1.0
 $LNG['a_header_members'] = "Uivatelé"; // 5.0
 $LNG['a_header_settings'] = "Nastavení"; // 5.0
+$LNG['a_header_tools'] = "Doplòky"; // 5.2.0
 $LNG['a_header_reviews'] = "Komentáøe"; // 5.0
 $LNG['a_header_pages'] = "Podstránky"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Hodnocení podle prùmìru nebo podle %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Zvýhodnìní uivatelù - Musíte pøidat {$featured_member} do wrapper.html potom co tuto poloku aktivujete (je umístìn v /skins/aktualní_skin/wrapper.html).'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Kolik stránek v TOP má mít zobrazovaný banner?";
 $LNG['a_s_ad_breaks'] = "Zobrazit ads až za hodnocením (oddìlit tabulkou) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "Vyplòte prázdnou kolonku uvítací zprávou \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Nastavení uivatelù";
 $LNG['a_s_active_default'] = "Potvrzování nových uivatelù administrátorem?";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Pokud ano - Pøípona souboru (gif, png, jpg, atd.)"; 
 $LNG['a_s_button_num'] = "Pokud ano - Poøet tlaøítek které máte"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-friendly odkazy - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Gateway stránka která zdrí cheatery mezi kliknutími";
+$LNG['a_s_captcha'] = "Potvrzení kódem pøi registraci (ochrada proti spamerùm) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Bezpeènostní otázka proti spamenrùm (ponechte prázdné pro znefunkèòìní) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Ostatní nastavení";
 $LNG['a_s_search'] = "Vyhledávání";
 $LNG['a_s_time_offset'] = "Èasový posun vaeho serveru (v hodinách)";
-$LNG['a_s_gateway'] = "Gateway stránka která zdrí cheatery mezi kliknutími";
-$LNG['a_s_captcha'] = "Potvrzení kódem pøi registraci (ochrada proti spamerùm) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Zapnout";
 $LNG['a_s_off'] = "Vypnout";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Mìsíce";
 $LNG['a_s_weeks'] = "Týdny"; // 4.2.0
 $LNG['a_s_yes'] = "Ano";
 $LNG['a_s_no'] = "Ne";
+$LNG['a_s_answer'] = "Odpovìï"; // 5.2.0
 
 $LNG['a_s_updated'] = "Nastavení bylo aktualizováno.";
 

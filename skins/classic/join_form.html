@@ -1,3 +1,5 @@
+<p class="{$error_style_top}">{$error_top}</p>
+
 <form action="index.php?a=join" method="post" name="join_form">
 <fieldset>
 <legend>{$lng->join_user}</legend>
@@ -5,8 +7,12 @@
 <input type="text" name="u" size="20" value="{$username}" />
 {$error_username}
 </label></div><br />
-<div class="{$error_style_password}"><label>{$lng->g_password}<br />
-<input type="password" name="password" size="20" value="{$password}" />
+<div class="{$error_style_password}">
+<label style="float: left; margin-right: 2em;">{$lng->g_password}<br />
+<input type="password" name="password" size="20" />
+</label>
+<label>{$lng->join_confirm_password}<br/ >
+<input type="password" name="confirm_password" size="20" />
 {$error_password}
 </label></div>
 </fieldset>
@@ -27,15 +33,20 @@
 <label>{$lng->g_category}<br />
 {$categories_menu}<br /><br />
 </label>
-<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url}<br />
+<div class="{$error_style_banner_url}"><label>{$lng->g_banner_url} {$join_banner_size}<br />
 <input type="text" name="banner_url" size="50" value="{$banner_url}" />
 {$error_banner_url}
 </label></div><br />
 <div class="{$error_style_email}"><label>{$lng->g_email}<br />
 <input type="text" name="email" size="50" value="{$email}" />
 {$error_email}
-</label></div><br />
+</label></div>
+</fieldset>
+
+<fieldset>
+<legend>{$lng->join_security}</legend>
 {$join_captcha}
+{$join_question}
 <input name="submit" type="submit" value="{$lng->join_header}" />
 </fieldset>
 </form>

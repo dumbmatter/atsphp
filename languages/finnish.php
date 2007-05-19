@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -25,7 +25,7 @@ if (!defined('ATSPHP')) {
 $translation = 'Finnish (Suomi)';
 $translator_name = 'Pekka Pelkonen';
 $translator_email = 'pekka.pelkonen@gmail.com';
-$translator_url = 'http://www.paimiowoodland.urli.net/';
+$translator_url = 'http://www.paimiowoodland.net/';
 
 // Set this to the character encoding of your translation
 $LNG['charset'] = "iso-8859-1";
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "V‰‰r‰ salasana. Yrit‰ uudelleen."; // 5.0
 $LNG['g_session_expired'] = "Istuntosi on p‰‰ttynyt. Yrit‰ uudelleen."; // 5.0
 $LNG['g_error'] = "Virhe"; // 5.0
 $LNG['g_delete_install'] = "Turvallisuuden takia sinun t‰ytyy poistaa install- hakemisto ennen skriptin toimimista."; // 5.0
+$LNG['g_ip'] = "IP Osoite"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Muokkaa Tunnusta";
 $LNG['edit_info_edited'] = "Tunnuksesi on muokattu onnistuneesti.";
 $LNG['edit_password_blank'] = "J‰t‰ tyhj‰ksi, jos haluat s‰ilytt‰‰ nykyisen salasanasi"; // 4.0
+$LNG['edit_delay'] = "Sivuston nimen/URL:n muutoksissa yll‰pidon t‰ytyy hyv‰ksy‰ ne ennen, kuin ne tulevat voimaan."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Toplistan Gateway Sivu";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Tervetuloa Aardvark Topsites PHP 5:een. Ennen kuin p‰
 $LNG['upgrade_version'] = "Varmista ett‰ p‰ivit‰t versiosta %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "P‰ivitt‰mist‰ suositellaan vain Aardvark Topsites PHP 4.1.0 tai uudempaan.";
 $LNG['upgrade_done'] = "Sinun toplistasi on p‰ivitetty. Poista t‰m‰ hakemisto nyt.";
+$LNG['install_mailing_list'] = "Jos haluat liitty‰ Aardvark Topsites PHP:n postituslistalle, laita s‰hkˆpostiosoitteesi alle. Postia tulee vain, kun on t‰rkeit‰ ilmoituksia scripteist‰, kuten uusi julkaisu tai turvallisuutta koskeva ilmoitus."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Liity";
 $LNG['join_enter_text'] = "Kirjoita alla olevan kuvan teksti:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Etkˆ pysty lukemaan?"; // 5.2.0
 $LNG['join_user'] = "K‰ytt‰j‰"; // 5.0
 $LNG['join_website'] = "Sivusto"; // 5.0
+$LNG['join_banner_size'] = "(Suurin sallittu koko: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Kirjoita k‰ytt‰j‰nimi: k‰yt‰ vain kirjaimia, numeroita ja viivaa."; // 5.0
 $LNG['join_error_username_duplicate'] = "Valitse toinen k‰ytt‰j‰nimi: k‰ytt‰j‰nimesi on jo k‰ytˆss‰."; // 5.0
 $LNG['join_error_url'] = "Kirjoita URL.";
 $LNG['join_error_email'] = "Kirjoita email-osoite.";
 $LNG['join_error_title'] = "Kirjoita sivusi otsikko.";
 $LNG['join_error_password'] = "Kirjoita salasana.";
-$LNG['join_error_urlbanner'] = "Kirjoita bannerisi osoite. J‰t‰ tyhj‰ksi jos sinulla ei ole banneria. Bannerin t‰ytyy olla pienempi kuin"; // 4.0
+$LNG['join_error_confirm_password'] = "Salasanat eiv‰t ole oikein."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Laita oikea banneri. J‰t‰ tyhj‰ksi, jos sinulla ei ole."; // 5.2.0
 $LNG['join_error_time'] = "ƒl‰ p‰ivit‰ liittymisen vahvistussivua."; // 4.2.0
 $LNG['join_error_captcha'] = "Kirjoittamasi sana ei t‰sm‰‰ kuvan sanan kanssa."; // 4.2.2
+$LNG['join_error_question'] = "Vastauksesi on v‰‰rin. Korjaa t‰m‰, jotta todistat olevasi ihminen etk‰ botti."; // 5.2.0
 $LNG['join_thanks'] = "Kiitos liittymisest‰si! Laita t‰m‰ koodinp‰tk‰ ilmoitetulle sivulle, jotta tilastointi alkaisi toimia.";
 $LNG['join_change_warning'] = "Jos muutat koodia, se ei ehk‰ toimi.";
 $LNG['join_welcome'] = "Tervetuloa %s";
 $LNG['join_welcome_admin'] = "Uusi j‰sen on liittynyt toplistaasi.";
-$LNG['join_approve'] = "Sivusi listataan kun yll‰pit‰j‰ sallii sen."; // 5.1.0
+$LNG['join_approve'] = "Kiitokset liittymisest‰! Sivusi n‰kyv‰t listalla, kun toplistan yll‰pit‰j‰ hyv‰ksyy ne. Saat s‰hkˆpostin, joka sis‰lt‰‰ lis‰‰ tietoja kun sivusi on hyv‰ksytty."; // 5.2.0
 $LNG['join_type'] = "Tunnuksen tyyppi"; // 5.1.0
 $LNG['join_standard'] = "Vakio"; // 5.1.0
+$LNG['join_error_top'] = "Virhe lˆydetty l‰hetyksen yhteydess‰. Ole hyv‰ ja korjaa virhe."; // 5.2.0
+$LNG['join_ban_top'] = "L‰hetyksesi sis‰lt‰‰ materiaalia, jonka on kielt‰nyt toplistan yll‰pit‰j‰."; // 5.2.0
+$LNG['join_security'] = "Turvallisuus"; // 5.2.0
+$LNG['join_confirm_password'] = "Hyv‰ksy salasana"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Linkin koodi"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Liike";
 $LNG['table_up'] = "Ylˆs"; // 5.0
 $LNG['table_down'] = "Alas"; // 5.0
 $LNG['table_neutral'] = "Neutraali"; // 5.0
+$LNG['table_your_site_here'] = "Sivusi t‰h‰n"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Arvostele";
+$LNG['rate_message'] = "Ole hyv‰ ja anna arvosanasi ja arvostelusi  %s:sta alle."; // 5.2.0
 $LNG['rate_rating'] = "Arvosana";
 $LNG['rate_review'] = "Arvostelu - HTML kielletty"; // 5.0
 $LNG['rate_thanks'] = "Kiitos arvostelusta.";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Arvostelut";
 $LNG['stats_allreviews'] = "N‰yt‰ Kaikki Arvostelut"; // 4.0
 $LNG['stats_week'] = "Viikko"; // 5.0
 $LNG['stats_highest'] = "Korkein"; // 5.0
+$LNG['stats_overall'] = "Tilastot alusta asti"; // 5.2.0
+$LNG['stats_overall_average'] = "Keskiarvo (Viimeiset 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Yhteens‰ (Alusta asti)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sivut"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Sinun t‰ytyy liitty‰ toplistaan ennen kuin 
 $LNG['user_cp_openid_error_general'] = "Virhe tapahtui kirjautuessa. Ole hyv‰ ja yrit‰ uudelleen."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Sinun t‰ytyy sallia p‰‰sy jatkaaksesi. Ole hyv‰ ja yrit‰ uudelleen."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Virhe serverill‰: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Et voi k‰ytt‰‰ k‰ytt‰j‰n hallintapaneelia ennenkuin sivustosi on hyv‰ksytty. Saat s‰hkˆpostia, kun sivustosi on hyv‰ksytty."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Hyv‰ksy Uusia J‰seni‰"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "J‰sen on hyv‰ksytty."; // 4.0
 $LNG['a_approve_dones'] = "J‰senet on hyv‰ksytty."; // 4.0
 $LNG['a_approve_sel'] = "Valitut:"; // 5.0
 
+// Admin > Approve Edited Members // 5.2.0
+$LNG['a_approve_edited_header'] = "Hyv‰ksy Muokattuja J‰seni‰"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Ei muokattavia j‰seni‰ odottamassa hyv‰ksymist‰."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Edellinen Otsikko ja URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Muokattu Otsikko ja URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Hylk‰‰"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Muutokset on hyv‰ksytty."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Muutokset on hyl‰tty."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Hyv‰ksy Uudet Arvostelut"; // 5.0
 $LNG['a_approve_rev_none'] = "Yht‰‰n arvostelua ei odota hyv‰ksymist‰."; // 5.0
 $LNG['a_approve_rev_done'] = "Arvostelu on hyv‰ksytty."; // 5.0
 $LNG['a_approve_rev_dones'] = "Arvostelut on hyv‰ksytty."; // 5.0
+
+// Admin > Backup Database // 5.2.0
+$LNG['a_backup_header'] = "Varmuuskopioi Tietokannasta"; // 5.2.0
+$LNG['a_backup_warn'] = "T‰m‰ luo varmuuskopion j‰senist‰, tilastoista ja asetuksista. Jos sinulla on paljon j‰seni‰, saattaa menn‰ pidemm‰n aikaa luoda tiedostoa, jonka koko saattaa olla suuri."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Luo Erikoissivu"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "Filtterˆidyt sanat on poistettu."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Oletko varama ett‰ haluat poistaa n‰m‰ %s Filtterˆityjen sanojen listalta?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "n‰ist‰ %s sanoista"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Ep‰kelpa filtterˆidyn sanan ID. Ole hyv‰ ja yrit‰ uudelleen."; // 5.1.0
+
+// Admin > Delete Ban // 5.2.0
+$LNG['a_del_ban_header'] = "Poista Mustan Listan Merkinn‰t"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Poista mustan listan merkinn‰t"; // 5.2.0
+$LNG['a_del_ban_done'] = "Mustan lsitan merkinn‰t on poistettu."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Mustan listan merkinn‰t on poistettu onnistuneesti."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Oletko varma, ett‰ haluat poistaa %s merkint‰‰ mustalta listalta?"; //5.2.0
+$LNG['a_del_ban_multi'] = "n‰m‰ %s merkint‰‰"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Ep‰kelpo mustan listan ID. Ole hyv‰ ja yrit‰ uudelleen."; // 5.2.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Poista erikoissivu"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "J‰sen on muokattu.";
 $LNG['a_edit_bad_word_header'] = "Hallitse Filtteroituja sanoja"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Filtterˆity sana on muokattu."; // 5.1.0
 
+// Admin > Edit Ban // 5.2.0
+$LNG['a_edit_ban_header'] = "Muokkaa Mustal Listan Merkintˆj‰"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Mustan list‰n merkinn‰t on muokattu onnistuneesti."; // 5.2.0
+
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Hallitse satunnaisia sivuja"; // 5.1.0
 $LNG['a_edit_page_content'] = "Sis‰ltˆ - Voit k‰ytt‰‰ HTML:‰‰ t‰‰ll‰"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Hallinta"; // 5.0
 $LNG['a_main'] = "Tervetuloa Hallintaan. K‰yt‰ vasemman reunan linkkej‰ hallitaksesi toplistaasi."; // 5.0
 $LNG['a_main_approve'] = "Yksi sivu odottaa hyv‰ksymist‰si."; // 5.0
 $LNG['a_main_approves'] = "%s sivua odottaa hyv‰ksymist‰si."; // 5.0
+$LNG['a_main_approve_edit'] = "Yksi (1) sivusto odottaa hyv‰ksymist‰."; // 5.2.0
+$LNG['a_main_approve_edits'] = "%s sivustoa odottaa hyv‰ksymist‰."; // 5.2.0
 $LNG['a_main_approve_rev'] = "Yksi arvostelu odottaa hyv‰ksymist‰si."; // 5.0
 $LNG['a_main_approve_revs'] = "%s arvostelua odottaa hyv‰ksymis‰si."; // 5.0
 $LNG['a_main_your'] = "Versiosi"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Laaja"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Est‰ sana"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" on lis‰tty kielto filtteriin."; // 5.1.0
 
+// Admin > Manage Ban // 5.2.0
+$LNG['a_man_ban_header'] = "Musta Lista"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Est‰‰ksesi jonkun p‰‰syn toplistallesi sinun t‰ytyy t‰ytt‰‰ alla oleva kaavake. Kun j‰sen yritt‰‰ liitty‰, URL, s‰hkˆposti, k‰ytt‰j‰tunnut ja IP osoite tarkistetaan. Kun sivusto on muokattu, URL ja s‰hkˆpostiosoite tarkistetaan.<br /><br />Musta lista ei vaikuta jo olemassa oleviin j‰seniin."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Tarkka vertailu vaikuttaa vain tarkkaan merkkijonoon. Laaja vertailu vaikuttaa kaikkeen, jonka merkkijonosta lˆytyy vertailtava merkkijono. Joten laajalla vertailulla http://www.yahoo.com/ vaikuttaa kaikkeen, mist‰ lˆytyy http://www.yahoo.com/ URL:sta, toisin kuin vertailtaessa tarkalla vertailulla http://www.yahoo.com/ vaikuttaa vain tuohon URL:iin."; // 5.1.0
+$LNG['a_man_ban_string'] = "Merkkijono"; // 5.2.0
+$LNG['a_man_ban_field'] = "Kentt‰"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" on lis‰tty mustalle listalle."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Hallitse erikoisia sivuja"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "P‰iv‰ys"; // 5.0
 $LNG['a_menu'] = "Valikko";
 $LNG['a_menu_main'] = "Hallinnan Etusivu"; // 5.0
 $LNG['a_menu_approve'] = "Hyv‰ksy Uusia J‰seni‰";
+$LNG['a_menu_approve_edits'] = "Hyv‰ksu Muokattuja J‰seni‰"; // 5.2.0
 $LNG['a_menu_manage'] = "Hallitse J‰seni‰"; // 4.2.0
 $LNG['a_menu_settings'] = "Muuta Asetuksia"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Kieltosana Filtteri"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Musta lista"; // 5.2.0
+$LNG['a_menu_backup'] = "Varmuuskopioi Tietokanta"; // 5.2.0
 $LNG['a_menu_skins'] = "Ulkoasut ja Kategoriat"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Hyv‰ksy Uusia Arvosteluja"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Hallitse Arvosteluja"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Luo Erikoissivu"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Hallitse Erikoissivuja"; // 5.1.0
 $LNG['a_header_members'] = "J‰senet"; // 5.0
 $LNG['a_header_settings'] = "Asetukset"; // 5.0
+$LNG['a_header_tools'] = "Tyˆkalut"; // 5.2.0
 $LNG['a_header_reviews'] = "Arvostelut"; // 5.0
 $LNG['a_header_pages'] = "Erikoissivut"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Arvostele keskiarvolla tai %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Korostettu j‰sen - Sinun t‰ytyy lis‰t‰ {$featured_member} tiedostoon wrapper.html kun olet laittanut t‰m‰n p‰‰lle.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "J‰senten m‰‰r‰, jotka k‰ytt‰v‰t _top teemaa";
 $LNG['a_s_ad_breaks'] = "N‰yt‰ mainokset n‰iden sijoitusten j‰lkeen (erottele pilkulla) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "T‰yt‰ tyhj‰t rivit viestill‰ \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "J‰senten Asetukset";
 $LNG['a_s_active_default'] = "Hyv‰ksy uudet j‰senet ennen listausta";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Jos Kyll‰ - Buttonien tyyppi (gif, png, jpg, jne.)"; /
 $LNG['a_s_button_num'] = "Jos Kyll‰ - Tekemiesi buttonien m‰‰r‰"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-yst‰v‰llisi‰ linkkej‰ - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Gateway sivu est‰‰ksesi huijatut ‰‰net sis‰‰n";
+$LNG['a_s_captcha'] = "Sanatunnistus liittymiseen (suojaa spammaajia vastaan) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Turvallisuuteen liittyv‰t kysymykset ja vastaukset est‰‰ksesi sp‰mmereit‰ (j‰t‰ tyhj‰ksi poistaaksesi k‰ytˆst‰) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Muut Asetukset";
 $LNG['a_s_search'] = "Etsi";
 $LNG['a_s_time_offset'] = "Aikakompensaatio serverilt‰ (tunneissa)";
-$LNG['a_s_gateway'] = "Gateway sivu est‰‰ksesi huijatut ‰‰net sis‰‰n";
-$LNG['a_s_captcha'] = "Sanatunnistus liittymiseen (suojaa spammaajia vastaan) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "P‰‰ll‰";
 $LNG['a_s_off'] = "Pois";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Kuukautta";
 $LNG['a_s_weeks'] = "Viikkoa"; // 4.2.0
 $LNG['a_s_yes'] = "Kyll‰";
 $LNG['a_s_no'] = "Ei";
+$LNG['a_s_answer'] = "Vastaa"; // 5.2.0
 
 $LNG['a_s_updated'] = "Asetuksesi on p‰ivitetty.";
 

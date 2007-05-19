@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Ungültiges Passwort.  Bitte nocheinmal versuchen."; // 5.
 $LNG['g_session_expired'] = "Ihre Sitzungszeit ist abgelaufen.  Bitte neu einloggen."; // 5.0
 $LNG['g_error'] = "Fehler"; // 5.0
 $LNG['g_delete_install'] = "Aus Sicherheitsgründen muss das Install-Verzeichnis gelöscht werden bevor das Script funktioniert."; // 5.0
+$LNG['g_ip'] = "IP Adresse"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Benutzerkonto bearbeiten";
 $LNG['edit_info_edited'] = "Ihr Benutzerkonto wurde erfolgreich bearbeitet.";
 $LNG['edit_password_blank'] = "Bitte freilassen um das bisherige Passwort zu behalten"; // 4.0
+$LNG['edit_delay'] = "Änderungen am Seitentitel und der URL müssen vom Topsites Administrator erst überprüft und genehmigt werden bevor sie erscheinen."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Topsites Gateway Seite";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Willkommen zu Aardvark Topsites PHP 5.  Vor dem Upgra
 $LNG['upgrade_version'] = "Bitte stellen Sie sicher das sie von Version %s upgraden."; // 5.1.0
 $LNG['upgrade_error_version'] = "Ein Upgrade ist nur möglich von Aardvark Topsites PHP 4.1.0 oder höher.";
 $LNG['upgrade_done'] = "Ihre Topsites Liste wurde aktualisiert. Das Install-Verzeichnis bitte jetzt löschen.";
+$LNG['install_mailing_list'] = "Wenn du an der Aardvark Topsites PHP Mailingliste teilnehmen willst, trage bitte deine Emailadresse unten ein.  Es ist nur eine kleine Liste für wichtige Ankündigungen über das Script, wie z.B. neue Versionen und Sicherheitstipps."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Seite eintragen";
 $LNG['join_enter_text'] = "Bitte den hier unten angezeigten Code eintragen:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Nicht lesbar?"; // 5.2.0
 $LNG['join_user'] = "Benutzer"; // 5.0
 $LNG['join_website'] = "Webseite"; // 5.0
+$LNG['join_banner_size'] = "(Maximale Grösse: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Bitte einen gültigen Benutzernamen eingeben. (Bitte nur Buchstaben, Zahlen, Unterstriche und Gedankenstriche verwenden.)"; // 5.0
 $LNG['join_error_username_duplicate'] = "Bitte einen anderen Benutzernamen einzugeben: Der gewünschte Benutzername ist leider schon vergeben!"; // 5.0
 $LNG['join_error_url'] = "Bitte eine gültige URL eingeben.";
 $LNG['join_error_email'] = "Bitte eine gültige Emailaddresse eingeben.";
 $LNG['join_error_title'] = "Bitte einen Titel für ihre Webseite eingeben.";
 $LNG['join_error_password'] = "Bitte ein Passwort eingeben.";
-$LNG['join_error_urlbanner'] = "Bitte eine gültige URL für Ihr Banner eingeben. Sollten Sie kein Banner haben, lassen Sie dieses Feld bitte frei. Es muss kleiner sein als"; // 4.0
+$LNG['join_error_confirm_password'] = "Das Passwort stimmt nicht überein."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Trage eine gültige Banneradresse ein.  Lass die Zeile frei wenn kein Banner vorhanden ist."; // 5.2.0
 $LNG['join_error_time'] = "Bitte nicht auf \"aktualisieren\" drücken!"; // 4.2.0
 $LNG['join_error_captcha'] = "Der von Ihnen eingegebene Code stimmt nicht mit dem aus der Grafik überein!"; // 4.2.2
+$LNG['join_error_question'] = "Deine Antwort ist nicht korrekt. Bitte korrigier dies um sicherzustellen das du eine reale Person und kein Bot bist."; // 5.2.0
 $LNG['join_thanks'] = "Vielen Dank! --- Fügen Sie nun bitte diesen Code in Ihre Webseite ein um gelistet zu werden:";
 $LNG['join_change_warning'] = "Wenn Sie den Code verändern, werden Ihre Hits nicht gezählt.";
 $LNG['join_welcome'] = "Willkommen bei %s";
 $LNG['join_welcome_admin'] = "Ein neues Mitglied hat sich angemeldet.";
-$LNG['join_approve'] = "Ihre Seite wird erst gelisted nachdem sie vom Administrator der Topsites List geprüft wurde."; // 5.1.0
+$LNG['join_approve'] = "Danke für die Teilnahme!  Deine Seite wird gelistet nachdem der Administrator sie überprüft und freigeschaltet hat. Du bekommst dann eine Email mit der Information das deine Seite freigeschaltet wurde."; // 5.2.0
 $LNG['join_type'] = "Kontotyp"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
+$LNG['join_error_top'] = "Ein Fehler wurde in deiner Anmeldung gefunden. Bitte korrigier den Fehler hier unten."; // 5.2.0
+$LNG['join_ban_top'] = "Deine Anmeldung enthält Inhalte die vom Topsites Administrator nicht freigegeben werden."; // 5.2.0
+$LNG['join_security'] = "Sicherheit"; // 5.2.0
+$LNG['join_confirm_password'] = "Wiederhole das Passwort"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Link Code"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Trend";
 $LNG['table_up'] = "Steigend"; // 5.0
 $LNG['table_down'] = "Sinkend"; // 5.0
 $LNG['table_neutral'] = "Gleichbleibend"; // 5.0
+$LNG['table_your_site_here'] = "Deine Seite hier"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Bewerten und Kommentieren";
+$LNG['rate_message'] = "Bitte trage deine Bewertung und Kommentar für %s in das untere Formular ein."; // 5.2.0
 $LNG['rate_rating'] = "Bewertung";
 $LNG['rate_review'] = "Kommentar - (HTML nicht zulässig)"; // 5.0
 $LNG['rate_thanks'] = "Vielen Dank für das Bewerten und/oder Kommentieren dieser Seite!";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Kommentare";
 $LNG['stats_allreviews'] = "Alle Kommentare anzeigen"; // 4.0
 $LNG['stats_week'] = "Woche"; // 5.0
 $LNG['stats_highest'] = "Höchste"; // 5.0
+$LNG['stats_overall'] = "Gesamtstatus"; // 5.2.0
+$LNG['stats_overall_average'] = "Durchschnitt (Letzte 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Total (Gesamtlaufzeit)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Sie müssen sich erst bei der Topsites List 
 $LNG['user_cp_openid_error_general'] = "Ein Fehler ist beim LogIn aufgetreten.  Bitte nocheinmal versuchen."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Sie müssen erst Zugangserlaubnis haben um weiterzumachen.  Bitte nocheinmal versuchen."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Serverfehler: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Du kannst deine Benutzerkontrolloberfläche nicht aufrufen solange deine Seite nicht freigeschaltet ist. Du bekommst eine Email wenn deine Seite überprüft und freigeschaltet wurde."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Neuen Einträgen zustimmen"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "Der Eintrag wurde zugelassen."; // 4.0
 $LNG['a_approve_dones'] = "Die Einträge wurden zugelassen."; // 4.0
 $LNG['a_approve_sel'] = "mit ausgewählten:"; // 5.0
 
+// Admin > Änderungswünsche von Mitgliedern // 5.2.0
+$LNG['a_approve_edited_header'] = "Genehmige Änderungen von Mitgliedern"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Es liegen zur Zeit keine Änderungswünsche vor."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Vorheriger Seitentitel und URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Geünderter Seitentitel und URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Ablehnen"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Die Änderungen wurden genehmigt."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Die Änderungen wurden abgelehnt."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Neue Kommentare zulassen"; // 5.0
 $LNG['a_approve_rev_none'] = "Keine neuen Kommentare, die auf ihre Freischaltung warten."; // 5.0
 $LNG['a_approve_rev_done'] = "Der Kommentar wurde zugelassen."; // 5.0
 $LNG['a_approve_rev_dones'] = "Die Kommentare wurden zugelassen."; // 5.0
+
+// Admin > Backup der Datenbank // 5.2.0
+$LNG['a_backup_header'] = "Datenbank-Backup"; // 5.2.0
+$LNG['a_backup_warn'] = "Dies erstellt eine Sicherheitskopie der Mitglieder, des Status und der Einstellungen. Bei sehr vielen Mitgliedern kann das eine längere Zeit dauern sowie auch eine große Backupdatei erzeugen."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Erstelle spezifische Seite"; // 5.1.0
@@ -245,6 +275,15 @@ $LNG['a_del_bad_word_warn'] = "Sind sie sicher %s aus der Filterwortliste zu lös
 $LNG['a_del_bad_word_multi'] = "diese %s Wörter"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Ungültige Filterwort ID.  Bitte nocheinmal versuchen."; // 5.1.0
 
+// Admin > Bann aufheben // 5.2.0
+$LNG['a_del_ban_header'] = "Blacklist-Eintrag löschen"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Blacklist-Einträge löschen"; // 5.2.0
+$LNG['a_del_ban_done'] = "Der Blacklist-Eintrag wurde gelöscht."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Die Blacklist-Einträge wurden gelöscht."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Sind Sie sicher %s aus der Blacklist zu löschen?"; //5.2.0
+$LNG['a_del_ban_multi'] = "diese %s Einträge"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Ungültige Blacklist ID. Bitte nochmals versuchen."; // 5.2.0
+
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Lösche spezifische Seite"; // 5.1.0
 $LNG['a_del_page_headers'] = "Lösche spezifische Seiten"; // 5.1.0
@@ -269,6 +308,10 @@ $LNG['a_edit_site_is'] = "Diese Seite ist"; // 4.0
 $LNG['a_edit_active'] = "aktiv (gelisted)"; // 4.0
 $LNG['a_edit_inactive'] = "inaktiv (nicht gelisted)"; // 5.0
 $LNG['a_edit_edited'] = "Der Eintrag wurde bearbeitet.";
+
+// Admin > Bann Ändern // 5.2.0
+$LNG['a_edit_ban_header'] = "Blacklist-Eintrag Ändern"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Der Blacklist-Eintrag wurde geändert."; // 5.2.0
 
 // Admin > Edit Bad Word // 5.1.0
 $LNG['a_edit_bad_word_header'] = "Bearbeite Filterwort"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Administration"; // 5.0
 $LNG['a_main'] = "Willkommen im Administrationsbereich. Navigieren Sie bitte mit Hilfe des Menüs auf der linken Seite durch den Administrationsbereich."; // 5.0
 $LNG['a_main_approve'] = "Ein Eintrag wartet auf ihre Freischaltung.";
 $LNG['a_main_approves'] = "%s Seiten warten auf ihre Freischaltung.";
+$LNG['a_main_approve_edit'] = "1 Seitenänderung wartet auf Genehmigung."; // 5.2.0
+$LNG['a_main_approve_edits'] = "%s Seitenänderungen warten auf Genehmigigung."; // 5.2.0
 $LNG['a_main_approve_rev'] = "Ein Kommentar wartet auf ihre Freischaltung.";
 $LNG['a_main_approve_revs'] = "%s Kommentare warten auf ihre Freischaltung.";
 $LNG['a_main_your'] = "Ihre Version"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filterwort"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" wurde dem Profan Filter hinzugefügt."; // 5.1.0
 
+// Admin > Bann hinzufügen // 5.2.0
+$LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Um jemand von deiner Topsites List zu bannen, füll bitte das untere Formular aus. Bei einer Neuanmeldung wird die URL, die Emailadresse, der Username und die IP überprüft. Bei der änderung einer Seite wird nur noch die URL und die Emailadresse überprüft.<br /><br />Die Blacklist hat keine Auswirkungen auf bereits existierende Mitglieder"; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Nur bei genauer Übereinstimmung erfolgt die Ausgabe des exakten Wortes. Globale Übereinstimmung kann zu allem in der Zeichenkette passen.  Also, globale Übereinstimmung von http://www.yahoo.com/ passt zu jeder Seite mit http://www.yahoo.com/ in der URL, während exakte übereinstimmung von http://www.yahoo.com/ nur auf die exakte URL passt."; // 5.2.0
+$LNG['a_man_ban_string'] = "Zeichenkette"; // 5.2.0
+$LNG['a_man_ban_field'] = "Feld"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" wurden der Blacklist hinzugefügt."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Verwalte spezifische Seiten"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Datum"; // 5.0
 $LNG['a_menu'] = "Menü";
 $LNG['a_menu_main'] = "Hauptseite"; // 5.0
 $LNG['a_menu_approve'] = "Neue Einträge überprüfen";
+$LNG['a_menu_approve_edits'] = "Genehmige geänderte Mitglieder"; // 5.2.0
 $LNG['a_menu_manage'] = "Einträge verwalten"; // 4.2.0
 $LNG['a_menu_settings'] = "Grundeinstellungen"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Wortfilter"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Blacklist"; // 5.2.0
+$LNG['a_menu_backup'] = "Datenbank-Backup"; // 5.2.0
 $LNG['a_menu_skins'] = "Oberflächen und Kategorien"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Neue Kommentare überprüfen"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Kommentare verwalten"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Erstelle Kundenseite"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Verwalte Kundenseiten"; // 5.1.0
 $LNG['a_header_members'] = "Mitglieder"; // 5.0
 $LNG['a_header_settings'] = "Einstellungen"; // 5.0
+$LNG['a_header_tools'] = "Werkzeuge"; // 5.2.0
 $LNG['a_header_reviews'] = "Kommentare"; // 5.0
 $LNG['a_header_pages'] = "Spezifische Seiten"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Platzierung nach Durchschnitt oder %s:"; // 5.0
 $LNG['a_s_featured_member'] = '"Site Of The Moment" Funktion ("featured member") aktivieren?  Sie müssen dazu <b>{$featured_member}</b> in der wrapper.html hinzufügen, nachdem Sie diese Option aktiviert haben.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Anzahl Einträge, für die die Top skin Anzeige verwendet werden soll.";
 $LNG['a_s_ad_breaks'] = "Nach diesen Rängen eine Werbeeinblendung vornehmen (mit Kommata trennen). - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0;
+$LNG['a_s_fill_blank_rows'] = "Füllt Leerzeilen mit folgender Mitteilung aus \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Eintragseinstellungen";
 $LNG['a_s_active_default'] = "Neue Einträge müssen erst von Ihnen freigeschaltet werden.";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "<b>Falls Ja</b> - Dateierweiterung der Buttons (gif, p
 $LNG['a_s_button_num'] = "<b>Falls Ja</b> - Anzahl der vorbereiteten Buttons - Je höher Sie diesen Wert setzen, um so mehr Ressourcen benötigt das Skript."; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-freundliche Links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Gateway Seite, um Hits-In Betrug zu vermeiden.";
+$LNG['a_s_captcha'] = "Sicherheitstextabfrage -- Vorbeugung gegen Spammer. - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Sicherheitsfrage und Antwort um Spammer zu blockieren (Frei lassen bei Nichtverwendung) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Andere Einstellungen";
 $LNG['a_s_search'] = "Suchfunktion";
 $LNG['a_s_time_offset'] = "Zeitabweichung ihres Servers (in Stunden)";
-$LNG['a_s_gateway'] = "Gateway Seite, um Hits-In Betrug zu vermeiden.";
-$LNG['a_s_captcha'] = "Sicherheitstextabfrage -- Vorbeugung gegen Spammer. - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "An";
 $LNG['a_s_off'] = "Aus";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Monate";
 $LNG['a_s_weeks'] = "Wochen"; // 4.2.0
 $LNG['a_s_yes'] = "Ja";
 $LNG['a_s_no'] = "Nein";
+$LNG['a_s_answer'] = "Antwort"; // 5.2.0
 
 $LNG['a_s_updated'] = "Ihre Einstellungen wurden aktualisiert.";
 

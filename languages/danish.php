@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Ugyldigt kodeord.  Prøv venligst igen."; // 5.0
 $LNG['g_session_expired'] = "Din session er udløbet.  Prøv venligst igen."; // 5.0
 $LNG['g_error'] = "Fejl"; // 5.0
 $LNG['g_delete_install'] = "Af sikkerhedsårsager skal du slette installations-folderen før scriptet kan afvikles."; // 5.0
+$LNG['g_ip'] = "IP-adresse"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Rediger konto";
 $LNG['edit_info_edited'] = "Din konto er blevet opdateret.";
 $LNG['edit_password_blank'] = "Lad stå tom for at beholde nuværende kodeord"; // 4.0
+$LNG['edit_delay'] = "Ændringer i din hjemmesides titel og URL skal godkendes af topsites-administratoren før de kan træde i kraft."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Topsites portalside";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Velkommen til Aardvark Topsites PHP 5.  Før du opgrad
 $LNG['upgrade_version'] = "Vær sikker på at du opgraderer fra version %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Opgradering er kun tilgængelig for Aardvark Topsites PHP 4.1.0 eller højere.";
 $LNG['upgrade_done'] = "Din topsites liste er blevet opgraderet.  Slet denne folder nu.";
+$LNG['install_mailing_list'] = "Hvis du vil tilmeldes Aardvark Topsites PHP mailing listen, så indtast din emailadresse nedenfor.  Det er en liste til vigtige annonceringer om scriptet, som fx nye versioner og sikkerhedsopdateringer."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Tilmeld";
 $LNG['join_enter_text'] = "Indtast teksten som den vises i billedet herunder:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Kan ikke læser?"; // 5.2.0
 $LNG['join_user'] = "Bruger"; // 5.0
 $LNG['join_website'] = "Hjemmeside"; // 5.0
+$LNG['join_banner_size'] = "(Maksimum størrelse: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Indtaste et gyldigt brugernavn: benyt kun bogstaver, tal, understregning og tankestreger."; // 5.0
 $LNG['join_error_username_duplicate'] = "Indtaste et gyldigt brugernavn: dit brugernavn benyttes allerede."; // 5.0
 $LNG['join_error_url'] = "Indtaste en gyldig URL.";
 $LNG['join_error_email'] = "Indtaste en gyldig emailadresse.";
 $LNG['join_error_title'] = "Indtaste en titel til din hjemmeside."; 
 $LNG['join_error_password'] = "Indtaste et kodeord.";
-$LNG['join_error_urlbanner'] = "Indtaste et gyldigt banner.  Lad denne stå tom, hvis ikke du har et.  Det skal være mindre end"; // 4.0
+$LNG['join_error_confirm_password'] = "Kodeord er ikke identiske."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Indsæt gyldigt banner.  Lad stå tom hvis du ikke har et."; // 5.2.0
 $LNG['join_error_time'] = "Undlad at genindlæse tilmeldingssiden."; // 4.2.0
 $LNG['join_error_captcha'] = "Koden du indtastede er ikke det samme som på billedet."; // 4.2.2
+$LNG['join_error_question'] = "Dit svar er forkert.  Ret det venligst for at bekræfte at du er en virkelig person og ikke en bot."; // 5.2.0
 $LNG['join_thanks'] = "Tak for tilmeldingen!  Indsæt denne kode på din side for at blive listet."; 
 $LNG['join_change_warning'] = "Hvis du ændrer koden, virker det måske ikke.";
 $LNG['join_welcome'] = "Velkommen til %s";
 $LNG['join_welcome_admin'] = "En ny bruger har tilmeldt sig din topsites liste.";
-$LNG['join_approve'] = "Din hjemmeside vil blive vist når administratoren af topsites-listen godkender den."; // 5.1.0
+$LNG['join_approve'] = "Tak for tilmeldingen!  Din hjemmeside vil blive vist når en administrator har godkendt den.  Du vil modtage en email med mere information når hjemmesiden er godkendt."; // 5.2.0
 $LNG['join_type'] = "Kontotype"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
+$LNG['join_error_top'] = "En fejl blev fundet i din tilføjelse.  Venligst ret denne fejl nedenfor."; // 5.2.0
+$LNG['join_ban_top'] = "Din tilføjelse indeholder indhold der er udelukket/afvist af topsites administratoren."; // 5.2.0
+$LNG['join_security'] = "Sikkerhed"; // 5.2.0
+$LNG['join_confirm_password'] = "Bekræft kodeord"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Link kode"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Ændring";
 $LNG['table_up'] = "Op"; // 5.0
 $LNG['table_down'] = "Ned"; // 5.0
 $LNG['table_neutral'] = "Uændret"; // 5.0
+$LNG['table_your_site_here'] = "Din hjemmeside her"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Bedøm og kommentèr";
+$LNG['rate_message'] = "Venligst indtast din bedømmelse for %s i formularen nedenfor."; // 5.2.0
 $LNG['rate_rating'] = "Bedømmelse";
 $LNG['rate_review'] = "Kommentar - ingen HTML tilladt"; // 5.0
 $LNG['rate_thanks'] = "Tak for din bedømmelse."; 
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Kommentarer";
 $LNG['stats_allreviews'] = "Vis alle kommentarer"; // 4.0
 $LNG['stats_week'] = "Uge"; // 5.0
 $LNG['stats_highest'] = "Højeste"; // 5.0
+$LNG['stats_overall'] = "Statistik"; // 5.2.0
+$LNG['stats_overall_average'] = "Gennemsnit (seneste 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "I alt (alle tider)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s sites"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Du skal tilmeldes topsites-listen før du ka
 $LNG['user_cp_openid_error_general'] = "En fejl opstod under din indlogning.  Prøv venligst igen."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Du skal give tilladelse til adgang for at kunne fortsætte.  Prøv venligst igen."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Fejl fra server: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Du har ikke adgang til kontrolpanelet før din hjemmeside er godkendt.  Du vil modtage en email når siden er belvet godkendt."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Godkend nye brugere"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "Brugeren er blevet godkendt."; // 4.0
 $LNG['a_approve_dones'] = "Brugerne er blevet godkendt."; // 4.0
 $LNG['a_approve_sel'] = "Med det valgte:"; // 5.0
 
+// Admin > Approve Edited Members // 5.2.0
+$LNG['a_approve_edited_header'] = "Godkend redigerede brugere"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Der er ingen redigerede brugere til godkendelse."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Tidligere titel og URL"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Redigeret titel og URL"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Afvis"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Ændringerne er blevet godkendt."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Ændringerne er blevet afvist."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Godkend nye kommentarer"; // 5.0
 $LNG['a_approve_rev_none'] = "Der er ingen kommentarer der venter på godkendelse."; // 5.0
 $LNG['a_approve_rev_done'] = "Kommentaren er blevet godkendt."; // 5.0
 $LNG['a_approve_rev_dones'] = "Kommentarerne er blevet godkendt."; // 5.0
+
+// Admin > Backup Database // 5.2.0
+$LNG['a_backup_header'] = "Database backup"; // 5.2.0
+$LNG['a_backup_warn'] = "Dette vil oprette en backup af dine brugere, statistik og indstillinger.  Hvis du har mange brugere, kan det tage lang tid og vil generere en stor fil."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Opret brugeroprettet side"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "De forbudte ord er nu slettet."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Ønsker du at slette %s fra forbudte ordlisten?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "disse %s ord"; //5.1.0 
 $LNG['a_del_bad_word_invalid_id'] = "Ugyldigt forbudt ord-ID.  Venligst prøv igen."; // 5.1.0
+
+// Admin > Delete Ban // 5.2.0
+$LNG['a_del_ban_header'] = "Slet blacklist indlæg"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Slet blacklist indlæg"; // 5.2.0
+$LNG['a_del_ban_done'] = "Blacklist indlæg er slettet."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Blacklist indlæg er slettet."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Vil du slette %s fra blacklisten?"; //5.2.0
+$LNG['a_del_ban_multi'] = "disse %s indlæg"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Ugyldig blacklist ID.  Forsøg venligst igen."; // 5.2.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Slet brugeroprettet side"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "Brugeren er nu redigeret.";
 $LNG['a_edit_bad_word_header'] = "Rediger forbudt ord"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Det forbudte ord er nu ændret."; // 5.1.0
 
+// Admin > Edit Ban // 5.2.0
+$LNG['a_edit_ban_header'] = "Rediger blacklist indlæg"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Blacklist indlæg er blevet redigeret."; // 5.2.0
+
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Rediger brugeroprettet side"; // 5.1.0
 $LNG['a_edit_page_content'] = "Indhold - du kan benytte HTML her"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Administration"; // 5.0
 $LNG['a_main'] = "Velkommen til administrationen.  Benyt linksene til venstre til at ordne din topsites liste."; // 5.0
 $LNG['a_main_approve'] = "1 site venter på godkendelse."; // 5.0
 $LNG['a_main_approves'] = "%s sites venter på godkendelse."; // 5.0
+$LNG['a_main_approve_edit'] = "Der er 1 hjemmeside ændring der afventer godkendelse."; // 5.2.0
+$LNG['a_main_approve_edits'] = "Der er %s hjemmeside ændringer der afventer godkendelse."; // 5.2.0
 $LNG['a_main_approve_rev'] = "1 kommentar venter på godkendelse."; // 5.0
 $LNG['a_main_approve_revs'] = "%s kommentarer venter på godkendelse."; // 5.0
 $LNG['a_main_your'] = "Din version"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Global"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filtrer ord"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" er blevet tilføjet forbudte ord-filteret."; // 5.1.0
 
+// Admin > Manage Ban // 5.2.0
+$LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "For at udelukke nogen fra din topsites liste, udfyld da formularen nedenfor.  Når en bruger melder sig til, tjekkes URL, emailadresse, brugernavn og IP-adresse.  Når en hjemmeside redigeres, tjekkes URL og emailadresse.<br /><br />Blacklisten vil ikke påvirke dine nuværende brugere."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Nøjagtig match vil kun matche den pågældende streng.  Global match vil matche alt indeholdende strengen.  Dvs., global match af http://www.yahoo.com/ vil matche enhver side med http://www.yahoo.com/ i URLen, mens nøjagtig match af http://www.yahoo.com/ kun vil matche den eksakte URL."; // 5.1.0
+$LNG['a_man_ban_string'] = "Streng"; // 5.2.0
+$LNG['a_man_ban_field'] = "Felt"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" er blevet tilføjet blacklisten."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Rediger brugeroprettede sider"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Dato"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "Hovedside"; // 5.0
 $LNG['a_menu_approve'] = "Godkend nye brugere";
+$LNG['a_menu_approve_edits'] = "Godkend redigerede brugere"; // 5.2.0
 $LNG['a_menu_manage'] = "Rediger brugere"; // 4.2.0
 $LNG['a_menu_settings'] = "Skift indstillinger"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Forbudte ord-filter"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Blacklist"; // 5.2.0
+$LNG['a_menu_backup'] = "Database backup"; // 5.2.0
 $LNG['a_menu_skins'] = "Skins og kategorier"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Godkend nye kommentarer"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Rediger kommentarer"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Opret brugeroprettet side"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Rediger brugeroprettede sider"; // 5.1.0
 $LNG['a_header_members'] = "Brugere"; // 5.0
 $LNG['a_header_settings'] = "Indstillinger"; // 5.0
+$LNG['a_header_tools'] = "Værktøjer"; // 5.2.0
 $LNG['a_header_reviews'] = "Kommentarer"; // 5.0
 $LNG['a_header_pages'] = "Brugeroprettede sider"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Rang efter gennemsnit eller efter %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Udvalgt bruger - Du skal tilføje {$featured_member} til wrapper.html efter at du har slået det til.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Antal medlemmer som skal vises i den specielle top template (på for eksempel din hovedside for at markedsføre din topliste)"; 
 $LNG['a_s_ad_breaks'] = "Vis reklame efter disse placeringer (adskil med kommaer) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "Udfyld tomme rækker med en besked der siger \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Bruger indstillinger";
 $LNG['a_s_active_default'] = "Nye brugere skal godkendes før de kommer på listen";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Hvis Ja - fil-endelse på disse knapper (gif, png, jpg,
 $LNG['a_s_button_num'] = "Hvis Ja - Antal knapper du har lagret."; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-venlige links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Portalside for at forhindre snyd på hits"; 
+$LNG['a_s_captcha'] = "Ordbekræftelse ved tilmeldelse (beskyttelse mod spammere) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Sikkerheds spørgsmål og svar til at blokere spammere (blank er lig med ikke-aktiv) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Andre indstillinger";
 $LNG['a_s_search'] = "Søg";
 $LNG['a_s_time_offset'] = "Tidsforskel for din server (i timer)";
-$LNG['a_s_gateway'] = "Portalside for at forhindre snyd på hits"; 
-$LNG['a_s_captcha'] = "Ordbekræftelse ved tilmeldelse (beskyttelse mod spammere) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Til";
 $LNG['a_s_off'] = "Fra";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Måneder";
 $LNG['a_s_weeks'] = "Uger"; // 4.2.0
 $LNG['a_s_yes'] = "Ja"; 
 $LNG['a_s_no'] = "Nej";
+$LNG['a_s_answer'] = "Svar"; // 5.2.0
 
 $LNG['a_s_updated'] = "Dine indstillinger er ændret.";
 

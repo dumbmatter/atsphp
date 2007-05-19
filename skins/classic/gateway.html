@@ -1,17 +1,130 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>{$lng->gateway_header}</title>
 <meta http-equiv="Content-Type" content="text/html;charset={$lng->charset}" />
-<link rel="stylesheet" type="text/css" media="screen" title="Default" href="{$skins_url}/{$skin_name}/default.css" />
+<style type="text/css">
+body {
+	background-color: #FFF;
+	color: #000;
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+.cssbutton {
+color: #FFFFFF;
+background-color: #AC0000;
+border: 3px outset #AC0000;
+text-decoration: none;
+padding: 3px 2px 3px 3px;
+font: bold 0.9em tahoma;
+}
+.cssbutton:hover {
+background-color: #980000;
+border-style: outset;
+color: #fff;
+}
+.cssbutton:active {
+border-style: inset !important;
+}
+
+
+
+.cssbuttongo {
+color: #FFFFFF;
+background-color: #33CC00;
+border: 3px outset #33CC00;
+text-decoration: none;
+padding: 3px 2px 3px 3px;
+font: bold 0.9em tahoma;
+}
+.cssbuttongo:hover {
+background-color: #28AF06;
+border-style: outset;
+color: #fff;
+}
+.cssbuttongo:active {
+border-style: inset !important;
+}
+.voteboxes {
+margin: 5px 120px 25px 120px;
+text-align: center;
+
+}
+
+.votebox {
+float: left;
+background: #f8f8f8;
+width: 200px;
+border: 1px solid #ccc;
+}
+
+.voteboxno {
+float: right;
+background: #f8f8f8;
+width: 200px;
+border: 1px solid #ccc;
+}
+.votehead {
+margin: 0;
+padding: 1px;
+font:bold 0.9em tahoma, sans-serif;
+display: block; 
+background: #ccc;
+color: white;
+}
+
+.gatemessage {
+display: block;
+border-bottom: 1px dashed #ccc;
+background: #f8f8f8;
+padding: 5px;
+}
+
+#gatewrap {
+border: 1px solid #000;
+padding: 1px; 
+margin: 0 auto; 
+width: 700px;
+}
+
+h1 {
+display: block;
+background: #000 url(http://www.osdedicated.com/atsphp1/skins/fusion/title.png); 
+text-align: center; 
+margin: 0;
+color: #fff;
+}
+</style>
 </head>
-<body style="margin: 2px;">
-<center><h1>{$lng->gateway_header}</h1></center><br />
-{$lng->gateway_text}<br /><br />
-<b><a href="{$list_url}/index.php?a=in&amp;u={$username}&sid={$sid}">{$lng->gateway_vote}</a></b><br /><br />
-<b><a href="{$list_url}/">{$lng->gateway_no_vote}</a></b><br /><br />
-<div class="bottom">
-{$list_name} - {$lng->main_powered} <a href="http://www.aardvarktopsitesphp.com/" target="_blank">Aardvark Topsites PHP</a> {$version}
+<body>
+<div id="gatewrap">
+<h1>{$lng->gateway_header}</h1><br />
+
+<div class="voteboxes">
+
+<p class="gatemessage">{$lng->gateway_text}</p><br /><br />
+
+  <div class="votebox">
+   <span class="votehead"> </span>
+   <br /><br />
+   <a href="{$list_url}/index.php?a=in&amp;u={$username}&amp;sid={$sid}" class="cssbuttongo">{$lng->gateway_vote}</a><br /><br /><br />
+   <span class="votehead"> </span>
+  </div>
+  <div class="voteboxno">
+  <span class="votehead"> </span><br /><br />
+  <a href="{$list_url}/"  class="cssbutton">{$lng->gateway_no_vote}</a><br /><br /><br />
+   <span class="votehead"> </span>
+  </div>
 </div>
+
+<div style="clear: both; padding: 20px;"> </div>
+
+
+
+
+<div style="margin: 10px; text-align: center;">
+{$list_name} - {$lng->main_powered} <a href="http://www.aardvarktopsitesphp.com/" target="_blank">Aardvark Topsites PHP</a> {$version}
+</div></div>
 </body>
 </html>

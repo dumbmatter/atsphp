@@ -16,7 +16,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-// This file is based on hn_captcha 1.3 by Horst Nogajski.
+// This file is based on HN Captcha 1.3 by Horst Nogajski.
 // http://hn273.users.phpclasses.org/browse/package/1569.html
 
 // Help prevent register_globals injection

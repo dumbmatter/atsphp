@@ -376,7 +376,7 @@ $LNG['a_man_bad_words_filtered'] = "\"%s\" has been added to the profanity filte
 // Admin > Manage Ban // 5.2.0
 $LNG['a_man_ban_header'] = "Blacklist"; // 5.2.0
 $LNG['a_man_ban_instructions'] = "To ban someone from your topsites list, fill out the form below.  When a member joins, the URL, email address, username, and IP address are checked.  When a site is edited, the URL and email address are checked.<br /><br />The blacklist will not affect your existing members."; // 5.2.0
-$LNG['a_man_ban_words_instructions_matching'] = "Exact matching will only match the exact string.  Global matching will match anything containing the string.  So, global matching of http://www.yahoo.com/ would match any page with http://www.yahoo.com/ in the URL, while exact matching of http://www.yahoo.com/ would only match that exact URL."; // 5.1.0
+$LNG['a_man_ban_words_instructions_matching'] = "Exact matching will only match the exact string.  Global matching will match anything containing the string.  So, global matching of http://www.yahoo.com/ would match any page with http://www.yahoo.com/ in the URL, while exact matching of http://www.yahoo.com/ would only match that exact URL."; // 5.2.0
 $LNG['a_man_ban_string'] = "String"; // 5.2.0
 $LNG['a_man_ban_field'] = "Field"; // 5.2.0
 $LNG['a_man_ban_blacklisted'] = "\"%s\" has been added to the blacklist."; // 5.2.0

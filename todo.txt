@@ -77,9 +77,9 @@ CREATE TABLE `ats_stats_overall` (
 );
 INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
 ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) default 0;
------------ toptopsites.com has all above
 ALTER TABLE `ats_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL;
 UPDATE ats_etc SET original_version = '5.2.0';
+----------- toptopsites.com has all above
 
 
 -----
@@ -87,11 +87,12 @@ UPDATE ats_etc SET original_version = '5.2.0';
 -----
 ETA: Summer
 HIGH PRIORITY:
-classic skin
 credits.txt
 - translators
+test languages
 ------------
 LOW PRIORITY:
+up/down arrows
 backlink checker
 - This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
 - some code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=6242
@@ -128,20 +129,6 @@ LOW PRIORITY:
 custom form fields, auto-generated forms
 tags instead of categories
 
-UPDATED SKINS
-  admin.html
-  edit_form.html
-  gateway.html
-  join_captcha.html
-  join_email.html
-  join_finish.html
-  join_finish_approve.html
-  join_form.html
-  join_question.html
-  rate_form.html
-  table_filler.html
-  table_wrapper.html
-
 SVN ADD
 skins/classic/table_filler.html
 skins/classic/table_wrapper.html
@@ -150,16 +137,18 @@ skins/classic/join_question.html
 SVN DELETE
 
 TRANSLATION STATUS
-  5.1
+  5.2 - NEED TO TEST
     bosnian
-    chinese_trad
     czech
     danish
-    dutch
     english
     finnish
     french
     german
+
+  5.1
+    chinese_trad
+    dutch
     hebrew
     italian
     japanese
@@ -176,7 +165,6 @@ TRANSLATION STATUS
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table
 security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-skin upgrade instructions on separate page
 
 THINGS TO DO ON RELEASE
   increment version in index.php
