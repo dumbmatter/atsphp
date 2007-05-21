@@ -87,6 +87,9 @@ French (Francais)
 German (Deutsch)
 - Michael Schiecke (Speedmike) <http://www.speedmike.de/>
 
+Romanian (Românã)
+- Adrian-Marius Mihai (Mastermind) <http://www.masterminds.ro/>
+
 -----
 OTHER
 -----

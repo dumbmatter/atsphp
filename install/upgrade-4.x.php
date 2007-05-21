@@ -474,16 +474,6 @@ EndHTML;
                     PRIMARY KEY  (`username`)
                   )", __FILE__, __LINE__);
 
-      $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats_overall` (
-                    `in_avg` bigint(20) unsigned default 0,
-                    `out_avg` bigint(20) unsigned default 0,
-                    `pv_avg` bigint(20) unsigned default 0,
-                    `in_overall` bigint(20) unsigned default 0,
-                    `out_overall` bigint(20) unsigned default 0,
-                    `pv_overall` bigint(20) unsigned default 0
-                  );", __FILE__, __LINE__);
-      $DB->query("INSERT INTO `{$CONF['sql_prefix']}_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);", __FILE__, __LINE__);
-
       require_once("{$CONF['path']}/sources/misc/classes.php");
       require_once("{$CONF['path']}/sources/in.php");
       $result = $DB->query("SELECT id, password, url, title, description, category, urlbanner, email, total_ratings, num_ratings, jointime, active FROM {$CONF['sql_prefix']}_members", __FILE__, __LINE__);

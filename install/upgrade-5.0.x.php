@@ -84,7 +84,7 @@ else {
   if ($DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);
 
-    // 5.0
+    // 5.0 to 5.1
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_bad_words` (
                   `id` int(10) unsigned NOT NULL,
                   `word` varchar(255),
@@ -108,7 +108,7 @@ else {
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD email_admin_on_review tinyint(1) default 0 AFTER email_admin_on_join", __FILE__, __LINE__);
     $DB->query("ALTER TABLE {$CONF['sql_prefix']}_settings ADD google_friendly_links tinyint(1) default 1 AFTER button_num", __FILE__, __LINE__);
 
-    // 5.1
+    // 5.1 to 5.2
     $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL", __FILE__, __LINE__);
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ban` (
                   `id` int(10) unsigned NOT NULL,
@@ -129,15 +129,6 @@ else {
                   `title` varchar(255) default '',
                   PRIMARY KEY  (`username`)
                 )", __FILE__, __LINE__);
-    $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_stats_overall` (
-                  `in_avg` bigint(20) unsigned default 0,
-                  `out_avg` bigint(20) unsigned default 0,
-                  `pv_avg` bigint(20) unsigned default 0,
-                  `in_overall` bigint(20) unsigned default 0,
-                  `out_overall` bigint(20) unsigned default 0,
-                  `pv_overall` bigint(20) unsigned default 0
-                )", __FILE__, __LINE__);
-    $DB->query("INSERT INTO `{$CONF['sql_prefix']}_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0)", __FILE__, __LINE__);
     $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_settings` CHANGE `active_default` `active_default` tinyint(1) default 0", __FILE__, __LINE__);
     $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL", __FILE__, __LINE__);
     $DB->query("UPDATE {$CONF['sql_prefix']}_etc SET original_version = '5.0'", __FILE__, __LINE__);

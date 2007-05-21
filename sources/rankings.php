@@ -235,10 +235,15 @@ class rankings extends base {
     }
 
     // Overall stats
-    list($TMPL['in_avg'], $TMPL['out_avg'], $TMPL['pv_avg'], $TMPL['in_overall'], $TMPL['out_overall'], $TMPL['pv_overall']) = $DB->fetch("SELECT in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall FROM {$CONF['sql_prefix']}_stats_overall", __FILE__, __LINE__);
-    $TMPL['in_avg'] = number_format($TMPL['in_avg']);
-    $TMPL['out_avg'] = number_format($TMPL['out_avg']);
-    $TMPL['pv_avg'] = number_format($TMPL['pv_avg']);
+    list($TMPL['pv_avg'], $TMPL['in_avg'], $TMPL['out_avg'], $TMPL['pv_overall'], $TMPL['in_overall'], $TMPL['out_overall']) = $DB->fetch("SELECT
+                         ROUND((SUM(unq_pv_0_{$ranking_period}) + SUM(unq_pv_1_{$ranking_period}) + SUM(unq_pv_2_{$ranking_period}) + SUM(unq_pv_3_{$ranking_period}) + SUM(unq_pv_4_{$ranking_period}) + SUM(unq_pv_5_{$ranking_period}) + SUM(unq_pv_6_{$ranking_period}) + SUM(unq_pv_7_{$ranking_period}) + SUM(unq_pv_8_{$ranking_period}) + SUM(unq_pv_9_{$ranking_period}))/10, 1),
+                         ROUND((SUM(unq_in_0_{$ranking_period}) + SUM(unq_in_1_{$ranking_period}) + SUM(unq_in_2_{$ranking_period}) + SUM(unq_in_3_{$ranking_period}) + SUM(unq_in_4_{$ranking_period}) + SUM(unq_in_5_{$ranking_period}) + SUM(unq_in_6_{$ranking_period}) + SUM(unq_in_7_{$ranking_period}) + SUM(unq_in_8_{$ranking_period}) + SUM(unq_in_9_{$ranking_period}))/10, 1),
+                         ROUND((SUM(unq_out_0_{$ranking_period}) + SUM(unq_out_1_{$ranking_period}) + SUM(unq_out_2_{$ranking_period}) + SUM(unq_out_3_{$ranking_period}) + SUM(unq_out_4_{$ranking_period}) + SUM(unq_out_5_{$ranking_period}) + SUM(unq_out_6_{$ranking_period}) + SUM(unq_out_7_{$ranking_period}) + SUM(unq_out_8_{$ranking_period}) + SUM(unq_out_9_{$ranking_period}))/10, 1),
+                         SUM(unq_pv_overall), SUM(unq_in_overall), SUM(unq_out_overall)
+                         FROM {$CONF['sql_prefix']}_stats", __FILE__, __LINE__);
+    $TMPL['in_avg'] = number_format($TMPL['in_avg'], 1);
+    $TMPL['out_avg'] = number_format($TMPL['out_avg'], 1);
+    $TMPL['pv_avg'] = number_format($TMPL['pv_avg'], 1);
     $TMPL['in_overall'] = number_format($TMPL['in_overall']);
     $TMPL['out_overall'] = number_format($TMPL['out_overall']);
     $TMPL['pv_overall'] = number_format($TMPL['pv_overall']);

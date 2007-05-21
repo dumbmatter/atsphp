@@ -19,33 +19,6 @@
 ROADMAP
 =======
 
-DONE SINCE 5.1.2
-Various small admin UI fixes
-Unapproved sites will not be automatically deleted for inactivity
-Option in the admin to fill empty rows with "Your Site Here"
-Backup database from admin
-Validates $_SERVER before use
-A more secure captcha, with a link for users to get a new captcha if the user can't read the first one
-Displays the banner max width/height in the join and edit forms
-Redesigned gateway page for the Fusion skin by OS-Mark
-When you enable admin approval of new members, the welcome email is delayed until you approve the site
-button.php only displays a button for valid, approved members
-It is impossible to set the number of members per page to 0
-Users cannot create their own categories by bypassing the join/edit forms
-Quotes and other special HTML characters can be used in titles and descriptions without problems
-Under normal usage, there should be no PHP error messages, even at E_ALL
-Users pending approval will not be allowed to login to the user control panel
-Banning of sites by URL, IP address, username, email
-Checks if allow_url_fopen is On before checking banner size and checking for the latest version
-Missing </option> tags were added so that all pages should validate as XHTML 1.0 Transitional
-user_cp.php renamed to user_cpl.php because of mod_security on some servers
-Optional security question on join to block spammers
-By default, new members must be approved by the admin before they are listed
-By default, changes to the title or URL of a site must be approved by the admin
-New skin file table_wrapper.html to easily display things only on ranking pages
-Overall stats displayed on the main page
-Password confirmation on the join page to prevent typos
-
 SQL:
 ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
 CREATE TABLE `ats_ban` (
@@ -67,14 +40,6 @@ CREATE TABLE `ats_sites_edited` (
   `title` varchar(255) default '',
   PRIMARY KEY  (`username`)
 );
-CREATE TABLE `ats_stats_overall` (
-  `in_avg` bigint(20) unsigned default 0,
-  `out_avg` bigint(20) unsigned default 0,
-  `pv_avg` bigint(20) unsigned default 0,
-  `in_overall` bigint(20) unsigned default 0,
-  `out_overall` bigint(20) unsigned default 0,
-  `pv_overall` bigint(20) unsigned default 0
-);
 INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
 ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) default 0;
 ALTER TABLE `ats_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL;
@@ -82,17 +47,32 @@ UPDATE ats_etc SET original_version = '5.2.0';
 ----------- toptopsites.com has all above
 
 
+
 -----
 5.2.0
 -----
-ETA: Summer
-HIGH PRIORITY:
 credits.txt
 - translators
 test languages
+~/projects/aardvark/topsites/notes.txt
+get rid of old mailing list: fix link on main page of .com
+
+-----
+5.3.0
+-----
+HIGH PRIORITY:
+openid
+- old files in atsphp-openid folder
+review admin ui
+- instant refresh back to previous page after form submits
+caching
+- rankings.php, cache main page?  is it worth it?
+- hypothesis: most people only look at the first page.  back it up with w3counter stats for toptopsites.com
 ------------
 LOW PRIORITY:
-up/down arrows
+custom form fields, auto-generated forms
+tags instead of categories
+improve up/down arrows
 backlink checker
 - This will check to see if your members have your topsites button up and are linking back to you.  However, this process may not be completely accurate, so do not take any drastic actions based only on the results presented here.
 - some code: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=6242
@@ -113,27 +93,9 @@ double quotes in search = phrase
 search on manage members page
 cache list of valid usernames in a plain text file to avoid connecting to db to check for valid members
 
------
-5.3.0
------
-ETA: Who knows
-HIGH PRIORITY:
-openid
-- old files in atsphp-openid folder
-review admin ui
-- instant refresh back to previous page after form submits
-caching
-- rankings.php
-------------
-LOW PRIORITY:
-custom form fields, auto-generated forms
-tags instead of categories
-
 SVN ADD
-skins/classic/table_filler.html
-skins/classic/table_wrapper.html
-skins/classic/join_finish_approve.html
-skins/classic/join_question.html
+skins/fusion/stats_overall.html
+skins/classic/stats_overall.html
 SVN DELETE
 
 TRANSLATION STATUS
@@ -145,6 +107,7 @@ TRANSLATION STATUS
     finnish
     french
     german
+    romanian
 
   5.1
     chinese_trad
@@ -156,7 +119,6 @@ TRANSLATION STATUS
     polish
     portuguese
     portuguese_brazilian
-    romanian
     russian
     spanish
     swedish
@@ -168,6 +130,7 @@ security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 THINGS TO DO ON RELEASE
   increment version in index.php
+  changes.txt
   do something about version in ats_etc (installer, upgrader, etc)
   commit to svn with version number in comment
   create atsphp-x.x.x.zip from public_html/atsphp-x.x.x

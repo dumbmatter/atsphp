@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -23,9 +23,9 @@ if (!defined('ATSPHP')) {
 // When you make a new translation, fill out the following four variables to
 // get credit for you work.
 $translation = 'Romanian (Românã)';
-$translator_name = 'Adrian-Marius Mihai alias Mastermind';
+$translator_name = 'Adrian-Marius Mihai (Mastermind)';
 $translator_email = 'webmaster@masterminds.ro';
-$translator_url = 'http://www.masterminds.ro';
+$translator_url = 'http://www.masterminds.ro/';
 
 // Set this to the character encoding of your translation
 $LNG['charset'] = "iso-8859-2";
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Parola este gresita.  Va rugam incercati din nou."; // 5.
 $LNG['g_session_expired'] = "Sesiunea dvs. a expirat.  Va rugam autentificati-va din nou."; // 5.0
 $LNG['g_error'] = "Eroare"; // 5.0
 $LNG['g_delete_install'] = "Din motive de securitate, sunteti rugati sa sterge-ti directorul de instalare (numit 'install'), altfel acest script nu poate rula."; // 5.0
+$LNG['g_ip'] = "Adresa IP"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Modifica date";
 $LNG['edit_info_edited'] = "Datele contului dvs. au fost modificate cu succes.";
 $LNG['edit_password_blank'] = "Lasati acest camp liber pentru a pastra parola curenta"; // 4.0
+$LNG['edit_delay'] = "Schimbarile facute titlului si adresei site-ului vor trebui aprobate de catre administrator inainte de a fi activate."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Pagina de acces spre clasament";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Bine ati venit! Aardvark Topsites PHP 5.  Inainte de 
 $LNG['upgrade_version'] = "Va rugam verificati ca upgradarea sa se faca incepand de la versiunea %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Inoirea este posibila numai pentru versiunile Aardvark Topsites PHP 4.1.0 sau mai recente.";
 $LNG['upgrade_done'] = "Clasament-ul dvs. a fost reinoit. Sterge-ti acest fisier acum.";
+$LNG['install_mailing_list'] = "Daca doriti sa va inscrieti pe lista noastra de email-uri, introduceti adresa aici. Volumul stirilor va fi redus si vor cuprinde numai anunturi importante in legatura cu script-ul cum ar fi lansari de noi versiuni si recomandari de securitate."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Inscriere";
 $LNG['join_enter_text'] = "Introduceti literele si cifrele din imaginea de mai jos:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Nu puteti citi?"; // 5.2.0
 $LNG['join_user'] = "Utilizator"; // 5.0
 $LNG['join_website'] = "Site"; // 5.0
+$LNG['join_banner_size'] = "(Dimensiune maxima: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Nu ati introdus un nume de utilizator corect: foloseste numai litere, cifre, underscore '_', si liniuta orizontala '-'."; // 5.0
 $LNG['join_error_username_duplicate'] = "Nu ati introdus un nume de utilizator corect: numele pe care l-ati ales este indisponibil."; // 5.0
 $LNG['join_error_url'] = "Nu ati introdus adresa site-ului in mod corect.";
 $LNG['join_error_email'] = "Nu ati introdus o adresa de email corecta.";
 $LNG['join_error_title'] = "Nu ati introdus titlul site-ului dvs..";
 $LNG['join_error_password'] = "Nu ati introdus nici o parola.";
-$LNG['join_error_urlbanner'] = "Nu ati introdus nici o adresa spre un banner al site-ului dvs.  Lasati gol acest camp daca nu detineti nici un banner.  Dimensiunea sa trebuie sa fie de maxim"; // 4.0
+$LNG['join_error_confirm_password'] = "Parolele nu se potrivesc."; // 5.2.0
+$LNG['join_error_urlbanner'] = "Introduceti un baner valid. Lasati spatiul gol daca nu aveti unul deocamdata."; // 5.2.0
 $LNG['join_error_time'] = "Nu apasati niciun buton refresh in pagina de inregistrare."; // 4.2.0
 $LNG['join_error_captcha'] = "Cuvantul introdus nu este acelasi cu cel din imagine."; // 4.2.2
+$LNG['join_error_question'] = "Raspunsul este incorect. Va rugam reincercati, aceasta este o masura impotriva automatismelor robotilor web."; // 5.2.0
 $LNG['join_thanks'] = "Multumim pentru inscriere!  Puneti codul urmator in PRIMA pagina a site-ului pentru a fi introdus in clasament si pentru ca statisticile personale sa functioneze.";
 $LNG['join_change_warning'] = "Daca modificati acest cod este posibil sa nu mai functioneze.";
 $LNG['join_welcome'] = "Bine ati venit %s";
 $LNG['join_welcome_admin'] = "S-a inregistrat un nou membru.";
-$LNG['join_approve'] = "Site-ul dvs. va fi afisat in clasament dupa ce administratorul va verifica datele introduse."; // 5.1.0
+$LNG['join_approve'] = "Multumim pentru inscriere! Site-ul dvs. va fi adaugat listei imediat ce va fi aprobat de catre administratorul topului. Ve-ti primi un email cu mai multe informatii dupa aprobare."; // 5.2.0
 $LNG['join_type'] = "Tip cont"; // 5.1.0
 $LNG['join_standard'] = "Standard"; // 5.1.0
+$LNG['join_error_top'] = "S-a gasit o eroare in datele introduse. Va rugam remediati eroarea de mai jos."; // 5.2.0
+$LNG['join_ban_top'] = "Aplicarea dvs. contine date ce sunt trecute pe lista neagra de catre administratorul topului."; // 5.2.0
+$LNG['join_security'] = "Securitate"; // 5.2.0
+$LNG['join_confirm_password'] = "Confirma Parola"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Codul HTML"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Tendinta";
 $LNG['table_up'] = "Urcare"; // 5.0
 $LNG['table_down'] = "Scadere"; // 5.0
 $LNG['table_neutral'] = "Stagnare"; // 5.0
+$LNG['table_your_site_here'] = "Numele Site-ului Aici"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Voteaza";
+$LNG['rate_message'] = "Introduceti aprecierea si comentariul pentru %s in acest formular."; // 5.2.0
 $LNG['rate_rating'] = "Impresia dvs. despre continutul/calitatea acestui site";
 $LNG['rate_review'] = "Parerea mea despre site este urmatoarea: (doar litere si cifre)"; // 5.0
 $LNG['rate_thanks'] = "Multumim pentru vot.";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Parere vizitator";
 $LNG['stats_allreviews'] = "Arata Opiniile"; // 4.0
 $LNG['stats_week'] = "Saptamana"; // 5.0
 $LNG['stats_highest'] = "Nivel Maxim"; // 5.0
+$LNG['stats_overall'] = "Statut General"; // 5.2.0
+$LNG['stats_overall_average'] = "Medie (Ultimele 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Total (Din Toate Timpurile)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Primele %s Site-uri"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Atentie! Trebuie sa aveti mai intai un cont
 $LNG['user_cp_openid_error_general'] = "Atentie! A survenit o eroare.  Va rugam incercati din nou sa va autentificati."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "Atentie! Trebuie sa va autentificati inainte de a continua acest proces.  Va rugam incercati din nou."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "Atentie! A survenit o eroare de la server-ul %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Nu puteti accesa panoul de control decat dupa ce site-ul va fi aprobat. Ve-ti primi un email care va va anunta aprobarea."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Aprobare membrii noi"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "Membru acceptat."; // 4.0
 $LNG['a_approve_dones'] = "Membrii acceptati."; // 4.0
 $LNG['a_approve_sel'] = "Selectati:"; // 5.0
 
+// Admin > Approve Edited Members // 5.2.0
+$LNG['a_approve_edited_header'] = "Aproba Membrii cu Date Modificate"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Nu exista modificari ale membrilor ce asteapta aprobare."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Titlul si adresa anterioara"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Noul titlul si adresa"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Respinge"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Modificarile au fost aprobate."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Modificarile au fost respinse."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Aproba comentarii noi"; // 5.0
 $LNG['a_approve_rev_none'] = "Nu sunt comentarii de aprobat."; // 5.0
 $LNG['a_approve_rev_done'] = "Comentariu aprobat."; // 5.0
 $LNG['a_approve_rev_dones'] = "Comentarii aprobate."; // 5.0
+
+// Admin > Backup Database // 5.2.0
+$LNG['a_backup_header'] = "Salveaza o copie a Bazei de Date"; // 5.2.0
+$LNG['a_backup_warn'] = "Aceasta va creea o copie de rezerva cu membrii, statisticile si optiunile folosite in prezent. Daca exista multi membrii acest proces va dura corespunzator iar fisierul salvat va fi de dimensiuni apreciabile."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Creeaza o pagina personalizata"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "Cuvintele filtrate au fost sterse."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Va rugam confirmati stergerea %s din lista cuvintelor filtrate?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "aceste %s cuvinte"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "ID-ul acestui cuvant filtrat este invalid. Va rugam incercati din nou."; // 5.1.0
+
+// Admin > Delete Ban // 5.2.0
+$LNG['a_del_ban_header'] = "Sterge inregistrarea din lista neagra"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Sterge inregistrarile din lista neagra"; // 5.2.0
+$LNG['a_del_ban_done'] = "Inregistrarea a fost stearsa."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Inregistrarile au fost sterse."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Sunteti sigur ca doriti stergerea inregistrarii %s din lista neagra?"; //5.2.0
+$LNG['a_del_ban_multi'] = "aceste %s inregistrari"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Numar de identificare invalid. Re-incercati."; // 5.2.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Sterge pagina personalizata"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "Datele membrului au fost modificate.";
 $LNG['a_edit_bad_word_header'] = "Modifica cuvantul filtrat"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Cuvantul filtrat a fost modificat."; // 5.1.0
 
+// Admin > Edit Ban // 5.2.0
+$LNG['a_edit_ban_header'] = "Modifica inregistrarea"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Modificarea inregistrarii finalizata."; // 5.2.0
+
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Modifica pagina personalizata"; // 5.1.0
 $LNG['a_edit_page_content'] = "Continutul - Puteti folosi cod HTML aici"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Administrare"; // 5.0
 $LNG['a_main'] = "Bine ati venit.  Utilizati link-urile din stanga pentru a administra sistemul."; // 5.0
 $LNG['a_main_approve'] = "Exista o cerere de aprobare."; // 5.0
 $LNG['a_main_approves'] = "Exista %s cereri de aprobare."; // 5.0
+$LNG['a_main_approve_edit'] = "Exista 1 site modificat ce asteapta sa fie aprobat."; // 5.2.0
+$LNG['a_main_approve_edits'] = "Exista %s site-uri ce asteapta sa fie aprobate."; // 5.2.0
 $LNG['a_main_approve_rev'] = "Exista un comentariu care asteapta sa fie aprobat."; // 5.0
 $LNG['a_main_approve_revs'] = "Exista %s comentarii care asteapta sa fie aprobate."; // 5.0
 $LNG['a_main_your'] = "Versiunea instalata"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "General"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Cuvant filtrat"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" a fost adaugat listei cu cuvinte vulgare sau cu continut ofensator."; // 5.1.0
 
+// Admin > Manage Ban // 5.2.0
+$LNG['a_man_ban_header'] = "Lista Neagra"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Pentru a adauga pe cineva pe lista neagra a topului, completati forumularul urmator. Cand se inscrie un nou membru adresa site-ului , adresa de email, numele de utilizator si adresa IP vor fi verificate. Cand datele unui membru sunt modificate, adresa site-ului , adresa de email, numele de utilizator si adresa IP vor fi verificate.<br /><br />Lista neagra nu va afecta membrii existenti."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Potrivirea perfecta va cauta respectivul cuvant sa fie intr-un context identic. Potrivirea Globala va cauta respectivul cuvant indiferent de context si literele alaturate. Asadar Potrivirea Globala de exemplu pentru http://www.yahoo.com/ va avea ca rezultate aratate, toate adresele ce au in componenta http://www.yahoo.com/, pe cand  Potrivirea Perfecta va returna ca rezultat doar http://www.yahoo.com/ fara alte adaugari in adresa."; // 5.2.0
+$LNG['a_man_ban_string'] = "Cuvant cautat"; // 5.2.0
+$LNG['a_man_ban_field'] = "Camp"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" a fost adaugat pe lista neagra (cenzura)."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Administrare Pagini Personalizate"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Data"; // 5.0
 $LNG['a_menu'] = "Meniu";
 $LNG['a_menu_main'] = "Prima pagina"; // 5.0
 $LNG['a_menu_approve'] = "Aprobari";
+$LNG['a_menu_approve_edits'] = "Aproba Modificari Membrii"; // 5.2.0
 $LNG['a_menu_manage'] = "Administrare"; // 4.2.0
 $LNG['a_menu_settings'] = "Modificare"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Filtru cuvinte"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Lista Neagra"; // 5.2.0
+$LNG['a_menu_backup'] = "Copie de Rezerva a Bazei de Date"; // 5.2.0
 $LNG['a_menu_skins'] = "Categorii si skin-uri"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Aprobari"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Administrare"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Creeaza pagina personalizata"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Administrare pagini personalizate"; // 5.1.0
 $LNG['a_header_members'] = "Membrii"; // 5.0
 $LNG['a_header_settings'] = "Preferinte"; // 5.0
+$LNG['a_header_tools'] = "Unelte"; // 5.2.0
 $LNG['a_header_reviews'] = "Comentarii"; // 5.0
 $LNG['a_header_pages'] = "Pagini personalizate"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Clasare dupa medie sau numai dupa %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Membru special - Trebuie sa adaugati {$featured_member} in documentul wrapper.html dupa ce selectati aceasta optiune.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Numarul de membri care dispun de afisare completa (titlu, descriere, banner etc.).";
 $LNG['a_s_ad_breaks'] = "Afiseaza reclamele dupa aceste locuri din clasament (se separa cu virgule) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "Completati randurile libere cu un mesaj spunand \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Membrii";
 $LNG['a_s_active_default'] = "Este necesara aprobarea noilor membrii inainte de a fi listati in clasament";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Daca ati ales Da introduce-ti extensia imaginii buton 
 $LNG['a_s_button_num'] = "Daca ati ales Da introduce-ti numarul de imagini buton pe care le aveti disponibile"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-friendly links (Link-uri vizibile de catre Google) - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Pagina anti abuz (cu introducere a caracterelor dintr-o imagine)";
+$LNG['a_s_captcha'] = "Introducere cuvant de siguranta (protectie imotriva abuzurilor) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Intrebare pentru stoparea spam-ului (lasati liber pentru a dezactiva) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Alte preferinte";
 $LNG['a_s_search'] = "Cauta";
 $LNG['a_s_time_offset'] = "Fusul orar al serverului (de exemplu '+2:00' in pt. Bucuresti)";
-$LNG['a_s_gateway'] = "Pagina anti abuz (cu introducere a caracterelor dintr-o imagine)";
-$LNG['a_s_captcha'] = "Introducere cuvant de siguranta (protectie imotriva abuzurilor) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "Activat";
 $LNG['a_s_off'] = "Dezactivat";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Luni";
 $LNG['a_s_weeks'] = "Saptamani"; // 4.2.0
 $LNG['a_s_yes'] = "Da";
 $LNG['a_s_no'] = "Nu";
+$LNG['a_s_answer'] = "Raspuns"; // 5.2.0
 
 $LNG['a_s_updated'] = "Preferintele dvs. au fost modificate cu succes.";
 
