@@ -19,35 +19,6 @@
 ROADMAP
 =======
 
-SQL:
-ALTER TABLE `ats_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL;
-CREATE TABLE `ats_ban` (
-  `id` int(10) unsigned NOT NULL,
-  `string` varchar(255) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `matching` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`id`)
-);
-ALTER TABLE `ats_settings` ADD `fill_blank_rows` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `ad_breaks`;
-ALTER TABLE `ats_etc` ADD `version` VARCHAR( 255 ) NOT NULL;
-UPDATE ats_etc SET version = '5.2.0';
-ALTER TABLE `ats_sites` ADD `user_ip` VARCHAR( 255 ) DEFAULT '' NOT NULL AFTER `openid`;
-ALTER TABLE `ats_settings` ADD `security_question` TEXT AFTER `captcha`;
-ALTER TABLE `ats_settings` ADD `security_answer` VARCHAR(255) AFTER `security_question`;
-CREATE TABLE `ats_sites_edited` (
-  `username` varchar(255) default '' NOT NULL,
-  `url` varchar(255) default '',
-  `title` varchar(255) default '',
-  PRIMARY KEY  (`username`)
-);
-INSERT INTO `ats_stats_overall` (in_avg, out_avg, pv_avg, in_overall, out_overall, pv_overall) VALUES (0, 0, 0, 0, 0, 0);
-ALTER TABLE `ats_settings` CHANGE `active_default` `active_default` tinyint(1) default 0;
-ALTER TABLE `ats_etc` ADD `original_version` VARCHAR( 255 ) NOT NULL;
-UPDATE ats_etc SET original_version = '5.2.0';
------------ toptopsites.com has all above
-
-
-
 -----
 5.2.0
 -----
@@ -56,6 +27,7 @@ credits.txt
 test languages
 ~/projects/aardvark/topsites/notes.txt
 get rid of old mailing list: fix link on main page of .com
+warning message on old manuals
 
 -----
 5.3.0
@@ -94,8 +66,6 @@ search on manage members page
 cache list of valid usernames in a plain text file to avoid connecting to db to check for valid members
 
 SVN ADD
-skins/fusion/stats_overall.html
-skins/classic/stats_overall.html
 SVN DELETE
 
 TRANSLATION STATUS
