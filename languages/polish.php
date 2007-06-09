@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
-// Aardvark Topsites PHP 5                                                   \\
-// Copyright (c) 2003-2006 Jeremy Scheff.  All rights reserved.              \\
+// Aardvark Topsites PHP 5.2                                                 \\
+// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -66,11 +66,13 @@ $LNG['g_invalid_p'] = "Nieprawid³owe has³o. Spróbuj ponownie."; // 5.0
 $LNG['g_session_expired'] = "Twoja sesja wygas³a. Spróbuj ponownie."; // 5.0
 $LNG['g_error'] = "B³±d"; // 5.0
 $LNG['g_delete_install'] = "Z powodów bezpieczeñstwa musisz usun±æ katalog install przed pierwszym uruchomieniem skryptu."; // 5.0
+$LNG['g_ip'] = "Adres IP"; // 5.2.0
 
 // Edit Account
 $LNG['edit_header'] = "Edytuj konto.";
 $LNG['edit_info_edited'] = "Edycja konta zakoñczona powodzeniem.";
 $LNG['edit_password_blank'] = "Zostaw puste aby zachowaæ obecne has³o"; // 4.0
+$LNG['edit_delay'] = "Zanim zmiany w tytule i adresie URL przynis¹ efekt, musz¹ zostaæ zaakceptowane przez administratora."; // 5.2.0
 
 // Gateway Page
 $LNG['gateway_header'] = "Bramka toplisty";
@@ -93,28 +95,37 @@ $LNG['upgrade_welcome'] = "Witaj w Aardvark Topsites PHP 5.  Przed przyst±pienie
 $LNG['upgrade_version'] = "Upewnij siê ze aktualizujesz z wersji %s."; // 5.1.0
 $LNG['upgrade_error_version'] = "Aktualizacjê mo¿na wykonaæ tylko z Aardvark Topsites PHP 4.1.0 lub wy¿szej.";
 $LNG['upgrade_done'] = "Twoja toplista zosta³a uaktualniona.  Skasuj ten katalog.";
+$LNG['install_mailing_list'] = "Jeœli chcia³byœ/chcia³abyœ do³¹czyæ listy mailowej Aardvark Topsites PHP, wpisz poni¿ej swój e-mial. jest to lista o niskiej intensywnoœci zawieraj¹ca wa¿ne og³oszenia o skrypcie, takie jak nowe wersje i rady dotycz¹ce bezpieczeñstwa."; // 5.2.0
 
 // Join
 $LNG['join_header'] = "Do³±cz";
 $LNG['join_enter_text'] = "Przepisz tekst z obrazka poni¿ej:"; // 4.2.2
+$LNG['join_enter_text_read'] = "Nie mo¿esz odczytaæ?"; // 5.2.0
 $LNG['join_user'] = "U¿ytkownik"; // 5.0
 $LNG['join_website'] = "Strona WWW"; // 5.0
+$LNG['join_banner_size'] = "(Maksymalna wielkoœæ: %sx%s)"; // 5.2.0
 $LNG['join_error_username'] = "Wprowad¼ poprawn± nazwê u¿ytkownika: u¿ywaj tylko liter, cyfr, podkre¶leñ dolnych."; // 5.0
 $LNG['join_error_username_duplicate'] = "Wprowad¼ poprawn± nazwê u¿ytkownika: istnieje ju¿ u¿ytkownik o takiej nazwie."; // 5.0
 $LNG['join_error_url'] = "Wprowad¼ poprawny adres URL.";
 $LNG['join_error_email'] = "Wprowad¼ poprawny adres email.";
 $LNG['join_error_title'] = "Wprowad¼ tytu³ strony.";
 $LNG['join_error_password'] = "Wprowad¼ has³o.";
-$LNG['join_error_urlbanner'] = "Wprowad¼ adres bannera.  Zostaw puste je¶li nie masz.  Musi byæ mniejszy ni¿"; // 4.0
+$LNG['join_error_confirm_password'] = "Podane has³a nie s¹ takie same."; // 5.2.0
+$LNG['join_error_urlbanner'] = "WprowadŸ poprawny banner.  Zostaw puste jeœli nie posiadasz."; // 5.2.0
 $LNG['join_error_time'] = "Nie od¶wie¿aj strony z potwierdzeniem rejestracji!"; // 4.2.0
 $LNG['join_error_captcha'] = "Wpisane s³owo ró¿ni siê od wy¶wietlonego na obrazie."; // 4.2.2
+$LNG['join_error_question'] = "Twoja odpowiedŸ jest niepoprawna. Proszê popraw j¹ aby potwierdziæ ¿e jesteœ cz³owiekiem a nie botem."; // 5.2.0
 $LNG['join_thanks'] = "Dziekujemy za zapisanie siê. Wstaw na stronie poni¿szy kod.";
 $LNG['join_change_warning'] = "Je¶li zmienisz kod, zliczanie g³osów z twojej strony mo¿e nie dzia³aæ.";
 $LNG['join_welcome'] = "Witaj w %s";
 $LNG['join_welcome_admin'] = "Nowy u¿ytkownik do³±czy³ do toplisty.";
-$LNG['join_approve'] = "Twoja strona zostanie dodana gdy uzyska akceptacjê administratora toplisty."; // 5.1.0
+$LNG['join_approve'] = "Dziêkujê za przy³¹czenie siê!  Twoja strona pojawi siê na liœcie gdy administrator toplisty j¹ zatwierdzi.  Otrzymasz e-mail z informacj¹ gdy zostanie ona zatwierdzona."; // 5.2.0
 $LNG['join_type'] = "Typ konta"; // 5.1.0
 $LNG['join_standard'] = "Standardowy"; // 5.1.0
+$LNG['join_error_top'] = "Znaleziono b³ad w twoim podaniu.  Proszê skorygowaæ b³¹d poni¿ej."; // 5.2.0
+$LNG['join_ban_top'] = "Twoje podanie zawiera treœci zabronione przez administratora toplisty."; // 5.2.0
+$LNG['join_security'] = "Bezpieczeñstwo"; // 5.2.0
+$LNG['join_confirm_password'] = "PotwierdŸ has³o"; // 5.2.0
 
 // Link Code
 $LNG['link_code_header'] = "Kod linka"; // 5.0
@@ -158,9 +169,11 @@ $LNG['table_movement'] = "Zminana pozycji";
 $LNG['table_up'] = "W górê"; // 5.0
 $LNG['table_down'] = "W dó³"; // 5.0
 $LNG['table_neutral'] = "Bez zmian"; // 5.0
+$LNG['table_your_site_here'] = "Twoja strona"; // 5.2.0
 
 // Rate and Review
 $LNG['rate_header'] = "Oceñ i skomentuj";
+$LNG['rate_message'] = "Proszê wpisaæ ocenê i komentarz dla %s w polu poni¿ej."; // 5.2.0
 $LNG['rate_rating'] = "Oceny";
 $LNG['rate_review'] = "Komentarz - HTML nie dozwolony!"; // 5.0
 $LNG['rate_thanks'] = "Dziêkujemy za ocenê!";
@@ -187,6 +200,9 @@ $LNG['stats_reviews'] = "Komentarze";
 $LNG['stats_allreviews'] = "Poka¿ wszystkie komentarze"; // 4.0
 $LNG['stats_week'] = "Tygodniowo"; // 5.0
 $LNG['stats_highest'] = "Najwy¿sze"; // 5.0
+$LNG['stats_overall'] = "Ogólne statystyki"; // 5.2.0
+$LNG['stats_overall_average'] = "Œrednia (Ostatnie 10 %s)"; // 5.2.0
+$LNG['stats_overall_total'] = "Razem (Dotychczas)"; // 5.2.0
 
 // ssi.php
 $LNG['ssi_top'] = "Top %s Sites"; // 4.0
@@ -206,6 +222,7 @@ $LNG['user_cp_openid_error_join'] = "Musisz najpierw do³±czyæ do rankingu zanim 
 $LNG['user_cp_openid_error_general'] = "Wyst±pi³ b³±d w czasie przetwarzania twoich danych.  Proszê spróbowaæ jeszcze raz."; // 5.1.0
 $LNG['user_cp_openid_error_cancel'] = "You must grant access to proceed.  Please try again."; // 5.1.0
 $LNG['user_cp_openid_error_from_server'] = "B³±d z serwera: %s"; // 5.1.0
+$LNG['user_cp_inactive'] = "Nie mo¿esz dostaæ siê do panelu u¿ytkownika, dopóki twoja strona nie zostanie zaakceptowana przez administratora. Otrzymasz e-mail z informacj¹ gdy zostanie ona zatwierdzona."; // 5.2.0
 
 // Admin > Approve New Members // 4.0
 $LNG['a_approve_header'] = "Zaakceptuj nowych u¿ytkowników"; // 5.0
@@ -215,11 +232,24 @@ $LNG['a_approve_done'] = "U¿ytkownik zaakceptowany."; // 4.0
 $LNG['a_approve_dones'] = "U¿ytkownicy zostali zaakceptowani."; // 4.0
 $LNG['a_approve_sel'] = "Zaznaczeni:"; // 5.0
 
+// Admin > ZatwierdŸ zmienianych u¿ytkowników // 5.2.0
+$LNG['a_approve_edited_header'] = "ZatwierdŸ zmienianych u¿ytkowników"; // 5.2.0
+$LNG['a_approve_edited_none'] = "Nie ma wpisów czekaj¹cych na akceptacjê."; // 5.2.0
+$LNG['a_approve_edited_old'] = "Poprzedni tytu³ i adres"; // 5.2.0
+$LNG['a_approve_edited_new'] = "Zmieniony tytu³ i adres"; // 5.2.0
+$LNG['a_approve_edited_reject'] = "Odmowa"; // 5.2.0
+$LNG['a_approve_edited_done'] = "Zmiany zosta³y zaakceptowane."; // 5.2.0
+$LNG['a_approve_rejected_done'] = "Zmiany zosta³y odrzucone."; // 5.2.0
+
 // Admin > Approve New Reviews // 5.0
 $LNG['a_approve_rev_header'] = "Zaakceptuj nowe komentarze."; // 5.0
 $LNG['a_approve_rev_none'] = "Brak komentarzy do akceptacji."; // 5.0
 $LNG['a_approve_rev_done'] = "Komentarz zaakceptowany."; // 5.0
 $LNG['a_approve_rev_dones'] = "Komentarze zaakceptowane."; // 5.0
+
+// Admin > Kopia zapasowa bazy danych // 5.2.0
+$LNG['a_backup_header'] = "Kopia zapasowa bazy danych"; // 5.2.0
+$LNG['a_backup_warn'] = "Zostanie stworzona kopia twoich u¿ytkowników, statystyk i ustawieñ. Jeœli masz du¿o u¿ytkowników, mo¿e to zaj¹æ du¿o czasu i zostanie stworzony du¿y plik."; // 5.2.0
 
 // Admin > Create Custom Page // 5.1.0
 $LNG['a_create_page_header'] = "Stwórz w³asn± stronê"; // 5.1.0
@@ -244,6 +274,15 @@ $LNG['a_del_bad_word_dones'] = "Filtrowane s³owa zosta³y usuniête."; // 5.1.0
 $LNG['a_del_bad_word_warn'] = "Czy napewno chcesz usun±æ %s z listy filtrowanych s³ów?"; //5.1.0
 $LNG['a_del_bad_word_multi'] = "te %s s³owa"; //5.1.0
 $LNG['a_del_bad_word_invalid_id'] = "Nieprawid³owe ID filtrowanego s³owa.  Proszê spróbowaæ ponownie."; // 5.1.0
+
+// Admin > Usuñ/zablokuj // 5.2.0
+$LNG['a_del_ban_header'] = "Usuñ wpis z czarnej listy"; // 5.2.0
+$LNG['a_del_ban_headers'] = "Usuñ wpisy z czarnej listy"; // 5.2.0
+$LNG['a_del_ban_done'] = "Wips zosta³ usuniêty z czarnej listy."; // 5.2.0
+$LNG['a_del_ban_dones'] = "Wipsy zosta³y usuniête z czarnej listy."; // 5.2.0
+$LNG['a_del_ban_warn'] = "Czy jesteœ pewien, ¿e chcesz usun¹æ %s z czarnej listy?"; //5.2.0
+$LNG['a_del_ban_multi'] = "te %s wpisy"; //5.2.0
+$LNG['a_del_ban_invalid_id'] = "Nieprawid³owy ID czarnej listy.  Proszê spróbuj ponownie."; // 5.2.0
 
 // Admin > Delete Custom Page // 5.1.0
 $LNG['a_del_page_header'] = "Usuñ w³asn± stronê"; // 5.1.0
@@ -274,6 +313,10 @@ $LNG['a_edit_edited'] = "U¿ytkownik wyedytowany.";
 $LNG['a_edit_bad_word_header'] = "Edytuj filtrowane s³owo"; // 5.1.0
 $LNG['a_edit_bad_word_edited'] = "Filtrowane s³owo zosta³o wyedytowane."; // 5.1.0
 
+// Admin > Edytuj blokadê // 5.2.0
+$LNG['a_edit_ban_header'] = "Edytuj zablokowany wpis"; // 5.2.0
+$LNG['a_edit_ban_edited'] = "Zablokowany wpis zosta³ wyedytowany."; // 5.2.0
+
 // Admin > Edit Custom Page // 5.1.0
 $LNG['a_edit_page_header'] = "Edytuj w³asn± stronê"; // 5.1.0
 $LNG['a_edit_page_content'] = "Zawarto¶æ - mo¿esz u¿ywaæ tu HTML"; // 5.1.0
@@ -300,6 +343,8 @@ $LNG['a_header'] = "Administracja"; // 5.0
 $LNG['a_main'] = "Witaj w administracji.  U¿yj odno¶ników po lewej aby administrowaæ stron±."; // 5.0
 $LNG['a_main_approve'] = "1 strona czeka na akceptacjê."; // 5.0
 $LNG['a_main_approves'] = "%s stron czeka na akceptacjê."; // 5.0
+$LNG['a_main_approve_edit'] = "Jedna strona czeka na twoja akceptacjê."; // 5.2.0
+$LNG['a_main_approve_edits'] = "S¹ %s strony czekaj¹ce na twoj¹ akceptacjê."; // 5.2.0
 $LNG['a_main_approve_rev'] = "1 komentarz czeka na akceptacjê."; // 5.0
 $LNG['a_main_approve_revs'] = "%s komentarzy czeka na akceptacje."; // 5.0
 $LNG['a_main_your'] = "Wersja"; // 5.0
@@ -328,6 +373,14 @@ $LNG['a_man_bad_words_global'] = "Globalne"; // 5.1.0
 $LNG['a_man_bad_words_filter'] = "Filtruj s³owo"; // 5.1.0
 $LNG['a_man_bad_words_filtered'] = "\"%s\" zosta³o dodane do filtra."; // 5.1.0
 
+// Admin > Zarz¹dzanie zablokowanymi // 5.2.0
+$LNG['a_man_ban_header'] = "Czarna lista"; // 5.2.0
+$LNG['a_man_ban_instructions'] = "Aby zablokowaæ strony i u¿ytkowników z toplisty, wype³nij poni¿szy formularz.  Gdy u¿ytkownik do³¹cza, adres URL, email, nazwa u¿ytkownika, i adres IP s¹ sprawdzane.  Gdy strona jest edytowana, adres URL i email s¹ sprawdzane.<br /><br />Czarna lisa nie wp³ynie na twoich obecnych uŸytkowników."; // 5.2.0
+$LNG['a_man_ban_words_instructions_matching'] = "Dok³adne dopasowywanie zadzia³a tylko gdy bêdzie mu odpowiadaæ identyczny ci¹g znaków.  Globalne dopasowywanie zadzia³a gdy cokolwiek zawiera dany ci¹g zanków.  Wiêc, globalne doasowywanie do http://www.yahoo.com/ bêdzie pasowaæ do ka¿dej strony zawieraj¹cej http://www.yahoo.com/ w adresie URL, podczas gdy dok³adne dopasowywanie http://www.yahoo.com/ bêdzie pasowaæ tylko do tego adresu URL."; // 5.2.0
+$LNG['a_man_ban_string'] = "Ci¹g"; // 5.2.0
+$LNG['a_man_ban_field'] = "Pole"; // 5.2.0
+$LNG['a_man_ban_blacklisted'] = "\"%s\" zosta³a dodana do czarnej listy."; // 5.2.0
+
 // Admin > Manage Custom Pages // 5.1.0
 $LNG['a_man_pages_header'] = "Zarz±dzaj w³asnymi stronami"; // 5.1.0
 
@@ -342,9 +395,12 @@ $LNG['a_man_rev_date'] = "Data"; // 5.0
 $LNG['a_menu'] = "Menu";
 $LNG['a_menu_main'] = "G³owna"; // 5.0
 $LNG['a_menu_approve'] = "Zaakceptuj nowych u¿ytkowników";
+$LNG['a_menu_approve_edits'] = "Zaakceptuj u¿ytkowników"; // 5.2.0
 $LNG['a_menu_manage'] = "Zarz±dzaj u¿ytkownikami"; // 4.2.0
 $LNG['a_menu_settings'] = "Zmieñ ustawienia"; // 5.0
 $LNG['a_menu_manage_bad_words'] = "Filtr zawarto¶ci"; // 5.1.0
+$LNG['a_menu_manage_ban'] = "Czarna lista"; // 5.2.0
+$LNG['a_menu_backup'] = "Kopia bazy danych"; // 5.2.0
 $LNG['a_menu_skins'] = "Skóry i kategorie"; // 5.0
 $LNG['a_menu_approve_reviews'] = "Zaakceptuj komentarze"; // 5.0
 $LNG['a_menu_manage_reviews'] = "Zarz±dzaj komentarzami"; // 5.0
@@ -357,6 +413,7 @@ $LNG['a_menu_create_page'] = "Dodaj w³asn± stronê"; // 5.1.0
 $LNG['a_menu_manage_pages'] = "Zarz±dzaj w³asnymi stronami"; // 5.1.0
 $LNG['a_header_members'] = "U¿ytkownicy"; // 5.0
 $LNG['a_header_settings'] = "Ustawienia"; // 5.0
+$LNG['a_header_tools'] = "Narzêdzia"; // 5.2.0
 $LNG['a_header_reviews'] = "Komentarze"; // 5.0
 $LNG['a_header_pages'] = "W³asne strony"; // 5.1.0
 
@@ -386,6 +443,7 @@ $LNG['a_s_ranking_average'] = "Ranking ogólny czy poprostu %s"; // 5.0
 $LNG['a_s_featured_member'] = 'Wspierany u¿ytkownik - Musisz dodac {$featured_member} do wrapper.html po aktywowaniu tej opcji.'; // 4.1.0
 $LNG['a_s_top_skin_num'] = "Liczba u¿ytkowników the _top skin";
 $LNG['a_s_ad_breaks'] = "Pokazuj reklamy miedzy tymi pozycjami (separate with commas) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_fill_blank_rows'] = "Wype³nij wolne przestrzenie s³owami: \"{$LNG['table_your_site_here']}\""; // 5.2.0
 
 $LNG['a_s_member'] = "Ustawienia u¿ytkownika";
 $LNG['a_s_active_default'] = "Wymagaj akceptacji nowych u¿ytkowników";
@@ -406,11 +464,13 @@ $LNG['a_s_button_ext'] = "Je¶li tak - rozszerzenie przycisku(gif, png, jpg, itd.
 $LNG['a_s_button_num'] = "Je¶li tak - ilo¶æ zrobionych przycisków"; // 4.0
 $LNG['a_s_google_friendly_links'] = "Google-friendly links - <a href=\"http://www.aardvarktopsitesphp.com/manual/google_friendly_links.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
+$LNG['a_s_gateway'] = "Strona bramki do obrony przed oszustwami";
+$LNG['a_s_captcha'] = "Weryfikacja obrazkowa (przeciw spamowi) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
+$LNG['a_s_security_question'] = "Pytanie i odpowiedŸ kontrolna w celu zablokowania spammerów (zostaw puste aby wy³¹czyæ) - <a href=\"http://www.aardvarktopsitesphp.com/manual/security_question.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.2.0
+
 $LNG['a_s_other'] = "Inne ustawienia";
 $LNG['a_s_search'] = "Szukaj";
 $LNG['a_s_time_offset'] = "Czas offsetu serwera (w godzinach)";
-$LNG['a_s_gateway'] = "Strona bramki do obrony przed oszustwami";
-$LNG['a_s_captcha'] = "Weryfikacja obrazkowa (przeciw spamowi) - <a href=\"http://www.aardvarktopsitesphp.com/manual/word_verification.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
 $LNG['a_s_on'] = "On";
 $LNG['a_s_off'] = "Off";
@@ -419,6 +479,7 @@ $LNG['a_s_months'] = "Miesiêcy";
 $LNG['a_s_weeks'] = "Tygodni"; // 4.2.0
 $LNG['a_s_yes'] = "Tak";
 $LNG['a_s_no'] = "Nie";
+$LNG['a_s_answer'] = "OdpowiedŸ"; // 5.2.0
 
 $LNG['a_s_updated'] = "Ustawienia zaktualizowane.";
 

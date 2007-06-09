@@ -95,6 +95,8 @@ class stats_site extends stats {
 
       $this->averages();
 
+      $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
+
       $stats = array_map('number_format', $stats);
       $TMPL = array_merge($TMPL, $stats);
 
@@ -102,7 +104,6 @@ class stats_site extends stats {
 
       $TMPL['header'] .= " - {$TMPL['title']}";
       $TMPL['category_url'] = urlencode($TMPL['category']);
-      $TMPL['average_rating'] = $TMPL['num_ratings'] > 0 ? round($TMPL['total_rating'] / $TMPL['num_ratings'], 0) : 0;
 
       $query = "SELECT id, date, review FROM {$CONF['sql_prefix']}_reviews WHERE username = '{$TMPL['username']}' AND active = 1";
       if (isset($FORM['all_reviews']) && $FORM['all_reviews']) {

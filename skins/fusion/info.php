@@ -20,5 +20,5 @@
 $name = 'Fusion';
 $author = 'Omar Hachem and Matt Wells';
 $email = '';
-$url = 'http://www.squareapex.com/';
+$url = 'http://www.oritsuru.com/';
 ?>

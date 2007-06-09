@@ -90,6 +90,9 @@ German (Deutsch)
 Romanian (Românã)
 - Adrian-Marius Mihai (Mastermind) <http://www.masterminds.ro/>
 
+Russian (Русский)
+- Andrey Kanevsky <http://www.americaru.com/>
+
 -----
 OTHER
 -----

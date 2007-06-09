@@ -134,7 +134,7 @@ EndHTML;
 
     if (is_array($FORM['u']) && count($FORM['u']) > 1) {
       foreach ($FORM['u'] as $username) {
-        $this->do_approve($username);
+        $this->do_approve($DB->escape($username));
       }
 
       $LNG['a_approve_done'] = $LNG['a_approve_dones'];
