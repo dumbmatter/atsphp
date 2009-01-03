@@ -384,7 +384,7 @@ $LNG['a_s_num_list'] = "每頁列出會員人數"; // 5.0
 $LNG['a_s_ranking_period'] = "排名排行週期"; // 5.0
 $LNG['a_s_ranking_method'] = "排行方式"; // 5.0
 $LNG['a_s_ranking_average'] = "以平均排行或以%s排行"; // 5.0
-$LNG['a_s_featured_member'] = "特別會員 - 開啟後，你需要人手加入{$featured_member}到 wrapper.html。"; // 4.1.0
+$LNG['a_s_featured_member'] = "特別會員 - 開啟後，你需要人手加入{\$featured_member}到 wrapper.html。"; // 4.1.0
 $LNG['a_s_top_skin_num'] = "會員可用的外觀數目";
 $LNG['a_s_ad_breaks'] = "在排行後顯示廣告 (以逗號分隔) - <a href=\"http://www.aardvarktopsitesphp.com/manual/ad_breaks.php\" class=\"help\" target=\"_blank\">{$LNG['a_s_help']}</a>"; // 5.1.0
 
