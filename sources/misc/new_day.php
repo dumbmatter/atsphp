@@ -61,7 +61,7 @@ function new_day($current_day) {
                                                      tot_in_9_daily = tot_in_8_daily, tot_in_8_daily = tot_in_7_daily, tot_in_7_daily = tot_in_6_daily, tot_in_6_daily = tot_in_5_daily, tot_in_5_daily = tot_in_4_daily, tot_in_4_daily = tot_in_3_daily, tot_in_3_daily = tot_in_2_daily, tot_in_2_daily = tot_in_1_daily, tot_in_1_daily = tot_in_0_daily, tot_in_0_daily = 0,
                                                      unq_out_9_daily = unq_out_8_daily, unq_out_8_daily = unq_out_7_daily, unq_out_7_daily = unq_out_6_daily, unq_out_6_daily = unq_out_5_daily, unq_out_5_daily = unq_out_4_daily, unq_out_4_daily = unq_out_3_daily, unq_out_3_daily = unq_out_2_daily, unq_out_2_daily = unq_out_1_daily, unq_out_1_daily = unq_out_0_daily, unq_out_0_daily = 0,
                                                      tot_out_9_daily = tot_out_8_daily, tot_out_8_daily = tot_out_7_daily, tot_out_7_daily = tot_out_6_daily, tot_out_6_daily = tot_out_5_daily, tot_out_5_daily = tot_out_4_daily, tot_out_4_daily = tot_out_3_daily, tot_out_3_daily = tot_out_2_daily, tot_out_2_daily = tot_out_1_daily, tot_out_1_daily = tot_out_0_daily, tot_out_0_daily = 0,
-                                                     old_rank = rank_cache", __FILE__, __LINE__);
+                                                     old_rank = 0", __FILE__, __LINE__);
 }
 
 function new_week($current_week) {

@@ -15,30 +15,53 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-=======
-ROADMAP
-=======
+
+------------------------
+ALREADY DONE SINCE 5.2.0
+------------------------
+Character encoding set in feed.php
+http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=28653#28653 TEST THIS (    if ($CONF['security_question'] != '' && $CONF['security_answer'] != '') { in join.php)
+Up/down/neutral arrows are more accurate (test on toptopsites.com)
+Got rid of PHP warning errors in sources/out.php and elsewhere
+in the captcha part in sources/misc/classes.php, check $_SERVER['REMOTE_ADDR']
+Emails sent to new members after admin approval can use all the tags it says they can in the manual
+Due to popular demand, the button rank cache time has been decreased from 12 hours to 30 minutes
 
 -----
-5.2.0
+5.2.1
 -----
-get rid of old mailing list
+update the mods: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=27750#p27750
+
+-----
+5.2.2
+-----
+captcha in rate.php
+in admin, instant refresh back to previous page after form submits
+there are 11 members.  you are on page 2 (10 per page).  you switch to a category with less than 11 members.  you get no results.  2 possible solutions:
+	- if there are no sites, go to the first page
+	- use ajax to control the possible values of the ranks menu
+tiebreaker so cutoff doesn't happen - alphabetic? http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=28937#28937
 
 -----
 5.3.0
 -----
 HIGH PRIORITY:
+rename the admin password login field so firefox remembers it correctly
+http://www.aardvarktopsitesphp.com/forums/viewtopic.php?f=5&t=7847&p=31916#p31915
+drop down menu to ban sites: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=7416
+make banner size check fail more gracefully
+drop php 4 support
+PDO to prevent SQL injection
 openid
 - old files in atsphp-openid folder
-review admin ui
-- instant refresh back to previous page after form submits
 caching
 - rankings.php, cache main page?  is it worth it?
 - hypothesis: most people only look at the first page.  back it up with w3counter stats for toptopsites.com
 cron.php: run it via ajax instead of all in one process
-captcha in rate.php
+when deleting a site, you can have the ability to say why and email them
 ------------
 LOW PRIORITY:
+Up/down/neutral for categories - just add another field to ats_stats
 auto update members with default banner on admin change
 custom form fields, auto-generated forms
 tags instead of categories
@@ -68,43 +91,50 @@ SVN DELETE
 
 TRANSLATION STATUS
   5.2
+    arabic
     bosnian
     czech
     danish
+    dutch
     english
     finnish
     french
     german
+    hebrew
+    hungarian
+    italian - Missing gateway_header
+    lithuanian
+    macedonian
+    norwegian
     polish
     romanian
     russian
+    serbian
+    spanish
+    turkish - Missing a_man_ban_words_instructions_matching
 
   5.1
     chinese_trad
-    dutch
-    hebrew
     italian
     japanese
     lithuanian
     portuguese
     portuguese_brazilian
-    spanish
     swedish
-    turkish
 
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table
-security_question.php needed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 THINGS TO DO ON RELEASE
   increment version in index.php
   changes.txt
   do something about version in ats_etc (installer, upgrader, etc)
   commit to svn with version number in comment
-  create atsphp-x.x.x.zip from public_html/atsphp-x.x.x
+  create atsphp-x.x.x.zip from projects/atsphp-x.x.x
   - remove unneccesary files and invalid languages
   Upload atsphp-x.x.x.zip
   Upload topsitesphp/version.txt
+  Update links on download page and on the menu
   Post news at:
   - news forum
   - berlios mailing list
@@ -112,3 +142,8 @@ THINGS TO DO ON RELEASE
   Notify of release:
   - hotscripts
   - freshmeat
+
+
+THINGS TO DO ON NEW LANGUAGE
+- dos2unix
+- update credits.txt

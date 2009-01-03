@@ -15,7 +15,7 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-5.2.0 (SVN ???) - 2007-??-??
+5.2.0 (SVN 144) - 2007-06-09
 NOTES
 - The primary purpose of this release is to put forth our first best attempt to
   fight back against spammers.

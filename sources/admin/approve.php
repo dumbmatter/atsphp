@@ -158,7 +158,7 @@ EndHTML;
 
     $DB->query("UPDATE {$CONF['sql_prefix']}_sites SET active = 1 WHERE username = '{$username}'", __FILE__, __LINE__);
 
-    list($TMPL['username'], $TMPL['email']) = $DB->fetch("SELECT username, email FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
+    list($TMPL['username'], $TMPL['url'], $TMPL['title'], $TMPL['description'], $TMPL['category'], $TMPL['banner_url'], $TMPL['email'], $TMPL['join_date']) = $DB->fetch("SELECT username, url, title, description, category, banner_url, email, join_date FROM {$CONF['sql_prefix']}_sites WHERE username = '{$username}'", __FILE__, __LINE__);
 
     if ($CONF['google_friendly_links']) {
       $TMPL['verbose_link'] = "";

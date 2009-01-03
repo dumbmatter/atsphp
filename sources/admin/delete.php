@@ -24,23 +24,25 @@ class delete extends base {
   function delete() {
     global $CONF, $DB, $FORM, $LNG, $TMPL;
 
-    if (is_array($FORM['u']) && count($FORM['u']) > 1) {
-      $TMPL['title'] = sprintf($LNG['a_del_multi'], count($FORM['u']));
-      $LNG['a_del_header'] = $LNG['a_del_headers'];
-      $LNG['a_del_done'] = $LNG['a_del_dones'];
-    }
-    else {
-      if (is_array($FORM['u']) && count($FORM['u']) == 1) {
-        $TMPL['username'] = $DB->escape($FORM['u'][0]);
+    if (isset($FORM['u'])) {
+      if (is_array($FORM['u']) && count($FORM['u']) > 1) {
+        $TMPL['title'] = sprintf($LNG['a_del_multi'], count($FORM['u']));
+        $LNG['a_del_header'] = $LNG['a_del_headers'];
+        $LNG['a_del_done'] = $LNG['a_del_dones'];
       }
       else {
-        $TMPL['username'] = $DB->escape($FORM['u']);
+        if (is_array($FORM['u']) && count($FORM['u']) == 1) {
+          $TMPL['username'] = $DB->escape($FORM['u'][0]);
+        }
+        else {
+          $TMPL['username'] = $DB->escape($FORM['u']);
+        }
+        list($TMPL['title']) = $DB->fetch("SELECT title FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
       }
-      list($TMPL['title']) = $DB->fetch("SELECT title FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+      $TMPL['header'] = $LNG['a_del_header'];
     }
-    $TMPL['header'] = $LNG['a_del_header'];
 
-    if ($TMPL['title']) {
+    if (isset($TMPL['title']) && $TMPL['title']) {
       if (!isset($FORM['submit'])) {
         $this->warning();
       }

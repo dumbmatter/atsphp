@@ -158,7 +158,8 @@ class join_edit extends base {
         $error_confirm_password = 1;
       }
       if ($CONF['captcha']) {
-        list($sid) = $DB->fetch("SELECT sid FROM {$CONF['sql_prefix']}_sessions WHERE type = 'captcha' AND data LIKE '{$_SERVER['REMOTE_ADDR']}|%'", __FILE__, __LINE__);
+        $ip = $DB->escape($_SERVER['REMOTE_ADDR'], 1);
+        list($sid) = $DB->fetch("SELECT sid FROM {$CONF['sql_prefix']}_sessions WHERE type = 'captcha' AND data LIKE '{$ip}|%'", __FILE__, __LINE__);
         require_once("{$CONF['path']}/sources/misc/session.php");
         $session = new session;
         list($type, $data) = $session->get($sid);

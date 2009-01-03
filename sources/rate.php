@@ -36,17 +36,17 @@ class rate extends base {
         $this->error($LNG['rate_error']);
       }
 
-      if (!isset($FORM['rating'])) {
-        $this->form();
-      }
-      else {
-        list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
-        if ($TMPL['username'] == $username) {
-          $this->process($ip, $ip_sql);
+      list($username) = $DB->fetch("SELECT username FROM {$CONF['sql_prefix']}_sites WHERE username = '{$TMPL['username']}'", __FILE__, __LINE__);
+      if ($TMPL['username'] == $username) {
+        if (!isset($FORM['rating'])) {
+            $this->form();
         }
         else {
-          $this->error($LNG['g_invalid_u']);
+          $this->process($ip, $ip_sql);
         }
+      }
+      else {
+        $this->error($LNG['g_invalid_u']);
       }
     }
   }

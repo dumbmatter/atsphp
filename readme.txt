@@ -36,6 +36,7 @@ A PREVIOUS VERSION, PLEASE READ THE "UPGRADE" SECTION OF THE MANUAL.
 2. CHMOD 666 settings_sql.php
 3. Go to install/index.php in your browser and follow the instructions there
 4. Delete the install directory when you are done
+5. CHMOD 644 settings_sql.php
 
 After installing, you can log into the admin by going to index.php?a=admin
 

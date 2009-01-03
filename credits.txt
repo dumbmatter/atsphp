@@ -69,6 +69,9 @@ OS-Mark <http://www.osempire.com/>
 TRANSLATORS
 -----------
 
+Arabic (عربي)
+- المستثمرون العرب <http://www.mostathmr.com/>
+
 Bosnian (Bosanski)
 - Hame <http://www.PortalBiH.com/>
 
@@ -78,6 +81,9 @@ Czech (Česky)
 Danish (Dansk)
 - Helmuth Mikkelsen <http://www.helmuth.dk/>
 
+Dutch (Nederlands)
+- Ruben Coolen <http://www.lords-of-war.nl/>
+
 Finnish (Suomi)
 - Pekka Pelkonen <http://www.paimiowoodland.net/>
 
@@ -85,13 +91,50 @@ French (Francais)
 - Kamisama <http://kamidesign.thegreatspirit.net/>
 
 German (Deutsch)
+- Hiero <http://www.cruiser-berlin.de/> (Since version 5.2.0+)
 - Michael Schiecke (Speedmike) <http://www.speedmike.de/>
+
+Hebrew (עברית)
+- Dan_y2k <http://y2k.official.ws/>
+
+Hungarian (magyar nyelv)
+- Varanka Zoltán <http://novoportal.hu/>
+
+Italian (Italiano)
+- Massimo Di Paolo <http://www.top100-solar.it/> (Up to version 5.1.2)
+- Fabio Selvatici <http://www.twist3dart.com/> (Since version 5.2.0)
+
+Lithuanian (Lietuvių)
+- MNK Group <http://mnk.xz.lt/>
+
+Macedonian (Македонски)
+- GjokoMk <http://www.velgosti.com/>
+
+Norwegian (Norsk)
+- Thomas Torjusen <http://www.dykkesiden.com/>
+
+Polish (Polski)
+- zolw <http://www.toplista.mojeforum.net/>
 
 Romanian (Românã)
 - Adrian-Marius Mihai (Mastermind) <http://www.masterminds.ro/>
 
 Russian (Русский)
 - Andrey Kanevsky <http://www.americaru.com/>
+
+Serbian (Srpski)
+- wukaschin <http://www.yu-fitness.com/>
+
+Spanish (Español)
+- Eduardo Sainz <http://www.encastellano.org> (Up to version 5.1.2)
+- Victor Montero (Sayoran) <http://www.sayoran-anime.net/> (Since version 5.2.0)
+
+Swedish (Svenska)
+- Topplista.se <http://www.topplista.se/>
+
+Turkish (Türkçe)
+- Ergün Acar <http://www.weblistele.com/> (Up to version 5.1.2)
+- M.Bahattin EKEN <http://www.sitelerimiz.biz/> (Since version 5.2.0)
 
 -----
 OTHER
@@ -103,4 +146,4 @@ http://hn273.users.phpclasses.org/browse/package/1569.html
 The captcha uses several GPL and public domain fonts:
 - Kozmic Jagged Hands and Rubbing Font <http://www.theory.org/~matt/fonts/free/>
 - Bitstream Vera Sans Bold and Bitstream Vera Serif <http://www.gnome.org/fonts/>
-- OCRA <http://sourceforge.net/projects/ocr-a-font/>
+- OCR-A <http://sourceforge.net/projects/ocr-a-font/>

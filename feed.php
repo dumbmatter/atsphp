@@ -66,7 +66,7 @@ require_once("{$CONF['path']}/sources/misc/classes.php");
 $order_by = base::rank_by()." DESC";
 
 header('Content-Type: application/xml');
-echo '<?xml version="1.0"?>';
+echo "<?xml version=\"1.0\" encoding=\"{$LNG['charset']}\"?>";
 
 // Get the category, default to no category
 if (isset($FORM['cat']) && $FORM['cat']) {

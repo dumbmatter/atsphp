@@ -66,7 +66,7 @@ class join extends join_edit {
     }
 
     // Display the security question?
-    if ($CONF['security_question'] && $CONF['security_answer']) {
+    if ($CONF['security_question'] != '' && $CONF['security_answer'] != '') {
       $TMPL['security_question'] = $CONF['security_question'];
       if (isset($FORM['security_answer'])) { $TMPL['security_answer'] = strip_tags($FORM['security_answer']); }
       else { $TMPL['security_answer'] = ''; }

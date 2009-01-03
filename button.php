@@ -75,7 +75,7 @@ if ($CONF['ranks_on_buttons']) {
   list($rank_cache, $rank_cache_time) = $DB->fetch("SELECT rank_cache, rank_cache_time FROM {$CONF['sql_prefix']}_stats WHERE username = '{$username}'", __FILE__, __LINE__);
 
   $current_time = time();
-  if ($current_time - (12*3600) < $rank_cache_time) {
+  if (($current_time - 1800) < $rank_cache_time) { // Cache every 30 minutes.  1800 is the number of seconds to cache.  Change it if you want.
     if ($rank_cache > 0 && $rank_cache <= $CONF['button_num']) {
       $rank = $rank_cache;
       $location = "{$CONF['button_dir']}/{$rank}.{$CONF['button_ext']}";
