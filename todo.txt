@@ -31,6 +31,9 @@ Due to popular demand, the button rank cache time has been decreased from 12 hou
 5.2.1
 -----
 update the mods: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=27750#p27750
+new languages: kurdish, greek, portuguese (brazilian)
+how to deal with the mailing list?
+after release, email thanks to new translators
 
 -----
 5.2.2
@@ -100,27 +103,27 @@ TRANSLATION STATUS
     finnish
     french
     german
+    greek
     hebrew
     hungarian
     italian - Missing gateway_header
+    kurdish
     lithuanian
     macedonian
     norwegian
     polish
+    portuguese_brazilian
     romanian
     russian
     serbian
     spanish
+    swedish
     turkish - Missing a_man_ban_words_instructions_matching
 
   5.1
     chinese_trad
-    italian
     japanese
-    lithuanian
     portuguese
-    portuguese_brazilian
-    swedish
 
 MANUAL CHANGES
 skins tutorial: key tags and detailed explainations for wrapper and table

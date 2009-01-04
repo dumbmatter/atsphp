@@ -94,6 +94,9 @@ German (Deutsch)
 - Hiero <http://www.cruiser-berlin.de/> (Since version 5.2.0+)
 - Michael Schiecke (Speedmike) <http://www.speedmike.de/>
 
+Greek (Ελληνικά)
+- Dimi <http://www.hellasplus.com/>
+
 Hebrew (עברית)
 - Dan_y2k <http://y2k.official.ws/>
 
@@ -103,6 +106,9 @@ Hungarian (magyar nyelv)
 Italian (Italiano)
 - Massimo Di Paolo <http://www.top100-solar.it/> (Up to version 5.1.2)
 - Fabio Selvatici <http://www.twist3dart.com/> (Since version 5.2.0)
+
+Kurdish (کوردی)
+- سیڤان <http://kurdchat.newsit.es>
 
 Lithuanian (Lietuvių)
 - MNK Group <http://mnk.xz.lt/>
@@ -115,6 +121,9 @@ Norwegian (Norsk)
 
 Polish (Polski)
 - zolw <http://www.toplista.mojeforum.net/>
+
+Portuguese (Brazilian) (Português Brasileiro)
+- Jorge Luis Ferrari Ce <http://www.wheez.com.br/>
 
 Romanian (Românã)
 - Adrian-Marius Mihai (Mastermind) <http://www.masterminds.ro/>
