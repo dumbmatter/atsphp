@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -24,7 +24,7 @@ $TMPL = array();
 
 // Change the path to your full path if necessary
 $CONF['path'] = '.';
-$TMPL['version'] = '5.2.1 Beta';
+$TMPL['version'] = '5.2.1';
 // Set to 1 to display SQL queries and GET/POST/COOKIE data
 $CONF['debug'] = 0;
 

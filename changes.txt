@@ -1,6 +1,6 @@
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -14,6 +14,17 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General \\
 // Public License for more details.                                          \\
 //===========================================================================\\
+
+5.2.1 (SVN ) - 2009-03-??
+BUG FIXES
+- Character encoding set in feed.php
+- Security questions will now work with 0 as an answer
+- Up/down/neutral arrows are more accurate
+- Got rid of PHP warning errors in sources/out.php and elsewhere
+- Validate $_SERVER before use in sources/misc/classes.php
+- Emails sent to new members after admin approval can use all the tags listed
+  in the manual
+- The button rank cache time has been decreased from 12 hours to 1 hour
 
 5.2.0 (SVN 144) - 2007-06-09
 NOTES
@@ -36,7 +47,7 @@ FEATURES
 - Password confirmation on the join page to prevent typos
 BUG FIXES
 - Unapproved sites will not be automatically deleted for inactivity
-- Validates $_SERVER before use
+- Validate $_SERVER before use
 - Displays the banner max width/height in the join and edit forms
 - When you enable admin approval of new members, the welcome email is delayed
   until you approve the site

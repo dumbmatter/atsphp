@@ -1,6 +1,6 @@
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -15,41 +15,32 @@
 // Public License for more details.                                          \\
 //===========================================================================\\
 
-
-------------------------
-ALREADY DONE SINCE 5.2.0
-------------------------
-Character encoding set in feed.php
-http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=28653#28653 TEST THIS (    if ($CONF['security_question'] != '' && $CONF['security_answer'] != '') { in join.php)
-Up/down/neutral arrows are more accurate (test on toptopsites.com)
-Got rid of PHP warning errors in sources/out.php and elsewhere
-in the captcha part in sources/misc/classes.php, check $_SERVER['REMOTE_ADDR']
-Emails sent to new members after admin approval can use all the tags it says they can in the manual
-Due to popular demand, the button rank cache time has been decreased from 12 hours to 30 minutes
-
 -----
 5.2.1
 -----
-update the mods: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=27750#p27750
-new languages: kurdish, greek, portuguese (brazilian)
-how to deal with the mailing list?
-after release, email thanks to new translators
+Mailing List:
+  include a link to delete (see key generation in mailing_list.php)
+  add an autoincrement id # to the database, and use it to:
+    do 100 emails at a time, with a link to do the next 100
+  80 character line width
 
 -----
 5.2.2
 -----
+update the mods: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=27750#p27750
 captcha in rate.php
 in admin, instant refresh back to previous page after form submits
 there are 11 members.  you are on page 2 (10 per page).  you switch to a category with less than 11 members.  you get no results.  2 possible solutions:
 	- if there are no sites, go to the first page
 	- use ajax to control the possible values of the ranks menu
 tiebreaker so cutoff doesn't happen - alphabetic? http://www.aardvarktopsitesphp.com/forums/viewtopic.php?p=28937#28937
+  but what about buttons?
+rename the admin password login field so firefox remembers it correctly
 
 -----
 5.3.0
 -----
 HIGH PRIORITY:
-rename the admin password login field so firefox remembers it correctly
 http://www.aardvarktopsitesphp.com/forums/viewtopic.php?f=5&t=7847&p=31916#p31915
 drop down menu to ban sites: http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=7416
 make banner size check fail more gracefully

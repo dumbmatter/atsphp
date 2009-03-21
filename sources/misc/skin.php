@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -181,7 +181,7 @@ class main_skin extends skin {
 
     // If you want to remove these links, you can; however, I would appreciate
     // it if you left them there.
-    $TMPL['powered_by'] .= '<br /><a href="http://www.mydebtconsolidationadvice.com">Non Profit Debt Consolidation</a> | <a href="http://www.voipfoundation.com">VoIP</a> | <a href="http://www.witbeckvacuums.com">Miele Vacuum</a>';
+    //$TMPL['powered_by'] .= '<br /><a href=""></a> | <a href=""></a> | <a href=""></a>';
     if (!isset($TMPL['content'])) { $TMPL['content'] = ''; }
 
     $TMPL['num_queries'] = $DB->num_queries;

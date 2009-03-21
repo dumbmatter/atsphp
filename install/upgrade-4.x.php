@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -210,7 +210,7 @@ EndHTML;
       }
 
       $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ip_log` (
-                    `ip_address` varchar(245) default '' NOT NULL,
+                    `ip_address` varchar(78) default '' NOT NULL,
                     `username` varchar(255) default '' NOT NULL,
                     `unq_pv` tinyint(1) default 0,
                     `unq_in` tinyint(1) default 0,

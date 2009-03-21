@@ -1,7 +1,7 @@
 <?php
 //===========================================================================\\
 // Aardvark Topsites PHP 5.2                                                 \\
-// Copyright (c) 2000-2007 Jeremy Scheff.  All rights reserved.              \\
+// Copyright (c) 2000-2009 Jeremy Scheff.  All rights reserved.              \\
 //---------------------------------------------------------------------------\\
 // http://www.aardvarktopsitesphp.com/                http://www.avatic.com/ \\
 //---------------------------------------------------------------------------\\
@@ -84,7 +84,7 @@ else {
   if ($DB->connect($CONF['sql_host'], $CONF['sql_username'], $CONF['sql_password'], $CONF['sql_database'])) {
     $default_language = $DB->escape($FORM['l']);
 
-    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 245 ) NOT NULL", __FILE__, __LINE__);
+    $DB->query("ALTER TABLE `{$CONF['sql_prefix']}_ip_log` CHANGE `ip_address` `ip_address` VARCHAR( 78 ) NOT NULL", __FILE__, __LINE__);
     $DB->query("CREATE TABLE `{$CONF['sql_prefix']}_ban` (
                   `id` int(10) unsigned NOT NULL,
                   `string` varchar(255) NOT NULL,
